@@ -147,6 +147,21 @@ void OS_Unix::initialize_core() {
 #endif
 
 	_setup_clock();
+
+	struct sigaction sa;
+	sa.sa_handler = &handle_sigchld;
+	sigemptyset(&sa.sa_mask);
+	sa.sa_flags = SA_RESTART | SA_NOCLDSTOP;
+	if (sigaction(SIGCHLD, &sa, 0) == -1) {
+		perror("ERROR sigaction() failed:");
+	}
+
+  //Simula XWayland:
+  sigset_t mask;
+  sigemptyset(&mask);
+  sigaddset(&mask, SIGUSR1);
+  sigprocmask(SIG_BLOCK, &mask, NULL);
+
 }
 
 void OS_Unix::finalize_core() {
