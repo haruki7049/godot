@@ -240,7 +240,7 @@ RasterizerStorageGLES3::Texture *RasterizerCanvasGLES3::_bind_canvas_texture(con
 			glBindTexture(GL_TEXTURE_2D, texture->tex_id);
 
 			glTexParameteri(texture->target, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-			glTexParameteri(texture->target, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+			glTexParameteri(texture->target, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 			glTexParameterf(texture->target, _GL_TEXTURE_MAX_ANISOTROPY_EXT, 16.0f);
 
 			state.current_tex = p_texture;
