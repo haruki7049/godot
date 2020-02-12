@@ -10,26 +10,14 @@ let
   };
   xvfb-run = callPackage ./xvfb-run.nix { };
   nixGLIntel = ((import ./nixGL.nix) { }).nixGLIntel;
-  wlroots-nix = "${fetchFromGitHub {
-    owner = "SimulaVR";
-    repo = "wlroots";
-    rev =  "5519d9aea175d7edab18f481f729ef776c36382e";
-    sha256 = "0klr1facaprr6br7618gndpnj941gsrq5xi569rhnwla6flhzm57";
-    }}/wlroots.nix";
-  wlroots = callPackage wlroots-nix { };
+  # nixGLIntel = ((import ./nixGL.nix) { system = builtins.currentSystem; nvidiaVersion = null; nvidiaHash = null; pkgs = pkgs; }).nixGLIntel;
+  wlroots = callPackage ../wlroots/wlroots.nix { };
 
 in stdenv.mkDerivation rec {
   pname = "godot";
   version = "3.2";
 
   src = ./.;
-
-  gdwlroots-src = fetchFromGitHub {
-    owner = "SimulaVR";
-    repo = "gdwlroots";
-    rev = "4b83704a02b0acd320df31c040f3338fabc22d92";
-    sha256 = "1imvhzqkvbv62bj9v2y0zb6sszw5yy1ajjr3y5f56b5085pbxiwp";
-  };
 
   nativeBuildInputs = [ scons pkgconfig ];
 
@@ -55,10 +43,9 @@ in stdenv.mkDerivation rec {
   outputs = [ "out" "dev" "man" ];
 
   configurePhase = ''
-    cp -r ${gdwlroots-src} modules/gdwlroots
-    chmod u+w -R modules/gdwlroots
-
-    cat modules/gdwlroots/SCsub
+    # cp -r gdwlroots-src modules/gdwlroots
+    # chmod u+w -R modules/gdwlroots
+    # cat modules/gdwlroots/SCsub
 
     cd modules/gdwlroots
     wayland-scanner server-header ${wayland-protocols}/share/wayland-protocols/stable/xdg-shell/xdg-shell.xml xdg-shell-protocol.h
