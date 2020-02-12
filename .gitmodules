@@ -1,0 +1,4 @@
+[submodule "modules/gdwlroots"]
+	path = modules/gdwlroots
+	url = https://github.com/SimulaVR/gdwlroots
+	branch = xwayland-3.2
