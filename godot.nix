@@ -17,6 +17,7 @@ let
   nixVulkanNvidia = ((import ./nixGL.nix) { nvidiaVersion = "${nvidia-version}"; nvidiaHash = "${nvidia-hash}"; }).nixVulkanNvidia;
   nixGLIntel = ((import ./nixGL.nix) { }).nixGLIntel;
   nixGLRes = if ((builtins.head driverCheckList) == "nixos") then " " else (if ((builtins.head driverCheckList) == "nvidia") then " ${nixVulkanNvidia}/bin/nixVulkanNvidia " else " ${nixGLIntel}/bin/nixGLIntel ");
+  generateApi = (if driverCheck == "nixos" then "xvfb-run $out/bin/godot --gdnative-generate-json-api $out/bin/api.json" else "nixGLIntel xvfb-run $out/bin/godot --gdnative-generate-json-api $out/bin/api.json");
 
 in stdenv.mkDerivation rec {
   pname = "godot";
@@ -30,7 +31,7 @@ in stdenv.mkDerivation rec {
     libX11 libXcursor libXinerama libXrandr libXrender
     libXi libXext libXfixes freetype openssl alsaLib libpulseaudio
     libGLU zlib yasm
-    wlroots xwayland wayland-protocols libglvnd libGL mesa_noglu libxkbcommon x11 eudev xvfb-run
+    wlroots xwayland wayland-protocols libglvnd libGL mesa_noglu libxkbcommon x11 eudev xvfb-run nixGLIntel
   ];
 
   patches = [
@@ -176,7 +177,7 @@ in stdenv.mkDerivation rec {
     patchShebangs modules/opus/SCsub
     patchShebangs modules/vhacd/SCsub
     patchShebangs modules/tga/SCsub
-  '';
+    '';
 
   installPhase = ''
     mkdir -p "$out/bin"
@@ -194,8 +195,7 @@ in stdenv.mkDerivation rec {
     cp icon.png "$out/share/icons/godot.png"
     substituteInPlace "$out/share/applications/org.godotengine.Godot.desktop" \
       --replace "Exec=godot" "Exec=$out/bin/godot"
-'' + nixGLRes + '' xvfb-run $out/bin/godot --gdnative-generate-json-api $out/bin/api.json
-  '';
+    '' + generateApi;
 
   meta = {
     homepage    = "https://godotengine.org";
