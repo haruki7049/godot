@@ -9,7 +9,7 @@ let
     pulseaudio = false;
   };
   xvfb-run = callPackage ./xvfb-run.nix { };
-  wlroots = callPackage ../submodules/wlroots.nix { };
+  wlroots = callPackage ../wlroots/wlroots.nix { };
 
   driverCheckList = lib.splitString " " driverCheck;
   nvidia-version = if ((builtins.head driverCheckList) == "nvidia") then (builtins.elemAt driverCheckList 1) else null;
