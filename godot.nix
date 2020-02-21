@@ -17,7 +17,7 @@ let
   nixVulkanNvidia = ((import ./nixGL.nix) { nvidiaVersion = "${nvidia-version}"; nvidiaHash = "${nvidia-hash}"; }).nixVulkanNvidia;
   nixGLIntel = ((import ./nixGL.nix) { }).nixGLIntel;
   nixGLRes = if ((builtins.head driverCheckList) == "nixos") then " " else (if ((builtins.head driverCheckList) == "nvidia") then " ${nixVulkanNvidia}/bin/nixVulkanNvidia " else " ${nixGLIntel}/bin/nixGLIntel ");
-  generateApi = (if driverCheck == "nixos" then "xvfb-run $out/bin/godot --gdnative-generate-json-api $out/bin/api.json" else "nixGLIntel xvfb-run $out/bin/godot --gdnative-generate-json-api $out/bin/api.json");
+  generateApi = (if driverCheck == "nixos" then "xvfb-run $out/bin/godot.x11.tools.64 --gdnative-generate-json-api $out/bin/api.json" else "nixGLIntel xvfb-run $out/bin/godot.x11.tools.64 --gdnative-generate-json-api $out/bin/api.json");
 
 in stdenv.mkDerivation rec {
   pname = "godot";
@@ -180,8 +180,15 @@ in stdenv.mkDerivation rec {
     '';
 
   installPhase = ''
+    scons platform=x11 tools=no target=release bits=64 -j $NIX_BUILD_CORES
+    scons platform=x11 tools=no target=release_debug bits=64 -j $NIX_BUILD_CORES
     mkdir -p "$out/bin"
-    cp bin/godot.* $out/bin/godot
+
+    # Making these symlinks doesn't work for some reason
+    cp bin/godot.x11.opt.64 $out/bin/godot
+    cp bin/godot.x11.opt.64 $out/bin/godot.x11.opt.64
+    cp bin/godot.x11.opt.debug.64 $out/bin/godot.x11.opt.debug.64
+    cp bin/godot.x11.tools.64 $out/bin/godot.x11.tools.64
 
     mkdir "$dev"
     cp -r modules/gdnative/include $dev
