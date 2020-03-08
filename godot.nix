@@ -14,9 +14,7 @@ let
   driverCheckList = lib.splitString " " driverCheck;
   nvidia-version = if ((builtins.head driverCheckList) == "nvidia") then (builtins.elemAt driverCheckList 1) else null;
   nvidia-hash = if ((builtins.head driverCheckList) == "nvidia") then (builtins.elemAt driverCheckList 2) else null;
-  nixVulkanNvidia = ((import ./nixGL.nix) { nvidiaVersion = "${nvidia-version}"; nvidiaHash = "${nvidia-hash}"; }).nixVulkanNvidia;
   nixGLIntel = ((import ./nixGL.nix) { }).nixGLIntel;
-  nixGLRes = if ((builtins.head driverCheckList) == "nixos") then " " else (if ((builtins.head driverCheckList) == "nvidia") then " ${nixVulkanNvidia}/bin/nixVulkanNvidia " else " ${nixGLIntel}/bin/nixGLIntel ");
   generateApi = (if driverCheck == "nixos" then "xvfb-run $out/bin/godot.x11.tools.64 --gdnative-generate-json-api $out/bin/api.json" else "nixGLIntel xvfb-run $out/bin/godot.x11.tools.64 --gdnative-generate-json-api $out/bin/api.json");
 
 in stdenv.mkDerivation rec {
@@ -189,6 +187,7 @@ in stdenv.mkDerivation rec {
     cp bin/godot.x11.opt.64 $out/bin/godot.x11.opt.64
     cp bin/godot.x11.opt.debug.64 $out/bin/godot.x11.opt.debug.64
     cp bin/godot.x11.tools.64 $out/bin/godot.x11.tools.64
+
 
     mkdir "$dev"
     cp -r modules/gdnative/include $dev
