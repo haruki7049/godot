@@ -1,2 +1,1 @@
-{ driverCheck ? "" }:
-(import <nixpkgs> {}).callPackage ./godot.nix { driverCheck = driverCheck; }
+(import <nixpkgs> {}).callPackage ./godot.nix { }

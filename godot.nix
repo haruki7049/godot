@@ -1,21 +1,22 @@
 { stdenv, lib, fetchFromGitHub, scons, pkgconfig, libX11, libXcursor
 , libXinerama, libXrandr, libXrender, libpulseaudio ? null
 , libXi ? null, libXext, libXfixes, freetype, openssl
-, alsaLib, libGLU, zlib, yasm ? null, xwayland, wayland-protocols, libglvnd, libGL, mesa_noglu, pixman, libxkbcommon, x11, eudev, callPackage, driverCheck ? "" }:
+, alsaLib, libGLU, zlib, yasm ? null, xwayland, wayland-protocols, libglvnd, libGL, mesa_noglu, pixman, libxkbcommon, x11, eudev, callPackage }:
 
 let
   options = {
     touch = libXi != null;
     pulseaudio = false;
   };
-  xvfb-run = callPackage ./xvfb-run.nix { };
+  # xvfb-run = callPackage ./xvfb-run.nix { };
   wlroots = callPackage ../wlroots/wlroots.nix { };
 
-  driverCheckList = lib.splitString " " driverCheck;
-  nvidia-version = if ((builtins.head driverCheckList) == "nvidia") then (builtins.elemAt driverCheckList 1) else null;
-  nvidia-hash = if ((builtins.head driverCheckList) == "nvidia") then (builtins.elemAt driverCheckList 2) else null;
-  nixGLIntel = ((import ./nixGL.nix) { }).nixGLIntel;
-  generateApi = (if driverCheck == "nixos" then "xvfb-run $out/bin/godot.x11.tools.64 --gdnative-generate-json-api $out/bin/api.json" else "nixGLIntel xvfb-run $out/bin/godot.x11.tools.64 --gdnative-generate-json-api $out/bin/api.json");
+  # driverCheckList = lib.splitString " " driverCheck;
+  # nvidia-version = if ((builtins.head driverCheckList) == "nvidia") then (builtins.elemAt driverCheckList 1) else null;
+  # nvidia-hash = if ((builtins.head driverCheckList) == "nvidia") then (builtins.elemAt driverCheckList 2) else null;
+  # nixGLIntel = ((import ./nixGL.nix) { }).nixGLIntel;
+  # generateApi = (if driverCheck == "nixos" then "xvfb-run $out/bin/godot.x11.tools.64 --gdnative-generate-json-api $out/bin/api.json" else "nixGLIntel xvfb-run $out/bin/godot.x11.tools.64 --gdnative-generate-json-api $out/bin/api.json");
+  generateApi = "cp api.json $out/bin/api.json";
 
 in stdenv.mkDerivation rec {
   pname = "godot";
@@ -29,7 +30,7 @@ in stdenv.mkDerivation rec {
     libX11 libXcursor libXinerama libXrandr libXrender
     libXi libXext libXfixes freetype openssl alsaLib libpulseaudio
     libGLU zlib yasm
-    wlroots xwayland wayland-protocols libglvnd libGL mesa_noglu libxkbcommon x11 eudev xvfb-run nixGLIntel
+    wlroots xwayland wayland-protocols libglvnd libGL mesa_noglu libxkbcommon x11 eudev
   ];
 
   patches = [
