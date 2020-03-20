@@ -1,5 +1,5 @@
 { stdenv, fetchurl, makeWrapper, xorgserver, getopt
-, xauth, utillinux, which, makeFontsConf, gawk, coreutils, freefont_ttf }:
+, xauth, utillinux, makeFontsConf, gawk, coreutils, freefont_ttf }:
 let
  fontsConf = makeFontsConf {
     fontDirectories = [ freefont_ttf ];
@@ -10,6 +10,7 @@ let
     url = https://git.archlinux.org/svntogit/packages.git/plain/trunk/xvfb-run?h=packages/xorg-server&id=9cb733cefa92af3fca608fb051d5251160c9bbff;
     sha256 = "1307mz4nr8ga3qz73i8hbcdphky75rq8lrvfk2zm4kmv6pkbk611";
   };
+
 in
 stdenv.mkDerivation {
   name = "xvfb-run";
@@ -21,7 +22,7 @@ stdenv.mkDerivation {
     patchShebangs $out/bin/xvfb-run
     wrapProgram $out/bin/xvfb-run \
       --set FONTCONFIG_FILE "${fontsConf}" \
-      --prefix PATH : ${stdenv.lib.makeBinPath [ getopt xorgserver xauth which utillinux gawk coreutils ]}
+      --prefix PATH : ${stdenv.lib.makeBinPath [ getopt xorgserver xauth utillinux gawk coreutils ]} # remove which to avoid godot-haskell-plugin issue
   '';
 
   meta = with stdenv.lib; {

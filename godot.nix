@@ -1,22 +1,32 @@
 { stdenv, lib, fetchFromGitHub, scons, pkgconfig, libX11, libXcursor
 , libXinerama, libXrandr, libXrender, libpulseaudio ? null
 , libXi ? null, libXext, libXfixes, freetype, openssl
-, alsaLib, libGLU, zlib, yasm ? null, xwayland, wayland-protocols, libglvnd, libGL, mesa_noglu, pixman, libxkbcommon, x11, eudev, callPackage }:
+, alsaLib, libGLU, zlib, yasm ? null, xwayland, wayland-protocols, libglvnd, libGL, mesa_noglu, pixman, libxkbcommon, x11, eudev, callPackage, devBuild ? false, driverCheck ? "", pkgs }:
 
 let
   options = {
     touch = libXi != null;
     pulseaudio = false;
   };
-  # xvfb-run = callPackage ./xvfb-run.nix { };
+  xvfb-run = callPackage ./xvfb-run.nix { };
   wlroots = callPackage ../wlroots/wlroots.nix { };
 
-  # driverCheckList = lib.splitString " " driverCheck;
-  # nvidia-version = if ((builtins.head driverCheckList) == "nvidia") then (builtins.elemAt driverCheckList 1) else null;
-  # nvidia-hash = if ((builtins.head driverCheckList) == "nvidia") then (builtins.elemAt driverCheckList 2) else null;
-  # nixGLIntel = ((import ./nixGL.nix) { }).nixGLIntel;
-  # generateApi = (if driverCheck == "nixos" then "xvfb-run $out/bin/godot.x11.tools.64 --gdnative-generate-json-api $out/bin/api.json" else "nixGLIntel xvfb-run $out/bin/godot.x11.tools.64 --gdnative-generate-json-api $out/bin/api.json");
-  generateApi = "cp api.json $out/bin/api.json";
+  driverCheckList = lib.splitString " " driverCheck;
+  nixGLIntel = ((import ./nixGL.nix) { pkgs = pkgs; }).nixGLIntel;
+  generateApiDev = (if driverCheck == "nixos" then "xvfb-run $out/bin/godot.x11.tools.64 --gdnative-generate-json-api $out/bin/api.json" else "${nixGLIntel}/bin/nixGLIntel xvfb-run $out/bin/godot.x11.tools.64 --gdnative-generate-json-api $out/bin/api.json");
+
+  generateApi = if (devBuild == false) then "cp api.json $out/bin/api.json" else generateApiDev;
+  nixGLIntelPkg = (if driverCheck == "nixos" then eudev else nixGLIntel);
+
+  nonDevBuildInstall = if (devBuild == false) then ''
+
+    scons platform=x11 tools=no target=release bits=64 -j $NIX_BUILD_CORES
+    scons platform=x11 tools=no target=release_debug bits=64 -j $NIX_BUILD_CORES
+    cp bin/godot.x11.opt.64 $out/bin/godot.x11.opt.64
+    cp bin/godot.x11.opt.debug.64 $out/bin/godot.x11.opt.debug.64
+
+    '' else ''
+    '';
 
 in stdenv.mkDerivation rec {
   pname = "godot";
@@ -30,7 +40,7 @@ in stdenv.mkDerivation rec {
     libX11 libXcursor libXinerama libXrandr libXrender
     libXi libXext libXfixes freetype openssl alsaLib libpulseaudio
     libGLU zlib yasm
-    wlroots xwayland wayland-protocols libglvnd libGL mesa_noglu libxkbcommon x11 eudev
+    wlroots xwayland wayland-protocols libglvnd libGL mesa_noglu libxkbcommon x11 eudev xvfb-run # nixGLIntelPkg
   ];
 
   patches = [
@@ -179,16 +189,11 @@ in stdenv.mkDerivation rec {
     '';
 
   installPhase = ''
-    scons platform=x11 tools=no target=release bits=64 -j $NIX_BUILD_CORES
-    scons platform=x11 tools=no target=release_debug bits=64 -j $NIX_BUILD_CORES
     mkdir -p "$out/bin"
 
     # Making these symlinks doesn't work for some reason
-    cp bin/godot.x11.opt.64 $out/bin/godot
-    cp bin/godot.x11.opt.64 $out/bin/godot.x11.opt.64
-    cp bin/godot.x11.opt.debug.64 $out/bin/godot.x11.opt.debug.64
+    cp bin/godot.x11.tools.64 $out/bin/godot
     cp bin/godot.x11.tools.64 $out/bin/godot.x11.tools.64
-
 
     mkdir "$dev"
     cp -r modules/gdnative/include $dev
@@ -202,7 +207,10 @@ in stdenv.mkDerivation rec {
     cp icon.png "$out/share/icons/godot.png"
     substituteInPlace "$out/share/applications/org.godotengine.Godot.desktop" \
       --replace "Exec=godot" "Exec=$out/bin/godot"
-    '' + generateApi;
+
+    '' + generateApi +
+    ''
+    '' + nonDevBuildInstall;
 
   meta = {
     homepage    = "https://godotengine.org";

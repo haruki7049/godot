@@ -22,6 +22,8 @@ let
   };
 
   nixpkgs = pkgs { overlays = [overlay]; config = {allowUnfree = true;};};
+
+  coreutils = nixpkgs.coreutils;
 in
 with nixpkgs;
 rec {
@@ -42,7 +44,7 @@ rec {
     } ''
       mkdir -p $out/bin
       cat > $out/bin/nixGLNvidiaBumblebee << FOO
-      #!/usr/bin/env sh
+      #!${coreutils}/bin/env sh
       export LD_LIBRARY_PATH=${nvidia}/lib:\$LD_LIBRARY_PATH
       ${bumblebee}/bin/optirun --ldpath ${libglvnd}/lib:${nvidia}/lib "\$@"
       FOO
@@ -60,7 +62,7 @@ rec {
     } ''
       mkdir -p $out/bin
       cat > $out/bin/nix${api}Nvidia << FOO
-      #!/usr/bin/env sh
+      #!${coreutils}/bin/env sh
       export LD_LIBRARY_PATH=${libglvnd}/lib:${nvidiaLibsOnly}/lib:\$LD_LIBRARY_PATH
       "\$@"
       FOO
@@ -82,7 +84,7 @@ rec {
     } ''
       mkdir -p $out/bin
       cat > $out/bin/nixGLIntel << FOO
-      #!/usr/bin/env sh
+      #!${coreutils}/bin/env sh
       export LIBGL_DRIVERS_PATH=${mesa_drivers}/lib/dri
       export LD_LIBRARY_PATH=${mesa_drivers}/lib:\$LD_LIBRARY_PATH
       "\$@"
@@ -99,7 +101,7 @@ rec {
    } ''
      mkdir -p "$out/bin"
      cat > "$out/bin/nixVulkanIntel" << EOF
-     #!/usr/bin/env bash
+     #!${coreutils}/bin/env bash
      if [ ! -z "$LD_LIBRARY_PATH" ]; then
        echo "Warning, nixVulkanIntel overwriting existing LD_LIBRARY_PATH" 1>&2
      fi
