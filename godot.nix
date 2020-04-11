@@ -16,10 +16,9 @@ let
   nvidia-hash = if ((builtins.head driverCheckList) == "nvidia") then (builtins.elemAt driverCheckList 2) else null;
   nixVulkanNvidia = ((import ./nixGL.nix) { nvidiaVersion = "${nvidia-version}"; nvidiaHash = "${nvidia-hash}"; pkgs = pkgs; }).nixVulkanNvidia;
   nixGLIntel = ((import ./nixGL.nix) { pkgs = pkgs; }).nixGLIntel;
-  nixGLRes = if ((builtins.head driverCheckList) == "nixos") then " " else (if ((builtins.head driverCheckList) == "nvidia") then " ${nixVulkanNvidia}/bin/nixVulkanNvidia " else " ${nixGLIntel}/bin/nixGLIntel ");
-  nixGLPkg = if ((builtins.head driverCheckList) == "nvidia") then nixVulkanNvidia else (if driverCheck == "nixos" then eudev else nixGLIntel);
-
-  nixGLIntelPkg = (if driverCheck == "nixos" then eudev else nixGLIntel);
+  nixVulkanIntel = ((import ./nixGL.nix) { pkgs = pkgs; }).nixVulkanIntel;
+  nixGLRes = if ((builtins.head driverCheckList) == "nixos") then " " else (if ((builtins.head driverCheckList) == "nvidia") then " ${nixVulkanNvidia}/bin/nixVulkanNvidia " else " ${nixVulkanIntel}/bin/nixVulkanIntel ");
+  nixGLPkg = if ((builtins.head driverCheckList) == "nvidia") then nixVulkanNvidia else (if driverCheck == "nixos" then eudev else nixVulkanIntel);
 
   generateApiDev = (if driverCheck == "nixos" then "xvfb-run $out/bin/godot.x11.tools.64 --gdnative-generate-json-api $out/bin/api.json" else ("${nixGLIntel}/bin/nixGLIntel xvfb-run $out/bin/godot.x11.tools.64 --gdnative-generate-json-api $out/bin/api.json"));
 
