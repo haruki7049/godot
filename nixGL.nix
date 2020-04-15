@@ -47,7 +47,7 @@ rec {
   nixGLNvidiaBumblebee = writeExecutable {
     name = "nixGLNvidiaBumblebee";
     text = ''
-      #!/usr/bin/env sh
+      #!${nixpkgs.coreutils}/bin/env sh
       export LD_LIBRARY_PATH=${nvidia}/lib:$LD_LIBRARY_PATH
       ${bumblebee}/bin/optirun --ldpath ${libglvnd}/lib:${nvidia}/lib "$@"
       '';
@@ -56,7 +56,7 @@ rec {
   nixNvidiaWrapper = api: writeExecutable {
     name = "nix${api}Nvidia";
     text = ''
-      #!/usr/bin/env sh
+      #!${nixpkgs.coreutils}/bin/env sh
       ${lib.optionalString (api == "Vulkan") ''export VK_LAYER_PATH=${nixpkgs.vulkan-validation-layers}/share/vulkan/explicit_layer.d''}
 
       export LD_LIBRARY_PATH=${lib.makeLibraryPath ([
@@ -75,7 +75,7 @@ rec {
   nixGLIntel = writeExecutable {
     name = "nixGLIntel";
     text = ''
-      #!/usr/bin/env sh
+      #!${nixpkgs.coreutils}/bin/env sh
       export LIBGL_DRIVERS_PATH=${mesa_drivers}/lib/dri
       export LD_LIBRARY_PATH=${mesa_drivers}/lib:$LD_LIBRARY_PATH
       "$@"
@@ -85,7 +85,7 @@ rec {
   nixVulkanIntel = writeExecutable {
     name = "nixVulkanIntel";
     text = ''
-     #!/usr/bin/env bash
+     #!${nixpkgs.coreutils}/bin/env bash
      if [ -n "$LD_LIBRARY_PATH" ]; then
        echo "Warning, nixVulkanIntel overwriting existing LD_LIBRARY_PATH" 1>&2
      fi
