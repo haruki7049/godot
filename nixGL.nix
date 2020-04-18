@@ -58,6 +58,7 @@ rec {
     text = ''
       #!${nixpkgs.coreutils}/bin/env sh
       ${lib.optionalString (api == "Vulkan") ''export VK_LAYER_PATH=${nixpkgs.vulkan-validation-layers}/share/vulkan/explicit_layer.d''}
+      ${lib.optionalString (api == "Vulkan") ''export  VK_ICD_FILENAMES=${nvidia}/share/vulkan/icd.d/nvidia_icd.json''}
 
       export LD_LIBRARY_PATH=${lib.makeLibraryPath ([
         libglvnd
