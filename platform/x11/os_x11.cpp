@@ -906,8 +906,10 @@ void OS_X11::set_mouse_mode(MouseMode p_mode) {
 
 			input->set_mouse_position(center);
 		}
+		XGrabKeyboard(x11_display, x11_window, True, GrabModeAsync, GrabModeAsync, CurrentTime);
 	} else {
 		do_mouse_warp = false;
+		XUngrabKeyboard(x11_display, CurrentTime);
 	}
 
 	XFlush(x11_display);
