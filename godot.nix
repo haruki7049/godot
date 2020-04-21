@@ -1,7 +1,7 @@
 { stdenv, lib, fetchFromGitHub, scons, pkgconfig, libX11, libXcursor
 , libXinerama, libXrandr, libXrender, libpulseaudio ? null
 , libXi ? null, libXext, libXfixes, freetype, openssl
-, alsaLib, libGLU, zlib, yasm ? null, xwayland, wayland-protocols, libglvnd, libGL, mesa_noglu, pixman, libxkbcommon, x11, eudev, callPackage, devBuild ? false, driverCheck ? "", pkgs }:
+, alsaLib, libGLU, zlib, yasm ? null, xwayland, wayland-protocols, libglvnd, libGL, mesa_noglu, pixman, libxkbcommon, x11, eudev, callPackage, devBuild ? false, onNixOS ? false, pkgs }:
 
 let
   options = {
@@ -11,17 +11,11 @@ let
   xvfb-run = callPackage ./xvfb-run.nix { };
   wlroots = callPackage ../wlroots/wlroots.nix { };
 
-  driverCheckList = lib.splitString " " driverCheck;
-  nvidia-version = if ((builtins.head driverCheckList) == "nvidia") then (builtins.elemAt driverCheckList 1) else null;
-  nvidia-hash = if ((builtins.head driverCheckList) == "nvidia") then (builtins.elemAt driverCheckList 2) else null;
-  nixVulkanNvidia = ((import ./nixGL.nix) { nvidiaVersion = "${nvidia-version}"; nvidiaHash = "${nvidia-hash}"; pkgs = pkgs; }).nixVulkanNvidia;
   nixGLIntel = ((import ./nixGL.nix) { pkgs = pkgs; }).nixGLIntel;
-  nixVulkanIntel = ((import ./nixGL.nix) { pkgs = pkgs; }).nixVulkanIntel;
-  nixGLRes = if ((builtins.head driverCheckList) == "nixos") then " " else (if ((builtins.head driverCheckList) == "nvidia") then " ${nixVulkanNvidia}/bin/nixVulkanNvidia " else " ${nixGLIntel}/bin/nixGLIntel ");
-  nixGLPkg = if ((builtins.head driverCheckList) == "nvidia") then nixVulkanNvidia else (if driverCheck == "nixos" then eudev else nixVulkanIntel);
+  nixGLRes = if (onNixOS == true) then " " else " ${nixGLIntel}/bin/nixGLIntel ";
+  nixGLPkg = if (onNixOS == true) then eudev else nixGLIntel;
 
-  generateApiDev = (if driverCheck == "nixos" then "xvfb-run $out/bin/godot.x11.tools.64 --gdnative-generate-json-api $out/bin/api.json" else ("${nixGLIntel}/bin/nixGLIntel xvfb-run $out/bin/godot.x11.tools.64 --gdnative-generate-json-api $out/bin/api.json"));
-
+  generateApiDev = (if onNixOS == true then "xvfb-run $out/bin/godot.x11.tools.64 --gdnative-generate-json-api $out/bin/api.json" else ("${nixGLIntel}/bin/nixGLIntel xvfb-run $out/bin/godot.x11.tools.64 --gdnative-generate-json-api $out/bin/api.json"));
   generateApi = if (devBuild == false) then "cp api.json $out/bin/api.json" else generateApiDev;
 
   nonDevBuildInstall = if (devBuild == false) then ''

@@ -1,2 +1,2 @@
-{ driverCheck, devBuild }: 
-(import ../../pinned-nixpkgs.nix {}).callPackage ./godot.nix { devBuild = devBuild; driverCheck = driverCheck; pkgs = (import ../../pinned-nixpkgs.nix); }
+{ onNixOS, devBuild }: 
+(import ../../pinned-nixpkgs.nix {}).callPackage ./godot.nix { onNixOS = onNixOS; devBuild = devBuild; pkgs = (import ../../pinned-nixpkgs.nix); }
