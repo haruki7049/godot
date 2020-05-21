@@ -183825,6 +183825,31 @@
 						"default_value": ""
 					}
 				]
+			},
+			{
+				"name": "send_wlr_event_keyboard_key",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "scancode_without_modifiers",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "is_pressed",
+						"type": "bool",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
 			}
 		],
 		"enums": [
@@ -184606,6 +184631,16 @@
 			},
 			{
 				"name": "map",
+				"arguments": [
+					{
+						"name": "xwayland_surface",
+						"type": "WlrXWaylandSurface",
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "map_free_child",
 				"arguments": [
 					{
 						"name": "xwayland_surface",
