@@ -60,14 +60,24 @@ static const _KeyCodeText _keycodes[] = {
 		{KEY_DOWN                          ,"Down"},
 		{KEY_PAGEUP                        ,"PageUp"},
 		{KEY_PAGEDOWN                      ,"PageDown"},
-		{KEY_SHIFT                         ,"Shift"},
-		{KEY_CONTROL                       ,"Control"},
+		//{KEY_SHIFT                         ,"Shift"},
+		{KEY_SHIFT_L                           ,"Shift"},
+		{KEY_SHIFT_R                           ,"ShiftR"},
+		//{KEY_CONTROL                       ,"Control"},
+		{KEY_CONTROL_L                           ,"Control"},
+		{KEY_CONTROL_R                           ,"ControlR"},
 #ifdef OSX_ENABLED
-		{KEY_META                          ,"Command"},
+		//{KEY_META                          ,"Command"},
+		{KEY_META_L                           ,"Command"},
+		{KEY_META_R                           ,"CommandR"},
 #else
-		{KEY_META                          ,"Meta"},
+		//{KEY_META                          ,"Meta"},
+		{KEY_META_L                           ,"Meta"},
+		{KEY_META_R                           ,"MetaR"},
 #endif
-		{KEY_ALT                           ,"Alt"},
+		//{KEY_ALT                           ,"Alt"},
+		{KEY_ALT_L                           ,"Alt"},
+		{KEY_ALT_R                           ,"AltR"},
 		{KEY_CAPSLOCK                      ,"CapsLock"},
 		{KEY_NUMLOCK                       ,"NumLock"},
 		{KEY_SCROLLLOCK                    ,"ScrollLock"},
@@ -316,10 +326,18 @@ bool keycode_has_unicode(uint32_t p_keycode) {
 		case KEY_DOWN:
 		case KEY_PAGEUP:
 		case KEY_PAGEDOWN:
-		case KEY_SHIFT:
-		case KEY_CONTROL:
-		case KEY_META:
-		case KEY_ALT:
+		//case KEY_SHIFT:
+		case KEY_SHIFT_L:
+  	case KEY_SHIFT_R:
+		//case KEY_CONTROL:
+		case KEY_CONTROL_L:
+  	case KEY_CONTROL_R:
+		//case KEY_META:
+		case KEY_META_L:
+		case KEY_META_R:
+		//case KEY_ALT:
+		case KEY_ALT_L:
+		case KEY_ALT_R:
 		case KEY_CAPSLOCK:
 		case KEY_NUMLOCK:
 		case KEY_SCROLLLOCK:
@@ -397,19 +415,23 @@ String keycode_get_string(uint32_t p_code) {
 
 	String codestr;
 	if (p_code & KEY_MASK_SHIFT) {
-		codestr += find_keycode_name(KEY_SHIFT);
+		//codestr += find_keycode_name(KEY_SHIFT);
+		codestr += find_keycode_name(KEY_SHIFT_L);
 		codestr += "+";
 	}
 	if (p_code & KEY_MASK_ALT) {
-		codestr += find_keycode_name(KEY_ALT);
+		//codestr += find_keycode_name(KEY_ALT);
+		codestr += find_keycode_name(KEY_ALT_L);
 		codestr += "+";
 	}
 	if (p_code & KEY_MASK_CTRL) {
-		codestr += find_keycode_name(KEY_CONTROL);
+		//codestr += find_keycode_name(KEY_CONTROL);
+		codestr += find_keycode_name(KEY_CONTROL_L);
 		codestr += "+";
 	}
 	if (p_code & KEY_MASK_META) {
-		codestr += find_keycode_name(KEY_META);
+		//codestr += find_keycode_name(KEY_META);
+		codestr += find_keycode_name(KEY_META_L);
 		codestr += "+";
 	}
 

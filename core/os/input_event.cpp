@@ -286,16 +286,20 @@ String InputEventKey::as_text() const {
 		return kc;
 
 	if (get_metakey()) {
-		kc = find_keycode_name(KEY_META) + ("+" + kc);
+		//kc = find_keycode_name(KEY_META) + ("+" + kc);
+		kc = find_keycode_name(KEY_META_L) + ("+" + kc);
 	}
 	if (get_alt()) {
-		kc = find_keycode_name(KEY_ALT) + ("+" + kc);
+		//kc = find_keycode_name(KEY_ALT) + ("+" + kc);
+		kc = find_keycode_name(KEY_ALT_L) + ("+" + kc);
 	}
 	if (get_shift()) {
-		kc = find_keycode_name(KEY_SHIFT) + ("+" + kc);
+		//kc = find_keycode_name(KEY_SHIFT) + ("+" + kc);
+		kc = find_keycode_name(KEY_SHIFT_L) + ("+" + kc);
 	}
 	if (get_control()) {
-		kc = find_keycode_name(KEY_CONTROL) + ("+" + kc);
+		//kc = find_keycode_name(KEY_CONTROL) + ("+" + kc);
+		kc = find_keycode_name(KEY_CONTROL_L) + ("+" + kc);
 	}
 	return kc;
 }
