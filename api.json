@@ -185056,6 +185056,25 @@
 				]
 			},
 			{
+				"name": "set_xy",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "size",
+						"type": "Vector2",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
 				"name": "surface_at",
 				"return_type": "WlrSurfaceAtResult",
 				"is_editor": false,
