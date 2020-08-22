@@ -11,7 +11,7 @@ let
   xvfb-run = callPackage ./xvfb-run.nix { };
   wlroots = callPackage ../wlroots/wlroots.nix { };
 
-  nixGLIntel = ((import ./nixGL.nix) { pkgs = pkgs; }).nixGLIntel;
+  nixGLIntel = (callPackage ./nixGL.nix { }).nixGLIntel;
   nixGLRes = if (onNixOS == true) then " " else " ${nixGLIntel}/bin/nixGLIntel ";
   nixGLPkg = if (onNixOS == true) then eudev else nixGLIntel;
 
