@@ -184644,6 +184644,16 @@
 				]
 			},
 			{
+				"name": "map_child",
+				"arguments": [
+					{
+						"name": "xwayland_surface",
+						"type": "WlrXWaylandSurface",
+						"default_value": ""
+					}
+				]
+			},
+			{
 				"name": "map_free_child",
 				"arguments": [
 					{
@@ -184735,6 +184745,26 @@
 			},
 			{
 				"name": "unmap",
+				"arguments": [
+					{
+						"name": "xwayland_surface",
+						"type": "WlrXWaylandSurface",
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "unmap_child",
+				"arguments": [
+					{
+						"name": "xwayland_surface",
+						"type": "WlrXWaylandSurface",
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "unmap_free_child",
 				"arguments": [
 					{
 						"name": "xwayland_surface",
