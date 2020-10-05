@@ -35,7 +35,7 @@ let
         preferLocalBuild = true;
         allowSubstitutes = false;
       }
-      "cp /proc/driver/nvidia/version $out || touch $out";
+      "cp /sys/bus/pci/drivers/nvidia/module/version $out || touch $out"
 
   # The nvidia version. Either fixed by the `nvidiaVersion` argument, or
   # auto-detected. Auto-detection is impure.
@@ -44,14 +44,7 @@ let
       nvidiaVersion
     else
       # Get if from the nvidiaVersionFile
-      let
-        data = builtins.readFile _nvidiaVersionFile;
-        versionMatch = builtins.match ".*Module +([0-9]+\\.[0-9]+).*" data;
-      in
-      if versionMatch != null then
-        builtins.head versionMatch
-      else
-        null;
+      lib.strings.removeSuffix "\n" (builtins.readFile _nvidiaVersionFile);
 
   addNvidiaVersion = drv: drv.overrideAttrs(oldAttrs: {
     name = oldAttrs.name + "-${_nvidiaVersion}";
