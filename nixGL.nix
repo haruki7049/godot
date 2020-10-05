@@ -35,7 +35,7 @@ let
         preferLocalBuild = true;
         allowSubstitutes = false;
       }
-      "cp /sys/bus/pci/drivers/nvidia/module/version $out || touch $out"
+      "cp /sys/bus/pci/drivers/nvidia/module/version $out || touch $out";
 
   # The nvidia version. Either fixed by the `nvidiaVersion` argument, or
   # auto-detected. Auto-detection is impure.
