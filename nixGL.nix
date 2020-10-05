@@ -46,7 +46,7 @@ let
       # Get if from the nvidiaVersionFile
       let
         data = builtins.readFile _nvidiaVersionFile;
-        versionMatch = builtins.match ".*Module +([0-9]+\\.[0-9]+).*" data;
+        versionMatch = builtins.match ".*Module +([0-9]+(\\.[0-9]+)+).*" data;
       in
       if versionMatch != null then
         builtins.head versionMatch
