@@ -1520,6 +1520,9 @@ bool OS_X11::is_window_resizable() const {
 }
 
 void OS_X11::set_window_minimized(bool p_enabled) {
+	if (is_no_window_mode_enabled()) {
+		return;
+	}
 	// Using ICCCM -- Inter-Client Communication Conventions Manual
 	XEvent xev;
 	Atom wm_change = XInternAtom(x11_display, "WM_CHANGE_STATE", False);
@@ -1583,6 +1586,9 @@ bool OS_X11::is_window_minimized() const {
 }
 
 void OS_X11::set_window_maximized(bool p_enabled) {
+	if (is_no_window_mode_enabled()) {
+		return;
+	}
 	if (is_window_maximized() == p_enabled)
 		return;
 
