@@ -38940,11 +38940,12 @@
 		"is_reference": false,
 		"constants": {
 			"BLEND_MODE_ADD": 1,
-			"BLEND_MODE_DISABLED": 5,
+			"BLEND_MODE_DISABLED": 6,
 			"BLEND_MODE_MIX": 0,
-			"BLEND_MODE_MUL": 3,
-			"BLEND_MODE_PREMULT_ALPHA": 4,
-			"BLEND_MODE_SUB": 2,
+			"BLEND_MODE_MUL": 4,
+			"BLEND_MODE_PREMULT_ALPHA": 5,
+			"BLEND_MODE_SUB": 3,
+			"BLEND_MODE_WLROOTS": 2,
 			"NOTIFICATION_DRAW": 30,
 			"NOTIFICATION_ENTER_CANVAS": 32,
 			"NOTIFICATION_EXIT_CANVAS": 33,
@@ -40769,10 +40770,11 @@
 				"values": {
 					"BLEND_MODE_MIX": 0,
 					"BLEND_MODE_ADD": 1,
-					"BLEND_MODE_SUB": 2,
-					"BLEND_MODE_MUL": 3,
-					"BLEND_MODE_PREMULT_ALPHA": 4,
-					"BLEND_MODE_DISABLED": 5
+					"BLEND_MODE_WLROOTS": 2,
+					"BLEND_MODE_SUB": 3,
+					"BLEND_MODE_MUL": 4,
+					"BLEND_MODE_PREMULT_ALPHA": 5,
+					"BLEND_MODE_DISABLED": 6
 				}
 			}
 		]
@@ -40788,9 +40790,10 @@
 		"constants": {
 			"BLEND_MODE_ADD": 1,
 			"BLEND_MODE_MIX": 0,
-			"BLEND_MODE_MUL": 3,
-			"BLEND_MODE_PREMULT_ALPHA": 4,
-			"BLEND_MODE_SUB": 2,
+			"BLEND_MODE_MUL": 4,
+			"BLEND_MODE_PREMULT_ALPHA": 5,
+			"BLEND_MODE_SUB": 3,
+			"BLEND_MODE_WLROOTS": 2,
 			"LIGHT_MODE_LIGHT_ONLY": 2,
 			"LIGHT_MODE_NORMAL": 0,
 			"LIGHT_MODE_UNSHADED": 1
@@ -41049,9 +41052,10 @@
 				"values": {
 					"BLEND_MODE_MIX": 0,
 					"BLEND_MODE_ADD": 1,
-					"BLEND_MODE_SUB": 2,
-					"BLEND_MODE_MUL": 3,
-					"BLEND_MODE_PREMULT_ALPHA": 4
+					"BLEND_MODE_WLROOTS": 2,
+					"BLEND_MODE_SUB": 3,
+					"BLEND_MODE_MUL": 4,
+					"BLEND_MODE_PREMULT_ALPHA": 5
 				}
 			}
 		]
@@ -133440,8 +133444,9 @@
 			"BILLBOARD_PARTICLES": 3,
 			"BLEND_MODE_ADD": 1,
 			"BLEND_MODE_MIX": 0,
-			"BLEND_MODE_MUL": 3,
-			"BLEND_MODE_SUB": 2,
+			"BLEND_MODE_MUL": 4,
+			"BLEND_MODE_SUB": 3,
+			"BLEND_MODE_WLROOTS": 2,
 			"CULL_BACK": 0,
 			"CULL_DISABLED": 2,
 			"CULL_FRONT": 1,
@@ -136224,8 +136229,9 @@
 				"values": {
 					"BLEND_MODE_MIX": 0,
 					"BLEND_MODE_ADD": 1,
-					"BLEND_MODE_SUB": 2,
-					"BLEND_MODE_MUL": 3
+					"BLEND_MODE_WLROOTS": 2,
+					"BLEND_MODE_SUB": 3,
+					"BLEND_MODE_MUL": 4
 				}
 			},
 			{
@@ -183930,6 +183936,19 @@
 				]
 			},
 			{
+				"name": "get_pointer_focused_surface",
+				"return_type": "WlrSurface",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
 				"name": "keyboard_notify_enter",
 				"return_type": "void",
 				"is_editor": false,
@@ -184194,6 +184213,16 @@
 		"properties": [
 		],
 		"signals": [
+			{
+				"name": "destroy",
+				"arguments": [
+					{
+						"name": "surface",
+						"type": "WlrSubsurface",
+						"default_value": ""
+					}
+				]
+			}
 		],
 		"methods": [
 			{
@@ -184260,6 +184289,32 @@
 				"is_from_script": false,
 				"arguments": [
 				]
+			},
+			{
+				"name": "get_wlr_surface",
+				"return_type": "WlrSurface",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_wlr_surface_parent",
+				"return_type": "WlrSurface",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
 			}
 		],
 		"enums": [
@@ -184278,6 +184333,36 @@
 		"properties": [
 		],
 		"signals": [
+			{
+				"name": "commit",
+				"arguments": [
+					{
+						"name": "surface",
+						"type": "WlrSurface",
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "destroy",
+				"arguments": [
+					{
+						"name": "surface",
+						"type": "WlrSurface",
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "new_subsurface",
+				"arguments": [
+					{
+						"name": "surface",
+						"type": "WlrSurface",
+						"default_value": ""
+					}
+				]
+			}
 		],
 		"methods": [
 			{
@@ -184346,6 +184431,64 @@
 				]
 			},
 			{
+				"name": "get_damage_regions_with_damage",
+				"return_type": "Array",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "damage",
+						"type": "Array",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "get_input_regions",
+				"return_type": "Array",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_opaque_regions",
+				"return_type": "Array",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_root_surface",
+				"return_type": "WlrSurface",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
 				"name": "get_sx",
 				"return_type": "int",
 				"is_editor": false,
@@ -184385,6 +184528,45 @@
 				]
 			},
 			{
+				"name": "is_wlr_subsurface",
+				"return_type": "bool",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "is_wlr_xdg_surface",
+				"return_type": "bool",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "is_wlr_xwayland_surface",
+				"return_type": "bool",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
 				"name": "send_frame_done",
 				"return_type": "void",
 				"is_editor": false,
@@ -184395,6 +184577,50 @@
 				"has_varargs": false,
 				"is_from_script": false,
 				"arguments": [
+				]
+			},
+			{
+				"name": "surface_at",
+				"return_type": "WlrSurfaceAtResult",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "sx",
+						"type": "float",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "sy",
+						"type": "float",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "surface_send_leave",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "output",
+						"type": "Object",
+						"has_default_value": false,
+						"default_value": ""
+					}
 				]
 			}
 		],
@@ -184502,6 +184728,32 @@
 			},
 			{
 				"name": "get_buffer_width",
+				"return_type": "int",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_dx",
+				"return_type": "int",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_dy",
 				"return_type": "int",
 				"is_editor": false,
 				"is_noscript": false,
@@ -185161,6 +185413,58 @@
 		"signals": [
 		],
 		"methods": [
+			{
+				"name": "get_height",
+				"return_type": "int",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_width",
+				"return_type": "int",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_x",
+				"return_type": "int",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_y",
+				"return_type": "int",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			}
 		],
 		"enums": [
 		]
@@ -185178,6 +185482,16 @@
 		"properties": [
 		],
 		"signals": [
+			{
+				"name": "destroy",
+				"arguments": [
+					{
+						"name": "xdg_shell",
+						"type": "WlrXdgShell",
+						"default_value": ""
+					}
+				]
+			},
 			{
 				"name": "new_surface",
 				"arguments": [
@@ -185211,6 +185525,46 @@
 		],
 		"signals": [
 			{
+				"name": "ack_configure",
+				"arguments": [
+					{
+						"name": "xdg_surface",
+						"type": "WlrXdgSurface",
+						"default_value": ""
+					},
+					{
+						"name": "xdg_toplevel_state",
+						"type": "WlrToplevelState",
+						"default_value": ""
+					},
+					{
+						"name": "serial",
+						"type": "int",
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "configure",
+				"arguments": [
+					{
+						"name": "xdg_surface",
+						"type": "WlrXdgSurface",
+						"default_value": ""
+					},
+					{
+						"name": "xdg_toplevel_state",
+						"type": "WlrToplevelState",
+						"default_value": ""
+					},
+					{
+						"name": "serial",
+						"type": "int",
+						"default_value": ""
+					}
+				]
+			},
+			{
 				"name": "destroy",
 				"arguments": [
 					{
@@ -185222,6 +185576,26 @@
 			},
 			{
 				"name": "map",
+				"arguments": [
+					{
+						"name": "xdg_surface",
+						"type": "WlrXdgSurface",
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "new_popup",
+				"arguments": [
+					{
+						"name": "xdg_popup",
+						"type": "WlrXdgPopup",
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "ping_timeout",
 				"arguments": [
 					{
 						"name": "xdg_surface",
@@ -185278,6 +185652,19 @@
 						"has_default_value": false,
 						"default_value": ""
 					}
+				]
+			},
+			{
+				"name": "get_children",
+				"return_type": "Array",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
 				]
 			},
 			{

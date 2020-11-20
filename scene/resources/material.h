@@ -156,6 +156,7 @@ public:
 	enum BlendMode {
 		BLEND_MODE_MIX,
 		BLEND_MODE_ADD,
+		BLEND_MODE_WLROOTS,
 		BLEND_MODE_SUB,
 		BLEND_MODE_MUL,
 	};

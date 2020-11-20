@@ -421,6 +421,7 @@ void SpatialMaterial::_update_shader() {
 	switch (blend_mode) {
 		case BLEND_MODE_MIX: code += "blend_mix"; break;
 		case BLEND_MODE_ADD: code += "blend_add"; break;
+  	case BLEND_MODE_WLROOTS: code += "blend_wlroots"; break;
 		case BLEND_MODE_SUB: code += "blend_sub"; break;
 		case BLEND_MODE_MUL: code += "blend_mul"; break;
 	}
@@ -1028,6 +1029,9 @@ void SpatialMaterial::_update_shader() {
 				code += "\tvec3 detail = mix(ALBEDO.rgb,detail_tex.rgb,detail_tex.a);\n";
 			} break;
 			case BLEND_MODE_ADD: {
+				code += "\tvec3 detail = mix(ALBEDO.rgb,ALBEDO.rgb+detail_tex.rgb,detail_tex.a);\n";
+			} break;
+			case BLEND_MODE_WLROOTS: {
 				code += "\tvec3 detail = mix(ALBEDO.rgb,ALBEDO.rgb+detail_tex.rgb,detail_tex.a);\n";
 			} break;
 			case BLEND_MODE_SUB: {
@@ -2278,6 +2282,7 @@ void SpatialMaterial::_bind_methods() {
 
 	BIND_ENUM_CONSTANT(BLEND_MODE_MIX);
 	BIND_ENUM_CONSTANT(BLEND_MODE_ADD);
+	BIND_ENUM_CONSTANT(BLEND_MODE_WLROOTS);
 	BIND_ENUM_CONSTANT(BLEND_MODE_SUB);
 	BIND_ENUM_CONSTANT(BLEND_MODE_MUL);
 

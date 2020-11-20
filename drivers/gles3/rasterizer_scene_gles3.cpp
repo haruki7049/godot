@@ -1167,6 +1167,11 @@ bool RasterizerSceneGLES3::_setup_material(RasterizerStorageGLES3::Material *p_m
 				glBlendFunc(p_alpha_pass?GL_SRC_ALPHA:GL_ONE,GL_ONE);
 
 			 } break;
+			 case RasterizerStorageGLES3::Shader::Spatial::BLEND_MODE_WLROOTS: {
+				 glBlendEquation(GL_FUNC_ADD); //default?
+				 glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+
+			 } break;
 			 case RasterizerStorageGLES3::Shader::Spatial::BLEND_MODE_SUB: {
 
 				glBlendEquation(GL_FUNC_REVERSE_SUBTRACT);
@@ -2191,6 +2196,13 @@ void RasterizerSceneGLES3::_render_list(RenderList::Element **p_elements, int p_
 							glBlendFunc(p_alpha_pass ? GL_SRC_ALPHA : GL_ONE, GL_ONE);
 
 						} break;
+
+						case RasterizerStorageGLES3::Shader::Spatial::BLEND_MODE_WLROOTS: {
+							glBlendEquation(GL_FUNC_ADD); //default?
+							glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+
+						} break;
+
 						case RasterizerStorageGLES3::Shader::Spatial::BLEND_MODE_SUB: {
 
 							glBlendEquation(GL_FUNC_REVERSE_SUBTRACT);

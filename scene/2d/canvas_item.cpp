@@ -104,6 +104,7 @@ void CanvasItemMaterial::_update_shader() {
 	switch (blend_mode) {
 		case BLEND_MODE_MIX: code += "blend_mix"; break;
 		case BLEND_MODE_ADD: code += "blend_add"; break;
+  	case BLEND_MODE_WLROOTS: code += "blend_wlroots"; break;
 		case BLEND_MODE_SUB: code += "blend_sub"; break;
 		case BLEND_MODE_MUL: code += "blend_mul"; break;
 		case BLEND_MODE_PREMULT_ALPHA: code += "blend_premul_alpha"; break;
@@ -305,6 +306,7 @@ void CanvasItemMaterial::_bind_methods() {
 
 	BIND_ENUM_CONSTANT(BLEND_MODE_MIX);
 	BIND_ENUM_CONSTANT(BLEND_MODE_ADD);
+	BIND_ENUM_CONSTANT(BLEND_MODE_WLROOTS);
 	BIND_ENUM_CONSTANT(BLEND_MODE_SUB);
 	BIND_ENUM_CONSTANT(BLEND_MODE_MUL);
 	BIND_ENUM_CONSTANT(BLEND_MODE_PREMULT_ALPHA);
@@ -1245,6 +1247,7 @@ void CanvasItem::_bind_methods() {
 
 	BIND_ENUM_CONSTANT(BLEND_MODE_MIX);
 	BIND_ENUM_CONSTANT(BLEND_MODE_ADD);
+	BIND_ENUM_CONSTANT(BLEND_MODE_WLROOTS);
 	BIND_ENUM_CONSTANT(BLEND_MODE_SUB);
 	BIND_ENUM_CONSTANT(BLEND_MODE_MUL);
 	BIND_ENUM_CONSTANT(BLEND_MODE_PREMULT_ALPHA);

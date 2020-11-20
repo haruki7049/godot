@@ -1575,6 +1575,19 @@ void RasterizerCanvasGLES3::canvas_render_items(Item *p_item_list, int p_z, cons
 					}
 
 				} break;
+				case RasterizerStorageGLES3::Shader::CanvasItem::BLEND_MODE_WLROOTS: {
+
+					glBlendEquation(GL_FUNC_ADD);//default?
+					if (storage->frame.current_rt && storage->frame.current_rt->flags[RasterizerStorage::RENDER_TARGET_TRANSPARENT]) {
+						//Unclear how to adjust in the RENDER_TARGET_TRANSPARENT case
+						//glBlendFuncSeparate(GL_ONE, GL_ONE, GL_ONE_MINUS_SRC_ALPHA, GL_ONE_MINUS_DST_ALPHA); //doesn't work
+						glBlendFuncSeparate(GL_ONE, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+					} else {
+						//glBlendFuncSeparate(GL_ONE, GL_ONE, GL_ONE_MINUS_SRC_ALPHA, GL_ONE_MINUS_DST_ALPHA); //doesn't work
+						glBlendFuncSeparate(GL_ONE, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+					}
+
+				} break;
 				case RasterizerStorageGLES3::Shader::CanvasItem::BLEND_MODE_SUB: {
 
 					glBlendEquation(GL_FUNC_REVERSE_SUBTRACT);
