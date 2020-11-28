@@ -1,7 +1,7 @@
 { stdenv, lib, fetchFromGitHub, scons, pkgconfig, libX11, libXcursor
 , libXinerama, libXrandr, libXrender, libpulseaudio ? null
 , libXi ? null, libXext, libXfixes, freetype, openssl
-, alsaLib, libGLU, zlib, yasm ? null, xwayland, wayland-protocols, libglvnd, libGL, mesa_noglu, pixman, libxkbcommon, x11, eudev, callPackage, devBuild ? false, onNixOS ? false, pkgs }:
+, alsaLib, libGLU, zlib, yasm ? null, xwayland, wayland-protocols, libglvnd, libGL, mesa_noglu, pixman, libxkbcommon, x11, eudev, callPackage, devBuild ? false, onNixOS ? false, pkgs, xorg, wayland }:
 
 let
   options = {
@@ -40,12 +40,7 @@ in stdenv.mkDerivation rec {
     libX11 libXcursor libXinerama libXrandr libXrender
     libXi libXext libXfixes freetype openssl alsaLib libpulseaudio
     libGLU zlib yasm
-    wlroots xwayland wayland-protocols libglvnd libGL mesa_noglu libxkbcommon x11 eudev xvfb-run nixGLPkg
-  ];
-
-  patches = [
-    ./pkg_config_additions.patch
-    ./dont_clobber_environment.patch
+    wlroots xwayland wayland-protocols libglvnd libGL mesa_noglu libxkbcommon x11 eudev xvfb-run nixGLPkg xorg.libpthreadstubs xorg.libxcb wayland
   ];
 
   enableParallelBuilding = true;
@@ -59,8 +54,8 @@ in stdenv.mkDerivation rec {
 
   configurePhase = ''
     cd modules/gdwlroots
-    wayland-scanner server-header ${wayland-protocols}/share/wayland-protocols/stable/xdg-shell/xdg-shell.xml xdg-shell-protocol.h
-    wayland-scanner private-code ${wayland-protocols}/share/wayland-protocols/stable/xdg-shell/xdg-shell.xml xdg-shell-protocol.c
+    ${wayland}/bin/wayland-scanner server-header ${wayland-protocols}/share/wayland-protocols/stable/xdg-shell/xdg-shell.xml xdg-shell-protocol.h
+    ${wayland}/bin/wayland-scanner private-code ${wayland-protocols}/share/wayland-protocols/stable/xdg-shell/xdg-shell.xml xdg-shell-protocol.c
     cd ../..
     patchShebangs platform/android/SCsub
     patchShebangs platform/android/java/gradlew

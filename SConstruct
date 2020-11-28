@@ -13,6 +13,8 @@ import methods
 import gles_builders
 from platform_methods import run_in_subprocess
 
+import scons_compiledb
+
 # scan possible build platforms
 
 platform_list = []  # list of platforms
@@ -63,10 +65,10 @@ elif platform_arg == 'javascript':
     custom_tools = ['cc', 'c++', 'ar', 'link', 'textfile', 'zip']
 
 env_base = Environment(tools=custom_tools)
-if 'TERM' in os.environ:
-    env_base['ENV']['TERM'] = os.environ['TERM']
-env_base.AppendENVPath('PATH', os.getenv('PATH'))
-env_base.AppendENVPath('PKG_CONFIG_PATH', os.getenv('PKG_CONFIG_PATH'))
+for k in ("TERM", "PATH", "PKG_CONFIG_PATH", "NIX_CFLAGS_COMPILE", "NIX_LDFLAGS"):
+    if (k in os.environ):
+        env_base["ENV"][k] = os.environ[k]
+
 env_base.disabled_modules = []
 env_base.use_ptrcall = False
 env_base.module_version_string = ""
@@ -508,6 +510,9 @@ if selected_platform in platform_list:
         print("Scons cache enabled... (path: '" + scons_cache_path + "')")
 
     Export('env')
+
+    scons_compiledb.enable(env)
+    env.CompileDb()
 
     # build subdirs, the build order is dependent on link order.
 
