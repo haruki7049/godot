@@ -12,7 +12,7 @@
   # Enable 32 bits driver
   # This is one by default, you can switch it to off if you want to reduce a
   # bit the size of nixGL closure.
-  enable32bits ? true,
+  enable32bits ? false,
   writeTextFile, shellcheck, pcre, runCommand, linuxPackages, fetchurl, lib,
   runtimeShell, bumblebee, libglvnd, vulkan-validation-layers, mesa_drivers,
   pkgsi686Linux,zlib, libdrm, xorg, wayland, gcc
