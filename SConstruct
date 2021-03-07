@@ -63,15 +63,12 @@ elif platform_arg == "javascript":
     # Use generic POSIX build toolchain for Emscripten.
     custom_tools = ["cc", "c++", "ar", "link", "textfile", "zip"]
 
+<<<<<<< HEAD
 env_base = Environment(tools=custom_tools)
 for k in ("TERM", "PATH", "PKG_CONFIG_PATH", "NIX_CFLAGS_COMPILE", "NIX_LDFLAGS"):
     if (k in os.environ):
         env_base["ENV"][k] = os.environ[k]
 
-#if "TERM" in os.environ:
-#    env_base["ENV"]["TERM"] = os.environ["TERM"]
-#env_base.AppendENVPath("PATH", os.getenv("PATH"))
-#env_base.AppendENVPath("PKG_CONFIG_PATH", os.getenv("PKG_CONFIG_PATH"))
 env_base.disabled_modules = []
 env_base.use_ptrcall = False
 env_base.module_version_string = ""
