@@ -94,6 +94,9 @@ in
       kernel = null;
     };
 
+	json = builtins.head (builtins.readDir "${nvidiaLibsOnly}/share/vulkan/icd.d/");
+	json32 = builtins.head (builtins.readDir "${nvidiaLibsOnly.lib32}/share/vulkan/icd.d/");
+
   nixGLNvidiaBumblebee = addNvidiaVersion (writeExecutable {
     name = "nixGLNvidiaBumblebee";
     text = ''
@@ -110,7 +113,7 @@ in
       #!${runtimeShell}
       ${lib.optionalString (api == "Vulkan") ''export VK_LAYER_PATH=${vulkan-validation-layers}/share/vulkan/explicit_layer.d''}
 
-        ${lib.optionalString (api == "Vulkan") ''export VK_ICD_FILENAMES=${nvidiaLibsOnly}/share/vulkan/icd.d/nvidia*.json${lib.optionalString enable32bits ":${nvidiaLibsOnly.lib32}/share/vulkan/icd.d/nvidia*.json"}:$VK_ICD_FILENAMES''}
+        ${lib.optionalString (api == "Vulkan") ''export VK_ICD_FILENAMES=${json}${lib.optionalString enable32bits ":${json32}"}:$VK_ICD_FILENAMES''}
         export LD_LIBRARY_PATH=${lib.makeLibraryPath ([
           libglvnd
           nvidiaLibsOnly
