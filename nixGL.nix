@@ -94,8 +94,10 @@ in
       kernel = null;
     };
 
-	json = builtins.head (builtins.readDir "${nvidiaLibsOnly}/share/vulkan/icd.d/");
-	json32 = builtins.head (builtins.readDir "${nvidiaLibsOnly.lib32}/share/vulkan/icd.d/");
+    getFirstFile = path: builtins.head (builtins.attrNames (builtins.readDir path));
+    json = getFirstFile "${nvidiaLibsOnly}/share/vulkan/icd.d/";
+    json32 = getFirstFile "${nvidiaLibsOnly.lib32}/share/vulkan/icd.d/";
+    
 
   nixGLNvidiaBumblebee = addNvidiaVersion (writeExecutable {
     name = "nixGLNvidiaBumblebee";
