@@ -94,7 +94,7 @@ in
       kernel = null;
     };
 
-    getFirstFile = path: builtins.head (builtins.attrNames (builtins.readDir path));
+    getFirstFile = path: path + builtins.head (builtins.attrNames (builtins.readDir path));
     json = getFirstFile "${nvidiaLibsOnly}/share/vulkan/icd.d/";
     json32 = getFirstFile "${nvidiaLibsOnly.lib32}/share/vulkan/icd.d/";
     
