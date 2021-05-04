@@ -39,7 +39,6 @@
 #include "servers/visual_server.h"
 
 class Material : public Resource {
-
 	GDCLASS(Material, Resource);
 	RES_BASE_EXTENSION("material")
 	OBJ_SAVE_TYPE(Material);
@@ -74,7 +73,6 @@ public:
 };
 
 class ShaderMaterial : public Material {
-
 	GDCLASS(ShaderMaterial, Material);
 	Ref<Shader> shader;
 
@@ -107,7 +105,6 @@ public:
 };
 
 class SpatialMaterial : public Material {
-
 	GDCLASS(SpatialMaterial, Material);
 
 public:
@@ -243,7 +240,6 @@ public:
 
 private:
 	union MaterialKey {
-
 		struct {
 			uint64_t feature_mask : 12;
 			uint64_t detail_uv : 1;
@@ -282,7 +278,6 @@ private:
 	MaterialKey current_key;
 
 	_FORCE_INLINE_ MaterialKey _compute_key() const {
-
 		MaterialKey mk;
 		mk.key = 0;
 		for (int i = 0; i < FEATURE_MAX; i++) {

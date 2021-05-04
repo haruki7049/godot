@@ -303,9 +303,7 @@ static const _KeyCodeText _keycodes[] = {
 };
 
 bool keycode_has_unicode(uint32_t p_keycode) {
-
 	switch (p_keycode) {
-
 		case KEY_ESCAPE:
 		case KEY_TAB:
 		case KEY_BACKTAB:
@@ -412,7 +410,6 @@ bool keycode_has_unicode(uint32_t p_keycode) {
 }
 
 String keycode_get_string(uint32_t p_code) {
-
 	String codestr;
 	if (p_code & KEY_MASK_SHIFT) {
 		//codestr += find_keycode_name(KEY_SHIFT);
@@ -440,9 +437,7 @@ String keycode_get_string(uint32_t p_code) {
 	const _KeyCodeText *kct = &_keycodes[0];
 
 	while (kct->text) {
-
 		if (kct->code == (int)p_code) {
-
 			codestr += kct->text;
 			return codestr;
 		}
@@ -455,11 +450,9 @@ String keycode_get_string(uint32_t p_code) {
 }
 
 int find_keycode(const String &p_code) {
-
 	const _KeyCodeText *kct = &_keycodes[0];
 
 	while (kct->text) {
-
 		if (p_code.nocasecmp_to(kct->text) == 0) {
 			return kct->code;
 		}
@@ -470,11 +463,9 @@ int find_keycode(const String &p_code) {
 }
 
 const char *find_keycode_name(int p_keycode) {
-
 	const _KeyCodeText *kct = &_keycodes[0];
 
 	while (kct->text) {
-
 		if (kct->code == p_keycode) {
 			return kct->text;
 		}
@@ -485,12 +476,10 @@ const char *find_keycode_name(int p_keycode) {
 }
 
 int keycode_get_count() {
-
 	const _KeyCodeText *kct = &_keycodes[0];
 
 	int count = 0;
 	while (kct->text) {
-
 		count++;
 		kct++;
 	}
