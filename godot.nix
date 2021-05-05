@@ -1,7 +1,9 @@
 { stdenv, lib, fetchFromGitHub, scons, pkgconfig, libX11, libXcursor
 , libXinerama, libXrandr, libXrender, libpulseaudio ? null
 , libXi ? null, libXext, libXfixes, freetype, openssl
-, alsaLib, libGLU, zlib, yasm ? null, xwayland, wayland-protocols, libglvnd, libGL, mesa_noglu, pixman, libxkbcommon, x11, eudev, callPackage, devBuild ? false, onNixOS ? false, pkgs, xorg, wayland }:
+, alsaLib, libGLU, zlib, yasm ? null, xwayland, wayland-protocols, libglvnd, libGL, mesa_noglu, pixman, libxkbcommon, x11, eudev, callPackage, devBuild ? false, onNixOS ? false, pkgs, xorg, wayland
+, pkg-config, autoreconfHook, libbsd, python310
+}:
 
 let
   options = {
@@ -10,6 +12,8 @@ let
   };
   xvfb-run = callPackage ./xvfb-run.nix { };
   wlroots = callPackage ../wlroots/wlroots.nix { };
+
+  libxcb-errors = import ../wlroots/libxcb-errors/libxcb-errors.nix { stdenv = stdenv; pkg-config=pkg-config; autoreconfHook = autoreconfHook; xorg = xorg; libbsd = libbsd; python310 = python310; };
 
   nixGLIntel = (callPackage ./nixGL.nix { }).nixGLIntel;
   nixGLRes = if (onNixOS == true) then " " else " ${nixGLIntel}/bin/nixGLIntel ";
@@ -41,6 +45,7 @@ in stdenv.mkDerivation rec {
     libXi libXext libXfixes freetype openssl alsaLib libpulseaudio
     libGLU zlib yasm
     wlroots xwayland wayland-protocols libglvnd libGL mesa_noglu libxkbcommon x11 eudev xvfb-run nixGLPkg xorg.libpthreadstubs xorg.libxcb wayland
+    libxcb-errors
   ];
 
   enableParallelBuilding = true;
