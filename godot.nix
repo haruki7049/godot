@@ -2,7 +2,7 @@
 , libXinerama, libXrandr, libXrender, libpulseaudio ? null
 , libXi ? null, libXext, libXfixes, freetype, openssl
 , alsaLib, libGLU, zlib, yasm ? null, xwayland, wayland-protocols, libglvnd, libGL, mesa_noglu, pixman, libxkbcommon, x11, eudev, callPackage, devBuild ? false, onNixOS ? false, pkgs, xorg, wayland
-, pkg-config, autoreconfHook, libbsd, python310
+, pkg-config, autoreconfHook, libbsd, python310, dbus
 }:
 
 let
@@ -12,6 +12,22 @@ let
   };
   xvfb-run = callPackage ./xvfb-run.nix { };
   wlroots = callPackage ../wlroots/wlroots.nix { };
+
+	/* Modify a stdenv so that it produces debug builds; that is,
+		binaries have debug info, and compiler optimisations are
+		disabled. */
+	keepDebugInfo = stdenv: stdenv //
+		{ mkDerivation = args: stdenv.mkDerivation (args // {
+				dontStrip = true;
+				NIX_CFLAGS_COMPILE = toString (args.NIX_CFLAGS_COMPILE or "") + " -g -ggdb -Og";
+			});
+		};
+	stdenvRes = if devBuild then (keepDebugInfo stdenv) else stdenv;
+
+  xwayland-dev = callPackage ../../nix/xwayland/xwayland.nix { stdenv = stdenvRes; };
+	libxcb-dev = xorg.libxcb.override { stdenv = stdenvRes; };
+	wayland-dev = wayland.override { stdenv = stdenvRes; };
+	wayland-protocols-dev = wayland-protocols.override { stdenv = stdenvRes; };
 
   libxcb-errors = import ../wlroots/libxcb-errors/libxcb-errors.nix { stdenv = stdenv; pkg-config=pkg-config; autoreconfHook = autoreconfHook; xorg = xorg; libbsd = libbsd; python310 = python310; };
 
@@ -44,8 +60,9 @@ in stdenv.mkDerivation rec {
     libX11 libXcursor libXinerama libXrandr libXrender
     libXi libXext libXfixes freetype openssl alsaLib libpulseaudio
     libGLU zlib yasm
-    wlroots xwayland wayland-protocols libglvnd libGL mesa_noglu libxkbcommon x11 eudev xvfb-run nixGLPkg xorg.libpthreadstubs xorg.libxcb wayland
+    wlroots xwayland-dev wayland-protocols-dev libglvnd libGL mesa_noglu libxkbcommon x11 eudev xvfb-run nixGLPkg xorg.libpthreadstubs libxcb-dev wayland-dev
     libxcb-errors
+		pixman dbus
   ];
 
   enableParallelBuilding = true;
