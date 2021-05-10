@@ -183920,6 +183920,16 @@
 			}
 		],
 		"signals": [
+			{
+				"name": "request_set_cursor",
+				"arguments": [
+					{
+						"name": "surface_cursor",
+						"type": "WlrSurface",
+						"default_value": ""
+					}
+				]
+			}
 		],
 		"methods": [
 			{
@@ -185158,6 +185168,19 @@
 				]
 			},
 			{
+				"name": "get_pid",
+				"return_type": "int",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
 				"name": "get_role",
 				"return_type": "String",
 				"is_editor": false,
@@ -185670,6 +185693,19 @@
 			{
 				"name": "get_geometry",
 				"return_type": "Rect2",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_pid",
+				"return_type": "int",
 				"is_editor": false,
 				"is_noscript": false,
 				"is_const": false,
