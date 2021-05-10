@@ -205,7 +205,7 @@ in stdenv.mkDerivation rec {
     patchShebangs modules/tga/SCsub
     '';
 
-  dontStrip = devBuild;
+  dontStrip = true;
 
   installPhase = ''
     mkdir -p "$out/bin"
