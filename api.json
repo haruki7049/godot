@@ -184389,6 +184389,37 @@
 		],
 		"methods": [
 			{
+				"name": "accumulate_damage_regions",
+				"return_type": "Array",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "arg0",
+						"type": "Array",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "arg1",
+						"type": "Array",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "arg2",
+						"type": "Array",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
 				"name": "alloc_current_state",
 				"return_type": "WlrSurfaceState",
 				"is_editor": false,
