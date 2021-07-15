@@ -569,9 +569,11 @@ void V4l2_Device::get_image(Ref<CameraFeed> feed, uint8_t *buffer) {
 				img_data.resize(width * height * 3);
 			}
 
-			uint8_t *w = img_data.ptrw();
+			//uint8_t *w = img_data.ptrw();
+			PoolVector<uint8_t>::Write w = img_data.write();
 			// TODO: Buffer is 1024 Byte longer?
-			memcpy(w, buffer, width * height * 3);
+			//memcpy(w, buffer, width * height * 3);
+			memcpy(w.ptr(), buffer, width * height * 3);
 
 			img->create(width, height, 0, Image::FORMAT_RGB8, img_data);
 			feed->set_RGB_img(img);

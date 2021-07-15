@@ -79,7 +79,7 @@ private:
 	// the v4l2 functions (either libv4l2 or normal v4l2)
 	struct v4l2_funcs *funcs;
 	// the image data
-	Vector<uint8_t> img_data;
+	PoolVector<uint8_t> img_data;
 	// whether device is initialized
 	// access type and used pixelformat
 	IOType type = TYPE_IO_NONE;
