@@ -2,7 +2,7 @@
 , libXinerama, libXrandr, libXrender, libpulseaudio ? null
 , libXi ? null, libXext, libXfixes, freetype, openssl
 , alsaLib, libGLU, zlib, yasm ? null, xwayland, wayland-protocols, libglvnd, libGL, mesa_noglu, pixman, libxkbcommon, x11, eudev, callPackage, devBuild ? false, onNixOS ? false, pkgs, xorg, wayland
-, pkg-config, autoreconfHook, libbsd, python310, dbus
+, pkg-config, autoreconfHook, libbsd, python310, dbus, libv4l
 }:
 
 let
@@ -62,7 +62,7 @@ in stdenv.mkDerivation rec {
     libGLU zlib yasm
     wlroots xwayland-dev wayland-protocols-dev libglvnd libGL mesa_noglu libxkbcommon x11 eudev xvfb-run nixGLPkg xorg.libpthreadstubs libxcb-dev wayland-dev
     libxcb-errors
-		pixman dbus
+		pixman dbus libv4l
   ];
 
   enableParallelBuilding = true;
