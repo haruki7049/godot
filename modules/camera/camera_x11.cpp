@@ -576,6 +576,7 @@ void V4l2_Device::get_image(Ref<CameraFeed> feed, uint8_t *buffer) {
 			memcpy(w.ptr(), buffer, width * height * 3);
 
 			img->create(width, height, 0, Image::FORMAT_RGB8, img_data);
+			img->flip_x();
 			feed->set_RGB_img(img);
 			break;
 		}
