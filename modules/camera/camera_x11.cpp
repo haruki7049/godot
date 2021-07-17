@@ -30,6 +30,7 @@
 
 #include "camera_x11.h"
 #include "servers/camera/camera_feed.h"
+#include "core/bind/core_bind.h"
 
 #include <algorithm>
 #include <string>
@@ -616,13 +617,16 @@ CameraFeedX11::~CameraFeedX11() {
 bool CameraFeedX11::activate_feed() {
 	// activate streaming if not already
 	if (!device->streaming) {
+		OS::get_singleton()->delay_usec(10);
 		if (!device->check_device()) {
 			return false;
 		}
+		OS::get_singleton()->delay_usec(10);
 		if (!device->request_buffers()) {
 			device->close();
 			return false;
 		}
+		OS::get_singleton()->delay_usec(10);
 		if (!device->start_streaming(this)) {
 			device->cleanup_buffers();
 			device->close();
