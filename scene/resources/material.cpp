@@ -1408,10 +1408,7 @@ void SpatialMaterial::_validate_property(PropertyInfo &property) const {
 	_validate_feature("refraction", FEATURE_REFRACTION, property);
 	_validate_feature("detail", FEATURE_DETAIL, property);
 
-	_validate_high_end("refraction", property);
 	_validate_high_end("subsurf_scatter", property);
-	_validate_high_end("anisotropy", property);
-	_validate_high_end("clearcoat", property);
 	_validate_high_end("depth", property);
 
 	if (property.name.begins_with("particles_anim_") && billboard_mode != BILLBOARD_PARTICLES) {
