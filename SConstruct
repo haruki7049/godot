@@ -16,7 +16,7 @@ import methods
 import gles_builders
 from platform_methods import run_in_subprocess
 
-import scons_compiledb
+#import scons_compiledb
 
 # scan possible build platforms
 
@@ -342,9 +342,9 @@ if selected_platform in platform_list:
 
     scons_ver = env._get_major_minor_revision(scons_raw_version)
 
-    if scons_ver >= (4, 0, 0):
-        env.Tool("compilation_db")
-        env.Alias("compiledb", env.CompilationDatabase())
+    #if scons_ver >= (4, 0, 0):
+    #    env.Tool("compilation_db")
+    #    env.Alias("compiledb", env.CompilationDatabase())
 
     # 'dev' and 'production' are aliases to set default options if they haven't been set
     # manually by the user.
@@ -644,8 +644,8 @@ if selected_platform in platform_list:
 
     Export("env")
 
-    scons_compiledb.enable(env)
-    env.CompileDb()
+    #scons_compiledb.enable(env)
+    #env.CompileDb()
 
     # build subdirs, the build order is dependent on link order.
 
