@@ -1542,22 +1542,6 @@ void RasterizerCanvasGLES3::render_joined_item(const BItemJoined &p_bij, RenderI
 					glBindTexture(GL_TEXTURE_2D, storage->resources.white_tex);
 				} else {
 					t = t->get_ptr();
-
-				} break;
-				case RasterizerStorageGLES3::Shader::CanvasItem::BLEND_MODE_WLROOTS: {
-
-					glBlendEquation(GL_FUNC_ADD);//default?
-					if (storage->frame.current_rt && storage->frame.current_rt->flags[RasterizerStorage::RENDER_TARGET_TRANSPARENT]) {
-						//Unclear how to adjust in the RENDER_TARGET_TRANSPARENT case
-						//glBlendFuncSeparate(GL_ONE, GL_ONE, GL_ONE_MINUS_SRC_ALPHA, GL_ONE_MINUS_DST_ALPHA); //doesn't work
-						glBlendFuncSeparate(GL_ONE, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
-					} else {
-						//glBlendFuncSeparate(GL_ONE, GL_ONE, GL_ONE_MINUS_SRC_ALPHA, GL_ONE_MINUS_DST_ALPHA); //doesn't work
-						glBlendFuncSeparate(GL_ONE, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
-					}
-
-				} break;
-				case RasterizerStorageGLES3::Shader::CanvasItem::BLEND_MODE_SUB: {
 					glBindTexture(t->target, t->tex_id);
 				}
 
