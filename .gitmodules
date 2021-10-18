@@ -2,3 +2,6 @@
 	path = modules/gdwlroots
 	url = https://github.com/SimulaVR/gdwlroots
 	branch = xwayland-3.2
+[submodule "modules/gdleapmotionV2"]
+	path = modules/gdleapmotionV2
+	url = https://github.com/SimulaVR/gdleapmotionV2.git
