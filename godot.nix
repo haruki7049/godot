@@ -2,7 +2,7 @@
 , libXinerama, libXrandr, libXrender, libpulseaudio ? null
 , libXi ? null, libXext, libXfixes, freetype, openssl
 , alsaLib, libGLU, zlib, yasm ? null, xwayland, wayland-protocols, libglvnd, libGL, mesa_noglu, pixman, libxkbcommon, x11, eudev, callPackage, devBuild ? false, onNixOS ? false, pkgs, xorg, wayland
-, pkg-config, autoreconfHook, libbsd, python310, dbus, libv4l
+, pkg-config, autoreconfHook, libbsd, python310, dbus, libv4l, wayland-scanner
 }:
 
 let
@@ -76,8 +76,8 @@ in stdenv.mkDerivation rec {
 
   configurePhase = ''
     cd modules/gdwlroots
-    ${wayland}/bin/wayland-scanner server-header ${wayland-protocols}/share/wayland-protocols/stable/xdg-shell/xdg-shell.xml xdg-shell-protocol.h
-    ${wayland}/bin/wayland-scanner private-code ${wayland-protocols}/share/wayland-protocols/stable/xdg-shell/xdg-shell.xml xdg-shell-protocol.c
+    ${wayland-scanner}/bin/wayland-scanner server-header ${wayland-protocols}/share/wayland-protocols/stable/xdg-shell/xdg-shell.xml xdg-shell-protocol.h
+    ${wayland-scanner}/bin/wayland-scanner private-code ${wayland-protocols}/share/wayland-protocols/stable/xdg-shell/xdg-shell.xml xdg-shell-protocol.c
     cd ../..
     patchShebangs platform/android/SCsub
     patchShebangs platform/android/java/gradlew
