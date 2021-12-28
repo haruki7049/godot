@@ -1,4 +1,4 @@
-{ stdenv, fetchurl, makeWrapper, xorgserver, getopt
+{ stdenv, fetchurl, makeWrapper, xorgserver, getopt, lib
 , xauth, utillinux, makeFontsConf, gawk, coreutils, freefont_ttf }:
 let
  fontsConf = makeFontsConf {
@@ -22,10 +22,10 @@ stdenv.mkDerivation {
     patchShebangs $out/bin/xvfb-run
     wrapProgram $out/bin/xvfb-run \
       --set FONTCONFIG_FILE "${fontsConf}" \
-      --prefix PATH : ${stdenv.lib.makeBinPath [ getopt xorgserver xauth utillinux gawk coreutils ]} # remove which to avoid godot-haskell-plugin issue
+      --prefix PATH : ${lib.makeBinPath [ getopt xorgserver xauth utillinux gawk coreutils ]} # remove which to avoid godot-haskell-plugin issue
   '';
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     platforms = platforms.linux;
     license = licenses.gpl2;
   };

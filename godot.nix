@@ -29,7 +29,7 @@ let
 	wayland-dev = wayland.override { stdenv = stdenvRes; };
 	wayland-protocols-dev = wayland-protocols.override { stdenv = stdenvRes; };
 
-  libxcb-errors = import ../wlroots/libxcb-errors/libxcb-errors.nix { stdenv = stdenv; pkg-config=pkg-config; autoreconfHook = autoreconfHook; xorg = xorg; libbsd = libbsd; python310 = python310; };
+  libxcb-errors = import ../wlroots/libxcb-errors/libxcb-errors.nix { stdenv = stdenv; pkg-config=pkg-config; autoreconfHook = autoreconfHook; xorg = xorg; libbsd = libbsd; python310 = python310; lib = lib; };
 
   nixGLIntel = (callPackage ./nixGL.nix { }).nixGLIntel;
   nixGLRes = if (onNixOS == true) then " " else " ${nixGLIntel}/bin/nixGLIntel ";
@@ -234,8 +234,8 @@ in stdenv.mkDerivation rec {
   meta = {
     homepage    = "https://godotengine.org";
     description = "Free and Open Source 2D and 3D game engine";
-    license     = stdenv.lib.licenses.mit;
+    license     = lib.licenses.mit;
     platforms   = [ "i686-linux" "x86_64-linux" ];
-    maintainers = [ stdenv.lib.maintainers.twey ];
+    maintainers = [ lib.maintainers.twey ];
   };
 }
