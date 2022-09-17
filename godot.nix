@@ -1,7 +1,7 @@
 { stdenv, lib, fetchFromGitHub, scons, pkgconfig, libX11, libXcursor
 , libXinerama, libXrandr, libXrender, libpulseaudio ? null
 , libXi ? null, libXext, libXfixes, freetype, openssl
-, alsaLib, libGLU, zlib, yasm ? null, xwayland, wayland-protocols, libglvnd, libGL, mesa_noglu, pixman, libxkbcommon, x11, eudev, callPackage, devBuild ? false, onNixOS ? false, pkgs, xorg, wayland
+, alsaLib, libGLU, zlib, yasm ? null, xwayland, wayland-protocols, libglvnd, libGL, mesa, pixman, libxkbcommon, xlibsWrapper, eudev, callPackage, devBuild ? false, onNixOS ? false, pkgs, xorg, wayland
 , pkg-config, autoreconfHook, libbsd, python310, dbus, libv4l, wayland-scanner
 }:
 
@@ -24,7 +24,7 @@ let
 		};
 	stdenvRes = if devBuild then (keepDebugInfo stdenv) else stdenv;
 
-  xwayland-dev = callPackage ../../nix/xwayland/xwayland.nix { stdenv = stdenvRes; };
+  xwayland-dev = xwayland.override { stdenv = stdenvRes; };
 	libxcb-dev = xorg.libxcb.override { stdenv = stdenvRes; };
 	wayland-dev = wayland.override { stdenv = stdenvRes; };
 	wayland-protocols-dev = wayland-protocols.override { stdenv = stdenvRes; };
@@ -60,7 +60,7 @@ in stdenv.mkDerivation rec {
     libX11 libXcursor libXinerama libXrandr libXrender
     libXi libXext libXfixes freetype openssl alsaLib libpulseaudio
     libGLU zlib yasm
-    wlroots xwayland-dev wayland-protocols-dev libglvnd libGL mesa_noglu libxkbcommon x11 eudev xvfb-run nixGLPkg xorg.libpthreadstubs libxcb-dev wayland-dev
+    wlroots xwayland-dev wayland-protocols-dev libglvnd libGL mesa libxkbcommon xlibsWrapper eudev xvfb-run nixGLPkg xorg.libpthreadstubs libxcb-dev wayland-dev
     libxcb-errors
 		pixman dbus libv4l
   ];
