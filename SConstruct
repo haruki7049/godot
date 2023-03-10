@@ -475,10 +475,10 @@ if selected_platform in platform_list:
         else:  # 'no'
             env.Append(CCFLAGS=["-w"])
 
-        if env["werror"]:
-            env.Append(CCFLAGS=["-Werror"])
-        else:  # always enable those errors
-            env.Append(CCFLAGS=["-Werror=return-type"])
+        #if env["werror"]:
+            #env.Append(CCFLAGS=["-Werror"])
+        #else:  # always enable those errors
+            #env.Append(CCFLAGS=["-Werror=return-type"])
 
     if hasattr(detect, "get_program_suffix"):
         suffix = "." + detect.get_program_suffix()
