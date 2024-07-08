@@ -24,10 +24,20 @@ let
 		};
 	stdenvRes = if devBuild then (keepDebugInfo stdenv) else stdenv;
 
-  xwayland-dev = xwayland.override { stdenv = stdenvRes; };
-	libxcb-dev = xorg.libxcb.override { stdenv = stdenvRes; };
-	wayland-dev = wayland.override { stdenv = stdenvRes; };
-	wayland-protocols-dev = wayland-protocols.override { stdenv = stdenvRes; };
+  xwayland-dev = xwayland.overrideAttrs (oldAttrs: {
+    stdenv = stdenvRes;
+  });
+  libxcb-dev = xorg.libxcb.overrideAttrs (oldAttrs: {
+    stdenv = stdenvRes;
+  });
+  wayland-dev = wayland.overrideAttrs (oldAttrs: {
+    stdenv = stdenvRes;
+  });
+  wayland-protocols-dev = wayland-protocols.overrideAttrs (oldAttrs: {
+    stdenv = stdenvRes;
+  });
+
+
 
   libxcb-errors = import ../wlroots/libxcb-errors/libxcb-errors.nix { stdenv = stdenv; pkg-config=pkg-config; autoreconfHook = autoreconfHook; xorg = xorg; libbsd = libbsd; python310 = python310; lib = lib; };
 
@@ -54,7 +64,7 @@ in stdenv.mkDerivation rec {
 
   src = ./.;
 
-  nativeBuildInputs = [ scons pkgconfig ];
+  nativeBuildInputs = [ scons pkg-config ];
 
   buildInputs = [
     libX11 libXcursor libXinerama libXrandr libXrender
