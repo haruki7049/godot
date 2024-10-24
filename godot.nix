@@ -1,4 +1,4 @@
-{ stdenv, lib, fetchFromGitHub, scons, pkgconfig, libX11, libXcursor
+{ stdenv, lib, fetchFromGitHub, scons, libX11, libXcursor
 , libXinerama, libXrandr, libXrender, libpulseaudio ? null
 , libXi ? null, libXext, libXfixes, freetype, openssl
 , alsaLib, libGLU, zlib, yasm ? null, xwayland, wayland-protocols, libglvnd, libGL, mesa, pixman, libxkbcommon, fontconfig, eudev, callPackage, devBuild ? false, onNixOS ? false, pkgs, xorg, wayland
