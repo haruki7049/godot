@@ -11,7 +11,7 @@ let
     pulseaudio = false;
   };
   xvfb-run = callPackage ./xvfb-run.nix { };
-  wlroots = callPackage ../wlroots/wlroots.nix { };
+  wlroots = callPackage ../wlroots { };
 
 	/* Modify a stdenv so that it produces debug builds; that is,
 		binaries have debug info, and compiler optimisations are
@@ -39,7 +39,7 @@ let
 
 
 
-  libxcb-errors = import ../wlroots/libxcb-errors/libxcb-errors.nix { stdenv = stdenv; pkg-config=pkg-config; autoreconfHook = autoreconfHook; xorg = xorg; libbsd = libbsd; python310 = python310; lib = lib; };
+  libxcb-errors = import ../wlroots/libxcb-errors { stdenv = stdenv; pkg-config=pkg-config; autoreconfHook = autoreconfHook; xorg = xorg; libbsd = libbsd; python310 = python310; lib = lib; };
 
   nixGLIntel = (callPackage ./nixGL.nix { }).nixGLIntel;
   nixGLRes = if (onNixOS == true) then " " else " ${nixGLIntel}/bin/nixGLIntel ";
