@@ -343,6 +343,7 @@ def configure(env):
         if env["udev"]:
             if os.system("pkg-config --exists libudev") == 0:  # 0 means found
                 env.Append(CPPDEFINES=["UDEV_ENABLED"])
+                env.ParseConfig("pkg-config --cflags libudev")
             else:
                 print("Warning: libudev development libraries not found. Disabling controller hotplugging support.")
     else:
