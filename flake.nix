@@ -21,6 +21,38 @@
           ...
         }:
         let
+          libxcb-errors = pkgs.stdenv.mkDerivation {
+            pname = "libxcb-errors";
+            version = "0.0.0";
+            src = pkgs.fetchFromGitHub {
+              owner = "SimulaVR";
+              repo = "libxcb-errors";
+              rev = "cb26a7dc442b0bb37f8648986350291d3d45a47a";
+              hash = "sha256-LPNRkLQSTPkCRIc9lhHYIvQs8ags3GpGehCWLY5qvJw=";
+            };
+
+            nativeBuildInputs = [
+              pkgs.pkg-config
+              pkgs.python310
+              pkgs.autoreconfHook
+            ];
+
+            buildInputs = [
+              pkgs.xorg.libxcb
+              pkgs.xorg.libXau
+              pkgs.xorg.libXdmcp
+              pkgs.libbsd
+              pkgs.xorg.utilmacros
+              pkgs.xorg.xcbproto
+            ];
+
+            meta = {
+              description = "Allow XCB errors to print less opaquely";
+              homepage = "https://github.com/SimulaVR/libxcb-errors";
+              license = lib.licenses.mit;
+              platforms = lib.platforms.linux;
+            };
+          };
           godot = pkgs.stdenv.mkDerivation {
             pname = "godot";
             version = "3.x-simula";
@@ -84,6 +116,14 @@
               pkgs.libpulseaudio
               pkgs.yasm
               pkgs.systemd
+
+              pkgs.libxkbcommon
+              pkgs.wlroots
+              pkgs.wayland
+              pkgs.pixman
+              pkgs.dbus-glib
+
+              libxcb-errors
             ];
           };
         };
