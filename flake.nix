@@ -185,7 +185,7 @@
             nativeBuildInputs = [
               pkgs.scons
               pkgs.pkg-config
-              pkgs.autoPatchelfHook
+              pkgs.patchelf
             ];
 
             buildInputs = [
@@ -209,6 +209,7 @@
 
               libxcb-errors
               wlroots
+              leap-sdk
             ];
 
             outputs = [
@@ -234,11 +235,14 @@
             buildPhase = ''
               echo Building...
               scons platform=x11 tools=no target=release bits=64 -j $NIX_BUILD_CORES
+
             '';
 
             installPhase = ''
+              # Install godot
               mkdir -p $out/bin
               cp bin/godot.x11.opt.64 $out/bin/godot
+              patchelf --add-rpath ${leap-sdk}/lib $out/bin/godot
 
               # Install gdnative headers
               mkdir $dev
@@ -254,12 +258,7 @@
               cp icon.svg $out/share/icons/hicolor/scalable/apps/godot.svg
               cp icon.png $out/share/icons/godot.png
               substituteInPlace $out/share/applications/org.godotengine.Godot.desktop \
-                --replace "Exec=godot" "Exec=$out/bin/godot"
-
-
-              # Generate api.json
-              mkdir -p $out/share/godot
-              ${pkgs.xvfb-run}/bin/xvfb-run $out/bin/godot --gdnative-generate-json-api $out/share/godot/api.json
+                --replace-warn "Exec=godot" "Exec=$out/bin/godot"
             '';
           };
 
