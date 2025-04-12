@@ -257,12 +257,12 @@
               substituteInPlace $out/share/applications/org.godotengine.Godot.desktop \
                 --replace-warn "Exec=godot" "Exec=$out/bin/godot"
             '';
-          };
 
-          meta = {
-            homepage = "https://github.com/SimulaVR/godot";
-            license = lib.licenses.mit;
-            platforms = [ "x86_64-linux" ];
+            meta = {
+              homepage = "https://github.com/SimulaVR/godot";
+              license = lib.licenses.mit;
+              platforms = [ "x86_64-linux" ];
+            };
           };
         in
         {
