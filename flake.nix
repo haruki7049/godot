@@ -21,6 +21,92 @@
           ...
         }:
         let
+          wlroots = pkgs.stdenv.mkDerivation {
+            pname = "wlroots";
+            version = "0.10.0-simula";
+
+            src = pkgs.fetchFromGitHub {
+              owner = "SimulaVR";
+              repo = "wlroots";
+              rev = "7d065df6f723bbb592fc50150feb213d323f37c6";
+              hash = "sha256-1zjTWivMPoWM9tmAoWl5lhKnV1WgCY3wVMANDd9eAqM=";
+              fetchSubmodules = true;
+            };
+
+            # $out for the library and $examples for the example programs (in examples):
+            outputs = [
+              "out"
+              "examples"
+            ];
+
+            nativeBuildInputs = [
+              pkgs.meson
+              pkgs.cmake
+              pkgs.ninja
+              pkgs.pkg-config
+              pkgs.wayland-scanner.bin
+            ];
+
+            buildInputs = [
+              pkgs.wayland
+              pkgs.libGL
+              pkgs.wayland-protocols
+              pkgs.libinput
+              pkgs.libxkbcommon
+              pkgs.pixman
+              pkgs.xorg.xcbutilwm
+              pkgs.libcap
+              pkgs.xorg.xcbutilimage
+              pkgs.xorg.xcbutilerrors
+              pkgs.mesa
+              pkgs.libpng
+              pkgs.ffmpeg_4
+              pkgs.xorg.libX11.dev
+              pkgs.xorg.libxcb.dev
+              pkgs.xorg.xinput
+
+              libxcb-errors
+            ];
+
+            mesonFlags = [
+              "-Dlibcap=enabled"
+              "-Dlogind=enabled"
+              "-Dxwayland=enabled"
+              "-Dx11-backend=enabled"
+              "-Dxcb-icccm=disabled"
+              "-Dxcb-errors=enabled"
+            ];
+
+            LDFLAGS = [
+              "-lX11-xcb"
+              "-lxcb-xinput"
+            ];
+
+            postInstall = ''
+              # Copy the library to $examples
+              mkdir -p $examples/lib
+              cp -Pr libwlroots* $examples/lib/
+            '';
+
+            postFixup = ''
+              # Install ALL example programs to $examples:
+              # screencopy dmabuf-capture input-inhibitor layer-shell idle-inhibit idle
+              # screenshot output-layout multi-pointer rotation tablet touch pointer
+              # simple
+              mkdir -p $examples/bin
+              cd ./examples
+              for binary in $(find . -executable -type f -printf '%P\n' | grep -vE '\.so'); do
+                cp "$binary" "$examples/bin/wlroots-$binary"
+              done
+            '';
+
+            meta = with lib; {
+              description = "More or less a pinned version of wlroots that Simula can use (with a few patches)";
+              homepage = "https://github.com/SimulaVR/wlroots";
+              license = licenses.mit;
+              platforms = platforms.linux;
+            };
+          };
           libxcb-errors = pkgs.stdenv.mkDerivation {
             pname = "libxcb-errors";
             version = "0.0.0";
@@ -78,13 +164,27 @@
               pkgs.yasm
               pkgs.systemd
               pkgs.libxkbcommon
-              pkgs.wlroots
               pkgs.wayland
               pkgs.pixman
               pkgs.dbus-glib
 
               libxcb-errors
+              wlroots
             ];
+
+            outputs = [
+              "out"
+              "dev"
+              "man"
+            ];
+
+            configurePhase = ''
+              echo 'Generate xdg-shell-protocol.{h,c}'
+              cd modules/gdwlroots
+              ${pkgs.wayland-scanner.bin}/bin/wayland-scanner server-header ${pkgs.wayland-protocols}/share/wayland-protocols/stable/xdg-shell/xdg-shell.xml xdg-shell-protocol.h
+              ${pkgs.wayland-scanner.bin}/bin/wayland-scanner private-code ${pkgs.wayland-protocols}/share/wayland-protocols/stable/xdg-shell/xdg-shell.xml xdg-shell-protocol.c
+              cd -
+            '';
 
             buildPhase = ''
               echo Building...
@@ -94,12 +194,33 @@
             installPhase = ''
               mkdir -p $out/bin
               cp bin/godot.x11.tools.64 $out/bin/godot
+
+              # Install gdnative headers
+              mkdir $dev
+              cp -r modules/gdnative/include $dev
+
+              # Install man
+              mkdir -p $man/share/man/man6
+              cp misc/dist/linux/godot.6 $man/share/man/man6
+
+              mkdir -p $out/share/applications
+              mkdir -p $out/share/icons/hicolor/scalable/apps
+              cp misc/dist/linux/org.godotengine.Godot.desktop $out/share/applications
+              cp icon.svg $out/share/icons/hicolor/scalable/apps/godot.svg
+              cp icon.png $out/share/icons/godot.png
+              substituteInPlace $out/share/applications/org.godotengine.Godot.desktop \
+                --replace "Exec=godot" "Exec=$out/bin/godot"
+
+
+              # Generate api.json
+              mkdir -p $out/share/godot
+              ${pkgs.xvfb-run}/bin/xvfb-run $out/bin/godot --gdnative-generate-json-api $out/share/godot/api.json
             '';
           };
         in
         {
           packages = {
-            inherit godot;
+            inherit godot wlroots;
             default = godot;
           };
 
