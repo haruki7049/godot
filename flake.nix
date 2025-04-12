@@ -139,6 +139,44 @@
               platforms = lib.platforms.linux;
             };
           };
+          leap-sdk = pkgs.stdenv.mkDerivation {
+            name = "leap-sdk";
+            src = pkgs.fetchFromGitHub {
+              owner = "SimulaVR";
+              repo = "gdleapmotionV2";
+              rev = "e3917f9a45ad7899704c65a3120cec38f3e093bb";
+              hash = "sha256-F9N4yC/Mw3LcW+LQCCfnRzOYPS8mEypnX7UodnZdY4U=";
+            };
+
+            nativeBuildInputs = [
+              pkgs.autoPatchelfHook
+            ];
+
+            buildInputs = [
+              pkgs.stdenv.cc.cc.lib
+            ];
+
+            dontBuild = true;
+
+            outputs = [
+              "out"
+              "dev"
+            ];
+
+            installPhase = ''
+              mkdir -p $dev/include
+              mkdir -p $out/lib
+
+              cp LeapSDK/include/* $dev/include
+              cp LeapSDK/lib/x64/* $out/lib
+            '';
+
+            meta = {
+              homepage = "https://github.com/SimulaVR/gdleapmotionV2";
+              license = lib.licenses.unfree;
+              platforms = [ "x86_64-linux" ];
+            };
+          };
           godot = pkgs.stdenv.mkDerivation {
             pname = "godot";
             version = "3.x-simula";
@@ -170,9 +208,8 @@
 
               libxcb-errors
               wlroots
+              leap-sdk
             ];
-
-            dontStrip = true;
 
             outputs = [
               "out"
@@ -181,6 +218,7 @@
             ];
 
             configurePhase = ''
+              echo $LD_LIBRARY_PATH
               echo 'Generate xdg-shell-protocol.{h,c}'
               cd modules/gdwlroots
               ${pkgs.wayland-scanner.bin}/bin/wayland-scanner server-header ${pkgs.wayland-protocols}/share/wayland-protocols/stable/xdg-shell/xdg-shell.xml xdg-shell-protocol.h
@@ -227,8 +265,13 @@
           };
         in
         {
+          _module.args.pkgs = import inputs.nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+          };
+
           packages = {
-            inherit godot wlroots;
+            inherit godot wlroots leap-sdk;
             default = godot;
           };
 
