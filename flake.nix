@@ -185,6 +185,7 @@
             nativeBuildInputs = [
               pkgs.scons
               pkgs.pkg-config
+              pkgs.autoPatchelfHook
             ];
 
             buildInputs = [
@@ -208,7 +209,6 @@
 
               libxcb-errors
               wlroots
-              leap-sdk
             ];
 
             outputs = [
@@ -218,7 +218,12 @@
             ];
 
             configurePhase = ''
-              echo $LD_LIBRARY_PATH
+              echo 'Copying libLeap.so from .#leap-sdk'
+              cd modules/gdleapmotionV2/LeapSDK/lib/x64/
+              cp ${leap-sdk}/lib/* .
+              cd -
+
+
               echo 'Generate xdg-shell-protocol.{h,c}'
               cd modules/gdwlroots
               ${pkgs.wayland-scanner.bin}/bin/wayland-scanner server-header ${pkgs.wayland-protocols}/share/wayland-protocols/stable/xdg-shell/xdg-shell.xml xdg-shell-protocol.h
@@ -233,7 +238,7 @@
 
             installPhase = ''
               mkdir -p $out/bin
-              cp bin/godot.x11.tools.64 $out/bin/godot
+              cp bin/godot.x11.opt.64 $out/bin/godot
 
               # Install gdnative headers
               mkdir $dev
@@ -297,12 +302,13 @@
               pkgs.systemd
 
               pkgs.libxkbcommon
-              pkgs.wlroots
               pkgs.wayland
               pkgs.pixman
               pkgs.dbus-glib
 
               libxcb-errors
+              wlroots
+              leap-sdk
             ];
           };
         };
