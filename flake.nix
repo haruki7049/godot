@@ -185,7 +185,7 @@
             nativeBuildInputs = [
               pkgs.scons
               pkgs.pkg-config
-              pkgs.patchelf
+              pkgs.autoPatchelfHook
             ];
 
             buildInputs = [
@@ -215,7 +215,6 @@
             outputs = [
               "out"
               "dev"
-              "man"
             ];
 
             configurePhase = ''
@@ -235,22 +234,20 @@
             buildPhase = ''
               echo Building...
               scons platform=x11 tools=no target=release bits=64 -j $NIX_BUILD_CORES
-
             '';
 
             installPhase = ''
               # Install godot
               mkdir -p $out/bin
               cp bin/godot.x11.opt.64 $out/bin/godot
-              patchelf --add-rpath ${leap-sdk}/lib $out/bin/godot
 
               # Install gdnative headers
               mkdir $dev
               cp -r modules/gdnative/include $dev
 
               # Install man
-              mkdir -p $man/share/man/man6
-              cp misc/dist/linux/godot.6 $man/share/man/man6
+              mkdir -p $out/share/man/man6
+              cp misc/dist/linux/godot.6 $out/share/man/man6
 
               mkdir -p $out/share/applications
               mkdir -p $out/share/icons/hicolor/scalable/apps
