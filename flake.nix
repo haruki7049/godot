@@ -172,6 +172,8 @@
               wlroots
             ];
 
+            dontStrip = true;
+
             outputs = [
               "out"
               "dev"
@@ -188,7 +190,7 @@
 
             buildPhase = ''
               echo Building...
-              scons
+              scons platform=x11 tools=no target=release bits=64 -j $NIX_BUILD_CORES
             '';
 
             installPhase = ''
@@ -216,6 +218,12 @@
               mkdir -p $out/share/godot
               ${pkgs.xvfb-run}/bin/xvfb-run $out/bin/godot --gdnative-generate-json-api $out/share/godot/api.json
             '';
+          };
+
+          meta = {
+            homepage = "https://github.com/SimulaVR/godot";
+            license = lib.licenses.mit;
+            platforms = [ "x86_64-linux" ];
           };
         in
         {
