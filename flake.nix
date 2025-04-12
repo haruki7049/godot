@@ -77,6 +77,13 @@
               pkgs.libpulseaudio
               pkgs.yasm
               pkgs.systemd
+              pkgs.libxkbcommon
+              pkgs.wlroots
+              pkgs.wayland
+              pkgs.pixman
+              pkgs.dbus-glib
+
+              libxcb-errors
             ];
 
             buildPhase = ''
