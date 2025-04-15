@@ -278,6 +278,8 @@
 
           devShells.default = pkgs.mkShell rec {
             nativeBuildInputs = [
+              pkgs.nil
+              pkgs.just
               pkgs.scons
               pkgs.pkg-config
             ];

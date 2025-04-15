@@ -371,3 +371,4 @@ compile_commands.json
 
 # Nix
 result
+.direnv/
