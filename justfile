@@ -2,4 +2,9 @@ default:
     @just --list
 
 build:
-    scons platform=x11 tools=no target=debug bits=64
+    wayland-scanner server-header ./modules/gdwlroots/xdg-shell.xml ./modules/gdwlroots/xdg-shell-protocol.h
+    wayland-scanner private-code ./modules/gdwlroots/xdg-shell.xml ./modules/gdwlroots/xdg-shell-protocol.c
+    scons -Q -j8 platform=x11 target=debug warnings=no
+
+build-watch:
+    while inotifywait -qqre modify .; do just build; done
