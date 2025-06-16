@@ -6,6 +6,12 @@
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
+
+    wlroots-flake = {
+			url = "git+https://github.com/SimulaVR/wlroots?rev=e44903dee9e2e68219799699c38536e7d9961294&submodules=1";
+      inputs.nixpkgs.follows = "nixpkgs";
+			flake = true;
+    };
   };
 
   outputs =
@@ -21,92 +27,14 @@
           ...
         }:
         let
-          wlroots = pkgs.stdenv.mkDerivation {
-            pname = "wlroots";
-            version = "0.10.0-simula";
+					gdwlroots = pkgs.fetchFromGitHub {
+						owner = "SimulaVR";
+						repo = "gdwlroots";
+						rev = "f5add51f7b5055892177551a341eea510689d19b";
+						hash = "sha256-1dIfXA0yWmcX4pZ84bD/Og39tl300YNeiTsWRLV7xh4=";
+					};
+					wlroots = inputs.wlroots-flake.packages.${system}.default;
 
-            src = pkgs.fetchFromGitHub {
-              owner = "SimulaVR";
-              repo = "wlroots";
-              rev = "7d065df6f723bbb592fc50150feb213d323f37c6";
-              hash = "sha256-1zjTWivMPoWM9tmAoWl5lhKnV1WgCY3wVMANDd9eAqM=";
-              fetchSubmodules = true;
-            };
-
-            # $out for the library and $examples for the example programs (in examples):
-            outputs = [
-              "out"
-              "examples"
-            ];
-
-            nativeBuildInputs = [
-              pkgs.meson
-              pkgs.cmake
-              pkgs.ninja
-              pkgs.pkg-config
-              pkgs.wayland-scanner.bin
-            ];
-
-            buildInputs = [
-              pkgs.wayland
-              pkgs.libGL
-              pkgs.wayland-protocols
-              pkgs.libinput
-              pkgs.libxkbcommon
-              pkgs.pixman
-              pkgs.xorg.xcbutilwm
-              pkgs.libcap
-              pkgs.xorg.xcbutilimage
-              pkgs.xorg.xcbutilerrors
-              pkgs.mesa
-              pkgs.libpng
-              pkgs.ffmpeg_4
-              pkgs.xorg.libX11.dev
-              pkgs.xorg.libxcb.dev
-              pkgs.xorg.xinput
-
-              libxcb-errors
-            ];
-
-            mesonFlags = [
-              "-Dlibcap=enabled"
-              "-Dlogind=enabled"
-              "-Dxwayland=enabled"
-              "-Dx11-backend=enabled"
-              "-Dxcb-icccm=disabled"
-              "-Dxcb-errors=enabled"
-            ];
-
-            LDFLAGS = [
-              "-lX11-xcb"
-              "-lxcb-xinput"
-            ];
-
-            postInstall = ''
-              # Copy the library to $examples
-              mkdir -p $examples/lib
-              cp -Pr libwlroots* $examples/lib/
-            '';
-
-            postFixup = ''
-              # Install ALL example programs to $examples:
-              # screencopy dmabuf-capture input-inhibitor layer-shell idle-inhibit idle
-              # screenshot output-layout multi-pointer rotation tablet touch pointer
-              # simple
-              mkdir -p $examples/bin
-              cd ./examples
-              for binary in $(find . -executable -type f -printf '%P\n' | grep -vE '\.so'); do
-                cp "$binary" "$examples/bin/wlroots-$binary"
-              done
-            '';
-
-            meta = with lib; {
-              description = "More or less a pinned version of wlroots that Simula can use (with a few patches)";
-              homepage = "https://github.com/SimulaVR/wlroots";
-              license = licenses.mit;
-              platforms = platforms.linux;
-            };
-          };
           libxcb-errors = pkgs.stdenv.mkDerivation {
             pname = "libxcb-errors";
             version = "0.0.0";
@@ -139,44 +67,7 @@
               platforms = lib.platforms.linux;
             };
           };
-          leap-sdk = pkgs.stdenv.mkDerivation {
-            name = "leap-sdk";
-            src = pkgs.fetchFromGitHub {
-              owner = "SimulaVR";
-              repo = "gdleapmotionV2";
-              rev = "e3917f9a45ad7899704c65a3120cec38f3e093bb";
-              hash = "sha256-F9N4yC/Mw3LcW+LQCCfnRzOYPS8mEypnX7UodnZdY4U=";
-            };
 
-            nativeBuildInputs = [
-              pkgs.autoPatchelfHook
-            ];
-
-            buildInputs = [
-              pkgs.stdenv.cc.cc.lib
-            ];
-
-            dontBuild = true;
-
-            outputs = [
-              "out"
-              "dev"
-            ];
-
-            installPhase = ''
-              mkdir -p $dev/include
-              mkdir -p $out/lib
-
-              cp LeapSDK/include/* $dev/include
-              cp LeapSDK/lib/x64/* $out/lib
-            '';
-
-            meta = {
-              homepage = "https://github.com/SimulaVR/gdleapmotionV2";
-              license = lib.licenses.unfree;
-              platforms = [ "x86_64-linux" ];
-            };
-          };
           godot = pkgs.stdenv.mkDerivation {
             pname = "godot";
             version = "3.x-simula";
@@ -209,7 +100,6 @@
 
               libxcb-errors
               wlroots
-              leap-sdk
             ];
 
             outputs = [
@@ -218,13 +108,11 @@
             ];
 
             configurePhase = ''
-              echo 'Copying libLeap.so from .#leap-sdk'
-              cd modules/gdleapmotionV2/LeapSDK/lib/x64/
-              cp ${leap-sdk}/lib/* .
-              cd -
+							echo 'Copying GitHub gdwlroots to ./modules/gdwlroots'
+							cp -r ${gdwlroots} modules/gdwlroots
+							chmod -R u+w modules/gdwlroots
 
-
-              echo 'Generate xdg-shell-protocol.{h,c}'
+              echo 'Generating xdg-shell-protocol.{h,c}'
               cd modules/gdwlroots
               ${pkgs.wayland-scanner.bin}/bin/wayland-scanner server-header ${pkgs.wayland-protocols}/share/wayland-protocols/stable/xdg-shell/xdg-shell.xml xdg-shell-protocol.h
               ${pkgs.wayland-scanner.bin}/bin/wayland-scanner private-code ${pkgs.wayland-protocols}/share/wayland-protocols/stable/xdg-shell/xdg-shell.xml xdg-shell-protocol.c
@@ -272,7 +160,7 @@
           };
 
           packages = {
-            inherit godot wlroots leap-sdk;
+            inherit godot wlroots;
             default = godot;
           };
 
@@ -306,7 +194,6 @@
 
               libxcb-errors
               wlroots
-              leap-sdk
             ];
           };
         };
