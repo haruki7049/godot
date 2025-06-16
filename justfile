@@ -8,3 +8,9 @@ build:
 
 build-watch:
     while inotifywait -qqre modify .; do just build; done
+
+clean:
+    rm -f ./modules/gdwlroots/xdg-shell-protocol.c
+    rm -f ./modules/gdwlroots/xdg-shell-protocol.h
+    scons -c
+
