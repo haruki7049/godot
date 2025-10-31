@@ -6,11 +6,14 @@
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
-
-    wlroots-flake = {
-			url = "git+https://github.com/SimulaVR/wlroots?rev=e44903dee9e2e68219799699c38536e7d9961294&submodules=1";
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
-			flake = true;
+    };
+    wlroots-flake = {
+      url = "git+https://github.com/SimulaVR/wlroots?rev=e44903dee9e2e68219799699c38536e7d9961294&submodules=1";
+      inputs.nixpkgs.follows = "nixpkgs";
+      flake = true;
     };
   };
 
@@ -18,6 +21,8 @@
     inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       systems = import inputs.systems;
+
+      imports = [ inputs.treefmt-nix.flakeModule ];
 
       perSystem =
         {
@@ -27,13 +32,13 @@
           ...
         }:
         let
-					gdwlroots = pkgs.fetchFromGitHub {
-						owner = "SimulaVR";
-						repo = "gdwlroots";
-						rev = "f5add51f7b5055892177551a341eea510689d19b";
-						hash = "sha256-1dIfXA0yWmcX4pZ84bD/Og39tl300YNeiTsWRLV7xh4=";
-					};
-					wlroots = inputs.wlroots-flake.packages.${system}.default;
+          gdwlroots = pkgs.fetchFromGitHub {
+            owner = "SimulaVR";
+            repo = "gdwlroots";
+            rev = "f5add51f7b5055892177551a341eea510689d19b";
+            hash = "sha256-1dIfXA0yWmcX4pZ84bD/Og39tl300YNeiTsWRLV7xh4=";
+          };
+          wlroots = inputs.wlroots-flake.packages.${system}.default;
 
           libxcb-errors = pkgs.stdenv.mkDerivation {
             pname = "libxcb-errors";
@@ -108,9 +113,9 @@
             ];
 
             configurePhase = ''
-							echo 'Copying GitHub gdwlroots to ./modules/gdwlroots'
-							cp -r ${gdwlroots} modules/gdwlroots
-							chmod -R u+w modules/gdwlroots
+              echo 'Copying GitHub gdwlroots to ./modules/gdwlroots'
+              cp -r ${gdwlroots} modules/gdwlroots
+              chmod -R u+w modules/gdwlroots
 
               echo 'Generating xdg-shell-protocol.{h,c}'
               cd modules/gdwlroots
@@ -157,6 +162,11 @@
           _module.args.pkgs = import inputs.nixpkgs {
             inherit system;
             config.allowUnfree = true;
+          };
+
+          treefmt = {
+            projectRootFile = ".editorconfig";
+            programs.nixfmt.enable = true;
           };
 
           packages = {
