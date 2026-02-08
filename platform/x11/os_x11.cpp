@@ -292,28 +292,80 @@ Error OS_X11::initialize(const VideoMode &p_desired, int p_video_driver, int p_a
 		opengl_api_type = ContextGL_X11::GLES_2_0_COMPATIBLE;
 	}
 
+	const int initial_video_driver = p_video_driver;
+	const ContextGL_X11::ContextType initial_opengl_api_type = opengl_api_type;
+
 	bool editor = Engine::get_singleton()->is_editor_hint();
 	bool gl_initialization_error = false;
 
 	context_gl = nullptr;
-	while (!context_gl) {
-		context_gl = memnew(ContextGL_X11(x11_display, x11_window, current_videomode, opengl_api_type));
+#ifdef X11_EGL_ENABLED
+	context_egl = nullptr;
+	bool use_egl = true;
+	if (const char *egl_env = getenv("GODOT_X11_EGL")) {
+		String env_val = String(egl_env).to_lower();
+		if (env_val == "0" || env_val == "false" || env_val == "no") {
+			use_egl = false;
+		}
+	}
 
-		if (context_gl->initialize() != OK) {
-			memdelete(context_gl);
-			context_gl = nullptr;
+	if (use_egl) {
+		while (!context_egl) {
+			ContextEGL_X11::ContextType egl_api_type = (opengl_api_type == ContextGL_X11::GLES_3_0_COMPATIBLE) ? ContextEGL_X11::GLES_3_0_COMPATIBLE : ContextEGL_X11::GLES_2_0_COMPATIBLE;
+			context_egl = memnew(ContextEGL_X11(x11_display, x11_window, current_videomode, egl_api_type));
 
-			if (GLOBAL_GET("rendering/quality/driver/fallback_to_gles2") || editor) {
-				if (p_video_driver == VIDEO_DRIVER_GLES2) {
+			if (context_egl->initialize() != OK) {
+				memdelete(context_egl);
+				context_egl = nullptr;
+
+				if (GLOBAL_GET("rendering/quality/driver/fallback_to_gles2") || editor) {
+					if (p_video_driver == VIDEO_DRIVER_GLES2) {
+						gl_initialization_error = true;
+						break;
+					}
+
+					p_video_driver = VIDEO_DRIVER_GLES2;
+					opengl_api_type = ContextGL_X11::GLES_2_0_COMPATIBLE;
+				} else {
 					gl_initialization_error = true;
 					break;
 				}
+			}
+		}
 
-				p_video_driver = VIDEO_DRIVER_GLES2;
-				opengl_api_type = ContextGL_X11::GLES_2_0_COMPATIBLE;
-			} else {
-				gl_initialization_error = true;
-				break;
+		if (!context_egl) {
+			print_verbose("EGL initialization failed, falling back to GLX.");
+			gl_initialization_error = false;
+			p_video_driver = initial_video_driver;
+			opengl_api_type = initial_opengl_api_type;
+		}
+	}
+#endif
+
+	if (!context_gl
+#ifdef X11_EGL_ENABLED
+			&& !context_egl
+#endif
+	) {
+		while (!context_gl) {
+			context_gl = memnew(ContextGL_X11(x11_display, x11_window, current_videomode, opengl_api_type));
+
+			if (context_gl->initialize() != OK) {
+				memdelete(context_gl);
+				context_gl = nullptr;
+
+				if (GLOBAL_GET("rendering/quality/driver/fallback_to_gles2") || editor) {
+					if (p_video_driver == VIDEO_DRIVER_GLES2) {
+						gl_initialization_error = true;
+						break;
+					}
+
+					p_video_driver = VIDEO_DRIVER_GLES2;
+					opengl_api_type = ContextGL_X11::GLES_2_0_COMPATIBLE;
+				} else {
+					gl_initialization_error = true;
+					break;
+				}
 			}
 		}
 	}
@@ -360,7 +412,14 @@ Error OS_X11::initialize(const VideoMode &p_desired, int p_video_driver, int p_a
 
 	video_driver_index = p_video_driver;
 
-	context_gl->set_use_vsync(current_videomode.use_vsync);
+#ifdef X11_EGL_ENABLED
+	if (context_egl) {
+		context_egl->set_use_vsync(current_videomode.use_vsync);
+	} else
+#endif
+	{
+		context_gl->set_use_vsync(current_videomode.use_vsync);
+	}
 
 #endif
 
@@ -852,7 +911,14 @@ void OS_X11::finalize() {
 	XDestroyWindow(x11_display, x11_window);
 
 #if defined(OPENGL_ENABLED)
-	memdelete(context_gl);
+#ifdef X11_EGL_ENABLED
+	if (context_egl) {
+		memdelete(context_egl);
+	}
+#endif
+	if (context_gl) {
+		memdelete(context_gl);
+	}
 #endif
 	for (int i = 0; i < CURSOR_MAX; i++) {
 		if (cursors[i] != None) {
@@ -1810,7 +1876,15 @@ void *OS_X11::get_native_handle(int p_handle_type) {
 		case WINDOW_VIEW:
 			return nullptr; // Do we have a value to return here?
 		case OPENGL_CONTEXT:
-			return context_gl->get_glx_context();
+#ifdef X11_EGL_ENABLED
+			if (context_egl) {
+				return (void *)context_egl->get_egl_context();
+			}
+#endif
+			if (context_gl) {
+				return context_gl->get_glx_context();
+			}
+			return nullptr;
 		default:
 			return nullptr;
 	}
@@ -3448,19 +3522,40 @@ void OS_X11::set_custom_mouse_cursor(const RES &p_cursor, CursorShape p_shape, c
 
 void OS_X11::release_rendering_thread() {
 #if defined(OPENGL_ENABLED)
-	context_gl->release_current();
+#ifdef X11_EGL_ENABLED
+	if (context_egl) {
+		context_egl->release_current();
+	} else
+#endif
+	{
+		context_gl->release_current();
+	}
 #endif
 }
 
 void OS_X11::make_rendering_thread() {
 #if defined(OPENGL_ENABLED)
-	context_gl->make_current();
+#ifdef X11_EGL_ENABLED
+	if (context_egl) {
+		context_egl->make_current();
+	} else
+#endif
+	{
+		context_gl->make_current();
+	}
 #endif
 }
 
 void OS_X11::swap_buffers() {
 #if defined(OPENGL_ENABLED)
-	context_gl->swap_buffers();
+#ifdef X11_EGL_ENABLED
+	if (context_egl) {
+		context_egl->swap_buffers();
+	} else
+#endif
+	{
+		context_gl->swap_buffers();
+	}
 #endif
 }
 
@@ -3658,6 +3753,11 @@ String OS_X11::get_joy_guid(int p_device) const {
 
 void OS_X11::_set_use_vsync(bool p_enable) {
 #if defined(OPENGL_ENABLED)
+#ifdef X11_EGL_ENABLED
+	if (context_egl) {
+		context_egl->set_use_vsync(p_enable);
+	} else
+#endif
 	if (context_gl) {
 		context_gl->set_use_vsync(p_enable);
 	}

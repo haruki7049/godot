@@ -32,6 +32,9 @@
 #define OS_X11_H
 
 #include "context_gl_x11.h"
+#ifdef X11_EGL_ENABLED
+#include "context_egl_x11.h"
+#endif
 #include "core/local_vector.h"
 #include "core/os/input.h"
 #include "crash_handler_x11.h"
@@ -92,6 +95,9 @@ class OS_X11 : public OS_Unix {
 
 #if defined(OPENGL_ENABLED)
 	ContextGL_X11 *context_gl;
+#ifdef X11_EGL_ENABLED
+	ContextEGL_X11 *context_egl;
+#endif
 #endif
 	//Rasterizer *rasterizer;
 	VisualServer *visual_server;

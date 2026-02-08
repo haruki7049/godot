@@ -79,6 +79,7 @@ def get_opts():
         BoolVariable("separate_debug_symbols", "Create a separate file containing debugging symbols", False),
         BoolVariable("touch", "Enable touch events", True),
         BoolVariable("execinfo", "Use libexecinfo on systems where glibc is not available", False),
+        BoolVariable("x11_egl", "Use EGL for the X11 OpenGL context", False),
     ]
 
 
@@ -224,6 +225,10 @@ def configure(env):
     env.ParseConfig('pkg-config xfixes --cflags --libs')
     env.ParseConfig('pkg-config glu --cflags --libs')
     env.ParseConfig('pkg-config zlib --cflags --libs')
+
+    if "x11_egl" in env and env["x11_egl"]:
+        env.Append(CPPDEFINES=["X11_EGL_ENABLED"])
+        env.ParseConfig("pkg-config egl --cflags --libs")
 
     if (env['touch']):
         env.Append(CPPDEFINES=['TOUCH_ENABLED'])
