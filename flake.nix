@@ -37,8 +37,8 @@
 					gdwlroots = pkgs.fetchFromGitHub {
 						owner = "SimulaVR";
 						repo = "gdwlroots";
-						rev = "f5add51f7b5055892177551a341eea510689d19b";
-						hash = "sha256-1dIfXA0yWmcX4pZ84bD/Og39tl300YNeiTsWRLV7xh4=";
+						rev = "88cbe52ee28219fc77194a1c87d71de3ce0be127";
+						hash = "sha256-CLygKinJGAxFMQme/+UIX6smqgP1aaf5VBhPZCIbH2g=";
 					};
 					wlroots = inputs.wlroots-flake.packages.${system}.default;
 
