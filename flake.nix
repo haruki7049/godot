@@ -180,7 +180,7 @@
             default = godot;
           };
 
-          devShells.default = pkgs.mkShell rec {
+          devShells.default = pkgs.mkShell {
             nativeBuildInputs = [
               pkgs.nil
               pkgs.just
