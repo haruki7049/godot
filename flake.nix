@@ -80,39 +80,8 @@
             version = "3.x-simula";
             src = lib.cleanSource ./.;
 
-            nativeBuildInputs = [
-              pkgs.scons
-              pkgs.pkg-config
-              pkgs.wayland-scanner
-              pkgs.autoPatchelfHook
-            ];
-
-            buildInputs = [
-              pkgs.xorg.libxcb
-              pkgs.xorg.libX11
-              pkgs.xorg.libXcursor
-              pkgs.xorg.libXinerama
-              pkgs.xorg.libXext
-              pkgs.xorg.libXrandr
-              pkgs.xorg.libXi
-              pkgs.libGLU
-              pkgs.zlib
-
-              pkgs.alsa-lib
-              pkgs.libpulseaudio
-              pkgs.yasm
-              pkgs.systemd
-              pkgs.libxkbcommon
-              pkgs.wayland
-              pkgs.pixman
-              pkgs.dbus-glib
-              pkgs.libdrm
-              pkgs.libgbm
-              pkgs.mesa
-
-              libxcb-errors
-              wlroots
-            ];
+            inherit buildInputs;
+            nativeBuildInputs = tools.build ++ tools.hooks;
 
             outputs = [
               "out"
@@ -163,6 +132,46 @@
               platforms = [ "x86_64-linux" ];
             };
           };
+
+          tools.lsp = [
+            pkgs.nil
+          ];
+          tools.build = [
+            pkgs.just
+            pkgs.scons
+            pkgs.pkg-config
+            pkgs.wayland-scanner
+          ];
+          tools.hooks = [
+            pkgs.autoPatchelfHook
+          ];
+          buildInputs = [
+            pkgs.xorg.libxcb
+            pkgs.xorg.libX11
+            pkgs.xorg.libXcursor
+            pkgs.xorg.libXinerama
+            pkgs.xorg.libXext
+            pkgs.xorg.libXrandr
+            pkgs.xorg.libXi
+            pkgs.libGLU
+            pkgs.zlib
+
+            pkgs.alsa-lib
+            pkgs.libpulseaudio
+            pkgs.yasm
+            pkgs.systemd
+
+            pkgs.libxkbcommon
+            pkgs.wayland
+            pkgs.pixman
+            pkgs.dbus-glib
+            pkgs.libdrm
+            pkgs.libgbm
+            pkgs.mesa
+
+            libxcb-errors
+            wlroots
+          ];
         in
         {
           _module.args.pkgs = import inputs.nixpkgs {
@@ -181,41 +190,8 @@
           };
 
           devShells.default = pkgs.mkShell {
-            nativeBuildInputs = [
-              pkgs.nil
-              pkgs.just
-              pkgs.scons
-              pkgs.pkg-config
-              pkgs.wayland-scanner
-            ];
-
-            buildInputs = [
-              pkgs.xorg.libxcb
-              pkgs.xorg.libX11
-              pkgs.xorg.libXcursor
-              pkgs.xorg.libXinerama
-              pkgs.xorg.libXext
-              pkgs.xorg.libXrandr
-              pkgs.xorg.libXi
-              pkgs.libGLU
-              pkgs.zlib
-
-              pkgs.alsa-lib
-              pkgs.libpulseaudio
-              pkgs.yasm
-              pkgs.systemd
-
-              pkgs.libxkbcommon
-              pkgs.wayland
-              pkgs.pixman
-              pkgs.dbus-glib
-              pkgs.libdrm
-              pkgs.libgbm
-              pkgs.mesa
-
-              libxcb-errors
-              wlroots
-            ];
+            inherit buildInputs;
+            nativeBuildInputs = tools.lsp ++ tools.build;
           };
         };
     };
