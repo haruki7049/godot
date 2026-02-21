@@ -11,9 +11,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     wlroots-flake = {
-			url = "git+https://github.com/SimulaVR/wlroots?rev=e1529945c8b87f1d65c48e1b036eb54b0b707c67&submodules=1";
+      url = "git+https://github.com/SimulaVR/wlroots?rev=e1529945c8b87f1d65c48e1b036eb54b0b707c67&submodules=1";
       inputs.nixpkgs.follows = "nixpkgs";
-			flake = true;
+      flake = true;
     };
   };
 
@@ -34,13 +34,13 @@
           ...
         }:
         let
-					gdwlroots = pkgs.fetchFromGitHub {
-						owner = "SimulaVR";
-						repo = "gdwlroots";
-						rev = "88cbe52ee28219fc77194a1c87d71de3ce0be127";
-						hash = "sha256-CLygKinJGAxFMQme/+UIX6smqgP1aaf5VBhPZCIbH2g=";
-					};
-					wlroots = inputs.wlroots-flake.packages.${system}.default;
+          gdwlroots = pkgs.fetchFromGitHub {
+            owner = "SimulaVR";
+            repo = "gdwlroots";
+            rev = "88cbe52ee28219fc77194a1c87d71de3ce0be127";
+            hash = "sha256-CLygKinJGAxFMQme/+UIX6smqgP1aaf5VBhPZCIbH2g=";
+          };
+          wlroots = inputs.wlroots-flake.packages.${system}.default;
 
           libxcb-errors = pkgs.stdenv.mkDerivation {
             pname = "libxcb-errors";
@@ -120,10 +120,9 @@
             ];
 
             configurePhase = ''
-							echo 'Copying GitHub gdwlroots to ./modules/gdwlroots'
-							cp -r ${gdwlroots} modules/gdwlroots
-							chmod -R u+w modules/gdwlroots
-
+              echo 'Copying GitHub gdwlroots to ./modules/gdwlroots'
+              cp -r ${gdwlroots} modules/gdwlroots
+              chmod -R u+w modules/gdwlroots
               echo 'Generating xdg-shell-protocol.{h,c}'
               cd modules/gdwlroots
               ${pkgs.wayland-scanner.bin}/bin/wayland-scanner server-header ${pkgs.wayland-protocols}/share/wayland-protocols/stable/xdg-shell/xdg-shell.xml xdg-shell-protocol.h
@@ -181,7 +180,7 @@
             default = godot;
           };
 
-          devShells.default = pkgs.mkShell rec {
+          devShells.default = pkgs.mkShell {
             nativeBuildInputs = [
               pkgs.nil
               pkgs.just
