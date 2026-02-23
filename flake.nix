@@ -97,7 +97,8 @@
           };
 
           tools.lsp = [
-            pkgs.nil
+            pkgs.nil # Nix
+            pkgs.clang-tools # C / C++
           ];
           tools.build = [
             pkgs.just
