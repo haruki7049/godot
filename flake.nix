@@ -127,6 +127,7 @@
 
             pkgs.libxkbcommon
             pkgs.wayland
+            pkgs.wayland-protocols
             pkgs.pixman
             pkgs.dbus-glib
             pkgs.libdrm
