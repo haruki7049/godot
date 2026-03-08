@@ -113,8 +113,8 @@ void CanvasItemMaterial::_update_shader() {
 		case BLEND_MODE_DISABLED:
 			code += "blend_disabled";
 			break;
-		case BLEND_MODE_WLROOTS: 
-			code += "blend_wlroots"; 
+		case BLEND_MODE_WLROOTS:
+			code += "blend_wlroots";
 			break;
 	}
 

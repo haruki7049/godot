@@ -398,8 +398,8 @@ void SpatialMaterial::_update_shader() {
 		case BLEND_MODE_ADD:
 			code += "blend_add";
 			break;
-		case BLEND_MODE_WLROOTS: 
-			code += "blend_wlroots"; 
+		case BLEND_MODE_WLROOTS:
+			code += "blend_wlroots";
 			break;
 		case BLEND_MODE_SUB:
 			code += "blend_sub";
