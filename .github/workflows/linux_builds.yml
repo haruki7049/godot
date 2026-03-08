@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   build-linux:
-    runs-on: "ubuntu-20.04"
+    runs-on: ubuntu-latest
     name: ${{ matrix.name }}
     strategy:
       fail-fast: false
@@ -47,7 +47,7 @@ jobs:
             artifact: true
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v6.0.2
 
       - name: Linux dependencies
         shell: bash
@@ -122,7 +122,7 @@ jobs:
         run: |
           echo "Running --doctool to see if this changes the public API without updating the documentation."
           echo -e "If a diff is shown, it means that your code/doc changes are incomplete and you should update the class reference with --doctool.\n\n"
-          DRI_PRIME=0 xvfb-run ${{ matrix.bin }} --doctool . 2>&1 > /dev/null || true
+          DRI_PRIME=0 xvfb-run ${{ matrix.bin }} --doctool . > /dev/null 2>&1 || true
           git diff --color --exit-code && ! git ls-files --others --exclude-standard | sed -e 's/^/New doc file missing in PR: /' | grep 'xml$'
 
       - name: Prepare artifact

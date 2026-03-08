@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   build-server:
-    runs-on: "ubuntu-20.04"
+    runs-on: ubuntu-latest
     name: ${{ matrix.name }}
     strategy:
       fail-fast: false
@@ -29,7 +29,7 @@ jobs:
             tools: false
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v6.0.2
 
       - name: Linux dependencies
         shell: bash
@@ -55,7 +55,7 @@ jobs:
       - name: Compilation
         uses: ./.github/actions/godot-build
         with:
-          sconsflags: ${{ env.SCONSFLAGS }} ${{ matrix.sconsflags }}
+          sconsflags: ${{ env.SCONSFLAGS }}
           platform: server
           target: ${{ matrix.target }}
           tools: ${{ matrix.tools }}
