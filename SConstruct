@@ -16,7 +16,7 @@ import methods
 import gles_builders
 from platform_methods import run_in_subprocess
 
-#import scons_compiledb
+# import scons_compiledb
 
 # scan possible build platforms
 
@@ -69,17 +69,17 @@ elif platform_arg == "javascript":
 
 env_base = Environment(tools=custom_tools)
 for k in ("TERM", "PATH", "PKG_CONFIG_PATH", "NIX_CFLAGS_COMPILE", "NIX_LDFLAGS"):
-    if (k in os.environ):
+    if k in os.environ:
         env_base["ENV"][k] = os.environ[k]
 # we don't do this in simula, figure out later why
 # -- START --
 # We let SCons build its default ENV as it includes OS-specific things which we don't
 # want to have to pull in manually.
 # Then we prepend PATH to make it take precedence, while preserving SCons' own entries.
-#env_base = Environment(tools=custom_tools)
-#env_base.PrependENVPath("PATH", os.getenv("PATH"))
-#env_base.PrependENVPath("PKG_CONFIG_PATH", os.getenv("PKG_CONFIG_PATH"))
-#if "TERM" in os.environ:  # Used for colored output.
+# env_base = Environment(tools=custom_tools)
+# env_base.PrependENVPath("PATH", os.getenv("PATH"))
+# env_base.PrependENVPath("PKG_CONFIG_PATH", os.getenv("PKG_CONFIG_PATH"))
+# if "TERM" in os.environ:  # Used for colored output.
 #    env_base["ENV"]["TERM"] = os.environ["TERM"]
 # -- END --
 env_base.disabled_modules = []
@@ -342,7 +342,7 @@ if selected_platform in platform_list:
 
     scons_ver = env._get_major_minor_revision(scons_raw_version)
 
-    #if scons_ver >= (4, 0, 0):
+    # if scons_ver >= (4, 0, 0):
     #    env.Tool("compilation_db")
     #    env.Alias("compiledb", env.CompilationDatabase())
 
@@ -475,10 +475,10 @@ if selected_platform in platform_list:
         else:  # 'no'
             env.Append(CCFLAGS=["-w"])
 
-        #if env["werror"]:
-            #env.Append(CCFLAGS=["-Werror"])
-        #else:  # always enable those errors
-            #env.Append(CCFLAGS=["-Werror=return-type"])
+        # if env["werror"]:
+        # env.Append(CCFLAGS=["-Werror"])
+        # else:  # always enable those errors
+        # env.Append(CCFLAGS=["-Werror=return-type"])
 
     if hasattr(detect, "get_program_suffix"):
         suffix = "." + detect.get_program_suffix()
@@ -644,8 +644,8 @@ if selected_platform in platform_list:
 
     Export("env")
 
-    #scons_compiledb.enable(env)
-    #env.CompileDb()
+    # scons_compiledb.enable(env)
+    # env.CompileDb()
 
     # build subdirs, the build order is dependent on link order.
 

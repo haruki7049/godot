@@ -118,7 +118,7 @@ def configure(env):
 
     ## Architecture
 
-    is64 = sys.maxsize > 2 ** 32
+    is64 = sys.maxsize > 2**32
     if env["bits"] == "default":
         env["bits"] = "64" if is64 else "32"
 
@@ -221,17 +221,17 @@ def configure(env):
     env.ParseConfig("pkg-config xrender --cflags --libs")
     env.ParseConfig("pkg-config xi --cflags --libs")
 
-    env.ParseConfig('pkg-config xext --cflags --libs')
-    env.ParseConfig('pkg-config xfixes --cflags --libs')
-    env.ParseConfig('pkg-config glu --cflags --libs')
-    env.ParseConfig('pkg-config zlib --cflags --libs')
+    env.ParseConfig("pkg-config xext --cflags --libs")
+    env.ParseConfig("pkg-config xfixes --cflags --libs")
+    env.ParseConfig("pkg-config glu --cflags --libs")
+    env.ParseConfig("pkg-config zlib --cflags --libs")
 
     if "x11_egl" in env and env["x11_egl"]:
         env.Append(CPPDEFINES=["X11_EGL_ENABLED"])
         env.ParseConfig("pkg-config egl --cflags --libs")
 
-    if (env['touch']):
-        env.Append(CPPDEFINES=['TOUCH_ENABLED'])
+    if env["touch"]:
+        env.Append(CPPDEFINES=["TOUCH_ENABLED"])
 
     # FIXME: Check for existence of the libs before parsing their flags with pkg-config
 
@@ -332,7 +332,7 @@ def configure(env):
     if os.system("pkg-config --exists alsa") == 0:  # 0 means found
         env["alsa"] = True
         env.Append(CPPDEFINES=["ALSA_ENABLED", "ALSAMIDI_ENABLED"])
-        env.ParseConfig('pkg-config alsa --cflags --libs')
+        env.ParseConfig("pkg-config alsa --cflags --libs")
     else:
         print("Warning: ALSA libraries not found. Disabling the ALSA audio driver.")
 

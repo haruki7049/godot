@@ -1,9 +1,9 @@
 from . import core, cmdline, entry_func
 
-__version__ = '0.7.4'
+__version__ = "0.7.4"
 
-DEFAULT_OPTION_NAME = 'compiledb'
-DEFAULT_DB_NAME = '#/compile_commands.json'
+DEFAULT_OPTION_NAME = "compiledb"
+DEFAULT_DB_NAME = "#/compile_commands.json"
 
 
 def enable(env, config=None):
@@ -20,13 +20,11 @@ def enable(env, config=None):
     return core.enable(env, config if config else Config())
 
 
-def enable_with_cmdline(env, config=None,
-                        option_name=DEFAULT_OPTION_NAME):
+def enable_with_cmdline(env, config=None, option_name=DEFAULT_OPTION_NAME):
     """
     Enable and build DB with command line option, --compiledb=.
     """
-    return cmdline.enable_with_cmdline(
-        env, config if config else Config(), option_name)
+    return cmdline.enable_with_cmdline(env, config if config else Config(), option_name)
 
 
 entry_func_simple = entry_func.simple
@@ -55,13 +53,15 @@ class Config:
      - multi       : Whether to have multiple entries with the same 'file'.
     """
 
-    def __init__(self,
-                 db=DEFAULT_DB_NAME,
-                 cxx_suffixes=('.cpp', '.cc'),
-                 cc_suffixes=('.c',),
-                 entry_func=entry_func_default,
-                 reset=False,
-                 multi=False):
+    def __init__(
+        self,
+        db=DEFAULT_DB_NAME,
+        cxx_suffixes=(".cpp", ".cc"),
+        cc_suffixes=(".c",),
+        entry_func=entry_func_default,
+        reset=False,
+        multi=False,
+    ):
         self.db = db
         self.cc_suffixes = cc_suffixes
         self.cxx_suffixes = cxx_suffixes
