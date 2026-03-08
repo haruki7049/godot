@@ -180,8 +180,13 @@
           };
 
           treefmt = {
-            projectRootFile = ".editorconfig";
+            projectRootFile = ".git/config";
+
+            # Nix
             programs.nixfmt.enable = true;
+
+            # GitHub Actions
+            programs.actionlint.enable = true;
           };
 
           packages = {
