@@ -33,23 +33,25 @@ void vp9_rtcd(void);
 
 #ifdef RTCD_C
 #include "vpx_ports/x86.h"
-static void setup_rtcd_internal(void)
-{
-    int flags = x86_simd_caps();
+static void setup_rtcd_internal(void) {
+	int flags = x86_simd_caps();
 
-    vp9_iht16x16_256_add = vp9_iht16x16_256_add_c;
-    if (flags & HAS_SSE2) vp9_iht16x16_256_add = vp9_iht16x16_256_add_sse2;
+	vp9_iht16x16_256_add = vp9_iht16x16_256_add_c;
+	if (flags & HAS_SSE2)
+		vp9_iht16x16_256_add = vp9_iht16x16_256_add_sse2;
 
-    vp9_iht4x4_16_add = vp9_iht4x4_16_add_c;
-    if (flags & HAS_SSE2) vp9_iht4x4_16_add = vp9_iht4x4_16_add_sse2;
+	vp9_iht4x4_16_add = vp9_iht4x4_16_add_c;
+	if (flags & HAS_SSE2)
+		vp9_iht4x4_16_add = vp9_iht4x4_16_add_sse2;
 
-    vp9_iht8x8_64_add = vp9_iht8x8_64_add_c;
-    if (flags & HAS_SSE2) vp9_iht8x8_64_add = vp9_iht8x8_64_add_sse2;
+	vp9_iht8x8_64_add = vp9_iht8x8_64_add_c;
+	if (flags & HAS_SSE2)
+		vp9_iht8x8_64_add = vp9_iht8x8_64_add_sse2;
 }
 #endif
 
 #ifdef __cplusplus
-}  // extern "C"
+} // extern "C"
 #endif
 
 #endif

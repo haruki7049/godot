@@ -62,7 +62,8 @@ static real_t out(real_t t, real_t b, real_t c, real_t d) {
 
 static real_t in_out(real_t t, real_t b, real_t c, real_t d) {
 	t = t / d * 2;
-	if (t < 1) return c / 2 * pow(t, 5) + b;
+	if (t < 1)
+		return c / 2 * pow(t, 5) + b;
 	return c / 2 * (pow(t - 2, 5) + 2) + b;
 }
 
@@ -84,7 +85,8 @@ static real_t out(real_t t, real_t b, real_t c, real_t d) {
 
 static real_t in_out(real_t t, real_t b, real_t c, real_t d) {
 	t = t / d * 2;
-	if (t < 1) return c / 2 * pow(t, 4) + b;
+	if (t < 1)
+		return c / 2 * pow(t, 4) + b;
 	return -c / 2 * (pow(t - 2, 4) - 2) + b;
 }
 
@@ -107,7 +109,8 @@ static real_t out(real_t t, real_t b, real_t c, real_t d) {
 
 static real_t in_out(real_t t, real_t b, real_t c, real_t d) {
 	t = t / d * 2;
-	if (t < 1) return c / 2 * pow(t, 2) + b;
+	if (t < 1)
+		return c / 2 * pow(t, 2) + b;
 	return -c / 2 * ((t - 1) * (t - 3) - 1) + b;
 }
 
@@ -120,20 +123,25 @@ static real_t out_in(real_t t, real_t b, real_t c, real_t d) {
 ///////////////////////////////////////////////////////////////////////////
 namespace expo {
 static real_t in(real_t t, real_t b, real_t c, real_t d) {
-	if (t == 0) return b;
+	if (t == 0)
+		return b;
 	return c * pow(2, 10 * (t / d - 1)) + b - c * 0.001;
 }
 
 static real_t out(real_t t, real_t b, real_t c, real_t d) {
-	if (t == d) return b + c;
+	if (t == d)
+		return b + c;
 	return c * 1.001 * (-pow(2, -10 * t / d) + 1) + b;
 }
 
 static real_t in_out(real_t t, real_t b, real_t c, real_t d) {
-	if (t == 0) return b;
-	if (t == d) return b + c;
+	if (t == 0)
+		return b;
+	if (t == d)
+		return b + c;
 	t = t / d * 2;
-	if (t < 1) return c / 2 * pow(2, 10 * (t - 1)) + b - c * 0.0005;
+	if (t < 1)
+		return c / 2 * pow(2, 10 * (t - 1)) + b - c * 0.0005;
 	return c / 2 * 1.0005 * (-pow(2, -10 * (t - 1)) + 2) + b;
 }
 
@@ -146,8 +154,10 @@ static real_t out_in(real_t t, real_t b, real_t c, real_t d) {
 ///////////////////////////////////////////////////////////////////////////
 namespace elastic {
 static real_t in(real_t t, real_t b, real_t c, real_t d) {
-	if (t == 0) return b;
-	if ((t /= d) == 1) return b + c;
+	if (t == 0)
+		return b;
+	if ((t /= d) == 1)
+		return b + c;
 	float p = d * 0.3f;
 	float a = c;
 	float s = p / 4;
@@ -156,8 +166,10 @@ static real_t in(real_t t, real_t b, real_t c, real_t d) {
 }
 
 static real_t out(real_t t, real_t b, real_t c, real_t d) {
-	if (t == 0) return b;
-	if ((t /= d) == 1) return b + c;
+	if (t == 0)
+		return b;
+	if ((t /= d) == 1)
+		return b + c;
 	float p = d * 0.3f;
 	float a = c;
 	float s = p / 4;
@@ -165,8 +177,10 @@ static real_t out(real_t t, real_t b, real_t c, real_t d) {
 }
 
 static real_t in_out(real_t t, real_t b, real_t c, real_t d) {
-	if (t == 0) return b;
-	if ((t /= d / 2) == 2) return b + c;
+	if (t == 0)
+		return b;
+	if ((t /= d / 2) == 2)
+		return b + c;
 	float p = d * (0.3f * 1.5f);
 	float a = c;
 	float s = p / 4;
@@ -199,7 +213,8 @@ static real_t out(real_t t, real_t b, real_t c, real_t d) {
 
 static real_t in_out(real_t t, real_t b, real_t c, real_t d) {
 	t /= d / 2;
-	if (t < 1) return c / 2 * t * t * t + b;
+	if (t < 1)
+		return c / 2 * t * t * t + b;
 	t -= 2;
 	return c / 2 * (t * t * t + 2) + b;
 }
@@ -287,7 +302,8 @@ static real_t out(real_t t, real_t b, real_t c, real_t d) {
 static real_t in_out(real_t t, real_t b, real_t c, real_t d) {
 	float s = 1.70158f * 1.525f;
 	t /= d / 2;
-	if (t < 1) return c / 2 * (t * t * ((s + 1) * t - s)) + b;
+	if (t < 1)
+		return c / 2 * (t * t * ((s + 1) * t - s)) + b;
 	t -= 2;
 	return c / 2 * (t * t * ((s + 1) * t + s) + 2) + b;
 }

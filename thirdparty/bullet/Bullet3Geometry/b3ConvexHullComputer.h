@@ -3,8 +3,8 @@ Copyright (c) 2011 Ole Kniemeyer, MAXON, www.maxon.net
 
 This software is provided 'as-is', without any express or implied warranty.
 In no event will the authors be held liable for any damages arising from the use of this software.
-Permission is granted to anyone to use this software for any purpose, 
-including commercial applications, and to alter it and redistribute it freely, 
+Permission is granted to anyone to use this software for any purpose,
+including commercial applications, and to alter it and redistribute it freely,
 subject to the following restrictions:
 
 1. The origin of this software must not be misrepresented; you must not claim that you wrote the original software. If you use this software in a product, an acknowledgment in the product documentation would be appreciated but is not required.
@@ -15,20 +15,18 @@ subject to the following restrictions:
 #ifndef B3_CONVEX_HULL_COMPUTER_H
 #define B3_CONVEX_HULL_COMPUTER_H
 
-#include "Bullet3Common/b3Vector3.h"
 #include "Bullet3Common/b3AlignedObjectArray.h"
+#include "Bullet3Common/b3Vector3.h"
 
 /// Convex hull implementation based on Preparata and Hong
 /// See http://code.google.com/p/bullet/issues/detail?id=275
 /// Ole Kniemeyer, MAXON Computer GmbH
-class b3ConvexHullComputer
-{
+class b3ConvexHullComputer {
 private:
-	b3Scalar compute(const void* coords, bool doubleCoords, int stride, int count, b3Scalar shrink, b3Scalar shrinkClamp);
+	b3Scalar compute(const void *coords, bool doubleCoords, int stride, int count, b3Scalar shrink, b3Scalar shrinkClamp);
 
 public:
-	class Edge
-	{
+	class Edge {
 	private:
 		int next;
 		int reverse;
@@ -37,28 +35,25 @@ public:
 		friend class b3ConvexHullComputer;
 
 	public:
-		int getSourceVertex() const
-		{
+		int getSourceVertex() const {
 			return (this + reverse)->targetVertex;
 		}
 
-		int getTargetVertex() const
-		{
+		int getTargetVertex() const {
 			return targetVertex;
 		}
 
-		const Edge* getNextEdgeOfVertex() const  // clockwise list of all edges of a vertex
+		const Edge *getNextEdgeOfVertex() const // clockwise list of all edges of a vertex
 		{
 			return this + next;
 		}
 
-		const Edge* getNextEdgeOfFace() const  // counter-clockwise list of all edges of a face
+		const Edge *getNextEdgeOfFace() const // counter-clockwise list of all edges of a face
 		{
 			return (this + reverse)->getNextEdgeOfVertex();
 		}
 
-		const Edge* getReverseEdge() const
-		{
+		const Edge *getReverseEdge() const {
 			return this + reverse;
 		}
 	};
@@ -84,16 +79,14 @@ public:
 
 		The output convex hull can be found in the member variables "vertices", "edges", "faces".
 		*/
-	b3Scalar compute(const float* coords, int stride, int count, b3Scalar shrink, b3Scalar shrinkClamp)
-	{
+	b3Scalar compute(const float *coords, int stride, int count, b3Scalar shrink, b3Scalar shrinkClamp) {
 		return compute(coords, false, stride, count, shrink, shrinkClamp);
 	}
 
 	// same as above, but double precision
-	b3Scalar compute(const double* coords, int stride, int count, b3Scalar shrink, b3Scalar shrinkClamp)
-	{
+	b3Scalar compute(const double *coords, int stride, int count, b3Scalar shrink, b3Scalar shrinkClamp) {
 		return compute(coords, true, stride, count, shrink, shrinkClamp);
 	}
 };
 
-#endif  //B3_CONVEX_HULL_COMPUTER_H
+#endif // B3_CONVEX_HULL_COMPUTER_H

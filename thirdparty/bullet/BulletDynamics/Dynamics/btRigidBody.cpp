@@ -4,8 +4,8 @@ Copyright (c) 2003-2006 Erwin Coumans  http://continuousphysics.com/Bullet/
 
 This software is provided 'as-is', without any express or implied warranty.
 In no event will the authors be held liable for any damages arising from the use of this software.
-Permission is granted to anyone to use this software for any purpose, 
-including commercial applications, and to alter it and redistribute it freely, 
+Permission is granted to anyone to use this software for any purpose,
+including commercial applications, and to alter it and redistribute it freely,
 subject to the following restrictions:
 
 1. The origin of this software must not be misrepresented; you must not claim that you wrote the original software. If you use this software in a product, an acknowledgment in the product documentation would be appreciated but is not required.
@@ -15,30 +15,27 @@ subject to the following restrictions:
 
 #include "btRigidBody.h"
 #include "BulletCollision/CollisionShapes/btConvexShape.h"
-#include "LinearMath/btMinMax.h"
-#include "LinearMath/btTransformUtil.h"
-#include "LinearMath/btMotionState.h"
 #include "BulletDynamics/ConstraintSolver/btTypedConstraint.h"
+#include "LinearMath/btMinMax.h"
+#include "LinearMath/btMotionState.h"
 #include "LinearMath/btSerializer.h"
+#include "LinearMath/btTransformUtil.h"
 
 //'temporarily' global variables
 btScalar gDeactivationTime = btScalar(2.);
 bool gDisableDeactivation = false;
 static int uniqueId = 0;
 
-btRigidBody::btRigidBody(const btRigidBody::btRigidBodyConstructionInfo& constructionInfo)
-{
+btRigidBody::btRigidBody(const btRigidBody::btRigidBodyConstructionInfo &constructionInfo) {
 	setupRigidBody(constructionInfo);
 }
 
-btRigidBody::btRigidBody(btScalar mass, btMotionState* motionState, btCollisionShape* collisionShape, const btVector3& localInertia)
-{
+btRigidBody::btRigidBody(btScalar mass, btMotionState *motionState, btCollisionShape *collisionShape, const btVector3 &localInertia) {
 	btRigidBodyConstructionInfo cinfo(mass, motionState, collisionShape, localInertia);
 	setupRigidBody(cinfo);
 }
 
-void btRigidBody::setupRigidBody(const btRigidBody::btRigidBodyConstructionInfo& constructionInfo)
-{
+void btRigidBody::setupRigidBody(const btRigidBody::btRigidBodyConstructionInfo &constructionInfo) {
 	m_internalType = CO_RIGID_BODY;
 
 	m_linearVelocity.setValue(btScalar(0.0), btScalar(0.0), btScalar(0.0));
@@ -49,7 +46,7 @@ void btRigidBody::setupRigidBody(const btRigidBody::btRigidBodyConstructionInfo&
 	m_gravity_acceleration.setValue(btScalar(0.0), btScalar(0.0), btScalar(0.0));
 	m_totalForce.setValue(btScalar(0.0), btScalar(0.0), btScalar(0.0));
 	m_totalTorque.setValue(btScalar(0.0), btScalar(0.0), btScalar(0.0)),
-		setDamping(constructionInfo.m_linearDamping, constructionInfo.m_angularDamping);
+			setDamping(constructionInfo.m_linearDamping, constructionInfo.m_angularDamping);
 
 	m_linearSleepingThreshold = constructionInfo.m_linearSleepingThreshold;
 	m_angularSleepingThreshold = constructionInfo.m_angularSleepingThreshold;
@@ -62,12 +59,9 @@ void btRigidBody::setupRigidBody(const btRigidBody::btRigidBodyConstructionInfo&
 	m_additionalAngularDampingThresholdSqr = constructionInfo.m_additionalAngularDampingThresholdSqr;
 	m_additionalAngularDampingFactor = constructionInfo.m_additionalAngularDampingFactor;
 
-	if (m_optionalMotionState)
-	{
+	if (m_optionalMotionState) {
 		m_optionalMotionState->getWorldTransform(m_worldTransform);
-	}
-	else
-	{
+	} else {
 		m_worldTransform = constructionInfo.m_startWorldTransform;
 	}
 
@@ -75,7 +69,7 @@ void btRigidBody::setupRigidBody(const btRigidBody::btRigidBodyConstructionInfo&
 	m_interpolationLinearVelocity.setValue(0, 0, 0);
 	m_interpolationAngularVelocity.setValue(0, 0, 0);
 
-	//moved to btCollisionObject
+	// moved to btCollisionObject
 	m_friction = constructionInfo.m_friction;
 	m_rollingFriction = constructionInfo.m_rollingFriction;
 	m_spinningFriction = constructionInfo.m_spinningFriction;
@@ -97,17 +91,14 @@ void btRigidBody::setupRigidBody(const btRigidBody::btRigidBodyConstructionInfo&
 	m_turnVelocity.setZero();
 }
 
-void btRigidBody::predictIntegratedTransform(btScalar timeStep, btTransform& predictedTransform)
-{
+void btRigidBody::predictIntegratedTransform(btScalar timeStep, btTransform &predictedTransform) {
 	btTransformUtil::integrateTransform(m_worldTransform, m_linearVelocity, m_angularVelocity, timeStep, predictedTransform);
 }
 
-void btRigidBody::saveKinematicState(btScalar timeStep)
-{
-	//todo: clamp to some (user definable) safe minimum timestep, to limit maximum angular/linear velocities
-	if (timeStep != btScalar(0.))
-	{
-		//if we use motionstate to synchronize world transforms, get the new kinematic/animated world transform
+void btRigidBody::saveKinematicState(btScalar timeStep) {
+	// todo: clamp to some (user definable) safe minimum timestep, to limit maximum angular/linear velocities
+	if (timeStep != btScalar(0.)) {
+		// if we use motionstate to synchronize world transforms, get the new kinematic/animated world transform
 		if (getMotionState())
 			getMotionState()->getWorldTransform(m_worldTransform);
 		btVector3 linVel, angVel;
@@ -116,26 +107,22 @@ void btRigidBody::saveKinematicState(btScalar timeStep)
 		m_interpolationLinearVelocity = m_linearVelocity;
 		m_interpolationAngularVelocity = m_angularVelocity;
 		m_interpolationWorldTransform = m_worldTransform;
-		//printf("angular = %f %f %f\n",m_angularVelocity.getX(),m_angularVelocity.getY(),m_angularVelocity.getZ());
+		// printf("angular = %f %f %f\n",m_angularVelocity.getX(),m_angularVelocity.getY(),m_angularVelocity.getZ());
 	}
 }
 
-void btRigidBody::getAabb(btVector3& aabbMin, btVector3& aabbMax) const
-{
+void btRigidBody::getAabb(btVector3 &aabbMin, btVector3 &aabbMax) const {
 	getCollisionShape()->getAabb(m_worldTransform, aabbMin, aabbMax);
 }
 
-void btRigidBody::setGravity(const btVector3& acceleration)
-{
-	if (m_inverseMass != btScalar(0.0))
-	{
+void btRigidBody::setGravity(const btVector3 &acceleration) {
+	if (m_inverseMass != btScalar(0.0)) {
 		m_gravity = acceleration * (btScalar(1.0) / m_inverseMass);
 	}
 	m_gravity_acceleration = acceleration;
 }
 
-void btRigidBody::setDamping(btScalar lin_damping, btScalar ang_damping)
-{
+void btRigidBody::setDamping(btScalar lin_damping, btScalar ang_damping) {
 #ifdef BT_USE_OLD_DAMPING_METHOD
 	m_linearDamping = btMax(lin_damping, btScalar(0.0));
 	m_angularDamping = btMax(ang_damping, btScalar(0.0));
@@ -145,11 +132,10 @@ void btRigidBody::setDamping(btScalar lin_damping, btScalar ang_damping)
 #endif
 }
 
-///applyDamping damps the velocity, using the given m_linearDamping and m_angularDamping
-void btRigidBody::applyDamping(btScalar timeStep)
-{
-	//On new damping: see discussion/issue report here: http://code.google.com/p/bullet/issues/detail?id=74
-	//todo: do some performance comparisons (but other parts of the engine are probably bottleneck anyway
+/// applyDamping damps the velocity, using the given m_linearDamping and m_angularDamping
+void btRigidBody::applyDamping(btScalar timeStep) {
+	// On new damping: see discussion/issue report here: http://code.google.com/p/bullet/issues/detail?id=74
+	// todo: do some performance comparisons (but other parts of the engine are probably bottleneck anyway
 
 #ifdef BT_USE_OLD_DAMPING_METHOD
 	m_linearVelocity *= btMax((btScalar(1.0) - timeStep * m_linearDamping), btScalar(0.0));
@@ -159,118 +145,97 @@ void btRigidBody::applyDamping(btScalar timeStep)
 	m_angularVelocity *= btPow(btScalar(1) - m_angularDamping, timeStep);
 #endif
 
-	if (m_additionalDamping)
-	{
-		//Additional damping can help avoiding lowpass jitter motion, help stability for ragdolls etc.
-		//Such damping is undesirable, so once the overall simulation quality of the rigid body dynamics system has improved, this should become obsolete
+	if (m_additionalDamping) {
+		// Additional damping can help avoiding lowpass jitter motion, help stability for ragdolls etc.
+		// Such damping is undesirable, so once the overall simulation quality of the rigid body dynamics system has improved, this should become obsolete
 		if ((m_angularVelocity.length2() < m_additionalAngularDampingThresholdSqr) &&
-			(m_linearVelocity.length2() < m_additionalLinearDampingThresholdSqr))
-		{
+				(m_linearVelocity.length2() < m_additionalLinearDampingThresholdSqr)) {
 			m_angularVelocity *= m_additionalDampingFactor;
 			m_linearVelocity *= m_additionalDampingFactor;
 		}
 
 		btScalar speed = m_linearVelocity.length();
-		if (speed < m_linearDamping)
-		{
+		if (speed < m_linearDamping) {
 			btScalar dampVel = btScalar(0.005);
-			if (speed > dampVel)
-			{
+			if (speed > dampVel) {
 				btVector3 dir = m_linearVelocity.normalized();
 				m_linearVelocity -= dir * dampVel;
-			}
-			else
-			{
+			} else {
 				m_linearVelocity.setValue(btScalar(0.), btScalar(0.), btScalar(0.));
 			}
 		}
 
 		btScalar angSpeed = m_angularVelocity.length();
-		if (angSpeed < m_angularDamping)
-		{
+		if (angSpeed < m_angularDamping) {
 			btScalar angDampVel = btScalar(0.005);
-			if (angSpeed > angDampVel)
-			{
+			if (angSpeed > angDampVel) {
 				btVector3 dir = m_angularVelocity.normalized();
 				m_angularVelocity -= dir * angDampVel;
-			}
-			else
-			{
+			} else {
 				m_angularVelocity.setValue(btScalar(0.), btScalar(0.), btScalar(0.));
 			}
 		}
 	}
 }
 
-void btRigidBody::applyGravity()
-{
+void btRigidBody::applyGravity() {
 	if (isStaticOrKinematicObject())
 		return;
 
 	applyCentralForce(m_gravity);
 }
 
-void btRigidBody::clearGravity()
-{
-    if (isStaticOrKinematicObject())
-        return;
-    
-    applyCentralForce(-m_gravity);
+void btRigidBody::clearGravity() {
+	if (isStaticOrKinematicObject())
+		return;
+
+	applyCentralForce(-m_gravity);
 }
 
-void btRigidBody::proceedToTransform(const btTransform& newTrans)
-{
+void btRigidBody::proceedToTransform(const btTransform &newTrans) {
 	setCenterOfMassTransform(newTrans);
 }
 
-void btRigidBody::setMassProps(btScalar mass, const btVector3& inertia)
-{
-	if (mass == btScalar(0.))
-	{
+void btRigidBody::setMassProps(btScalar mass, const btVector3 &inertia) {
+	if (mass == btScalar(0.)) {
 		m_collisionFlags |= btCollisionObject::CF_STATIC_OBJECT;
 		m_inverseMass = btScalar(0.);
-	}
-	else
-	{
+	} else {
 		m_collisionFlags &= (~btCollisionObject::CF_STATIC_OBJECT);
 		m_inverseMass = btScalar(1.0) / mass;
 	}
 
-	//Fg = m * a
+	// Fg = m * a
 	m_gravity = mass * m_gravity_acceleration;
 
 	m_invInertiaLocal.setValue(inertia.x() != btScalar(0.0) ? btScalar(1.0) / inertia.x() : btScalar(0.0),
-							   inertia.y() != btScalar(0.0) ? btScalar(1.0) / inertia.y() : btScalar(0.0),
-							   inertia.z() != btScalar(0.0) ? btScalar(1.0) / inertia.z() : btScalar(0.0));
+			inertia.y() != btScalar(0.0) ? btScalar(1.0) / inertia.y() : btScalar(0.0),
+			inertia.z() != btScalar(0.0) ? btScalar(1.0) / inertia.z() : btScalar(0.0));
 
 	m_invMass = m_linearFactor * m_inverseMass;
 }
 
-void btRigidBody::updateInertiaTensor()
-{
+void btRigidBody::updateInertiaTensor() {
 	m_invInertiaTensorWorld = m_worldTransform.getBasis().scaled(m_invInertiaLocal) * m_worldTransform.getBasis().transpose();
 }
 
-btVector3 btRigidBody::getLocalInertia() const
-{
+btVector3 btRigidBody::getLocalInertia() const {
 	btVector3 inertiaLocal;
 	const btVector3 inertia = m_invInertiaLocal;
 	inertiaLocal.setValue(inertia.x() != btScalar(0.0) ? btScalar(1.0) / inertia.x() : btScalar(0.0),
-						  inertia.y() != btScalar(0.0) ? btScalar(1.0) / inertia.y() : btScalar(0.0),
-						  inertia.z() != btScalar(0.0) ? btScalar(1.0) / inertia.z() : btScalar(0.0));
+			inertia.y() != btScalar(0.0) ? btScalar(1.0) / inertia.y() : btScalar(0.0),
+			inertia.z() != btScalar(0.0) ? btScalar(1.0) / inertia.z() : btScalar(0.0));
 	return inertiaLocal;
 }
 
-inline btVector3 evalEulerEqn(const btVector3& w1, const btVector3& w0, const btVector3& T, const btScalar dt,
-							  const btMatrix3x3& I)
-{
+inline btVector3 evalEulerEqn(const btVector3 &w1, const btVector3 &w0, const btVector3 &T, const btScalar dt,
+		const btMatrix3x3 &I) {
 	const btVector3 w2 = I * w1 + w1.cross(I * w1) * dt - (T * dt + I * w0);
 	return w2;
 }
 
-inline btMatrix3x3 evalEulerEqnDeriv(const btVector3& w1, const btVector3& w0, const btScalar dt,
-									 const btMatrix3x3& I)
-{
+inline btMatrix3x3 evalEulerEqnDeriv(const btVector3 &w1, const btVector3 &w0, const btScalar dt,
+		const btMatrix3x3 &I) {
 	btMatrix3x3 w1x, Iw1x;
 	const btVector3 Iwi = (I * w1);
 	w1.getSkewSymmetricMatrix(&w1x[0], &w1x[1], &w1x[2]);
@@ -280,22 +245,19 @@ inline btMatrix3x3 evalEulerEqnDeriv(const btVector3& w1, const btVector3& w0, c
 	return dfw1;
 }
 
-btVector3 btRigidBody::computeGyroscopicForceExplicit(btScalar maxGyroscopicForce) const
-{
+btVector3 btRigidBody::computeGyroscopicForceExplicit(btScalar maxGyroscopicForce) const {
 	btVector3 inertiaLocal = getLocalInertia();
 	btMatrix3x3 inertiaTensorWorld = getWorldTransform().getBasis().scaled(inertiaLocal) * getWorldTransform().getBasis().transpose();
 	btVector3 tmp = inertiaTensorWorld * getAngularVelocity();
 	btVector3 gf = getAngularVelocity().cross(tmp);
 	btScalar l2 = gf.length2();
-	if (l2 > maxGyroscopicForce * maxGyroscopicForce)
-	{
+	if (l2 > maxGyroscopicForce * maxGyroscopicForce) {
 		gf *= btScalar(1.) / btSqrt(l2) * maxGyroscopicForce;
 	}
 	return gf;
 }
 
-btVector3 btRigidBody::computeGyroscopicImpulseImplicit_Body(btScalar step) const
-{
+btVector3 btRigidBody::computeGyroscopicImpulseImplicit_Body(btScalar step) const {
 	btVector3 idl = getLocalInertia();
 	btVector3 omega1 = getAngularVelocity();
 	btQuaternion q = getWorldTransform().getRotation();
@@ -304,8 +266,8 @@ btVector3 btRigidBody::computeGyroscopicImpulseImplicit_Body(btScalar step) cons
 	btVector3 omegab = quatRotate(q.inverse(), omega1);
 	btMatrix3x3 Ib;
 	Ib.setValue(idl.x(), 0, 0,
-				0, idl.y(), 0,
-				0, 0, idl.z());
+			0, idl.y(), 0,
+			0, 0, idl.z());
 
 	btVector3 ibo = Ib * omegab;
 
@@ -326,15 +288,14 @@ btVector3 btRigidBody::computeGyroscopicImpulseImplicit_Body(btScalar step) cons
 	btVector3 omega_div = J.solve33(f);
 
 	// Single Newton-Raphson update
-	omegab = omegab - omega_div;  //Solve33(J, f);
+	omegab = omegab - omega_div; // Solve33(J, f);
 	// Back to world coordinates
 	btVector3 omega2 = quatRotate(q, omegab);
 	btVector3 gf = omega2 - omega1;
 	return gf;
 }
 
-btVector3 btRigidBody::computeGyroscopicImpulseImplicit_World(btScalar step) const
-{
+btVector3 btRigidBody::computeGyroscopicImpulseImplicit_World(btScalar step) const {
 	// use full newton-euler equations.  common practice to drop the wxIw term. want it for better tumbling behavior.
 	// calculate using implicit euler step so it's stable.
 
@@ -359,8 +320,8 @@ btVector3 btRigidBody::computeGyroscopicImpulseImplicit_World(btScalar step) con
 
 		btVector3 dw;
 		dw = dfw.solve33(fw);
-		//const btMatrix3x3 dfw_inv = dfw.inverse();
-		//dw = dfw_inv*fw;
+		// const btMatrix3x3 dfw_inv = dfw.inverse();
+		// dw = dfw_inv*fw;
 
 		w1 -= dw;
 	}
@@ -369,8 +330,7 @@ btVector3 btRigidBody::computeGyroscopicImpulseImplicit_World(btScalar step) con
 	return gf;
 }
 
-void btRigidBody::integrateVelocities(btScalar step)
-{
+void btRigidBody::integrateVelocities(btScalar step) {
 	if (isStaticOrKinematicObject())
 		return;
 
@@ -380,27 +340,21 @@ void btRigidBody::integrateVelocities(btScalar step)
 #define MAX_ANGVEL SIMD_HALF_PI
 	/// clamp angular velocity. collision calculations will fail on higher angular velocities
 	btScalar angvel = m_angularVelocity.length();
-	if (angvel * step > MAX_ANGVEL)
-	{
+	if (angvel * step > MAX_ANGVEL) {
 		m_angularVelocity *= (MAX_ANGVEL / step) / angvel;
 	}
 }
 
-btQuaternion btRigidBody::getOrientation() const
-{
+btQuaternion btRigidBody::getOrientation() const {
 	btQuaternion orn;
 	m_worldTransform.getBasis().getRotation(orn);
 	return orn;
 }
 
-void btRigidBody::setCenterOfMassTransform(const btTransform& xform)
-{
-	if (isKinematicObject())
-	{
+void btRigidBody::setCenterOfMassTransform(const btTransform &xform) {
+	if (isKinematicObject()) {
 		m_interpolationWorldTransform = m_worldTransform;
-	}
-	else
-	{
+	} else {
 		m_interpolationWorldTransform = xform;
 	}
 	m_interpolationLinearVelocity = getLinearVelocity();
@@ -409,59 +363,47 @@ void btRigidBody::setCenterOfMassTransform(const btTransform& xform)
 	updateInertiaTensor();
 }
 
-void btRigidBody::addConstraintRef(btTypedConstraint* c)
-{
-	///disable collision with the 'other' body
+void btRigidBody::addConstraintRef(btTypedConstraint *c) {
+	/// disable collision with the 'other' body
 
 	int index = m_constraintRefs.findLinearSearch(c);
-	//don't add constraints that are already referenced
-	//btAssert(index == m_constraintRefs.size());
-	if (index == m_constraintRefs.size())
-	{
+	// don't add constraints that are already referenced
+	// btAssert(index == m_constraintRefs.size());
+	if (index == m_constraintRefs.size()) {
 		m_constraintRefs.push_back(c);
-		btCollisionObject* colObjA = &c->getRigidBodyA();
-		btCollisionObject* colObjB = &c->getRigidBodyB();
-		if (colObjA == this)
-		{
+		btCollisionObject *colObjA = &c->getRigidBodyA();
+		btCollisionObject *colObjB = &c->getRigidBodyB();
+		if (colObjA == this) {
 			colObjA->setIgnoreCollisionCheck(colObjB, true);
-		}
-		else
-		{
+		} else {
 			colObjB->setIgnoreCollisionCheck(colObjA, true);
 		}
 	}
 }
 
-void btRigidBody::removeConstraintRef(btTypedConstraint* c)
-{
+void btRigidBody::removeConstraintRef(btTypedConstraint *c) {
 	int index = m_constraintRefs.findLinearSearch(c);
-	//don't remove constraints that are not referenced
-	if (index < m_constraintRefs.size())
-	{
+	// don't remove constraints that are not referenced
+	if (index < m_constraintRefs.size()) {
 		m_constraintRefs.remove(c);
-		btCollisionObject* colObjA = &c->getRigidBodyA();
-		btCollisionObject* colObjB = &c->getRigidBodyB();
-		if (colObjA == this)
-		{
+		btCollisionObject *colObjA = &c->getRigidBodyA();
+		btCollisionObject *colObjB = &c->getRigidBodyB();
+		if (colObjA == this) {
 			colObjA->setIgnoreCollisionCheck(colObjB, false);
-		}
-		else
-		{
+		} else {
 			colObjB->setIgnoreCollisionCheck(colObjA, false);
 		}
 	}
 }
 
-int btRigidBody::calculateSerializeBufferSize() const
-{
+int btRigidBody::calculateSerializeBufferSize() const {
 	int sz = sizeof(btRigidBodyData);
 	return sz;
 }
 
-///fills the dataBuffer and returns the struct name (and 0 on failure)
-const char* btRigidBody::serialize(void* dataBuffer, class btSerializer* serializer) const
-{
-	btRigidBodyData* rbd = (btRigidBodyData*)dataBuffer;
+/// fills the dataBuffer and returns the struct name (and 0 on failure)
+const char *btRigidBody::serialize(void *dataBuffer, class btSerializer *serializer) const {
+	btRigidBodyData *rbd = (btRigidBodyData *)dataBuffer;
 
 	btCollisionObject::serialize(&rbd->m_collisionObjectData, serializer);
 
@@ -494,9 +436,8 @@ const char* btRigidBody::serialize(void* dataBuffer, class btSerializer* seriali
 	return btRigidBodyDataName;
 }
 
-void btRigidBody::serializeSingleObject(class btSerializer* serializer) const
-{
-	btChunk* chunk = serializer->allocate(calculateSerializeBufferSize(), 1);
-	const char* structType = serialize(chunk->m_oldPtr, serializer);
-	serializer->finalizeChunk(chunk, structType, BT_RIGIDBODY_CODE, (void*)this);
+void btRigidBody::serializeSingleObject(class btSerializer *serializer) const {
+	btChunk *chunk = serializer->allocate(calculateSerializeBufferSize(), 1);
+	const char *structType = serialize(chunk->m_oldPtr, serializer);
+	serializer->finalizeChunk(chunk, structType, BT_RIGIDBODY_CODE, (void *)this);
 }

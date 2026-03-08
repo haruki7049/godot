@@ -4,8 +4,8 @@ Copyright (c) 2003-2006 Erwin Coumans  http://continuousphysics.com/Bullet/
 
 This software is provided 'as-is', without any express or implied warranty.
 In no event will the authors be held liable for any damages arising from the use of this software.
-Permission is granted to anyone to use this software for any purpose, 
-including commercial applications, and to alter it and redistribute it freely, 
+Permission is granted to anyone to use this software for any purpose,
+including commercial applications, and to alter it and redistribute it freely,
 subject to the following restrictions:
 
 1. The origin of this software must not be misrepresented; you must not claim that you wrote the original software. If you use this software in a product, an acknowledgment in the product documentation would be appreciated but is not required.
@@ -20,19 +20,16 @@ subject to the following restrictions:
 
 #define VORONOI_SIMPLEX_MAX_VERTS 5
 
-///disable next define, or use defaultCollisionConfiguration->getSimplexSolver()->setEqualVertexThreshold(0.f) to disable/configure
-//#define BT_USE_EQUAL_VERTEX_THRESHOLD
+/// disable next define, or use defaultCollisionConfiguration->getSimplexSolver()->setEqualVertexThreshold(0.f) to disable/configure
+// #define BT_USE_EQUAL_VERTEX_THRESHOLD
 #define VORONOI_DEFAULT_EQUAL_VERTEX_THRESHOLD 0.0001f
 
-struct b3UsageBitfield
-{
-	b3UsageBitfield()
-	{
+struct b3UsageBitfield {
+	b3UsageBitfield() {
 		reset();
 	}
 
-	void reset()
-	{
+	void reset() {
 		usedVertexA = false;
 		usedVertexB = false;
 		usedVertexC = false;
@@ -48,24 +45,21 @@ struct b3UsageBitfield
 	unsigned short unused4 : 1;
 };
 
-struct b3SubSimplexClosestResult
-{
+struct b3SubSimplexClosestResult {
 	b3Vector3 m_closestPointOnSimplex;
-	//MASK for m_usedVertices
-	//stores the simplex vertex-usage, using the MASK,
-	// if m_usedVertices & MASK then the related vertex is used
+	// MASK for m_usedVertices
+	// stores the simplex vertex-usage, using the MASK,
+	//  if m_usedVertices & MASK then the related vertex is used
 	b3UsageBitfield m_usedVertices;
 	b3Scalar m_barycentricCoords[4];
 	bool m_degenerate;
 
-	void reset()
-	{
+	void reset() {
 		m_degenerate = false;
 		setBarycentricCoordinates();
 		m_usedVertices.reset();
 	}
-	bool isValid()
-	{
+	bool isValid() {
 		bool valid = (m_barycentricCoords[0] >= b3Scalar(0.)) &&
 					 (m_barycentricCoords[1] >= b3Scalar(0.)) &&
 					 (m_barycentricCoords[2] >= b3Scalar(0.)) &&
@@ -73,8 +67,7 @@ struct b3SubSimplexClosestResult
 
 		return valid;
 	}
-	void setBarycentricCoordinates(b3Scalar a = b3Scalar(0.), b3Scalar b = b3Scalar(0.), b3Scalar c = b3Scalar(0.), b3Scalar d = b3Scalar(0.))
-	{
+	void setBarycentricCoordinates(b3Scalar a = b3Scalar(0.), b3Scalar b = b3Scalar(0.), b3Scalar c = b3Scalar(0.), b3Scalar d = b3Scalar(0.)) {
 		m_barycentricCoords[0] = a;
 		m_barycentricCoords[1] = b;
 		m_barycentricCoords[2] = c;
@@ -86,8 +79,7 @@ struct b3SubSimplexClosestResult
 /// Can be used with GJK, as an alternative to Johnson distance algorithm.
 
 B3_ATTRIBUTE_ALIGNED16(class)
-b3VoronoiSimplexSolver
-{
+b3VoronoiSimplexSolver {
 public:
 	B3_DECLARE_ALIGNED_ALLOCATOR();
 
@@ -110,29 +102,25 @@ public:
 	bool m_needsUpdate;
 
 	void removeVertex(int index);
-	void reduceVertices(const b3UsageBitfield& usedVerts);
+	void reduceVertices(const b3UsageBitfield &usedVerts);
 	bool updateClosestVectorAndPoints();
 
-	bool closestPtPointTetrahedron(const b3Vector3& p, const b3Vector3& a, const b3Vector3& b, const b3Vector3& c, const b3Vector3& d, b3SubSimplexClosestResult& finalResult);
-	int pointOutsideOfPlane(const b3Vector3& p, const b3Vector3& a, const b3Vector3& b, const b3Vector3& c, const b3Vector3& d);
-	bool closestPtPointTriangle(const b3Vector3& p, const b3Vector3& a, const b3Vector3& b, const b3Vector3& c, b3SubSimplexClosestResult& result);
+	bool closestPtPointTetrahedron(const b3Vector3 &p, const b3Vector3 &a, const b3Vector3 &b, const b3Vector3 &c, const b3Vector3 &d, b3SubSimplexClosestResult &finalResult);
+	int pointOutsideOfPlane(const b3Vector3 &p, const b3Vector3 &a, const b3Vector3 &b, const b3Vector3 &c, const b3Vector3 &d);
+	bool closestPtPointTriangle(const b3Vector3 &p, const b3Vector3 &a, const b3Vector3 &b, const b3Vector3 &c, b3SubSimplexClosestResult &result);
 
 public:
-	b3VoronoiSimplexSolver()
-		: m_equalVertexThreshold(VORONOI_DEFAULT_EQUAL_VERTEX_THRESHOLD)
-	{
+	b3VoronoiSimplexSolver() : m_equalVertexThreshold(VORONOI_DEFAULT_EQUAL_VERTEX_THRESHOLD) {
 	}
 	void reset();
 
-	void addVertex(const b3Vector3& w, const b3Vector3& p, const b3Vector3& q);
+	void addVertex(const b3Vector3 &w, const b3Vector3 &p, const b3Vector3 &q);
 
-	void setEqualVertexThreshold(b3Scalar threshold)
-	{
+	void setEqualVertexThreshold(b3Scalar threshold) {
 		m_equalVertexThreshold = threshold;
 	}
 
-	b3Scalar getEqualVertexThreshold() const
-	{
+	b3Scalar getEqualVertexThreshold() const {
 		return m_equalVertexThreshold;
 	}
 
@@ -140,14 +128,13 @@ public:
 
 	b3Scalar maxVertex();
 
-	bool fullSimplex() const
-	{
+	bool fullSimplex() const {
 		return (m_numVertices == 4);
 	}
 
 	int getSimplex(b3Vector3 * pBuf, b3Vector3 * qBuf, b3Vector3 * yBuf) const;
 
-	bool inSimplex(const b3Vector3& w);
+	bool inSimplex(const b3Vector3 &w);
 
 	void backup_closest(b3Vector3 & v);
 
@@ -155,10 +142,9 @@ public:
 
 	void compute_points(b3Vector3 & p1, b3Vector3 & p2);
 
-	int numVertices() const
-	{
+	int numVertices() const {
 		return m_numVertices;
 	}
 };
 
-#endif  //B3_VORONOI_SIMPLEX_SOLVER_H
+#endif // B3_VORONOI_SIMPLEX_SOLVER_H

@@ -4,8 +4,8 @@ Copyright (c) 2003-2006 Erwin Coumans  http://continuousphysics.com/Bullet/
 
 This software is provided 'as-is', without any express or implied warranty.
 In no event will the authors be held liable for any damages arising from the use of this software.
-Permission is granted to anyone to use this software for any purpose, 
-including commercial applications, and to alter it and redistribute it freely, 
+Permission is granted to anyone to use this software for any purpose,
+including commercial applications, and to alter it and redistribute it freely,
 subject to the following restrictions:
 
 1. The origin of this software must not be misrepresented; you must not claim that you wrote the original software. If you use this software in a product, an acknowledgment in the product documentation would be appreciated but is not required.
@@ -25,18 +25,16 @@ class btVertexBufferDescriptor;
 class btCollisionObject;
 class btSoftBody;
 
-class btSoftBodySolver
-{
+class btSoftBodySolver {
 public:
-	enum SolverTypes
-	{
+	enum SolverTypes {
 		DEFAULT_SOLVER,
 		CPU_SOLVER,
 		CL_SOLVER,
 		CL_SIMD_SOLVER,
 		DX_SOLVER,
 		DX_SIMD_SOLVER,
-        DEFORMABLE_SOLVER
+		DEFORMABLE_SOLVER
 	};
 
 protected:
@@ -47,14 +45,12 @@ protected:
 
 public:
 	btSoftBodySolver() : m_numberOfPositionIterations(10),
-						 m_timeScale(1)
-	{
+						 m_timeScale(1) {
 		m_numberOfVelocityIterations = 0;
 		m_numberOfPositionIterations = 5;
 	}
 
-	virtual ~btSoftBodySolver()
-	{
+	virtual ~btSoftBodySolver() {
 	}
 
 	/**
@@ -87,32 +83,27 @@ public:
 	virtual void processCollision(btSoftBody *, btSoftBody *) = 0;
 
 	/** Set the number of velocity constraint solver iterations this solver uses. */
-	virtual void setNumberOfPositionIterations(int iterations)
-	{
+	virtual void setNumberOfPositionIterations(int iterations) {
 		m_numberOfPositionIterations = iterations;
 	}
 
 	/** Get the number of velocity constraint solver iterations this solver uses. */
-	virtual int getNumberOfPositionIterations()
-	{
+	virtual int getNumberOfPositionIterations() {
 		return m_numberOfPositionIterations;
 	}
 
 	/** Set the number of velocity constraint solver iterations this solver uses. */
-	virtual void setNumberOfVelocityIterations(int iterations)
-	{
+	virtual void setNumberOfVelocityIterations(int iterations) {
 		m_numberOfVelocityIterations = iterations;
 	}
 
 	/** Get the number of velocity constraint solver iterations this solver uses. */
-	virtual int getNumberOfVelocityIterations()
-	{
+	virtual int getNumberOfVelocityIterations() {
 		return m_numberOfVelocityIterations;
 	}
 
 	/** Return the timescale that the simulation is using */
-	float getTimeScale()
-	{
+	float getTimeScale() {
 		return m_timeScale;
 	}
 
@@ -124,24 +115,21 @@ public:
 #endif
 };
 
-/** 
+/**
  * Class to manage movement of data from a solver to a given target.
  * This version is abstract. Subclasses will have custom pairings for different combinations.
  */
-class btSoftBodySolverOutput
-{
+class btSoftBodySolverOutput {
 protected:
 public:
-	btSoftBodySolverOutput()
-	{
+	btSoftBodySolverOutput() {
 	}
 
-	virtual ~btSoftBodySolverOutput()
-	{
+	virtual ~btSoftBodySolverOutput() {
 	}
 
 	/** Output current computed vertex data to the vertex buffers for all cloths in the solver. */
 	virtual void copySoftBodyToVertexBuffer(const btSoftBody *const softBody, btVertexBufferDescriptor *vertexBuffer) = 0;
 };
 
-#endif  // #ifndef BT_SOFT_BODY_SOLVERS_H
+#endif // #ifndef BT_SOFT_BODY_SOLVERS_H

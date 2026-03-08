@@ -25,31 +25,30 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
 ***********************************************************************/
 #ifdef HAVE_CONFIG_H
-# include "config.h"
+#include "config.h"
 #endif
 
 #include "NSQ.h"
 
 #if defined(OPUS_HAVE_RTCD)
 
-# if (defined(OPUS_ARM_MAY_HAVE_NEON_INTR) && \
- !defined(OPUS_ARM_PRESUME_NEON_INTR))
+#if (defined(OPUS_ARM_MAY_HAVE_NEON_INTR) && \
+		!defined(OPUS_ARM_PRESUME_NEON_INTR))
 
 /*There is no table for silk_noise_shape_quantizer_short_prediction because the
    NEON version takes different parameters than the C version.
   Instead RTCD is done via if statements at the call sites.
   See NSQ_neon.h for details.*/
 
-opus_int32
- (*const SILK_NSQ_NOISE_SHAPE_FEEDBACK_LOOP_IMPL[OPUS_ARCHMASK+1])(
- const opus_int32 *data0, opus_int32 *data1, const opus_int16 *coef,
- opus_int order) = {
-  silk_NSQ_noise_shape_feedback_loop_c,    /* ARMv4 */
-  silk_NSQ_noise_shape_feedback_loop_c,    /* EDSP */
-  silk_NSQ_noise_shape_feedback_loop_c,    /* Media */
-  silk_NSQ_noise_shape_feedback_loop_neon, /* NEON */
+opus_int32 (*const SILK_NSQ_NOISE_SHAPE_FEEDBACK_LOOP_IMPL[OPUS_ARCHMASK + 1])(
+		const opus_int32 *data0, opus_int32 *data1, const opus_int16 *coef,
+		opus_int order) = {
+	silk_NSQ_noise_shape_feedback_loop_c, /* ARMv4 */
+	silk_NSQ_noise_shape_feedback_loop_c, /* EDSP */
+	silk_NSQ_noise_shape_feedback_loop_c, /* Media */
+	silk_NSQ_noise_shape_feedback_loop_neon, /* NEON */
 };
 
-# endif
+#endif
 
 #endif /* OPUS_HAVE_RTCD */

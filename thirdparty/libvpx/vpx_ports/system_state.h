@@ -14,9 +14,9 @@
 #include "./vpx_config.h"
 
 #if defined(WEBM_X86ASM) && (ARCH_X86 || ARCH_X86_64)
-	void vpx_reset_mmx_state(void);
-	#define vpx_clear_system_state() vpx_reset_mmx_state()
+void vpx_reset_mmx_state(void);
+#define vpx_clear_system_state() vpx_reset_mmx_state()
 #else
-	#define vpx_clear_system_state()
-#endif  // ARCH_X86 || ARCH_X86_64
-#endif  // VPX_PORTS_SYSTEM_STATE_H_
+#define vpx_clear_system_state()
+#endif // ARCH_X86 || ARCH_X86_64
+#endif // VPX_PORTS_SYSTEM_STATE_H_

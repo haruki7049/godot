@@ -18,8 +18,7 @@ subject to the following restrictions:
 
 #ifdef __cplusplus
 
-struct b3UnsignedInt2
-{
+struct b3UnsignedInt2 {
 	union {
 		struct
 		{
@@ -32,8 +31,7 @@ struct b3UnsignedInt2
 	};
 };
 
-struct b3Int2
-{
+struct b3Int2 {
 	union {
 		struct
 		{
@@ -46,8 +44,7 @@ struct b3Int2
 	};
 };
 
-inline b3Int2 b3MakeInt2(int x, int y)
-{
+inline b3Int2 b3MakeInt2(int x, int y) {
 	b3Int2 v;
 	v.s[0] = x;
 	v.s[1] = y;
@@ -59,5 +56,5 @@ inline b3Int2 b3MakeInt2(int x, int y)
 #define b3Int2 int2
 #define b3MakeInt2 (int2)
 
-#endif  //__cplusplus
+#endif //__cplusplus
 #endif

@@ -52,10 +52,9 @@ class btRigidBody;
 #else
 #define btGeneric6DofSpring2ConstraintData2 btGeneric6DofSpring2ConstraintData
 #define btGeneric6DofSpring2ConstraintDataName "btGeneric6DofSpring2ConstraintData"
-#endif  //BT_USE_DOUBLE_PRECISION
+#endif // BT_USE_DOUBLE_PRECISION
 
-enum RotateOrder
-{
+enum RotateOrder {
 	RO_XYZ = 0,
 	RO_XZY,
 	RO_YXZ,
@@ -64,8 +63,7 @@ enum RotateOrder
 	RO_ZYX
 };
 
-class btRotationalLimitMotor2
-{
+class btRotationalLimitMotor2 {
 public:
 	// upper < lower means free
 	// upper == lower means locked
@@ -94,8 +92,7 @@ public:
 	btScalar m_currentPosition;
 	int m_currentLimit;
 
-	btRotationalLimitMotor2()
-	{
+	btRotationalLimitMotor2() {
 		m_loLimit = 1.0f;
 		m_hiLimit = -1.0f;
 		m_bounce = 0.0f;
@@ -121,8 +118,7 @@ public:
 		m_currentLimit = 0;
 	}
 
-	btRotationalLimitMotor2(const btRotationalLimitMotor2& limot)
-	{
+	btRotationalLimitMotor2(const btRotationalLimitMotor2 &limot) {
 		m_loLimit = limot.m_loLimit;
 		m_hiLimit = limot.m_hiLimit;
 		m_bounce = limot.m_bounce;
@@ -148,17 +144,16 @@ public:
 		m_currentLimit = limot.m_currentLimit;
 	}
 
-	bool isLimited()
-	{
-		if (m_loLimit > m_hiLimit) return false;
+	bool isLimited() {
+		if (m_loLimit > m_hiLimit)
+			return false;
 		return true;
 	}
 
 	void testLimitValue(btScalar test_value);
 };
 
-class btTranslationalLimitMotor2
-{
+class btTranslationalLimitMotor2 {
 public:
 	// upper < lower means free
 	// upper == lower means locked
@@ -187,8 +182,7 @@ public:
 	btVector3 m_currentLinearDiff;
 	int m_currentLimit[3];
 
-	btTranslationalLimitMotor2()
-	{
+	btTranslationalLimitMotor2() {
 		m_lowerLimit.setValue(0.f, 0.f, 0.f);
 		m_upperLimit.setValue(0.f, 0.f, 0.f);
 		m_bounce.setValue(0.f, 0.f, 0.f);
@@ -201,8 +195,7 @@ public:
 		m_currentLimitErrorHi.setValue(0.f, 0.f, 0.f);
 		m_currentLinearDiff.setValue(0.f, 0.f, 0.f);
 
-		for (int i = 0; i < 3; i++)
-		{
+		for (int i = 0; i < 3; i++) {
 			m_enableMotor[i] = false;
 			m_servoMotor[i] = false;
 			m_enableSpring[i] = false;
@@ -219,8 +212,7 @@ public:
 		}
 	}
 
-	btTranslationalLimitMotor2(const btTranslationalLimitMotor2& other)
-	{
+	btTranslationalLimitMotor2(const btTranslationalLimitMotor2 &other) {
 		m_lowerLimit = other.m_lowerLimit;
 		m_upperLimit = other.m_upperLimit;
 		m_bounce = other.m_bounce;
@@ -233,8 +225,7 @@ public:
 		m_currentLimitErrorHi = other.m_currentLimitErrorHi;
 		m_currentLinearDiff = other.m_currentLinearDiff;
 
-		for (int i = 0; i < 3; i++)
-		{
+		for (int i = 0; i < 3; i++) {
 			m_enableMotor[i] = other.m_enableMotor[i];
 			m_servoMotor[i] = other.m_servoMotor[i];
 			m_enableSpring[i] = other.m_enableSpring[i];
@@ -251,26 +242,23 @@ public:
 		}
 	}
 
-	inline bool isLimited(int limitIndex)
-	{
+	inline bool isLimited(int limitIndex) {
 		return (m_upperLimit[limitIndex] >= m_lowerLimit[limitIndex]);
 	}
 
 	void testLimitValue(int limitIndex, btScalar test_value);
 };
 
-enum bt6DofFlags2
-{
+enum bt6DofFlags2 {
 	BT_6DOF_FLAGS_CFM_STOP2 = 1,
 	BT_6DOF_FLAGS_ERP_STOP2 = 2,
 	BT_6DOF_FLAGS_CFM_MOTO2 = 4,
 	BT_6DOF_FLAGS_ERP_MOTO2 = 8,
 };
-#define BT_6DOF_FLAGS_AXIS_SHIFT2 4  // bits per axis
+#define BT_6DOF_FLAGS_AXIS_SHIFT2 4 // bits per axis
 
 ATTRIBUTE_ALIGNED16(class)
-btGeneric6DofSpring2Constraint : public btTypedConstraint
-{
+btGeneric6DofSpring2Constraint : public btTypedConstraint {
 protected:
 	btTransform m_frameInA;
 	btTransform m_frameInB;
@@ -294,129 +282,146 @@ protected:
 	bool m_hasStaticBody;
 	int m_flags;
 
-	btGeneric6DofSpring2Constraint& operator=(const btGeneric6DofSpring2Constraint&)
-	{
+	btGeneric6DofSpring2Constraint &operator=(const btGeneric6DofSpring2Constraint &) {
 		btAssert(0);
 		return *this;
 	}
 
-	int setAngularLimits(btConstraintInfo2 * info, int row_offset, const btTransform& transA, const btTransform& transB, const btVector3& linVelA, const btVector3& linVelB, const btVector3& angVelA, const btVector3& angVelB);
-	int setLinearLimits(btConstraintInfo2 * info, int row, const btTransform& transA, const btTransform& transB, const btVector3& linVelA, const btVector3& linVelB, const btVector3& angVelA, const btVector3& angVelB);
+	int setAngularLimits(btConstraintInfo2 * info, int row_offset, const btTransform &transA, const btTransform &transB, const btVector3 &linVelA, const btVector3 &linVelB, const btVector3 &angVelA, const btVector3 &angVelB);
+	int setLinearLimits(btConstraintInfo2 * info, int row, const btTransform &transA, const btTransform &transB, const btVector3 &linVelA, const btVector3 &linVelB, const btVector3 &angVelA, const btVector3 &angVelB);
 
 	void calculateLinearInfo();
 	void calculateAngleInfo();
 	void testAngularLimitMotor(int axis_index);
 
-	void calculateJacobi(btRotationalLimitMotor2 * limot, const btTransform& transA, const btTransform& transB, btConstraintInfo2* info, int srow, btVector3& ax1, int rotational, int rotAllowed);
+	void calculateJacobi(btRotationalLimitMotor2 * limot, const btTransform &transA, const btTransform &transB, btConstraintInfo2 *info, int srow, btVector3 &ax1, int rotational, int rotAllowed);
 	int get_limit_motor_info2(btRotationalLimitMotor2 * limot,
-							  const btTransform& transA, const btTransform& transB, const btVector3& linVelA, const btVector3& linVelB, const btVector3& angVelA, const btVector3& angVelB,
-							  btConstraintInfo2* info, int row, btVector3& ax1, int rotational, int rotAllowed = false);
+			const btTransform &transA, const btTransform &transB, const btVector3 &linVelA, const btVector3 &linVelB, const btVector3 &angVelA, const btVector3 &angVelB,
+			btConstraintInfo2 *info, int row, btVector3 &ax1, int rotational, int rotAllowed = false);
 
 public:
 	BT_DECLARE_ALIGNED_ALLOCATOR();
 
-	btGeneric6DofSpring2Constraint(btRigidBody & rbA, btRigidBody & rbB, const btTransform& frameInA, const btTransform& frameInB, RotateOrder rotOrder = RO_XYZ);
-	btGeneric6DofSpring2Constraint(btRigidBody & rbB, const btTransform& frameInB, RotateOrder rotOrder = RO_XYZ);
+	btGeneric6DofSpring2Constraint(btRigidBody & rbA, btRigidBody & rbB, const btTransform &frameInA, const btTransform &frameInB, RotateOrder rotOrder = RO_XYZ);
+	btGeneric6DofSpring2Constraint(btRigidBody & rbB, const btTransform &frameInB, RotateOrder rotOrder = RO_XYZ);
 
 	virtual void buildJacobian() {}
 	virtual void getInfo1(btConstraintInfo1 * info);
 	virtual void getInfo2(btConstraintInfo2 * info);
 	virtual int calculateSerializeBufferSize() const;
-	virtual const char* serialize(void* dataBuffer, btSerializer* serializer) const;
+	virtual const char *serialize(void *dataBuffer, btSerializer *serializer) const;
 
-	btRotationalLimitMotor2* getRotationalLimitMotor(int index) { return &m_angularLimits[index]; }
-	btTranslationalLimitMotor2* getTranslationalLimitMotor() { return &m_linearLimits; }
+	btRotationalLimitMotor2 *getRotationalLimitMotor(int index) {
+		return &m_angularLimits[index];
+	}
+	btTranslationalLimitMotor2 *getTranslationalLimitMotor() {
+		return &m_linearLimits;
+	}
 
 	// Calculates the global transform for the joint offset for body A an B, and also calculates the angle differences between the bodies.
-	void calculateTransforms(const btTransform& transA, const btTransform& transB);
+	void calculateTransforms(const btTransform &transA, const btTransform &transB);
 	void calculateTransforms();
 
 	// Gets the global transform of the offset for body A
-	const btTransform& getCalculatedTransformA() const { return m_calculatedTransformA; }
+	const btTransform &getCalculatedTransformA() const {
+		return m_calculatedTransformA;
+	}
 	// Gets the global transform of the offset for body B
-	const btTransform& getCalculatedTransformB() const { return m_calculatedTransformB; }
+	const btTransform &getCalculatedTransformB() const {
+		return m_calculatedTransformB;
+	}
 
-	const btTransform& getFrameOffsetA() const { return m_frameInA; }
-	const btTransform& getFrameOffsetB() const { return m_frameInB; }
+	const btTransform &getFrameOffsetA() const {
+		return m_frameInA;
+	}
+	const btTransform &getFrameOffsetB() const {
+		return m_frameInB;
+	}
 
-	btTransform& getFrameOffsetA() { return m_frameInA; }
-	btTransform& getFrameOffsetB() { return m_frameInB; }
+	btTransform &getFrameOffsetA() {
+		return m_frameInA;
+	}
+	btTransform &getFrameOffsetB() {
+		return m_frameInB;
+	}
 
 	// Get the rotation axis in global coordinates ( btGeneric6DofSpring2Constraint::calculateTransforms() must be called previously )
-	btVector3 getAxis(int axis_index) const { return m_calculatedAxis[axis_index]; }
+	btVector3 getAxis(int axis_index) const {
+		return m_calculatedAxis[axis_index];
+	}
 
 	// Get the relative Euler angle ( btGeneric6DofSpring2Constraint::calculateTransforms() must be called previously )
-	btScalar getAngle(int axis_index) const { return m_calculatedAxisAngleDiff[axis_index]; }
+	btScalar getAngle(int axis_index) const {
+		return m_calculatedAxisAngleDiff[axis_index];
+	}
 
 	// Get the relative position of the constraint pivot ( btGeneric6DofSpring2Constraint::calculateTransforms() must be called previously )
-	btScalar getRelativePivotPosition(int axis_index) const { return m_calculatedLinearDiff[axis_index]; }
+	btScalar getRelativePivotPosition(int axis_index) const {
+		return m_calculatedLinearDiff[axis_index];
+	}
 
-	void setFrames(const btTransform& frameA, const btTransform& frameB);
+	void setFrames(const btTransform &frameA, const btTransform &frameB);
 
-	void setLinearLowerLimit(const btVector3& linearLower) { m_linearLimits.m_lowerLimit = linearLower; }
-	void getLinearLowerLimit(btVector3 & linearLower) { linearLower = m_linearLimits.m_lowerLimit; }
-	void setLinearUpperLimit(const btVector3& linearUpper) { m_linearLimits.m_upperLimit = linearUpper; }
-	void getLinearUpperLimit(btVector3 & linearUpper) { linearUpper = m_linearLimits.m_upperLimit; }
+	void setLinearLowerLimit(const btVector3 &linearLower) {
+		m_linearLimits.m_lowerLimit = linearLower;
+	}
+	void getLinearLowerLimit(btVector3 & linearLower) {
+		linearLower = m_linearLimits.m_lowerLimit;
+	}
+	void setLinearUpperLimit(const btVector3 &linearUpper) {
+		m_linearLimits.m_upperLimit = linearUpper;
+	}
+	void getLinearUpperLimit(btVector3 & linearUpper) {
+		linearUpper = m_linearLimits.m_upperLimit;
+	}
 
-	void setAngularLowerLimit(const btVector3& angularLower)
-	{
+	void setAngularLowerLimit(const btVector3 &angularLower) {
 		for (int i = 0; i < 3; i++)
 			m_angularLimits[i].m_loLimit = btNormalizeAngle(angularLower[i]);
 	}
 
-	void setAngularLowerLimitReversed(const btVector3& angularLower)
-	{
+	void setAngularLowerLimitReversed(const btVector3 &angularLower) {
 		for (int i = 0; i < 3; i++)
 			m_angularLimits[i].m_hiLimit = btNormalizeAngle(-angularLower[i]);
 	}
 
-	void getAngularLowerLimit(btVector3 & angularLower)
-	{
+	void getAngularLowerLimit(btVector3 & angularLower) {
 		for (int i = 0; i < 3; i++)
 			angularLower[i] = m_angularLimits[i].m_loLimit;
 	}
 
-	void getAngularLowerLimitReversed(btVector3 & angularLower)
-	{
+	void getAngularLowerLimitReversed(btVector3 & angularLower) {
 		for (int i = 0; i < 3; i++)
 			angularLower[i] = -m_angularLimits[i].m_hiLimit;
 	}
 
-	void setAngularUpperLimit(const btVector3& angularUpper)
-	{
+	void setAngularUpperLimit(const btVector3 &angularUpper) {
 		for (int i = 0; i < 3; i++)
 			m_angularLimits[i].m_hiLimit = btNormalizeAngle(angularUpper[i]);
 	}
 
-	void setAngularUpperLimitReversed(const btVector3& angularUpper)
-	{
+	void setAngularUpperLimitReversed(const btVector3 &angularUpper) {
 		for (int i = 0; i < 3; i++)
 			m_angularLimits[i].m_loLimit = btNormalizeAngle(-angularUpper[i]);
 	}
 
-	void getAngularUpperLimit(btVector3 & angularUpper)
-	{
+	void getAngularUpperLimit(btVector3 & angularUpper) {
 		for (int i = 0; i < 3; i++)
 			angularUpper[i] = m_angularLimits[i].m_hiLimit;
 	}
 
-	void getAngularUpperLimitReversed(btVector3 & angularUpper)
-	{
+	void getAngularUpperLimitReversed(btVector3 & angularUpper) {
 		for (int i = 0; i < 3; i++)
 			angularUpper[i] = -m_angularLimits[i].m_loLimit;
 	}
 
-	//first 3 are linear, next 3 are angular
+	// first 3 are linear, next 3 are angular
 
-	void setLimit(int axis, btScalar lo, btScalar hi)
-	{
-		if (axis < 3)
-		{
+	void setLimit(int axis, btScalar lo, btScalar hi) {
+		if (axis < 3) {
 			m_linearLimits.m_lowerLimit[axis] = lo;
 			m_linearLimits.m_upperLimit[axis] = hi;
-		}
-		else
-		{
+		} else {
 			lo = btNormalizeAngle(lo);
 			hi = btNormalizeAngle(hi);
 			m_angularLimits[axis - 3].m_loLimit = lo;
@@ -424,15 +429,11 @@ public:
 		}
 	}
 
-	void setLimitReversed(int axis, btScalar lo, btScalar hi)
-	{
-		if (axis < 3)
-		{
+	void setLimitReversed(int axis, btScalar lo, btScalar hi) {
+		if (axis < 3) {
 			m_linearLimits.m_lowerLimit[axis] = lo;
 			m_linearLimits.m_upperLimit[axis] = hi;
-		}
-		else
-		{
+		} else {
 			lo = btNormalizeAngle(lo);
 			hi = btNormalizeAngle(hi);
 			m_angularLimits[axis - 3].m_hiLimit = -lo;
@@ -440,51 +441,52 @@ public:
 		}
 	}
 
-	bool isLimited(int limitIndex)
-	{
-		if (limitIndex < 3)
-		{
+	bool isLimited(int limitIndex) {
+		if (limitIndex < 3) {
 			return m_linearLimits.isLimited(limitIndex);
 		}
 		return m_angularLimits[limitIndex - 3].isLimited();
 	}
 
-	void setRotationOrder(RotateOrder order) { m_rotateOrder = order; }
-	RotateOrder getRotationOrder() { return m_rotateOrder; }
+	void setRotationOrder(RotateOrder order) {
+		m_rotateOrder = order;
+	}
+	RotateOrder getRotationOrder() {
+		return m_rotateOrder;
+	}
 
-	void setAxis(const btVector3& axis1, const btVector3& axis2);
+	void setAxis(const btVector3 &axis1, const btVector3 &axis2);
 
 	void setBounce(int index, btScalar bounce);
 
 	void enableMotor(int index, bool onOff);
-	void setServo(int index, bool onOff);  // set the type of the motor (servo or not) (the motor has to be turned on for servo also)
+	void setServo(int index, bool onOff); // set the type of the motor (servo or not) (the motor has to be turned on for servo also)
 	void setTargetVelocity(int index, btScalar velocity);
 	void setServoTarget(int index, btScalar target);
 	void setMaxMotorForce(int index, btScalar force);
 
 	void enableSpring(int index, bool onOff);
-	void setStiffness(int index, btScalar stiffness, bool limitIfNeeded = true);  // if limitIfNeeded is true the system will automatically limit the stiffness in necessary situations where otherwise the spring would move unrealistically too widely
-	void setDamping(int index, btScalar damping, bool limitIfNeeded = true);      // if limitIfNeeded is true the system will automatically limit the damping in necessary situations where otherwise the spring would blow up
-	void setEquilibriumPoint();                                                   // set the current constraint position/orientation as an equilibrium point for all DOF
-	void setEquilibriumPoint(int index);                                          // set the current constraint position/orientation as an equilibrium point for given DOF
+	void setStiffness(int index, btScalar stiffness, bool limitIfNeeded = true); // if limitIfNeeded is true the system will automatically limit the stiffness in necessary situations where otherwise the spring would move unrealistically too widely
+	void setDamping(int index, btScalar damping, bool limitIfNeeded = true); // if limitIfNeeded is true the system will automatically limit the damping in necessary situations where otherwise the spring would blow up
+	void setEquilibriumPoint(); // set the current constraint position/orientation as an equilibrium point for all DOF
+	void setEquilibriumPoint(int index); // set the current constraint position/orientation as an equilibrium point for given DOF
 	void setEquilibriumPoint(int index, btScalar val);
 
-	//override the default global value of a parameter (such as ERP or CFM), optionally provide the axis (0..5).
-	//If no axis is provided, it uses the default axis for this constraint.
+	// override the default global value of a parameter (such as ERP or CFM), optionally provide the axis (0..5).
+	// If no axis is provided, it uses the default axis for this constraint.
 	virtual void setParam(int num, btScalar value, int axis = -1);
 	virtual btScalar getParam(int num, int axis = -1) const;
 
-	static btScalar btGetMatrixElem(const btMatrix3x3& mat, int index);
-	static bool matrixToEulerXYZ(const btMatrix3x3& mat, btVector3& xyz);
-	static bool matrixToEulerXZY(const btMatrix3x3& mat, btVector3& xyz);
-	static bool matrixToEulerYXZ(const btMatrix3x3& mat, btVector3& xyz);
-	static bool matrixToEulerYZX(const btMatrix3x3& mat, btVector3& xyz);
-	static bool matrixToEulerZXY(const btMatrix3x3& mat, btVector3& xyz);
-	static bool matrixToEulerZYX(const btMatrix3x3& mat, btVector3& xyz);
+	static btScalar btGetMatrixElem(const btMatrix3x3 &mat, int index);
+	static bool matrixToEulerXYZ(const btMatrix3x3 &mat, btVector3 &xyz);
+	static bool matrixToEulerXZY(const btMatrix3x3 &mat, btVector3 &xyz);
+	static bool matrixToEulerYXZ(const btMatrix3x3 &mat, btVector3 &xyz);
+	static bool matrixToEulerYZX(const btMatrix3x3 &mat, btVector3 &xyz);
+	static bool matrixToEulerZXY(const btMatrix3x3 &mat, btVector3 &xyz);
+	static bool matrixToEulerZYX(const btMatrix3x3 &mat, btVector3 &xyz);
 };
 
-struct btGeneric6DofSpring2ConstraintData
-{
+struct btGeneric6DofSpring2ConstraintData {
 	btTypedConstraintData m_typeConstraintData;
 	btTransformFloatData m_rbAFrame;
 	btTransformFloatData m_rbBFrame;
@@ -531,8 +533,7 @@ struct btGeneric6DofSpring2ConstraintData
 	int m_rotateOrder;
 };
 
-struct btGeneric6DofSpring2ConstraintDoubleData2
-{
+struct btGeneric6DofSpring2ConstraintDoubleData2 {
 	btTypedConstraintDoubleData m_typeConstraintData;
 	btTransformDoubleData m_rbAFrame;
 	btTransformDoubleData m_rbBFrame;
@@ -579,22 +580,19 @@ struct btGeneric6DofSpring2ConstraintDoubleData2
 	int m_rotateOrder;
 };
 
-SIMD_FORCE_INLINE int btGeneric6DofSpring2Constraint::calculateSerializeBufferSize() const
-{
+SIMD_FORCE_INLINE int btGeneric6DofSpring2Constraint::calculateSerializeBufferSize() const {
 	return sizeof(btGeneric6DofSpring2ConstraintData2);
 }
 
-SIMD_FORCE_INLINE const char* btGeneric6DofSpring2Constraint::serialize(void* dataBuffer, btSerializer* serializer) const
-{
-	btGeneric6DofSpring2ConstraintData2* dof = (btGeneric6DofSpring2ConstraintData2*)dataBuffer;
+SIMD_FORCE_INLINE const char *btGeneric6DofSpring2Constraint::serialize(void *dataBuffer, btSerializer *serializer) const {
+	btGeneric6DofSpring2ConstraintData2 *dof = (btGeneric6DofSpring2ConstraintData2 *)dataBuffer;
 	btTypedConstraint::serialize(&dof->m_typeConstraintData, serializer);
 
 	m_frameInA.serialize(dof->m_rbAFrame);
 	m_frameInB.serialize(dof->m_rbBFrame);
 
 	int i;
-	for (i = 0; i < 3; i++)
-	{
+	for (i = 0; i < 3; i++) {
 		dof->m_angularLowerLimit.m_floats[i] = m_angularLimits[i].m_loLimit;
 		dof->m_angularUpperLimit.m_floats[i] = m_angularLimits[i].m_hiLimit;
 		dof->m_angularBounce.m_floats[i] = m_angularLimits[i].m_bounce;
@@ -622,8 +620,7 @@ SIMD_FORCE_INLINE const char* btGeneric6DofSpring2Constraint::serialize(void* da
 	dof->m_angularSpringStiffness.m_floats[3] = 0;
 	dof->m_angularSpringDamping.m_floats[3] = 0;
 	dof->m_angularEquilibriumPoint.m_floats[3] = 0;
-	for (i = 0; i < 4; i++)
-	{
+	for (i = 0; i < 4; i++) {
 		dof->m_angularEnableMotor[i] = i < 3 ? (m_angularLimits[i].m_enableMotor ? 1 : 0) : 0;
 		dof->m_angularServoMotor[i] = i < 3 ? (m_angularLimits[i].m_servoMotor ? 1 : 0) : 0;
 		dof->m_angularEnableSpring[i] = i < 3 ? (m_angularLimits[i].m_enableSpring ? 1 : 0) : 0;
@@ -644,8 +641,7 @@ SIMD_FORCE_INLINE const char* btGeneric6DofSpring2Constraint::serialize(void* da
 	m_linearLimits.m_springStiffness.serialize(dof->m_linearSpringStiffness);
 	m_linearLimits.m_springDamping.serialize(dof->m_linearSpringDamping);
 	m_linearLimits.m_equilibriumPoint.serialize(dof->m_linearEquilibriumPoint);
-	for (i = 0; i < 4; i++)
-	{
+	for (i = 0; i < 4; i++) {
 		dof->m_linearEnableMotor[i] = i < 3 ? (m_linearLimits.m_enableMotor[i] ? 1 : 0) : 0;
 		dof->m_linearServoMotor[i] = i < 3 ? (m_linearLimits.m_servoMotor[i] ? 1 : 0) : 0;
 		dof->m_linearEnableSpring[i] = i < 3 ? (m_linearLimits.m_enableSpring[i] ? 1 : 0) : 0;
@@ -663,4 +659,4 @@ SIMD_FORCE_INLINE const char* btGeneric6DofSpring2Constraint::serialize(void* da
 	return btGeneric6DofSpring2ConstraintDataName;
 }
 
-#endif  //BT_GENERIC_6DOF_CONSTRAINT_H
+#endif // BT_GENERIC_6DOF_CONSTRAINT_H

@@ -58,8 +58,8 @@ extern "C" {
   decompressed using the function fastlz_decompress below.
 */
 
-int fastlz_compress_level(int level, const void* input, int length,
-                          void* output);
+int fastlz_compress_level(int level, const void *input, int length,
+		void *output);
 
 /**
   Decompress a block of compressed data and returns the size of the
@@ -77,7 +77,7 @@ int fastlz_compress_level(int level, const void* input, int length,
   producing the compressed block).
  */
 
-int fastlz_decompress(const void* input, int length, void* output, int maxout);
+int fastlz_decompress(const void *input, int length, void *output, int maxout);
 
 /**
   DEPRECATED.
@@ -89,7 +89,7 @@ int fastlz_decompress(const void* input, int length, void* output, int maxout);
   version.
 */
 
-int fastlz_compress(const void* input, int length, void* output);
+int fastlz_compress(const void *input, int length, void *output);
 
 #if defined(__cplusplus)
 }

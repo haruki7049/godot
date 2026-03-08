@@ -4,8 +4,8 @@ Copyright (c) 2003-2006 Erwin Coumans  http://continuousphysics.com/Bullet/
 
 This software is provided 'as-is', without any express or implied warranty.
 In no event will the authors be held liable for any damages arising from the use of this software.
-Permission is granted to anyone to use this software for any purpose, 
-including commercial applications, and to alter it and redistribute it freely, 
+Permission is granted to anyone to use this software for any purpose,
+including commercial applications, and to alter it and redistribute it freely,
 subject to the following restrictions:
 
 1. The origin of this software must not be misrepresented; you must not claim that you wrote the original software. If you use this software in a product, an acknowledgment in the product documentation would be appreciated but is not required.
@@ -22,21 +22,18 @@ int gOverlappingSimplePairs = 0;
 int gRemoveSimplePairs = 0;
 int gAddedSimplePairs = 0;
 int gFindSimplePairs = 0;
-#endif  //BT_DEBUG_COLLISION_PAIRS
+#endif // BT_DEBUG_COLLISION_PAIRS
 
-btHashedSimplePairCache::btHashedSimplePairCache()
-{
+btHashedSimplePairCache::btHashedSimplePairCache() {
 	int initialAllocatedSize = 2;
 	m_overlappingPairArray.reserve(initialAllocatedSize);
 	growTables();
 }
 
-btHashedSimplePairCache::~btHashedSimplePairCache()
-{
+btHashedSimplePairCache::~btHashedSimplePairCache() {
 }
 
-void btHashedSimplePairCache::removeAllPairs()
-{
+void btHashedSimplePairCache::removeAllPairs() {
 	m_overlappingPairArray.clear();
 	m_hashTable.clear();
 	m_next.clear();
@@ -46,30 +43,26 @@ void btHashedSimplePairCache::removeAllPairs()
 	growTables();
 }
 
-btSimplePair* btHashedSimplePairCache::findPair(int indexA, int indexB)
-{
+btSimplePair *btHashedSimplePairCache::findPair(int indexA, int indexB) {
 #ifdef BT_DEBUG_COLLISION_PAIRS
 	gFindSimplePairs++;
 #endif
 
-	/*if (indexA > indexB) 
+	/*if (indexA > indexB)
 		btSwap(indexA, indexB);*/
 
 	int hash = static_cast<int>(getHash(static_cast<unsigned int>(indexA), static_cast<unsigned int>(indexB)) & (m_overlappingPairArray.capacity() - 1));
 
-	if (hash >= m_hashTable.size())
-	{
+	if (hash >= m_hashTable.size()) {
 		return NULL;
 	}
 
 	int index = m_hashTable[hash];
-	while (index != BT_SIMPLE_NULL_PAIR && equalsPair(m_overlappingPairArray[index], indexA, indexB) == false)
-	{
+	while (index != BT_SIMPLE_NULL_PAIR && equalsPair(m_overlappingPairArray[index], indexA, indexB) == false) {
 		index = m_next[index];
 	}
 
-	if (index == BT_SIMPLE_NULL_PAIR)
-	{
+	if (index == BT_SIMPLE_NULL_PAIR) {
 		return NULL;
 	}
 
@@ -78,15 +71,13 @@ btSimplePair* btHashedSimplePairCache::findPair(int indexA, int indexB)
 	return &m_overlappingPairArray[index];
 }
 
-//#include <stdio.h>
+// #include <stdio.h>
 
-void btHashedSimplePairCache::growTables()
-{
+void btHashedSimplePairCache::growTables() {
 	int newCapacity = m_overlappingPairArray.capacity();
 
-	if (m_hashTable.size() < newCapacity)
-	{
-		//grow hashtable and next table
+	if (m_hashTable.size() < newCapacity) {
+		// grow hashtable and next table
 		int curHashtableSize = m_hashTable.size();
 
 		m_hashTable.resize(newCapacity);
@@ -94,48 +85,42 @@ void btHashedSimplePairCache::growTables()
 
 		int i;
 
-		for (i = 0; i < newCapacity; ++i)
-		{
+		for (i = 0; i < newCapacity; ++i) {
 			m_hashTable[i] = BT_SIMPLE_NULL_PAIR;
 		}
-		for (i = 0; i < newCapacity; ++i)
-		{
+		for (i = 0; i < newCapacity; ++i) {
 			m_next[i] = BT_SIMPLE_NULL_PAIR;
 		}
 
-		for (i = 0; i < curHashtableSize; i++)
-		{
-			const btSimplePair& pair = m_overlappingPairArray[i];
+		for (i = 0; i < curHashtableSize; i++) {
+			const btSimplePair &pair = m_overlappingPairArray[i];
 			int indexA = pair.m_indexA;
 			int indexB = pair.m_indexB;
 
-			int hashValue = static_cast<int>(getHash(static_cast<unsigned int>(indexA), static_cast<unsigned int>(indexB)) & (m_overlappingPairArray.capacity() - 1));  // New hash value with new mask
+			int hashValue = static_cast<int>(getHash(static_cast<unsigned int>(indexA), static_cast<unsigned int>(indexB)) & (m_overlappingPairArray.capacity() - 1)); // New hash value with new mask
 			m_next[i] = m_hashTable[hashValue];
 			m_hashTable[hashValue] = i;
 		}
 	}
 }
 
-btSimplePair* btHashedSimplePairCache::internalAddPair(int indexA, int indexB)
-{
-	int hash = static_cast<int>(getHash(static_cast<unsigned int>(indexA), static_cast<unsigned int>(indexB)) & (m_overlappingPairArray.capacity() - 1));  // New hash value with new mask
+btSimplePair *btHashedSimplePairCache::internalAddPair(int indexA, int indexB) {
+	int hash = static_cast<int>(getHash(static_cast<unsigned int>(indexA), static_cast<unsigned int>(indexB)) & (m_overlappingPairArray.capacity() - 1)); // New hash value with new mask
 
-	btSimplePair* pair = internalFindPair(indexA, indexB, hash);
-	if (pair != NULL)
-	{
+	btSimplePair *pair = internalFindPair(indexA, indexB, hash);
+	if (pair != NULL) {
 		return pair;
 	}
 
 	int count = m_overlappingPairArray.size();
 	int oldCapacity = m_overlappingPairArray.capacity();
-	void* mem = &m_overlappingPairArray.expandNonInitializing();
+	void *mem = &m_overlappingPairArray.expandNonInitializing();
 
 	int newCapacity = m_overlappingPairArray.capacity();
 
-	if (oldCapacity < newCapacity)
-	{
+	if (oldCapacity < newCapacity) {
 		growTables();
-		//hash with new capacity
+		// hash with new capacity
 		hash = static_cast<int>(getHash(static_cast<unsigned int>(indexA), static_cast<unsigned int>(indexB)) & (m_overlappingPairArray.capacity() - 1));
 	}
 
@@ -149,24 +134,22 @@ btSimplePair* btHashedSimplePairCache::internalAddPair(int indexA, int indexB)
 	return pair;
 }
 
-void* btHashedSimplePairCache::removeOverlappingPair(int indexA, int indexB)
-{
+void *btHashedSimplePairCache::removeOverlappingPair(int indexA, int indexB) {
 #ifdef BT_DEBUG_COLLISION_PAIRS
 	gRemoveSimplePairs++;
 #endif
 
-	/*if (indexA > indexB) 
+	/*if (indexA > indexB)
 		btSwap(indexA, indexB);*/
 
 	int hash = static_cast<int>(getHash(static_cast<unsigned int>(indexA), static_cast<unsigned int>(indexB)) & (m_overlappingPairArray.capacity() - 1));
 
-	btSimplePair* pair = internalFindPair(indexA, indexB, hash);
-	if (pair == NULL)
-	{
+	btSimplePair *pair = internalFindPair(indexA, indexB, hash);
+	if (pair == NULL) {
 		return 0;
 	}
 
-	void* userData = pair->m_userPointer;
+	void *userData = pair->m_userPointer;
 
 	int pairIndex = int(pair - &m_overlappingPairArray[0]);
 	btAssert(pairIndex < m_overlappingPairArray.size());
@@ -176,19 +159,15 @@ void* btHashedSimplePairCache::removeOverlappingPair(int indexA, int indexB)
 	btAssert(index != BT_SIMPLE_NULL_PAIR);
 
 	int previous = BT_SIMPLE_NULL_PAIR;
-	while (index != pairIndex)
-	{
+	while (index != pairIndex) {
 		previous = index;
 		index = m_next[index];
 	}
 
-	if (previous != BT_SIMPLE_NULL_PAIR)
-	{
+	if (previous != BT_SIMPLE_NULL_PAIR) {
 		btAssert(m_next[previous] == pairIndex);
 		m_next[previous] = m_next[pairIndex];
-	}
-	else
-	{
+	} else {
 		m_hashTable[hash] = m_next[pairIndex];
 	}
 
@@ -199,14 +178,13 @@ void* btHashedSimplePairCache::removeOverlappingPair(int indexA, int indexB)
 	int lastPairIndex = m_overlappingPairArray.size() - 1;
 
 	// If the removed pair is the last pair, we are done.
-	if (lastPairIndex == pairIndex)
-	{
+	if (lastPairIndex == pairIndex) {
 		m_overlappingPairArray.pop_back();
 		return userData;
 	}
 
 	// Remove the last pair from the hash table.
-	const btSimplePair* last = &m_overlappingPairArray[lastPairIndex];
+	const btSimplePair *last = &m_overlappingPairArray[lastPairIndex];
 	/* missing swap here too, Nat. */
 	int lastHash = static_cast<int>(getHash(static_cast<unsigned int>(last->m_indexA), static_cast<unsigned int>(last->m_indexB)) & (m_overlappingPairArray.capacity() - 1));
 
@@ -214,19 +192,15 @@ void* btHashedSimplePairCache::removeOverlappingPair(int indexA, int indexB)
 	btAssert(index != BT_SIMPLE_NULL_PAIR);
 
 	previous = BT_SIMPLE_NULL_PAIR;
-	while (index != lastPairIndex)
-	{
+	while (index != lastPairIndex) {
 		previous = index;
 		index = m_next[index];
 	}
 
-	if (previous != BT_SIMPLE_NULL_PAIR)
-	{
+	if (previous != BT_SIMPLE_NULL_PAIR) {
 		btAssert(m_next[previous] == lastPairIndex);
 		m_next[previous] = m_next[lastPairIndex];
-	}
-	else
-	{
+	} else {
 		m_hashTable[lastHash] = m_next[lastPairIndex];
 	}
 
@@ -241,4 +215,4 @@ void* btHashedSimplePairCache::removeOverlappingPair(int indexA, int indexB)
 
 	return userData;
 }
-//#include <stdio.h>
+// #include <stdio.h>

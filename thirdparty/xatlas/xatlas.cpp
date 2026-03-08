@@ -486,7 +486,7 @@ static bool isNan(float f) {
 // Robust floating point comparisons:
 // http://realtimecollisiondetection.net/blog/?p=89
 static bool equal(const float f0, const float f1, const float epsilon) {
-	//return fabs(f0-f1) <= epsilon;
+	// return fabs(f0-f1) <= epsilon;
 	return fabs(f0 - f1) <= epsilon * max3(1.0f, fabsf(f0), fabsf(f1));
 }
 
@@ -503,11 +503,11 @@ static float square(float f) {
 }
 
 /** Return the next power of two.
-* @see http://graphics.stanford.edu/~seander/bithacks.html
-* @warning Behaviour for 0 is undefined.
-* @note isPowerOfTwo(x) == true -> nextPowerOfTwo(x) == x
-* @note nextPowerOfTwo(x) = 2 << log2(x-1)
-*/
+ * @see http://graphics.stanford.edu/~seander/bithacks.html
+ * @warning Behaviour for 0 is undefined.
+ * @note isPowerOfTwo(x) == true -> nextPowerOfTwo(x) == x
+ * @note nextPowerOfTwo(x) = 2 << log2(x-1)
+ */
 static uint32_t nextPowerOfTwo(uint32_t x) {
 	XA_DEBUG_ASSERT(x != 0);
 	// On modern CPUs this is supposed to be as fast as using the bsr instruction.
@@ -627,13 +627,13 @@ static bool isFinite(const Vector2 &v) {
 
 static float triangleArea(const Vector2 &a, const Vector2 &b, const Vector2 &c) {
 	// IC: While it may be appealing to use the following expression:
-	//return (c.x * a.y + a.x * b.y + b.x * c.y - b.x * a.y - c.x * b.y - a.x * c.y) * 0.5f;
+	// return (c.x * a.y + a.x * b.y + b.x * c.y - b.x * a.y - c.x * b.y - a.x * c.y) * 0.5f;
 	// That's actually a terrible idea. Small triangles far from the origin can end up producing fairly large floating point
 	// numbers and the results becomes very unstable and dependent on the order of the factors.
 	// Instead, it's preferable to subtract the vertices first, and multiply the resulting small values together. The result
 	// in this case is always much more accurate (as long as the triangle is small) and less dependent of the location of
 	// the triangle.
-	//return ((a.x - c.x) * (b.y - c.y) - (a.y - c.y) * (b.x - c.x)) * 0.5f;
+	// return ((a.x - c.x) * (b.y - c.y) - (a.y - c.y) * (b.x - c.x)) * 0.5f;
 	const Vector2 v0 = a - c;
 	const Vector2 v1 = b - c;
 	return (v0.x * v1.y - v0.y * v1.x) * 0.5f;
@@ -4132,7 +4132,7 @@ static void dscal(int n, double a, double *x) {
  *  This version is completely abstract, the same code can be used for
  * CPU/GPU, dense matrix / sparse matrix etc...
  *  Abstraction is realized through:
-  *   - Abstract matrix interface (NLMatrix), that can implement different
+ *   - Abstract matrix interface (NLMatrix), that can implement different
  *     versions of matrix x vector product (CPU/GPU, sparse/dense ...)
  */
 
@@ -4554,8 +4554,8 @@ struct Triangle {
 		// There's no reason to align the blocks to the viewport, instead we align them to the origin of the triangle bounds.
 		minx = floorf(minx);
 		miny = floorf(miny);
-		//minx = (float)(((int)minx) & (~((int)BK_SIZE - 1))); // align to blocksize (we don't need to worry about blocks partially out of viewport)
-		//miny = (float)(((int)miny) & (~((int)BK_SIZE - 1)));
+		// minx = (float)(((int)minx) & (~((int)BK_SIZE - 1))); // align to blocksize (we don't need to worry about blocks partially out of viewport)
+		// miny = (float)(((int)miny) & (~((int)BK_SIZE - 1)));
 		minx += 0.5;
 		miny += 0.5; // sampling at texel centers!
 		maxx += 0.5;
@@ -5559,11 +5559,11 @@ private:
 		cost += m_data.options.roundnessWeight * computeRoundnessMetric(chart, newBoundaryLength, newChartArea);
 		cost += m_data.options.straightnessWeight * computeStraightnessMetric(chart, face);
 		cost += m_data.options.textureSeamWeight * computeTextureSeamMetric(chart, face);
-		//float R = evaluateCompletenessMetric(chart, face);
-		//float D = evaluateDihedralAngleMetric(chart, face);
-		// @@ Add a metric based on local dihedral angle.
-		// @@ Tweaking the normal and texture seam metrics.
-		// - Cause more impedance. Never cross 90 degree edges.
+		// float R = evaluateCompletenessMetric(chart, face);
+		// float D = evaluateDihedralAngleMetric(chart, face);
+		//  @@ Add a metric based on local dihedral angle.
+		//  @@ Tweaking the normal and texture seam metrics.
+		//  - Cause more impedance. Never cross 90 degree edges.
 		XA_DEBUG_ASSERT(isFinite(cost));
 		return cost;
 	}
@@ -6736,7 +6736,7 @@ struct Quality {
 			const float a = dot(Ss, Ss); // E
 			const float b = dot(Ss, St); // F
 			const float c = dot(St, St); // G
-					// Compute eigen-values of the first fundamental form:
+										 // Compute eigen-values of the first fundamental form:
 			const float sigma1 = sqrtf(0.5f * max(0.0f, a + c - sqrtf(square(a - c) + 4 * square(b)))); // gamma uppercase, min eigenvalue.
 			const float sigma2 = sqrtf(0.5f * max(0.0f, a + c + sqrtf(square(a - c) + 4 * square(b)))); // gamma lowercase, max eigenvalue.
 			XA_ASSERT(sigma2 > sigma1 || equal(sigma1, sigma2, kEpsilon));
@@ -8339,7 +8339,7 @@ private:
 			}
 			// Early out.
 			int area = max(w, x + cw) * max(h, y + ch);
-			//int perimeter = max(w, x+cw) + max(h, y+ch);
+			// int perimeter = max(w, x+cw) + max(h, y+ch);
 			int extents = max(max(w, x + cw), max(h, y + ch));
 			int metric = extents * extents + area;
 			if (metric > best_metric) {

@@ -11,16 +11,14 @@
  ********************************************************************
 
   function:
-    last mod: $Id: huffdec.h 16503 2009-08-22 18:14:02Z giles $
+	last mod: $Id: huffdec.h 16503 2009-08-22 18:14:02Z giles $
 
  ********************************************************************/
 
 #if !defined(_huffdec_H)
-# define _huffdec_H (1)
-# include "huffman.h"
-# include "bitpack.h"
-
-
+#define _huffdec_H (1)
+#include "bitpack.h"
+#include "huffman.h"
 
 typedef struct oc_huff_node oc_huff_node;
 
@@ -48,45 +46,42 @@ typedef struct oc_huff_node oc_huff_node;
   It also has very large memory requirements, which impairs cache coherency.
 
   @ARTICLE{Hash95,
-    author="Reza Hashemian",
-    title="Memory Efficient and High-Speed Search {Huffman} Coding",
-    journal="{IEEE} Transactions on Communications",
-    volume=43,
-    number=10,
-    pages="2576--2581",
-    month=Oct,
-    year=1995
+	author="Reza Hashemian",
+	title="Memory Efficient and High-Speed Search {Huffman} Coding",
+	journal="{IEEE} Transactions on Communications",
+	volume=43,
+	number=10,
+	pages="2576--2581",
+	month=Oct,
+	year=1995
   }*/
-struct oc_huff_node{
-  /*The number of bits of the code needed to descend through this node.
-    0 indicates a leaf node.
-    Otherwise there are 1<<nbits nodes in the nodes table, which can be
-     indexed by reading nbits bits from the stream.*/
-  unsigned char  nbits;
-  /*The value of a token stored in a leaf node.
-    The value in non-leaf nodes is undefined.*/
-  unsigned char  token;
-  /*The depth of the current node, relative to its parent in the collapsed
-     tree.
-    This can be less than its parent's nbits value, in which case there are
-     1<<nbits-depth copies of this node in the table, and the bitstream should
-     only be advanced depth bits after reaching this node.*/
-  unsigned char  depth;
-  /*The table of child nodes.
-    The ACTUAL size of this array is 1<<nbits, despite what the declaration
-     below claims.
-    The exception is that for leaf nodes the size is 0.*/
-  oc_huff_node  *nodes[2];
+struct oc_huff_node {
+	/*The number of bits of the code needed to descend through this node.
+	  0 indicates a leaf node.
+	  Otherwise there are 1<<nbits nodes in the nodes table, which can be
+	   indexed by reading nbits bits from the stream.*/
+	unsigned char nbits;
+	/*The value of a token stored in a leaf node.
+	  The value in non-leaf nodes is undefined.*/
+	unsigned char token;
+	/*The depth of the current node, relative to its parent in the collapsed
+	   tree.
+	  This can be less than its parent's nbits value, in which case there are
+	   1<<nbits-depth copies of this node in the table, and the bitstream should
+	   only be advanced depth bits after reaching this node.*/
+	unsigned char depth;
+	/*The table of child nodes.
+	  The ACTUAL size of this array is 1<<nbits, despite what the declaration
+	   below claims.
+	  The exception is that for leaf nodes the size is 0.*/
+	oc_huff_node *nodes[2];
 };
 
-
-
 int oc_huff_trees_unpack(oc_pack_buf *_opb,
- oc_huff_node *_nodes[TH_NHUFFMAN_TABLES]);
+		oc_huff_node *_nodes[TH_NHUFFMAN_TABLES]);
 int oc_huff_trees_copy(oc_huff_node *_dst[TH_NHUFFMAN_TABLES],
- const oc_huff_node *const _src[TH_NHUFFMAN_TABLES]);
+		const oc_huff_node *const _src[TH_NHUFFMAN_TABLES]);
 void oc_huff_trees_clear(oc_huff_node *_nodes[TH_NHUFFMAN_TABLES]);
-int oc_huff_token_decode(oc_pack_buf *_opb,const oc_huff_node *_node);
-
+int oc_huff_token_decode(oc_pack_buf *_opb, const oc_huff_node *_node);
 
 #endif

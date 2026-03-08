@@ -4,12 +4,11 @@
 #pragma once
 
 #if defined(TASKING_INTERNAL)
-#  include "taskschedulerinternal.h"
+#include "taskschedulerinternal.h"
 #elif defined(TASKING_TBB)
-#  include "taskschedulertbb.h"
+#include "taskschedulertbb.h"
 #elif defined(TASKING_PPL)
-#  include "taskschedulerppl.h"
+#include "taskschedulerppl.h"
 #else
-#  error "no tasking system enabled"
+#error "no tasking system enabled"
 #endif
-

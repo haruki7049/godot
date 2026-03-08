@@ -25,11 +25,9 @@ subject to the following restrictions:
 #define b3Long64 long long
 #endif
 
-namespace bParse
-{
+namespace bParse {
 // ----------------------------------------------------- //
-class bChunkPtr4
-{
+class bChunkPtr4 {
 public:
 	bChunkPtr4() {}
 	int code;
@@ -42,8 +40,7 @@ public:
 };
 
 // ----------------------------------------------------- //
-class bChunkPtr8
-{
+class bChunkPtr8 {
 public:
 	bChunkPtr8() {}
 	int code, len;
@@ -55,8 +52,7 @@ public:
 };
 
 // ----------------------------------------------------- //
-class bChunkInd
-{
+class bChunkInd {
 public:
 	bChunkInd() {}
 	int code, len;
@@ -65,8 +61,7 @@ public:
 };
 
 // ----------------------------------------------------- //
-class ChunkUtils
-{
+class ChunkUtils {
 public:
 	// file chunk offset
 	static int getOffset(int flags);
@@ -79,6 +74,6 @@ public:
 
 const int CHUNK_HEADER_LEN = ((sizeof(bChunkInd)));
 const bool VOID_IS_8 = ((sizeof(void *) == 8));
-}  // namespace bParse
+} // namespace bParse
 
-#endif  //__BCHUNK_H__
+#endif //__BCHUNK_H__

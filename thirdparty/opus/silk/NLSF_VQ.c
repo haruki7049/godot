@@ -33,36 +33,35 @@ POSSIBILITY OF SUCH DAMAGE.
 
 /* Compute quantization errors for an LPC_order element input vector for a VQ codebook */
 void silk_NLSF_VQ(
-    opus_int32                  err_Q26[],                      /* O    Quantization errors [K]                     */
-    const opus_int16            in_Q15[],                       /* I    Input vectors to be quantized [LPC_order]   */
-    const opus_uint8            pCB_Q8[],                       /* I    Codebook vectors [K*LPC_order]              */
-    const opus_int              K,                              /* I    Number of codebook vectors                  */
-    const opus_int              LPC_order                       /* I    Number of LPCs                              */
-)
-{
-    opus_int        i, m;
-    opus_int32      diff_Q15, sum_error_Q30, sum_error_Q26;
+		opus_int32 err_Q26[], /* O    Quantization errors [K]                     */
+		const opus_int16 in_Q15[], /* I    Input vectors to be quantized [LPC_order]   */
+		const opus_uint8 pCB_Q8[], /* I    Codebook vectors [K*LPC_order]              */
+		const opus_int K, /* I    Number of codebook vectors                  */
+		const opus_int LPC_order /* I    Number of LPCs                              */
+) {
+	opus_int i, m;
+	opus_int32 diff_Q15, sum_error_Q30, sum_error_Q26;
 
-    silk_assert( LPC_order <= 16 );
-    silk_assert( ( LPC_order & 1 ) == 0 );
+	silk_assert(LPC_order <= 16);
+	silk_assert((LPC_order & 1) == 0);
 
-    /* Loop over codebook */
-    for( i = 0; i < K; i++ ) {
-        sum_error_Q26 = 0;
-        for( m = 0; m < LPC_order; m += 2 ) {
-            /* Compute weighted squared quantization error for index m */
-            diff_Q15 = silk_SUB_LSHIFT32( in_Q15[ m ], (opus_int32)*pCB_Q8++, 7 ); /* range: [ -32767 : 32767 ]*/
-            sum_error_Q30 = silk_SMULBB( diff_Q15, diff_Q15 );
+	/* Loop over codebook */
+	for (i = 0; i < K; i++) {
+		sum_error_Q26 = 0;
+		for (m = 0; m < LPC_order; m += 2) {
+			/* Compute weighted squared quantization error for index m */
+			diff_Q15 = silk_SUB_LSHIFT32(in_Q15[m], (opus_int32)*pCB_Q8++, 7); /* range: [ -32767 : 32767 ]*/
+			sum_error_Q30 = silk_SMULBB(diff_Q15, diff_Q15);
 
-            /* Compute weighted squared quantization error for index m + 1 */
-            diff_Q15 = silk_SUB_LSHIFT32( in_Q15[m + 1], (opus_int32)*pCB_Q8++, 7 ); /* range: [ -32767 : 32767 ]*/
-            sum_error_Q30 = silk_SMLABB( sum_error_Q30, diff_Q15, diff_Q15 );
+			/* Compute weighted squared quantization error for index m + 1 */
+			diff_Q15 = silk_SUB_LSHIFT32(in_Q15[m + 1], (opus_int32)*pCB_Q8++, 7); /* range: [ -32767 : 32767 ]*/
+			sum_error_Q30 = silk_SMLABB(sum_error_Q30, diff_Q15, diff_Q15);
 
-            sum_error_Q26 = silk_ADD_RSHIFT32( sum_error_Q26, sum_error_Q30, 4 );
+			sum_error_Q26 = silk_ADD_RSHIFT32(sum_error_Q26, sum_error_Q30, 4);
 
-            silk_assert( sum_error_Q26 >= 0 );
-            silk_assert( sum_error_Q30 >= 0 );
-        }
-        err_Q26[ i ] = sum_error_Q26;
-    }
+			silk_assert(sum_error_Q26 >= 0);
+			silk_assert(sum_error_Q30 >= 0);
+		}
+		err_Q26[i] = sum_error_Q26;
+	}
 }

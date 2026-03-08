@@ -18,10 +18,9 @@
 
 namespace oidn {
 
-  void Filter::setProgressMonitorFunction(ProgressMonitorFunction func, void* userPtr)
-  {
-    progressFunc = func;
-    progressUserPtr = userPtr;
-  }
+void Filter::setProgressMonitorFunction(ProgressMonitorFunction func, void *userPtr) {
+	progressFunc = func;
+	progressUserPtr = userPtr;
+}
 
 } // namespace oidn

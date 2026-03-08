@@ -11,20 +11,20 @@
  ********************************************************************
 
   function:
-    last mod: $Id: apiwrapper.h 13596 2007-08-23 20:05:38Z tterribe $
+	last mod: $Id: apiwrapper.h 13596 2007-08-23 20:05:38Z tterribe $
 
  ********************************************************************/
 
 #if !defined(_apiwrapper_H)
-# define _apiwrapper_H (1)
-# include <ogg/ogg.h>
-# include <theora/theora.h>
-# include "theora/theoradec.h"
-# include "theora/theoraenc.h"
-# include "internal.h"
+#define _apiwrapper_H (1)
+#include "internal.h"
+#include "theora/theoradec.h"
+#include "theora/theoraenc.h"
+#include <ogg/ogg.h>
+#include <theora/theora.h>
 
 typedef struct th_api_wrapper th_api_wrapper;
-typedef struct th_api_info    th_api_info;
+typedef struct th_api_info th_api_info;
 
 /*Provide an entry point for the codec setup to clear itself in case we ever
    want to break pieces off into a common base library shared by encoder and
@@ -36,19 +36,18 @@ typedef void (*oc_setup_clear_func)(void *_ts);
   Technically we do not even really need this struct, since we should be able
    to figure out which one from "context", but doing it this way makes sure we
    don't flub it up.*/
-struct th_api_wrapper{
-  oc_setup_clear_func  clear;
-  th_setup_info       *setup;
-  th_dec_ctx          *decode;
-  th_enc_ctx          *encode;
+struct th_api_wrapper {
+	oc_setup_clear_func clear;
+	th_setup_info *setup;
+	th_dec_ctx *decode;
+	th_enc_ctx *encode;
 };
 
-struct th_api_info{
-  th_api_wrapper api;
-  theora_info    info;
+struct th_api_info {
+	th_api_wrapper api;
+	theora_info info;
 };
 
-
-void oc_theora_info2th_info(th_info *_info,const theora_info *_ci);
+void oc_theora_info2th_info(th_info *_info, const theora_info *_ci);
 
 #endif

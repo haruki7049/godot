@@ -9,7 +9,7 @@
 
 #ifdef _WIN32
 
-#define ISINVALID(s) (INVALID_SOCKET==(s))
+#define ISINVALID(s) (INVALID_SOCKET == (s))
 
 #else
 
@@ -23,7 +23,7 @@
 #define INVALID_SOCKET (-1)
 #endif
 #ifndef ISINVALID
-#define ISINVALID(s) ((s)<0)
+#define ISINVALID(s) ((s) < 0)
 #endif
 
 #endif
@@ -36,7 +36,7 @@
 
 /* definition of PRINT_SOCKET_ERROR */
 #ifdef _WIN32
-#define PRINT_SOCKET_ERROR(x)    fprintf(stderr, "Socket error: %s, %d\n", x, WSAGetLastError());
+#define PRINT_SOCKET_ERROR(x) fprintf(stderr, "Socket error: %s, %d\n", x, WSAGetLastError());
 #else
 #define PRINT_SOCKET_ERROR(x) perror(x)
 #endif

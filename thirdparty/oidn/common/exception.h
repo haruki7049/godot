@@ -16,30 +16,26 @@
 
 #pragma once
 
-#include <exception>
 #include "platform.h"
+#include <exception>
 
 namespace oidn {
 
-  class Exception : public std::exception
-  {
-  private:
-    Error error;
-    const char* message;
+class Exception : public std::exception {
+private:
+	Error error;
+	const char *message;
 
-  public:
-    Exception(Error error, const char* message)
-      : error(error), message(message) {}
+public:
+	Exception(Error error, const char *message) : error(error), message(message) {}
 
-    Error code() const noexcept
-    {
-      return error;
-    }
+	Error code() const noexcept {
+		return error;
+	}
 
-    const char* what() const noexcept override
-    {
-      return message;
-    }
-  };
+	const char *what() const noexcept override {
+		return message;
+	}
+};
 
 } // namespace oidn

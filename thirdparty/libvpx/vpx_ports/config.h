@@ -13,4 +13,4 @@
 
 #include "vpx_config.h"
 
-#endif  // VPX_PORTS_CONFIG_H_
+#endif // VPX_PORTS_CONFIG_H_

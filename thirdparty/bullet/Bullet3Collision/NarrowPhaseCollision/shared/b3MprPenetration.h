@@ -4,7 +4,7 @@
  * Copyright (c)2012 Daniel Fiser <danfis@danfis.cz>
  *
  *  This file was ported from mpr.c file, part of libccd.
- *  The Minkoski Portal Refinement implementation was ported 
+ *  The Minkoski Portal Refinement implementation was ported
  *  to OpenCL by Erwin Coumans for the Bullet 3 Physics library.
  *  at http://github.com/erwincoumans/bullet3
  *
@@ -18,11 +18,11 @@
 #ifndef B3_MPR_PENETRATION_H
 #define B3_MPR_PENETRATION_H
 
-#include "Bullet3Common/shared/b3PlatformDefinitions.h"
-#include "Bullet3Common/shared/b3Float4.h"
-#include "Bullet3Collision/NarrowPhaseCollision/shared/b3RigidBodyData.h"
-#include "Bullet3Collision/NarrowPhaseCollision/shared/b3ConvexPolyhedronData.h"
 #include "Bullet3Collision/NarrowPhaseCollision/shared/b3Collidable.h"
+#include "Bullet3Collision/NarrowPhaseCollision/shared/b3ConvexPolyhedronData.h"
+#include "Bullet3Collision/NarrowPhaseCollision/shared/b3RigidBodyData.h"
+#include "Bullet3Common/shared/b3Float4.h"
+#include "Bullet3Common/shared/b3PlatformDefinitions.h"
 
 #ifdef __cplusplus
 #define B3_MPR_SQRT sqrtf
@@ -35,54 +35,45 @@
 #define B3_MPR_TOLERANCE 1E-6f
 #define B3_MPR_MAX_ITERATIONS 1000
 
-struct _b3MprSupport_t
-{
-	b3Float4 v;   //!< Support point in minkowski sum
-	b3Float4 v1;  //!< Support point in obj1
-	b3Float4 v2;  //!< Support point in obj2
+struct _b3MprSupport_t {
+	b3Float4 v; //!< Support point in minkowski sum
+	b3Float4 v1; //!< Support point in obj1
+	b3Float4 v2; //!< Support point in obj2
 };
 typedef struct _b3MprSupport_t b3MprSupport_t;
 
-struct _b3MprSimplex_t
-{
+struct _b3MprSimplex_t {
 	b3MprSupport_t ps[4];
-	int last;  //!< index of last added point
+	int last; //!< index of last added point
 };
 typedef struct _b3MprSimplex_t b3MprSimplex_t;
 
-inline b3MprSupport_t *b3MprSimplexPointW(b3MprSimplex_t *s, int idx)
-{
+inline b3MprSupport_t *b3MprSimplexPointW(b3MprSimplex_t *s, int idx) {
 	return &s->ps[idx];
 }
 
-inline void b3MprSimplexSetSize(b3MprSimplex_t *s, int size)
-{
+inline void b3MprSimplexSetSize(b3MprSimplex_t *s, int size) {
 	s->last = size - 1;
 }
 
-inline int b3MprSimplexSize(const b3MprSimplex_t *s)
-{
+inline int b3MprSimplexSize(const b3MprSimplex_t *s) {
 	return s->last + 1;
 }
 
-inline const b3MprSupport_t *b3MprSimplexPoint(const b3MprSimplex_t *s, int idx)
-{
+inline const b3MprSupport_t *b3MprSimplexPoint(const b3MprSimplex_t *s, int idx) {
 	// here is no check on boundaries
 	return &s->ps[idx];
 }
 
-inline void b3MprSupportCopy(b3MprSupport_t *d, const b3MprSupport_t *s)
-{
+inline void b3MprSupportCopy(b3MprSupport_t *d, const b3MprSupport_t *s) {
 	*d = *s;
 }
 
-inline void b3MprSimplexSet(b3MprSimplex_t *s, size_t pos, const b3MprSupport_t *a)
-{
+inline void b3MprSimplexSet(b3MprSimplex_t *s, size_t pos, const b3MprSupport_t *a) {
 	b3MprSupportCopy(s->ps + pos, a);
 }
 
-inline void b3MprSimplexSwap(b3MprSimplex_t *s, size_t pos1, size_t pos2)
-{
+inline void b3MprSimplexSwap(b3MprSimplex_t *s, size_t pos1, size_t pos2) {
 	b3MprSupport_t supp;
 
 	b3MprSupportCopy(&supp, &s->ps[pos1]);
@@ -90,13 +81,11 @@ inline void b3MprSimplexSwap(b3MprSimplex_t *s, size_t pos1, size_t pos2)
 	b3MprSupportCopy(&s->ps[pos2], &supp);
 }
 
-inline int b3MprIsZero(float val)
-{
+inline int b3MprIsZero(float val) {
 	return B3_MPR_FABS(val) < FLT_EPSILON;
 }
 
-inline int b3MprEq(float _a, float _b)
-{
+inline int b3MprEq(float _a, float _b) {
 	float ab;
 	float a, b;
 
@@ -106,28 +95,22 @@ inline int b3MprEq(float _a, float _b)
 
 	a = B3_MPR_FABS(_a);
 	b = B3_MPR_FABS(_b);
-	if (b > a)
-	{
+	if (b > a) {
 		return ab < FLT_EPSILON * b;
-	}
-	else
-	{
+	} else {
 		return ab < FLT_EPSILON * a;
 	}
 }
 
-inline int b3MprVec3Eq(const b3Float4 *a, const b3Float4 *b)
-{
+inline int b3MprVec3Eq(const b3Float4 *a, const b3Float4 *b) {
 	return b3MprEq((*a).x, (*b).x) && b3MprEq((*a).y, (*b).y) && b3MprEq((*a).z, (*b).z);
 }
 
-inline b3Float4 b3LocalGetSupportVertex(b3Float4ConstArg supportVec, __global const b3ConvexPolyhedronData_t *hull, b3ConstArray(b3Float4) verticesA)
-{
+inline b3Float4 b3LocalGetSupportVertex(b3Float4ConstArg supportVec, __global const b3ConvexPolyhedronData_t *hull, b3ConstArray(b3Float4) verticesA) {
 	b3Float4 supVec = b3MakeFloat4(0, 0, 0, 0);
 	float maxDot = -B3_LARGE_FLOAT;
 
-	if (0 < hull->m_numVertices)
-	{
+	if (0 < hull->m_numVertices) {
 		const b3Float4 scaled = supportVec;
 		int index = b3MaxDot(scaled, &verticesA[hull->m_vertexOffset], hull->m_numVertices, &maxDot);
 		return verticesA[hull->m_vertexOffset + index];
@@ -137,13 +120,12 @@ inline b3Float4 b3LocalGetSupportVertex(b3Float4ConstArg supportVec, __global co
 }
 
 B3_STATIC void b3MprConvexSupport(int pairIndex, int bodyIndex, b3ConstArray(b3RigidBodyData_t) cpuBodyBuf,
-								  b3ConstArray(b3ConvexPolyhedronData_t) cpuConvexData,
-								  b3ConstArray(b3Collidable_t) cpuCollidables,
-								  b3ConstArray(b3Float4) cpuVertices,
-								  __global b3Float4 *sepAxis,
-								  const b3Float4 *_dir, b3Float4 *outp, int logme)
-{
-	//dir is in worldspace, move to local space
+		b3ConstArray(b3ConvexPolyhedronData_t) cpuConvexData,
+		b3ConstArray(b3Collidable_t) cpuCollidables,
+		b3ConstArray(b3Float4) cpuVertices,
+		__global b3Float4 *sepAxis,
+		const b3Float4 *_dir, b3Float4 *outp, int logme) {
+	// dir is in worldspace, move to local space
 
 	b3Float4 pos = cpuBodyBuf[bodyIndex].m_pos;
 	b3Quat orn = cpuBodyBuf[bodyIndex].m_quat;
@@ -152,41 +134,36 @@ B3_STATIC void b3MprConvexSupport(int pairIndex, int bodyIndex, b3ConstArray(b3R
 
 	const b3Float4 localDir = b3QuatRotate(b3QuatInverse(orn), dir);
 
-	//find local support vertex
+	// find local support vertex
 	int colIndex = cpuBodyBuf[bodyIndex].m_collidableIdx;
 
 	b3Assert(cpuCollidables[colIndex].m_shapeType == SHAPE_CONVEX_HULL);
 	__global const b3ConvexPolyhedronData_t *hull = &cpuConvexData[cpuCollidables[colIndex].m_shapeIndex];
 
 	b3Float4 pInA;
-	if (logme)
-	{
+	if (logme) {
 		//	b3Float4 supVec = b3MakeFloat4(0,0,0,0);
 		float maxDot = -B3_LARGE_FLOAT;
 
-		if (0 < hull->m_numVertices)
-		{
+		if (0 < hull->m_numVertices) {
 			const b3Float4 scaled = localDir;
 			int index = b3MaxDot(scaled, &cpuVertices[hull->m_vertexOffset], hull->m_numVertices, &maxDot);
 			pInA = cpuVertices[hull->m_vertexOffset + index];
 		}
-	}
-	else
-	{
+	} else {
 		pInA = b3LocalGetSupportVertex(localDir, hull, cpuVertices);
 	}
 
-	//move vertex to world space
+	// move vertex to world space
 	*outp = b3TransformPoint(pInA, pos, orn);
 }
 
 inline void b3MprSupport(int pairIndex, int bodyIndexA, int bodyIndexB, b3ConstArray(b3RigidBodyData_t) cpuBodyBuf,
-						 b3ConstArray(b3ConvexPolyhedronData_t) cpuConvexData,
-						 b3ConstArray(b3Collidable_t) cpuCollidables,
-						 b3ConstArray(b3Float4) cpuVertices,
-						 __global b3Float4 *sepAxis,
-						 const b3Float4 *_dir, b3MprSupport_t *supp)
-{
+		b3ConstArray(b3ConvexPolyhedronData_t) cpuConvexData,
+		b3ConstArray(b3Collidable_t) cpuCollidables,
+		b3ConstArray(b3Float4) cpuVertices,
+		__global b3Float4 *sepAxis,
+		const b3Float4 *_dir, b3MprSupport_t *supp) {
 	b3Float4 dir;
 	dir = *_dir;
 	b3MprConvexSupport(pairIndex, bodyIndexA, cpuBodyBuf, cpuConvexData, cpuCollidables, cpuVertices, sepAxis, &dir, &supp->v1, 0);
@@ -195,91 +172,78 @@ inline void b3MprSupport(int pairIndex, int bodyIndexA, int bodyIndexB, b3ConstA
 	supp->v = supp->v1 - supp->v2;
 }
 
-inline void b3FindOrigin(int bodyIndexA, int bodyIndexB, b3ConstArray(b3RigidBodyData_t) cpuBodyBuf, b3MprSupport_t *center)
-{
+inline void b3FindOrigin(int bodyIndexA, int bodyIndexB, b3ConstArray(b3RigidBodyData_t) cpuBodyBuf, b3MprSupport_t *center) {
 	center->v1 = cpuBodyBuf[bodyIndexA].m_pos;
 	center->v2 = cpuBodyBuf[bodyIndexB].m_pos;
 	center->v = center->v1 - center->v2;
 }
 
-inline void b3MprVec3Set(b3Float4 *v, float x, float y, float z)
-{
+inline void b3MprVec3Set(b3Float4 *v, float x, float y, float z) {
 	(*v).x = x;
 	(*v).y = y;
 	(*v).z = z;
 	(*v).w = 0.f;
 }
 
-inline void b3MprVec3Add(b3Float4 *v, const b3Float4 *w)
-{
+inline void b3MprVec3Add(b3Float4 *v, const b3Float4 *w) {
 	(*v).x += (*w).x;
 	(*v).y += (*w).y;
 	(*v).z += (*w).z;
 }
 
-inline void b3MprVec3Copy(b3Float4 *v, const b3Float4 *w)
-{
+inline void b3MprVec3Copy(b3Float4 *v, const b3Float4 *w) {
 	*v = *w;
 }
 
-inline void b3MprVec3Scale(b3Float4 *d, float k)
-{
+inline void b3MprVec3Scale(b3Float4 *d, float k) {
 	*d *= k;
 }
 
-inline float b3MprVec3Dot(const b3Float4 *a, const b3Float4 *b)
-{
+inline float b3MprVec3Dot(const b3Float4 *a, const b3Float4 *b) {
 	float dot;
 
 	dot = b3Dot3F4(*a, *b);
 	return dot;
 }
 
-inline float b3MprVec3Len2(const b3Float4 *v)
-{
+inline float b3MprVec3Len2(const b3Float4 *v) {
 	return b3MprVec3Dot(v, v);
 }
 
-inline void b3MprVec3Normalize(b3Float4 *d)
-{
+inline void b3MprVec3Normalize(b3Float4 *d) {
 	float k = 1.f / B3_MPR_SQRT(b3MprVec3Len2(d));
 	b3MprVec3Scale(d, k);
 }
 
-inline void b3MprVec3Cross(b3Float4 *d, const b3Float4 *a, const b3Float4 *b)
-{
+inline void b3MprVec3Cross(b3Float4 *d, const b3Float4 *a, const b3Float4 *b) {
 	*d = b3Cross3(*a, *b);
 }
 
-inline void b3MprVec3Sub2(b3Float4 *d, const b3Float4 *v, const b3Float4 *w)
-{
+inline void b3MprVec3Sub2(b3Float4 *d, const b3Float4 *v, const b3Float4 *w) {
 	*d = *v - *w;
 }
 
-inline void b3PortalDir(const b3MprSimplex_t *portal, b3Float4 *dir)
-{
+inline void b3PortalDir(const b3MprSimplex_t *portal, b3Float4 *dir) {
 	b3Float4 v2v1, v3v1;
 
 	b3MprVec3Sub2(&v2v1, &b3MprSimplexPoint(portal, 2)->v,
-				  &b3MprSimplexPoint(portal, 1)->v);
+			&b3MprSimplexPoint(portal, 1)->v);
 	b3MprVec3Sub2(&v3v1, &b3MprSimplexPoint(portal, 3)->v,
-				  &b3MprSimplexPoint(portal, 1)->v);
+			&b3MprSimplexPoint(portal, 1)->v);
 	b3MprVec3Cross(dir, &v2v1, &v3v1);
 	b3MprVec3Normalize(dir);
 }
 
 inline int portalEncapsulesOrigin(const b3MprSimplex_t *portal,
-								  const b3Float4 *dir)
-{
+		const b3Float4 *dir) {
 	float dot;
 	dot = b3MprVec3Dot(dir, &b3MprSimplexPoint(portal, 1)->v);
 	return b3MprIsZero(dot) || dot > 0.f;
 }
 
 inline int portalReachTolerance(const b3MprSimplex_t *portal,
-								const b3MprSupport_t *v4,
-								const b3Float4 *dir)
-{
+		const b3MprSupport_t *v4,
+		const b3Float4 *dir) {
 	float dv1, dv2, dv3, dv4;
 	float dot1, dot2, dot3;
 
@@ -301,56 +265,44 @@ inline int portalReachTolerance(const b3MprSimplex_t *portal,
 }
 
 inline int portalCanEncapsuleOrigin(const b3MprSimplex_t *portal,
-									const b3MprSupport_t *v4,
-									const b3Float4 *dir)
-{
+		const b3MprSupport_t *v4,
+		const b3Float4 *dir) {
 	float dot;
 	dot = b3MprVec3Dot(&v4->v, dir);
 	return b3MprIsZero(dot) || dot > 0.f;
 }
 
 inline void b3ExpandPortal(b3MprSimplex_t *portal,
-						   const b3MprSupport_t *v4)
-{
+		const b3MprSupport_t *v4) {
 	float dot;
 	b3Float4 v4v0;
 
 	b3MprVec3Cross(&v4v0, &v4->v, &b3MprSimplexPoint(portal, 0)->v);
 	dot = b3MprVec3Dot(&b3MprSimplexPoint(portal, 1)->v, &v4v0);
-	if (dot > 0.f)
-	{
+	if (dot > 0.f) {
 		dot = b3MprVec3Dot(&b3MprSimplexPoint(portal, 2)->v, &v4v0);
-		if (dot > 0.f)
-		{
+		if (dot > 0.f) {
 			b3MprSimplexSet(portal, 1, v4);
-		}
-		else
-		{
+		} else {
 			b3MprSimplexSet(portal, 3, v4);
 		}
-	}
-	else
-	{
+	} else {
 		dot = b3MprVec3Dot(&b3MprSimplexPoint(portal, 3)->v, &v4v0);
-		if (dot > 0.f)
-		{
+		if (dot > 0.f) {
 			b3MprSimplexSet(portal, 2, v4);
-		}
-		else
-		{
+		} else {
 			b3MprSimplexSet(portal, 1, v4);
 		}
 	}
 }
 
 B3_STATIC int b3DiscoverPortal(int pairIndex, int bodyIndexA, int bodyIndexB, b3ConstArray(b3RigidBodyData_t) cpuBodyBuf,
-							   b3ConstArray(b3ConvexPolyhedronData_t) cpuConvexData,
-							   b3ConstArray(b3Collidable_t) cpuCollidables,
-							   b3ConstArray(b3Float4) cpuVertices,
-							   __global b3Float4 *sepAxis,
-							   __global int *hasSepAxis,
-							   b3MprSimplex_t *portal)
-{
+		b3ConstArray(b3ConvexPolyhedronData_t) cpuConvexData,
+		b3ConstArray(b3Collidable_t) cpuCollidables,
+		b3ConstArray(b3Float4) cpuVertices,
+		__global b3Float4 *sepAxis,
+		__global int *hasSepAxis,
+		b3MprSimplex_t *portal) {
 	b3Float4 dir, va, vb;
 	float dot;
 	int cont;
@@ -363,8 +315,7 @@ B3_STATIC int b3DiscoverPortal(int pairIndex, int bodyIndexA, int bodyIndexB, b3
 	b3Float4 zero = b3MakeFloat4(0, 0, 0, 0);
 	b3Float4 *b3mpr_vec3_origin = &zero;
 
-	if (b3MprVec3Eq(&b3MprSimplexPoint(portal, 0)->v, b3mpr_vec3_origin))
-	{
+	if (b3MprVec3Eq(&b3MprSimplexPoint(portal, 0)->v, b3mpr_vec3_origin)) {
 		// Portal's center lies on origin (0,0,0) => we know that objects
 		// intersect but we would need to know penetration info.
 		// So move center little bit...
@@ -389,16 +340,12 @@ B3_STATIC int b3DiscoverPortal(int pairIndex, int bodyIndexA, int bodyIndexB, b3
 
 	// vertex 2
 	b3MprVec3Cross(&dir, &b3MprSimplexPoint(portal, 0)->v,
-				   &b3MprSimplexPoint(portal, 1)->v);
-	if (b3MprIsZero(b3MprVec3Len2(&dir)))
-	{
-		if (b3MprVec3Eq(&b3MprSimplexPoint(portal, 1)->v, b3mpr_vec3_origin))
-		{
+			&b3MprSimplexPoint(portal, 1)->v);
+	if (b3MprIsZero(b3MprVec3Len2(&dir))) {
+		if (b3MprVec3Eq(&b3MprSimplexPoint(portal, 1)->v, b3mpr_vec3_origin)) {
 			// origin lies on v1
 			return 1;
-		}
-		else
-		{
+		} else {
 			// origin lies on v0-v1 segment
 			return 2;
 		}
@@ -415,22 +362,20 @@ B3_STATIC int b3DiscoverPortal(int pairIndex, int bodyIndexA, int bodyIndexB, b3
 
 	// vertex 3 direction
 	b3MprVec3Sub2(&va, &b3MprSimplexPoint(portal, 1)->v,
-				  &b3MprSimplexPoint(portal, 0)->v);
+			&b3MprSimplexPoint(portal, 0)->v);
 	b3MprVec3Sub2(&vb, &b3MprSimplexPoint(portal, 2)->v,
-				  &b3MprSimplexPoint(portal, 0)->v);
+			&b3MprSimplexPoint(portal, 0)->v);
 	b3MprVec3Cross(&dir, &va, &vb);
 	b3MprVec3Normalize(&dir);
 
 	// it is better to form portal faces to be oriented "outside" origin
 	dot = b3MprVec3Dot(&dir, &b3MprSimplexPoint(portal, 0)->v);
-	if (dot > 0.f)
-	{
+	if (dot > 0.f) {
 		b3MprSimplexSwap(portal, 1, 2);
 		b3MprVec3Scale(&dir, -1.f);
 	}
 
-	while (b3MprSimplexSize(portal) < 4)
-	{
+	while (b3MprSimplexSize(portal) < 4) {
 		b3MprSupport(pairIndex, bodyIndexA, bodyIndexB, cpuBodyBuf, cpuConvexData, cpuCollidables, cpuVertices, sepAxis, &dir, b3MprSimplexPointW(portal, 3));
 
 		dot = b3MprVec3Dot(&b3MprSimplexPoint(portal, 3)->v, &dir);
@@ -442,39 +387,33 @@ B3_STATIC int b3DiscoverPortal(int pairIndex, int bodyIndexA, int bodyIndexB, b3
 		// test if origin is outside (v1, v0, v3) - set v2 as v3 and
 		// continue
 		b3MprVec3Cross(&va, &b3MprSimplexPoint(portal, 1)->v,
-					   &b3MprSimplexPoint(portal, 3)->v);
+				&b3MprSimplexPoint(portal, 3)->v);
 		dot = b3MprVec3Dot(&va, &b3MprSimplexPoint(portal, 0)->v);
-		if (dot < 0.f && !b3MprIsZero(dot))
-		{
+		if (dot < 0.f && !b3MprIsZero(dot)) {
 			b3MprSimplexSet(portal, 2, b3MprSimplexPoint(portal, 3));
 			cont = 1;
 		}
 
-		if (!cont)
-		{
+		if (!cont) {
 			// test if origin is outside (v3, v0, v2) - set v1 as v3 and
 			// continue
 			b3MprVec3Cross(&va, &b3MprSimplexPoint(portal, 3)->v,
-						   &b3MprSimplexPoint(portal, 2)->v);
+					&b3MprSimplexPoint(portal, 2)->v);
 			dot = b3MprVec3Dot(&va, &b3MprSimplexPoint(portal, 0)->v);
-			if (dot < 0.f && !b3MprIsZero(dot))
-			{
+			if (dot < 0.f && !b3MprIsZero(dot)) {
 				b3MprSimplexSet(portal, 1, b3MprSimplexPoint(portal, 3));
 				cont = 1;
 			}
 		}
 
-		if (cont)
-		{
+		if (cont) {
 			b3MprVec3Sub2(&va, &b3MprSimplexPoint(portal, 1)->v,
-						  &b3MprSimplexPoint(portal, 0)->v);
+					&b3MprSimplexPoint(portal, 0)->v);
 			b3MprVec3Sub2(&vb, &b3MprSimplexPoint(portal, 2)->v,
-						  &b3MprSimplexPoint(portal, 0)->v);
+					&b3MprSimplexPoint(portal, 0)->v);
 			b3MprVec3Cross(&dir, &va, &vb);
 			b3MprVec3Normalize(&dir);
-		}
-		else
-		{
+		} else {
 			b3MprSimplexSetSize(portal, 4);
 		}
 	}
@@ -483,17 +422,16 @@ B3_STATIC int b3DiscoverPortal(int pairIndex, int bodyIndexA, int bodyIndexB, b3
 }
 
 B3_STATIC int b3RefinePortal(int pairIndex, int bodyIndexA, int bodyIndexB, b3ConstArray(b3RigidBodyData_t) cpuBodyBuf,
-							 b3ConstArray(b3ConvexPolyhedronData_t) cpuConvexData,
-							 b3ConstArray(b3Collidable_t) cpuCollidables,
-							 b3ConstArray(b3Float4) cpuVertices,
-							 __global b3Float4 *sepAxis,
-							 b3MprSimplex_t *portal)
-{
+		b3ConstArray(b3ConvexPolyhedronData_t) cpuConvexData,
+		b3ConstArray(b3Collidable_t) cpuCollidables,
+		b3ConstArray(b3Float4) cpuVertices,
+		__global b3Float4 *sepAxis,
+		b3MprSimplex_t *portal) {
 	b3Float4 dir;
 	b3MprSupport_t v4;
 
 	for (int i = 0; i < B3_MPR_MAX_ITERATIONS; i++)
-	//while (1)
+	// while (1)
 	{
 		// compute direction outside the portal (from v0 throught v1,v2,v3
 		// face)
@@ -509,8 +447,7 @@ B3_STATIC int b3RefinePortal(int pairIndex, int bodyIndexA, int bodyIndexB, b3Co
 
 		// test if v4 can expand portal to contain origin and if portal
 		// expanding doesn't reach given tolerance
-		if (!portalCanEncapsuleOrigin(portal, &v4, &dir) || portalReachTolerance(portal, &v4, &dir))
-		{
+		if (!portalCanEncapsuleOrigin(portal, &v4, &dir) || portalReachTolerance(portal, &v4, &dir)) {
 			return -1;
 		}
 
@@ -522,8 +459,7 @@ B3_STATIC int b3RefinePortal(int pairIndex, int bodyIndexA, int bodyIndexB, b3Co
 	return -1;
 }
 
-B3_STATIC void b3FindPos(const b3MprSimplex_t *portal, b3Float4 *pos)
-{
+B3_STATIC void b3FindPos(const b3MprSimplex_t *portal, b3Float4 *pos) {
 	b3Float4 zero = b3MakeFloat4(0, 0, 0, 0);
 	b3Float4 *b3mpr_vec3_origin = &zero;
 
@@ -536,35 +472,34 @@ B3_STATIC void b3FindPos(const b3MprSimplex_t *portal, b3Float4 *pos)
 
 	// use barycentric coordinates of tetrahedron to find origin
 	b3MprVec3Cross(&vec, &b3MprSimplexPoint(portal, 1)->v,
-				   &b3MprSimplexPoint(portal, 2)->v);
+			&b3MprSimplexPoint(portal, 2)->v);
 	b[0] = b3MprVec3Dot(&vec, &b3MprSimplexPoint(portal, 3)->v);
 
 	b3MprVec3Cross(&vec, &b3MprSimplexPoint(portal, 3)->v,
-				   &b3MprSimplexPoint(portal, 2)->v);
+			&b3MprSimplexPoint(portal, 2)->v);
 	b[1] = b3MprVec3Dot(&vec, &b3MprSimplexPoint(portal, 0)->v);
 
 	b3MprVec3Cross(&vec, &b3MprSimplexPoint(portal, 0)->v,
-				   &b3MprSimplexPoint(portal, 1)->v);
+			&b3MprSimplexPoint(portal, 1)->v);
 	b[2] = b3MprVec3Dot(&vec, &b3MprSimplexPoint(portal, 3)->v);
 
 	b3MprVec3Cross(&vec, &b3MprSimplexPoint(portal, 2)->v,
-				   &b3MprSimplexPoint(portal, 1)->v);
+			&b3MprSimplexPoint(portal, 1)->v);
 	b[3] = b3MprVec3Dot(&vec, &b3MprSimplexPoint(portal, 0)->v);
 
 	sum = b[0] + b[1] + b[2] + b[3];
 
-	if (b3MprIsZero(sum) || sum < 0.f)
-	{
+	if (b3MprIsZero(sum) || sum < 0.f) {
 		b[0] = 0.f;
 
 		b3MprVec3Cross(&vec, &b3MprSimplexPoint(portal, 2)->v,
-					   &b3MprSimplexPoint(portal, 3)->v);
+				&b3MprSimplexPoint(portal, 3)->v);
 		b[1] = b3MprVec3Dot(&vec, &dir);
 		b3MprVec3Cross(&vec, &b3MprSimplexPoint(portal, 3)->v,
-					   &b3MprSimplexPoint(portal, 1)->v);
+				&b3MprSimplexPoint(portal, 1)->v);
 		b[2] = b3MprVec3Dot(&vec, &dir);
 		b3MprVec3Cross(&vec, &b3MprSimplexPoint(portal, 1)->v,
-					   &b3MprSimplexPoint(portal, 2)->v);
+				&b3MprSimplexPoint(portal, 2)->v);
 		b[3] = b3MprVec3Dot(&vec, &dir);
 
 		sum = b[1] + b[2] + b[3];
@@ -574,8 +509,7 @@ B3_STATIC void b3FindPos(const b3MprSimplex_t *portal, b3Float4 *pos)
 
 	b3MprVec3Copy(&p1, b3mpr_vec3_origin);
 	b3MprVec3Copy(&p2, b3mpr_vec3_origin);
-	for (i = 0; i < 4; i++)
-	{
+	for (i = 0; i < 4; i++) {
 		b3MprVec3Copy(&vec, &b3MprSimplexPoint(portal, i)->v1);
 		b3MprVec3Scale(&vec, b[i]);
 		b3MprVec3Add(&p1, &vec);
@@ -592,18 +526,16 @@ B3_STATIC void b3FindPos(const b3MprSimplex_t *portal, b3Float4 *pos)
 	b3MprVec3Scale(pos, 0.5);
 }
 
-inline float b3MprVec3Dist2(const b3Float4 *a, const b3Float4 *b)
-{
+inline float b3MprVec3Dist2(const b3Float4 *a, const b3Float4 *b) {
 	b3Float4 ab;
 	b3MprVec3Sub2(&ab, a, b);
 	return b3MprVec3Len2(&ab);
 }
 
 inline float _b3MprVec3PointSegmentDist2(const b3Float4 *P,
-										 const b3Float4 *x0,
-										 const b3Float4 *b,
-										 b3Float4 *witness)
-{
+		const b3Float4 *x0,
+		const b3Float4 *b,
+		b3Float4 *witness) {
 	// The computation comes from solving equation of segment:
 	//      S(t) = x0 + t.d
 	//          where - x0 is initial point of segment
@@ -631,29 +563,21 @@ inline float _b3MprVec3PointSegmentDist2(const b3Float4 *P,
 	t = -1.f * b3MprVec3Dot(&a, &d);
 	t /= b3MprVec3Len2(&d);
 
-	if (t < 0.f || b3MprIsZero(t))
-	{
+	if (t < 0.f || b3MprIsZero(t)) {
 		dist = b3MprVec3Dist2(x0, P);
 		if (witness)
 			b3MprVec3Copy(witness, x0);
-	}
-	else if (t > 1.f || b3MprEq(t, 1.f))
-	{
+	} else if (t > 1.f || b3MprEq(t, 1.f)) {
 		dist = b3MprVec3Dist2(b, P);
 		if (witness)
 			b3MprVec3Copy(witness, b);
-	}
-	else
-	{
-		if (witness)
-		{
+	} else {
+		if (witness) {
 			b3MprVec3Copy(witness, &d);
 			b3MprVec3Scale(witness, t);
 			b3MprVec3Add(witness, x0);
 			dist = b3MprVec3Dist2(witness, P);
-		}
-		else
-		{
+		} else {
 			// recycling variables
 			b3MprVec3Scale(&d, t);
 			b3MprVec3Add(&d, &a);
@@ -665,10 +589,9 @@ inline float _b3MprVec3PointSegmentDist2(const b3Float4 *P,
 }
 
 inline float b3MprVec3PointTriDist2(const b3Float4 *P,
-									const b3Float4 *x0, const b3Float4 *B,
-									const b3Float4 *C,
-									b3Float4 *witness)
-{
+		const b3Float4 *x0, const b3Float4 *B,
+		const b3Float4 *C,
+		b3Float4 *witness) {
 	// Computation comes from analytic expression for triangle (x0, B, C)
 	//      T(s, t) = x0 + s.d1 + t.d2, where d1 = B - x0 and d2 = C - x0 and
 	// Then equation for distance is:
@@ -697,10 +620,8 @@ inline float b3MprVec3PointTriDist2(const b3Float4 *P,
 	s = (q * r - w * p) / (w * v - r * r);
 	t = (-s * r - q) / w;
 
-	if ((b3MprIsZero(s) || s > 0.f) && (b3MprEq(s, 1.f) || s < 1.f) && (b3MprIsZero(t) || t > 0.f) && (b3MprEq(t, 1.f) || t < 1.f) && (b3MprEq(t + s, 1.f) || t + s < 1.f))
-	{
-		if (witness)
-		{
+	if ((b3MprIsZero(s) || s > 0.f) && (b3MprEq(s, 1.f) || s < 1.f) && (b3MprIsZero(t) || t > 0.f) && (b3MprEq(t, 1.f) || t < 1.f) && (b3MprEq(t + s, 1.f) || t + s < 1.f)) {
+		if (witness) {
 			b3MprVec3Scale(&d1, s);
 			b3MprVec3Scale(&d2, t);
 			b3MprVec3Copy(witness, x0);
@@ -708,9 +629,7 @@ inline float b3MprVec3PointTriDist2(const b3Float4 *P,
 			b3MprVec3Add(witness, &d2);
 
 			dist = b3MprVec3Dist2(witness, P);
-		}
-		else
-		{
+		} else {
 			dist = s * s * v;
 			dist += t * t * w;
 			dist += 2.f * s * t * r;
@@ -718,22 +637,18 @@ inline float b3MprVec3PointTriDist2(const b3Float4 *P,
 			dist += 2.f * t * q;
 			dist += u;
 		}
-	}
-	else
-	{
+	} else {
 		dist = _b3MprVec3PointSegmentDist2(P, x0, B, witness);
 
 		dist2 = _b3MprVec3PointSegmentDist2(P, x0, C, &witness2);
-		if (dist2 < dist)
-		{
+		if (dist2 < dist) {
 			dist = dist2;
 			if (witness)
 				b3MprVec3Copy(witness, &witness2);
 		}
 
 		dist2 = _b3MprVec3PointSegmentDist2(P, B, C, &witness2);
-		if (dist2 < dist)
-		{
+		if (dist2 < dist) {
 			dist = dist2;
 			if (witness)
 				b3MprVec3Copy(witness, &witness2);
@@ -744,13 +659,12 @@ inline float b3MprVec3PointTriDist2(const b3Float4 *P,
 }
 
 B3_STATIC void b3FindPenetr(int pairIndex, int bodyIndexA, int bodyIndexB, b3ConstArray(b3RigidBodyData_t) cpuBodyBuf,
-							b3ConstArray(b3ConvexPolyhedronData_t) cpuConvexData,
-							b3ConstArray(b3Collidable_t) cpuCollidables,
-							b3ConstArray(b3Float4) cpuVertices,
-							__global b3Float4 *sepAxis,
-							b3MprSimplex_t *portal,
-							float *depth, b3Float4 *pdir, b3Float4 *pos)
-{
+		b3ConstArray(b3ConvexPolyhedronData_t) cpuConvexData,
+		b3ConstArray(b3Collidable_t) cpuCollidables,
+		b3ConstArray(b3Float4) cpuVertices,
+		__global b3Float4 *sepAxis,
+		b3MprSimplex_t *portal,
+		float *depth, b3Float4 *pdir, b3Float4 *pos) {
 	b3Float4 dir;
 	b3MprSupport_t v4;
 	unsigned long iterations;
@@ -760,7 +674,7 @@ B3_STATIC void b3FindPenetr(int pairIndex, int bodyIndexA, int bodyIndexB, b3Con
 
 	iterations = 1UL;
 	for (int i = 0; i < B3_MPR_MAX_ITERATIONS; i++)
-	//while (1)
+	// while (1)
 	{
 		// compute portal direction and obtain next support point
 		b3PortalDir(portal, &dir);
@@ -768,13 +682,11 @@ B3_STATIC void b3FindPenetr(int pairIndex, int bodyIndexA, int bodyIndexB, b3Con
 		b3MprSupport(pairIndex, bodyIndexA, bodyIndexB, cpuBodyBuf, cpuConvexData, cpuCollidables, cpuVertices, sepAxis, &dir, &v4);
 
 		// reached tolerance -> find penetration info
-		if (portalReachTolerance(portal, &v4, &dir) || iterations == B3_MPR_MAX_ITERATIONS)
-		{
+		if (portalReachTolerance(portal, &v4, &dir) || iterations == B3_MPR_MAX_ITERATIONS) {
 			*depth = b3MprVec3PointTriDist2(b3mpr_vec3_origin, &b3MprSimplexPoint(portal, 1)->v, &b3MprSimplexPoint(portal, 2)->v, &b3MprSimplexPoint(portal, 3)->v, pdir);
 			*depth = B3_MPR_SQRT(*depth);
 
-			if (b3MprIsZero((*pdir).x) && b3MprIsZero((*pdir).y) && b3MprIsZero((*pdir).z))
-			{
+			if (b3MprIsZero((*pdir).x) && b3MprIsZero((*pdir).y) && b3MprIsZero((*pdir).z)) {
 				*pdir = dir;
 			}
 			b3MprVec3Normalize(pdir);
@@ -791,8 +703,7 @@ B3_STATIC void b3FindPenetr(int pairIndex, int bodyIndexA, int bodyIndexB, b3Con
 	}
 }
 
-B3_STATIC void b3FindPenetrTouch(b3MprSimplex_t *portal, float *depth, b3Float4 *dir, b3Float4 *pos)
-{
+B3_STATIC void b3FindPenetrTouch(b3MprSimplex_t *portal, float *depth, b3Float4 *dir, b3Float4 *pos) {
 	// Touching contact on portal's v1 - so depth is zero and direction
 	// is unimportant and pos can be guessed
 	*depth = 0.f;
@@ -807,8 +718,7 @@ B3_STATIC void b3FindPenetrTouch(b3MprSimplex_t *portal, float *depth, b3Float4 
 }
 
 B3_STATIC void b3FindPenetrSegment(b3MprSimplex_t *portal,
-								   float *depth, b3Float4 *dir, b3Float4 *pos)
-{
+		float *depth, b3Float4 *dir, b3Float4 *pos) {
 	// Origin lies on v0-v1 segment.
 	// Depth is distance to v1, direction also and position must be
 	// computed
@@ -823,14 +733,13 @@ B3_STATIC void b3FindPenetrSegment(b3MprSimplex_t *portal,
 }
 
 inline int b3MprPenetration(int pairIndex, int bodyIndexA, int bodyIndexB,
-							b3ConstArray(b3RigidBodyData_t) cpuBodyBuf,
-							b3ConstArray(b3ConvexPolyhedronData_t) cpuConvexData,
-							b3ConstArray(b3Collidable_t) cpuCollidables,
-							b3ConstArray(b3Float4) cpuVertices,
-							__global b3Float4 *sepAxis,
-							__global int *hasSepAxis,
-							float *depthOut, b3Float4 *dirOut, b3Float4 *posOut)
-{
+		b3ConstArray(b3RigidBodyData_t) cpuBodyBuf,
+		b3ConstArray(b3ConvexPolyhedronData_t) cpuConvexData,
+		b3ConstArray(b3Collidable_t) cpuCollidables,
+		b3ConstArray(b3Float4) cpuVertices,
+		__global b3Float4 *sepAxis,
+		__global int *hasSepAxis,
+		float *depthOut, b3Float4 *dirOut, b3Float4 *posOut) {
 	b3MprSimplex_t portal;
 
 	//	if (!hasSepAxis[pairIndex])
@@ -842,12 +751,10 @@ inline int b3MprPenetration(int pairIndex, int bodyIndexA, int bodyIndexB,
 	// Phase 1: Portal discovery
 	res = b3DiscoverPortal(pairIndex, bodyIndexA, bodyIndexB, cpuBodyBuf, cpuConvexData, cpuCollidables, cpuVertices, sepAxis, hasSepAxis, &portal);
 
-	//sepAxis[pairIndex] = *pdir;//or -dir?
+	// sepAxis[pairIndex] = *pdir;//or -dir?
 
-	switch (res)
-	{
-		case 0:
-		{
+	switch (res) {
+		case 0: {
 			// Phase 2: Portal refinement
 
 			res = b3RefinePortal(pairIndex, bodyIndexA, bodyIndexB, cpuBodyBuf, cpuConvexData, cpuCollidables, cpuVertices, sepAxis, &portal);
@@ -860,23 +767,20 @@ inline int b3MprPenetration(int pairIndex, int bodyIndexA, int bodyIndexB,
 			sepAxis[pairIndex] = -*dirOut;
 			break;
 		}
-		case 1:
-		{
+		case 1: {
 			// Touching contact on portal's v1.
 			b3FindPenetrTouch(&portal, depthOut, dirOut, posOut);
 			break;
 		}
-		case 2:
-		{
+		case 2: {
 			b3FindPenetrSegment(&portal, depthOut, dirOut, posOut);
 			break;
 		}
-		default:
-		{
+		default: {
 			hasSepAxis[pairIndex] = 0;
-			//if (res < 0)
+			// if (res < 0)
 			//{
-			// Origin isn't inside portal - no collision.
+			//  Origin isn't inside portal - no collision.
 			return -1;
 			//}
 		}
@@ -885,4 +789,4 @@ inline int b3MprPenetration(int pairIndex, int bodyIndexA, int bodyIndexB,
 	return 0;
 };
 
-#endif  //B3_MPR_PENETRATION_H
+#endif // B3_MPR_PENETRATION_H

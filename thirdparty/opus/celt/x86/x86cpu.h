@@ -26,35 +26,35 @@
 */
 
 #if !defined(X86CPU_H)
-# define X86CPU_H
+#define X86CPU_H
 
-# if defined(OPUS_X86_MAY_HAVE_SSE)
-#  define MAY_HAVE_SSE(name) name ## _sse
-# else
-#  define MAY_HAVE_SSE(name) name ## _c
-# endif
+#if defined(OPUS_X86_MAY_HAVE_SSE)
+#define MAY_HAVE_SSE(name) name##_sse
+#else
+#define MAY_HAVE_SSE(name) name##_c
+#endif
 
-# if defined(OPUS_X86_MAY_HAVE_SSE2)
-#  define MAY_HAVE_SSE2(name) name ## _sse2
-# else
-#  define MAY_HAVE_SSE2(name) name ## _c
-# endif
+#if defined(OPUS_X86_MAY_HAVE_SSE2)
+#define MAY_HAVE_SSE2(name) name##_sse2
+#else
+#define MAY_HAVE_SSE2(name) name##_c
+#endif
 
-# if defined(OPUS_X86_MAY_HAVE_SSE4_1)
-#  define MAY_HAVE_SSE4_1(name) name ## _sse4_1
-# else
-#  define MAY_HAVE_SSE4_1(name) name ## _c
-# endif
+#if defined(OPUS_X86_MAY_HAVE_SSE4_1)
+#define MAY_HAVE_SSE4_1(name) name##_sse4_1
+#else
+#define MAY_HAVE_SSE4_1(name) name##_c
+#endif
 
-# if defined(OPUS_X86_MAY_HAVE_AVX)
-#  define MAY_HAVE_AVX(name) name ## _avx
-# else
-#  define MAY_HAVE_AVX(name) name ## _c
-# endif
+#if defined(OPUS_X86_MAY_HAVE_AVX)
+#define MAY_HAVE_AVX(name) name##_avx
+#else
+#define MAY_HAVE_AVX(name) name##_c
+#endif
 
-# if defined(OPUS_HAVE_RTCD)
+#if defined(OPUS_HAVE_RTCD)
 int opus_select_arch(void);
-# endif
+#endif
 
 /*gcc appears to emit MOVDQA's to load the argument of an _mm_cvtepi8_epi32()
   or _mm_cvtepi16_epi32() when optimizations are disabled, even though the
@@ -74,20 +74,20 @@ int opus_select_arch(void);
   For _mm_cvtepi16_epi32, it does the right thing, though does *not* optimize out
   the extra MOVQ if it's specified explicitly */
 
-# if defined(__clang__) || !defined(__OPTIMIZE__)
-#  define OP_CVTEPI8_EPI32_M32(x) \
- (_mm_cvtepi8_epi32(_mm_cvtsi32_si128(*(int *)(x))))
-# else
-#  define OP_CVTEPI8_EPI32_M32(x) \
- (_mm_cvtepi8_epi32(*(__m128i *)(x)))
+#if defined(__clang__) || !defined(__OPTIMIZE__)
+#define OP_CVTEPI8_EPI32_M32(x) \
+	(_mm_cvtepi8_epi32(_mm_cvtsi32_si128(*(int *)(x))))
+#else
+#define OP_CVTEPI8_EPI32_M32(x) \
+	(_mm_cvtepi8_epi32(*(__m128i *)(x)))
 #endif
 
-# if !defined(__OPTIMIZE__)
-#  define OP_CVTEPI16_EPI32_M64(x) \
- (_mm_cvtepi16_epi32(_mm_loadl_epi64((__m128i *)(x))))
-# else
-#  define OP_CVTEPI16_EPI32_M64(x) \
- (_mm_cvtepi16_epi32(*(__m128i *)(x)))
-# endif
+#if !defined(__OPTIMIZE__)
+#define OP_CVTEPI16_EPI32_M64(x) \
+	(_mm_cvtepi16_epi32(_mm_loadl_epi64((__m128i *)(x))))
+#else
+#define OP_CVTEPI16_EPI32_M64(x) \
+	(_mm_cvtepi16_epi32(*(__m128i *)(x)))
+#endif
 
 #endif

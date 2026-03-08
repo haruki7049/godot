@@ -1,9 +1,9 @@
 /*  bdf.c
 
-    FreeType font driver for bdf files
+	FreeType font driver for bdf files
 
-    Copyright (C) 2001, 2002 by
-    Francesco Zappa Nardelli
+	Copyright (C) 2001, 2002 by
+	Francesco Zappa Nardelli
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -24,11 +24,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-
 #define FT_MAKE_OPTION_SINGLE_OBJECT
 
-#include "bdflib.c"
 #include "bdfdrivr.c"
-
+#include "bdflib.c"
 
 /* END */

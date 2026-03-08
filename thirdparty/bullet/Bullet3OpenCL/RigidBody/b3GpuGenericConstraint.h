@@ -1,30 +1,28 @@
 /*
-Copyright (c) 2013 Advanced Micro Devices, Inc.  
+Copyright (c) 2013 Advanced Micro Devices, Inc.
 
 This software is provided 'as-is', without any express or implied warranty.
 In no event will the authors be held liable for any damages arising from the use of this software.
-Permission is granted to anyone to use this software for any purpose, 
-including commercial applications, and to alter it and redistribute it freely, 
+Permission is granted to anyone to use this software for any purpose,
+including commercial applications, and to alter it and redistribute it freely,
 subject to the following restrictions:
 
 1. The origin of this software must not be misrepresented; you must not claim that you wrote the original software. If you use this software in a product, an acknowledgment in the product documentation would be appreciated but is not required.
 2. Altered source versions must be plainly marked as such, and must not be misrepresented as being the original software.
 3. This notice may not be removed or altered from any source distribution.
 */
-//Originally written by Erwin Coumans
+// Originally written by Erwin Coumans
 
 #ifndef B3_GPU_GENERIC_CONSTRAINT_H
 #define B3_GPU_GENERIC_CONSTRAINT_H
 
 #include "Bullet3Common/b3Quaternion.h"
 struct b3RigidBodyData;
-enum B3_CONSTRAINT_FLAGS
-{
+enum B3_CONSTRAINT_FLAGS {
 	B3_CONSTRAINT_FLAG_ENABLED = 1,
 };
 
-enum b3GpuGenericConstraintType
-{
+enum b3GpuGenericConstraintType {
 	B3_GPU_POINT2POINT_CONSTRAINT_TYPE = 3,
 	B3_GPU_FIXED_CONSTRAINT_TYPE = 4,
 	//	B3_HINGE_CONSTRAINT_TYPE,
@@ -38,8 +36,7 @@ enum b3GpuGenericConstraintType
 	B3_GPU_MAX_CONSTRAINT_TYPE
 };
 
-struct b3GpuConstraintInfo2
-{
+struct b3GpuConstraintInfo2 {
 	// integrator parameters: frames per second (1/stepsize), default error
 	// reduction parameter (0..1).
 	b3Scalar fps, erp;
@@ -65,17 +62,16 @@ struct b3GpuConstraintInfo2
 	// description of what this does. this is set to -1 on entry.
 	// note that the returned indexes are relative to the first index of
 	// the constraint.
-	int* findex;
+	int *findex;
 	// number of solver iterations
 	int m_numIterations;
 
-	//damping of the velocity
+	// damping of the velocity
 	b3Scalar m_damping;
 };
 
 B3_ATTRIBUTE_ALIGNED16(struct)
-b3GpuGenericConstraint
-{
+b3GpuGenericConstraint {
 	int m_constraintType;
 	int m_rbA;
 	int m_rbB;
@@ -89,40 +85,34 @@ b3GpuGenericConstraint
 	int m_uid;
 	int m_padding[2];
 
-	int getRigidBodyA() const
-	{
+	int getRigidBodyA() const {
 		return m_rbA;
 	}
-	int getRigidBodyB() const
-	{
+	int getRigidBodyB() const {
 		return m_rbB;
 	}
 
-	const b3Vector3& getPivotInA() const
-	{
+	const b3Vector3 &getPivotInA() const {
 		return m_pivotInA;
 	}
 
-	const b3Vector3& getPivotInB() const
-	{
+	const b3Vector3 &getPivotInB() const {
 		return m_pivotInB;
 	}
 
-	int isEnabled() const
-	{
+	int isEnabled() const {
 		return m_flags & B3_CONSTRAINT_FLAG_ENABLED;
 	}
 
-	float getBreakingImpulseThreshold() const
-	{
+	float getBreakingImpulseThreshold() const {
 		return m_breakingImpulseThreshold;
 	}
 
-	///internal method used by the constraint solver, don't use them directly
-	void getInfo1(unsigned int* info, const b3RigidBodyData* bodies);
+	/// internal method used by the constraint solver, don't use them directly
+	void getInfo1(unsigned int *info, const b3RigidBodyData *bodies);
 
-	///internal method used by the constraint solver, don't use them directly
-	void getInfo2(b3GpuConstraintInfo2 * info, const b3RigidBodyData* bodies);
+	/// internal method used by the constraint solver, don't use them directly
+	void getInfo2(b3GpuConstraintInfo2 * info, const b3RigidBodyData *bodies);
 };
 
-#endif  //B3_GPU_GENERIC_CONSTRAINT_H
+#endif // B3_GPU_GENERIC_CONSTRAINT_H

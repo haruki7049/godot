@@ -23,17 +23,13 @@ subject to the following restrictions:
 
 typedef b3Int4 b3BroadphasePair;
 
-inline b3Int4 b3MakeBroadphasePair(int xx, int yy)
-{
+inline b3Int4 b3MakeBroadphasePair(int xx, int yy) {
 	b3Int4 pair;
 
-	if (xx < yy)
-	{
+	if (xx < yy) {
 		pair.x = xx;
 		pair.y = yy;
-	}
-	else
-	{
+	} else {
 		pair.x = yy;
 		pair.y = xx;
 	}
@@ -45,15 +41,13 @@ inline b3Int4 b3MakeBroadphasePair(int xx, int yy)
 /*struct b3BroadphasePair : public b3Int4
 {
 	explicit b3BroadphasePair(){}
-	
+
 };
 */
 
-class b3BroadphasePairSortPredicate
-{
+class b3BroadphasePairSortPredicate {
 public:
-	bool operator()(const b3BroadphasePair& a, const b3BroadphasePair& b) const
-	{
+	bool operator()(const b3BroadphasePair &a, const b3BroadphasePair &b) const {
 		const int uidA0 = a.x;
 		const int uidB0 = b.x;
 		const int uidA1 = a.y;
@@ -62,9 +56,8 @@ public:
 	}
 };
 
-B3_FORCE_INLINE bool operator==(const b3BroadphasePair& a, const b3BroadphasePair& b)
-{
+B3_FORCE_INLINE bool operator==(const b3BroadphasePair &a, const b3BroadphasePair &b) {
 	return (a.x == b.x) && (a.y == b.y);
 }
 
-#endif  //B3_OVERLAPPING_PAIR_H
+#endif // B3_OVERLAPPING_PAIR_H

@@ -3,8 +3,8 @@ Copyright (c) 2003-2006 Gino van den Bergen / Erwin Coumans  http://continuousph
 
 This software is provided 'as-is', without any express or implied warranty.
 In no event will the authors be held liable for any damages arising from the use of this software.
-Permission is granted to anyone to use this software for any purpose, 
-including commercial applications, and to alter it and redistribute it freely, 
+Permission is granted to anyone to use this software for any purpose,
+including commercial applications, and to alter it and redistribute it freely,
 subject to the following restrictions:
 
 1. The origin of this software must not be misrepresented; you must not claim that you wrote the original software. If you use this software in a product, an acknowledgment in the product documentation would be appreciated but is not required.
@@ -15,8 +15,7 @@ subject to the following restrictions:
 #ifndef BT_GEN_LIST_H
 #define BT_GEN_LIST_H
 
-class btGEN_Link
-{
+class btGEN_Link {
 public:
 	btGEN_Link() : m_next(0), m_prev(0) {}
 	btGEN_Link(btGEN_Link *next, btGEN_Link *prev) : m_next(next), m_prev(prev) {}
@@ -27,24 +26,21 @@ public:
 	bool isHead() const { return m_prev == 0; }
 	bool isTail() const { return m_next == 0; }
 
-	void insertBefore(btGEN_Link *link)
-	{
+	void insertBefore(btGEN_Link *link) {
 		m_next = link;
 		m_prev = link->m_prev;
 		m_next->m_prev = this;
 		m_prev->m_next = this;
 	}
 
-	void insertAfter(btGEN_Link *link)
-	{
+	void insertAfter(btGEN_Link *link) {
 		m_next = link->m_next;
 		m_prev = link;
 		m_next->m_prev = this;
 		m_prev->m_next = this;
 	}
 
-	void remove()
-	{
+	void remove() {
 		m_next->m_prev = m_prev;
 		m_prev->m_next = m_next;
 	}
@@ -54,8 +50,7 @@ private:
 	btGEN_Link *m_prev;
 };
 
-class btGEN_List
-{
+class btGEN_List {
 public:
 	btGEN_List() : m_head(&m_tail, 0), m_tail(0, &m_head) {}
 
@@ -70,4 +65,4 @@ private:
 	btGEN_Link m_tail;
 };
 
-#endif  //BT_GEN_LIST_H
+#endif // BT_GEN_LIST_H

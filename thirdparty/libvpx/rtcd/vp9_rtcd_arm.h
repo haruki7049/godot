@@ -32,23 +32,24 @@ void vp9_rtcd(void);
 
 #ifdef RTCD_C
 #include "vpx_ports/arm.h"
-static void setup_rtcd_internal(void)
-{
-    int flags = arm_cpu_caps();
+static void setup_rtcd_internal(void) {
+	int flags = arm_cpu_caps();
 
-    vp9_iht4x4_16_add = vp9_iht4x4_16_add_c;
+	vp9_iht4x4_16_add = vp9_iht4x4_16_add_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vp9_iht4x4_16_add = vp9_iht4x4_16_add_neon;
+	if (flags & HAS_NEON)
+		vp9_iht4x4_16_add = vp9_iht4x4_16_add_neon;
 #endif
-    vp9_iht8x8_64_add = vp9_iht8x8_64_add_c;
+	vp9_iht8x8_64_add = vp9_iht8x8_64_add_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vp9_iht8x8_64_add = vp9_iht8x8_64_add_neon;
+	if (flags & HAS_NEON)
+		vp9_iht8x8_64_add = vp9_iht8x8_64_add_neon;
 #endif
 }
 #endif
 
 #ifdef __cplusplus
-}  // extern "C"
+} // extern "C"
 #endif
 
 #endif

@@ -24,228 +24,204 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-
 #ifndef PCF_H_
 #define PCF_H_
-
 
 #include <freetype/internal/ftdrv.h>
 #include <freetype/internal/ftstream.h>
 
-
 FT_BEGIN_HEADER
 
-  typedef struct  PCF_TableRec_
-  {
-    FT_ULong  type;
-    FT_ULong  format;
-    FT_ULong  size;
-    FT_ULong  offset;
+typedef struct PCF_TableRec_ {
+	FT_ULong type;
+	FT_ULong format;
+	FT_ULong size;
+	FT_ULong offset;
 
-  } PCF_TableRec, *PCF_Table;
+} PCF_TableRec, *PCF_Table;
 
+typedef struct PCF_TocRec_ {
+	FT_ULong version;
+	FT_ULong count;
+	PCF_Table tables;
 
-  typedef struct  PCF_TocRec_
-  {
-    FT_ULong   version;
-    FT_ULong   count;
-    PCF_Table  tables;
+} PCF_TocRec, *PCF_Toc;
 
-  } PCF_TocRec, *PCF_Toc;
+typedef struct PCF_ParsePropertyRec_ {
+	FT_Long name;
+	FT_Byte isString;
+	FT_Long value;
 
+} PCF_ParsePropertyRec, *PCF_ParseProperty;
 
-  typedef struct  PCF_ParsePropertyRec_
-  {
-    FT_Long  name;
-    FT_Byte  isString;
-    FT_Long  value;
+typedef struct PCF_PropertyRec_ {
+	FT_String *name;
+	FT_Byte isString;
 
-  } PCF_ParsePropertyRec, *PCF_ParseProperty;
+	union {
+		FT_String *atom;
+		FT_Long l;
+		FT_ULong ul;
 
+	} value;
 
-  typedef struct  PCF_PropertyRec_
-  {
-    FT_String*  name;
-    FT_Byte     isString;
+} PCF_PropertyRec, *PCF_Property;
 
-    union
-    {
-      FT_String*  atom;
-      FT_Long     l;
-      FT_ULong    ul;
+typedef struct PCF_Compressed_MetricRec_ {
+	FT_Byte leftSideBearing;
+	FT_Byte rightSideBearing;
+	FT_Byte characterWidth;
+	FT_Byte ascent;
+	FT_Byte descent;
 
-    } value;
+} PCF_Compressed_MetricRec, *PCF_Compressed_Metric;
 
-  } PCF_PropertyRec, *PCF_Property;
+typedef struct PCF_MetricRec_ {
+	FT_Short leftSideBearing;
+	FT_Short rightSideBearing;
+	FT_Short characterWidth;
+	FT_Short ascent;
+	FT_Short descent;
+	FT_Short attributes;
 
+	FT_ULong bits; /* offset into the PCF_BITMAPS table */
 
-  typedef struct  PCF_Compressed_MetricRec_
-  {
-    FT_Byte  leftSideBearing;
-    FT_Byte  rightSideBearing;
-    FT_Byte  characterWidth;
-    FT_Byte  ascent;
-    FT_Byte  descent;
+} PCF_MetricRec, *PCF_Metric;
 
-  } PCF_Compressed_MetricRec, *PCF_Compressed_Metric;
+typedef struct PCF_EncRec_ {
+	FT_UShort firstCol;
+	FT_UShort lastCol;
+	FT_UShort firstRow;
+	FT_UShort lastRow;
+	FT_UShort defaultChar;
 
+	FT_UShort *offset;
 
-  typedef struct  PCF_MetricRec_
-  {
-    FT_Short  leftSideBearing;
-    FT_Short  rightSideBearing;
-    FT_Short  characterWidth;
-    FT_Short  ascent;
-    FT_Short  descent;
-    FT_Short  attributes;
+} PCF_EncRec, *PCF_Enc;
 
-    FT_ULong  bits;  /* offset into the PCF_BITMAPS table */
+typedef struct PCF_AccelRec_ {
+	FT_Byte noOverlap;
+	FT_Byte constantMetrics;
+	FT_Byte terminalFont;
+	FT_Byte constantWidth;
+	FT_Byte inkInside;
+	FT_Byte inkMetrics;
+	FT_Byte drawDirection;
+	FT_Long fontAscent;
+	FT_Long fontDescent;
+	FT_Long maxOverlap;
+	PCF_MetricRec minbounds;
+	PCF_MetricRec maxbounds;
+	PCF_MetricRec ink_minbounds;
+	PCF_MetricRec ink_maxbounds;
 
-  } PCF_MetricRec, *PCF_Metric;
+} PCF_AccelRec, *PCF_Accel;
 
+/*
+ * This file uses X11 terminology for PCF data; an `encoding' in X11 speak
+ * is the same as a `character code' in FreeType speak.
+ */
+typedef struct PCF_FaceRec_ {
+	FT_FaceRec root;
 
-  typedef struct  PCF_EncRec_
-  {
-    FT_UShort   firstCol;
-    FT_UShort   lastCol;
-    FT_UShort   firstRow;
-    FT_UShort   lastRow;
-    FT_UShort   defaultChar;
+	FT_StreamRec comp_stream;
+	FT_Stream comp_source;
 
-    FT_UShort*  offset;
+	char *charset_encoding;
+	char *charset_registry;
 
-  } PCF_EncRec, *PCF_Enc;
+	PCF_TocRec toc;
+	PCF_AccelRec accel;
 
+	int nprops;
+	PCF_Property properties;
 
-  typedef struct  PCF_AccelRec_
-  {
-    FT_Byte        noOverlap;
-    FT_Byte        constantMetrics;
-    FT_Byte        terminalFont;
-    FT_Byte        constantWidth;
-    FT_Byte        inkInside;
-    FT_Byte        inkMetrics;
-    FT_Byte        drawDirection;
-    FT_Long        fontAscent;
-    FT_Long        fontDescent;
-    FT_Long        maxOverlap;
-    PCF_MetricRec  minbounds;
-    PCF_MetricRec  maxbounds;
-    PCF_MetricRec  ink_minbounds;
-    PCF_MetricRec  ink_maxbounds;
+	FT_ULong nmetrics;
+	PCF_Metric metrics;
 
-  } PCF_AccelRec, *PCF_Accel;
+	PCF_EncRec enc;
 
+	FT_ULong bitmapsFormat;
 
-  /*
-   * This file uses X11 terminology for PCF data; an `encoding' in X11 speak
-   * is the same as a `character code' in FreeType speak.
-   */
-  typedef struct  PCF_FaceRec_
-  {
-    FT_FaceRec    root;
+} PCF_FaceRec, *PCF_Face;
 
-    FT_StreamRec  comp_stream;
-    FT_Stream     comp_source;
+typedef struct PCF_DriverRec_ {
+	FT_DriverRec root;
 
-    char*         charset_encoding;
-    char*         charset_registry;
+	FT_Bool no_long_family_names;
 
-    PCF_TocRec    toc;
-    PCF_AccelRec  accel;
+} PCF_DriverRec, *PCF_Driver;
 
-    int           nprops;
-    PCF_Property  properties;
+/* macros for pcf font format */
 
-    FT_ULong      nmetrics;
-    PCF_Metric    metrics;
+#define LSBFirst 0
+#define MSBFirst 1
 
-    PCF_EncRec    enc;
+#define PCF_FILE_VERSION (('p' << 24) | \
+						  ('c' << 16) | \
+						  ('f' << 8) | 1)
+#define PCF_FORMAT_MASK 0xFFFFFF00UL
 
-    FT_ULong      bitmapsFormat;
+#define PCF_DEFAULT_FORMAT 0x00000000UL
+#define PCF_INKBOUNDS 0x00000200UL
+#define PCF_ACCEL_W_INKBOUNDS 0x00000100UL
+#define PCF_COMPRESSED_METRICS 0x00000100UL
 
-  } PCF_FaceRec, *PCF_Face;
+#define PCF_FORMAT_MATCH(a, b) \
+	(((a) & PCF_FORMAT_MASK) == ((b) & PCF_FORMAT_MASK))
 
+#define PCF_GLYPH_PAD_MASK (3 << 0)
+#define PCF_BYTE_MASK (1 << 2)
+#define PCF_BIT_MASK (1 << 3)
+#define PCF_SCAN_UNIT_MASK (3 << 4)
 
-  typedef struct  PCF_DriverRec_
-  {
-    FT_DriverRec  root;
+#define PCF_BYTE_ORDER(f) \
+	(((f) & PCF_BYTE_MASK) ? MSBFirst : LSBFirst)
+#define PCF_BIT_ORDER(f) \
+	(((f) & PCF_BIT_MASK) ? MSBFirst : LSBFirst)
+#define PCF_GLYPH_PAD_INDEX(f) \
+	((f) & PCF_GLYPH_PAD_MASK)
+#define PCF_GLYPH_PAD(f) \
+	(1 << PCF_GLYPH_PAD_INDEX(f))
+#define PCF_SCAN_UNIT_INDEX(f) \
+	(((f) & PCF_SCAN_UNIT_MASK) >> 4)
+#define PCF_SCAN_UNIT(f) \
+	(1 << PCF_SCAN_UNIT_INDEX(f))
+#define PCF_FORMAT_BITS(f)         \
+	((f) & (PCF_GLYPH_PAD_MASK |   \
+				   PCF_BYTE_MASK | \
+				   PCF_BIT_MASK |  \
+				   PCF_SCAN_UNIT_MASK))
 
-    FT_Bool  no_long_family_names;
+#define PCF_SIZE_TO_INDEX(s) ((s) == 4 ? 2 : (s) == 2 ? 1 : \
+														0)
+#define PCF_INDEX_TO_SIZE(b) (1 << b)
 
-  } PCF_DriverRec, *PCF_Driver;
+#define PCF_FORMAT(bit, byte, glyph, scan)        \
+	((PCF_SIZE_TO_INDEX(scan) << 4) |             \
+			(((bit) == MSBFirst ? 1 : 0) << 3) |  \
+			(((byte) == MSBFirst ? 1 : 0) << 2) | \
+			(PCF_SIZE_TO_INDEX(glyph) << 0))
 
+#define PCF_PROPERTIES (1 << 0)
+#define PCF_ACCELERATORS (1 << 1)
+#define PCF_METRICS (1 << 2)
+#define PCF_BITMAPS (1 << 3)
+#define PCF_INK_METRICS (1 << 4)
+#define PCF_BDF_ENCODINGS (1 << 5)
+#define PCF_SWIDTHS (1 << 6)
+#define PCF_GLYPH_NAMES (1 << 7)
+#define PCF_BDF_ACCELERATORS (1 << 8)
 
-  /* macros for pcf font format */
+#define GLYPHPADOPTIONS 4 /* I'm not sure about this */
 
-#define LSBFirst  0
-#define MSBFirst  1
-
-#define PCF_FILE_VERSION        ( ( 'p' << 24 ) | \
-                                  ( 'c' << 16 ) | \
-                                  ( 'f' <<  8 ) | 1 )
-#define PCF_FORMAT_MASK         0xFFFFFF00UL
-
-#define PCF_DEFAULT_FORMAT      0x00000000UL
-#define PCF_INKBOUNDS           0x00000200UL
-#define PCF_ACCEL_W_INKBOUNDS   0x00000100UL
-#define PCF_COMPRESSED_METRICS  0x00000100UL
-
-#define PCF_FORMAT_MATCH( a, b ) \
-          ( ( (a) & PCF_FORMAT_MASK ) == ( (b) & PCF_FORMAT_MASK ) )
-
-#define PCF_GLYPH_PAD_MASK  ( 3 << 0 )
-#define PCF_BYTE_MASK       ( 1 << 2 )
-#define PCF_BIT_MASK        ( 1 << 3 )
-#define PCF_SCAN_UNIT_MASK  ( 3 << 4 )
-
-#define PCF_BYTE_ORDER( f ) \
-          ( ( (f) & PCF_BYTE_MASK ) ? MSBFirst : LSBFirst )
-#define PCF_BIT_ORDER( f ) \
-          ( ( (f) & PCF_BIT_MASK ) ? MSBFirst : LSBFirst )
-#define PCF_GLYPH_PAD_INDEX( f ) \
-          ( (f) & PCF_GLYPH_PAD_MASK )
-#define PCF_GLYPH_PAD( f ) \
-          ( 1 << PCF_GLYPH_PAD_INDEX( f ) )
-#define PCF_SCAN_UNIT_INDEX( f ) \
-          ( ( (f) & PCF_SCAN_UNIT_MASK ) >> 4 )
-#define PCF_SCAN_UNIT( f ) \
-          ( 1 << PCF_SCAN_UNIT_INDEX( f ) )
-#define PCF_FORMAT_BITS( f )             \
-          ( (f) & ( PCF_GLYPH_PAD_MASK | \
-                    PCF_BYTE_MASK      | \
-                    PCF_BIT_MASK       | \
-                    PCF_SCAN_UNIT_MASK ) )
-
-#define PCF_SIZE_TO_INDEX( s )  ( (s) == 4 ? 2 : (s) == 2 ? 1 : 0 )
-#define PCF_INDEX_TO_SIZE( b )  ( 1 << b )
-
-#define PCF_FORMAT( bit, byte, glyph, scan )          \
-          ( ( PCF_SIZE_TO_INDEX( scan )      << 4 ) | \
-            ( ( (bit)  == MSBFirst ? 1 : 0 ) << 3 ) | \
-            ( ( (byte) == MSBFirst ? 1 : 0 ) << 2 ) | \
-            ( PCF_SIZE_TO_INDEX( glyph )     << 0 ) )
-
-#define PCF_PROPERTIES        ( 1 << 0 )
-#define PCF_ACCELERATORS      ( 1 << 1 )
-#define PCF_METRICS           ( 1 << 2 )
-#define PCF_BITMAPS           ( 1 << 3 )
-#define PCF_INK_METRICS       ( 1 << 4 )
-#define PCF_BDF_ENCODINGS     ( 1 << 5 )
-#define PCF_SWIDTHS           ( 1 << 6 )
-#define PCF_GLYPH_NAMES       ( 1 << 7 )
-#define PCF_BDF_ACCELERATORS  ( 1 << 8 )
-
-#define GLYPHPADOPTIONS  4 /* I'm not sure about this */
-
-  FT_LOCAL( FT_Error )
-  pcf_load_font( FT_Stream  stream,
-                 PCF_Face   face,
-                 FT_Long    face_index );
+FT_LOCAL(FT_Error)
+pcf_load_font(FT_Stream stream,
+		PCF_Face face,
+		FT_Long face_index);
 
 FT_END_HEADER
 
 #endif /* PCF_H_ */
-
 
 /* END */

@@ -13,45 +13,36 @@ subject to the following restrictions:
 3. This notice may not be removed or altered from any source distribution.
 */
 
-///This file was written by Erwin Coumans
+/// This file was written by Erwin Coumans
 
 #include "btMultiBodyGearConstraint.h"
+#include "BulletCollision/CollisionDispatch/btCollisionObject.h"
 #include "btMultiBody.h"
 #include "btMultiBodyLinkCollider.h"
-#include "BulletCollision/CollisionDispatch/btCollisionObject.h"
 
-btMultiBodyGearConstraint::btMultiBodyGearConstraint(btMultiBody* bodyA, int linkA, btMultiBody* bodyB, int linkB, const btVector3& pivotInA, const btVector3& pivotInB, const btMatrix3x3& frameInA, const btMatrix3x3& frameInB)
-	: btMultiBodyConstraint(bodyA, bodyB, linkA, linkB, 1, false),
-	  m_gearRatio(1),
-	  m_gearAuxLink(-1),
-	  m_erp(0),
-	  m_relativePositionTarget(0)
-{
+btMultiBodyGearConstraint::btMultiBodyGearConstraint(btMultiBody *bodyA, int linkA, btMultiBody *bodyB, int linkB, const btVector3 &pivotInA, const btVector3 &pivotInB, const btMatrix3x3 &frameInA, const btMatrix3x3 &frameInB) : btMultiBodyConstraint(bodyA, bodyB, linkA, linkB, 1, false),
+																																																									 m_gearRatio(1),
+																																																									 m_gearAuxLink(-1),
+																																																									 m_erp(0),
+																																																									 m_relativePositionTarget(0) {
 }
 
-void btMultiBodyGearConstraint::finalizeMultiDof()
-{
+void btMultiBodyGearConstraint::finalizeMultiDof() {
 	allocateJacobiansMultiDof();
 
 	m_numDofsFinalized = m_jacSizeBoth;
 }
 
-btMultiBodyGearConstraint::~btMultiBodyGearConstraint()
-{
+btMultiBodyGearConstraint::~btMultiBodyGearConstraint() {
 }
 
-int btMultiBodyGearConstraint::getIslandIdA() const
-{
-	if (m_bodyA)
-	{
-		if (m_linkA < 0)
-		{
-			btMultiBodyLinkCollider* col = m_bodyA->getBaseCollider();
+int btMultiBodyGearConstraint::getIslandIdA() const {
+	if (m_bodyA) {
+		if (m_linkA < 0) {
+			btMultiBodyLinkCollider *col = m_bodyA->getBaseCollider();
 			if (col)
 				return col->getIslandTag();
-		}
-		else
-		{
+		} else {
 			if (m_bodyA->getLink(m_linkA).m_collider)
 				return m_bodyA->getLink(m_linkA).m_collider->getIslandTag();
 		}
@@ -59,18 +50,13 @@ int btMultiBodyGearConstraint::getIslandIdA() const
 	return -1;
 }
 
-int btMultiBodyGearConstraint::getIslandIdB() const
-{
-	if (m_bodyB)
-	{
-		if (m_linkB < 0)
-		{
-			btMultiBodyLinkCollider* col = m_bodyB->getBaseCollider();
+int btMultiBodyGearConstraint::getIslandIdB() const {
+	if (m_bodyB) {
+		if (m_linkB < 0) {
+			btMultiBodyLinkCollider *col = m_bodyB->getBaseCollider();
 			if (col)
 				return col->getIslandTag();
-		}
-		else
-		{
+		} else {
 			if (m_bodyB->getLink(m_linkB).m_collider)
 				return m_bodyB->getLink(m_linkB).m_collider->getIslandTag();
 		}
@@ -78,19 +64,17 @@ int btMultiBodyGearConstraint::getIslandIdB() const
 	return -1;
 }
 
-void btMultiBodyGearConstraint::createConstraintRows(btMultiBodyConstraintArray& constraintRows,
-													 btMultiBodyJacobianData& data,
-													 const btContactSolverInfo& infoGlobal)
-{
+void btMultiBodyGearConstraint::createConstraintRows(btMultiBodyConstraintArray &constraintRows,
+		btMultiBodyJacobianData &data,
+		const btContactSolverInfo &infoGlobal) {
 	// only positions need to be updated -- data.m_jacobians and force
 	// directions were set in the ctor and never change.
 
-	if (m_numDofsFinalized != m_jacSizeBoth)
-	{
+	if (m_numDofsFinalized != m_jacSizeBoth) {
 		finalizeMultiDof();
 	}
 
-	//don't crash
+	// don't crash
 	if (m_numDofsFinalized != m_jacSizeBoth)
 		return;
 
@@ -114,25 +98,21 @@ void btMultiBodyGearConstraint::createConstraintRows(btMultiBodyConstraintArray&
 	btScalar kd = 1;
 	int numRows = getNumRows();
 
-	for (int row = 0; row < numRows; row++)
-	{
-		btMultiBodySolverConstraint& constraintRow = constraintRows.expandNonInitializing();
+	for (int row = 0; row < numRows; row++) {
+		btMultiBodySolverConstraint &constraintRow = constraintRows.expandNonInitializing();
 
 		int dof = 0;
 		btScalar currentPosition = m_bodyA->getJointPosMultiDof(m_linkA)[dof];
 		btScalar currentVelocity = m_bodyA->getJointVelMultiDof(m_linkA)[dof];
 		btScalar auxVel = 0;
 
-		if (m_gearAuxLink >= 0)
-		{
+		if (m_gearAuxLink >= 0) {
 			auxVel = m_bodyA->getJointVelMultiDof(m_gearAuxLink)[dof];
 		}
 		currentVelocity += auxVel;
-		if (m_erp != 0)
-		{
+		if (m_erp != 0) {
 			btScalar currentPositionA = m_bodyA->getJointPosMultiDof(m_linkA)[dof];
-			if (m_gearAuxLink >= 0)
-			{
+			if (m_gearAuxLink >= 0) {
 				currentPositionA -= m_bodyA->getJointPosMultiDof(m_gearAuxLink)[dof];
 			}
 			btScalar currentPositionB = m_gearRatio * m_bodyA->getJointPosMultiDof(m_linkB)[dof];
@@ -148,12 +128,10 @@ void btMultiBodyGearConstraint::createConstraintRows(btMultiBodyConstraintArray&
 		constraintRow.m_orgConstraint = this;
 		constraintRow.m_orgDofIndex = row;
 		{
-			//expect either prismatic or revolute joint type for now
+			// expect either prismatic or revolute joint type for now
 			btAssert((m_bodyA->getLink(m_linkA).m_jointType == btMultibodyLink::eRevolute) || (m_bodyA->getLink(m_linkA).m_jointType == btMultibodyLink::ePrismatic));
-			switch (m_bodyA->getLink(m_linkA).m_jointType)
-			{
-				case btMultibodyLink::eRevolute:
-				{
+			switch (m_bodyA->getLink(m_linkA).m_jointType) {
+				case btMultibodyLink::eRevolute: {
 					constraintRow.m_contactNormal1.setZero();
 					constraintRow.m_contactNormal2.setZero();
 					btVector3 revoluteAxisInWorld = quatRotate(m_bodyA->getLink(m_linkA).m_cachedWorldTransform.getRotation(), m_bodyA->getLink(m_linkA).m_axes[0].m_topVec);
@@ -162,8 +140,7 @@ void btMultiBodyGearConstraint::createConstraintRows(btMultiBodyConstraintArray&
 
 					break;
 				}
-				case btMultibodyLink::ePrismatic:
-				{
+				case btMultibodyLink::ePrismatic: {
 					btVector3 prismaticAxisInWorld = quatRotate(m_bodyA->getLink(m_linkA).m_cachedWorldTransform.getRotation(), m_bodyA->getLink(m_linkA).m_axes[0].m_bottomVec);
 					constraintRow.m_contactNormal1 = prismaticAxisInWorld;
 					constraintRow.m_contactNormal2 = -prismaticAxisInWorld;
@@ -171,8 +148,7 @@ void btMultiBodyGearConstraint::createConstraintRows(btMultiBodyConstraintArray&
 					constraintRow.m_relpos2CrossNormal.setZero();
 					break;
 				}
-				default:
-				{
+				default: {
 					btAssert(0);
 				}
 			};

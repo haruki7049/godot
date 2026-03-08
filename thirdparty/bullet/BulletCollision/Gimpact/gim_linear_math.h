@@ -17,14 +17,14 @@ email: projectileman@yahoo.com
  This library is free software; you can redistribute it and/or
  modify it under the terms of EITHER:
    (1) The GNU Lesser General Public License as published by the Free
-       Software Foundation; either version 2.1 of the License, or (at
-       your option) any later version. The text of the GNU Lesser
-       General Public License is included with this library in the
-       file GIMPACT-LICENSE-LGPL.TXT.
+	   Software Foundation; either version 2.1 of the License, or (at
+	   your option) any later version. The text of the GNU Lesser
+	   General Public License is included with this library in the
+	   file GIMPACT-LICENSE-LGPL.TXT.
    (2) The BSD-style license that is included with this library in
-       the file GIMPACT-LICENSE-BSD.TXT.
+	   the file GIMPACT-LICENSE-BSD.TXT.
    (3) The zlib/libpng license that is included with this library in
-       the file GIMPACT-LICENSE-ZLIB.TXT.
+	   the file GIMPACT-LICENSE-ZLIB.TXT.
 
  This library is distributed in the hope that it will be useful,
  but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -34,8 +34,8 @@ email: projectileman@yahoo.com
 -----------------------------------------------------------------------------
 */
 
-#include "gim_math.h"
 #include "gim_geom_types.h"
+#include "gim_math.h"
 
 //! Zero out a 2D vector
 #define VEC_ZERO_2(a)           \
@@ -264,30 +264,28 @@ email: projectileman@yahoo.com
 	}
 
 /// Vector length
-#define VEC_NORMALIZE(a)           \
-	{                              \
-		GREAL len;                 \
-		VEC_INV_LENGTH(a, len);    \
-		if (len < G_REAL_INFINITY) \
-		{                          \
-			a[0] *= len;           \
-			a[1] *= len;           \
-			a[2] *= len;           \
-		}                          \
+#define VEC_NORMALIZE(a)             \
+	{                                \
+		GREAL len;                   \
+		VEC_INV_LENGTH(a, len);      \
+		if (len < G_REAL_INFINITY) { \
+			a[0] *= len;             \
+			a[1] *= len;             \
+			a[2] *= len;             \
+		}                            \
 	}
 
 /// Set Vector size
-#define VEC_RENORMALIZE(a, newlen) \
-	{                              \
-		GREAL len;                 \
-		VEC_INV_LENGTH(a, len);    \
-		if (len < G_REAL_INFINITY) \
-		{                          \
-			len *= newlen;         \
-			a[0] *= len;           \
-			a[1] *= len;           \
-			a[2] *= len;           \
-		}                          \
+#define VEC_RENORMALIZE(a, newlen)   \
+	{                                \
+		GREAL len;                   \
+		VEC_INV_LENGTH(a, len);      \
+		if (len < G_REAL_INFINITY) { \
+			len *= newlen;           \
+			a[0] *= len;             \
+			a[1] *= len;             \
+			a[2] *= len;             \
+		}                            \
 	}
 
 /// Vector cross
@@ -369,7 +367,7 @@ Takes two vectors a, b, blends them together with s <=1 */
 //! Finds the bigger cartesian coordinate from a vector
 #define VEC_MAYOR_COORD(vec, maxc)                                          \
 	{                                                                       \
-		GREAL A[] = {fabs(vec[0]), fabs(vec[1]), fabs(vec[2])};             \
+		GREAL A[] = { fabs(vec[0]), fabs(vec[1]), fabs(vec[2]) };           \
 		maxc = A[0] > A[1] ? (A[0] > A[2] ? 0 : 2) : (A[1] > A[2] ? 1 : 2); \
 	}
 
@@ -664,46 +662,46 @@ Takes two vectors a, b, blends them together with s <=1 */
 /*! multiply matrix by scalar */
 #define SCALE_MATRIX_2X2(b, s, a) \
 	{                             \
-		b[0][0] = (s)*a[0][0];    \
-		b[0][1] = (s)*a[0][1];    \
+		b[0][0] = (s) * a[0][0];  \
+		b[0][1] = (s) * a[0][1];  \
                                   \
-		b[1][0] = (s)*a[1][0];    \
-		b[1][1] = (s)*a[1][1];    \
+		b[1][0] = (s) * a[1][0];  \
+		b[1][1] = (s) * a[1][1];  \
 	}
 
 /*! multiply matrix by scalar */
 #define SCALE_MATRIX_3X3(b, s, a) \
 	{                             \
-		b[0][0] = (s)*a[0][0];    \
-		b[0][1] = (s)*a[0][1];    \
-		b[0][2] = (s)*a[0][2];    \
+		b[0][0] = (s) * a[0][0];  \
+		b[0][1] = (s) * a[0][1];  \
+		b[0][2] = (s) * a[0][2];  \
                                   \
-		b[1][0] = (s)*a[1][0];    \
-		b[1][1] = (s)*a[1][1];    \
-		b[1][2] = (s)*a[1][2];    \
+		b[1][0] = (s) * a[1][0];  \
+		b[1][1] = (s) * a[1][1];  \
+		b[1][2] = (s) * a[1][2];  \
                                   \
-		b[2][0] = (s)*a[2][0];    \
-		b[2][1] = (s)*a[2][1];    \
-		b[2][2] = (s)*a[2][2];    \
+		b[2][0] = (s) * a[2][0];  \
+		b[2][1] = (s) * a[2][1];  \
+		b[2][2] = (s) * a[2][2];  \
 	}
 
 /*! multiply matrix by scalar */
 #define SCALE_MATRIX_4X4(b, s, a) \
 	{                             \
-		b[0][0] = (s)*a[0][0];    \
-		b[0][1] = (s)*a[0][1];    \
-		b[0][2] = (s)*a[0][2];    \
-		b[0][3] = (s)*a[0][3];    \
+		b[0][0] = (s) * a[0][0];  \
+		b[0][1] = (s) * a[0][1];  \
+		b[0][2] = (s) * a[0][2];  \
+		b[0][3] = (s) * a[0][3];  \
                                   \
-		b[1][0] = (s)*a[1][0];    \
-		b[1][1] = (s)*a[1][1];    \
-		b[1][2] = (s)*a[1][2];    \
-		b[1][3] = (s)*a[1][3];    \
+		b[1][0] = (s) * a[1][0];  \
+		b[1][1] = (s) * a[1][1];  \
+		b[1][2] = (s) * a[1][2];  \
+		b[1][3] = (s) * a[1][3];  \
                                   \
-		b[2][0] = (s)*a[2][0];    \
-		b[2][1] = (s)*a[2][1];    \
-		b[2][2] = (s)*a[2][2];    \
-		b[2][3] = (s)*a[2][3];    \
+		b[2][0] = (s) * a[2][0];  \
+		b[2][1] = (s) * a[2][1];  \
+		b[2][2] = (s) * a[2][2];  \
+		b[2][3] = (s) * a[2][3];  \
                                   \
 		b[3][0] = s * a[3][0];    \
 		b[3][1] = s * a[3][1];    \
@@ -764,51 +762,51 @@ Takes two vectors a, b, blends them together with s <=1 */
 /*! multiply matrix by scalar */
 #define ACCUM_SCALE_MATRIX_2X2(b, s, a) \
 	{                                   \
-		b[0][0] += (s)*a[0][0];         \
-		b[0][1] += (s)*a[0][1];         \
+		b[0][0] += (s) * a[0][0];       \
+		b[0][1] += (s) * a[0][1];       \
                                         \
-		b[1][0] += (s)*a[1][0];         \
-		b[1][1] += (s)*a[1][1];         \
+		b[1][0] += (s) * a[1][0];       \
+		b[1][1] += (s) * a[1][1];       \
 	}
 
 /*! multiply matrix by scalar */
 #define ACCUM_SCALE_MATRIX_3X3(b, s, a) \
 	{                                   \
-		b[0][0] += (s)*a[0][0];         \
-		b[0][1] += (s)*a[0][1];         \
-		b[0][2] += (s)*a[0][2];         \
+		b[0][0] += (s) * a[0][0];       \
+		b[0][1] += (s) * a[0][1];       \
+		b[0][2] += (s) * a[0][2];       \
                                         \
-		b[1][0] += (s)*a[1][0];         \
-		b[1][1] += (s)*a[1][1];         \
-		b[1][2] += (s)*a[1][2];         \
+		b[1][0] += (s) * a[1][0];       \
+		b[1][1] += (s) * a[1][1];       \
+		b[1][2] += (s) * a[1][2];       \
                                         \
-		b[2][0] += (s)*a[2][0];         \
-		b[2][1] += (s)*a[2][1];         \
-		b[2][2] += (s)*a[2][2];         \
+		b[2][0] += (s) * a[2][0];       \
+		b[2][1] += (s) * a[2][1];       \
+		b[2][2] += (s) * a[2][2];       \
 	}
 
 /*! multiply matrix by scalar */
 #define ACCUM_SCALE_MATRIX_4X4(b, s, a) \
 	{                                   \
-		b[0][0] += (s)*a[0][0];         \
-		b[0][1] += (s)*a[0][1];         \
-		b[0][2] += (s)*a[0][2];         \
-		b[0][3] += (s)*a[0][3];         \
+		b[0][0] += (s) * a[0][0];       \
+		b[0][1] += (s) * a[0][1];       \
+		b[0][2] += (s) * a[0][2];       \
+		b[0][3] += (s) * a[0][3];       \
                                         \
-		b[1][0] += (s)*a[1][0];         \
-		b[1][1] += (s)*a[1][1];         \
-		b[1][2] += (s)*a[1][2];         \
-		b[1][3] += (s)*a[1][3];         \
+		b[1][0] += (s) * a[1][0];       \
+		b[1][1] += (s) * a[1][1];       \
+		b[1][2] += (s) * a[1][2];       \
+		b[1][3] += (s) * a[1][3];       \
                                         \
-		b[2][0] += (s)*a[2][0];         \
-		b[2][1] += (s)*a[2][1];         \
-		b[2][2] += (s)*a[2][2];         \
-		b[2][3] += (s)*a[2][3];         \
+		b[2][0] += (s) * a[2][0];       \
+		b[2][1] += (s) * a[2][1];       \
+		b[2][2] += (s) * a[2][2];       \
+		b[2][3] += (s) * a[2][3];       \
                                         \
-		b[3][0] += (s)*a[3][0];         \
-		b[3][1] += (s)*a[3][1];         \
-		b[3][2] += (s)*a[3][2];         \
-		b[3][3] += (s)*a[3][3];         \
+		b[3][0] += (s) * a[3][0];       \
+		b[3][1] += (s) * a[3][1];       \
+		b[3][2] += (s) * a[3][2];       \
+		b[3][3] += (s) * a[3][3];       \
 	}
 
 /*! matrix product */
@@ -947,8 +945,7 @@ Last column is added as the position
 		p[1] = -m[0][1] * v[0] + m[0][0] * v[1];                            \
                                                                             \
 		/* if matrix not singular, and not orthonormal, then renormalize */ \
-		if ((det != 1.0f) && (det != 0.0f))                                 \
-		{                                                                   \
+		if ((det != 1.0f) && (det != 0.0f)) {                               \
 			det = 1.0f / det;                                               \
 			p[0] *= det;                                                    \
 			p[1] *= det;                                                    \
@@ -962,26 +959,23 @@ Last column is added as the position
  * and multiplies vector v into it, to yeild vector p
  * Vector p is then normalized.
  */
-#define NORM_XFORM_2X2(p, m, v)                                           \
-	{                                                                     \
-		GREAL len;                                                        \
-                                                                          \
-		/* do nothing if off-diagonals are zero and diagonals are 	\
-    * equal */      \
-		if ((m[0][1] != 0.0) || (m[1][0] != 0.0) || (m[0][0] != m[1][1])) \
-		{                                                                 \
-			p[0] = m[1][1] * v[0] - m[1][0] * v[1];                       \
-			p[1] = -m[0][1] * v[0] + m[0][0] * v[1];                      \
-                                                                          \
-			len = p[0] * p[0] + p[1] * p[1];                              \
-			GIM_INV_SQRT(len, len);                                       \
-			p[0] *= len;                                                  \
-			p[1] *= len;                                                  \
-		}                                                                 \
-		else                                                              \
-		{                                                                 \
-			VEC_COPY_2(p, v);                                             \
-		}                                                                 \
+#define NORM_XFORM_2X2(p, m, v)                                             \
+	{                                                                       \
+		GREAL len;                                                          \
+                                                                            \
+		/* do nothing if off-diagonals are zero and diagonals are           \
+		 * equal */                                                         \
+		if ((m[0][1] != 0.0) || (m[1][0] != 0.0) || (m[0][0] != m[1][1])) { \
+			p[0] = m[1][1] * v[0] - m[1][0] * v[1];                         \
+			p[1] = -m[0][1] * v[0] + m[0][0] * v[1];                        \
+                                                                            \
+			len = p[0] * p[0] + p[1] * p[1];                                \
+			GIM_INV_SQRT(len, len);                                         \
+			p[0] *= len;                                                    \
+			p[1] *= len;                                                    \
+		} else {                                                            \
+			VEC_COPY_2(p, v);                                               \
+		}                                                                   \
 	}
 
 /** outer product of vector times vector transpose
@@ -1135,18 +1129,21 @@ Last column is added as the position
 	{                                                                                                                           \
 		GUINT __ii[4], __jj[4], __k;                                                                                            \
                                                                                                                                 \
-		for (__k = 0; __k < i; __k++) __ii[__k] = __k;                                                                          \
-		for (__k = i; __k < 3; __k++) __ii[__k] = __k + 1;                                                                      \
-		for (__k = 0; __k < j; __k++) __jj[__k] = __k;                                                                          \
-		for (__k = j; __k < 3; __k++) __jj[__k] = __k + 1;                                                                      \
+		for (__k = 0; __k < i; __k++)                                                                                           \
+			__ii[__k] = __k;                                                                                                    \
+		for (__k = i; __k < 3; __k++)                                                                                           \
+			__ii[__k] = __k + 1;                                                                                                \
+		for (__k = 0; __k < j; __k++)                                                                                           \
+			__jj[__k] = __k;                                                                                                    \
+		for (__k = j; __k < 3; __k++)                                                                                           \
+			__jj[__k] = __k + 1;                                                                                                \
                                                                                                                                 \
 		(fac) = m[__ii[0]][__jj[0]] * (m[__ii[1]][__jj[1]] * m[__ii[2]][__jj[2]] - m[__ii[1]][__jj[2]] * m[__ii[2]][__jj[1]]);  \
 		(fac) -= m[__ii[0]][__jj[1]] * (m[__ii[1]][__jj[0]] * m[__ii[2]][__jj[2]] - m[__ii[1]][__jj[2]] * m[__ii[2]][__jj[0]]); \
 		(fac) += m[__ii[0]][__jj[2]] * (m[__ii[1]][__jj[0]] * m[__ii[2]][__jj[1]] - m[__ii[1]][__jj[1]] * m[__ii[2]][__jj[0]]); \
                                                                                                                                 \
 		__k = i + j;                                                                                                            \
-		if (__k != (__k / 2) * 2)                                                                                               \
-		{                                                                                                                       \
+		if (__k != (__k / 2) * 2) {                                                                                             \
 			(fac) = -(fac);                                                                                                     \
 		}                                                                                                                       \
 	}
@@ -1205,10 +1202,8 @@ Last column is added as the position
 	{                                              \
 		int i, j;                                  \
                                                    \
-		for (i = 0; i < 4; i++)                    \
-		{                                          \
-			for (j = 0; j < 4; j++)                \
-			{                                      \
+		for (i = 0; i < 4; i++) {                  \
+			for (j = 0; j < 4; j++) {              \
 				COFACTOR_4X4_IJ(a[i][j], m, i, j); \
 			}                                      \
 		}                                          \
@@ -1254,10 +1249,8 @@ Last column is added as the position
 	{                                                      \
 		char _i_, _j_;                                     \
                                                            \
-		for (_i_ = 0; _i_ < 4; _i_++)                      \
-		{                                                  \
-			for (_j_ = 0; _j_ < 4; _j_++)                  \
-			{                                              \
+		for (_i_ = 0; _i_ < 4; _i_++) {                    \
+			for (_j_ = 0; _j_ < 4; _j_++) {                \
 				COFACTOR_4X4_IJ(a[_j_][_i_], m, _i_, _j_); \
 			}                                              \
 		}                                                  \
@@ -1269,10 +1262,10 @@ Last column is added as the position
  */
 #define SCALE_ADJOINT_2X2(a, s, m) \
 	{                              \
-		a[0][0] = (s)*m[1][1];     \
-		a[1][0] = -(s)*m[1][0];    \
-		a[0][1] = -(s)*m[0][1];    \
-		a[1][1] = (s)*m[0][0];     \
+		a[0][0] = (s) * m[1][1];   \
+		a[1][0] = -(s) * m[1][0];  \
+		a[0][1] = -(s) * m[0][1];  \
+		a[1][1] = (s) * m[0][0];   \
 	}
 
 /** compute adjoint of matrix and scale
@@ -1301,10 +1294,8 @@ Last column is added as the position
 #define SCALE_ADJOINT_4X4(a, s, m)                         \
 	{                                                      \
 		char _i_, _j_;                                     \
-		for (_i_ = 0; _i_ < 4; _i_++)                      \
-		{                                                  \
-			for (_j_ = 0; _j_ < 4; _j_++)                  \
-			{                                              \
+		for (_i_ = 0; _i_ < 4; _i_++) {                    \
+			for (_j_ = 0; _j_ < 4; _j_++) {                \
 				COFACTOR_4X4_IJ(a[_j_][_i_], m, _i_, _j_); \
 				a[_j_][_i_] *= s;                          \
 			}                                              \
@@ -1485,4 +1476,4 @@ and m is a mat4f<br>
 		p[2] = MAT_DOT_COL(m, v, 2); \
 	}
 
-#endif  // GIM_VECTOR_H_INCLUDED
+#endif // GIM_VECTOR_H_INCLUDED

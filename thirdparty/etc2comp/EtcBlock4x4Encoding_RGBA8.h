@@ -18,104 +18,88 @@
 
 #include "EtcBlock4x4Encoding_RGB8.h"
 
-namespace Etc
-{
-	class Block4x4EncodingBits_A8;
+namespace Etc {
+class Block4x4EncodingBits_A8;
 
-	// ################################################################################
-	// Block4x4Encoding_RGBA8
-	// RGBA8 if not completely opaque or transparent
-	// ################################################################################
+// ################################################################################
+// Block4x4Encoding_RGBA8
+// RGBA8 if not completely opaque or transparent
+// ################################################################################
 
-	class Block4x4Encoding_RGBA8 : public Block4x4Encoding_RGB8
-	{
-	public:
+class Block4x4Encoding_RGBA8 : public Block4x4Encoding_RGB8 {
+public:
+	Block4x4Encoding_RGBA8(void);
+	virtual ~Block4x4Encoding_RGBA8(void);
 
-		Block4x4Encoding_RGBA8(void);
-		virtual ~Block4x4Encoding_RGBA8(void);
+	virtual void InitFromSource(Block4x4 *a_pblockParent,
+			ColorFloatRGBA *a_pafrgbaSource,
+			unsigned char *a_paucEncodingBits, ErrorMetric a_errormetric);
 
-		virtual void InitFromSource(Block4x4 *a_pblockParent,
-									ColorFloatRGBA *a_pafrgbaSource,
-									unsigned char *a_paucEncodingBits, ErrorMetric a_errormetric);
+	virtual void InitFromEncodingBits(Block4x4 *a_pblockParent,
+			unsigned char *a_paucEncodingBits,
+			ColorFloatRGBA *a_pafrgbaSource,
+			ErrorMetric a_errormetric);
 
-		virtual void InitFromEncodingBits(Block4x4 *a_pblockParent,
-											unsigned char *a_paucEncodingBits,
-											ColorFloatRGBA *a_pafrgbaSource,
-											ErrorMetric a_errormetric);
+	virtual void PerformIteration(float a_fEffort);
 
-		virtual void PerformIteration(float a_fEffort);
+	virtual void SetEncodingBits(void);
 
-		virtual void SetEncodingBits(void);
+protected:
+	static const unsigned int MODIFIER_TABLE_ENTRYS = 16;
+	static const unsigned int ALPHA_SELECTOR_BITS = 3;
+	static const unsigned int ALPHA_SELECTORS = 1 << ALPHA_SELECTOR_BITS;
 
-	protected:
+	static float s_aafModifierTable[MODIFIER_TABLE_ENTRYS][ALPHA_SELECTORS];
 
-		static const unsigned int MODIFIER_TABLE_ENTRYS = 16;
-		static const unsigned int ALPHA_SELECTOR_BITS = 3;
-		static const unsigned int ALPHA_SELECTORS = 1 << ALPHA_SELECTOR_BITS;
+	void CalculateA8(float a_fRadius);
 
-		static float s_aafModifierTable[MODIFIER_TABLE_ENTRYS][ALPHA_SELECTORS];
+	Block4x4EncodingBits_A8 *m_pencodingbitsA8; // A8 portion of Block4x4EncodingBits_RGBA8
 
-		void CalculateA8(float a_fRadius);
+	float m_fBase;
+	float m_fMultiplier;
+	unsigned int m_uiModifierTableIndex;
+	unsigned int m_auiAlphaSelectors[PIXELS];
 
-		Block4x4EncodingBits_A8 *m_pencodingbitsA8;	// A8 portion of Block4x4EncodingBits_RGBA8
-
-		float m_fBase;
-		float m_fMultiplier;
-		unsigned int m_uiModifierTableIndex;
-		unsigned int m_auiAlphaSelectors[PIXELS];
-
-	private:
-
-		inline float DecodePixelAlpha(float a_fBase, float a_fMultiplier,
-										unsigned int a_uiTableIndex, unsigned int a_uiSelector)
-		{
-			float fPixelAlpha = a_fBase + 
-								a_fMultiplier*s_aafModifierTable[a_uiTableIndex][a_uiSelector];
-			if (fPixelAlpha < 0.0f)
-			{
-				fPixelAlpha = 0.0f;
-			}
-			else if (fPixelAlpha > 1.0f)
-			{
-				fPixelAlpha = 1.0f;
-			}
-
-			return fPixelAlpha;
+private:
+	inline float DecodePixelAlpha(float a_fBase, float a_fMultiplier,
+			unsigned int a_uiTableIndex, unsigned int a_uiSelector) {
+		float fPixelAlpha = a_fBase +
+							a_fMultiplier * s_aafModifierTable[a_uiTableIndex][a_uiSelector];
+		if (fPixelAlpha < 0.0f) {
+			fPixelAlpha = 0.0f;
+		} else if (fPixelAlpha > 1.0f) {
+			fPixelAlpha = 1.0f;
 		}
 
-	};
+		return fPixelAlpha;
+	}
+};
 
-	// ################################################################################
-	// Block4x4Encoding_RGBA8_Opaque
-	// RGBA8 if all pixels have alpha==1
-	// ################################################################################
+// ################################################################################
+// Block4x4Encoding_RGBA8_Opaque
+// RGBA8 if all pixels have alpha==1
+// ################################################################################
 
-	class Block4x4Encoding_RGBA8_Opaque : public Block4x4Encoding_RGBA8
-	{
-	public:
+class Block4x4Encoding_RGBA8_Opaque : public Block4x4Encoding_RGBA8 {
+public:
+	virtual void PerformIteration(float a_fEffort);
 
-		virtual void PerformIteration(float a_fEffort);
+	virtual void SetEncodingBits(void);
+};
 
-		virtual void SetEncodingBits(void);
+// ################################################################################
+// Block4x4Encoding_RGBA8_Transparent
+// RGBA8 if all pixels have alpha==0
+// ################################################################################
 
-	};
+class Block4x4Encoding_RGBA8_Transparent : public Block4x4Encoding_RGBA8 {
+public:
+	virtual void PerformIteration(float a_fEffort);
 
-	// ################################################################################
-	// Block4x4Encoding_RGBA8_Transparent
-	// RGBA8 if all pixels have alpha==0
-	// ################################################################################
+	virtual void SetEncodingBits(void);
+};
 
-	class Block4x4Encoding_RGBA8_Transparent : public Block4x4Encoding_RGBA8
-	{
-	public:
-
-		virtual void PerformIteration(float a_fEffort);
-
-		virtual void SetEncodingBits(void);
-
-	};
-
-	// ----------------------------------------------------------------------------------------------------
-	//
+// ----------------------------------------------------------------------------------------------------
+//
 
 } // namespace Etc

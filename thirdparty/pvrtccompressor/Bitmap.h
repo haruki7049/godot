@@ -6,29 +6,26 @@ namespace Javelin {
 
 class Bitmap {
 public:
-    int width;
-    int height;
-    unsigned char *data;
+	int width;
+	int height;
+	unsigned char *data;
 
-    Bitmap(int w, int h, int bytesPerPixel)
-        : width(w)
-        , height(h)
-        , data(new unsigned char[width * height * bytesPerPixel]) {
-    }
+	Bitmap(int w, int h, int bytesPerPixel) : width(w), height(h), data(new unsigned char[width * height * bytesPerPixel]) {
+	}
 
-    virtual ~Bitmap() {
-        delete [] data;
-    }
+	virtual ~Bitmap() {
+		delete[] data;
+	}
 
-    Point2<int> GetSize() const { return Point2<int>(width, height); }
+	Point2<int> GetSize() const { return Point2<int>(width, height); }
 
-    int GetArea() const { return width * height; }
+	int GetArea() const { return width * height; }
 
-    int GetBitmapWidth() const { return width; }
+	int GetBitmapWidth() const { return width; }
 
-    int GetBitmapHeight() const { return height; }
+	int GetBitmapHeight() const { return height; }
 
-    const unsigned char *GetRawData() const { return data; }
+	const unsigned char *GetRawData() const { return data; }
 };
 
-}
+} // namespace Javelin

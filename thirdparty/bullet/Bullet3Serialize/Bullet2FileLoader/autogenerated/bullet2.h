@@ -1,29 +1,27 @@
 /* Copyright (C) 2011 Erwin Coumans & Charlie C
-*
-* This software is provided 'as-is', without any express or implied
-* warranty.  In no event will the authors be held liable for any damages
-* arising from the use of this software.
-*
-* Permission is granted to anyone to use this software for any purpose,
-* including commercial applications, and to alter it and redistribute it
-* freely, subject to the following restrictions:
-*
-* 1. The origin of this software must not be misrepresented; you must not
-*    claim that you wrote the original software. If you use this software
-*    in a product, an acknowledgment in the product documentation would be
-*    appreciated but is not required.
-* 2. Altered source versions must be plainly marked as such, and must not be
-*    misrepresented as being the original software.
-* 3. This notice may not be removed or altered from any source distribution.
-*/
+ *
+ * This software is provided 'as-is', without any express or implied
+ * warranty.  In no event will the authors be held liable for any damages
+ * arising from the use of this software.
+ *
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely, subject to the following restrictions:
+ *
+ * 1. The origin of this software must not be misrepresented; you must not
+ *    claim that you wrote the original software. If you use this software
+ *    in a product, an acknowledgment in the product documentation would be
+ *    appreciated but is not required.
+ * 2. Altered source versions must be plainly marked as such, and must not be
+ *    misrepresented as being the original software.
+ * 3. This notice may not be removed or altered from any source distribution.
+ */
 // Auto generated from Bullet/Extras/HeaderGenerator/bulletGenerate.py
 #ifndef __BULLET2_H__
 #define __BULLET2_H__
-namespace Bullet3SerializeBullet2
-{
+namespace Bullet3SerializeBullet2 {
 // put an empty struct in the case
-typedef struct bInvalidHandle
-{
+typedef struct bInvalidHandle {
 	int unused;
 } bInvalidHandle;
 
@@ -93,8 +91,7 @@ class SoftBodyClusterData;
 class b3SoftBodyJointData;
 class b3SoftBodyFloatData;
 // -------------------------------------------------- //
-class PointerArray
-{
+class PointerArray {
 public:
 	int m_size;
 	int m_capacity;
@@ -102,8 +99,7 @@ public:
 };
 
 // -------------------------------------------------- //
-class b3PhysicsSystem
-{
+class b3PhysicsSystem {
 public:
 	PointerArray m_collisionShapes;
 	PointerArray m_collisionObjects;
@@ -111,60 +107,52 @@ public:
 };
 
 // -------------------------------------------------- //
-class ListBase
-{
+class ListBase {
 public:
 	void *first;
 	void *last;
 };
 
 // -------------------------------------------------- //
-class b3Vector3FloatData
-{
+class b3Vector3FloatData {
 public:
 	float m_floats[4];
 };
 
 // -------------------------------------------------- //
-class b3Vector3DoubleData
-{
+class b3Vector3DoubleData {
 public:
 	double m_floats[4];
 };
 
 // -------------------------------------------------- //
-class b3Matrix3x3FloatData
-{
+class b3Matrix3x3FloatData {
 public:
 	b3Vector3FloatData m_el[3];
 };
 
 // -------------------------------------------------- //
-class b3Matrix3x3DoubleData
-{
+class b3Matrix3x3DoubleData {
 public:
 	b3Vector3DoubleData m_el[3];
 };
 
 // -------------------------------------------------- //
-class b3TransformFloatData
-{
+class b3TransformFloatData {
 public:
 	b3Matrix3x3FloatData m_basis;
 	b3Vector3FloatData m_origin;
 };
 
 // -------------------------------------------------- //
-class b3TransformDoubleData
-{
+class b3TransformDoubleData {
 public:
 	b3Matrix3x3DoubleData m_basis;
 	b3Vector3DoubleData m_origin;
 };
 
 // -------------------------------------------------- //
-class b3BvhSubtreeInfoData
-{
+class b3BvhSubtreeInfoData {
 public:
 	int m_rootNodeIndex;
 	int m_subtreeSize;
@@ -173,8 +161,7 @@ public:
 };
 
 // -------------------------------------------------- //
-class b3OptimizedBvhNodeFloatData
-{
+class b3OptimizedBvhNodeFloatData {
 public:
 	b3Vector3FloatData m_aabbMinOrg;
 	b3Vector3FloatData m_aabbMaxOrg;
@@ -185,8 +172,7 @@ public:
 };
 
 // -------------------------------------------------- //
-class b3OptimizedBvhNodeDoubleData
-{
+class b3OptimizedBvhNodeDoubleData {
 public:
 	b3Vector3DoubleData m_aabbMinOrg;
 	b3Vector3DoubleData m_aabbMaxOrg;
@@ -197,8 +183,7 @@ public:
 };
 
 // -------------------------------------------------- //
-class b3QuantizedBvhNodeData
-{
+class b3QuantizedBvhNodeData {
 public:
 	short m_quantizedAabbMin[3];
 	short m_quantizedAabbMax[3];
@@ -206,8 +191,7 @@ public:
 };
 
 // -------------------------------------------------- //
-class b3QuantizedBvhFloatData
-{
+class b3QuantizedBvhFloatData {
 public:
 	b3Vector3FloatData m_bvhAabbMin;
 	b3Vector3FloatData m_bvhAabbMax;
@@ -224,8 +208,7 @@ public:
 };
 
 // -------------------------------------------------- //
-class b3QuantizedBvhDoubleData
-{
+class b3QuantizedBvhDoubleData {
 public:
 	b3Vector3DoubleData m_bvhAabbMin;
 	b3Vector3DoubleData m_bvhAabbMax;
@@ -242,8 +225,7 @@ public:
 };
 
 // -------------------------------------------------- //
-class b3CollisionShapeData
-{
+class b3CollisionShapeData {
 public:
 	char *m_name;
 	int m_shapeType;
@@ -251,8 +233,7 @@ public:
 };
 
 // -------------------------------------------------- //
-class b3StaticPlaneShapeData
-{
+class b3StaticPlaneShapeData {
 public:
 	b3CollisionShapeData m_collisionShapeData;
 	b3Vector3FloatData m_localScaling;
@@ -262,8 +243,7 @@ public:
 };
 
 // -------------------------------------------------- //
-class b3ConvexInternalShapeData
-{
+class b3ConvexInternalShapeData {
 public:
 	b3CollisionShapeData m_collisionShapeData;
 	b3Vector3FloatData m_localScaling;
@@ -273,16 +253,14 @@ public:
 };
 
 // -------------------------------------------------- //
-class b3PositionAndRadius
-{
+class b3PositionAndRadius {
 public:
 	b3Vector3FloatData m_pos;
 	float m_radius;
 };
 
 // -------------------------------------------------- //
-class b3MultiSphereShapeData
-{
+class b3MultiSphereShapeData {
 public:
 	b3ConvexInternalShapeData m_convexInternalShapeData;
 	b3PositionAndRadius *m_localPositionArrayPtr;
@@ -291,39 +269,34 @@ public:
 };
 
 // -------------------------------------------------- //
-class b3IntIndexData
-{
+class b3IntIndexData {
 public:
 	int m_value;
 };
 
 // -------------------------------------------------- //
-class b3ShortIntIndexData
-{
+class b3ShortIntIndexData {
 public:
 	short m_value;
 	char m_pad[2];
 };
 
 // -------------------------------------------------- //
-class b3ShortIntIndexTripletData
-{
+class b3ShortIntIndexTripletData {
 public:
 	short m_values[3];
 	char m_pad[2];
 };
 
 // -------------------------------------------------- //
-class b3CharIndexTripletData
-{
+class b3CharIndexTripletData {
 public:
 	char m_values[3];
 	char m_pad;
 };
 
 // -------------------------------------------------- //
-class b3MeshPartData
-{
+class b3MeshPartData {
 public:
 	b3Vector3FloatData *m_vertices3f;
 	b3Vector3DoubleData *m_vertices3d;
@@ -336,8 +309,7 @@ public:
 };
 
 // -------------------------------------------------- //
-class b3StridingMeshInterfaceData
-{
+class b3StridingMeshInterfaceData {
 public:
 	b3MeshPartData *m_meshPartsPtr;
 	b3Vector3FloatData m_scaling;
@@ -346,8 +318,7 @@ public:
 };
 
 // -------------------------------------------------- //
-class b3TriangleMeshShapeData
-{
+class b3TriangleMeshShapeData {
 public:
 	b3CollisionShapeData m_collisionShapeData;
 	b3StridingMeshInterfaceData m_meshInterface;
@@ -359,16 +330,14 @@ public:
 };
 
 // -------------------------------------------------- //
-class b3ScaledTriangleMeshShapeData
-{
+class b3ScaledTriangleMeshShapeData {
 public:
 	b3TriangleMeshShapeData m_trimeshShapeData;
 	b3Vector3FloatData m_localScaling;
 };
 
 // -------------------------------------------------- //
-class b3CompoundShapeChildData
-{
+class b3CompoundShapeChildData {
 public:
 	b3TransformFloatData m_transform;
 	b3CollisionShapeData *m_childShape;
@@ -377,8 +346,7 @@ public:
 };
 
 // -------------------------------------------------- //
-class b3CompoundShapeData
-{
+class b3CompoundShapeData {
 public:
 	b3CollisionShapeData m_collisionShapeData;
 	b3CompoundShapeChildData *m_childShapePtr;
@@ -387,8 +355,7 @@ public:
 };
 
 // -------------------------------------------------- //
-class b3CylinderShapeData
-{
+class b3CylinderShapeData {
 public:
 	b3ConvexInternalShapeData m_convexInternalShapeData;
 	int m_upAxis;
@@ -396,8 +363,7 @@ public:
 };
 
 // -------------------------------------------------- //
-class b3CapsuleShapeData
-{
+class b3CapsuleShapeData {
 public:
 	b3ConvexInternalShapeData m_convexInternalShapeData;
 	int m_upAxis;
@@ -405,8 +371,7 @@ public:
 };
 
 // -------------------------------------------------- //
-class b3TriangleInfoData
-{
+class b3TriangleInfoData {
 public:
 	int m_flags;
 	float m_edgeV0V1Angle;
@@ -415,8 +380,7 @@ public:
 };
 
 // -------------------------------------------------- //
-class b3TriangleInfoMapData
-{
+class b3TriangleInfoMapData {
 public:
 	int *m_hashTablePtr;
 	int *m_nextPtr;
@@ -435,8 +399,7 @@ public:
 };
 
 // -------------------------------------------------- //
-class b3GImpactMeshShapeData
-{
+class b3GImpactMeshShapeData {
 public:
 	b3CollisionShapeData m_collisionShapeData;
 	b3StridingMeshInterfaceData m_meshInterface;
@@ -446,8 +409,7 @@ public:
 };
 
 // -------------------------------------------------- //
-class b3ConvexHullShapeData
-{
+class b3ConvexHullShapeData {
 public:
 	b3ConvexInternalShapeData m_convexInternalShapeData;
 	b3Vector3FloatData *m_unscaledPointsFloatPtr;
@@ -457,8 +419,7 @@ public:
 };
 
 // -------------------------------------------------- //
-class b3CollisionObjectDoubleData
-{
+class b3CollisionObjectDoubleData {
 public:
 	void *m_broadphaseHandle;
 	void *m_collisionShape;
@@ -488,8 +449,7 @@ public:
 };
 
 // -------------------------------------------------- //
-class b3CollisionObjectFloatData
-{
+class b3CollisionObjectFloatData {
 public:
 	void *m_broadphaseHandle;
 	void *m_collisionShape;
@@ -519,8 +479,7 @@ public:
 };
 
 // -------------------------------------------------- //
-class b3RigidBodyFloatData
-{
+class b3RigidBodyFloatData {
 public:
 	b3CollisionObjectFloatData m_collisionObjectData;
 	b3Matrix3x3FloatData m_invInertiaTensorWorld;
@@ -546,8 +505,7 @@ public:
 };
 
 // -------------------------------------------------- //
-class b3RigidBodyDoubleData
-{
+class b3RigidBodyDoubleData {
 public:
 	b3CollisionObjectDoubleData m_collisionObjectData;
 	b3Matrix3x3DoubleData m_invInertiaTensorWorld;
@@ -574,16 +532,14 @@ public:
 };
 
 // -------------------------------------------------- //
-class b3ConstraintInfo1
-{
+class b3ConstraintInfo1 {
 public:
 	int m_numConstraintRows;
 	int nub;
 };
 
 // -------------------------------------------------- //
-class b3TypedConstraintData
-{
+class b3TypedConstraintData {
 public:
 	bInvalidHandle *m_rbA;
 	bInvalidHandle *m_rbB;
@@ -601,8 +557,7 @@ public:
 };
 
 // -------------------------------------------------- //
-class b3Point2PointConstraintFloatData
-{
+class b3Point2PointConstraintFloatData {
 public:
 	b3TypedConstraintData m_typeConstraintData;
 	b3Vector3FloatData m_pivotInA;
@@ -610,8 +565,7 @@ public:
 };
 
 // -------------------------------------------------- //
-class b3Point2PointConstraintDoubleData
-{
+class b3Point2PointConstraintDoubleData {
 public:
 	b3TypedConstraintData m_typeConstraintData;
 	b3Vector3DoubleData m_pivotInA;
@@ -619,8 +573,7 @@ public:
 };
 
 // -------------------------------------------------- //
-class b3HingeConstraintDoubleData
-{
+class b3HingeConstraintDoubleData {
 public:
 	b3TypedConstraintData m_typeConstraintData;
 	b3TransformDoubleData m_rbAFrame;
@@ -638,8 +591,7 @@ public:
 };
 
 // -------------------------------------------------- //
-class b3HingeConstraintFloatData
-{
+class b3HingeConstraintFloatData {
 public:
 	b3TypedConstraintData m_typeConstraintData;
 	b3TransformFloatData m_rbAFrame;
@@ -657,8 +609,7 @@ public:
 };
 
 // -------------------------------------------------- //
-class b3ConeTwistConstraintData
-{
+class b3ConeTwistConstraintData {
 public:
 	b3TypedConstraintData m_typeConstraintData;
 	b3TransformFloatData m_rbAFrame;
@@ -674,8 +625,7 @@ public:
 };
 
 // -------------------------------------------------- //
-class b3Generic6DofConstraintData
-{
+class b3Generic6DofConstraintData {
 public:
 	b3TypedConstraintData m_typeConstraintData;
 	b3TransformFloatData m_rbAFrame;
@@ -689,8 +639,7 @@ public:
 };
 
 // -------------------------------------------------- //
-class b3Generic6DofSpringConstraintData
-{
+class b3Generic6DofSpringConstraintData {
 public:
 	b3Generic6DofConstraintData m_6dofData;
 	int m_springEnabled[6];
@@ -700,8 +649,7 @@ public:
 };
 
 // -------------------------------------------------- //
-class b3SliderConstraintData
-{
+class b3SliderConstraintData {
 public:
 	b3TypedConstraintData m_typeConstraintData;
 	b3TransformFloatData m_rbAFrame;
@@ -715,8 +663,7 @@ public:
 };
 
 // -------------------------------------------------- //
-class b3ContactSolverInfoDoubleData
-{
+class b3ContactSolverInfoDoubleData {
 public:
 	double m_tau;
 	double m_damping;
@@ -743,8 +690,7 @@ public:
 };
 
 // -------------------------------------------------- //
-class b3ContactSolverInfoFloatData
-{
+class b3ContactSolverInfoFloatData {
 public:
 	float m_tau;
 	float m_damping;
@@ -771,24 +717,21 @@ public:
 };
 
 // -------------------------------------------------- //
-class b3DynamicsWorldDoubleData
-{
+class b3DynamicsWorldDoubleData {
 public:
 	b3ContactSolverInfoDoubleData m_solverInfo;
 	b3Vector3DoubleData m_gravity;
 };
 
 // -------------------------------------------------- //
-class b3DynamicsWorldFloatData
-{
+class b3DynamicsWorldFloatData {
 public:
 	b3ContactSolverInfoFloatData m_solverInfo;
 	b3Vector3FloatData m_gravity;
 };
 
 // -------------------------------------------------- //
-class SoftBodyMaterialData
-{
+class SoftBodyMaterialData {
 public:
 	float m_linearStiffness;
 	float m_angularStiffness;
@@ -797,8 +740,7 @@ public:
 };
 
 // -------------------------------------------------- //
-class SoftBodyNodeData
-{
+class SoftBodyNodeData {
 public:
 	SoftBodyMaterialData *m_material;
 	b3Vector3FloatData m_position;
@@ -813,8 +755,7 @@ public:
 };
 
 // -------------------------------------------------- //
-class SoftBodyLinkData
-{
+class SoftBodyLinkData {
 public:
 	SoftBodyMaterialData *m_material;
 	int m_nodeIndices[2];
@@ -823,8 +764,7 @@ public:
 };
 
 // -------------------------------------------------- //
-class SoftBodyFaceData
-{
+class SoftBodyFaceData {
 public:
 	b3Vector3FloatData m_normal;
 	SoftBodyMaterialData *m_material;
@@ -833,8 +773,7 @@ public:
 };
 
 // -------------------------------------------------- //
-class SoftBodyTetraData
-{
+class SoftBodyTetraData {
 public:
 	b3Vector3FloatData m_c0[4];
 	SoftBodyMaterialData *m_material;
@@ -846,8 +785,7 @@ public:
 };
 
 // -------------------------------------------------- //
-class SoftRigidAnchorData
-{
+class SoftRigidAnchorData {
 public:
 	b3Matrix3x3FloatData m_c0;
 	b3Vector3FloatData m_c1;
@@ -858,8 +796,7 @@ public:
 };
 
 // -------------------------------------------------- //
-class SoftBodyConfigData
-{
+class SoftBodyConfigData {
 public:
 	int m_aeroModel;
 	float m_baumgarte;
@@ -890,8 +827,7 @@ public:
 };
 
 // -------------------------------------------------- //
-class SoftBodyPoseData
-{
+class SoftBodyPoseData {
 public:
 	b3Matrix3x3FloatData m_rot;
 	b3Matrix3x3FloatData m_scale;
@@ -908,8 +844,7 @@ public:
 };
 
 // -------------------------------------------------- //
-class SoftBodyClusterData
-{
+class SoftBodyClusterData {
 public:
 	b3TransformFloatData m_framexform;
 	b3Matrix3x3FloatData m_locii;
@@ -941,8 +876,7 @@ public:
 };
 
 // -------------------------------------------------- //
-class b3SoftBodyJointData
-{
+class b3SoftBodyJointData {
 public:
 	void *m_bodyA;
 	void *m_bodyB;
@@ -959,8 +893,7 @@ public:
 };
 
 // -------------------------------------------------- //
-class b3SoftBodyFloatData
-{
+class b3SoftBodyFloatData {
 public:
 	b3CollisionObjectFloatData m_collisionObjectData;
 	SoftBodyPoseData *m_pose;
@@ -983,5 +916,5 @@ public:
 	SoftBodyConfigData m_config;
 };
 
-}  // namespace Bullet3SerializeBullet2
-#endif  //__BULLET2_H__
+} // namespace Bullet3SerializeBullet2
+#endif //__BULLET2_H__

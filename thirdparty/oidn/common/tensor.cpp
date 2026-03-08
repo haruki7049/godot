@@ -14,70 +14,68 @@
 // limitations under the License.                                           //
 // ======================================================================== //
 
-#include "exception.h"
 #include "tensor.h"
+#include "exception.h"
 
 namespace oidn {
 
-  std::map<std::string, Tensor> parseTensors(void* buffer)
-  {
-    char* input = (char*)buffer;
+std::map<std::string, Tensor> parseTensors(void *buffer) {
+	char *input = (char *)buffer;
 
-    // Parse the magic value
-    const int magic = *(unsigned short*)input;
-    if (magic != 0x41D7)
-      throw Exception(Error::InvalidOperation, "invalid tensor archive");
-    input += sizeof(unsigned short);
+	// Parse the magic value
+	const int magic = *(unsigned short *)input;
+	if (magic != 0x41D7)
+		throw Exception(Error::InvalidOperation, "invalid tensor archive");
+	input += sizeof(unsigned short);
 
-    // Parse the version
-    const int majorVersion = *(unsigned char*)input++;
-    const int minorVersion = *(unsigned char*)input++;
-    UNUSED(minorVersion);
-    if (majorVersion > 1)
-      throw Exception(Error::InvalidOperation, "unsupported tensor archive version");
+	// Parse the version
+	const int majorVersion = *(unsigned char *)input++;
+	const int minorVersion = *(unsigned char *)input++;
+	UNUSED(minorVersion);
+	if (majorVersion > 1)
+		throw Exception(Error::InvalidOperation, "unsupported tensor archive version");
 
-    // Parse the number of tensors
-    const int numTensors = *(int*)input;
-    input += sizeof(int);
+	// Parse the number of tensors
+	const int numTensors = *(int *)input;
+	input += sizeof(int);
 
-    // Parse the tensors
-    std::map<std::string, Tensor> tensorMap;
-    for (int i = 0; i < numTensors; ++i)
-    {
-      Tensor tensor;
+	// Parse the tensors
+	std::map<std::string, Tensor> tensorMap;
+	for (int i = 0; i < numTensors; ++i) {
+		Tensor tensor;
 
-      // Parse the name
-      const int nameLen = *(unsigned char*)input++;
-      std::string name(input, nameLen);
-      input += nameLen;
+		// Parse the name
+		const int nameLen = *(unsigned char *)input++;
+		std::string name(input, nameLen);
+		input += nameLen;
 
-      // Parse the number of dimensions
-      const int ndims = *(unsigned char*)input++;
+		// Parse the number of dimensions
+		const int ndims = *(unsigned char *)input++;
 
-      // Parse the shape of the tensor
-      tensor.dims.resize(ndims);
-      for (int i = 0; i < ndims; ++i)
-        tensor.dims[i] = ((int*)input)[i];
-      input += ndims * sizeof(int);
+		// Parse the shape of the tensor
+		tensor.dims.resize(ndims);
+		for (int i = 0; i < ndims; ++i)
+			tensor.dims[i] = ((int *)input)[i];
+		input += ndims * sizeof(int);
 
-      // Parse the format of the tensor
-      tensor.format = std::string(input, input + ndims);
-      input += ndims;
+		// Parse the format of the tensor
+		tensor.format = std::string(input, input + ndims);
+		input += ndims;
 
-      // Parse the data type of the tensor
-      const char type = *(unsigned char*)input++;
-      if (type != 'f') // only float32 is supported
-        throw Exception(Error::InvalidOperation, "unsupported tensor data type");
+		// Parse the data type of the tensor
+		const char type = *(unsigned char *)input++;
+		if (type != 'f') // only float32 is supported
+			throw Exception(Error::InvalidOperation, "unsupported tensor data type");
 
-      // Skip the data
-      tensor.data = (float*)input;
-      input += tensor.size() * sizeof(float);
+		// Skip the data
+		tensor.data = (float *)input;
+		input += tensor.size() * sizeof(float);
 
-      // Add the tensor to the map
-      tensorMap.emplace(name, std::move(tensor));
-    }
+		// Add the tensor to the map
+		tensorMap.emplace(name, std::move(tensor));
+	}
 
-    return tensorMap;
-  }
+	return tensorMap;
+}
 
 } // namespace oidn

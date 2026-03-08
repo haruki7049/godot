@@ -8,27 +8,25 @@
  *  be found in the AUTHORS file in the root of the source tree.
  */
 
-
 #ifndef VP8_COMMON_LOOPFILTER_H_
 #define VP8_COMMON_LOOPFILTER_H_
 
-#include "vpx_ports/mem.h"
-#include "vpx_config.h"
 #include "vp8_rtcd.h"
+#include "vpx_config.h"
+#include "vpx_ports/mem.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#define MAX_LOOP_FILTER             63
+#define MAX_LOOP_FILTER 63
 /* fraction of total macroblock rows to be used in fast filter level picking */
 /* has to be > 2 */
-#define PARTIAL_FRAME_FRACTION      8
+#define PARTIAL_FRAME_FRACTION 8
 
-typedef enum
-{
-    NORMAL_LOOPFILTER = 0,
-    SIMPLE_LOOPFILTER = 1
+typedef enum {
+	NORMAL_LOOPFILTER = 0,
+	SIMPLE_LOOPFILTER = 1
 } LOOPFILTERTYPE;
 
 #if ARCH_ARM
@@ -42,33 +40,29 @@ typedef enum
  */
 typedef struct
 {
-    DECLARE_ALIGNED(SIMD_WIDTH, unsigned char, mblim[MAX_LOOP_FILTER + 1][SIMD_WIDTH]);
-    DECLARE_ALIGNED(SIMD_WIDTH, unsigned char, blim[MAX_LOOP_FILTER + 1][SIMD_WIDTH]);
-    DECLARE_ALIGNED(SIMD_WIDTH, unsigned char, lim[MAX_LOOP_FILTER + 1][SIMD_WIDTH]);
-    DECLARE_ALIGNED(SIMD_WIDTH, unsigned char, hev_thr[4][SIMD_WIDTH]);
-    unsigned char lvl[4][4][4];
-    unsigned char hev_thr_lut[2][MAX_LOOP_FILTER + 1];
-    unsigned char mode_lf_lut[10];
+	DECLARE_ALIGNED(SIMD_WIDTH, unsigned char, mblim[MAX_LOOP_FILTER + 1][SIMD_WIDTH]);
+	DECLARE_ALIGNED(SIMD_WIDTH, unsigned char, blim[MAX_LOOP_FILTER + 1][SIMD_WIDTH]);
+	DECLARE_ALIGNED(SIMD_WIDTH, unsigned char, lim[MAX_LOOP_FILTER + 1][SIMD_WIDTH]);
+	DECLARE_ALIGNED(SIMD_WIDTH, unsigned char, hev_thr[4][SIMD_WIDTH]);
+	unsigned char lvl[4][4][4];
+	unsigned char hev_thr_lut[2][MAX_LOOP_FILTER + 1];
+	unsigned char mode_lf_lut[10];
 } loop_filter_info_n;
 
-typedef struct loop_filter_info
-{
-    const unsigned char * mblim;
-    const unsigned char * blim;
-    const unsigned char * lim;
-    const unsigned char * hev_thr;
+typedef struct loop_filter_info {
+	const unsigned char *mblim;
+	const unsigned char *blim;
+	const unsigned char *lim;
+	const unsigned char *hev_thr;
 } loop_filter_info;
 
-
-typedef void loop_filter_uvfunction
-(
-    unsigned char *u,   /* source pointer */
-    int p,              /* pitch */
-    const unsigned char *blimit,
-    const unsigned char *limit,
-    const unsigned char *thresh,
-    unsigned char *v
-);
+typedef void loop_filter_uvfunction(
+		unsigned char *u, /* source pointer */
+		int p, /* pitch */
+		const unsigned char *blimit,
+		const unsigned char *limit,
+		const unsigned char *thresh,
+		unsigned char *v);
 
 /* assorted loopfilter functions which get used elsewhere */
 struct VP8Common;
@@ -78,36 +72,36 @@ struct modeinfo;
 void vp8_loop_filter_init(struct VP8Common *cm);
 
 void vp8_loop_filter_frame_init(struct VP8Common *cm,
-                                struct macroblockd *mbd,
-                                int default_filt_lvl);
+		struct macroblockd *mbd,
+		int default_filt_lvl);
 
 void vp8_loop_filter_frame(struct VP8Common *cm, struct macroblockd *mbd,
-                           int frame_type);
+		int frame_type);
 
 void vp8_loop_filter_partial_frame(struct VP8Common *cm,
-                                   struct macroblockd *mbd,
-                                   int default_filt_lvl);
+		struct macroblockd *mbd,
+		int default_filt_lvl);
 
 void vp8_loop_filter_frame_yonly(struct VP8Common *cm,
-                                 struct macroblockd *mbd,
-                                 int default_filt_lvl);
+		struct macroblockd *mbd,
+		int default_filt_lvl);
 
 void vp8_loop_filter_update_sharpness(loop_filter_info_n *lfi,
-                                      int sharpness_lvl);
+		int sharpness_lvl);
 
 void vp8_loop_filter_row_normal(struct VP8Common *cm,
-                                struct modeinfo *mode_info_context,
-                                int mb_row, int post_ystride, int post_uvstride,
-                                unsigned char *y_ptr, unsigned char *u_ptr,
-                                unsigned char *v_ptr);
+		struct modeinfo *mode_info_context,
+		int mb_row, int post_ystride, int post_uvstride,
+		unsigned char *y_ptr, unsigned char *u_ptr,
+		unsigned char *v_ptr);
 
 void vp8_loop_filter_row_simple(struct VP8Common *cm,
-                                struct modeinfo *mode_info_context,
-                                int mb_row, int post_ystride, int post_uvstride,
-                                unsigned char *y_ptr, unsigned char *u_ptr,
-                                unsigned char *v_ptr);
+		struct modeinfo *mode_info_context,
+		int mb_row, int post_ystride, int post_uvstride,
+		unsigned char *y_ptr, unsigned char *u_ptr,
+		unsigned char *v_ptr);
 #ifdef __cplusplus
-}  // extern "C"
+} // extern "C"
 #endif
 
-#endif  // VP8_COMMON_LOOPFILTER_H_
+#endif // VP8_COMMON_LOOPFILTER_H_

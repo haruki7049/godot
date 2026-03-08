@@ -3,8 +3,7 @@
 
 #include "Bullet3Common/b3Vector3.h"
 
-struct b3BvhInfo
-{
+struct b3BvhInfo {
 	b3Vector3 m_aabbMin;
 	b3Vector3 m_aabbMax;
 	b3Vector3 m_quantization;
@@ -14,4 +13,4 @@ struct b3BvhInfo
 	int m_subTreeOffset;
 };
 
-#endif  //B3_BVH_INFO_H
+#endif // B3_BVH_INFO_H

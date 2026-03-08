@@ -13,18 +13,17 @@ subject to the following restrictions:
 3. This notice may not be removed or altered from any source distribution.
 */
 
-///This file was written by Erwin Coumans
+/// This file was written by Erwin Coumans
 
 #ifndef BT_MULTIBODY_GEAR_CONSTRAINT_H
 #define BT_MULTIBODY_GEAR_CONSTRAINT_H
 
 #include "btMultiBodyConstraint.h"
 
-class btMultiBodyGearConstraint : public btMultiBodyConstraint
-{
+class btMultiBodyGearConstraint : public btMultiBodyConstraint {
 protected:
-	btRigidBody* m_rigidBodyA;
-	btRigidBody* m_rigidBodyB;
+	btRigidBody *m_rigidBodyA;
+	btRigidBody *m_rigidBodyB;
 	btVector3 m_pivotInA;
 	btVector3 m_pivotInB;
 	btMatrix3x3 m_frameInA;
@@ -35,8 +34,8 @@ protected:
 	btScalar m_relativePositionTarget;
 
 public:
-	//btMultiBodyGearConstraint(btMultiBody* body, int link, btRigidBody* bodyB, const btVector3& pivotInA, const btVector3& pivotInB, const btMatrix3x3& frameInA, const btMatrix3x3& frameInB);
-	btMultiBodyGearConstraint(btMultiBody* bodyA, int linkA, btMultiBody* bodyB, int linkB, const btVector3& pivotInA, const btVector3& pivotInB, const btMatrix3x3& frameInA, const btMatrix3x3& frameInB);
+	// btMultiBodyGearConstraint(btMultiBody* body, int link, btRigidBody* bodyB, const btVector3& pivotInA, const btVector3& pivotInB, const btMatrix3x3& frameInA, const btMatrix3x3& frameInB);
+	btMultiBodyGearConstraint(btMultiBody *bodyA, int linkA, btMultiBody *bodyB, int linkB, const btVector3 &pivotInA, const btVector3 &pivotInB, const btMatrix3x3 &frameInA, const btMatrix3x3 &frameInB);
 
 	virtual ~btMultiBodyGearConstraint();
 
@@ -45,71 +44,58 @@ public:
 	virtual int getIslandIdA() const;
 	virtual int getIslandIdB() const;
 
-	virtual void createConstraintRows(btMultiBodyConstraintArray& constraintRows,
-									  btMultiBodyJacobianData& data,
-									  const btContactSolverInfo& infoGlobal);
+	virtual void createConstraintRows(btMultiBodyConstraintArray &constraintRows,
+			btMultiBodyJacobianData &data,
+			const btContactSolverInfo &infoGlobal);
 
-	const btVector3& getPivotInA() const
-	{
+	const btVector3 &getPivotInA() const {
 		return m_pivotInA;
 	}
 
-	void setPivotInA(const btVector3& pivotInA)
-	{
+	void setPivotInA(const btVector3 &pivotInA) {
 		m_pivotInA = pivotInA;
 	}
 
-	const btVector3& getPivotInB() const
-	{
+	const btVector3 &getPivotInB() const {
 		return m_pivotInB;
 	}
 
-	virtual void setPivotInB(const btVector3& pivotInB)
-	{
+	virtual void setPivotInB(const btVector3 &pivotInB) {
 		m_pivotInB = pivotInB;
 	}
 
-	const btMatrix3x3& getFrameInA() const
-	{
+	const btMatrix3x3 &getFrameInA() const {
 		return m_frameInA;
 	}
 
-	void setFrameInA(const btMatrix3x3& frameInA)
-	{
+	void setFrameInA(const btMatrix3x3 &frameInA) {
 		m_frameInA = frameInA;
 	}
 
-	const btMatrix3x3& getFrameInB() const
-	{
+	const btMatrix3x3 &getFrameInB() const {
 		return m_frameInB;
 	}
 
-	virtual void setFrameInB(const btMatrix3x3& frameInB)
-	{
+	virtual void setFrameInB(const btMatrix3x3 &frameInB) {
 		m_frameInB = frameInB;
 	}
 
-	virtual void debugDraw(class btIDebugDraw* drawer)
-	{
-		//todo(erwincoumans)
+	virtual void debugDraw(class btIDebugDraw *drawer) {
+		// todo(erwincoumans)
 	}
 
-	virtual void setGearRatio(btScalar gearRatio)
-	{
+	virtual void setGearRatio(btScalar gearRatio) {
 		m_gearRatio = gearRatio;
 	}
-	virtual void setGearAuxLink(int gearAuxLink)
-	{
+	virtual void setGearAuxLink(int gearAuxLink) {
 		m_gearAuxLink = gearAuxLink;
 	}
-	virtual void setRelativePositionTarget(btScalar relPosTarget)
-	{
+	virtual void setRelativePositionTarget(btScalar relPosTarget) {
 		m_relativePositionTarget = relPosTarget;
 	}
-	virtual void setErp(btScalar erp)
-	{
+	virtual void setErp(btScalar erp) {
 		m_erp = erp;
 	}
 };
 
-#endif  //BT_MULTIBODY_GEAR_CONSTRAINT_H
+#endif // BT_MULTIBODY_GEAR_CONSTRAINT_H

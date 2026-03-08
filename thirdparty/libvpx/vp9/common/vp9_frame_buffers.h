@@ -19,14 +19,14 @@ extern "C" {
 #endif
 
 typedef struct InternalFrameBuffer {
-  uint8_t *data;
-  size_t size;
-  int in_use;
+	uint8_t *data;
+	size_t size;
+	int in_use;
 } InternalFrameBuffer;
 
 typedef struct InternalFrameBufferList {
-  int num_internal_frame_buffers;
-  InternalFrameBuffer *int_fb;
+	int num_internal_frame_buffers;
+	InternalFrameBuffer *int_fb;
 } InternalFrameBufferList;
 
 // Initializes |list|. Returns 0 on success.
@@ -40,14 +40,14 @@ void vp9_free_internal_frame_buffers(InternalFrameBufferList *list);
 // |min_size| is the minimum size in bytes needed to decode the next frame.
 // |fb| pointer to the frame buffer.
 int vp9_get_frame_buffer(void *cb_priv, size_t min_size,
-                         vpx_codec_frame_buffer_t *fb);
+		vpx_codec_frame_buffer_t *fb);
 
 // Callback used by libvpx when there are no references to the frame buffer.
 // |cb_priv| is not used. |fb| pointer to the frame buffer.
 int vp9_release_frame_buffer(void *cb_priv, vpx_codec_frame_buffer_t *fb);
 
 #ifdef __cplusplus
-}  // extern "C"
+} // extern "C"
 #endif
 
-#endif  // VP9_COMMON_VP9_FRAME_BUFFERS_H_
+#endif // VP9_COMMON_VP9_FRAME_BUFFERS_H_

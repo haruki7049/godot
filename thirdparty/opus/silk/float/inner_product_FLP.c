@@ -33,28 +33,26 @@ POSSIBILITY OF SUCH DAMAGE.
 
 /* inner product of two silk_float arrays, with result as double */
 double silk_inner_product_FLP(
-    const silk_float    *data1,
-    const silk_float    *data2,
-    opus_int            dataSize
-)
-{
-    opus_int  i, dataSize4;
-    double   result;
+		const silk_float *data1,
+		const silk_float *data2,
+		opus_int dataSize) {
+	opus_int i, dataSize4;
+	double result;
 
-    /* 4x unrolled loop */
-    result = 0.0;
-    dataSize4 = dataSize & 0xFFFC;
-    for( i = 0; i < dataSize4; i += 4 ) {
-        result += data1[ i + 0 ] * (double)data2[ i + 0 ] +
-                  data1[ i + 1 ] * (double)data2[ i + 1 ] +
-                  data1[ i + 2 ] * (double)data2[ i + 2 ] +
-                  data1[ i + 3 ] * (double)data2[ i + 3 ];
-    }
+	/* 4x unrolled loop */
+	result = 0.0;
+	dataSize4 = dataSize & 0xFFFC;
+	for (i = 0; i < dataSize4; i += 4) {
+		result += data1[i + 0] * (double)data2[i + 0] +
+				  data1[i + 1] * (double)data2[i + 1] +
+				  data1[i + 2] * (double)data2[i + 2] +
+				  data1[i + 3] * (double)data2[i + 3];
+	}
 
-    /* add any remaining products */
-    for( ; i < dataSize; i++ ) {
-        result += data1[ i ] * (double)data2[ i ];
-    }
+	/* add any remaining products */
+	for (; i < dataSize; i++) {
+		result += data1[i] * (double)data2[i];
+	}
 
-    return result;
+	return result;
 }

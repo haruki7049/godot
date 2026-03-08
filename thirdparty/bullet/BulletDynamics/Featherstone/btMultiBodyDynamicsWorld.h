@@ -26,18 +26,17 @@ class btMultiBodyConstraint;
 class btMultiBodyConstraintSolver;
 struct MultiBodyInplaceSolverIslandCallback;
 
-///The btMultiBodyDynamicsWorld adds Featherstone multi body dynamics to Bullet
-///This implementation is still preliminary/experimental.
-class btMultiBodyDynamicsWorld : public btDiscreteDynamicsWorld
-{
+/// The btMultiBodyDynamicsWorld adds Featherstone multi body dynamics to Bullet
+/// This implementation is still preliminary/experimental.
+class btMultiBodyDynamicsWorld : public btDiscreteDynamicsWorld {
 protected:
-	btAlignedObjectArray<btMultiBody*> m_multiBodies;
-	btAlignedObjectArray<btMultiBodyConstraint*> m_multiBodyConstraints;
-	btAlignedObjectArray<btMultiBodyConstraint*> m_sortedMultiBodyConstraints;
-	btMultiBodyConstraintSolver* m_multiBodyConstraintSolver;
-	MultiBodyInplaceSolverIslandCallback* m_solverMultiBodyIslandCallback;
+	btAlignedObjectArray<btMultiBody *> m_multiBodies;
+	btAlignedObjectArray<btMultiBodyConstraint *> m_multiBodyConstraints;
+	btAlignedObjectArray<btMultiBodyConstraint *> m_sortedMultiBodyConstraints;
+	btMultiBodyConstraintSolver *m_multiBodyConstraintSolver;
+	MultiBodyInplaceSolverIslandCallback *m_solverMultiBodyIslandCallback;
 
-	//cached data to avoid memory allocations
+	// cached data to avoid memory allocations
 	btAlignedObjectArray<btQuaternion> m_scratch_world_to_local;
 	btAlignedObjectArray<btVector3> m_scratch_local_origin;
 	btAlignedObjectArray<btQuaternion> m_scratch_world_to_local1;
@@ -48,63 +47,56 @@ protected:
 
 	virtual void calculateSimulationIslands();
 	virtual void updateActivationState(btScalar timeStep);
-	
 
-	virtual void serializeMultiBodies(btSerializer* serializer);
+	virtual void serializeMultiBodies(btSerializer *serializer);
 
 public:
-	btMultiBodyDynamicsWorld(btDispatcher* dispatcher, btBroadphaseInterface* pairCache, btMultiBodyConstraintSolver* constraintSolver, btCollisionConfiguration* collisionConfiguration);
+	btMultiBodyDynamicsWorld(btDispatcher *dispatcher, btBroadphaseInterface *pairCache, btMultiBodyConstraintSolver *constraintSolver, btCollisionConfiguration *collisionConfiguration);
 
 	virtual ~btMultiBodyDynamicsWorld();
-    
-    virtual void solveConstraints(btContactSolverInfo& solverInfo);
-    
-	virtual void addMultiBody(btMultiBody* body, int group = btBroadphaseProxy::DefaultFilter, int mask = btBroadphaseProxy::AllFilter);
 
-	virtual void removeMultiBody(btMultiBody* body);
+	virtual void solveConstraints(btContactSolverInfo &solverInfo);
 
-	virtual int getNumMultibodies() const
-	{
+	virtual void addMultiBody(btMultiBody *body, int group = btBroadphaseProxy::DefaultFilter, int mask = btBroadphaseProxy::AllFilter);
+
+	virtual void removeMultiBody(btMultiBody *body);
+
+	virtual int getNumMultibodies() const {
 		return m_multiBodies.size();
 	}
 
-	btMultiBody* getMultiBody(int mbIndex)
-	{
+	btMultiBody *getMultiBody(int mbIndex) {
 		return m_multiBodies[mbIndex];
 	}
 
-	const btMultiBody* getMultiBody(int mbIndex) const
-	{
+	const btMultiBody *getMultiBody(int mbIndex) const {
 		return m_multiBodies[mbIndex];
 	}
 
-	virtual void addMultiBodyConstraint(btMultiBodyConstraint* constraint);
+	virtual void addMultiBodyConstraint(btMultiBodyConstraint *constraint);
 
-	virtual int getNumMultiBodyConstraints() const
-	{
+	virtual int getNumMultiBodyConstraints() const {
 		return m_multiBodyConstraints.size();
 	}
 
-	virtual btMultiBodyConstraint* getMultiBodyConstraint(int constraintIndex)
-	{
+	virtual btMultiBodyConstraint *getMultiBodyConstraint(int constraintIndex) {
 		return m_multiBodyConstraints[constraintIndex];
 	}
 
-	virtual const btMultiBodyConstraint* getMultiBodyConstraint(int constraintIndex) const
-	{
+	virtual const btMultiBodyConstraint *getMultiBodyConstraint(int constraintIndex) const {
 		return m_multiBodyConstraints[constraintIndex];
 	}
 
-	virtual void removeMultiBodyConstraint(btMultiBodyConstraint* constraint);
+	virtual void removeMultiBodyConstraint(btMultiBodyConstraint *constraint);
 
 	virtual void integrateTransforms(btScalar timeStep);
-    void integrateMultiBodyTransforms(btScalar timeStep);
-    void predictMultiBodyTransforms(btScalar timeStep);
-    
-    virtual void predictUnconstraintMotion(btScalar timeStep);
+	void integrateMultiBodyTransforms(btScalar timeStep);
+	void predictMultiBodyTransforms(btScalar timeStep);
+
+	virtual void predictUnconstraintMotion(btScalar timeStep);
 	virtual void debugDrawWorld();
 
-	virtual void debugDrawMultiBodyConstraint(btMultiBodyConstraint* constraint);
+	virtual void debugDrawMultiBodyConstraint(btMultiBodyConstraint *constraint);
 
 	void forwardKinematics();
 	virtual void clearForces();
@@ -112,13 +104,13 @@ public:
 	virtual void clearMultiBodyForces();
 	virtual void applyGravity();
 
-	virtual void serialize(btSerializer* serializer);
-	virtual void setMultiBodyConstraintSolver(btMultiBodyConstraintSolver* solver);
-	virtual void setConstraintSolver(btConstraintSolver* solver);
-	virtual void getAnalyticsData(btAlignedObjectArray<struct btSolverAnalyticsData>& m_islandAnalyticsData) const;
-    
-    virtual void solveExternalForces(btContactSolverInfo& solverInfo);
-    virtual void solveInternalConstraints(btContactSolverInfo& solverInfo);
-    void buildIslands();
+	virtual void serialize(btSerializer *serializer);
+	virtual void setMultiBodyConstraintSolver(btMultiBodyConstraintSolver *solver);
+	virtual void setConstraintSolver(btConstraintSolver *solver);
+	virtual void getAnalyticsData(btAlignedObjectArray<struct btSolverAnalyticsData> &m_islandAnalyticsData) const;
+
+	virtual void solveExternalForces(btContactSolverInfo &solverInfo);
+	virtual void solveInternalConstraints(btContactSolverInfo &solverInfo);
+	void buildIslands();
 };
-#endif  //BT_MULTIBODY_DYNAMICS_WORLD_H
+#endif // BT_MULTIBODY_DYNAMICS_WORLD_H

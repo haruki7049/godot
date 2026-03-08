@@ -9,7 +9,7 @@ subject to the following restrictions:
 2. Altered source versions must be plainly marked as such, and must not be misrepresented as being the original software.
 3. This notice may not be removed or altered from any source distribution.
 */
-//Initial Author Jackson Lee, 2014
+// Initial Author Jackson Lee, 2014
 
 #include "b3GpuParallelLinearBvhBroadphase.h"
 
@@ -19,12 +19,10 @@ b3GpuParallelLinearBvhBroadphase::b3GpuParallelLinearBvhBroadphase(cl_context co
 
 																																	  m_aabbsGpu(context, queue),
 																																	  m_smallAabbsMappingGpu(context, queue),
-																																	  m_largeAabbsMappingGpu(context, queue)
-{
+																																	  m_largeAabbsMappingGpu(context, queue) {
 }
 
-void b3GpuParallelLinearBvhBroadphase::createProxy(const b3Vector3& aabbMin, const b3Vector3& aabbMax, int userPtr, int collisionFilterGroup, int collisionFilterMask)
-{
+void b3GpuParallelLinearBvhBroadphase::createProxy(const b3Vector3 &aabbMin, const b3Vector3 &aabbMax, int userPtr, int collisionFilterGroup, int collisionFilterMask) {
 	int newAabbIndex = m_aabbsCpu.size();
 
 	b3SapAabb aabb;
@@ -38,8 +36,7 @@ void b3GpuParallelLinearBvhBroadphase::createProxy(const b3Vector3& aabbMin, con
 
 	m_aabbsCpu.push_back(aabb);
 }
-void b3GpuParallelLinearBvhBroadphase::createLargeProxy(const b3Vector3& aabbMin, const b3Vector3& aabbMax, int userPtr, int collisionFilterGroup, int collisionFilterMask)
-{
+void b3GpuParallelLinearBvhBroadphase::createLargeProxy(const b3Vector3 &aabbMin, const b3Vector3 &aabbMax, int userPtr, int collisionFilterGroup, int collisionFilterMask) {
 	int newAabbIndex = m_aabbsCpu.size();
 
 	b3SapAabb aabb;
@@ -54,22 +51,19 @@ void b3GpuParallelLinearBvhBroadphase::createLargeProxy(const b3Vector3& aabbMin
 	m_aabbsCpu.push_back(aabb);
 }
 
-void b3GpuParallelLinearBvhBroadphase::calculateOverlappingPairs(int maxPairs)
-{
-	//Reconstruct BVH
+void b3GpuParallelLinearBvhBroadphase::calculateOverlappingPairs(int maxPairs) {
+	// Reconstruct BVH
 	m_plbvh.build(m_aabbsGpu, m_smallAabbsMappingGpu, m_largeAabbsMappingGpu);
 
 	//
 	m_overlappingPairsGpu.resize(maxPairs);
 	m_plbvh.calculateOverlappingPairs(m_overlappingPairsGpu);
 }
-void b3GpuParallelLinearBvhBroadphase::calculateOverlappingPairsHost(int maxPairs)
-{
-	b3Assert(0);  //CPU version not implemented
+void b3GpuParallelLinearBvhBroadphase::calculateOverlappingPairsHost(int maxPairs) {
+	b3Assert(0); // CPU version not implemented
 }
 
-void b3GpuParallelLinearBvhBroadphase::writeAabbsToGpu()
-{
+void b3GpuParallelLinearBvhBroadphase::writeAabbsToGpu() {
 	m_aabbsGpu.copyFromHost(m_aabbsCpu);
 	m_smallAabbsMappingGpu.copyFromHost(m_smallAabbsMappingCpu);
 	m_largeAabbsMappingGpu.copyFromHost(m_largeAabbsMappingCpu);

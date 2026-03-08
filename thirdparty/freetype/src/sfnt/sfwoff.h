@@ -15,26 +15,20 @@
  *
  */
 
-
 #ifndef SFWOFF_H_
 #define SFWOFF_H_
 
-
-#include <freetype/internal/sfnt.h>
 #include <freetype/internal/ftobjs.h>
-
+#include <freetype/internal/sfnt.h>
 
 FT_BEGIN_HEADER
 
-
-  FT_LOCAL( FT_Error )
-  woff_open_font( FT_Stream  stream,
-                  TT_Face    face );
-
+FT_LOCAL(FT_Error)
+woff_open_font(FT_Stream stream,
+		TT_Face face);
 
 FT_END_HEADER
 
 #endif /* SFWOFF_H_ */
-
 
 /* END */

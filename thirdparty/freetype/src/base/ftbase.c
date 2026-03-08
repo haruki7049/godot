@@ -15,8 +15,7 @@
  *
  */
 
-
-#define  FT_MAKE_OPTION_SINGLE_OBJECT
+#define FT_MAKE_OPTION_SINGLE_OBJECT
 
 #include "ftadvanc.c"
 #include "ftcalc.c"
@@ -36,6 +35,5 @@
 #include "ftstream.c"
 #include "fttrigon.c"
 #include "ftutil.c"
-
 
 /* END */

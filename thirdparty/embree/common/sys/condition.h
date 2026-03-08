@@ -5,27 +5,25 @@
 
 #include "mutex.h"
 
-namespace embree
-{
-  class ConditionSys
-  {
-  public:
-    ConditionSys();
-    ~ConditionSys();
-    void wait( class MutexSys& mutex );
-    void notify_all();
+namespace embree {
+class ConditionSys {
+public:
+	ConditionSys();
+	~ConditionSys();
+	void wait(class MutexSys &mutex);
+	void notify_all();
 
-    template<typename Predicate>
-      __forceinline void wait( class MutexSys& mutex, const Predicate& pred )
-    {
-      while (!pred()) wait(mutex);
-    }
+	template <typename Predicate>
+	__forceinline void wait(class MutexSys &mutex, const Predicate &pred) {
+		while (!pred())
+			wait(mutex);
+	}
 
-  private:
-    ConditionSys (const ConditionSys& other) DELETED; // do not implement
-    ConditionSys& operator= (const ConditionSys& other) DELETED; // do not implement
+private:
+	ConditionSys(const ConditionSys &other) DELETED; // do not implement
+	ConditionSys &operator=(const ConditionSys &other) DELETED; // do not implement
 
-  protected:
-    void* cond;
-  };
-}
+protected:
+	void *cond;
+};
+} // namespace embree

@@ -5,11 +5,9 @@
 #include "../IDMath.hpp"
 #include "../MultiBodyTree.hpp"
 
-namespace btInverseDynamics
-{
+namespace btInverseDynamics {
 /// Mass properties of a rigid body
-struct InertiaData
-{
+struct InertiaData {
 	ID_DECLARE_ALIGNED_ALLOCATOR();
 
 	/// mass
@@ -23,8 +21,7 @@ struct InertiaData
 };
 
 /// Joint properties
-struct JointData
-{
+struct JointData {
 	ID_DECLARE_ALIGNED_ALLOCATOR();
 
 	/// type of joint
@@ -51,17 +48,16 @@ struct JointData
 
 /// Data structure to store data passed by the user.
 /// This is used in MultiBodyTree::finalize to build internal data structures.
-class MultiBodyTree::InitCache
-{
+class MultiBodyTree::InitCache {
 public:
 	ID_DECLARE_ALIGNED_ALLOCATOR();
 	/// constructor
 	InitCache();
 	///\copydoc MultiBodyTree::addBody
 	int addBody(const int body_index, const int parent_index, const JointType joint_type,
-				const vec3 &parent_r_parent_body_ref, const mat33 &body_T_parent_ref,
-				const vec3 &body_axis_of_motion, idScalar mass, const vec3 &body_r_body_com,
-				const mat33 &body_I_body, const int user_int, void *user_ptr);
+			const vec3 &parent_r_parent_body_ref, const mat33 &body_T_parent_ref,
+			const vec3 &body_axis_of_motion, idScalar mass, const vec3 &body_r_body_com,
+			const mat33 &body_I_body, const int user_int, void *user_ptr);
 	/// build index arrays
 	/// @return 0 on success, -1 on failure
 	int buildIndexSets();
@@ -109,5 +105,5 @@ private:
 	// index of root body (or -1 if not set)
 	int m_root_index;
 };
-}  // namespace btInverseDynamics
-#endif  // MULTIBODYTREEINITCACHE_HPP_
+} // namespace btInverseDynamics
+#endif // MULTIBODYTREEINITCACHE_HPP_

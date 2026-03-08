@@ -16,28 +16,28 @@ extern "C" {
 #endif
 
 enum {
-  VP9D_NOFILTERING            = 0,
-  VP9D_DEBLOCK                = 1 << 0,
-  VP9D_DEMACROBLOCK           = 1 << 1,
-  VP9D_ADDNOISE               = 1 << 2,
-  VP9D_DEBUG_TXT_FRAME_INFO   = 1 << 3,
-  VP9D_DEBUG_TXT_MBLK_MODES   = 1 << 4,
-  VP9D_DEBUG_TXT_DC_DIFF      = 1 << 5,
-  VP9D_DEBUG_TXT_RATE_INFO    = 1 << 6,
-  VP9D_DEBUG_DRAW_MV          = 1 << 7,
-  VP9D_DEBUG_CLR_BLK_MODES    = 1 << 8,
-  VP9D_DEBUG_CLR_FRM_REF_BLKS = 1 << 9,
-  VP9D_MFQE                   = 1 << 10
+	VP9D_NOFILTERING = 0,
+	VP9D_DEBLOCK = 1 << 0,
+	VP9D_DEMACROBLOCK = 1 << 1,
+	VP9D_ADDNOISE = 1 << 2,
+	VP9D_DEBUG_TXT_FRAME_INFO = 1 << 3,
+	VP9D_DEBUG_TXT_MBLK_MODES = 1 << 4,
+	VP9D_DEBUG_TXT_DC_DIFF = 1 << 5,
+	VP9D_DEBUG_TXT_RATE_INFO = 1 << 6,
+	VP9D_DEBUG_DRAW_MV = 1 << 7,
+	VP9D_DEBUG_CLR_BLK_MODES = 1 << 8,
+	VP9D_DEBUG_CLR_FRM_REF_BLKS = 1 << 9,
+	VP9D_MFQE = 1 << 10
 };
 
 typedef struct {
-  int post_proc_flag;
-  int deblocking_level;
-  int noise_level;
+	int post_proc_flag;
+	int deblocking_level;
+	int noise_level;
 } vp9_ppflags_t;
 
 #ifdef __cplusplus
-}  // extern "C"
+} // extern "C"
 #endif
 
-#endif  // VP9_COMMON_VP9_PPFLAGS_H_
+#endif // VP9_COMMON_VP9_PPFLAGS_H_

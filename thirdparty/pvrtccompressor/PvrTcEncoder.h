@@ -5,36 +5,34 @@
 
 //============================================================================
 
-namespace Javelin
-{
+namespace Javelin {
 //============================================================================
 
-	class AlphaBitmap;
-	class RgbBitmap;
-	class RgbaBitmap;
-	
-	class PvrTcEncoder
-	{
-	public:
-		// Result must be large enough for bitmap.GetArea()/4 bytes
-		static void EncodeAlpha2Bpp(void* result, const AlphaBitmap& bitmap);
-		
-		// Result must be large enough for bitmap.GetArea()/2 bytes
-		static void EncodeAlpha4Bpp(void* result, const AlphaBitmap& bitmap);
-		
-		// Result must be large enough for bitmap.GetArea()/2 bytes
-		static void EncodeRgb4Bpp(void* result, const RgbBitmap& bitmap);
+class AlphaBitmap;
+class RgbBitmap;
+class RgbaBitmap;
 
-		// Result must be large enough for bitmap.GetArea()/2 bytes
-		static void EncodeRgb4Bpp(void* result, const RgbaBitmap& bitmap);
+class PvrTcEncoder {
+public:
+	// Result must be large enough for bitmap.GetArea()/4 bytes
+	static void EncodeAlpha2Bpp(void *result, const AlphaBitmap &bitmap);
 
-		// Result must be large enough for bitmap.GetArea()/2 bytes
-		static void EncodeRgba4Bpp(void* result, const RgbaBitmap& bitmap);
+	// Result must be large enough for bitmap.GetArea()/2 bytes
+	static void EncodeAlpha4Bpp(void *result, const AlphaBitmap &bitmap);
 
-	private:
-		static unsigned GetMortonNumber(int x, int y);
-	};
-	
+	// Result must be large enough for bitmap.GetArea()/2 bytes
+	static void EncodeRgb4Bpp(void *result, const RgbBitmap &bitmap);
+
+	// Result must be large enough for bitmap.GetArea()/2 bytes
+	static void EncodeRgb4Bpp(void *result, const RgbaBitmap &bitmap);
+
+	// Result must be large enough for bitmap.GetArea()/2 bytes
+	static void EncodeRgba4Bpp(void *result, const RgbaBitmap &bitmap);
+
+private:
+	static unsigned GetMortonNumber(int x, int y);
+};
+
 //============================================================================
-}
+} // namespace Javelin
 //============================================================================

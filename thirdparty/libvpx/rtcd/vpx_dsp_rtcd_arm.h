@@ -14,7 +14,6 @@
 #include "vpx/vpx_integer.h"
 #include "vpx_dsp/vpx_dsp_common.h"
 
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -408,271 +407,334 @@ void vpx_dsp_rtcd(void);
 
 #ifdef RTCD_C
 #include "vpx_ports/arm.h"
-static void setup_rtcd_internal(void)
-{
-    int flags = arm_cpu_caps();
+static void setup_rtcd_internal(void) {
+	int flags = arm_cpu_caps();
 
-    vpx_convolve8 = vpx_convolve8_c;
+	vpx_convolve8 = vpx_convolve8_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_convolve8 = vpx_convolve8_neon;
+	if (flags & HAS_NEON)
+		vpx_convolve8 = vpx_convolve8_neon;
 #endif
-    vpx_convolve8_avg = vpx_convolve8_avg_c;
+	vpx_convolve8_avg = vpx_convolve8_avg_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_convolve8_avg = vpx_convolve8_avg_neon;
+	if (flags & HAS_NEON)
+		vpx_convolve8_avg = vpx_convolve8_avg_neon;
 #endif
-    vpx_convolve8_avg_horiz = vpx_convolve8_avg_horiz_c;
+	vpx_convolve8_avg_horiz = vpx_convolve8_avg_horiz_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_convolve8_avg_horiz = vpx_convolve8_avg_horiz_neon;
+	if (flags & HAS_NEON)
+		vpx_convolve8_avg_horiz = vpx_convolve8_avg_horiz_neon;
 #endif
-    vpx_convolve8_avg_vert = vpx_convolve8_avg_vert_c;
+	vpx_convolve8_avg_vert = vpx_convolve8_avg_vert_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_convolve8_avg_vert = vpx_convolve8_avg_vert_neon;
+	if (flags & HAS_NEON)
+		vpx_convolve8_avg_vert = vpx_convolve8_avg_vert_neon;
 #endif
-    vpx_convolve8_horiz = vpx_convolve8_horiz_c;
+	vpx_convolve8_horiz = vpx_convolve8_horiz_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_convolve8_horiz = vpx_convolve8_horiz_neon;
+	if (flags & HAS_NEON)
+		vpx_convolve8_horiz = vpx_convolve8_horiz_neon;
 #endif
-    vpx_convolve8_vert = vpx_convolve8_vert_c;
+	vpx_convolve8_vert = vpx_convolve8_vert_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_convolve8_vert = vpx_convolve8_vert_neon;
+	if (flags & HAS_NEON)
+		vpx_convolve8_vert = vpx_convolve8_vert_neon;
 #endif
-    vpx_convolve_avg = vpx_convolve_avg_c;
+	vpx_convolve_avg = vpx_convolve_avg_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_convolve_avg = vpx_convolve_avg_neon;
+	if (flags & HAS_NEON)
+		vpx_convolve_avg = vpx_convolve_avg_neon;
 #endif
-    vpx_convolve_copy = vpx_convolve_copy_c;
+	vpx_convolve_copy = vpx_convolve_copy_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_convolve_copy = vpx_convolve_copy_neon;
+	if (flags & HAS_NEON)
+		vpx_convolve_copy = vpx_convolve_copy_neon;
 #endif
-    vpx_d135_predictor_4x4 = vpx_d135_predictor_4x4_c;
+	vpx_d135_predictor_4x4 = vpx_d135_predictor_4x4_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_d135_predictor_4x4 = vpx_d135_predictor_4x4_neon;
+	if (flags & HAS_NEON)
+		vpx_d135_predictor_4x4 = vpx_d135_predictor_4x4_neon;
 #endif
-    vpx_d45_predictor_16x16 = vpx_d45_predictor_16x16_c;
+	vpx_d45_predictor_16x16 = vpx_d45_predictor_16x16_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_d45_predictor_16x16 = vpx_d45_predictor_16x16_neon;
+	if (flags & HAS_NEON)
+		vpx_d45_predictor_16x16 = vpx_d45_predictor_16x16_neon;
 #endif
-    vpx_d45_predictor_4x4 = vpx_d45_predictor_4x4_c;
+	vpx_d45_predictor_4x4 = vpx_d45_predictor_4x4_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_d45_predictor_4x4 = vpx_d45_predictor_4x4_neon;
+	if (flags & HAS_NEON)
+		vpx_d45_predictor_4x4 = vpx_d45_predictor_4x4_neon;
 #endif
-    vpx_d45_predictor_8x8 = vpx_d45_predictor_8x8_c;
+	vpx_d45_predictor_8x8 = vpx_d45_predictor_8x8_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_d45_predictor_8x8 = vpx_d45_predictor_8x8_neon;
+	if (flags & HAS_NEON)
+		vpx_d45_predictor_8x8 = vpx_d45_predictor_8x8_neon;
 #endif
-    vpx_dc_128_predictor_16x16 = vpx_dc_128_predictor_16x16_c;
+	vpx_dc_128_predictor_16x16 = vpx_dc_128_predictor_16x16_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_dc_128_predictor_16x16 = vpx_dc_128_predictor_16x16_neon;
+	if (flags & HAS_NEON)
+		vpx_dc_128_predictor_16x16 = vpx_dc_128_predictor_16x16_neon;
 #endif
-    vpx_dc_128_predictor_32x32 = vpx_dc_128_predictor_32x32_c;
+	vpx_dc_128_predictor_32x32 = vpx_dc_128_predictor_32x32_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_dc_128_predictor_32x32 = vpx_dc_128_predictor_32x32_neon;
+	if (flags & HAS_NEON)
+		vpx_dc_128_predictor_32x32 = vpx_dc_128_predictor_32x32_neon;
 #endif
-    vpx_dc_128_predictor_4x4 = vpx_dc_128_predictor_4x4_c;
+	vpx_dc_128_predictor_4x4 = vpx_dc_128_predictor_4x4_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_dc_128_predictor_4x4 = vpx_dc_128_predictor_4x4_neon;
+	if (flags & HAS_NEON)
+		vpx_dc_128_predictor_4x4 = vpx_dc_128_predictor_4x4_neon;
 #endif
-    vpx_dc_128_predictor_8x8 = vpx_dc_128_predictor_8x8_c;
+	vpx_dc_128_predictor_8x8 = vpx_dc_128_predictor_8x8_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_dc_128_predictor_8x8 = vpx_dc_128_predictor_8x8_neon;
+	if (flags & HAS_NEON)
+		vpx_dc_128_predictor_8x8 = vpx_dc_128_predictor_8x8_neon;
 #endif
-    vpx_dc_left_predictor_16x16 = vpx_dc_left_predictor_16x16_c;
+	vpx_dc_left_predictor_16x16 = vpx_dc_left_predictor_16x16_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_dc_left_predictor_16x16 = vpx_dc_left_predictor_16x16_neon;
+	if (flags & HAS_NEON)
+		vpx_dc_left_predictor_16x16 = vpx_dc_left_predictor_16x16_neon;
 #endif
-    vpx_dc_left_predictor_32x32 = vpx_dc_left_predictor_32x32_c;
+	vpx_dc_left_predictor_32x32 = vpx_dc_left_predictor_32x32_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_dc_left_predictor_32x32 = vpx_dc_left_predictor_32x32_neon;
+	if (flags & HAS_NEON)
+		vpx_dc_left_predictor_32x32 = vpx_dc_left_predictor_32x32_neon;
 #endif
-    vpx_dc_left_predictor_4x4 = vpx_dc_left_predictor_4x4_c;
+	vpx_dc_left_predictor_4x4 = vpx_dc_left_predictor_4x4_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_dc_left_predictor_4x4 = vpx_dc_left_predictor_4x4_neon;
+	if (flags & HAS_NEON)
+		vpx_dc_left_predictor_4x4 = vpx_dc_left_predictor_4x4_neon;
 #endif
-    vpx_dc_left_predictor_8x8 = vpx_dc_left_predictor_8x8_c;
+	vpx_dc_left_predictor_8x8 = vpx_dc_left_predictor_8x8_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_dc_left_predictor_8x8 = vpx_dc_left_predictor_8x8_neon;
+	if (flags & HAS_NEON)
+		vpx_dc_left_predictor_8x8 = vpx_dc_left_predictor_8x8_neon;
 #endif
-    vpx_dc_predictor_16x16 = vpx_dc_predictor_16x16_c;
+	vpx_dc_predictor_16x16 = vpx_dc_predictor_16x16_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_dc_predictor_16x16 = vpx_dc_predictor_16x16_neon;
+	if (flags & HAS_NEON)
+		vpx_dc_predictor_16x16 = vpx_dc_predictor_16x16_neon;
 #endif
-    vpx_dc_predictor_32x32 = vpx_dc_predictor_32x32_c;
+	vpx_dc_predictor_32x32 = vpx_dc_predictor_32x32_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_dc_predictor_32x32 = vpx_dc_predictor_32x32_neon;
+	if (flags & HAS_NEON)
+		vpx_dc_predictor_32x32 = vpx_dc_predictor_32x32_neon;
 #endif
-    vpx_dc_predictor_4x4 = vpx_dc_predictor_4x4_c;
+	vpx_dc_predictor_4x4 = vpx_dc_predictor_4x4_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_dc_predictor_4x4 = vpx_dc_predictor_4x4_neon;
+	if (flags & HAS_NEON)
+		vpx_dc_predictor_4x4 = vpx_dc_predictor_4x4_neon;
 #endif
-    vpx_dc_predictor_8x8 = vpx_dc_predictor_8x8_c;
+	vpx_dc_predictor_8x8 = vpx_dc_predictor_8x8_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_dc_predictor_8x8 = vpx_dc_predictor_8x8_neon;
+	if (flags & HAS_NEON)
+		vpx_dc_predictor_8x8 = vpx_dc_predictor_8x8_neon;
 #endif
-    vpx_dc_top_predictor_16x16 = vpx_dc_top_predictor_16x16_c;
+	vpx_dc_top_predictor_16x16 = vpx_dc_top_predictor_16x16_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_dc_top_predictor_16x16 = vpx_dc_top_predictor_16x16_neon;
+	if (flags & HAS_NEON)
+		vpx_dc_top_predictor_16x16 = vpx_dc_top_predictor_16x16_neon;
 #endif
-    vpx_dc_top_predictor_32x32 = vpx_dc_top_predictor_32x32_c;
+	vpx_dc_top_predictor_32x32 = vpx_dc_top_predictor_32x32_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_dc_top_predictor_32x32 = vpx_dc_top_predictor_32x32_neon;
+	if (flags & HAS_NEON)
+		vpx_dc_top_predictor_32x32 = vpx_dc_top_predictor_32x32_neon;
 #endif
-    vpx_dc_top_predictor_4x4 = vpx_dc_top_predictor_4x4_c;
+	vpx_dc_top_predictor_4x4 = vpx_dc_top_predictor_4x4_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_dc_top_predictor_4x4 = vpx_dc_top_predictor_4x4_neon;
+	if (flags & HAS_NEON)
+		vpx_dc_top_predictor_4x4 = vpx_dc_top_predictor_4x4_neon;
 #endif
-    vpx_dc_top_predictor_8x8 = vpx_dc_top_predictor_8x8_c;
+	vpx_dc_top_predictor_8x8 = vpx_dc_top_predictor_8x8_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_dc_top_predictor_8x8 = vpx_dc_top_predictor_8x8_neon;
+	if (flags & HAS_NEON)
+		vpx_dc_top_predictor_8x8 = vpx_dc_top_predictor_8x8_neon;
 #endif
-    vpx_h_predictor_16x16 = vpx_h_predictor_16x16_c;
+	vpx_h_predictor_16x16 = vpx_h_predictor_16x16_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_h_predictor_16x16 = vpx_h_predictor_16x16_neon;
+	if (flags & HAS_NEON)
+		vpx_h_predictor_16x16 = vpx_h_predictor_16x16_neon;
 #endif
-    vpx_h_predictor_32x32 = vpx_h_predictor_32x32_c;
+	vpx_h_predictor_32x32 = vpx_h_predictor_32x32_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_h_predictor_32x32 = vpx_h_predictor_32x32_neon;
+	if (flags & HAS_NEON)
+		vpx_h_predictor_32x32 = vpx_h_predictor_32x32_neon;
 #endif
-    vpx_h_predictor_4x4 = vpx_h_predictor_4x4_c;
+	vpx_h_predictor_4x4 = vpx_h_predictor_4x4_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_h_predictor_4x4 = vpx_h_predictor_4x4_neon;
+	if (flags & HAS_NEON)
+		vpx_h_predictor_4x4 = vpx_h_predictor_4x4_neon;
 #endif
-    vpx_h_predictor_8x8 = vpx_h_predictor_8x8_c;
+	vpx_h_predictor_8x8 = vpx_h_predictor_8x8_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_h_predictor_8x8 = vpx_h_predictor_8x8_neon;
+	if (flags & HAS_NEON)
+		vpx_h_predictor_8x8 = vpx_h_predictor_8x8_neon;
 #endif
-    vpx_idct16x16_10_add = vpx_idct16x16_10_add_c;
+	vpx_idct16x16_10_add = vpx_idct16x16_10_add_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_idct16x16_10_add = vpx_idct16x16_10_add_neon;
+	if (flags & HAS_NEON)
+		vpx_idct16x16_10_add = vpx_idct16x16_10_add_neon;
 #endif
-    vpx_idct16x16_1_add = vpx_idct16x16_1_add_c;
+	vpx_idct16x16_1_add = vpx_idct16x16_1_add_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_idct16x16_1_add = vpx_idct16x16_1_add_neon;
+	if (flags & HAS_NEON)
+		vpx_idct16x16_1_add = vpx_idct16x16_1_add_neon;
 #endif
-    vpx_idct16x16_256_add = vpx_idct16x16_256_add_c;
+	vpx_idct16x16_256_add = vpx_idct16x16_256_add_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_idct16x16_256_add = vpx_idct16x16_256_add_neon;
+	if (flags & HAS_NEON)
+		vpx_idct16x16_256_add = vpx_idct16x16_256_add_neon;
 #endif
-    vpx_idct32x32_1024_add = vpx_idct32x32_1024_add_c;
+	vpx_idct32x32_1024_add = vpx_idct32x32_1024_add_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_idct32x32_1024_add = vpx_idct32x32_1024_add_neon;
+	if (flags & HAS_NEON)
+		vpx_idct32x32_1024_add = vpx_idct32x32_1024_add_neon;
 #endif
-    vpx_idct32x32_135_add = vpx_idct32x32_135_add_c;
+	vpx_idct32x32_135_add = vpx_idct32x32_135_add_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_idct32x32_135_add = vpx_idct32x32_1024_add_neon;
+	if (flags & HAS_NEON)
+		vpx_idct32x32_135_add = vpx_idct32x32_1024_add_neon;
 #endif
-    vpx_idct32x32_1_add = vpx_idct32x32_1_add_c;
+	vpx_idct32x32_1_add = vpx_idct32x32_1_add_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_idct32x32_1_add = vpx_idct32x32_1_add_neon;
+	if (flags & HAS_NEON)
+		vpx_idct32x32_1_add = vpx_idct32x32_1_add_neon;
 #endif
-    vpx_idct32x32_34_add = vpx_idct32x32_34_add_c;
+	vpx_idct32x32_34_add = vpx_idct32x32_34_add_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_idct32x32_34_add = vpx_idct32x32_1024_add_neon;
+	if (flags & HAS_NEON)
+		vpx_idct32x32_34_add = vpx_idct32x32_1024_add_neon;
 #endif
-    vpx_idct4x4_16_add = vpx_idct4x4_16_add_c;
+	vpx_idct4x4_16_add = vpx_idct4x4_16_add_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_idct4x4_16_add = vpx_idct4x4_16_add_neon;
+	if (flags & HAS_NEON)
+		vpx_idct4x4_16_add = vpx_idct4x4_16_add_neon;
 #endif
-    vpx_idct4x4_1_add = vpx_idct4x4_1_add_c;
+	vpx_idct4x4_1_add = vpx_idct4x4_1_add_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_idct4x4_1_add = vpx_idct4x4_1_add_neon;
+	if (flags & HAS_NEON)
+		vpx_idct4x4_1_add = vpx_idct4x4_1_add_neon;
 #endif
-    vpx_idct8x8_12_add = vpx_idct8x8_12_add_c;
+	vpx_idct8x8_12_add = vpx_idct8x8_12_add_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_idct8x8_12_add = vpx_idct8x8_12_add_neon;
+	if (flags & HAS_NEON)
+		vpx_idct8x8_12_add = vpx_idct8x8_12_add_neon;
 #endif
-    vpx_idct8x8_1_add = vpx_idct8x8_1_add_c;
+	vpx_idct8x8_1_add = vpx_idct8x8_1_add_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_idct8x8_1_add = vpx_idct8x8_1_add_neon;
+	if (flags & HAS_NEON)
+		vpx_idct8x8_1_add = vpx_idct8x8_1_add_neon;
 #endif
-    vpx_idct8x8_64_add = vpx_idct8x8_64_add_c;
+	vpx_idct8x8_64_add = vpx_idct8x8_64_add_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_idct8x8_64_add = vpx_idct8x8_64_add_neon;
+	if (flags & HAS_NEON)
+		vpx_idct8x8_64_add = vpx_idct8x8_64_add_neon;
 #endif
-    vpx_lpf_horizontal_4 = vpx_lpf_horizontal_4_c;
+	vpx_lpf_horizontal_4 = vpx_lpf_horizontal_4_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_lpf_horizontal_4 = vpx_lpf_horizontal_4_neon;
+	if (flags & HAS_NEON)
+		vpx_lpf_horizontal_4 = vpx_lpf_horizontal_4_neon;
 #endif
-    vpx_lpf_horizontal_4_dual = vpx_lpf_horizontal_4_dual_c;
+	vpx_lpf_horizontal_4_dual = vpx_lpf_horizontal_4_dual_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_lpf_horizontal_4_dual = vpx_lpf_horizontal_4_dual_neon;
+	if (flags & HAS_NEON)
+		vpx_lpf_horizontal_4_dual = vpx_lpf_horizontal_4_dual_neon;
 #endif
-    vpx_lpf_horizontal_8 = vpx_lpf_horizontal_8_c;
+	vpx_lpf_horizontal_8 = vpx_lpf_horizontal_8_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_lpf_horizontal_8 = vpx_lpf_horizontal_8_neon;
+	if (flags & HAS_NEON)
+		vpx_lpf_horizontal_8 = vpx_lpf_horizontal_8_neon;
 #endif
-    vpx_lpf_horizontal_8_dual = vpx_lpf_horizontal_8_dual_c;
+	vpx_lpf_horizontal_8_dual = vpx_lpf_horizontal_8_dual_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_lpf_horizontal_8_dual = vpx_lpf_horizontal_8_dual_neon;
+	if (flags & HAS_NEON)
+		vpx_lpf_horizontal_8_dual = vpx_lpf_horizontal_8_dual_neon;
 #endif
-    vpx_lpf_horizontal_edge_16 = vpx_lpf_horizontal_edge_16_c;
+	vpx_lpf_horizontal_edge_16 = vpx_lpf_horizontal_edge_16_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_lpf_horizontal_edge_16 = vpx_lpf_horizontal_edge_16_neon;
+	if (flags & HAS_NEON)
+		vpx_lpf_horizontal_edge_16 = vpx_lpf_horizontal_edge_16_neon;
 #endif
-    vpx_lpf_horizontal_edge_8 = vpx_lpf_horizontal_edge_8_c;
+	vpx_lpf_horizontal_edge_8 = vpx_lpf_horizontal_edge_8_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_lpf_horizontal_edge_8 = vpx_lpf_horizontal_edge_8_neon;
+	if (flags & HAS_NEON)
+		vpx_lpf_horizontal_edge_8 = vpx_lpf_horizontal_edge_8_neon;
 #endif
-    vpx_lpf_vertical_16 = vpx_lpf_vertical_16_c;
+	vpx_lpf_vertical_16 = vpx_lpf_vertical_16_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_lpf_vertical_16 = vpx_lpf_vertical_16_neon;
+	if (flags & HAS_NEON)
+		vpx_lpf_vertical_16 = vpx_lpf_vertical_16_neon;
 #endif
-    vpx_lpf_vertical_16_dual = vpx_lpf_vertical_16_dual_c;
+	vpx_lpf_vertical_16_dual = vpx_lpf_vertical_16_dual_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_lpf_vertical_16_dual = vpx_lpf_vertical_16_dual_neon;
+	if (flags & HAS_NEON)
+		vpx_lpf_vertical_16_dual = vpx_lpf_vertical_16_dual_neon;
 #endif
-    vpx_lpf_vertical_4 = vpx_lpf_vertical_4_c;
+	vpx_lpf_vertical_4 = vpx_lpf_vertical_4_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_lpf_vertical_4 = vpx_lpf_vertical_4_neon;
+	if (flags & HAS_NEON)
+		vpx_lpf_vertical_4 = vpx_lpf_vertical_4_neon;
 #endif
-    vpx_lpf_vertical_4_dual = vpx_lpf_vertical_4_dual_c;
+	vpx_lpf_vertical_4_dual = vpx_lpf_vertical_4_dual_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_lpf_vertical_4_dual = vpx_lpf_vertical_4_dual_neon;
+	if (flags & HAS_NEON)
+		vpx_lpf_vertical_4_dual = vpx_lpf_vertical_4_dual_neon;
 #endif
-    vpx_lpf_vertical_8 = vpx_lpf_vertical_8_c;
+	vpx_lpf_vertical_8 = vpx_lpf_vertical_8_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_lpf_vertical_8 = vpx_lpf_vertical_8_neon;
+	if (flags & HAS_NEON)
+		vpx_lpf_vertical_8 = vpx_lpf_vertical_8_neon;
 #endif
-    vpx_lpf_vertical_8_dual = vpx_lpf_vertical_8_dual_c;
+	vpx_lpf_vertical_8_dual = vpx_lpf_vertical_8_dual_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_lpf_vertical_8_dual = vpx_lpf_vertical_8_dual_neon;
+	if (flags & HAS_NEON)
+		vpx_lpf_vertical_8_dual = vpx_lpf_vertical_8_dual_neon;
 #endif
-    vpx_tm_predictor_16x16 = vpx_tm_predictor_16x16_c;
+	vpx_tm_predictor_16x16 = vpx_tm_predictor_16x16_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_tm_predictor_16x16 = vpx_tm_predictor_16x16_neon;
+	if (flags & HAS_NEON)
+		vpx_tm_predictor_16x16 = vpx_tm_predictor_16x16_neon;
 #endif
-    vpx_tm_predictor_32x32 = vpx_tm_predictor_32x32_c;
+	vpx_tm_predictor_32x32 = vpx_tm_predictor_32x32_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_tm_predictor_32x32 = vpx_tm_predictor_32x32_neon;
+	if (flags & HAS_NEON)
+		vpx_tm_predictor_32x32 = vpx_tm_predictor_32x32_neon;
 #endif
-    vpx_tm_predictor_4x4 = vpx_tm_predictor_4x4_c;
+	vpx_tm_predictor_4x4 = vpx_tm_predictor_4x4_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_tm_predictor_4x4 = vpx_tm_predictor_4x4_neon;
+	if (flags & HAS_NEON)
+		vpx_tm_predictor_4x4 = vpx_tm_predictor_4x4_neon;
 #endif
-    vpx_tm_predictor_8x8 = vpx_tm_predictor_8x8_c;
+	vpx_tm_predictor_8x8 = vpx_tm_predictor_8x8_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_tm_predictor_8x8 = vpx_tm_predictor_8x8_neon;
+	if (flags & HAS_NEON)
+		vpx_tm_predictor_8x8 = vpx_tm_predictor_8x8_neon;
 #endif
-    vpx_v_predictor_16x16 = vpx_v_predictor_16x16_c;
+	vpx_v_predictor_16x16 = vpx_v_predictor_16x16_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_v_predictor_16x16 = vpx_v_predictor_16x16_neon;
+	if (flags & HAS_NEON)
+		vpx_v_predictor_16x16 = vpx_v_predictor_16x16_neon;
 #endif
-    vpx_v_predictor_32x32 = vpx_v_predictor_32x32_c;
+	vpx_v_predictor_32x32 = vpx_v_predictor_32x32_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_v_predictor_32x32 = vpx_v_predictor_32x32_neon;
+	if (flags & HAS_NEON)
+		vpx_v_predictor_32x32 = vpx_v_predictor_32x32_neon;
 #endif
-    vpx_v_predictor_4x4 = vpx_v_predictor_4x4_c;
+	vpx_v_predictor_4x4 = vpx_v_predictor_4x4_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_v_predictor_4x4 = vpx_v_predictor_4x4_neon;
+	if (flags & HAS_NEON)
+		vpx_v_predictor_4x4 = vpx_v_predictor_4x4_neon;
 #endif
-    vpx_v_predictor_8x8 = vpx_v_predictor_8x8_c;
+	vpx_v_predictor_8x8 = vpx_v_predictor_8x8_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vpx_v_predictor_8x8 = vpx_v_predictor_8x8_neon;
+	if (flags & HAS_NEON)
+		vpx_v_predictor_8x8 = vpx_v_predictor_8x8_neon;
 #endif
 }
 #endif
 
 #ifdef __cplusplus
-}  // extern "C"
+} // extern "C"
 #endif
 
 #endif

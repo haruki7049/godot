@@ -16,7 +16,6 @@
  *
  */
 
-
 #define FT_MAKE_OPTION_SINGLE_OBJECT
 
 #include "gxvbsln.c"
@@ -41,6 +40,5 @@
 #include "gxvopbd.c"
 #include "gxvprop.c"
 #include "gxvtrak.c"
-
 
 /* END */

@@ -4,8 +4,8 @@ Copyright (c) 2003-2006 Erwin Coumans  http://continuousphysics.com/Bullet/
 
 This software is provided 'as-is', without any express or implied warranty.
 In no event will the authors be held liable for any damages arising from the use of this software.
-Permission is granted to anyone to use this software for any purpose, 
-including commercial applications, and to alter it and redistribute it freely, 
+Permission is granted to anyone to use this software for any purpose,
+including commercial applications, and to alter it and redistribute it freely,
 subject to the following restrictions:
 
 1. The origin of this software must not be misrepresented; you must not claim that you wrote the original software. If you use this software in a product, an acknowledgment in the product documentation would be appreciated but is not required.
@@ -14,8 +14,8 @@ subject to the following restrictions:
 */
 
 #include "btPersistentManifold.h"
-#include "LinearMath/btTransform.h"
 #include "LinearMath/btSerializer.h"
+#include "LinearMath/btTransform.h"
 
 #ifdef BT_USE_DOUBLE_PRECISION
 #define btCollisionObjectData btCollisionObjectDoubleData
@@ -28,56 +28,47 @@ ContactDestroyedCallback gContactDestroyedCallback = 0;
 ContactProcessedCallback gContactProcessedCallback = 0;
 ContactStartedCallback gContactStartedCallback = 0;
 ContactEndedCallback gContactEndedCallback = 0;
-///gContactCalcArea3Points will approximate the convex hull area using 3 points
-///when setting it to false, it will use 4 points to compute the area: it is more accurate but slower
+/// gContactCalcArea3Points will approximate the convex hull area using 3 points
+/// when setting it to false, it will use 4 points to compute the area: it is more accurate but slower
 bool gContactCalcArea3Points = true;
 
-btPersistentManifold::btPersistentManifold()
-	: btTypedObject(BT_PERSISTENT_MANIFOLD_TYPE),
-	  m_body0(0),
-	  m_body1(0),
-	  m_cachedPoints(0),
-	  m_companionIdA(0),
-	  m_companionIdB(0),
-	  m_index1a(0)
-{
+btPersistentManifold::btPersistentManifold() : btTypedObject(BT_PERSISTENT_MANIFOLD_TYPE),
+											   m_body0(0),
+											   m_body1(0),
+											   m_cachedPoints(0),
+											   m_companionIdA(0),
+											   m_companionIdB(0),
+											   m_index1a(0) {
 }
 
 #ifdef DEBUG_PERSISTENCY
 #include <stdio.h>
-void btPersistentManifold::DebugPersistency()
-{
+void btPersistentManifold::DebugPersistency() {
 	int i;
 	printf("DebugPersistency : numPoints %d\n", m_cachedPoints);
-	for (i = 0; i < m_cachedPoints; i++)
-	{
+	for (i = 0; i < m_cachedPoints; i++) {
 		printf("m_pointCache[%d].m_userPersistentData = %x\n", i, m_pointCache[i].m_userPersistentData);
 	}
 }
-#endif  //DEBUG_PERSISTENCY
+#endif // DEBUG_PERSISTENCY
 
-void btPersistentManifold::clearUserCache(btManifoldPoint& pt)
-{
-	void* oldPtr = pt.m_userPersistentData;
-	if (oldPtr)
-	{
+void btPersistentManifold::clearUserCache(btManifoldPoint &pt) {
+	void *oldPtr = pt.m_userPersistentData;
+	if (oldPtr) {
 #ifdef DEBUG_PERSISTENCY
 		int i;
 		int occurance = 0;
-		for (i = 0; i < m_cachedPoints; i++)
-		{
-			if (m_pointCache[i].m_userPersistentData == oldPtr)
-			{
+		for (i = 0; i < m_cachedPoints; i++) {
+			if (m_pointCache[i].m_userPersistentData == oldPtr) {
 				occurance++;
 				if (occurance > 1)
 					printf("error in clearUserCache\n");
 			}
 		}
 		btAssert(occurance <= 0);
-#endif  //DEBUG_PERSISTENCY
+#endif // DEBUG_PERSISTENCY
 
-		if (pt.m_userPersistentData && gContactDestroyedCallback)
-		{
+		if (pt.m_userPersistentData && gContactDestroyedCallback) {
 			(*gContactDestroyedCallback)(pt.m_userPersistentData);
 			pt.m_userPersistentData = 0;
 		}
@@ -88,8 +79,7 @@ void btPersistentManifold::clearUserCache(btManifoldPoint& pt)
 	}
 }
 
-static inline btScalar calcArea4Points(const btVector3& p0, const btVector3& p1, const btVector3& p2, const btVector3& p3)
-{
+static inline btScalar calcArea4Points(const btVector3 &p0, const btVector3 &p1, const btVector3 &p2, const btVector3 &p3) {
 	// It calculates possible 3 area constructed from random 4 points and returns the biggest one.
 
 	btVector3 a[3], b[3];
@@ -100,7 +90,7 @@ static inline btScalar calcArea4Points(const btVector3& p0, const btVector3& p1,
 	b[1] = p1 - p3;
 	b[2] = p1 - p2;
 
-	//todo: Following 3 cross production can be easily optimized by SIMD.
+	// todo: Following 3 cross production can be easily optimized by SIMD.
 	btVector3 tmp0 = a[0].cross(b[0]);
 	btVector3 tmp1 = a[1].cross(b[1]);
 	btVector3 tmp2 = a[2].cross(b[2]);
@@ -108,79 +98,65 @@ static inline btScalar calcArea4Points(const btVector3& p0, const btVector3& p1,
 	return btMax(btMax(tmp0.length2(), tmp1.length2()), tmp2.length2());
 }
 
-int btPersistentManifold::sortCachedPoints(const btManifoldPoint& pt)
-{
-	//calculate 4 possible cases areas, and take biggest area
-	//also need to keep 'deepest'
+int btPersistentManifold::sortCachedPoints(const btManifoldPoint &pt) {
+	// calculate 4 possible cases areas, and take biggest area
+	// also need to keep 'deepest'
 
 	int maxPenetrationIndex = -1;
 #define KEEP_DEEPEST_POINT 1
 #ifdef KEEP_DEEPEST_POINT
 	btScalar maxPenetration = pt.getDistance();
-	for (int i = 0; i < 4; i++)
-	{
-		if (m_pointCache[i].getDistance() < maxPenetration)
-		{
+	for (int i = 0; i < 4; i++) {
+		if (m_pointCache[i].getDistance() < maxPenetration) {
 			maxPenetrationIndex = i;
 			maxPenetration = m_pointCache[i].getDistance();
 		}
 	}
-#endif  //KEEP_DEEPEST_POINT
+#endif // KEEP_DEEPEST_POINT
 
 	btScalar res0(btScalar(0.)), res1(btScalar(0.)), res2(btScalar(0.)), res3(btScalar(0.));
 
-	if (gContactCalcArea3Points)
-	{
-		if (maxPenetrationIndex != 0)
-		{
+	if (gContactCalcArea3Points) {
+		if (maxPenetrationIndex != 0) {
 			btVector3 a0 = pt.m_localPointA - m_pointCache[1].m_localPointA;
 			btVector3 b0 = m_pointCache[3].m_localPointA - m_pointCache[2].m_localPointA;
 			btVector3 cross = a0.cross(b0);
 			res0 = cross.length2();
 		}
-		if (maxPenetrationIndex != 1)
-		{
+		if (maxPenetrationIndex != 1) {
 			btVector3 a1 = pt.m_localPointA - m_pointCache[0].m_localPointA;
 			btVector3 b1 = m_pointCache[3].m_localPointA - m_pointCache[2].m_localPointA;
 			btVector3 cross = a1.cross(b1);
 			res1 = cross.length2();
 		}
 
-		if (maxPenetrationIndex != 2)
-		{
+		if (maxPenetrationIndex != 2) {
 			btVector3 a2 = pt.m_localPointA - m_pointCache[0].m_localPointA;
 			btVector3 b2 = m_pointCache[3].m_localPointA - m_pointCache[1].m_localPointA;
 			btVector3 cross = a2.cross(b2);
 			res2 = cross.length2();
 		}
 
-		if (maxPenetrationIndex != 3)
-		{
+		if (maxPenetrationIndex != 3) {
 			btVector3 a3 = pt.m_localPointA - m_pointCache[0].m_localPointA;
 			btVector3 b3 = m_pointCache[2].m_localPointA - m_pointCache[1].m_localPointA;
 			btVector3 cross = a3.cross(b3);
 			res3 = cross.length2();
 		}
-	}
-	else
-	{
-		if (maxPenetrationIndex != 0)
-		{
+	} else {
+		if (maxPenetrationIndex != 0) {
 			res0 = calcArea4Points(pt.m_localPointA, m_pointCache[1].m_localPointA, m_pointCache[2].m_localPointA, m_pointCache[3].m_localPointA);
 		}
 
-		if (maxPenetrationIndex != 1)
-		{
+		if (maxPenetrationIndex != 1) {
 			res1 = calcArea4Points(pt.m_localPointA, m_pointCache[0].m_localPointA, m_pointCache[2].m_localPointA, m_pointCache[3].m_localPointA);
 		}
 
-		if (maxPenetrationIndex != 2)
-		{
+		if (maxPenetrationIndex != 2) {
 			res2 = calcArea4Points(pt.m_localPointA, m_pointCache[0].m_localPointA, m_pointCache[1].m_localPointA, m_pointCache[3].m_localPointA);
 		}
 
-		if (maxPenetrationIndex != 3)
-		{
+		if (maxPenetrationIndex != 3) {
 			res3 = calcArea4Points(pt.m_localPointA, m_pointCache[0].m_localPointA, m_pointCache[1].m_localPointA, m_pointCache[2].m_localPointA);
 		}
 	}
@@ -189,19 +165,16 @@ int btPersistentManifold::sortCachedPoints(const btManifoldPoint& pt)
 	return biggestarea;
 }
 
-int btPersistentManifold::getCacheEntry(const btManifoldPoint& newPoint) const
-{
+int btPersistentManifold::getCacheEntry(const btManifoldPoint &newPoint) const {
 	btScalar shortestDist = getContactBreakingThreshold() * getContactBreakingThreshold();
 	int size = getNumContacts();
 	int nearestPoint = -1;
-	for (int i = 0; i < size; i++)
-	{
-		const btManifoldPoint& mp = m_pointCache[i];
+	for (int i = 0; i < size; i++) {
+		const btManifoldPoint &mp = m_pointCache[i];
 
 		btVector3 diffA = mp.m_localPointA - newPoint.m_localPointA;
 		const btScalar distToManiPoint = diffA.dot(diffA);
-		if (distToManiPoint < shortestDist)
-		{
+		if (distToManiPoint < shortestDist) {
 			shortestDist = distToManiPoint;
 			nearestPoint = i;
 		}
@@ -209,26 +182,21 @@ int btPersistentManifold::getCacheEntry(const btManifoldPoint& newPoint) const
 	return nearestPoint;
 }
 
-int btPersistentManifold::addManifoldPoint(const btManifoldPoint& newPoint, bool isPredictive)
-{
-	if (!isPredictive)
-	{
+int btPersistentManifold::addManifoldPoint(const btManifoldPoint &newPoint, bool isPredictive) {
+	if (!isPredictive) {
 		btAssert(validContactDistance(newPoint));
 	}
 
 	int insertIndex = getNumContacts();
-	if (insertIndex == MANIFOLD_CACHE_SIZE)
-	{
+	if (insertIndex == MANIFOLD_CACHE_SIZE) {
 #if MANIFOLD_CACHE_SIZE >= 4
-		//sort cache so best points come first, based on area
+		// sort cache so best points come first, based on area
 		insertIndex = sortCachedPoints(newPoint);
 #else
 		insertIndex = 0;
 #endif
 		clearUserCache(m_pointCache[insertIndex]);
-	}
-	else
-	{
+	} else {
 		m_cachedPoints++;
 	}
 	if (insertIndex < 0)
@@ -239,27 +207,24 @@ int btPersistentManifold::addManifoldPoint(const btManifoldPoint& newPoint, bool
 	return insertIndex;
 }
 
-btScalar btPersistentManifold::getContactBreakingThreshold() const
-{
+btScalar btPersistentManifold::getContactBreakingThreshold() const {
 	return m_contactBreakingThreshold;
 }
 
-void btPersistentManifold::refreshContactPoints(const btTransform& trA, const btTransform& trB)
-{
+void btPersistentManifold::refreshContactPoints(const btTransform &trA, const btTransform &trB) {
 	int i;
 #ifdef DEBUG_PERSISTENCY
 	printf("refreshContactPoints posA = (%f,%f,%f) posB = (%f,%f,%f)\n",
-		   trA.getOrigin().getX(),
-		   trA.getOrigin().getY(),
-		   trA.getOrigin().getZ(),
-		   trB.getOrigin().getX(),
-		   trB.getOrigin().getY(),
-		   trB.getOrigin().getZ());
-#endif  //DEBUG_PERSISTENCY
+			trA.getOrigin().getX(),
+			trA.getOrigin().getY(),
+			trA.getOrigin().getZ(),
+			trB.getOrigin().getX(),
+			trB.getOrigin().getY(),
+			trB.getOrigin().getZ());
+#endif // DEBUG_PERSISTENCY
 	/// first refresh worldspace positions and distance
-	for (i = getNumContacts() - 1; i >= 0; i--)
-	{
-		btManifoldPoint& manifoldPoint = m_pointCache[i];
+	for (i = getNumContacts() - 1; i >= 0; i--) {
+		btManifoldPoint &manifoldPoint = m_pointCache[i];
 		manifoldPoint.m_positionWorldOnA = trA(manifoldPoint.m_localPointA);
 		manifoldPoint.m_positionWorldOnB = trB(manifoldPoint.m_localPointB);
 		manifoldPoint.m_distance1 = (manifoldPoint.m_positionWorldOnA - manifoldPoint.m_positionWorldOnB).dot(manifoldPoint.m_normalWorldOnB);
@@ -269,50 +234,41 @@ void btPersistentManifold::refreshContactPoints(const btTransform& trA, const bt
 	/// then
 	btScalar distance2d;
 	btVector3 projectedDifference, projectedPoint;
-	for (i = getNumContacts() - 1; i >= 0; i--)
-	{
-		btManifoldPoint& manifoldPoint = m_pointCache[i];
-		//contact becomes invalid when signed distance exceeds margin (projected on contactnormal direction)
-		if (!validContactDistance(manifoldPoint))
-		{
+	for (i = getNumContacts() - 1; i >= 0; i--) {
+		btManifoldPoint &manifoldPoint = m_pointCache[i];
+		// contact becomes invalid when signed distance exceeds margin (projected on contactnormal direction)
+		if (!validContactDistance(manifoldPoint)) {
 			removeContactPoint(i);
-		}
-		else
-		{
-			//todo: friction anchor may require the contact to be around a bit longer
-			//contact also becomes invalid when relative movement orthogonal to normal exceeds margin
+		} else {
+			// todo: friction anchor may require the contact to be around a bit longer
+			// contact also becomes invalid when relative movement orthogonal to normal exceeds margin
 			projectedPoint = manifoldPoint.m_positionWorldOnA - manifoldPoint.m_normalWorldOnB * manifoldPoint.m_distance1;
 			projectedDifference = manifoldPoint.m_positionWorldOnB - projectedPoint;
 			distance2d = projectedDifference.dot(projectedDifference);
-			if (distance2d > getContactBreakingThreshold() * getContactBreakingThreshold())
-			{
+			if (distance2d > getContactBreakingThreshold() * getContactBreakingThreshold()) {
 				removeContactPoint(i);
-			}
-			else
-			{
-				//contact point processed callback
+			} else {
+				// contact point processed callback
 				if (gContactProcessedCallback)
-					(*gContactProcessedCallback)(manifoldPoint, (void*)m_body0, (void*)m_body1);
+					(*gContactProcessedCallback)(manifoldPoint, (void *)m_body0, (void *)m_body1);
 			}
 		}
 	}
 #ifdef DEBUG_PERSISTENCY
 	DebugPersistency();
-#endif  //
+#endif //
 }
 
-int btPersistentManifold::calculateSerializeBufferSize() const
-{
+int btPersistentManifold::calculateSerializeBufferSize() const {
 	return sizeof(btPersistentManifoldData);
 }
 
-const char* btPersistentManifold::serialize(const class btPersistentManifold* manifold, void* dataBuffer, class btSerializer* serializer) const
-{
-	btPersistentManifoldData* dataOut = (btPersistentManifoldData*)dataBuffer;
+const char *btPersistentManifold::serialize(const class btPersistentManifold *manifold, void *dataBuffer, class btSerializer *serializer) const {
+	btPersistentManifoldData *dataOut = (btPersistentManifoldData *)dataBuffer;
 	memset(dataOut, 0, sizeof(btPersistentManifoldData));
 
-	dataOut->m_body0 = (btCollisionObjectData*)serializer->getUniquePointer((void*)manifold->getBody0());
-	dataOut->m_body1 = (btCollisionObjectData*)serializer->getUniquePointer((void*)manifold->getBody1());
+	dataOut->m_body0 = (btCollisionObjectData *)serializer->getUniquePointer((void *)manifold->getBody0());
+	dataOut->m_body1 = (btCollisionObjectData *)serializer->getUniquePointer((void *)manifold->getBody1());
 	dataOut->m_contactBreakingThreshold = manifold->getContactBreakingThreshold();
 	dataOut->m_contactProcessingThreshold = manifold->getContactProcessingThreshold();
 	dataOut->m_numCachedPoints = manifold->getNumContacts();
@@ -321,9 +277,8 @@ const char* btPersistentManifold::serialize(const class btPersistentManifold* ma
 	dataOut->m_index1a = manifold->m_index1a;
 	dataOut->m_objectType = manifold->m_objectType;
 
-	for (int i = 0; i < this->getNumContacts(); i++)
-	{
-		const btManifoldPoint& pt = manifold->getContactPoint(i);
+	for (int i = 0; i < this->getNumContacts(); i++) {
+		const btManifoldPoint &pt = manifold->getContactPoint(i);
 		dataOut->m_pointCacheAppliedImpulse[i] = pt.m_appliedImpulse;
 		dataOut->m_pointCachePrevRHS[i] = pt.m_prevRHS;
 		dataOut->m_pointCacheAppliedImpulseLateral1[i] = pt.m_appliedImpulseLateral1;
@@ -357,19 +312,17 @@ const char* btPersistentManifold::serialize(const class btPersistentManifold* ma
 	return btPersistentManifoldDataName;
 }
 
-void btPersistentManifold::deSerialize(const struct btPersistentManifoldDoubleData* manifoldDataPtr)
-{
+void btPersistentManifold::deSerialize(const struct btPersistentManifoldDoubleData *manifoldDataPtr) {
 	m_contactBreakingThreshold = manifoldDataPtr->m_contactBreakingThreshold;
 	m_contactProcessingThreshold = manifoldDataPtr->m_contactProcessingThreshold;
 	m_cachedPoints = manifoldDataPtr->m_numCachedPoints;
 	m_companionIdA = manifoldDataPtr->m_companionIdA;
 	m_companionIdB = manifoldDataPtr->m_companionIdB;
-	//m_index1a = manifoldDataPtr->m_index1a;
+	// m_index1a = manifoldDataPtr->m_index1a;
 	m_objectType = manifoldDataPtr->m_objectType;
 
-	for (int i = 0; i < this->getNumContacts(); i++)
-	{
-		btManifoldPoint& pt = m_pointCache[i];
+	for (int i = 0; i < this->getNumContacts(); i++) {
+		btManifoldPoint &pt = m_pointCache[i];
 
 		pt.m_appliedImpulse = manifoldDataPtr->m_pointCacheAppliedImpulse[i];
 		pt.m_prevRHS = manifoldDataPtr->m_pointCachePrevRHS[i];
@@ -403,19 +356,17 @@ void btPersistentManifold::deSerialize(const struct btPersistentManifoldDoubleDa
 	}
 }
 
-void btPersistentManifold::deSerialize(const struct btPersistentManifoldFloatData* manifoldDataPtr)
-{
+void btPersistentManifold::deSerialize(const struct btPersistentManifoldFloatData *manifoldDataPtr) {
 	m_contactBreakingThreshold = manifoldDataPtr->m_contactBreakingThreshold;
 	m_contactProcessingThreshold = manifoldDataPtr->m_contactProcessingThreshold;
 	m_cachedPoints = manifoldDataPtr->m_numCachedPoints;
 	m_companionIdA = manifoldDataPtr->m_companionIdA;
 	m_companionIdB = manifoldDataPtr->m_companionIdB;
-	//m_index1a = manifoldDataPtr->m_index1a;
+	// m_index1a = manifoldDataPtr->m_index1a;
 	m_objectType = manifoldDataPtr->m_objectType;
 
-	for (int i = 0; i < this->getNumContacts(); i++)
-	{
-		btManifoldPoint& pt = m_pointCache[i];
+	for (int i = 0; i < this->getNumContacts(); i++) {
+		btManifoldPoint &pt = m_pointCache[i];
 
 		pt.m_appliedImpulse = manifoldDataPtr->m_pointCacheAppliedImpulse[i];
 		pt.m_prevRHS = manifoldDataPtr->m_pointCachePrevRHS[i];

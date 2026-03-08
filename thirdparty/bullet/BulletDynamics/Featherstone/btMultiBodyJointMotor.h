@@ -13,7 +13,7 @@ subject to the following restrictions:
 3. This notice may not be removed or altered from any source distribution.
 */
 
-///This file was written by Erwin Coumans
+/// This file was written by Erwin Coumans
 
 #ifndef BT_MULTIBODY_JOINT_MOTOR_H
 #define BT_MULTIBODY_JOINT_MOTOR_H
@@ -21,57 +21,50 @@ subject to the following restrictions:
 #include "btMultiBodyConstraint.h"
 struct btSolverInfo;
 
-class btMultiBodyJointMotor : public btMultiBodyConstraint
-{
+class btMultiBodyJointMotor : public btMultiBodyConstraint {
 protected:
 	btScalar m_desiredVelocity;
 	btScalar m_desiredPosition;
 	btScalar m_kd;
 	btScalar m_kp;
 	btScalar m_erp;
-	btScalar m_rhsClamp;  //maximum error
+	btScalar m_rhsClamp; // maximum error
 
 public:
-	btMultiBodyJointMotor(btMultiBody* body, int link, btScalar desiredVelocity, btScalar maxMotorImpulse);
-	btMultiBodyJointMotor(btMultiBody* body, int link, int linkDoF, btScalar desiredVelocity, btScalar maxMotorImpulse);
+	btMultiBodyJointMotor(btMultiBody *body, int link, btScalar desiredVelocity, btScalar maxMotorImpulse);
+	btMultiBodyJointMotor(btMultiBody *body, int link, int linkDoF, btScalar desiredVelocity, btScalar maxMotorImpulse);
 	virtual ~btMultiBodyJointMotor();
 	virtual void finalizeMultiDof();
 
 	virtual int getIslandIdA() const;
 	virtual int getIslandIdB() const;
 
-	virtual void createConstraintRows(btMultiBodyConstraintArray& constraintRows,
-									  btMultiBodyJacobianData& data,
-									  const btContactSolverInfo& infoGlobal);
+	virtual void createConstraintRows(btMultiBodyConstraintArray &constraintRows,
+			btMultiBodyJacobianData &data,
+			const btContactSolverInfo &infoGlobal);
 
-	virtual void setVelocityTarget(btScalar velTarget, btScalar kd = 1.f)
-	{
+	virtual void setVelocityTarget(btScalar velTarget, btScalar kd = 1.f) {
 		m_desiredVelocity = velTarget;
 		m_kd = kd;
 	}
 
-	virtual void setPositionTarget(btScalar posTarget, btScalar kp = 1.f)
-	{
+	virtual void setPositionTarget(btScalar posTarget, btScalar kp = 1.f) {
 		m_desiredPosition = posTarget;
 		m_kp = kp;
 	}
 
-	virtual void setErp(btScalar erp)
-	{
+	virtual void setErp(btScalar erp) {
 		m_erp = erp;
 	}
-	virtual btScalar getErp() const
-	{
+	virtual btScalar getErp() const {
 		return m_erp;
 	}
-	virtual void setRhsClamp(btScalar rhsClamp)
-	{
+	virtual void setRhsClamp(btScalar rhsClamp) {
 		m_rhsClamp = rhsClamp;
 	}
-	virtual void debugDraw(class btIDebugDraw* drawer)
-	{
-		//todo(erwincoumans)
+	virtual void debugDraw(class btIDebugDraw *drawer) {
+		// todo(erwincoumans)
 	}
 };
 
-#endif  //BT_MULTIBODY_JOINT_MOTOR_H
+#endif // BT_MULTIBODY_JOINT_MOTOR_H

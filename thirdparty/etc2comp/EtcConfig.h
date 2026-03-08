@@ -34,7 +34,6 @@
 #define ETC_UNIX (0)
 #endif
 
-
 // short names for common types
 #include <stdint.h>
 typedef int8_t i8;
@@ -47,14 +46,14 @@ typedef uint16_t u16;
 typedef uint32_t u32;
 typedef uint64_t u64;
 
-typedef float	f32;
-typedef double	f64;
+typedef float f32;
+typedef double f64;
 
 // Keep asserts enabled in release builds during development
 #undef NDEBUG
 
 // 0=disable. stb_image can be used if you need to compress
-//other image formats like jpg
+// other image formats like jpg
 #define USE_STB_IMAGE_LOAD 0
 
 #if ETC_WINDOWS
@@ -64,4 +63,3 @@ typedef double	f64;
 #endif
 
 #include <stdio.h>
-

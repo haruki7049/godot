@@ -18,23 +18,19 @@
 
 #include <math.h>
 
-namespace Etc
-{
+namespace Etc {
 
-	// ----------------------------------------------------------------------------------------------------
-	// return true if vertical line
-	bool Regression(float a_afX[], float a_afY[], unsigned int a_Points,
-					float *a_fSlope, float *a_fOffset);
+// ----------------------------------------------------------------------------------------------------
+// return true if vertical line
+bool Regression(float a_afX[], float a_afY[], unsigned int a_Points,
+		float *a_fSlope, float *a_fOffset);
 
-	inline float ConvertMSEToPSNR(float a_fMSE)
-	{
-		if (a_fMSE == 0.0f)
-		{
-			return INFINITY;
-		}
-
-		return 10.0f * log10f(1.0f / a_fMSE);
+inline float ConvertMSEToPSNR(float a_fMSE) {
+	if (a_fMSE == 0.0f) {
+		return INFINITY;
 	}
 
-
+	return 10.0f * log10f(1.0f / a_fMSE);
 }
+
+} // namespace Etc

@@ -11,10 +11,9 @@
 #ifndef VP8_COMMON_QUANT_COMMON_H_
 #define VP8_COMMON_QUANT_COMMON_H_
 
-
-#include "string.h"
 #include "blockd.h"
 #include "onyxc_int.h"
+#include "string.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -28,7 +27,7 @@ extern int vp8_dc_uv_quant(int QIndex, int Delta);
 extern int vp8_ac_uv_quant(int QIndex, int Delta);
 
 #ifdef __cplusplus
-}  // extern "C"
+} // extern "C"
 #endif
 
-#endif  // VP8_COMMON_QUANT_COMMON_H_
+#endif // VP8_COMMON_QUANT_COMMON_H_

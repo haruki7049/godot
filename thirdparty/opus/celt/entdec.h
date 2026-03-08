@@ -26,14 +26,14 @@
 */
 
 #if !defined(_entdec_H)
-# define _entdec_H (1)
-# include <limits.h>
-# include "entcode.h"
+#define _entdec_H (1)
+#include "entcode.h"
+#include <limits.h>
 
 /*Initializes the decoder.
   _buf: The input buffer to use.
   Return: 0 on success, or a negative value on error.*/
-void ec_dec_init(ec_dec *_this,unsigned char *_buf,opus_uint32 _storage);
+void ec_dec_init(ec_dec *_this, unsigned char *_buf, opus_uint32 _storage);
 
 /*Calculates the cumulative frequency for the next symbol.
   This can then be fed into the probability model to determine what that
@@ -42,59 +42,59 @@ void ec_dec_init(ec_dec *_this,unsigned char *_buf,opus_uint32 _storage);
   This function cannot be called more than once without a corresponding call to
    ec_dec_update(), or decoding will not proceed correctly.
   _ft: The total frequency of the symbols in the alphabet the next symbol was
-        encoded with.
+		encoded with.
   Return: A cumulative frequency representing the encoded symbol.
-          If the cumulative frequency of all the symbols before the one that
-           was encoded was fl, and the cumulative frequency of all the symbols
-           up to and including the one encoded is fh, then the returned value
-           will fall in the range [fl,fh).*/
-unsigned ec_decode(ec_dec *_this,unsigned _ft);
+		  If the cumulative frequency of all the symbols before the one that
+		   was encoded was fl, and the cumulative frequency of all the symbols
+		   up to and including the one encoded is fh, then the returned value
+		   will fall in the range [fl,fh).*/
+unsigned ec_decode(ec_dec *_this, unsigned _ft);
 
 /*Equivalent to ec_decode() with _ft==1<<_bits.*/
-unsigned ec_decode_bin(ec_dec *_this,unsigned _bits);
+unsigned ec_decode_bin(ec_dec *_this, unsigned _bits);
 
 /*Advance the decoder past the next symbol using the frequency information the
    symbol was encoded with.
   Exactly one call to ec_decode() must have been made so that all necessary
    intermediate calculations are performed.
   _fl:  The cumulative frequency of all symbols that come before the symbol
-         decoded.
+		 decoded.
   _fh:  The cumulative frequency of all symbols up to and including the symbol
-         decoded.
-        Together with _fl, this defines the range [_fl,_fh) in which the value
-         returned above must fall.
+		 decoded.
+		Together with _fl, this defines the range [_fl,_fh) in which the value
+		 returned above must fall.
   _ft:  The total frequency of the symbols in the alphabet the symbol decoded
-         was encoded in.
-        This must be the same as passed to the preceding call to ec_decode().*/
-void ec_dec_update(ec_dec *_this,unsigned _fl,unsigned _fh,unsigned _ft);
+		 was encoded in.
+		This must be the same as passed to the preceding call to ec_decode().*/
+void ec_dec_update(ec_dec *_this, unsigned _fl, unsigned _fh, unsigned _ft);
 
 /* Decode a bit that has a 1/(1<<_logp) probability of being a one */
-int ec_dec_bit_logp(ec_dec *_this,unsigned _logp);
+int ec_dec_bit_logp(ec_dec *_this, unsigned _logp);
 
 /*Decodes a symbol given an "inverse" CDF table.
   No call to ec_dec_update() is necessary after this call.
   _icdf: The "inverse" CDF, such that symbol s falls in the range
-          [s>0?ft-_icdf[s-1]:0,ft-_icdf[s]), where ft=1<<_ftb.
-         The values must be monotonically non-increasing, and the last value
-          must be 0.
+		  [s>0?ft-_icdf[s-1]:0,ft-_icdf[s]), where ft=1<<_ftb.
+		 The values must be monotonically non-increasing, and the last value
+		  must be 0.
   _ftb: The number of bits of precision in the cumulative distribution.
   Return: The decoded symbol s.*/
-int ec_dec_icdf(ec_dec *_this,const unsigned char *_icdf,unsigned _ftb);
+int ec_dec_icdf(ec_dec *_this, const unsigned char *_icdf, unsigned _ftb);
 
 /*Extracts a raw unsigned integer with a non-power-of-2 range from the stream.
   The bits must have been encoded with ec_enc_uint().
   No call to ec_dec_update() is necessary after this call.
   _ft: The number of integers that can be decoded (one more than the max).
-       This must be at least one, and no more than 2**32-1.
+	   This must be at least one, and no more than 2**32-1.
   Return: The decoded bits.*/
-opus_uint32 ec_dec_uint(ec_dec *_this,opus_uint32 _ft);
+opus_uint32 ec_dec_uint(ec_dec *_this, opus_uint32 _ft);
 
 /*Extracts a sequence of raw bits from the stream.
   The bits must have been encoded with ec_enc_bits().
   No call to ec_dec_update() is necessary after this call.
   _ftb: The number of bits to extract.
-        This must be between 0 and 25, inclusive.
+		This must be between 0 and 25, inclusive.
   Return: The decoded bits.*/
-opus_uint32 ec_dec_bits(ec_dec *_this,unsigned _ftb);
+opus_uint32 ec_dec_bits(ec_dec *_this, unsigned _ftb);
 
 #endif

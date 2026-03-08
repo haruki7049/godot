@@ -16,16 +16,15 @@
 #include "vpx_dsp/vpx_filter.h"
 #include "vpx_ports/mem.h"
 
-
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#define EIGHTTAP            0
-#define EIGHTTAP_SMOOTH     1
-#define EIGHTTAP_SHARP      2
-#define SWITCHABLE_FILTERS  3 /* Number of switchable filters */
-#define BILINEAR            3
+#define EIGHTTAP 0
+#define EIGHTTAP_SMOOTH 1
+#define EIGHTTAP_SHARP 2
+#define SWITCHABLE_FILTERS 3 /* Number of switchable filters */
+#define BILINEAR 3
 // The codec can operate in four possible inter prediction filter mode:
 // 8-tap, 8-tap-smooth, 8-tap-sharp, and switching between the three.
 #define SWITCHABLE_FILTER_CONTEXTS (SWITCHABLE_FILTERS + 1)
@@ -36,7 +35,7 @@ typedef uint8_t INTERP_FILTER;
 extern const InterpKernel *vp9_filter_kernels[4];
 
 #ifdef __cplusplus
-}  // extern "C"
+} // extern "C"
 #endif
 
-#endif  // VP9_COMMON_VP9_FILTER_H_
+#endif // VP9_COMMON_VP9_FILTER_H_

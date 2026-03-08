@@ -8,7 +8,6 @@
  *  be found in the AUTHORS file in the root of the source tree.
  */
 
-
 #ifndef VP8_COMMON_ALLOCCOMMON_H_
 #define VP8_COMMON_ALLOCCOMMON_H_
 
@@ -25,7 +24,7 @@ int vp8_alloc_frame_buffers(VP8_COMMON *oci, int width, int height);
 void vp8_setup_version(VP8_COMMON *oci);
 
 #ifdef __cplusplus
-}  // extern "C"
+} // extern "C"
 #endif
 
-#endif  // VP8_COMMON_ALLOCCOMMON_H_
+#endif // VP8_COMMON_ALLOCCOMMON_H_

@@ -722,3229 +722,3229 @@
 #undef pa_rtclock_now
 #include <dlfcn.h>
 #include <stdio.h>
-const char* (*pa_get_library_version_dylibloader_wrapper_pulse)( void);
-size_t (*pa_bytes_per_second_dylibloader_wrapper_pulse)(const pa_sample_spec*);
-size_t (*pa_frame_size_dylibloader_wrapper_pulse)(const pa_sample_spec*);
-size_t (*pa_sample_size_dylibloader_wrapper_pulse)(const pa_sample_spec*);
-size_t (*pa_sample_size_of_format_dylibloader_wrapper_pulse)( pa_sample_format_t);
-pa_usec_t (*pa_bytes_to_usec_dylibloader_wrapper_pulse)( uint64_t,const pa_sample_spec*);
-size_t (*pa_usec_to_bytes_dylibloader_wrapper_pulse)( pa_usec_t,const pa_sample_spec*);
-pa_sample_spec* (*pa_sample_spec_init_dylibloader_wrapper_pulse)( pa_sample_spec*);
-int (*pa_sample_format_valid_dylibloader_wrapper_pulse)( unsigned);
-int (*pa_sample_rate_valid_dylibloader_wrapper_pulse)( uint32_t);
-int (*pa_channels_valid_dylibloader_wrapper_pulse)( uint8_t);
-int (*pa_sample_spec_valid_dylibloader_wrapper_pulse)(const pa_sample_spec*);
-int (*pa_sample_spec_equal_dylibloader_wrapper_pulse)(const pa_sample_spec*,const pa_sample_spec*);
-const char* (*pa_sample_format_to_string_dylibloader_wrapper_pulse)( pa_sample_format_t);
-pa_sample_format_t (*pa_parse_sample_format_dylibloader_wrapper_pulse)(const char*);
-char* (*pa_sample_spec_snprint_dylibloader_wrapper_pulse)( char*, size_t,const pa_sample_spec*);
-char* (*pa_bytes_snprint_dylibloader_wrapper_pulse)( char*, size_t, unsigned);
-int (*pa_sample_format_is_le_dylibloader_wrapper_pulse)( pa_sample_format_t);
-int (*pa_sample_format_is_be_dylibloader_wrapper_pulse)( pa_sample_format_t);
-int (*pa_direction_valid_dylibloader_wrapper_pulse)( pa_direction_t);
-const char* (*pa_direction_to_string_dylibloader_wrapper_pulse)( pa_direction_t);
-void (*pa_mainloop_api_once_dylibloader_wrapper_pulse)( pa_mainloop_api*, void*, void*);
-pa_proplist* (*pa_proplist_new_dylibloader_wrapper_pulse)( void);
-void (*pa_proplist_free_dylibloader_wrapper_pulse)( pa_proplist*);
-int (*pa_proplist_key_valid_dylibloader_wrapper_pulse)(const char*);
-int (*pa_proplist_sets_dylibloader_wrapper_pulse)( pa_proplist*,const char*,const char*);
-int (*pa_proplist_setp_dylibloader_wrapper_pulse)( pa_proplist*,const char*);
-int (*pa_proplist_setf_dylibloader_wrapper_pulse)( pa_proplist*,const char*,const char*,...);
-int (*pa_proplist_set_dylibloader_wrapper_pulse)( pa_proplist*,const char*,const void*, size_t);
-const char* (*pa_proplist_gets_dylibloader_wrapper_pulse)(const pa_proplist*,const char*);
-int (*pa_proplist_get_dylibloader_wrapper_pulse)(const pa_proplist*,const char*,const void**, size_t*);
-void (*pa_proplist_update_dylibloader_wrapper_pulse)( pa_proplist*, pa_update_mode_t,const pa_proplist*);
-int (*pa_proplist_unset_dylibloader_wrapper_pulse)( pa_proplist*,const char*);
-int (*pa_proplist_unset_many_dylibloader_wrapper_pulse)( pa_proplist*,const char* []);
-const char* (*pa_proplist_iterate_dylibloader_wrapper_pulse)(const pa_proplist*, void**);
-char* (*pa_proplist_to_string_dylibloader_wrapper_pulse)(const pa_proplist*);
-char* (*pa_proplist_to_string_sep_dylibloader_wrapper_pulse)(const pa_proplist*,const char*);
-pa_proplist* (*pa_proplist_from_string_dylibloader_wrapper_pulse)(const char*);
-int (*pa_proplist_contains_dylibloader_wrapper_pulse)(const pa_proplist*,const char*);
-void (*pa_proplist_clear_dylibloader_wrapper_pulse)( pa_proplist*);
-pa_proplist* (*pa_proplist_copy_dylibloader_wrapper_pulse)(const pa_proplist*);
-unsigned (*pa_proplist_size_dylibloader_wrapper_pulse)(const pa_proplist*);
-int (*pa_proplist_isempty_dylibloader_wrapper_pulse)(const pa_proplist*);
-int (*pa_proplist_equal_dylibloader_wrapper_pulse)(const pa_proplist*,const pa_proplist*);
-pa_channel_map* (*pa_channel_map_init_dylibloader_wrapper_pulse)( pa_channel_map*);
-pa_channel_map* (*pa_channel_map_init_mono_dylibloader_wrapper_pulse)( pa_channel_map*);
-pa_channel_map* (*pa_channel_map_init_stereo_dylibloader_wrapper_pulse)( pa_channel_map*);
-pa_channel_map* (*pa_channel_map_init_auto_dylibloader_wrapper_pulse)( pa_channel_map*, unsigned, pa_channel_map_def_t);
-pa_channel_map* (*pa_channel_map_init_extend_dylibloader_wrapper_pulse)( pa_channel_map*, unsigned, pa_channel_map_def_t);
-const char* (*pa_channel_position_to_string_dylibloader_wrapper_pulse)( pa_channel_position_t);
-pa_channel_position_t (*pa_channel_position_from_string_dylibloader_wrapper_pulse)(const char*);
-const char* (*pa_channel_position_to_pretty_string_dylibloader_wrapper_pulse)( pa_channel_position_t);
-char* (*pa_channel_map_snprint_dylibloader_wrapper_pulse)( char*, size_t,const pa_channel_map*);
-pa_channel_map* (*pa_channel_map_parse_dylibloader_wrapper_pulse)( pa_channel_map*,const char*);
-int (*pa_channel_map_equal_dylibloader_wrapper_pulse)(const pa_channel_map*,const pa_channel_map*);
-int (*pa_channel_map_valid_dylibloader_wrapper_pulse)(const pa_channel_map*);
-int (*pa_channel_map_compatible_dylibloader_wrapper_pulse)(const pa_channel_map*,const pa_sample_spec*);
-int (*pa_channel_map_superset_dylibloader_wrapper_pulse)(const pa_channel_map*,const pa_channel_map*);
-int (*pa_channel_map_can_balance_dylibloader_wrapper_pulse)(const pa_channel_map*);
-int (*pa_channel_map_can_fade_dylibloader_wrapper_pulse)(const pa_channel_map*);
-int (*pa_channel_map_can_lfe_balance_dylibloader_wrapper_pulse)(const pa_channel_map*);
-const char* (*pa_channel_map_to_name_dylibloader_wrapper_pulse)(const pa_channel_map*);
-const char* (*pa_channel_map_to_pretty_name_dylibloader_wrapper_pulse)(const pa_channel_map*);
-int (*pa_channel_map_has_position_dylibloader_wrapper_pulse)(const pa_channel_map*, pa_channel_position_t);
-pa_channel_position_mask_t (*pa_channel_map_mask_dylibloader_wrapper_pulse)(const pa_channel_map*);
-const char* (*pa_encoding_to_string_dylibloader_wrapper_pulse)( pa_encoding_t);
-pa_encoding_t (*pa_encoding_from_string_dylibloader_wrapper_pulse)(const char*);
-pa_format_info* (*pa_format_info_new_dylibloader_wrapper_pulse)( void);
-pa_format_info* (*pa_format_info_copy_dylibloader_wrapper_pulse)(const pa_format_info*);
-void (*pa_format_info_free_dylibloader_wrapper_pulse)( pa_format_info*);
-int (*pa_format_info_valid_dylibloader_wrapper_pulse)(const pa_format_info*);
-int (*pa_format_info_is_pcm_dylibloader_wrapper_pulse)(const pa_format_info*);
-int (*pa_format_info_is_compatible_dylibloader_wrapper_pulse)(const pa_format_info*,const pa_format_info*);
-char* (*pa_format_info_snprint_dylibloader_wrapper_pulse)( char*, size_t,const pa_format_info*);
-pa_format_info* (*pa_format_info_from_string_dylibloader_wrapper_pulse)(const char*);
-pa_format_info* (*pa_format_info_from_sample_spec_dylibloader_wrapper_pulse)(const pa_sample_spec*,const pa_channel_map*);
-int (*pa_format_info_to_sample_spec_dylibloader_wrapper_pulse)(const pa_format_info*, pa_sample_spec*, pa_channel_map*);
-pa_prop_type_t (*pa_format_info_get_prop_type_dylibloader_wrapper_pulse)(const pa_format_info*,const char*);
-int (*pa_format_info_get_prop_int_dylibloader_wrapper_pulse)(const pa_format_info*,const char*, int*);
-int (*pa_format_info_get_prop_int_range_dylibloader_wrapper_pulse)(const pa_format_info*,const char*, int*, int*);
-int (*pa_format_info_get_prop_int_array_dylibloader_wrapper_pulse)(const pa_format_info*,const char*, int**, int*);
-int (*pa_format_info_get_prop_string_dylibloader_wrapper_pulse)(const pa_format_info*,const char*, char**);
-int (*pa_format_info_get_prop_string_array_dylibloader_wrapper_pulse)(const pa_format_info*,const char*, char***, int*);
-void (*pa_format_info_free_string_array_dylibloader_wrapper_pulse)( char**, int);
-int (*pa_format_info_get_sample_format_dylibloader_wrapper_pulse)(const pa_format_info*, pa_sample_format_t*);
-int (*pa_format_info_get_rate_dylibloader_wrapper_pulse)(const pa_format_info*, uint32_t*);
-int (*pa_format_info_get_channels_dylibloader_wrapper_pulse)(const pa_format_info*, uint8_t*);
-int (*pa_format_info_get_channel_map_dylibloader_wrapper_pulse)(const pa_format_info*, pa_channel_map*);
-void (*pa_format_info_set_prop_int_dylibloader_wrapper_pulse)( pa_format_info*,const char*, int);
-void (*pa_format_info_set_prop_int_array_dylibloader_wrapper_pulse)( pa_format_info*,const char*,const int*, int);
-void (*pa_format_info_set_prop_int_range_dylibloader_wrapper_pulse)( pa_format_info*,const char*, int, int);
-void (*pa_format_info_set_prop_string_dylibloader_wrapper_pulse)( pa_format_info*,const char*,const char*);
-void (*pa_format_info_set_prop_string_array_dylibloader_wrapper_pulse)( pa_format_info*,const char*,const char**, int);
-void (*pa_format_info_set_sample_format_dylibloader_wrapper_pulse)( pa_format_info*, pa_sample_format_t);
-void (*pa_format_info_set_rate_dylibloader_wrapper_pulse)( pa_format_info*, int);
-void (*pa_format_info_set_channels_dylibloader_wrapper_pulse)( pa_format_info*, int);
-void (*pa_format_info_set_channel_map_dylibloader_wrapper_pulse)( pa_format_info*,const pa_channel_map*);
-pa_operation* (*pa_operation_ref_dylibloader_wrapper_pulse)( pa_operation*);
-void (*pa_operation_unref_dylibloader_wrapper_pulse)( pa_operation*);
-void (*pa_operation_cancel_dylibloader_wrapper_pulse)( pa_operation*);
-pa_operation_state_t (*pa_operation_get_state_dylibloader_wrapper_pulse)(const pa_operation*);
-void (*pa_operation_set_state_callback_dylibloader_wrapper_pulse)( pa_operation*, pa_operation_notify_cb_t, void*);
-pa_context* (*pa_context_new_dylibloader_wrapper_pulse)( pa_mainloop_api*,const char*);
-pa_context* (*pa_context_new_with_proplist_dylibloader_wrapper_pulse)( pa_mainloop_api*,const char*,const pa_proplist*);
-void (*pa_context_unref_dylibloader_wrapper_pulse)( pa_context*);
-pa_context* (*pa_context_ref_dylibloader_wrapper_pulse)( pa_context*);
-void (*pa_context_set_state_callback_dylibloader_wrapper_pulse)( pa_context*, pa_context_notify_cb_t, void*);
-void (*pa_context_set_event_callback_dylibloader_wrapper_pulse)( pa_context*, pa_context_event_cb_t, void*);
-int (*pa_context_errno_dylibloader_wrapper_pulse)(const pa_context*);
-int (*pa_context_is_pending_dylibloader_wrapper_pulse)(const pa_context*);
-pa_context_state_t (*pa_context_get_state_dylibloader_wrapper_pulse)(const pa_context*);
-int (*pa_context_connect_dylibloader_wrapper_pulse)( pa_context*,const char*, pa_context_flags_t,const pa_spawn_api*);
-void (*pa_context_disconnect_dylibloader_wrapper_pulse)( pa_context*);
-pa_operation* (*pa_context_drain_dylibloader_wrapper_pulse)( pa_context*, pa_context_notify_cb_t, void*);
-pa_operation* (*pa_context_exit_daemon_dylibloader_wrapper_pulse)( pa_context*, pa_context_success_cb_t, void*);
-pa_operation* (*pa_context_set_default_sink_dylibloader_wrapper_pulse)( pa_context*,const char*, pa_context_success_cb_t, void*);
-pa_operation* (*pa_context_set_default_source_dylibloader_wrapper_pulse)( pa_context*,const char*, pa_context_success_cb_t, void*);
-int (*pa_context_is_local_dylibloader_wrapper_pulse)(const pa_context*);
-pa_operation* (*pa_context_set_name_dylibloader_wrapper_pulse)( pa_context*,const char*, pa_context_success_cb_t, void*);
-const char* (*pa_context_get_server_dylibloader_wrapper_pulse)(const pa_context*);
-uint32_t (*pa_context_get_protocol_version_dylibloader_wrapper_pulse)(const pa_context*);
-uint32_t (*pa_context_get_server_protocol_version_dylibloader_wrapper_pulse)(const pa_context*);
-pa_operation* (*pa_context_proplist_update_dylibloader_wrapper_pulse)( pa_context*, pa_update_mode_t,const pa_proplist*, pa_context_success_cb_t, void*);
-pa_operation* (*pa_context_proplist_remove_dylibloader_wrapper_pulse)( pa_context*,const char* [], pa_context_success_cb_t, void*);
-uint32_t (*pa_context_get_index_dylibloader_wrapper_pulse)(const pa_context*);
-pa_time_event* (*pa_context_rttime_new_dylibloader_wrapper_pulse)(const pa_context*, pa_usec_t, pa_time_event_cb_t, void*);
-void (*pa_context_rttime_restart_dylibloader_wrapper_pulse)(const pa_context*, pa_time_event*, pa_usec_t);
-size_t (*pa_context_get_tile_size_dylibloader_wrapper_pulse)(const pa_context*,const pa_sample_spec*);
-int (*pa_context_load_cookie_from_file_dylibloader_wrapper_pulse)( pa_context*,const char*);
-int (*pa_cvolume_equal_dylibloader_wrapper_pulse)(const pa_cvolume*,const pa_cvolume*);
-pa_cvolume* (*pa_cvolume_init_dylibloader_wrapper_pulse)( pa_cvolume*);
-pa_cvolume* (*pa_cvolume_set_dylibloader_wrapper_pulse)( pa_cvolume*, unsigned, pa_volume_t);
-char* (*pa_cvolume_snprint_dylibloader_wrapper_pulse)( char*, size_t,const pa_cvolume*);
-char* (*pa_sw_cvolume_snprint_dB_dylibloader_wrapper_pulse)( char*, size_t,const pa_cvolume*);
-char* (*pa_cvolume_snprint_verbose_dylibloader_wrapper_pulse)( char*, size_t,const pa_cvolume*,const pa_channel_map*, int);
-char* (*pa_volume_snprint_dylibloader_wrapper_pulse)( char*, size_t, pa_volume_t);
-char* (*pa_sw_volume_snprint_dB_dylibloader_wrapper_pulse)( char*, size_t, pa_volume_t);
-char* (*pa_volume_snprint_verbose_dylibloader_wrapper_pulse)( char*, size_t, pa_volume_t, int);
-pa_volume_t (*pa_cvolume_avg_dylibloader_wrapper_pulse)(const pa_cvolume*);
-pa_volume_t (*pa_cvolume_avg_mask_dylibloader_wrapper_pulse)(const pa_cvolume*,const pa_channel_map*, pa_channel_position_mask_t);
-pa_volume_t (*pa_cvolume_max_dylibloader_wrapper_pulse)(const pa_cvolume*);
-pa_volume_t (*pa_cvolume_max_mask_dylibloader_wrapper_pulse)(const pa_cvolume*,const pa_channel_map*, pa_channel_position_mask_t);
-pa_volume_t (*pa_cvolume_min_dylibloader_wrapper_pulse)(const pa_cvolume*);
-pa_volume_t (*pa_cvolume_min_mask_dylibloader_wrapper_pulse)(const pa_cvolume*,const pa_channel_map*, pa_channel_position_mask_t);
-int (*pa_cvolume_valid_dylibloader_wrapper_pulse)(const pa_cvolume*);
-int (*pa_cvolume_channels_equal_to_dylibloader_wrapper_pulse)(const pa_cvolume*, pa_volume_t);
-pa_volume_t (*pa_sw_volume_multiply_dylibloader_wrapper_pulse)( pa_volume_t, pa_volume_t);
-pa_cvolume* (*pa_sw_cvolume_multiply_dylibloader_wrapper_pulse)( pa_cvolume*,const pa_cvolume*,const pa_cvolume*);
-pa_cvolume* (*pa_sw_cvolume_multiply_scalar_dylibloader_wrapper_pulse)( pa_cvolume*,const pa_cvolume*, pa_volume_t);
-pa_volume_t (*pa_sw_volume_divide_dylibloader_wrapper_pulse)( pa_volume_t, pa_volume_t);
-pa_cvolume* (*pa_sw_cvolume_divide_dylibloader_wrapper_pulse)( pa_cvolume*,const pa_cvolume*,const pa_cvolume*);
-pa_cvolume* (*pa_sw_cvolume_divide_scalar_dylibloader_wrapper_pulse)( pa_cvolume*,const pa_cvolume*, pa_volume_t);
-pa_volume_t (*pa_sw_volume_from_dB_dylibloader_wrapper_pulse)( double);
-double (*pa_sw_volume_to_dB_dylibloader_wrapper_pulse)( pa_volume_t);
-pa_volume_t (*pa_sw_volume_from_linear_dylibloader_wrapper_pulse)( double);
-double (*pa_sw_volume_to_linear_dylibloader_wrapper_pulse)( pa_volume_t);
-pa_cvolume* (*pa_cvolume_remap_dylibloader_wrapper_pulse)( pa_cvolume*,const pa_channel_map*,const pa_channel_map*);
-int (*pa_cvolume_compatible_dylibloader_wrapper_pulse)(const pa_cvolume*,const pa_sample_spec*);
-int (*pa_cvolume_compatible_with_channel_map_dylibloader_wrapper_pulse)(const pa_cvolume*,const pa_channel_map*);
-float (*pa_cvolume_get_balance_dylibloader_wrapper_pulse)(const pa_cvolume*,const pa_channel_map*);
-pa_cvolume* (*pa_cvolume_set_balance_dylibloader_wrapper_pulse)( pa_cvolume*,const pa_channel_map*, float);
-float (*pa_cvolume_get_fade_dylibloader_wrapper_pulse)(const pa_cvolume*,const pa_channel_map*);
-pa_cvolume* (*pa_cvolume_set_fade_dylibloader_wrapper_pulse)( pa_cvolume*,const pa_channel_map*, float);
-float (*pa_cvolume_get_lfe_balance_dylibloader_wrapper_pulse)(const pa_cvolume*,const pa_channel_map*);
-pa_cvolume* (*pa_cvolume_set_lfe_balance_dylibloader_wrapper_pulse)( pa_cvolume*,const pa_channel_map*, float);
-pa_cvolume* (*pa_cvolume_scale_dylibloader_wrapper_pulse)( pa_cvolume*, pa_volume_t);
-pa_cvolume* (*pa_cvolume_scale_mask_dylibloader_wrapper_pulse)( pa_cvolume*, pa_volume_t,const pa_channel_map*, pa_channel_position_mask_t);
-pa_cvolume* (*pa_cvolume_set_position_dylibloader_wrapper_pulse)( pa_cvolume*,const pa_channel_map*, pa_channel_position_t, pa_volume_t);
-pa_volume_t (*pa_cvolume_get_position_dylibloader_wrapper_pulse)(const pa_cvolume*,const pa_channel_map*, pa_channel_position_t);
-pa_cvolume* (*pa_cvolume_merge_dylibloader_wrapper_pulse)( pa_cvolume*,const pa_cvolume*,const pa_cvolume*);
-pa_cvolume* (*pa_cvolume_inc_clamp_dylibloader_wrapper_pulse)( pa_cvolume*, pa_volume_t, pa_volume_t);
-pa_cvolume* (*pa_cvolume_inc_dylibloader_wrapper_pulse)( pa_cvolume*, pa_volume_t);
-pa_cvolume* (*pa_cvolume_dec_dylibloader_wrapper_pulse)( pa_cvolume*, pa_volume_t);
-pa_stream* (*pa_stream_new_dylibloader_wrapper_pulse)( pa_context*,const char*,const pa_sample_spec*,const pa_channel_map*);
-pa_stream* (*pa_stream_new_with_proplist_dylibloader_wrapper_pulse)( pa_context*,const char*,const pa_sample_spec*,const pa_channel_map*, pa_proplist*);
-pa_stream* (*pa_stream_new_extended_dylibloader_wrapper_pulse)( pa_context*,const char*, pa_format_info**, unsigned int, pa_proplist*);
-void (*pa_stream_unref_dylibloader_wrapper_pulse)( pa_stream*);
-pa_stream* (*pa_stream_ref_dylibloader_wrapper_pulse)( pa_stream*);
-pa_stream_state_t (*pa_stream_get_state_dylibloader_wrapper_pulse)(const pa_stream*);
-pa_context* (*pa_stream_get_context_dylibloader_wrapper_pulse)(const pa_stream*);
-uint32_t (*pa_stream_get_index_dylibloader_wrapper_pulse)(const pa_stream*);
-uint32_t (*pa_stream_get_device_index_dylibloader_wrapper_pulse)(const pa_stream*);
-const char* (*pa_stream_get_device_name_dylibloader_wrapper_pulse)(const pa_stream*);
-int (*pa_stream_is_suspended_dylibloader_wrapper_pulse)(const pa_stream*);
-int (*pa_stream_is_corked_dylibloader_wrapper_pulse)(const pa_stream*);
-int (*pa_stream_connect_playback_dylibloader_wrapper_pulse)( pa_stream*,const char*,const pa_buffer_attr*, pa_stream_flags_t,const pa_cvolume*, pa_stream*);
-int (*pa_stream_connect_record_dylibloader_wrapper_pulse)( pa_stream*,const char*,const pa_buffer_attr*, pa_stream_flags_t);
-int (*pa_stream_disconnect_dylibloader_wrapper_pulse)( pa_stream*);
-int (*pa_stream_begin_write_dylibloader_wrapper_pulse)( pa_stream*, void**, size_t*);
-int (*pa_stream_cancel_write_dylibloader_wrapper_pulse)( pa_stream*);
-int (*pa_stream_write_dylibloader_wrapper_pulse)( pa_stream*,const void*, size_t, pa_free_cb_t, int64_t, pa_seek_mode_t);
-int (*pa_stream_write_ext_free_dylibloader_wrapper_pulse)( pa_stream*,const void*, size_t, pa_free_cb_t, void*, int64_t, pa_seek_mode_t);
-int (*pa_stream_peek_dylibloader_wrapper_pulse)( pa_stream*,const void**, size_t*);
-int (*pa_stream_drop_dylibloader_wrapper_pulse)( pa_stream*);
-size_t (*pa_stream_writable_size_dylibloader_wrapper_pulse)(const pa_stream*);
-size_t (*pa_stream_readable_size_dylibloader_wrapper_pulse)(const pa_stream*);
-pa_operation* (*pa_stream_drain_dylibloader_wrapper_pulse)( pa_stream*, pa_stream_success_cb_t, void*);
-pa_operation* (*pa_stream_update_timing_info_dylibloader_wrapper_pulse)( pa_stream*, pa_stream_success_cb_t, void*);
-void (*pa_stream_set_state_callback_dylibloader_wrapper_pulse)( pa_stream*, pa_stream_notify_cb_t, void*);
-void (*pa_stream_set_write_callback_dylibloader_wrapper_pulse)( pa_stream*, pa_stream_request_cb_t, void*);
-void (*pa_stream_set_read_callback_dylibloader_wrapper_pulse)( pa_stream*, pa_stream_request_cb_t, void*);
-void (*pa_stream_set_overflow_callback_dylibloader_wrapper_pulse)( pa_stream*, pa_stream_notify_cb_t, void*);
-int64_t (*pa_stream_get_underflow_index_dylibloader_wrapper_pulse)(const pa_stream*);
-void (*pa_stream_set_underflow_callback_dylibloader_wrapper_pulse)( pa_stream*, pa_stream_notify_cb_t, void*);
-void (*pa_stream_set_started_callback_dylibloader_wrapper_pulse)( pa_stream*, pa_stream_notify_cb_t, void*);
-void (*pa_stream_set_latency_update_callback_dylibloader_wrapper_pulse)( pa_stream*, pa_stream_notify_cb_t, void*);
-void (*pa_stream_set_moved_callback_dylibloader_wrapper_pulse)( pa_stream*, pa_stream_notify_cb_t, void*);
-void (*pa_stream_set_suspended_callback_dylibloader_wrapper_pulse)( pa_stream*, pa_stream_notify_cb_t, void*);
-void (*pa_stream_set_event_callback_dylibloader_wrapper_pulse)( pa_stream*, pa_stream_event_cb_t, void*);
-void (*pa_stream_set_buffer_attr_callback_dylibloader_wrapper_pulse)( pa_stream*, pa_stream_notify_cb_t, void*);
-pa_operation* (*pa_stream_cork_dylibloader_wrapper_pulse)( pa_stream*, int, pa_stream_success_cb_t, void*);
-pa_operation* (*pa_stream_flush_dylibloader_wrapper_pulse)( pa_stream*, pa_stream_success_cb_t, void*);
-pa_operation* (*pa_stream_prebuf_dylibloader_wrapper_pulse)( pa_stream*, pa_stream_success_cb_t, void*);
-pa_operation* (*pa_stream_trigger_dylibloader_wrapper_pulse)( pa_stream*, pa_stream_success_cb_t, void*);
-pa_operation* (*pa_stream_set_name_dylibloader_wrapper_pulse)( pa_stream*,const char*, pa_stream_success_cb_t, void*);
-int (*pa_stream_get_time_dylibloader_wrapper_pulse)( pa_stream*, pa_usec_t*);
-int (*pa_stream_get_latency_dylibloader_wrapper_pulse)( pa_stream*, pa_usec_t*, int*);
-const pa_timing_info* (*pa_stream_get_timing_info_dylibloader_wrapper_pulse)( pa_stream*);
-const pa_sample_spec* (*pa_stream_get_sample_spec_dylibloader_wrapper_pulse)( pa_stream*);
-const pa_channel_map* (*pa_stream_get_channel_map_dylibloader_wrapper_pulse)( pa_stream*);
-const pa_format_info* (*pa_stream_get_format_info_dylibloader_wrapper_pulse)(const pa_stream*);
-const pa_buffer_attr* (*pa_stream_get_buffer_attr_dylibloader_wrapper_pulse)( pa_stream*);
-pa_operation* (*pa_stream_set_buffer_attr_dylibloader_wrapper_pulse)( pa_stream*,const pa_buffer_attr*, pa_stream_success_cb_t, void*);
-pa_operation* (*pa_stream_update_sample_rate_dylibloader_wrapper_pulse)( pa_stream*, uint32_t, pa_stream_success_cb_t, void*);
-pa_operation* (*pa_stream_proplist_update_dylibloader_wrapper_pulse)( pa_stream*, pa_update_mode_t, pa_proplist*, pa_stream_success_cb_t, void*);
-pa_operation* (*pa_stream_proplist_remove_dylibloader_wrapper_pulse)( pa_stream*,const char* [], pa_stream_success_cb_t, void*);
-int (*pa_stream_set_monitor_stream_dylibloader_wrapper_pulse)( pa_stream*, uint32_t);
-uint32_t (*pa_stream_get_monitor_stream_dylibloader_wrapper_pulse)(const pa_stream*);
-pa_operation* (*pa_context_get_sink_info_by_name_dylibloader_wrapper_pulse)( pa_context*,const char*, pa_sink_info_cb_t, void*);
-pa_operation* (*pa_context_get_sink_info_by_index_dylibloader_wrapper_pulse)( pa_context*, uint32_t, pa_sink_info_cb_t, void*);
-pa_operation* (*pa_context_get_sink_info_list_dylibloader_wrapper_pulse)( pa_context*, pa_sink_info_cb_t, void*);
-pa_operation* (*pa_context_set_sink_volume_by_index_dylibloader_wrapper_pulse)( pa_context*, uint32_t,const pa_cvolume*, pa_context_success_cb_t, void*);
-pa_operation* (*pa_context_set_sink_volume_by_name_dylibloader_wrapper_pulse)( pa_context*,const char*,const pa_cvolume*, pa_context_success_cb_t, void*);
-pa_operation* (*pa_context_set_sink_mute_by_index_dylibloader_wrapper_pulse)( pa_context*, uint32_t, int, pa_context_success_cb_t, void*);
-pa_operation* (*pa_context_set_sink_mute_by_name_dylibloader_wrapper_pulse)( pa_context*,const char*, int, pa_context_success_cb_t, void*);
-pa_operation* (*pa_context_suspend_sink_by_name_dylibloader_wrapper_pulse)( pa_context*,const char*, int, pa_context_success_cb_t, void*);
-pa_operation* (*pa_context_suspend_sink_by_index_dylibloader_wrapper_pulse)( pa_context*, uint32_t, int, pa_context_success_cb_t, void*);
-pa_operation* (*pa_context_set_sink_port_by_index_dylibloader_wrapper_pulse)( pa_context*, uint32_t,const char*, pa_context_success_cb_t, void*);
-pa_operation* (*pa_context_set_sink_port_by_name_dylibloader_wrapper_pulse)( pa_context*,const char*,const char*, pa_context_success_cb_t, void*);
-pa_operation* (*pa_context_get_source_info_by_name_dylibloader_wrapper_pulse)( pa_context*,const char*, pa_source_info_cb_t, void*);
-pa_operation* (*pa_context_get_source_info_by_index_dylibloader_wrapper_pulse)( pa_context*, uint32_t, pa_source_info_cb_t, void*);
-pa_operation* (*pa_context_get_source_info_list_dylibloader_wrapper_pulse)( pa_context*, pa_source_info_cb_t, void*);
-pa_operation* (*pa_context_set_source_volume_by_index_dylibloader_wrapper_pulse)( pa_context*, uint32_t,const pa_cvolume*, pa_context_success_cb_t, void*);
-pa_operation* (*pa_context_set_source_volume_by_name_dylibloader_wrapper_pulse)( pa_context*,const char*,const pa_cvolume*, pa_context_success_cb_t, void*);
-pa_operation* (*pa_context_set_source_mute_by_index_dylibloader_wrapper_pulse)( pa_context*, uint32_t, int, pa_context_success_cb_t, void*);
-pa_operation* (*pa_context_set_source_mute_by_name_dylibloader_wrapper_pulse)( pa_context*,const char*, int, pa_context_success_cb_t, void*);
-pa_operation* (*pa_context_suspend_source_by_name_dylibloader_wrapper_pulse)( pa_context*,const char*, int, pa_context_success_cb_t, void*);
-pa_operation* (*pa_context_suspend_source_by_index_dylibloader_wrapper_pulse)( pa_context*, uint32_t, int, pa_context_success_cb_t, void*);
-pa_operation* (*pa_context_set_source_port_by_index_dylibloader_wrapper_pulse)( pa_context*, uint32_t,const char*, pa_context_success_cb_t, void*);
-pa_operation* (*pa_context_set_source_port_by_name_dylibloader_wrapper_pulse)( pa_context*,const char*,const char*, pa_context_success_cb_t, void*);
-pa_operation* (*pa_context_get_server_info_dylibloader_wrapper_pulse)( pa_context*, pa_server_info_cb_t, void*);
-pa_operation* (*pa_context_get_module_info_dylibloader_wrapper_pulse)( pa_context*, uint32_t, pa_module_info_cb_t, void*);
-pa_operation* (*pa_context_get_module_info_list_dylibloader_wrapper_pulse)( pa_context*, pa_module_info_cb_t, void*);
-pa_operation* (*pa_context_load_module_dylibloader_wrapper_pulse)( pa_context*,const char*,const char*, pa_context_index_cb_t, void*);
-pa_operation* (*pa_context_unload_module_dylibloader_wrapper_pulse)( pa_context*, uint32_t, pa_context_success_cb_t, void*);
-pa_operation* (*pa_context_get_client_info_dylibloader_wrapper_pulse)( pa_context*, uint32_t, pa_client_info_cb_t, void*);
-pa_operation* (*pa_context_get_client_info_list_dylibloader_wrapper_pulse)( pa_context*, pa_client_info_cb_t, void*);
-pa_operation* (*pa_context_kill_client_dylibloader_wrapper_pulse)( pa_context*, uint32_t, pa_context_success_cb_t, void*);
-pa_operation* (*pa_context_get_card_info_by_index_dylibloader_wrapper_pulse)( pa_context*, uint32_t, pa_card_info_cb_t, void*);
-pa_operation* (*pa_context_get_card_info_by_name_dylibloader_wrapper_pulse)( pa_context*,const char*, pa_card_info_cb_t, void*);
-pa_operation* (*pa_context_get_card_info_list_dylibloader_wrapper_pulse)( pa_context*, pa_card_info_cb_t, void*);
-pa_operation* (*pa_context_set_card_profile_by_index_dylibloader_wrapper_pulse)( pa_context*, uint32_t,const char*, pa_context_success_cb_t, void*);
-pa_operation* (*pa_context_set_card_profile_by_name_dylibloader_wrapper_pulse)( pa_context*,const char*,const char*, pa_context_success_cb_t, void*);
-pa_operation* (*pa_context_set_port_latency_offset_dylibloader_wrapper_pulse)( pa_context*,const char*,const char*, int64_t, pa_context_success_cb_t, void*);
-pa_operation* (*pa_context_get_sink_input_info_dylibloader_wrapper_pulse)( pa_context*, uint32_t, pa_sink_input_info_cb_t, void*);
-pa_operation* (*pa_context_get_sink_input_info_list_dylibloader_wrapper_pulse)( pa_context*, pa_sink_input_info_cb_t, void*);
-pa_operation* (*pa_context_move_sink_input_by_name_dylibloader_wrapper_pulse)( pa_context*, uint32_t,const char*, pa_context_success_cb_t, void*);
-pa_operation* (*pa_context_move_sink_input_by_index_dylibloader_wrapper_pulse)( pa_context*, uint32_t, uint32_t, pa_context_success_cb_t, void*);
-pa_operation* (*pa_context_set_sink_input_volume_dylibloader_wrapper_pulse)( pa_context*, uint32_t,const pa_cvolume*, pa_context_success_cb_t, void*);
-pa_operation* (*pa_context_set_sink_input_mute_dylibloader_wrapper_pulse)( pa_context*, uint32_t, int, pa_context_success_cb_t, void*);
-pa_operation* (*pa_context_kill_sink_input_dylibloader_wrapper_pulse)( pa_context*, uint32_t, pa_context_success_cb_t, void*);
-pa_operation* (*pa_context_get_source_output_info_dylibloader_wrapper_pulse)( pa_context*, uint32_t, pa_source_output_info_cb_t, void*);
-pa_operation* (*pa_context_get_source_output_info_list_dylibloader_wrapper_pulse)( pa_context*, pa_source_output_info_cb_t, void*);
-pa_operation* (*pa_context_move_source_output_by_name_dylibloader_wrapper_pulse)( pa_context*, uint32_t,const char*, pa_context_success_cb_t, void*);
-pa_operation* (*pa_context_move_source_output_by_index_dylibloader_wrapper_pulse)( pa_context*, uint32_t, uint32_t, pa_context_success_cb_t, void*);
-pa_operation* (*pa_context_set_source_output_volume_dylibloader_wrapper_pulse)( pa_context*, uint32_t,const pa_cvolume*, pa_context_success_cb_t, void*);
-pa_operation* (*pa_context_set_source_output_mute_dylibloader_wrapper_pulse)( pa_context*, uint32_t, int, pa_context_success_cb_t, void*);
-pa_operation* (*pa_context_kill_source_output_dylibloader_wrapper_pulse)( pa_context*, uint32_t, pa_context_success_cb_t, void*);
-pa_operation* (*pa_context_stat_dylibloader_wrapper_pulse)( pa_context*, pa_stat_info_cb_t, void*);
-pa_operation* (*pa_context_get_sample_info_by_name_dylibloader_wrapper_pulse)( pa_context*,const char*, pa_sample_info_cb_t, void*);
-pa_operation* (*pa_context_get_sample_info_by_index_dylibloader_wrapper_pulse)( pa_context*, uint32_t, pa_sample_info_cb_t, void*);
-pa_operation* (*pa_context_get_sample_info_list_dylibloader_wrapper_pulse)( pa_context*, pa_sample_info_cb_t, void*);
-pa_operation* (*pa_context_get_autoload_info_by_name_dylibloader_wrapper_pulse)( pa_context*,const char*, pa_autoload_type_t, pa_autoload_info_cb_t, void*);
-pa_operation* (*pa_context_get_autoload_info_by_index_dylibloader_wrapper_pulse)( pa_context*, uint32_t, pa_autoload_info_cb_t, void*);
-pa_operation* (*pa_context_get_autoload_info_list_dylibloader_wrapper_pulse)( pa_context*, pa_autoload_info_cb_t, void*);
-pa_operation* (*pa_context_add_autoload_dylibloader_wrapper_pulse)( pa_context*,const char*, pa_autoload_type_t,const char*,const char*, pa_context_index_cb_t, void*);
-pa_operation* (*pa_context_remove_autoload_by_name_dylibloader_wrapper_pulse)( pa_context*,const char*, pa_autoload_type_t, pa_context_success_cb_t, void*);
-pa_operation* (*pa_context_remove_autoload_by_index_dylibloader_wrapper_pulse)( pa_context*, uint32_t, pa_context_success_cb_t, void*);
-pa_operation* (*pa_context_subscribe_dylibloader_wrapper_pulse)( pa_context*, pa_subscription_mask_t, pa_context_success_cb_t, void*);
-void (*pa_context_set_subscribe_callback_dylibloader_wrapper_pulse)( pa_context*, pa_context_subscribe_cb_t, void*);
-int (*pa_stream_connect_upload_dylibloader_wrapper_pulse)( pa_stream*, size_t);
-int (*pa_stream_finish_upload_dylibloader_wrapper_pulse)( pa_stream*);
-pa_operation* (*pa_context_remove_sample_dylibloader_wrapper_pulse)( pa_context*,const char*, pa_context_success_cb_t, void*);
-pa_operation* (*pa_context_play_sample_dylibloader_wrapper_pulse)( pa_context*,const char*,const char*, pa_volume_t, pa_context_success_cb_t, void*);
-pa_operation* (*pa_context_play_sample_with_proplist_dylibloader_wrapper_pulse)( pa_context*,const char*,const char*, pa_volume_t,const pa_proplist*, pa_context_play_sample_cb_t, void*);
-const char* (*pa_strerror_dylibloader_wrapper_pulse)( int);
-void* (*pa_xmalloc_dylibloader_wrapper_pulse)( size_t);
-void* (*pa_xmalloc0_dylibloader_wrapper_pulse)( size_t);
-void* (*pa_xrealloc_dylibloader_wrapper_pulse)( void*, size_t);
-void (*pa_xfree_dylibloader_wrapper_pulse)( void*);
-char* (*pa_xstrdup_dylibloader_wrapper_pulse)(const char*);
-char* (*pa_xstrndup_dylibloader_wrapper_pulse)(const char*, size_t);
-void* (*pa_xmemdup_dylibloader_wrapper_pulse)(const void*, size_t);
-char* (*pa_utf8_valid_dylibloader_wrapper_pulse)(const char*);
-char* (*pa_ascii_valid_dylibloader_wrapper_pulse)(const char*);
-char* (*pa_utf8_filter_dylibloader_wrapper_pulse)(const char*);
-char* (*pa_ascii_filter_dylibloader_wrapper_pulse)(const char*);
-char* (*pa_utf8_to_locale_dylibloader_wrapper_pulse)(const char*);
-char* (*pa_locale_to_utf8_dylibloader_wrapper_pulse)(const char*);
-pa_threaded_mainloop* (*pa_threaded_mainloop_new_dylibloader_wrapper_pulse)( void);
-void (*pa_threaded_mainloop_free_dylibloader_wrapper_pulse)( pa_threaded_mainloop*);
-int (*pa_threaded_mainloop_start_dylibloader_wrapper_pulse)( pa_threaded_mainloop*);
-void (*pa_threaded_mainloop_stop_dylibloader_wrapper_pulse)( pa_threaded_mainloop*);
-void (*pa_threaded_mainloop_lock_dylibloader_wrapper_pulse)( pa_threaded_mainloop*);
-void (*pa_threaded_mainloop_unlock_dylibloader_wrapper_pulse)( pa_threaded_mainloop*);
-void (*pa_threaded_mainloop_wait_dylibloader_wrapper_pulse)( pa_threaded_mainloop*);
-void (*pa_threaded_mainloop_signal_dylibloader_wrapper_pulse)( pa_threaded_mainloop*, int);
-void (*pa_threaded_mainloop_accept_dylibloader_wrapper_pulse)( pa_threaded_mainloop*);
-int (*pa_threaded_mainloop_get_retval_dylibloader_wrapper_pulse)(const pa_threaded_mainloop*);
-pa_mainloop_api* (*pa_threaded_mainloop_get_api_dylibloader_wrapper_pulse)( pa_threaded_mainloop*);
-int (*pa_threaded_mainloop_in_thread_dylibloader_wrapper_pulse)( pa_threaded_mainloop*);
-void (*pa_threaded_mainloop_set_name_dylibloader_wrapper_pulse)( pa_threaded_mainloop*,const char*);
-void (*pa_threaded_mainloop_once_unlocked_dylibloader_wrapper_pulse)( pa_threaded_mainloop*, void*, void*);
-pa_mainloop* (*pa_mainloop_new_dylibloader_wrapper_pulse)( void);
-void (*pa_mainloop_free_dylibloader_wrapper_pulse)( pa_mainloop*);
-int (*pa_mainloop_prepare_dylibloader_wrapper_pulse)( pa_mainloop*, int);
-int (*pa_mainloop_poll_dylibloader_wrapper_pulse)( pa_mainloop*);
-int (*pa_mainloop_dispatch_dylibloader_wrapper_pulse)( pa_mainloop*);
-int (*pa_mainloop_get_retval_dylibloader_wrapper_pulse)(const pa_mainloop*);
-int (*pa_mainloop_iterate_dylibloader_wrapper_pulse)( pa_mainloop*, int, int*);
-int (*pa_mainloop_run_dylibloader_wrapper_pulse)( pa_mainloop*, int*);
-pa_mainloop_api* (*pa_mainloop_get_api_dylibloader_wrapper_pulse)( pa_mainloop*);
-void (*pa_mainloop_quit_dylibloader_wrapper_pulse)( pa_mainloop*, int);
-void (*pa_mainloop_wakeup_dylibloader_wrapper_pulse)( pa_mainloop*);
-void (*pa_mainloop_set_poll_func_dylibloader_wrapper_pulse)( pa_mainloop*, pa_poll_func, void*);
-int (*pa_signal_init_dylibloader_wrapper_pulse)( pa_mainloop_api*);
-void (*pa_signal_done_dylibloader_wrapper_pulse)( void);
-pa_signal_event* (*pa_signal_new_dylibloader_wrapper_pulse)( int, pa_signal_cb_t, void*);
-void (*pa_signal_free_dylibloader_wrapper_pulse)( pa_signal_event*);
-void (*pa_signal_set_destroy_dylibloader_wrapper_pulse)( pa_signal_event*, pa_signal_destroy_cb_t);
-char* (*pa_get_user_name_dylibloader_wrapper_pulse)( char*, size_t);
-char* (*pa_get_host_name_dylibloader_wrapper_pulse)( char*, size_t);
-char* (*pa_get_fqdn_dylibloader_wrapper_pulse)( char*, size_t);
-char* (*pa_get_home_dir_dylibloader_wrapper_pulse)( char*, size_t);
-char* (*pa_get_binary_name_dylibloader_wrapper_pulse)( char*, size_t);
-char* (*pa_path_get_filename_dylibloader_wrapper_pulse)(const char*);
-int (*pa_msleep_dylibloader_wrapper_pulse)( unsigned long);
-int (*pa_thread_make_realtime_dylibloader_wrapper_pulse)( int);
-struct timeval* (*pa_gettimeofday_dylibloader_wrapper_pulse)(struct timeval*);
-pa_usec_t (*pa_timeval_diff_dylibloader_wrapper_pulse)(struct timeval*,struct timeval*);
-int (*pa_timeval_cmp_dylibloader_wrapper_pulse)(struct timeval*,struct timeval*);
-pa_usec_t (*pa_timeval_age_dylibloader_wrapper_pulse)(struct timeval*);
-struct timeval* (*pa_timeval_add_dylibloader_wrapper_pulse)(struct timeval*, pa_usec_t);
-struct timeval* (*pa_timeval_sub_dylibloader_wrapper_pulse)(struct timeval*, pa_usec_t);
-struct timeval* (*pa_timeval_store_dylibloader_wrapper_pulse)(struct timeval*, pa_usec_t);
-pa_usec_t (*pa_timeval_load_dylibloader_wrapper_pulse)(struct timeval*);
-pa_usec_t (*pa_rtclock_now_dylibloader_wrapper_pulse)( void);
+const char *(*pa_get_library_version_dylibloader_wrapper_pulse)(void);
+size_t (*pa_bytes_per_second_dylibloader_wrapper_pulse)(const pa_sample_spec *);
+size_t (*pa_frame_size_dylibloader_wrapper_pulse)(const pa_sample_spec *);
+size_t (*pa_sample_size_dylibloader_wrapper_pulse)(const pa_sample_spec *);
+size_t (*pa_sample_size_of_format_dylibloader_wrapper_pulse)(pa_sample_format_t);
+pa_usec_t (*pa_bytes_to_usec_dylibloader_wrapper_pulse)(uint64_t, const pa_sample_spec *);
+size_t (*pa_usec_to_bytes_dylibloader_wrapper_pulse)(pa_usec_t, const pa_sample_spec *);
+pa_sample_spec *(*pa_sample_spec_init_dylibloader_wrapper_pulse)(pa_sample_spec *);
+int (*pa_sample_format_valid_dylibloader_wrapper_pulse)(unsigned);
+int (*pa_sample_rate_valid_dylibloader_wrapper_pulse)(uint32_t);
+int (*pa_channels_valid_dylibloader_wrapper_pulse)(uint8_t);
+int (*pa_sample_spec_valid_dylibloader_wrapper_pulse)(const pa_sample_spec *);
+int (*pa_sample_spec_equal_dylibloader_wrapper_pulse)(const pa_sample_spec *, const pa_sample_spec *);
+const char *(*pa_sample_format_to_string_dylibloader_wrapper_pulse)(pa_sample_format_t);
+pa_sample_format_t (*pa_parse_sample_format_dylibloader_wrapper_pulse)(const char *);
+char *(*pa_sample_spec_snprint_dylibloader_wrapper_pulse)(char *, size_t, const pa_sample_spec *);
+char *(*pa_bytes_snprint_dylibloader_wrapper_pulse)(char *, size_t, unsigned);
+int (*pa_sample_format_is_le_dylibloader_wrapper_pulse)(pa_sample_format_t);
+int (*pa_sample_format_is_be_dylibloader_wrapper_pulse)(pa_sample_format_t);
+int (*pa_direction_valid_dylibloader_wrapper_pulse)(pa_direction_t);
+const char *(*pa_direction_to_string_dylibloader_wrapper_pulse)(pa_direction_t);
+void (*pa_mainloop_api_once_dylibloader_wrapper_pulse)(pa_mainloop_api *, void *, void *);
+pa_proplist *(*pa_proplist_new_dylibloader_wrapper_pulse)(void);
+void (*pa_proplist_free_dylibloader_wrapper_pulse)(pa_proplist *);
+int (*pa_proplist_key_valid_dylibloader_wrapper_pulse)(const char *);
+int (*pa_proplist_sets_dylibloader_wrapper_pulse)(pa_proplist *, const char *, const char *);
+int (*pa_proplist_setp_dylibloader_wrapper_pulse)(pa_proplist *, const char *);
+int (*pa_proplist_setf_dylibloader_wrapper_pulse)(pa_proplist *, const char *, const char *, ...);
+int (*pa_proplist_set_dylibloader_wrapper_pulse)(pa_proplist *, const char *, const void *, size_t);
+const char *(*pa_proplist_gets_dylibloader_wrapper_pulse)(const pa_proplist *, const char *);
+int (*pa_proplist_get_dylibloader_wrapper_pulse)(const pa_proplist *, const char *, const void **, size_t *);
+void (*pa_proplist_update_dylibloader_wrapper_pulse)(pa_proplist *, pa_update_mode_t, const pa_proplist *);
+int (*pa_proplist_unset_dylibloader_wrapper_pulse)(pa_proplist *, const char *);
+int (*pa_proplist_unset_many_dylibloader_wrapper_pulse)(pa_proplist *, const char *[]);
+const char *(*pa_proplist_iterate_dylibloader_wrapper_pulse)(const pa_proplist *, void **);
+char *(*pa_proplist_to_string_dylibloader_wrapper_pulse)(const pa_proplist *);
+char *(*pa_proplist_to_string_sep_dylibloader_wrapper_pulse)(const pa_proplist *, const char *);
+pa_proplist *(*pa_proplist_from_string_dylibloader_wrapper_pulse)(const char *);
+int (*pa_proplist_contains_dylibloader_wrapper_pulse)(const pa_proplist *, const char *);
+void (*pa_proplist_clear_dylibloader_wrapper_pulse)(pa_proplist *);
+pa_proplist *(*pa_proplist_copy_dylibloader_wrapper_pulse)(const pa_proplist *);
+unsigned (*pa_proplist_size_dylibloader_wrapper_pulse)(const pa_proplist *);
+int (*pa_proplist_isempty_dylibloader_wrapper_pulse)(const pa_proplist *);
+int (*pa_proplist_equal_dylibloader_wrapper_pulse)(const pa_proplist *, const pa_proplist *);
+pa_channel_map *(*pa_channel_map_init_dylibloader_wrapper_pulse)(pa_channel_map *);
+pa_channel_map *(*pa_channel_map_init_mono_dylibloader_wrapper_pulse)(pa_channel_map *);
+pa_channel_map *(*pa_channel_map_init_stereo_dylibloader_wrapper_pulse)(pa_channel_map *);
+pa_channel_map *(*pa_channel_map_init_auto_dylibloader_wrapper_pulse)(pa_channel_map *, unsigned, pa_channel_map_def_t);
+pa_channel_map *(*pa_channel_map_init_extend_dylibloader_wrapper_pulse)(pa_channel_map *, unsigned, pa_channel_map_def_t);
+const char *(*pa_channel_position_to_string_dylibloader_wrapper_pulse)(pa_channel_position_t);
+pa_channel_position_t (*pa_channel_position_from_string_dylibloader_wrapper_pulse)(const char *);
+const char *(*pa_channel_position_to_pretty_string_dylibloader_wrapper_pulse)(pa_channel_position_t);
+char *(*pa_channel_map_snprint_dylibloader_wrapper_pulse)(char *, size_t, const pa_channel_map *);
+pa_channel_map *(*pa_channel_map_parse_dylibloader_wrapper_pulse)(pa_channel_map *, const char *);
+int (*pa_channel_map_equal_dylibloader_wrapper_pulse)(const pa_channel_map *, const pa_channel_map *);
+int (*pa_channel_map_valid_dylibloader_wrapper_pulse)(const pa_channel_map *);
+int (*pa_channel_map_compatible_dylibloader_wrapper_pulse)(const pa_channel_map *, const pa_sample_spec *);
+int (*pa_channel_map_superset_dylibloader_wrapper_pulse)(const pa_channel_map *, const pa_channel_map *);
+int (*pa_channel_map_can_balance_dylibloader_wrapper_pulse)(const pa_channel_map *);
+int (*pa_channel_map_can_fade_dylibloader_wrapper_pulse)(const pa_channel_map *);
+int (*pa_channel_map_can_lfe_balance_dylibloader_wrapper_pulse)(const pa_channel_map *);
+const char *(*pa_channel_map_to_name_dylibloader_wrapper_pulse)(const pa_channel_map *);
+const char *(*pa_channel_map_to_pretty_name_dylibloader_wrapper_pulse)(const pa_channel_map *);
+int (*pa_channel_map_has_position_dylibloader_wrapper_pulse)(const pa_channel_map *, pa_channel_position_t);
+pa_channel_position_mask_t (*pa_channel_map_mask_dylibloader_wrapper_pulse)(const pa_channel_map *);
+const char *(*pa_encoding_to_string_dylibloader_wrapper_pulse)(pa_encoding_t);
+pa_encoding_t (*pa_encoding_from_string_dylibloader_wrapper_pulse)(const char *);
+pa_format_info *(*pa_format_info_new_dylibloader_wrapper_pulse)(void);
+pa_format_info *(*pa_format_info_copy_dylibloader_wrapper_pulse)(const pa_format_info *);
+void (*pa_format_info_free_dylibloader_wrapper_pulse)(pa_format_info *);
+int (*pa_format_info_valid_dylibloader_wrapper_pulse)(const pa_format_info *);
+int (*pa_format_info_is_pcm_dylibloader_wrapper_pulse)(const pa_format_info *);
+int (*pa_format_info_is_compatible_dylibloader_wrapper_pulse)(const pa_format_info *, const pa_format_info *);
+char *(*pa_format_info_snprint_dylibloader_wrapper_pulse)(char *, size_t, const pa_format_info *);
+pa_format_info *(*pa_format_info_from_string_dylibloader_wrapper_pulse)(const char *);
+pa_format_info *(*pa_format_info_from_sample_spec_dylibloader_wrapper_pulse)(const pa_sample_spec *, const pa_channel_map *);
+int (*pa_format_info_to_sample_spec_dylibloader_wrapper_pulse)(const pa_format_info *, pa_sample_spec *, pa_channel_map *);
+pa_prop_type_t (*pa_format_info_get_prop_type_dylibloader_wrapper_pulse)(const pa_format_info *, const char *);
+int (*pa_format_info_get_prop_int_dylibloader_wrapper_pulse)(const pa_format_info *, const char *, int *);
+int (*pa_format_info_get_prop_int_range_dylibloader_wrapper_pulse)(const pa_format_info *, const char *, int *, int *);
+int (*pa_format_info_get_prop_int_array_dylibloader_wrapper_pulse)(const pa_format_info *, const char *, int **, int *);
+int (*pa_format_info_get_prop_string_dylibloader_wrapper_pulse)(const pa_format_info *, const char *, char **);
+int (*pa_format_info_get_prop_string_array_dylibloader_wrapper_pulse)(const pa_format_info *, const char *, char ***, int *);
+void (*pa_format_info_free_string_array_dylibloader_wrapper_pulse)(char **, int);
+int (*pa_format_info_get_sample_format_dylibloader_wrapper_pulse)(const pa_format_info *, pa_sample_format_t *);
+int (*pa_format_info_get_rate_dylibloader_wrapper_pulse)(const pa_format_info *, uint32_t *);
+int (*pa_format_info_get_channels_dylibloader_wrapper_pulse)(const pa_format_info *, uint8_t *);
+int (*pa_format_info_get_channel_map_dylibloader_wrapper_pulse)(const pa_format_info *, pa_channel_map *);
+void (*pa_format_info_set_prop_int_dylibloader_wrapper_pulse)(pa_format_info *, const char *, int);
+void (*pa_format_info_set_prop_int_array_dylibloader_wrapper_pulse)(pa_format_info *, const char *, const int *, int);
+void (*pa_format_info_set_prop_int_range_dylibloader_wrapper_pulse)(pa_format_info *, const char *, int, int);
+void (*pa_format_info_set_prop_string_dylibloader_wrapper_pulse)(pa_format_info *, const char *, const char *);
+void (*pa_format_info_set_prop_string_array_dylibloader_wrapper_pulse)(pa_format_info *, const char *, const char **, int);
+void (*pa_format_info_set_sample_format_dylibloader_wrapper_pulse)(pa_format_info *, pa_sample_format_t);
+void (*pa_format_info_set_rate_dylibloader_wrapper_pulse)(pa_format_info *, int);
+void (*pa_format_info_set_channels_dylibloader_wrapper_pulse)(pa_format_info *, int);
+void (*pa_format_info_set_channel_map_dylibloader_wrapper_pulse)(pa_format_info *, const pa_channel_map *);
+pa_operation *(*pa_operation_ref_dylibloader_wrapper_pulse)(pa_operation *);
+void (*pa_operation_unref_dylibloader_wrapper_pulse)(pa_operation *);
+void (*pa_operation_cancel_dylibloader_wrapper_pulse)(pa_operation *);
+pa_operation_state_t (*pa_operation_get_state_dylibloader_wrapper_pulse)(const pa_operation *);
+void (*pa_operation_set_state_callback_dylibloader_wrapper_pulse)(pa_operation *, pa_operation_notify_cb_t, void *);
+pa_context *(*pa_context_new_dylibloader_wrapper_pulse)(pa_mainloop_api *, const char *);
+pa_context *(*pa_context_new_with_proplist_dylibloader_wrapper_pulse)(pa_mainloop_api *, const char *, const pa_proplist *);
+void (*pa_context_unref_dylibloader_wrapper_pulse)(pa_context *);
+pa_context *(*pa_context_ref_dylibloader_wrapper_pulse)(pa_context *);
+void (*pa_context_set_state_callback_dylibloader_wrapper_pulse)(pa_context *, pa_context_notify_cb_t, void *);
+void (*pa_context_set_event_callback_dylibloader_wrapper_pulse)(pa_context *, pa_context_event_cb_t, void *);
+int (*pa_context_errno_dylibloader_wrapper_pulse)(const pa_context *);
+int (*pa_context_is_pending_dylibloader_wrapper_pulse)(const pa_context *);
+pa_context_state_t (*pa_context_get_state_dylibloader_wrapper_pulse)(const pa_context *);
+int (*pa_context_connect_dylibloader_wrapper_pulse)(pa_context *, const char *, pa_context_flags_t, const pa_spawn_api *);
+void (*pa_context_disconnect_dylibloader_wrapper_pulse)(pa_context *);
+pa_operation *(*pa_context_drain_dylibloader_wrapper_pulse)(pa_context *, pa_context_notify_cb_t, void *);
+pa_operation *(*pa_context_exit_daemon_dylibloader_wrapper_pulse)(pa_context *, pa_context_success_cb_t, void *);
+pa_operation *(*pa_context_set_default_sink_dylibloader_wrapper_pulse)(pa_context *, const char *, pa_context_success_cb_t, void *);
+pa_operation *(*pa_context_set_default_source_dylibloader_wrapper_pulse)(pa_context *, const char *, pa_context_success_cb_t, void *);
+int (*pa_context_is_local_dylibloader_wrapper_pulse)(const pa_context *);
+pa_operation *(*pa_context_set_name_dylibloader_wrapper_pulse)(pa_context *, const char *, pa_context_success_cb_t, void *);
+const char *(*pa_context_get_server_dylibloader_wrapper_pulse)(const pa_context *);
+uint32_t (*pa_context_get_protocol_version_dylibloader_wrapper_pulse)(const pa_context *);
+uint32_t (*pa_context_get_server_protocol_version_dylibloader_wrapper_pulse)(const pa_context *);
+pa_operation *(*pa_context_proplist_update_dylibloader_wrapper_pulse)(pa_context *, pa_update_mode_t, const pa_proplist *, pa_context_success_cb_t, void *);
+pa_operation *(*pa_context_proplist_remove_dylibloader_wrapper_pulse)(pa_context *, const char *[], pa_context_success_cb_t, void *);
+uint32_t (*pa_context_get_index_dylibloader_wrapper_pulse)(const pa_context *);
+pa_time_event *(*pa_context_rttime_new_dylibloader_wrapper_pulse)(const pa_context *, pa_usec_t, pa_time_event_cb_t, void *);
+void (*pa_context_rttime_restart_dylibloader_wrapper_pulse)(const pa_context *, pa_time_event *, pa_usec_t);
+size_t (*pa_context_get_tile_size_dylibloader_wrapper_pulse)(const pa_context *, const pa_sample_spec *);
+int (*pa_context_load_cookie_from_file_dylibloader_wrapper_pulse)(pa_context *, const char *);
+int (*pa_cvolume_equal_dylibloader_wrapper_pulse)(const pa_cvolume *, const pa_cvolume *);
+pa_cvolume *(*pa_cvolume_init_dylibloader_wrapper_pulse)(pa_cvolume *);
+pa_cvolume *(*pa_cvolume_set_dylibloader_wrapper_pulse)(pa_cvolume *, unsigned, pa_volume_t);
+char *(*pa_cvolume_snprint_dylibloader_wrapper_pulse)(char *, size_t, const pa_cvolume *);
+char *(*pa_sw_cvolume_snprint_dB_dylibloader_wrapper_pulse)(char *, size_t, const pa_cvolume *);
+char *(*pa_cvolume_snprint_verbose_dylibloader_wrapper_pulse)(char *, size_t, const pa_cvolume *, const pa_channel_map *, int);
+char *(*pa_volume_snprint_dylibloader_wrapper_pulse)(char *, size_t, pa_volume_t);
+char *(*pa_sw_volume_snprint_dB_dylibloader_wrapper_pulse)(char *, size_t, pa_volume_t);
+char *(*pa_volume_snprint_verbose_dylibloader_wrapper_pulse)(char *, size_t, pa_volume_t, int);
+pa_volume_t (*pa_cvolume_avg_dylibloader_wrapper_pulse)(const pa_cvolume *);
+pa_volume_t (*pa_cvolume_avg_mask_dylibloader_wrapper_pulse)(const pa_cvolume *, const pa_channel_map *, pa_channel_position_mask_t);
+pa_volume_t (*pa_cvolume_max_dylibloader_wrapper_pulse)(const pa_cvolume *);
+pa_volume_t (*pa_cvolume_max_mask_dylibloader_wrapper_pulse)(const pa_cvolume *, const pa_channel_map *, pa_channel_position_mask_t);
+pa_volume_t (*pa_cvolume_min_dylibloader_wrapper_pulse)(const pa_cvolume *);
+pa_volume_t (*pa_cvolume_min_mask_dylibloader_wrapper_pulse)(const pa_cvolume *, const pa_channel_map *, pa_channel_position_mask_t);
+int (*pa_cvolume_valid_dylibloader_wrapper_pulse)(const pa_cvolume *);
+int (*pa_cvolume_channels_equal_to_dylibloader_wrapper_pulse)(const pa_cvolume *, pa_volume_t);
+pa_volume_t (*pa_sw_volume_multiply_dylibloader_wrapper_pulse)(pa_volume_t, pa_volume_t);
+pa_cvolume *(*pa_sw_cvolume_multiply_dylibloader_wrapper_pulse)(pa_cvolume *, const pa_cvolume *, const pa_cvolume *);
+pa_cvolume *(*pa_sw_cvolume_multiply_scalar_dylibloader_wrapper_pulse)(pa_cvolume *, const pa_cvolume *, pa_volume_t);
+pa_volume_t (*pa_sw_volume_divide_dylibloader_wrapper_pulse)(pa_volume_t, pa_volume_t);
+pa_cvolume *(*pa_sw_cvolume_divide_dylibloader_wrapper_pulse)(pa_cvolume *, const pa_cvolume *, const pa_cvolume *);
+pa_cvolume *(*pa_sw_cvolume_divide_scalar_dylibloader_wrapper_pulse)(pa_cvolume *, const pa_cvolume *, pa_volume_t);
+pa_volume_t (*pa_sw_volume_from_dB_dylibloader_wrapper_pulse)(double);
+double (*pa_sw_volume_to_dB_dylibloader_wrapper_pulse)(pa_volume_t);
+pa_volume_t (*pa_sw_volume_from_linear_dylibloader_wrapper_pulse)(double);
+double (*pa_sw_volume_to_linear_dylibloader_wrapper_pulse)(pa_volume_t);
+pa_cvolume *(*pa_cvolume_remap_dylibloader_wrapper_pulse)(pa_cvolume *, const pa_channel_map *, const pa_channel_map *);
+int (*pa_cvolume_compatible_dylibloader_wrapper_pulse)(const pa_cvolume *, const pa_sample_spec *);
+int (*pa_cvolume_compatible_with_channel_map_dylibloader_wrapper_pulse)(const pa_cvolume *, const pa_channel_map *);
+float (*pa_cvolume_get_balance_dylibloader_wrapper_pulse)(const pa_cvolume *, const pa_channel_map *);
+pa_cvolume *(*pa_cvolume_set_balance_dylibloader_wrapper_pulse)(pa_cvolume *, const pa_channel_map *, float);
+float (*pa_cvolume_get_fade_dylibloader_wrapper_pulse)(const pa_cvolume *, const pa_channel_map *);
+pa_cvolume *(*pa_cvolume_set_fade_dylibloader_wrapper_pulse)(pa_cvolume *, const pa_channel_map *, float);
+float (*pa_cvolume_get_lfe_balance_dylibloader_wrapper_pulse)(const pa_cvolume *, const pa_channel_map *);
+pa_cvolume *(*pa_cvolume_set_lfe_balance_dylibloader_wrapper_pulse)(pa_cvolume *, const pa_channel_map *, float);
+pa_cvolume *(*pa_cvolume_scale_dylibloader_wrapper_pulse)(pa_cvolume *, pa_volume_t);
+pa_cvolume *(*pa_cvolume_scale_mask_dylibloader_wrapper_pulse)(pa_cvolume *, pa_volume_t, const pa_channel_map *, pa_channel_position_mask_t);
+pa_cvolume *(*pa_cvolume_set_position_dylibloader_wrapper_pulse)(pa_cvolume *, const pa_channel_map *, pa_channel_position_t, pa_volume_t);
+pa_volume_t (*pa_cvolume_get_position_dylibloader_wrapper_pulse)(const pa_cvolume *, const pa_channel_map *, pa_channel_position_t);
+pa_cvolume *(*pa_cvolume_merge_dylibloader_wrapper_pulse)(pa_cvolume *, const pa_cvolume *, const pa_cvolume *);
+pa_cvolume *(*pa_cvolume_inc_clamp_dylibloader_wrapper_pulse)(pa_cvolume *, pa_volume_t, pa_volume_t);
+pa_cvolume *(*pa_cvolume_inc_dylibloader_wrapper_pulse)(pa_cvolume *, pa_volume_t);
+pa_cvolume *(*pa_cvolume_dec_dylibloader_wrapper_pulse)(pa_cvolume *, pa_volume_t);
+pa_stream *(*pa_stream_new_dylibloader_wrapper_pulse)(pa_context *, const char *, const pa_sample_spec *, const pa_channel_map *);
+pa_stream *(*pa_stream_new_with_proplist_dylibloader_wrapper_pulse)(pa_context *, const char *, const pa_sample_spec *, const pa_channel_map *, pa_proplist *);
+pa_stream *(*pa_stream_new_extended_dylibloader_wrapper_pulse)(pa_context *, const char *, pa_format_info **, unsigned int, pa_proplist *);
+void (*pa_stream_unref_dylibloader_wrapper_pulse)(pa_stream *);
+pa_stream *(*pa_stream_ref_dylibloader_wrapper_pulse)(pa_stream *);
+pa_stream_state_t (*pa_stream_get_state_dylibloader_wrapper_pulse)(const pa_stream *);
+pa_context *(*pa_stream_get_context_dylibloader_wrapper_pulse)(const pa_stream *);
+uint32_t (*pa_stream_get_index_dylibloader_wrapper_pulse)(const pa_stream *);
+uint32_t (*pa_stream_get_device_index_dylibloader_wrapper_pulse)(const pa_stream *);
+const char *(*pa_stream_get_device_name_dylibloader_wrapper_pulse)(const pa_stream *);
+int (*pa_stream_is_suspended_dylibloader_wrapper_pulse)(const pa_stream *);
+int (*pa_stream_is_corked_dylibloader_wrapper_pulse)(const pa_stream *);
+int (*pa_stream_connect_playback_dylibloader_wrapper_pulse)(pa_stream *, const char *, const pa_buffer_attr *, pa_stream_flags_t, const pa_cvolume *, pa_stream *);
+int (*pa_stream_connect_record_dylibloader_wrapper_pulse)(pa_stream *, const char *, const pa_buffer_attr *, pa_stream_flags_t);
+int (*pa_stream_disconnect_dylibloader_wrapper_pulse)(pa_stream *);
+int (*pa_stream_begin_write_dylibloader_wrapper_pulse)(pa_stream *, void **, size_t *);
+int (*pa_stream_cancel_write_dylibloader_wrapper_pulse)(pa_stream *);
+int (*pa_stream_write_dylibloader_wrapper_pulse)(pa_stream *, const void *, size_t, pa_free_cb_t, int64_t, pa_seek_mode_t);
+int (*pa_stream_write_ext_free_dylibloader_wrapper_pulse)(pa_stream *, const void *, size_t, pa_free_cb_t, void *, int64_t, pa_seek_mode_t);
+int (*pa_stream_peek_dylibloader_wrapper_pulse)(pa_stream *, const void **, size_t *);
+int (*pa_stream_drop_dylibloader_wrapper_pulse)(pa_stream *);
+size_t (*pa_stream_writable_size_dylibloader_wrapper_pulse)(const pa_stream *);
+size_t (*pa_stream_readable_size_dylibloader_wrapper_pulse)(const pa_stream *);
+pa_operation *(*pa_stream_drain_dylibloader_wrapper_pulse)(pa_stream *, pa_stream_success_cb_t, void *);
+pa_operation *(*pa_stream_update_timing_info_dylibloader_wrapper_pulse)(pa_stream *, pa_stream_success_cb_t, void *);
+void (*pa_stream_set_state_callback_dylibloader_wrapper_pulse)(pa_stream *, pa_stream_notify_cb_t, void *);
+void (*pa_stream_set_write_callback_dylibloader_wrapper_pulse)(pa_stream *, pa_stream_request_cb_t, void *);
+void (*pa_stream_set_read_callback_dylibloader_wrapper_pulse)(pa_stream *, pa_stream_request_cb_t, void *);
+void (*pa_stream_set_overflow_callback_dylibloader_wrapper_pulse)(pa_stream *, pa_stream_notify_cb_t, void *);
+int64_t (*pa_stream_get_underflow_index_dylibloader_wrapper_pulse)(const pa_stream *);
+void (*pa_stream_set_underflow_callback_dylibloader_wrapper_pulse)(pa_stream *, pa_stream_notify_cb_t, void *);
+void (*pa_stream_set_started_callback_dylibloader_wrapper_pulse)(pa_stream *, pa_stream_notify_cb_t, void *);
+void (*pa_stream_set_latency_update_callback_dylibloader_wrapper_pulse)(pa_stream *, pa_stream_notify_cb_t, void *);
+void (*pa_stream_set_moved_callback_dylibloader_wrapper_pulse)(pa_stream *, pa_stream_notify_cb_t, void *);
+void (*pa_stream_set_suspended_callback_dylibloader_wrapper_pulse)(pa_stream *, pa_stream_notify_cb_t, void *);
+void (*pa_stream_set_event_callback_dylibloader_wrapper_pulse)(pa_stream *, pa_stream_event_cb_t, void *);
+void (*pa_stream_set_buffer_attr_callback_dylibloader_wrapper_pulse)(pa_stream *, pa_stream_notify_cb_t, void *);
+pa_operation *(*pa_stream_cork_dylibloader_wrapper_pulse)(pa_stream *, int, pa_stream_success_cb_t, void *);
+pa_operation *(*pa_stream_flush_dylibloader_wrapper_pulse)(pa_stream *, pa_stream_success_cb_t, void *);
+pa_operation *(*pa_stream_prebuf_dylibloader_wrapper_pulse)(pa_stream *, pa_stream_success_cb_t, void *);
+pa_operation *(*pa_stream_trigger_dylibloader_wrapper_pulse)(pa_stream *, pa_stream_success_cb_t, void *);
+pa_operation *(*pa_stream_set_name_dylibloader_wrapper_pulse)(pa_stream *, const char *, pa_stream_success_cb_t, void *);
+int (*pa_stream_get_time_dylibloader_wrapper_pulse)(pa_stream *, pa_usec_t *);
+int (*pa_stream_get_latency_dylibloader_wrapper_pulse)(pa_stream *, pa_usec_t *, int *);
+const pa_timing_info *(*pa_stream_get_timing_info_dylibloader_wrapper_pulse)(pa_stream *);
+const pa_sample_spec *(*pa_stream_get_sample_spec_dylibloader_wrapper_pulse)(pa_stream *);
+const pa_channel_map *(*pa_stream_get_channel_map_dylibloader_wrapper_pulse)(pa_stream *);
+const pa_format_info *(*pa_stream_get_format_info_dylibloader_wrapper_pulse)(const pa_stream *);
+const pa_buffer_attr *(*pa_stream_get_buffer_attr_dylibloader_wrapper_pulse)(pa_stream *);
+pa_operation *(*pa_stream_set_buffer_attr_dylibloader_wrapper_pulse)(pa_stream *, const pa_buffer_attr *, pa_stream_success_cb_t, void *);
+pa_operation *(*pa_stream_update_sample_rate_dylibloader_wrapper_pulse)(pa_stream *, uint32_t, pa_stream_success_cb_t, void *);
+pa_operation *(*pa_stream_proplist_update_dylibloader_wrapper_pulse)(pa_stream *, pa_update_mode_t, pa_proplist *, pa_stream_success_cb_t, void *);
+pa_operation *(*pa_stream_proplist_remove_dylibloader_wrapper_pulse)(pa_stream *, const char *[], pa_stream_success_cb_t, void *);
+int (*pa_stream_set_monitor_stream_dylibloader_wrapper_pulse)(pa_stream *, uint32_t);
+uint32_t (*pa_stream_get_monitor_stream_dylibloader_wrapper_pulse)(const pa_stream *);
+pa_operation *(*pa_context_get_sink_info_by_name_dylibloader_wrapper_pulse)(pa_context *, const char *, pa_sink_info_cb_t, void *);
+pa_operation *(*pa_context_get_sink_info_by_index_dylibloader_wrapper_pulse)(pa_context *, uint32_t, pa_sink_info_cb_t, void *);
+pa_operation *(*pa_context_get_sink_info_list_dylibloader_wrapper_pulse)(pa_context *, pa_sink_info_cb_t, void *);
+pa_operation *(*pa_context_set_sink_volume_by_index_dylibloader_wrapper_pulse)(pa_context *, uint32_t, const pa_cvolume *, pa_context_success_cb_t, void *);
+pa_operation *(*pa_context_set_sink_volume_by_name_dylibloader_wrapper_pulse)(pa_context *, const char *, const pa_cvolume *, pa_context_success_cb_t, void *);
+pa_operation *(*pa_context_set_sink_mute_by_index_dylibloader_wrapper_pulse)(pa_context *, uint32_t, int, pa_context_success_cb_t, void *);
+pa_operation *(*pa_context_set_sink_mute_by_name_dylibloader_wrapper_pulse)(pa_context *, const char *, int, pa_context_success_cb_t, void *);
+pa_operation *(*pa_context_suspend_sink_by_name_dylibloader_wrapper_pulse)(pa_context *, const char *, int, pa_context_success_cb_t, void *);
+pa_operation *(*pa_context_suspend_sink_by_index_dylibloader_wrapper_pulse)(pa_context *, uint32_t, int, pa_context_success_cb_t, void *);
+pa_operation *(*pa_context_set_sink_port_by_index_dylibloader_wrapper_pulse)(pa_context *, uint32_t, const char *, pa_context_success_cb_t, void *);
+pa_operation *(*pa_context_set_sink_port_by_name_dylibloader_wrapper_pulse)(pa_context *, const char *, const char *, pa_context_success_cb_t, void *);
+pa_operation *(*pa_context_get_source_info_by_name_dylibloader_wrapper_pulse)(pa_context *, const char *, pa_source_info_cb_t, void *);
+pa_operation *(*pa_context_get_source_info_by_index_dylibloader_wrapper_pulse)(pa_context *, uint32_t, pa_source_info_cb_t, void *);
+pa_operation *(*pa_context_get_source_info_list_dylibloader_wrapper_pulse)(pa_context *, pa_source_info_cb_t, void *);
+pa_operation *(*pa_context_set_source_volume_by_index_dylibloader_wrapper_pulse)(pa_context *, uint32_t, const pa_cvolume *, pa_context_success_cb_t, void *);
+pa_operation *(*pa_context_set_source_volume_by_name_dylibloader_wrapper_pulse)(pa_context *, const char *, const pa_cvolume *, pa_context_success_cb_t, void *);
+pa_operation *(*pa_context_set_source_mute_by_index_dylibloader_wrapper_pulse)(pa_context *, uint32_t, int, pa_context_success_cb_t, void *);
+pa_operation *(*pa_context_set_source_mute_by_name_dylibloader_wrapper_pulse)(pa_context *, const char *, int, pa_context_success_cb_t, void *);
+pa_operation *(*pa_context_suspend_source_by_name_dylibloader_wrapper_pulse)(pa_context *, const char *, int, pa_context_success_cb_t, void *);
+pa_operation *(*pa_context_suspend_source_by_index_dylibloader_wrapper_pulse)(pa_context *, uint32_t, int, pa_context_success_cb_t, void *);
+pa_operation *(*pa_context_set_source_port_by_index_dylibloader_wrapper_pulse)(pa_context *, uint32_t, const char *, pa_context_success_cb_t, void *);
+pa_operation *(*pa_context_set_source_port_by_name_dylibloader_wrapper_pulse)(pa_context *, const char *, const char *, pa_context_success_cb_t, void *);
+pa_operation *(*pa_context_get_server_info_dylibloader_wrapper_pulse)(pa_context *, pa_server_info_cb_t, void *);
+pa_operation *(*pa_context_get_module_info_dylibloader_wrapper_pulse)(pa_context *, uint32_t, pa_module_info_cb_t, void *);
+pa_operation *(*pa_context_get_module_info_list_dylibloader_wrapper_pulse)(pa_context *, pa_module_info_cb_t, void *);
+pa_operation *(*pa_context_load_module_dylibloader_wrapper_pulse)(pa_context *, const char *, const char *, pa_context_index_cb_t, void *);
+pa_operation *(*pa_context_unload_module_dylibloader_wrapper_pulse)(pa_context *, uint32_t, pa_context_success_cb_t, void *);
+pa_operation *(*pa_context_get_client_info_dylibloader_wrapper_pulse)(pa_context *, uint32_t, pa_client_info_cb_t, void *);
+pa_operation *(*pa_context_get_client_info_list_dylibloader_wrapper_pulse)(pa_context *, pa_client_info_cb_t, void *);
+pa_operation *(*pa_context_kill_client_dylibloader_wrapper_pulse)(pa_context *, uint32_t, pa_context_success_cb_t, void *);
+pa_operation *(*pa_context_get_card_info_by_index_dylibloader_wrapper_pulse)(pa_context *, uint32_t, pa_card_info_cb_t, void *);
+pa_operation *(*pa_context_get_card_info_by_name_dylibloader_wrapper_pulse)(pa_context *, const char *, pa_card_info_cb_t, void *);
+pa_operation *(*pa_context_get_card_info_list_dylibloader_wrapper_pulse)(pa_context *, pa_card_info_cb_t, void *);
+pa_operation *(*pa_context_set_card_profile_by_index_dylibloader_wrapper_pulse)(pa_context *, uint32_t, const char *, pa_context_success_cb_t, void *);
+pa_operation *(*pa_context_set_card_profile_by_name_dylibloader_wrapper_pulse)(pa_context *, const char *, const char *, pa_context_success_cb_t, void *);
+pa_operation *(*pa_context_set_port_latency_offset_dylibloader_wrapper_pulse)(pa_context *, const char *, const char *, int64_t, pa_context_success_cb_t, void *);
+pa_operation *(*pa_context_get_sink_input_info_dylibloader_wrapper_pulse)(pa_context *, uint32_t, pa_sink_input_info_cb_t, void *);
+pa_operation *(*pa_context_get_sink_input_info_list_dylibloader_wrapper_pulse)(pa_context *, pa_sink_input_info_cb_t, void *);
+pa_operation *(*pa_context_move_sink_input_by_name_dylibloader_wrapper_pulse)(pa_context *, uint32_t, const char *, pa_context_success_cb_t, void *);
+pa_operation *(*pa_context_move_sink_input_by_index_dylibloader_wrapper_pulse)(pa_context *, uint32_t, uint32_t, pa_context_success_cb_t, void *);
+pa_operation *(*pa_context_set_sink_input_volume_dylibloader_wrapper_pulse)(pa_context *, uint32_t, const pa_cvolume *, pa_context_success_cb_t, void *);
+pa_operation *(*pa_context_set_sink_input_mute_dylibloader_wrapper_pulse)(pa_context *, uint32_t, int, pa_context_success_cb_t, void *);
+pa_operation *(*pa_context_kill_sink_input_dylibloader_wrapper_pulse)(pa_context *, uint32_t, pa_context_success_cb_t, void *);
+pa_operation *(*pa_context_get_source_output_info_dylibloader_wrapper_pulse)(pa_context *, uint32_t, pa_source_output_info_cb_t, void *);
+pa_operation *(*pa_context_get_source_output_info_list_dylibloader_wrapper_pulse)(pa_context *, pa_source_output_info_cb_t, void *);
+pa_operation *(*pa_context_move_source_output_by_name_dylibloader_wrapper_pulse)(pa_context *, uint32_t, const char *, pa_context_success_cb_t, void *);
+pa_operation *(*pa_context_move_source_output_by_index_dylibloader_wrapper_pulse)(pa_context *, uint32_t, uint32_t, pa_context_success_cb_t, void *);
+pa_operation *(*pa_context_set_source_output_volume_dylibloader_wrapper_pulse)(pa_context *, uint32_t, const pa_cvolume *, pa_context_success_cb_t, void *);
+pa_operation *(*pa_context_set_source_output_mute_dylibloader_wrapper_pulse)(pa_context *, uint32_t, int, pa_context_success_cb_t, void *);
+pa_operation *(*pa_context_kill_source_output_dylibloader_wrapper_pulse)(pa_context *, uint32_t, pa_context_success_cb_t, void *);
+pa_operation *(*pa_context_stat_dylibloader_wrapper_pulse)(pa_context *, pa_stat_info_cb_t, void *);
+pa_operation *(*pa_context_get_sample_info_by_name_dylibloader_wrapper_pulse)(pa_context *, const char *, pa_sample_info_cb_t, void *);
+pa_operation *(*pa_context_get_sample_info_by_index_dylibloader_wrapper_pulse)(pa_context *, uint32_t, pa_sample_info_cb_t, void *);
+pa_operation *(*pa_context_get_sample_info_list_dylibloader_wrapper_pulse)(pa_context *, pa_sample_info_cb_t, void *);
+pa_operation *(*pa_context_get_autoload_info_by_name_dylibloader_wrapper_pulse)(pa_context *, const char *, pa_autoload_type_t, pa_autoload_info_cb_t, void *);
+pa_operation *(*pa_context_get_autoload_info_by_index_dylibloader_wrapper_pulse)(pa_context *, uint32_t, pa_autoload_info_cb_t, void *);
+pa_operation *(*pa_context_get_autoload_info_list_dylibloader_wrapper_pulse)(pa_context *, pa_autoload_info_cb_t, void *);
+pa_operation *(*pa_context_add_autoload_dylibloader_wrapper_pulse)(pa_context *, const char *, pa_autoload_type_t, const char *, const char *, pa_context_index_cb_t, void *);
+pa_operation *(*pa_context_remove_autoload_by_name_dylibloader_wrapper_pulse)(pa_context *, const char *, pa_autoload_type_t, pa_context_success_cb_t, void *);
+pa_operation *(*pa_context_remove_autoload_by_index_dylibloader_wrapper_pulse)(pa_context *, uint32_t, pa_context_success_cb_t, void *);
+pa_operation *(*pa_context_subscribe_dylibloader_wrapper_pulse)(pa_context *, pa_subscription_mask_t, pa_context_success_cb_t, void *);
+void (*pa_context_set_subscribe_callback_dylibloader_wrapper_pulse)(pa_context *, pa_context_subscribe_cb_t, void *);
+int (*pa_stream_connect_upload_dylibloader_wrapper_pulse)(pa_stream *, size_t);
+int (*pa_stream_finish_upload_dylibloader_wrapper_pulse)(pa_stream *);
+pa_operation *(*pa_context_remove_sample_dylibloader_wrapper_pulse)(pa_context *, const char *, pa_context_success_cb_t, void *);
+pa_operation *(*pa_context_play_sample_dylibloader_wrapper_pulse)(pa_context *, const char *, const char *, pa_volume_t, pa_context_success_cb_t, void *);
+pa_operation *(*pa_context_play_sample_with_proplist_dylibloader_wrapper_pulse)(pa_context *, const char *, const char *, pa_volume_t, const pa_proplist *, pa_context_play_sample_cb_t, void *);
+const char *(*pa_strerror_dylibloader_wrapper_pulse)(int);
+void *(*pa_xmalloc_dylibloader_wrapper_pulse)(size_t);
+void *(*pa_xmalloc0_dylibloader_wrapper_pulse)(size_t);
+void *(*pa_xrealloc_dylibloader_wrapper_pulse)(void *, size_t);
+void (*pa_xfree_dylibloader_wrapper_pulse)(void *);
+char *(*pa_xstrdup_dylibloader_wrapper_pulse)(const char *);
+char *(*pa_xstrndup_dylibloader_wrapper_pulse)(const char *, size_t);
+void *(*pa_xmemdup_dylibloader_wrapper_pulse)(const void *, size_t);
+char *(*pa_utf8_valid_dylibloader_wrapper_pulse)(const char *);
+char *(*pa_ascii_valid_dylibloader_wrapper_pulse)(const char *);
+char *(*pa_utf8_filter_dylibloader_wrapper_pulse)(const char *);
+char *(*pa_ascii_filter_dylibloader_wrapper_pulse)(const char *);
+char *(*pa_utf8_to_locale_dylibloader_wrapper_pulse)(const char *);
+char *(*pa_locale_to_utf8_dylibloader_wrapper_pulse)(const char *);
+pa_threaded_mainloop *(*pa_threaded_mainloop_new_dylibloader_wrapper_pulse)(void);
+void (*pa_threaded_mainloop_free_dylibloader_wrapper_pulse)(pa_threaded_mainloop *);
+int (*pa_threaded_mainloop_start_dylibloader_wrapper_pulse)(pa_threaded_mainloop *);
+void (*pa_threaded_mainloop_stop_dylibloader_wrapper_pulse)(pa_threaded_mainloop *);
+void (*pa_threaded_mainloop_lock_dylibloader_wrapper_pulse)(pa_threaded_mainloop *);
+void (*pa_threaded_mainloop_unlock_dylibloader_wrapper_pulse)(pa_threaded_mainloop *);
+void (*pa_threaded_mainloop_wait_dylibloader_wrapper_pulse)(pa_threaded_mainloop *);
+void (*pa_threaded_mainloop_signal_dylibloader_wrapper_pulse)(pa_threaded_mainloop *, int);
+void (*pa_threaded_mainloop_accept_dylibloader_wrapper_pulse)(pa_threaded_mainloop *);
+int (*pa_threaded_mainloop_get_retval_dylibloader_wrapper_pulse)(const pa_threaded_mainloop *);
+pa_mainloop_api *(*pa_threaded_mainloop_get_api_dylibloader_wrapper_pulse)(pa_threaded_mainloop *);
+int (*pa_threaded_mainloop_in_thread_dylibloader_wrapper_pulse)(pa_threaded_mainloop *);
+void (*pa_threaded_mainloop_set_name_dylibloader_wrapper_pulse)(pa_threaded_mainloop *, const char *);
+void (*pa_threaded_mainloop_once_unlocked_dylibloader_wrapper_pulse)(pa_threaded_mainloop *, void *, void *);
+pa_mainloop *(*pa_mainloop_new_dylibloader_wrapper_pulse)(void);
+void (*pa_mainloop_free_dylibloader_wrapper_pulse)(pa_mainloop *);
+int (*pa_mainloop_prepare_dylibloader_wrapper_pulse)(pa_mainloop *, int);
+int (*pa_mainloop_poll_dylibloader_wrapper_pulse)(pa_mainloop *);
+int (*pa_mainloop_dispatch_dylibloader_wrapper_pulse)(pa_mainloop *);
+int (*pa_mainloop_get_retval_dylibloader_wrapper_pulse)(const pa_mainloop *);
+int (*pa_mainloop_iterate_dylibloader_wrapper_pulse)(pa_mainloop *, int, int *);
+int (*pa_mainloop_run_dylibloader_wrapper_pulse)(pa_mainloop *, int *);
+pa_mainloop_api *(*pa_mainloop_get_api_dylibloader_wrapper_pulse)(pa_mainloop *);
+void (*pa_mainloop_quit_dylibloader_wrapper_pulse)(pa_mainloop *, int);
+void (*pa_mainloop_wakeup_dylibloader_wrapper_pulse)(pa_mainloop *);
+void (*pa_mainloop_set_poll_func_dylibloader_wrapper_pulse)(pa_mainloop *, pa_poll_func, void *);
+int (*pa_signal_init_dylibloader_wrapper_pulse)(pa_mainloop_api *);
+void (*pa_signal_done_dylibloader_wrapper_pulse)(void);
+pa_signal_event *(*pa_signal_new_dylibloader_wrapper_pulse)(int, pa_signal_cb_t, void *);
+void (*pa_signal_free_dylibloader_wrapper_pulse)(pa_signal_event *);
+void (*pa_signal_set_destroy_dylibloader_wrapper_pulse)(pa_signal_event *, pa_signal_destroy_cb_t);
+char *(*pa_get_user_name_dylibloader_wrapper_pulse)(char *, size_t);
+char *(*pa_get_host_name_dylibloader_wrapper_pulse)(char *, size_t);
+char *(*pa_get_fqdn_dylibloader_wrapper_pulse)(char *, size_t);
+char *(*pa_get_home_dir_dylibloader_wrapper_pulse)(char *, size_t);
+char *(*pa_get_binary_name_dylibloader_wrapper_pulse)(char *, size_t);
+char *(*pa_path_get_filename_dylibloader_wrapper_pulse)(const char *);
+int (*pa_msleep_dylibloader_wrapper_pulse)(unsigned long);
+int (*pa_thread_make_realtime_dylibloader_wrapper_pulse)(int);
+struct timeval *(*pa_gettimeofday_dylibloader_wrapper_pulse)(struct timeval *);
+pa_usec_t (*pa_timeval_diff_dylibloader_wrapper_pulse)(struct timeval *, struct timeval *);
+int (*pa_timeval_cmp_dylibloader_wrapper_pulse)(struct timeval *, struct timeval *);
+pa_usec_t (*pa_timeval_age_dylibloader_wrapper_pulse)(struct timeval *);
+struct timeval *(*pa_timeval_add_dylibloader_wrapper_pulse)(struct timeval *, pa_usec_t);
+struct timeval *(*pa_timeval_sub_dylibloader_wrapper_pulse)(struct timeval *, pa_usec_t);
+struct timeval *(*pa_timeval_store_dylibloader_wrapper_pulse)(struct timeval *, pa_usec_t);
+pa_usec_t (*pa_timeval_load_dylibloader_wrapper_pulse)(struct timeval *);
+pa_usec_t (*pa_rtclock_now_dylibloader_wrapper_pulse)(void);
 int initialize_pulse(int verbose) {
-  void *handle;
-  char *error;
-  handle = dlopen("libpulse.so.0", RTLD_LAZY);
-  if (!handle) {
-    if (verbose) {
-      fprintf(stderr, "%s\n", dlerror());
-    }
-    return(1);
-  }
-  dlerror();
-// pa_get_library_version
-  *(void **) (&pa_get_library_version_dylibloader_wrapper_pulse) = dlsym(handle, "pa_get_library_version");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_bytes_per_second
-  *(void **) (&pa_bytes_per_second_dylibloader_wrapper_pulse) = dlsym(handle, "pa_bytes_per_second");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_frame_size
-  *(void **) (&pa_frame_size_dylibloader_wrapper_pulse) = dlsym(handle, "pa_frame_size");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_sample_size
-  *(void **) (&pa_sample_size_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sample_size");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_sample_size_of_format
-  *(void **) (&pa_sample_size_of_format_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sample_size_of_format");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_bytes_to_usec
-  *(void **) (&pa_bytes_to_usec_dylibloader_wrapper_pulse) = dlsym(handle, "pa_bytes_to_usec");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_usec_to_bytes
-  *(void **) (&pa_usec_to_bytes_dylibloader_wrapper_pulse) = dlsym(handle, "pa_usec_to_bytes");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_sample_spec_init
-  *(void **) (&pa_sample_spec_init_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sample_spec_init");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_sample_format_valid
-  *(void **) (&pa_sample_format_valid_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sample_format_valid");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_sample_rate_valid
-  *(void **) (&pa_sample_rate_valid_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sample_rate_valid");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_channels_valid
-  *(void **) (&pa_channels_valid_dylibloader_wrapper_pulse) = dlsym(handle, "pa_channels_valid");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_sample_spec_valid
-  *(void **) (&pa_sample_spec_valid_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sample_spec_valid");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_sample_spec_equal
-  *(void **) (&pa_sample_spec_equal_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sample_spec_equal");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_sample_format_to_string
-  *(void **) (&pa_sample_format_to_string_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sample_format_to_string");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_parse_sample_format
-  *(void **) (&pa_parse_sample_format_dylibloader_wrapper_pulse) = dlsym(handle, "pa_parse_sample_format");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_sample_spec_snprint
-  *(void **) (&pa_sample_spec_snprint_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sample_spec_snprint");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_bytes_snprint
-  *(void **) (&pa_bytes_snprint_dylibloader_wrapper_pulse) = dlsym(handle, "pa_bytes_snprint");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_sample_format_is_le
-  *(void **) (&pa_sample_format_is_le_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sample_format_is_le");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_sample_format_is_be
-  *(void **) (&pa_sample_format_is_be_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sample_format_is_be");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_direction_valid
-  *(void **) (&pa_direction_valid_dylibloader_wrapper_pulse) = dlsym(handle, "pa_direction_valid");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_direction_to_string
-  *(void **) (&pa_direction_to_string_dylibloader_wrapper_pulse) = dlsym(handle, "pa_direction_to_string");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_mainloop_api_once
-  *(void **) (&pa_mainloop_api_once_dylibloader_wrapper_pulse) = dlsym(handle, "pa_mainloop_api_once");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_proplist_new
-  *(void **) (&pa_proplist_new_dylibloader_wrapper_pulse) = dlsym(handle, "pa_proplist_new");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_proplist_free
-  *(void **) (&pa_proplist_free_dylibloader_wrapper_pulse) = dlsym(handle, "pa_proplist_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_proplist_key_valid
-  *(void **) (&pa_proplist_key_valid_dylibloader_wrapper_pulse) = dlsym(handle, "pa_proplist_key_valid");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_proplist_sets
-  *(void **) (&pa_proplist_sets_dylibloader_wrapper_pulse) = dlsym(handle, "pa_proplist_sets");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_proplist_setp
-  *(void **) (&pa_proplist_setp_dylibloader_wrapper_pulse) = dlsym(handle, "pa_proplist_setp");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_proplist_setf
-  *(void **) (&pa_proplist_setf_dylibloader_wrapper_pulse) = dlsym(handle, "pa_proplist_setf");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_proplist_set
-  *(void **) (&pa_proplist_set_dylibloader_wrapper_pulse) = dlsym(handle, "pa_proplist_set");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_proplist_gets
-  *(void **) (&pa_proplist_gets_dylibloader_wrapper_pulse) = dlsym(handle, "pa_proplist_gets");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_proplist_get
-  *(void **) (&pa_proplist_get_dylibloader_wrapper_pulse) = dlsym(handle, "pa_proplist_get");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_proplist_update
-  *(void **) (&pa_proplist_update_dylibloader_wrapper_pulse) = dlsym(handle, "pa_proplist_update");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_proplist_unset
-  *(void **) (&pa_proplist_unset_dylibloader_wrapper_pulse) = dlsym(handle, "pa_proplist_unset");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_proplist_unset_many
-  *(void **) (&pa_proplist_unset_many_dylibloader_wrapper_pulse) = dlsym(handle, "pa_proplist_unset_many");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_proplist_iterate
-  *(void **) (&pa_proplist_iterate_dylibloader_wrapper_pulse) = dlsym(handle, "pa_proplist_iterate");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_proplist_to_string
-  *(void **) (&pa_proplist_to_string_dylibloader_wrapper_pulse) = dlsym(handle, "pa_proplist_to_string");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_proplist_to_string_sep
-  *(void **) (&pa_proplist_to_string_sep_dylibloader_wrapper_pulse) = dlsym(handle, "pa_proplist_to_string_sep");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_proplist_from_string
-  *(void **) (&pa_proplist_from_string_dylibloader_wrapper_pulse) = dlsym(handle, "pa_proplist_from_string");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_proplist_contains
-  *(void **) (&pa_proplist_contains_dylibloader_wrapper_pulse) = dlsym(handle, "pa_proplist_contains");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_proplist_clear
-  *(void **) (&pa_proplist_clear_dylibloader_wrapper_pulse) = dlsym(handle, "pa_proplist_clear");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_proplist_copy
-  *(void **) (&pa_proplist_copy_dylibloader_wrapper_pulse) = dlsym(handle, "pa_proplist_copy");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_proplist_size
-  *(void **) (&pa_proplist_size_dylibloader_wrapper_pulse) = dlsym(handle, "pa_proplist_size");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_proplist_isempty
-  *(void **) (&pa_proplist_isempty_dylibloader_wrapper_pulse) = dlsym(handle, "pa_proplist_isempty");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_proplist_equal
-  *(void **) (&pa_proplist_equal_dylibloader_wrapper_pulse) = dlsym(handle, "pa_proplist_equal");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_channel_map_init
-  *(void **) (&pa_channel_map_init_dylibloader_wrapper_pulse) = dlsym(handle, "pa_channel_map_init");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_channel_map_init_mono
-  *(void **) (&pa_channel_map_init_mono_dylibloader_wrapper_pulse) = dlsym(handle, "pa_channel_map_init_mono");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_channel_map_init_stereo
-  *(void **) (&pa_channel_map_init_stereo_dylibloader_wrapper_pulse) = dlsym(handle, "pa_channel_map_init_stereo");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_channel_map_init_auto
-  *(void **) (&pa_channel_map_init_auto_dylibloader_wrapper_pulse) = dlsym(handle, "pa_channel_map_init_auto");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_channel_map_init_extend
-  *(void **) (&pa_channel_map_init_extend_dylibloader_wrapper_pulse) = dlsym(handle, "pa_channel_map_init_extend");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_channel_position_to_string
-  *(void **) (&pa_channel_position_to_string_dylibloader_wrapper_pulse) = dlsym(handle, "pa_channel_position_to_string");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_channel_position_from_string
-  *(void **) (&pa_channel_position_from_string_dylibloader_wrapper_pulse) = dlsym(handle, "pa_channel_position_from_string");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_channel_position_to_pretty_string
-  *(void **) (&pa_channel_position_to_pretty_string_dylibloader_wrapper_pulse) = dlsym(handle, "pa_channel_position_to_pretty_string");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_channel_map_snprint
-  *(void **) (&pa_channel_map_snprint_dylibloader_wrapper_pulse) = dlsym(handle, "pa_channel_map_snprint");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_channel_map_parse
-  *(void **) (&pa_channel_map_parse_dylibloader_wrapper_pulse) = dlsym(handle, "pa_channel_map_parse");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_channel_map_equal
-  *(void **) (&pa_channel_map_equal_dylibloader_wrapper_pulse) = dlsym(handle, "pa_channel_map_equal");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_channel_map_valid
-  *(void **) (&pa_channel_map_valid_dylibloader_wrapper_pulse) = dlsym(handle, "pa_channel_map_valid");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_channel_map_compatible
-  *(void **) (&pa_channel_map_compatible_dylibloader_wrapper_pulse) = dlsym(handle, "pa_channel_map_compatible");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_channel_map_superset
-  *(void **) (&pa_channel_map_superset_dylibloader_wrapper_pulse) = dlsym(handle, "pa_channel_map_superset");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_channel_map_can_balance
-  *(void **) (&pa_channel_map_can_balance_dylibloader_wrapper_pulse) = dlsym(handle, "pa_channel_map_can_balance");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_channel_map_can_fade
-  *(void **) (&pa_channel_map_can_fade_dylibloader_wrapper_pulse) = dlsym(handle, "pa_channel_map_can_fade");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_channel_map_can_lfe_balance
-  *(void **) (&pa_channel_map_can_lfe_balance_dylibloader_wrapper_pulse) = dlsym(handle, "pa_channel_map_can_lfe_balance");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_channel_map_to_name
-  *(void **) (&pa_channel_map_to_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_channel_map_to_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_channel_map_to_pretty_name
-  *(void **) (&pa_channel_map_to_pretty_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_channel_map_to_pretty_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_channel_map_has_position
-  *(void **) (&pa_channel_map_has_position_dylibloader_wrapper_pulse) = dlsym(handle, "pa_channel_map_has_position");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_channel_map_mask
-  *(void **) (&pa_channel_map_mask_dylibloader_wrapper_pulse) = dlsym(handle, "pa_channel_map_mask");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_encoding_to_string
-  *(void **) (&pa_encoding_to_string_dylibloader_wrapper_pulse) = dlsym(handle, "pa_encoding_to_string");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_encoding_from_string
-  *(void **) (&pa_encoding_from_string_dylibloader_wrapper_pulse) = dlsym(handle, "pa_encoding_from_string");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_format_info_new
-  *(void **) (&pa_format_info_new_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_new");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_format_info_copy
-  *(void **) (&pa_format_info_copy_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_copy");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_format_info_free
-  *(void **) (&pa_format_info_free_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_format_info_valid
-  *(void **) (&pa_format_info_valid_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_valid");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_format_info_is_pcm
-  *(void **) (&pa_format_info_is_pcm_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_is_pcm");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_format_info_is_compatible
-  *(void **) (&pa_format_info_is_compatible_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_is_compatible");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_format_info_snprint
-  *(void **) (&pa_format_info_snprint_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_snprint");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_format_info_from_string
-  *(void **) (&pa_format_info_from_string_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_from_string");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_format_info_from_sample_spec
-  *(void **) (&pa_format_info_from_sample_spec_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_from_sample_spec");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_format_info_to_sample_spec
-  *(void **) (&pa_format_info_to_sample_spec_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_to_sample_spec");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_format_info_get_prop_type
-  *(void **) (&pa_format_info_get_prop_type_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_get_prop_type");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_format_info_get_prop_int
-  *(void **) (&pa_format_info_get_prop_int_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_get_prop_int");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_format_info_get_prop_int_range
-  *(void **) (&pa_format_info_get_prop_int_range_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_get_prop_int_range");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_format_info_get_prop_int_array
-  *(void **) (&pa_format_info_get_prop_int_array_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_get_prop_int_array");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_format_info_get_prop_string
-  *(void **) (&pa_format_info_get_prop_string_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_get_prop_string");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_format_info_get_prop_string_array
-  *(void **) (&pa_format_info_get_prop_string_array_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_get_prop_string_array");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_format_info_free_string_array
-  *(void **) (&pa_format_info_free_string_array_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_free_string_array");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_format_info_get_sample_format
-  *(void **) (&pa_format_info_get_sample_format_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_get_sample_format");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_format_info_get_rate
-  *(void **) (&pa_format_info_get_rate_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_get_rate");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_format_info_get_channels
-  *(void **) (&pa_format_info_get_channels_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_get_channels");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_format_info_get_channel_map
-  *(void **) (&pa_format_info_get_channel_map_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_get_channel_map");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_format_info_set_prop_int
-  *(void **) (&pa_format_info_set_prop_int_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_set_prop_int");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_format_info_set_prop_int_array
-  *(void **) (&pa_format_info_set_prop_int_array_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_set_prop_int_array");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_format_info_set_prop_int_range
-  *(void **) (&pa_format_info_set_prop_int_range_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_set_prop_int_range");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_format_info_set_prop_string
-  *(void **) (&pa_format_info_set_prop_string_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_set_prop_string");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_format_info_set_prop_string_array
-  *(void **) (&pa_format_info_set_prop_string_array_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_set_prop_string_array");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_format_info_set_sample_format
-  *(void **) (&pa_format_info_set_sample_format_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_set_sample_format");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_format_info_set_rate
-  *(void **) (&pa_format_info_set_rate_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_set_rate");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_format_info_set_channels
-  *(void **) (&pa_format_info_set_channels_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_set_channels");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_format_info_set_channel_map
-  *(void **) (&pa_format_info_set_channel_map_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_set_channel_map");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_operation_ref
-  *(void **) (&pa_operation_ref_dylibloader_wrapper_pulse) = dlsym(handle, "pa_operation_ref");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_operation_unref
-  *(void **) (&pa_operation_unref_dylibloader_wrapper_pulse) = dlsym(handle, "pa_operation_unref");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_operation_cancel
-  *(void **) (&pa_operation_cancel_dylibloader_wrapper_pulse) = dlsym(handle, "pa_operation_cancel");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_operation_get_state
-  *(void **) (&pa_operation_get_state_dylibloader_wrapper_pulse) = dlsym(handle, "pa_operation_get_state");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_operation_set_state_callback
-  *(void **) (&pa_operation_set_state_callback_dylibloader_wrapper_pulse) = dlsym(handle, "pa_operation_set_state_callback");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_new
-  *(void **) (&pa_context_new_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_new");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_new_with_proplist
-  *(void **) (&pa_context_new_with_proplist_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_new_with_proplist");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_unref
-  *(void **) (&pa_context_unref_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_unref");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_ref
-  *(void **) (&pa_context_ref_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_ref");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_set_state_callback
-  *(void **) (&pa_context_set_state_callback_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_state_callback");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_set_event_callback
-  *(void **) (&pa_context_set_event_callback_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_event_callback");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_errno
-  *(void **) (&pa_context_errno_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_errno");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_is_pending
-  *(void **) (&pa_context_is_pending_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_is_pending");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_get_state
-  *(void **) (&pa_context_get_state_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_state");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_connect
-  *(void **) (&pa_context_connect_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_connect");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_disconnect
-  *(void **) (&pa_context_disconnect_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_disconnect");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_drain
-  *(void **) (&pa_context_drain_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_drain");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_exit_daemon
-  *(void **) (&pa_context_exit_daemon_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_exit_daemon");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_set_default_sink
-  *(void **) (&pa_context_set_default_sink_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_default_sink");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_set_default_source
-  *(void **) (&pa_context_set_default_source_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_default_source");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_is_local
-  *(void **) (&pa_context_is_local_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_is_local");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_set_name
-  *(void **) (&pa_context_set_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_get_server
-  *(void **) (&pa_context_get_server_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_server");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_get_protocol_version
-  *(void **) (&pa_context_get_protocol_version_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_protocol_version");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_get_server_protocol_version
-  *(void **) (&pa_context_get_server_protocol_version_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_server_protocol_version");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_proplist_update
-  *(void **) (&pa_context_proplist_update_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_proplist_update");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_proplist_remove
-  *(void **) (&pa_context_proplist_remove_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_proplist_remove");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_get_index
-  *(void **) (&pa_context_get_index_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_index");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_rttime_new
-  *(void **) (&pa_context_rttime_new_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_rttime_new");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_rttime_restart
-  *(void **) (&pa_context_rttime_restart_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_rttime_restart");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_get_tile_size
-  *(void **) (&pa_context_get_tile_size_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_tile_size");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_load_cookie_from_file
-  *(void **) (&pa_context_load_cookie_from_file_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_load_cookie_from_file");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_cvolume_equal
-  *(void **) (&pa_cvolume_equal_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_equal");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_cvolume_init
-  *(void **) (&pa_cvolume_init_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_init");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_cvolume_set
-  *(void **) (&pa_cvolume_set_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_set");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_cvolume_snprint
-  *(void **) (&pa_cvolume_snprint_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_snprint");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_sw_cvolume_snprint_dB
-  *(void **) (&pa_sw_cvolume_snprint_dB_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sw_cvolume_snprint_dB");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_cvolume_snprint_verbose
-  *(void **) (&pa_cvolume_snprint_verbose_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_snprint_verbose");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_volume_snprint
-  *(void **) (&pa_volume_snprint_dylibloader_wrapper_pulse) = dlsym(handle, "pa_volume_snprint");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_sw_volume_snprint_dB
-  *(void **) (&pa_sw_volume_snprint_dB_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sw_volume_snprint_dB");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_volume_snprint_verbose
-  *(void **) (&pa_volume_snprint_verbose_dylibloader_wrapper_pulse) = dlsym(handle, "pa_volume_snprint_verbose");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_cvolume_avg
-  *(void **) (&pa_cvolume_avg_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_avg");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_cvolume_avg_mask
-  *(void **) (&pa_cvolume_avg_mask_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_avg_mask");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_cvolume_max
-  *(void **) (&pa_cvolume_max_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_max");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_cvolume_max_mask
-  *(void **) (&pa_cvolume_max_mask_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_max_mask");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_cvolume_min
-  *(void **) (&pa_cvolume_min_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_min");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_cvolume_min_mask
-  *(void **) (&pa_cvolume_min_mask_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_min_mask");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_cvolume_valid
-  *(void **) (&pa_cvolume_valid_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_valid");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_cvolume_channels_equal_to
-  *(void **) (&pa_cvolume_channels_equal_to_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_channels_equal_to");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_sw_volume_multiply
-  *(void **) (&pa_sw_volume_multiply_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sw_volume_multiply");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_sw_cvolume_multiply
-  *(void **) (&pa_sw_cvolume_multiply_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sw_cvolume_multiply");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_sw_cvolume_multiply_scalar
-  *(void **) (&pa_sw_cvolume_multiply_scalar_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sw_cvolume_multiply_scalar");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_sw_volume_divide
-  *(void **) (&pa_sw_volume_divide_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sw_volume_divide");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_sw_cvolume_divide
-  *(void **) (&pa_sw_cvolume_divide_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sw_cvolume_divide");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_sw_cvolume_divide_scalar
-  *(void **) (&pa_sw_cvolume_divide_scalar_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sw_cvolume_divide_scalar");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_sw_volume_from_dB
-  *(void **) (&pa_sw_volume_from_dB_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sw_volume_from_dB");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_sw_volume_to_dB
-  *(void **) (&pa_sw_volume_to_dB_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sw_volume_to_dB");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_sw_volume_from_linear
-  *(void **) (&pa_sw_volume_from_linear_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sw_volume_from_linear");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_sw_volume_to_linear
-  *(void **) (&pa_sw_volume_to_linear_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sw_volume_to_linear");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_cvolume_remap
-  *(void **) (&pa_cvolume_remap_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_remap");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_cvolume_compatible
-  *(void **) (&pa_cvolume_compatible_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_compatible");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_cvolume_compatible_with_channel_map
-  *(void **) (&pa_cvolume_compatible_with_channel_map_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_compatible_with_channel_map");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_cvolume_get_balance
-  *(void **) (&pa_cvolume_get_balance_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_get_balance");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_cvolume_set_balance
-  *(void **) (&pa_cvolume_set_balance_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_set_balance");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_cvolume_get_fade
-  *(void **) (&pa_cvolume_get_fade_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_get_fade");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_cvolume_set_fade
-  *(void **) (&pa_cvolume_set_fade_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_set_fade");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_cvolume_get_lfe_balance
-  *(void **) (&pa_cvolume_get_lfe_balance_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_get_lfe_balance");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_cvolume_set_lfe_balance
-  *(void **) (&pa_cvolume_set_lfe_balance_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_set_lfe_balance");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_cvolume_scale
-  *(void **) (&pa_cvolume_scale_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_scale");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_cvolume_scale_mask
-  *(void **) (&pa_cvolume_scale_mask_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_scale_mask");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_cvolume_set_position
-  *(void **) (&pa_cvolume_set_position_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_set_position");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_cvolume_get_position
-  *(void **) (&pa_cvolume_get_position_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_get_position");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_cvolume_merge
-  *(void **) (&pa_cvolume_merge_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_merge");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_cvolume_inc_clamp
-  *(void **) (&pa_cvolume_inc_clamp_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_inc_clamp");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_cvolume_inc
-  *(void **) (&pa_cvolume_inc_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_inc");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_cvolume_dec
-  *(void **) (&pa_cvolume_dec_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_dec");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_new
-  *(void **) (&pa_stream_new_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_new");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_new_with_proplist
-  *(void **) (&pa_stream_new_with_proplist_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_new_with_proplist");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_new_extended
-  *(void **) (&pa_stream_new_extended_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_new_extended");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_unref
-  *(void **) (&pa_stream_unref_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_unref");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_ref
-  *(void **) (&pa_stream_ref_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_ref");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_get_state
-  *(void **) (&pa_stream_get_state_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_get_state");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_get_context
-  *(void **) (&pa_stream_get_context_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_get_context");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_get_index
-  *(void **) (&pa_stream_get_index_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_get_index");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_get_device_index
-  *(void **) (&pa_stream_get_device_index_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_get_device_index");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_get_device_name
-  *(void **) (&pa_stream_get_device_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_get_device_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_is_suspended
-  *(void **) (&pa_stream_is_suspended_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_is_suspended");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_is_corked
-  *(void **) (&pa_stream_is_corked_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_is_corked");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_connect_playback
-  *(void **) (&pa_stream_connect_playback_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_connect_playback");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_connect_record
-  *(void **) (&pa_stream_connect_record_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_connect_record");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_disconnect
-  *(void **) (&pa_stream_disconnect_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_disconnect");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_begin_write
-  *(void **) (&pa_stream_begin_write_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_begin_write");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_cancel_write
-  *(void **) (&pa_stream_cancel_write_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_cancel_write");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_write
-  *(void **) (&pa_stream_write_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_write");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_write_ext_free
-  *(void **) (&pa_stream_write_ext_free_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_write_ext_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_peek
-  *(void **) (&pa_stream_peek_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_peek");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_drop
-  *(void **) (&pa_stream_drop_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_drop");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_writable_size
-  *(void **) (&pa_stream_writable_size_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_writable_size");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_readable_size
-  *(void **) (&pa_stream_readable_size_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_readable_size");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_drain
-  *(void **) (&pa_stream_drain_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_drain");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_update_timing_info
-  *(void **) (&pa_stream_update_timing_info_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_update_timing_info");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_set_state_callback
-  *(void **) (&pa_stream_set_state_callback_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_set_state_callback");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_set_write_callback
-  *(void **) (&pa_stream_set_write_callback_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_set_write_callback");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_set_read_callback
-  *(void **) (&pa_stream_set_read_callback_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_set_read_callback");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_set_overflow_callback
-  *(void **) (&pa_stream_set_overflow_callback_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_set_overflow_callback");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_get_underflow_index
-  *(void **) (&pa_stream_get_underflow_index_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_get_underflow_index");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_set_underflow_callback
-  *(void **) (&pa_stream_set_underflow_callback_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_set_underflow_callback");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_set_started_callback
-  *(void **) (&pa_stream_set_started_callback_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_set_started_callback");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_set_latency_update_callback
-  *(void **) (&pa_stream_set_latency_update_callback_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_set_latency_update_callback");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_set_moved_callback
-  *(void **) (&pa_stream_set_moved_callback_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_set_moved_callback");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_set_suspended_callback
-  *(void **) (&pa_stream_set_suspended_callback_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_set_suspended_callback");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_set_event_callback
-  *(void **) (&pa_stream_set_event_callback_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_set_event_callback");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_set_buffer_attr_callback
-  *(void **) (&pa_stream_set_buffer_attr_callback_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_set_buffer_attr_callback");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_cork
-  *(void **) (&pa_stream_cork_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_cork");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_flush
-  *(void **) (&pa_stream_flush_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_flush");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_prebuf
-  *(void **) (&pa_stream_prebuf_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_prebuf");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_trigger
-  *(void **) (&pa_stream_trigger_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_trigger");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_set_name
-  *(void **) (&pa_stream_set_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_set_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_get_time
-  *(void **) (&pa_stream_get_time_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_get_time");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_get_latency
-  *(void **) (&pa_stream_get_latency_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_get_latency");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_get_timing_info
-  *(void **) (&pa_stream_get_timing_info_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_get_timing_info");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_get_sample_spec
-  *(void **) (&pa_stream_get_sample_spec_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_get_sample_spec");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_get_channel_map
-  *(void **) (&pa_stream_get_channel_map_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_get_channel_map");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_get_format_info
-  *(void **) (&pa_stream_get_format_info_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_get_format_info");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_get_buffer_attr
-  *(void **) (&pa_stream_get_buffer_attr_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_get_buffer_attr");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_set_buffer_attr
-  *(void **) (&pa_stream_set_buffer_attr_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_set_buffer_attr");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_update_sample_rate
-  *(void **) (&pa_stream_update_sample_rate_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_update_sample_rate");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_proplist_update
-  *(void **) (&pa_stream_proplist_update_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_proplist_update");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_proplist_remove
-  *(void **) (&pa_stream_proplist_remove_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_proplist_remove");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_set_monitor_stream
-  *(void **) (&pa_stream_set_monitor_stream_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_set_monitor_stream");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_get_monitor_stream
-  *(void **) (&pa_stream_get_monitor_stream_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_get_monitor_stream");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_get_sink_info_by_name
-  *(void **) (&pa_context_get_sink_info_by_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_sink_info_by_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_get_sink_info_by_index
-  *(void **) (&pa_context_get_sink_info_by_index_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_sink_info_by_index");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_get_sink_info_list
-  *(void **) (&pa_context_get_sink_info_list_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_sink_info_list");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_set_sink_volume_by_index
-  *(void **) (&pa_context_set_sink_volume_by_index_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_sink_volume_by_index");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_set_sink_volume_by_name
-  *(void **) (&pa_context_set_sink_volume_by_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_sink_volume_by_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_set_sink_mute_by_index
-  *(void **) (&pa_context_set_sink_mute_by_index_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_sink_mute_by_index");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_set_sink_mute_by_name
-  *(void **) (&pa_context_set_sink_mute_by_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_sink_mute_by_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_suspend_sink_by_name
-  *(void **) (&pa_context_suspend_sink_by_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_suspend_sink_by_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_suspend_sink_by_index
-  *(void **) (&pa_context_suspend_sink_by_index_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_suspend_sink_by_index");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_set_sink_port_by_index
-  *(void **) (&pa_context_set_sink_port_by_index_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_sink_port_by_index");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_set_sink_port_by_name
-  *(void **) (&pa_context_set_sink_port_by_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_sink_port_by_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_get_source_info_by_name
-  *(void **) (&pa_context_get_source_info_by_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_source_info_by_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_get_source_info_by_index
-  *(void **) (&pa_context_get_source_info_by_index_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_source_info_by_index");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_get_source_info_list
-  *(void **) (&pa_context_get_source_info_list_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_source_info_list");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_set_source_volume_by_index
-  *(void **) (&pa_context_set_source_volume_by_index_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_source_volume_by_index");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_set_source_volume_by_name
-  *(void **) (&pa_context_set_source_volume_by_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_source_volume_by_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_set_source_mute_by_index
-  *(void **) (&pa_context_set_source_mute_by_index_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_source_mute_by_index");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_set_source_mute_by_name
-  *(void **) (&pa_context_set_source_mute_by_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_source_mute_by_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_suspend_source_by_name
-  *(void **) (&pa_context_suspend_source_by_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_suspend_source_by_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_suspend_source_by_index
-  *(void **) (&pa_context_suspend_source_by_index_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_suspend_source_by_index");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_set_source_port_by_index
-  *(void **) (&pa_context_set_source_port_by_index_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_source_port_by_index");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_set_source_port_by_name
-  *(void **) (&pa_context_set_source_port_by_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_source_port_by_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_get_server_info
-  *(void **) (&pa_context_get_server_info_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_server_info");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_get_module_info
-  *(void **) (&pa_context_get_module_info_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_module_info");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_get_module_info_list
-  *(void **) (&pa_context_get_module_info_list_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_module_info_list");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_load_module
-  *(void **) (&pa_context_load_module_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_load_module");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_unload_module
-  *(void **) (&pa_context_unload_module_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_unload_module");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_get_client_info
-  *(void **) (&pa_context_get_client_info_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_client_info");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_get_client_info_list
-  *(void **) (&pa_context_get_client_info_list_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_client_info_list");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_kill_client
-  *(void **) (&pa_context_kill_client_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_kill_client");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_get_card_info_by_index
-  *(void **) (&pa_context_get_card_info_by_index_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_card_info_by_index");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_get_card_info_by_name
-  *(void **) (&pa_context_get_card_info_by_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_card_info_by_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_get_card_info_list
-  *(void **) (&pa_context_get_card_info_list_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_card_info_list");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_set_card_profile_by_index
-  *(void **) (&pa_context_set_card_profile_by_index_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_card_profile_by_index");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_set_card_profile_by_name
-  *(void **) (&pa_context_set_card_profile_by_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_card_profile_by_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_set_port_latency_offset
-  *(void **) (&pa_context_set_port_latency_offset_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_port_latency_offset");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_get_sink_input_info
-  *(void **) (&pa_context_get_sink_input_info_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_sink_input_info");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_get_sink_input_info_list
-  *(void **) (&pa_context_get_sink_input_info_list_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_sink_input_info_list");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_move_sink_input_by_name
-  *(void **) (&pa_context_move_sink_input_by_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_move_sink_input_by_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_move_sink_input_by_index
-  *(void **) (&pa_context_move_sink_input_by_index_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_move_sink_input_by_index");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_set_sink_input_volume
-  *(void **) (&pa_context_set_sink_input_volume_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_sink_input_volume");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_set_sink_input_mute
-  *(void **) (&pa_context_set_sink_input_mute_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_sink_input_mute");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_kill_sink_input
-  *(void **) (&pa_context_kill_sink_input_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_kill_sink_input");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_get_source_output_info
-  *(void **) (&pa_context_get_source_output_info_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_source_output_info");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_get_source_output_info_list
-  *(void **) (&pa_context_get_source_output_info_list_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_source_output_info_list");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_move_source_output_by_name
-  *(void **) (&pa_context_move_source_output_by_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_move_source_output_by_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_move_source_output_by_index
-  *(void **) (&pa_context_move_source_output_by_index_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_move_source_output_by_index");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_set_source_output_volume
-  *(void **) (&pa_context_set_source_output_volume_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_source_output_volume");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_set_source_output_mute
-  *(void **) (&pa_context_set_source_output_mute_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_source_output_mute");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_kill_source_output
-  *(void **) (&pa_context_kill_source_output_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_kill_source_output");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_stat
-  *(void **) (&pa_context_stat_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_stat");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_get_sample_info_by_name
-  *(void **) (&pa_context_get_sample_info_by_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_sample_info_by_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_get_sample_info_by_index
-  *(void **) (&pa_context_get_sample_info_by_index_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_sample_info_by_index");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_get_sample_info_list
-  *(void **) (&pa_context_get_sample_info_list_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_sample_info_list");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_get_autoload_info_by_name
-  *(void **) (&pa_context_get_autoload_info_by_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_autoload_info_by_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_get_autoload_info_by_index
-  *(void **) (&pa_context_get_autoload_info_by_index_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_autoload_info_by_index");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_get_autoload_info_list
-  *(void **) (&pa_context_get_autoload_info_list_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_autoload_info_list");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_add_autoload
-  *(void **) (&pa_context_add_autoload_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_add_autoload");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_remove_autoload_by_name
-  *(void **) (&pa_context_remove_autoload_by_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_remove_autoload_by_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_remove_autoload_by_index
-  *(void **) (&pa_context_remove_autoload_by_index_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_remove_autoload_by_index");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_subscribe
-  *(void **) (&pa_context_subscribe_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_subscribe");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_set_subscribe_callback
-  *(void **) (&pa_context_set_subscribe_callback_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_subscribe_callback");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_connect_upload
-  *(void **) (&pa_stream_connect_upload_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_connect_upload");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_stream_finish_upload
-  *(void **) (&pa_stream_finish_upload_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_finish_upload");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_remove_sample
-  *(void **) (&pa_context_remove_sample_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_remove_sample");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_play_sample
-  *(void **) (&pa_context_play_sample_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_play_sample");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_context_play_sample_with_proplist
-  *(void **) (&pa_context_play_sample_with_proplist_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_play_sample_with_proplist");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_strerror
-  *(void **) (&pa_strerror_dylibloader_wrapper_pulse) = dlsym(handle, "pa_strerror");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_xmalloc
-  *(void **) (&pa_xmalloc_dylibloader_wrapper_pulse) = dlsym(handle, "pa_xmalloc");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_xmalloc0
-  *(void **) (&pa_xmalloc0_dylibloader_wrapper_pulse) = dlsym(handle, "pa_xmalloc0");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_xrealloc
-  *(void **) (&pa_xrealloc_dylibloader_wrapper_pulse) = dlsym(handle, "pa_xrealloc");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_xfree
-  *(void **) (&pa_xfree_dylibloader_wrapper_pulse) = dlsym(handle, "pa_xfree");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_xstrdup
-  *(void **) (&pa_xstrdup_dylibloader_wrapper_pulse) = dlsym(handle, "pa_xstrdup");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_xstrndup
-  *(void **) (&pa_xstrndup_dylibloader_wrapper_pulse) = dlsym(handle, "pa_xstrndup");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_xmemdup
-  *(void **) (&pa_xmemdup_dylibloader_wrapper_pulse) = dlsym(handle, "pa_xmemdup");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_utf8_valid
-  *(void **) (&pa_utf8_valid_dylibloader_wrapper_pulse) = dlsym(handle, "pa_utf8_valid");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_ascii_valid
-  *(void **) (&pa_ascii_valid_dylibloader_wrapper_pulse) = dlsym(handle, "pa_ascii_valid");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_utf8_filter
-  *(void **) (&pa_utf8_filter_dylibloader_wrapper_pulse) = dlsym(handle, "pa_utf8_filter");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_ascii_filter
-  *(void **) (&pa_ascii_filter_dylibloader_wrapper_pulse) = dlsym(handle, "pa_ascii_filter");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_utf8_to_locale
-  *(void **) (&pa_utf8_to_locale_dylibloader_wrapper_pulse) = dlsym(handle, "pa_utf8_to_locale");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_locale_to_utf8
-  *(void **) (&pa_locale_to_utf8_dylibloader_wrapper_pulse) = dlsym(handle, "pa_locale_to_utf8");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_threaded_mainloop_new
-  *(void **) (&pa_threaded_mainloop_new_dylibloader_wrapper_pulse) = dlsym(handle, "pa_threaded_mainloop_new");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_threaded_mainloop_free
-  *(void **) (&pa_threaded_mainloop_free_dylibloader_wrapper_pulse) = dlsym(handle, "pa_threaded_mainloop_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_threaded_mainloop_start
-  *(void **) (&pa_threaded_mainloop_start_dylibloader_wrapper_pulse) = dlsym(handle, "pa_threaded_mainloop_start");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_threaded_mainloop_stop
-  *(void **) (&pa_threaded_mainloop_stop_dylibloader_wrapper_pulse) = dlsym(handle, "pa_threaded_mainloop_stop");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_threaded_mainloop_lock
-  *(void **) (&pa_threaded_mainloop_lock_dylibloader_wrapper_pulse) = dlsym(handle, "pa_threaded_mainloop_lock");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_threaded_mainloop_unlock
-  *(void **) (&pa_threaded_mainloop_unlock_dylibloader_wrapper_pulse) = dlsym(handle, "pa_threaded_mainloop_unlock");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_threaded_mainloop_wait
-  *(void **) (&pa_threaded_mainloop_wait_dylibloader_wrapper_pulse) = dlsym(handle, "pa_threaded_mainloop_wait");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_threaded_mainloop_signal
-  *(void **) (&pa_threaded_mainloop_signal_dylibloader_wrapper_pulse) = dlsym(handle, "pa_threaded_mainloop_signal");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_threaded_mainloop_accept
-  *(void **) (&pa_threaded_mainloop_accept_dylibloader_wrapper_pulse) = dlsym(handle, "pa_threaded_mainloop_accept");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_threaded_mainloop_get_retval
-  *(void **) (&pa_threaded_mainloop_get_retval_dylibloader_wrapper_pulse) = dlsym(handle, "pa_threaded_mainloop_get_retval");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_threaded_mainloop_get_api
-  *(void **) (&pa_threaded_mainloop_get_api_dylibloader_wrapper_pulse) = dlsym(handle, "pa_threaded_mainloop_get_api");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_threaded_mainloop_in_thread
-  *(void **) (&pa_threaded_mainloop_in_thread_dylibloader_wrapper_pulse) = dlsym(handle, "pa_threaded_mainloop_in_thread");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_threaded_mainloop_set_name
-  *(void **) (&pa_threaded_mainloop_set_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_threaded_mainloop_set_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_threaded_mainloop_once_unlocked
-  *(void **) (&pa_threaded_mainloop_once_unlocked_dylibloader_wrapper_pulse) = dlsym(handle, "pa_threaded_mainloop_once_unlocked");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_mainloop_new
-  *(void **) (&pa_mainloop_new_dylibloader_wrapper_pulse) = dlsym(handle, "pa_mainloop_new");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_mainloop_free
-  *(void **) (&pa_mainloop_free_dylibloader_wrapper_pulse) = dlsym(handle, "pa_mainloop_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_mainloop_prepare
-  *(void **) (&pa_mainloop_prepare_dylibloader_wrapper_pulse) = dlsym(handle, "pa_mainloop_prepare");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_mainloop_poll
-  *(void **) (&pa_mainloop_poll_dylibloader_wrapper_pulse) = dlsym(handle, "pa_mainloop_poll");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_mainloop_dispatch
-  *(void **) (&pa_mainloop_dispatch_dylibloader_wrapper_pulse) = dlsym(handle, "pa_mainloop_dispatch");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_mainloop_get_retval
-  *(void **) (&pa_mainloop_get_retval_dylibloader_wrapper_pulse) = dlsym(handle, "pa_mainloop_get_retval");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_mainloop_iterate
-  *(void **) (&pa_mainloop_iterate_dylibloader_wrapper_pulse) = dlsym(handle, "pa_mainloop_iterate");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_mainloop_run
-  *(void **) (&pa_mainloop_run_dylibloader_wrapper_pulse) = dlsym(handle, "pa_mainloop_run");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_mainloop_get_api
-  *(void **) (&pa_mainloop_get_api_dylibloader_wrapper_pulse) = dlsym(handle, "pa_mainloop_get_api");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_mainloop_quit
-  *(void **) (&pa_mainloop_quit_dylibloader_wrapper_pulse) = dlsym(handle, "pa_mainloop_quit");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_mainloop_wakeup
-  *(void **) (&pa_mainloop_wakeup_dylibloader_wrapper_pulse) = dlsym(handle, "pa_mainloop_wakeup");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_mainloop_set_poll_func
-  *(void **) (&pa_mainloop_set_poll_func_dylibloader_wrapper_pulse) = dlsym(handle, "pa_mainloop_set_poll_func");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_signal_init
-  *(void **) (&pa_signal_init_dylibloader_wrapper_pulse) = dlsym(handle, "pa_signal_init");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_signal_done
-  *(void **) (&pa_signal_done_dylibloader_wrapper_pulse) = dlsym(handle, "pa_signal_done");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_signal_new
-  *(void **) (&pa_signal_new_dylibloader_wrapper_pulse) = dlsym(handle, "pa_signal_new");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_signal_free
-  *(void **) (&pa_signal_free_dylibloader_wrapper_pulse) = dlsym(handle, "pa_signal_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_signal_set_destroy
-  *(void **) (&pa_signal_set_destroy_dylibloader_wrapper_pulse) = dlsym(handle, "pa_signal_set_destroy");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_get_user_name
-  *(void **) (&pa_get_user_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_get_user_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_get_host_name
-  *(void **) (&pa_get_host_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_get_host_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_get_fqdn
-  *(void **) (&pa_get_fqdn_dylibloader_wrapper_pulse) = dlsym(handle, "pa_get_fqdn");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_get_home_dir
-  *(void **) (&pa_get_home_dir_dylibloader_wrapper_pulse) = dlsym(handle, "pa_get_home_dir");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_get_binary_name
-  *(void **) (&pa_get_binary_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_get_binary_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_path_get_filename
-  *(void **) (&pa_path_get_filename_dylibloader_wrapper_pulse) = dlsym(handle, "pa_path_get_filename");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_msleep
-  *(void **) (&pa_msleep_dylibloader_wrapper_pulse) = dlsym(handle, "pa_msleep");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_thread_make_realtime
-  *(void **) (&pa_thread_make_realtime_dylibloader_wrapper_pulse) = dlsym(handle, "pa_thread_make_realtime");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_gettimeofday
-  *(void **) (&pa_gettimeofday_dylibloader_wrapper_pulse) = dlsym(handle, "pa_gettimeofday");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_timeval_diff
-  *(void **) (&pa_timeval_diff_dylibloader_wrapper_pulse) = dlsym(handle, "pa_timeval_diff");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_timeval_cmp
-  *(void **) (&pa_timeval_cmp_dylibloader_wrapper_pulse) = dlsym(handle, "pa_timeval_cmp");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_timeval_age
-  *(void **) (&pa_timeval_age_dylibloader_wrapper_pulse) = dlsym(handle, "pa_timeval_age");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_timeval_add
-  *(void **) (&pa_timeval_add_dylibloader_wrapper_pulse) = dlsym(handle, "pa_timeval_add");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_timeval_sub
-  *(void **) (&pa_timeval_sub_dylibloader_wrapper_pulse) = dlsym(handle, "pa_timeval_sub");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_timeval_store
-  *(void **) (&pa_timeval_store_dylibloader_wrapper_pulse) = dlsym(handle, "pa_timeval_store");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_timeval_load
-  *(void **) (&pa_timeval_load_dylibloader_wrapper_pulse) = dlsym(handle, "pa_timeval_load");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// pa_rtclock_now
-  *(void **) (&pa_rtclock_now_dylibloader_wrapper_pulse) = dlsym(handle, "pa_rtclock_now");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-return 0;
+	void *handle;
+	char *error;
+	handle = dlopen("libpulse.so.0", RTLD_LAZY);
+	if (!handle) {
+		if (verbose) {
+			fprintf(stderr, "%s\n", dlerror());
+		}
+		return (1);
+	}
+	dlerror();
+	// pa_get_library_version
+	*(void **)(&pa_get_library_version_dylibloader_wrapper_pulse) = dlsym(handle, "pa_get_library_version");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_bytes_per_second
+	*(void **)(&pa_bytes_per_second_dylibloader_wrapper_pulse) = dlsym(handle, "pa_bytes_per_second");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_frame_size
+	*(void **)(&pa_frame_size_dylibloader_wrapper_pulse) = dlsym(handle, "pa_frame_size");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_sample_size
+	*(void **)(&pa_sample_size_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sample_size");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_sample_size_of_format
+	*(void **)(&pa_sample_size_of_format_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sample_size_of_format");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_bytes_to_usec
+	*(void **)(&pa_bytes_to_usec_dylibloader_wrapper_pulse) = dlsym(handle, "pa_bytes_to_usec");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_usec_to_bytes
+	*(void **)(&pa_usec_to_bytes_dylibloader_wrapper_pulse) = dlsym(handle, "pa_usec_to_bytes");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_sample_spec_init
+	*(void **)(&pa_sample_spec_init_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sample_spec_init");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_sample_format_valid
+	*(void **)(&pa_sample_format_valid_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sample_format_valid");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_sample_rate_valid
+	*(void **)(&pa_sample_rate_valid_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sample_rate_valid");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_channels_valid
+	*(void **)(&pa_channels_valid_dylibloader_wrapper_pulse) = dlsym(handle, "pa_channels_valid");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_sample_spec_valid
+	*(void **)(&pa_sample_spec_valid_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sample_spec_valid");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_sample_spec_equal
+	*(void **)(&pa_sample_spec_equal_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sample_spec_equal");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_sample_format_to_string
+	*(void **)(&pa_sample_format_to_string_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sample_format_to_string");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_parse_sample_format
+	*(void **)(&pa_parse_sample_format_dylibloader_wrapper_pulse) = dlsym(handle, "pa_parse_sample_format");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_sample_spec_snprint
+	*(void **)(&pa_sample_spec_snprint_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sample_spec_snprint");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_bytes_snprint
+	*(void **)(&pa_bytes_snprint_dylibloader_wrapper_pulse) = dlsym(handle, "pa_bytes_snprint");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_sample_format_is_le
+	*(void **)(&pa_sample_format_is_le_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sample_format_is_le");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_sample_format_is_be
+	*(void **)(&pa_sample_format_is_be_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sample_format_is_be");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_direction_valid
+	*(void **)(&pa_direction_valid_dylibloader_wrapper_pulse) = dlsym(handle, "pa_direction_valid");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_direction_to_string
+	*(void **)(&pa_direction_to_string_dylibloader_wrapper_pulse) = dlsym(handle, "pa_direction_to_string");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_mainloop_api_once
+	*(void **)(&pa_mainloop_api_once_dylibloader_wrapper_pulse) = dlsym(handle, "pa_mainloop_api_once");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_proplist_new
+	*(void **)(&pa_proplist_new_dylibloader_wrapper_pulse) = dlsym(handle, "pa_proplist_new");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_proplist_free
+	*(void **)(&pa_proplist_free_dylibloader_wrapper_pulse) = dlsym(handle, "pa_proplist_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_proplist_key_valid
+	*(void **)(&pa_proplist_key_valid_dylibloader_wrapper_pulse) = dlsym(handle, "pa_proplist_key_valid");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_proplist_sets
+	*(void **)(&pa_proplist_sets_dylibloader_wrapper_pulse) = dlsym(handle, "pa_proplist_sets");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_proplist_setp
+	*(void **)(&pa_proplist_setp_dylibloader_wrapper_pulse) = dlsym(handle, "pa_proplist_setp");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_proplist_setf
+	*(void **)(&pa_proplist_setf_dylibloader_wrapper_pulse) = dlsym(handle, "pa_proplist_setf");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_proplist_set
+	*(void **)(&pa_proplist_set_dylibloader_wrapper_pulse) = dlsym(handle, "pa_proplist_set");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_proplist_gets
+	*(void **)(&pa_proplist_gets_dylibloader_wrapper_pulse) = dlsym(handle, "pa_proplist_gets");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_proplist_get
+	*(void **)(&pa_proplist_get_dylibloader_wrapper_pulse) = dlsym(handle, "pa_proplist_get");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_proplist_update
+	*(void **)(&pa_proplist_update_dylibloader_wrapper_pulse) = dlsym(handle, "pa_proplist_update");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_proplist_unset
+	*(void **)(&pa_proplist_unset_dylibloader_wrapper_pulse) = dlsym(handle, "pa_proplist_unset");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_proplist_unset_many
+	*(void **)(&pa_proplist_unset_many_dylibloader_wrapper_pulse) = dlsym(handle, "pa_proplist_unset_many");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_proplist_iterate
+	*(void **)(&pa_proplist_iterate_dylibloader_wrapper_pulse) = dlsym(handle, "pa_proplist_iterate");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_proplist_to_string
+	*(void **)(&pa_proplist_to_string_dylibloader_wrapper_pulse) = dlsym(handle, "pa_proplist_to_string");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_proplist_to_string_sep
+	*(void **)(&pa_proplist_to_string_sep_dylibloader_wrapper_pulse) = dlsym(handle, "pa_proplist_to_string_sep");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_proplist_from_string
+	*(void **)(&pa_proplist_from_string_dylibloader_wrapper_pulse) = dlsym(handle, "pa_proplist_from_string");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_proplist_contains
+	*(void **)(&pa_proplist_contains_dylibloader_wrapper_pulse) = dlsym(handle, "pa_proplist_contains");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_proplist_clear
+	*(void **)(&pa_proplist_clear_dylibloader_wrapper_pulse) = dlsym(handle, "pa_proplist_clear");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_proplist_copy
+	*(void **)(&pa_proplist_copy_dylibloader_wrapper_pulse) = dlsym(handle, "pa_proplist_copy");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_proplist_size
+	*(void **)(&pa_proplist_size_dylibloader_wrapper_pulse) = dlsym(handle, "pa_proplist_size");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_proplist_isempty
+	*(void **)(&pa_proplist_isempty_dylibloader_wrapper_pulse) = dlsym(handle, "pa_proplist_isempty");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_proplist_equal
+	*(void **)(&pa_proplist_equal_dylibloader_wrapper_pulse) = dlsym(handle, "pa_proplist_equal");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_channel_map_init
+	*(void **)(&pa_channel_map_init_dylibloader_wrapper_pulse) = dlsym(handle, "pa_channel_map_init");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_channel_map_init_mono
+	*(void **)(&pa_channel_map_init_mono_dylibloader_wrapper_pulse) = dlsym(handle, "pa_channel_map_init_mono");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_channel_map_init_stereo
+	*(void **)(&pa_channel_map_init_stereo_dylibloader_wrapper_pulse) = dlsym(handle, "pa_channel_map_init_stereo");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_channel_map_init_auto
+	*(void **)(&pa_channel_map_init_auto_dylibloader_wrapper_pulse) = dlsym(handle, "pa_channel_map_init_auto");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_channel_map_init_extend
+	*(void **)(&pa_channel_map_init_extend_dylibloader_wrapper_pulse) = dlsym(handle, "pa_channel_map_init_extend");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_channel_position_to_string
+	*(void **)(&pa_channel_position_to_string_dylibloader_wrapper_pulse) = dlsym(handle, "pa_channel_position_to_string");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_channel_position_from_string
+	*(void **)(&pa_channel_position_from_string_dylibloader_wrapper_pulse) = dlsym(handle, "pa_channel_position_from_string");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_channel_position_to_pretty_string
+	*(void **)(&pa_channel_position_to_pretty_string_dylibloader_wrapper_pulse) = dlsym(handle, "pa_channel_position_to_pretty_string");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_channel_map_snprint
+	*(void **)(&pa_channel_map_snprint_dylibloader_wrapper_pulse) = dlsym(handle, "pa_channel_map_snprint");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_channel_map_parse
+	*(void **)(&pa_channel_map_parse_dylibloader_wrapper_pulse) = dlsym(handle, "pa_channel_map_parse");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_channel_map_equal
+	*(void **)(&pa_channel_map_equal_dylibloader_wrapper_pulse) = dlsym(handle, "pa_channel_map_equal");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_channel_map_valid
+	*(void **)(&pa_channel_map_valid_dylibloader_wrapper_pulse) = dlsym(handle, "pa_channel_map_valid");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_channel_map_compatible
+	*(void **)(&pa_channel_map_compatible_dylibloader_wrapper_pulse) = dlsym(handle, "pa_channel_map_compatible");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_channel_map_superset
+	*(void **)(&pa_channel_map_superset_dylibloader_wrapper_pulse) = dlsym(handle, "pa_channel_map_superset");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_channel_map_can_balance
+	*(void **)(&pa_channel_map_can_balance_dylibloader_wrapper_pulse) = dlsym(handle, "pa_channel_map_can_balance");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_channel_map_can_fade
+	*(void **)(&pa_channel_map_can_fade_dylibloader_wrapper_pulse) = dlsym(handle, "pa_channel_map_can_fade");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_channel_map_can_lfe_balance
+	*(void **)(&pa_channel_map_can_lfe_balance_dylibloader_wrapper_pulse) = dlsym(handle, "pa_channel_map_can_lfe_balance");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_channel_map_to_name
+	*(void **)(&pa_channel_map_to_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_channel_map_to_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_channel_map_to_pretty_name
+	*(void **)(&pa_channel_map_to_pretty_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_channel_map_to_pretty_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_channel_map_has_position
+	*(void **)(&pa_channel_map_has_position_dylibloader_wrapper_pulse) = dlsym(handle, "pa_channel_map_has_position");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_channel_map_mask
+	*(void **)(&pa_channel_map_mask_dylibloader_wrapper_pulse) = dlsym(handle, "pa_channel_map_mask");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_encoding_to_string
+	*(void **)(&pa_encoding_to_string_dylibloader_wrapper_pulse) = dlsym(handle, "pa_encoding_to_string");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_encoding_from_string
+	*(void **)(&pa_encoding_from_string_dylibloader_wrapper_pulse) = dlsym(handle, "pa_encoding_from_string");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_format_info_new
+	*(void **)(&pa_format_info_new_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_new");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_format_info_copy
+	*(void **)(&pa_format_info_copy_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_copy");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_format_info_free
+	*(void **)(&pa_format_info_free_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_format_info_valid
+	*(void **)(&pa_format_info_valid_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_valid");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_format_info_is_pcm
+	*(void **)(&pa_format_info_is_pcm_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_is_pcm");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_format_info_is_compatible
+	*(void **)(&pa_format_info_is_compatible_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_is_compatible");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_format_info_snprint
+	*(void **)(&pa_format_info_snprint_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_snprint");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_format_info_from_string
+	*(void **)(&pa_format_info_from_string_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_from_string");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_format_info_from_sample_spec
+	*(void **)(&pa_format_info_from_sample_spec_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_from_sample_spec");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_format_info_to_sample_spec
+	*(void **)(&pa_format_info_to_sample_spec_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_to_sample_spec");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_format_info_get_prop_type
+	*(void **)(&pa_format_info_get_prop_type_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_get_prop_type");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_format_info_get_prop_int
+	*(void **)(&pa_format_info_get_prop_int_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_get_prop_int");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_format_info_get_prop_int_range
+	*(void **)(&pa_format_info_get_prop_int_range_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_get_prop_int_range");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_format_info_get_prop_int_array
+	*(void **)(&pa_format_info_get_prop_int_array_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_get_prop_int_array");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_format_info_get_prop_string
+	*(void **)(&pa_format_info_get_prop_string_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_get_prop_string");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_format_info_get_prop_string_array
+	*(void **)(&pa_format_info_get_prop_string_array_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_get_prop_string_array");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_format_info_free_string_array
+	*(void **)(&pa_format_info_free_string_array_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_free_string_array");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_format_info_get_sample_format
+	*(void **)(&pa_format_info_get_sample_format_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_get_sample_format");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_format_info_get_rate
+	*(void **)(&pa_format_info_get_rate_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_get_rate");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_format_info_get_channels
+	*(void **)(&pa_format_info_get_channels_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_get_channels");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_format_info_get_channel_map
+	*(void **)(&pa_format_info_get_channel_map_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_get_channel_map");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_format_info_set_prop_int
+	*(void **)(&pa_format_info_set_prop_int_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_set_prop_int");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_format_info_set_prop_int_array
+	*(void **)(&pa_format_info_set_prop_int_array_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_set_prop_int_array");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_format_info_set_prop_int_range
+	*(void **)(&pa_format_info_set_prop_int_range_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_set_prop_int_range");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_format_info_set_prop_string
+	*(void **)(&pa_format_info_set_prop_string_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_set_prop_string");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_format_info_set_prop_string_array
+	*(void **)(&pa_format_info_set_prop_string_array_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_set_prop_string_array");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_format_info_set_sample_format
+	*(void **)(&pa_format_info_set_sample_format_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_set_sample_format");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_format_info_set_rate
+	*(void **)(&pa_format_info_set_rate_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_set_rate");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_format_info_set_channels
+	*(void **)(&pa_format_info_set_channels_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_set_channels");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_format_info_set_channel_map
+	*(void **)(&pa_format_info_set_channel_map_dylibloader_wrapper_pulse) = dlsym(handle, "pa_format_info_set_channel_map");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_operation_ref
+	*(void **)(&pa_operation_ref_dylibloader_wrapper_pulse) = dlsym(handle, "pa_operation_ref");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_operation_unref
+	*(void **)(&pa_operation_unref_dylibloader_wrapper_pulse) = dlsym(handle, "pa_operation_unref");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_operation_cancel
+	*(void **)(&pa_operation_cancel_dylibloader_wrapper_pulse) = dlsym(handle, "pa_operation_cancel");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_operation_get_state
+	*(void **)(&pa_operation_get_state_dylibloader_wrapper_pulse) = dlsym(handle, "pa_operation_get_state");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_operation_set_state_callback
+	*(void **)(&pa_operation_set_state_callback_dylibloader_wrapper_pulse) = dlsym(handle, "pa_operation_set_state_callback");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_new
+	*(void **)(&pa_context_new_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_new");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_new_with_proplist
+	*(void **)(&pa_context_new_with_proplist_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_new_with_proplist");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_unref
+	*(void **)(&pa_context_unref_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_unref");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_ref
+	*(void **)(&pa_context_ref_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_ref");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_set_state_callback
+	*(void **)(&pa_context_set_state_callback_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_state_callback");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_set_event_callback
+	*(void **)(&pa_context_set_event_callback_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_event_callback");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_errno
+	*(void **)(&pa_context_errno_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_errno");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_is_pending
+	*(void **)(&pa_context_is_pending_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_is_pending");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_get_state
+	*(void **)(&pa_context_get_state_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_state");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_connect
+	*(void **)(&pa_context_connect_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_connect");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_disconnect
+	*(void **)(&pa_context_disconnect_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_disconnect");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_drain
+	*(void **)(&pa_context_drain_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_drain");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_exit_daemon
+	*(void **)(&pa_context_exit_daemon_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_exit_daemon");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_set_default_sink
+	*(void **)(&pa_context_set_default_sink_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_default_sink");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_set_default_source
+	*(void **)(&pa_context_set_default_source_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_default_source");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_is_local
+	*(void **)(&pa_context_is_local_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_is_local");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_set_name
+	*(void **)(&pa_context_set_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_get_server
+	*(void **)(&pa_context_get_server_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_server");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_get_protocol_version
+	*(void **)(&pa_context_get_protocol_version_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_protocol_version");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_get_server_protocol_version
+	*(void **)(&pa_context_get_server_protocol_version_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_server_protocol_version");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_proplist_update
+	*(void **)(&pa_context_proplist_update_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_proplist_update");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_proplist_remove
+	*(void **)(&pa_context_proplist_remove_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_proplist_remove");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_get_index
+	*(void **)(&pa_context_get_index_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_index");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_rttime_new
+	*(void **)(&pa_context_rttime_new_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_rttime_new");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_rttime_restart
+	*(void **)(&pa_context_rttime_restart_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_rttime_restart");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_get_tile_size
+	*(void **)(&pa_context_get_tile_size_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_tile_size");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_load_cookie_from_file
+	*(void **)(&pa_context_load_cookie_from_file_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_load_cookie_from_file");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_cvolume_equal
+	*(void **)(&pa_cvolume_equal_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_equal");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_cvolume_init
+	*(void **)(&pa_cvolume_init_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_init");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_cvolume_set
+	*(void **)(&pa_cvolume_set_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_set");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_cvolume_snprint
+	*(void **)(&pa_cvolume_snprint_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_snprint");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_sw_cvolume_snprint_dB
+	*(void **)(&pa_sw_cvolume_snprint_dB_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sw_cvolume_snprint_dB");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_cvolume_snprint_verbose
+	*(void **)(&pa_cvolume_snprint_verbose_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_snprint_verbose");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_volume_snprint
+	*(void **)(&pa_volume_snprint_dylibloader_wrapper_pulse) = dlsym(handle, "pa_volume_snprint");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_sw_volume_snprint_dB
+	*(void **)(&pa_sw_volume_snprint_dB_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sw_volume_snprint_dB");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_volume_snprint_verbose
+	*(void **)(&pa_volume_snprint_verbose_dylibloader_wrapper_pulse) = dlsym(handle, "pa_volume_snprint_verbose");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_cvolume_avg
+	*(void **)(&pa_cvolume_avg_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_avg");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_cvolume_avg_mask
+	*(void **)(&pa_cvolume_avg_mask_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_avg_mask");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_cvolume_max
+	*(void **)(&pa_cvolume_max_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_max");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_cvolume_max_mask
+	*(void **)(&pa_cvolume_max_mask_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_max_mask");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_cvolume_min
+	*(void **)(&pa_cvolume_min_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_min");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_cvolume_min_mask
+	*(void **)(&pa_cvolume_min_mask_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_min_mask");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_cvolume_valid
+	*(void **)(&pa_cvolume_valid_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_valid");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_cvolume_channels_equal_to
+	*(void **)(&pa_cvolume_channels_equal_to_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_channels_equal_to");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_sw_volume_multiply
+	*(void **)(&pa_sw_volume_multiply_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sw_volume_multiply");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_sw_cvolume_multiply
+	*(void **)(&pa_sw_cvolume_multiply_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sw_cvolume_multiply");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_sw_cvolume_multiply_scalar
+	*(void **)(&pa_sw_cvolume_multiply_scalar_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sw_cvolume_multiply_scalar");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_sw_volume_divide
+	*(void **)(&pa_sw_volume_divide_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sw_volume_divide");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_sw_cvolume_divide
+	*(void **)(&pa_sw_cvolume_divide_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sw_cvolume_divide");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_sw_cvolume_divide_scalar
+	*(void **)(&pa_sw_cvolume_divide_scalar_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sw_cvolume_divide_scalar");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_sw_volume_from_dB
+	*(void **)(&pa_sw_volume_from_dB_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sw_volume_from_dB");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_sw_volume_to_dB
+	*(void **)(&pa_sw_volume_to_dB_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sw_volume_to_dB");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_sw_volume_from_linear
+	*(void **)(&pa_sw_volume_from_linear_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sw_volume_from_linear");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_sw_volume_to_linear
+	*(void **)(&pa_sw_volume_to_linear_dylibloader_wrapper_pulse) = dlsym(handle, "pa_sw_volume_to_linear");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_cvolume_remap
+	*(void **)(&pa_cvolume_remap_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_remap");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_cvolume_compatible
+	*(void **)(&pa_cvolume_compatible_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_compatible");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_cvolume_compatible_with_channel_map
+	*(void **)(&pa_cvolume_compatible_with_channel_map_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_compatible_with_channel_map");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_cvolume_get_balance
+	*(void **)(&pa_cvolume_get_balance_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_get_balance");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_cvolume_set_balance
+	*(void **)(&pa_cvolume_set_balance_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_set_balance");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_cvolume_get_fade
+	*(void **)(&pa_cvolume_get_fade_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_get_fade");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_cvolume_set_fade
+	*(void **)(&pa_cvolume_set_fade_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_set_fade");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_cvolume_get_lfe_balance
+	*(void **)(&pa_cvolume_get_lfe_balance_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_get_lfe_balance");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_cvolume_set_lfe_balance
+	*(void **)(&pa_cvolume_set_lfe_balance_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_set_lfe_balance");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_cvolume_scale
+	*(void **)(&pa_cvolume_scale_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_scale");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_cvolume_scale_mask
+	*(void **)(&pa_cvolume_scale_mask_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_scale_mask");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_cvolume_set_position
+	*(void **)(&pa_cvolume_set_position_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_set_position");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_cvolume_get_position
+	*(void **)(&pa_cvolume_get_position_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_get_position");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_cvolume_merge
+	*(void **)(&pa_cvolume_merge_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_merge");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_cvolume_inc_clamp
+	*(void **)(&pa_cvolume_inc_clamp_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_inc_clamp");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_cvolume_inc
+	*(void **)(&pa_cvolume_inc_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_inc");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_cvolume_dec
+	*(void **)(&pa_cvolume_dec_dylibloader_wrapper_pulse) = dlsym(handle, "pa_cvolume_dec");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_new
+	*(void **)(&pa_stream_new_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_new");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_new_with_proplist
+	*(void **)(&pa_stream_new_with_proplist_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_new_with_proplist");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_new_extended
+	*(void **)(&pa_stream_new_extended_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_new_extended");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_unref
+	*(void **)(&pa_stream_unref_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_unref");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_ref
+	*(void **)(&pa_stream_ref_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_ref");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_get_state
+	*(void **)(&pa_stream_get_state_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_get_state");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_get_context
+	*(void **)(&pa_stream_get_context_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_get_context");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_get_index
+	*(void **)(&pa_stream_get_index_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_get_index");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_get_device_index
+	*(void **)(&pa_stream_get_device_index_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_get_device_index");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_get_device_name
+	*(void **)(&pa_stream_get_device_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_get_device_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_is_suspended
+	*(void **)(&pa_stream_is_suspended_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_is_suspended");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_is_corked
+	*(void **)(&pa_stream_is_corked_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_is_corked");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_connect_playback
+	*(void **)(&pa_stream_connect_playback_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_connect_playback");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_connect_record
+	*(void **)(&pa_stream_connect_record_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_connect_record");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_disconnect
+	*(void **)(&pa_stream_disconnect_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_disconnect");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_begin_write
+	*(void **)(&pa_stream_begin_write_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_begin_write");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_cancel_write
+	*(void **)(&pa_stream_cancel_write_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_cancel_write");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_write
+	*(void **)(&pa_stream_write_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_write");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_write_ext_free
+	*(void **)(&pa_stream_write_ext_free_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_write_ext_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_peek
+	*(void **)(&pa_stream_peek_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_peek");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_drop
+	*(void **)(&pa_stream_drop_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_drop");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_writable_size
+	*(void **)(&pa_stream_writable_size_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_writable_size");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_readable_size
+	*(void **)(&pa_stream_readable_size_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_readable_size");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_drain
+	*(void **)(&pa_stream_drain_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_drain");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_update_timing_info
+	*(void **)(&pa_stream_update_timing_info_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_update_timing_info");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_set_state_callback
+	*(void **)(&pa_stream_set_state_callback_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_set_state_callback");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_set_write_callback
+	*(void **)(&pa_stream_set_write_callback_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_set_write_callback");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_set_read_callback
+	*(void **)(&pa_stream_set_read_callback_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_set_read_callback");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_set_overflow_callback
+	*(void **)(&pa_stream_set_overflow_callback_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_set_overflow_callback");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_get_underflow_index
+	*(void **)(&pa_stream_get_underflow_index_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_get_underflow_index");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_set_underflow_callback
+	*(void **)(&pa_stream_set_underflow_callback_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_set_underflow_callback");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_set_started_callback
+	*(void **)(&pa_stream_set_started_callback_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_set_started_callback");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_set_latency_update_callback
+	*(void **)(&pa_stream_set_latency_update_callback_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_set_latency_update_callback");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_set_moved_callback
+	*(void **)(&pa_stream_set_moved_callback_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_set_moved_callback");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_set_suspended_callback
+	*(void **)(&pa_stream_set_suspended_callback_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_set_suspended_callback");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_set_event_callback
+	*(void **)(&pa_stream_set_event_callback_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_set_event_callback");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_set_buffer_attr_callback
+	*(void **)(&pa_stream_set_buffer_attr_callback_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_set_buffer_attr_callback");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_cork
+	*(void **)(&pa_stream_cork_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_cork");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_flush
+	*(void **)(&pa_stream_flush_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_flush");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_prebuf
+	*(void **)(&pa_stream_prebuf_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_prebuf");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_trigger
+	*(void **)(&pa_stream_trigger_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_trigger");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_set_name
+	*(void **)(&pa_stream_set_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_set_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_get_time
+	*(void **)(&pa_stream_get_time_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_get_time");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_get_latency
+	*(void **)(&pa_stream_get_latency_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_get_latency");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_get_timing_info
+	*(void **)(&pa_stream_get_timing_info_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_get_timing_info");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_get_sample_spec
+	*(void **)(&pa_stream_get_sample_spec_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_get_sample_spec");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_get_channel_map
+	*(void **)(&pa_stream_get_channel_map_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_get_channel_map");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_get_format_info
+	*(void **)(&pa_stream_get_format_info_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_get_format_info");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_get_buffer_attr
+	*(void **)(&pa_stream_get_buffer_attr_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_get_buffer_attr");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_set_buffer_attr
+	*(void **)(&pa_stream_set_buffer_attr_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_set_buffer_attr");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_update_sample_rate
+	*(void **)(&pa_stream_update_sample_rate_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_update_sample_rate");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_proplist_update
+	*(void **)(&pa_stream_proplist_update_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_proplist_update");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_proplist_remove
+	*(void **)(&pa_stream_proplist_remove_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_proplist_remove");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_set_monitor_stream
+	*(void **)(&pa_stream_set_monitor_stream_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_set_monitor_stream");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_get_monitor_stream
+	*(void **)(&pa_stream_get_monitor_stream_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_get_monitor_stream");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_get_sink_info_by_name
+	*(void **)(&pa_context_get_sink_info_by_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_sink_info_by_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_get_sink_info_by_index
+	*(void **)(&pa_context_get_sink_info_by_index_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_sink_info_by_index");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_get_sink_info_list
+	*(void **)(&pa_context_get_sink_info_list_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_sink_info_list");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_set_sink_volume_by_index
+	*(void **)(&pa_context_set_sink_volume_by_index_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_sink_volume_by_index");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_set_sink_volume_by_name
+	*(void **)(&pa_context_set_sink_volume_by_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_sink_volume_by_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_set_sink_mute_by_index
+	*(void **)(&pa_context_set_sink_mute_by_index_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_sink_mute_by_index");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_set_sink_mute_by_name
+	*(void **)(&pa_context_set_sink_mute_by_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_sink_mute_by_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_suspend_sink_by_name
+	*(void **)(&pa_context_suspend_sink_by_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_suspend_sink_by_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_suspend_sink_by_index
+	*(void **)(&pa_context_suspend_sink_by_index_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_suspend_sink_by_index");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_set_sink_port_by_index
+	*(void **)(&pa_context_set_sink_port_by_index_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_sink_port_by_index");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_set_sink_port_by_name
+	*(void **)(&pa_context_set_sink_port_by_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_sink_port_by_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_get_source_info_by_name
+	*(void **)(&pa_context_get_source_info_by_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_source_info_by_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_get_source_info_by_index
+	*(void **)(&pa_context_get_source_info_by_index_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_source_info_by_index");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_get_source_info_list
+	*(void **)(&pa_context_get_source_info_list_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_source_info_list");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_set_source_volume_by_index
+	*(void **)(&pa_context_set_source_volume_by_index_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_source_volume_by_index");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_set_source_volume_by_name
+	*(void **)(&pa_context_set_source_volume_by_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_source_volume_by_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_set_source_mute_by_index
+	*(void **)(&pa_context_set_source_mute_by_index_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_source_mute_by_index");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_set_source_mute_by_name
+	*(void **)(&pa_context_set_source_mute_by_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_source_mute_by_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_suspend_source_by_name
+	*(void **)(&pa_context_suspend_source_by_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_suspend_source_by_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_suspend_source_by_index
+	*(void **)(&pa_context_suspend_source_by_index_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_suspend_source_by_index");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_set_source_port_by_index
+	*(void **)(&pa_context_set_source_port_by_index_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_source_port_by_index");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_set_source_port_by_name
+	*(void **)(&pa_context_set_source_port_by_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_source_port_by_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_get_server_info
+	*(void **)(&pa_context_get_server_info_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_server_info");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_get_module_info
+	*(void **)(&pa_context_get_module_info_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_module_info");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_get_module_info_list
+	*(void **)(&pa_context_get_module_info_list_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_module_info_list");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_load_module
+	*(void **)(&pa_context_load_module_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_load_module");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_unload_module
+	*(void **)(&pa_context_unload_module_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_unload_module");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_get_client_info
+	*(void **)(&pa_context_get_client_info_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_client_info");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_get_client_info_list
+	*(void **)(&pa_context_get_client_info_list_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_client_info_list");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_kill_client
+	*(void **)(&pa_context_kill_client_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_kill_client");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_get_card_info_by_index
+	*(void **)(&pa_context_get_card_info_by_index_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_card_info_by_index");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_get_card_info_by_name
+	*(void **)(&pa_context_get_card_info_by_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_card_info_by_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_get_card_info_list
+	*(void **)(&pa_context_get_card_info_list_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_card_info_list");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_set_card_profile_by_index
+	*(void **)(&pa_context_set_card_profile_by_index_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_card_profile_by_index");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_set_card_profile_by_name
+	*(void **)(&pa_context_set_card_profile_by_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_card_profile_by_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_set_port_latency_offset
+	*(void **)(&pa_context_set_port_latency_offset_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_port_latency_offset");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_get_sink_input_info
+	*(void **)(&pa_context_get_sink_input_info_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_sink_input_info");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_get_sink_input_info_list
+	*(void **)(&pa_context_get_sink_input_info_list_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_sink_input_info_list");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_move_sink_input_by_name
+	*(void **)(&pa_context_move_sink_input_by_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_move_sink_input_by_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_move_sink_input_by_index
+	*(void **)(&pa_context_move_sink_input_by_index_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_move_sink_input_by_index");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_set_sink_input_volume
+	*(void **)(&pa_context_set_sink_input_volume_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_sink_input_volume");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_set_sink_input_mute
+	*(void **)(&pa_context_set_sink_input_mute_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_sink_input_mute");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_kill_sink_input
+	*(void **)(&pa_context_kill_sink_input_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_kill_sink_input");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_get_source_output_info
+	*(void **)(&pa_context_get_source_output_info_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_source_output_info");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_get_source_output_info_list
+	*(void **)(&pa_context_get_source_output_info_list_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_source_output_info_list");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_move_source_output_by_name
+	*(void **)(&pa_context_move_source_output_by_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_move_source_output_by_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_move_source_output_by_index
+	*(void **)(&pa_context_move_source_output_by_index_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_move_source_output_by_index");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_set_source_output_volume
+	*(void **)(&pa_context_set_source_output_volume_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_source_output_volume");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_set_source_output_mute
+	*(void **)(&pa_context_set_source_output_mute_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_source_output_mute");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_kill_source_output
+	*(void **)(&pa_context_kill_source_output_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_kill_source_output");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_stat
+	*(void **)(&pa_context_stat_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_stat");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_get_sample_info_by_name
+	*(void **)(&pa_context_get_sample_info_by_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_sample_info_by_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_get_sample_info_by_index
+	*(void **)(&pa_context_get_sample_info_by_index_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_sample_info_by_index");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_get_sample_info_list
+	*(void **)(&pa_context_get_sample_info_list_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_sample_info_list");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_get_autoload_info_by_name
+	*(void **)(&pa_context_get_autoload_info_by_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_autoload_info_by_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_get_autoload_info_by_index
+	*(void **)(&pa_context_get_autoload_info_by_index_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_autoload_info_by_index");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_get_autoload_info_list
+	*(void **)(&pa_context_get_autoload_info_list_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_get_autoload_info_list");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_add_autoload
+	*(void **)(&pa_context_add_autoload_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_add_autoload");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_remove_autoload_by_name
+	*(void **)(&pa_context_remove_autoload_by_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_remove_autoload_by_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_remove_autoload_by_index
+	*(void **)(&pa_context_remove_autoload_by_index_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_remove_autoload_by_index");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_subscribe
+	*(void **)(&pa_context_subscribe_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_subscribe");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_set_subscribe_callback
+	*(void **)(&pa_context_set_subscribe_callback_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_set_subscribe_callback");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_connect_upload
+	*(void **)(&pa_stream_connect_upload_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_connect_upload");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_stream_finish_upload
+	*(void **)(&pa_stream_finish_upload_dylibloader_wrapper_pulse) = dlsym(handle, "pa_stream_finish_upload");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_remove_sample
+	*(void **)(&pa_context_remove_sample_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_remove_sample");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_play_sample
+	*(void **)(&pa_context_play_sample_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_play_sample");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_context_play_sample_with_proplist
+	*(void **)(&pa_context_play_sample_with_proplist_dylibloader_wrapper_pulse) = dlsym(handle, "pa_context_play_sample_with_proplist");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_strerror
+	*(void **)(&pa_strerror_dylibloader_wrapper_pulse) = dlsym(handle, "pa_strerror");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_xmalloc
+	*(void **)(&pa_xmalloc_dylibloader_wrapper_pulse) = dlsym(handle, "pa_xmalloc");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_xmalloc0
+	*(void **)(&pa_xmalloc0_dylibloader_wrapper_pulse) = dlsym(handle, "pa_xmalloc0");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_xrealloc
+	*(void **)(&pa_xrealloc_dylibloader_wrapper_pulse) = dlsym(handle, "pa_xrealloc");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_xfree
+	*(void **)(&pa_xfree_dylibloader_wrapper_pulse) = dlsym(handle, "pa_xfree");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_xstrdup
+	*(void **)(&pa_xstrdup_dylibloader_wrapper_pulse) = dlsym(handle, "pa_xstrdup");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_xstrndup
+	*(void **)(&pa_xstrndup_dylibloader_wrapper_pulse) = dlsym(handle, "pa_xstrndup");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_xmemdup
+	*(void **)(&pa_xmemdup_dylibloader_wrapper_pulse) = dlsym(handle, "pa_xmemdup");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_utf8_valid
+	*(void **)(&pa_utf8_valid_dylibloader_wrapper_pulse) = dlsym(handle, "pa_utf8_valid");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_ascii_valid
+	*(void **)(&pa_ascii_valid_dylibloader_wrapper_pulse) = dlsym(handle, "pa_ascii_valid");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_utf8_filter
+	*(void **)(&pa_utf8_filter_dylibloader_wrapper_pulse) = dlsym(handle, "pa_utf8_filter");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_ascii_filter
+	*(void **)(&pa_ascii_filter_dylibloader_wrapper_pulse) = dlsym(handle, "pa_ascii_filter");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_utf8_to_locale
+	*(void **)(&pa_utf8_to_locale_dylibloader_wrapper_pulse) = dlsym(handle, "pa_utf8_to_locale");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_locale_to_utf8
+	*(void **)(&pa_locale_to_utf8_dylibloader_wrapper_pulse) = dlsym(handle, "pa_locale_to_utf8");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_threaded_mainloop_new
+	*(void **)(&pa_threaded_mainloop_new_dylibloader_wrapper_pulse) = dlsym(handle, "pa_threaded_mainloop_new");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_threaded_mainloop_free
+	*(void **)(&pa_threaded_mainloop_free_dylibloader_wrapper_pulse) = dlsym(handle, "pa_threaded_mainloop_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_threaded_mainloop_start
+	*(void **)(&pa_threaded_mainloop_start_dylibloader_wrapper_pulse) = dlsym(handle, "pa_threaded_mainloop_start");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_threaded_mainloop_stop
+	*(void **)(&pa_threaded_mainloop_stop_dylibloader_wrapper_pulse) = dlsym(handle, "pa_threaded_mainloop_stop");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_threaded_mainloop_lock
+	*(void **)(&pa_threaded_mainloop_lock_dylibloader_wrapper_pulse) = dlsym(handle, "pa_threaded_mainloop_lock");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_threaded_mainloop_unlock
+	*(void **)(&pa_threaded_mainloop_unlock_dylibloader_wrapper_pulse) = dlsym(handle, "pa_threaded_mainloop_unlock");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_threaded_mainloop_wait
+	*(void **)(&pa_threaded_mainloop_wait_dylibloader_wrapper_pulse) = dlsym(handle, "pa_threaded_mainloop_wait");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_threaded_mainloop_signal
+	*(void **)(&pa_threaded_mainloop_signal_dylibloader_wrapper_pulse) = dlsym(handle, "pa_threaded_mainloop_signal");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_threaded_mainloop_accept
+	*(void **)(&pa_threaded_mainloop_accept_dylibloader_wrapper_pulse) = dlsym(handle, "pa_threaded_mainloop_accept");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_threaded_mainloop_get_retval
+	*(void **)(&pa_threaded_mainloop_get_retval_dylibloader_wrapper_pulse) = dlsym(handle, "pa_threaded_mainloop_get_retval");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_threaded_mainloop_get_api
+	*(void **)(&pa_threaded_mainloop_get_api_dylibloader_wrapper_pulse) = dlsym(handle, "pa_threaded_mainloop_get_api");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_threaded_mainloop_in_thread
+	*(void **)(&pa_threaded_mainloop_in_thread_dylibloader_wrapper_pulse) = dlsym(handle, "pa_threaded_mainloop_in_thread");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_threaded_mainloop_set_name
+	*(void **)(&pa_threaded_mainloop_set_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_threaded_mainloop_set_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_threaded_mainloop_once_unlocked
+	*(void **)(&pa_threaded_mainloop_once_unlocked_dylibloader_wrapper_pulse) = dlsym(handle, "pa_threaded_mainloop_once_unlocked");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_mainloop_new
+	*(void **)(&pa_mainloop_new_dylibloader_wrapper_pulse) = dlsym(handle, "pa_mainloop_new");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_mainloop_free
+	*(void **)(&pa_mainloop_free_dylibloader_wrapper_pulse) = dlsym(handle, "pa_mainloop_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_mainloop_prepare
+	*(void **)(&pa_mainloop_prepare_dylibloader_wrapper_pulse) = dlsym(handle, "pa_mainloop_prepare");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_mainloop_poll
+	*(void **)(&pa_mainloop_poll_dylibloader_wrapper_pulse) = dlsym(handle, "pa_mainloop_poll");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_mainloop_dispatch
+	*(void **)(&pa_mainloop_dispatch_dylibloader_wrapper_pulse) = dlsym(handle, "pa_mainloop_dispatch");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_mainloop_get_retval
+	*(void **)(&pa_mainloop_get_retval_dylibloader_wrapper_pulse) = dlsym(handle, "pa_mainloop_get_retval");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_mainloop_iterate
+	*(void **)(&pa_mainloop_iterate_dylibloader_wrapper_pulse) = dlsym(handle, "pa_mainloop_iterate");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_mainloop_run
+	*(void **)(&pa_mainloop_run_dylibloader_wrapper_pulse) = dlsym(handle, "pa_mainloop_run");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_mainloop_get_api
+	*(void **)(&pa_mainloop_get_api_dylibloader_wrapper_pulse) = dlsym(handle, "pa_mainloop_get_api");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_mainloop_quit
+	*(void **)(&pa_mainloop_quit_dylibloader_wrapper_pulse) = dlsym(handle, "pa_mainloop_quit");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_mainloop_wakeup
+	*(void **)(&pa_mainloop_wakeup_dylibloader_wrapper_pulse) = dlsym(handle, "pa_mainloop_wakeup");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_mainloop_set_poll_func
+	*(void **)(&pa_mainloop_set_poll_func_dylibloader_wrapper_pulse) = dlsym(handle, "pa_mainloop_set_poll_func");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_signal_init
+	*(void **)(&pa_signal_init_dylibloader_wrapper_pulse) = dlsym(handle, "pa_signal_init");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_signal_done
+	*(void **)(&pa_signal_done_dylibloader_wrapper_pulse) = dlsym(handle, "pa_signal_done");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_signal_new
+	*(void **)(&pa_signal_new_dylibloader_wrapper_pulse) = dlsym(handle, "pa_signal_new");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_signal_free
+	*(void **)(&pa_signal_free_dylibloader_wrapper_pulse) = dlsym(handle, "pa_signal_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_signal_set_destroy
+	*(void **)(&pa_signal_set_destroy_dylibloader_wrapper_pulse) = dlsym(handle, "pa_signal_set_destroy");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_get_user_name
+	*(void **)(&pa_get_user_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_get_user_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_get_host_name
+	*(void **)(&pa_get_host_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_get_host_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_get_fqdn
+	*(void **)(&pa_get_fqdn_dylibloader_wrapper_pulse) = dlsym(handle, "pa_get_fqdn");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_get_home_dir
+	*(void **)(&pa_get_home_dir_dylibloader_wrapper_pulse) = dlsym(handle, "pa_get_home_dir");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_get_binary_name
+	*(void **)(&pa_get_binary_name_dylibloader_wrapper_pulse) = dlsym(handle, "pa_get_binary_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_path_get_filename
+	*(void **)(&pa_path_get_filename_dylibloader_wrapper_pulse) = dlsym(handle, "pa_path_get_filename");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_msleep
+	*(void **)(&pa_msleep_dylibloader_wrapper_pulse) = dlsym(handle, "pa_msleep");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_thread_make_realtime
+	*(void **)(&pa_thread_make_realtime_dylibloader_wrapper_pulse) = dlsym(handle, "pa_thread_make_realtime");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_gettimeofday
+	*(void **)(&pa_gettimeofday_dylibloader_wrapper_pulse) = dlsym(handle, "pa_gettimeofday");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_timeval_diff
+	*(void **)(&pa_timeval_diff_dylibloader_wrapper_pulse) = dlsym(handle, "pa_timeval_diff");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_timeval_cmp
+	*(void **)(&pa_timeval_cmp_dylibloader_wrapper_pulse) = dlsym(handle, "pa_timeval_cmp");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_timeval_age
+	*(void **)(&pa_timeval_age_dylibloader_wrapper_pulse) = dlsym(handle, "pa_timeval_age");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_timeval_add
+	*(void **)(&pa_timeval_add_dylibloader_wrapper_pulse) = dlsym(handle, "pa_timeval_add");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_timeval_sub
+	*(void **)(&pa_timeval_sub_dylibloader_wrapper_pulse) = dlsym(handle, "pa_timeval_sub");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_timeval_store
+	*(void **)(&pa_timeval_store_dylibloader_wrapper_pulse) = dlsym(handle, "pa_timeval_store");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_timeval_load
+	*(void **)(&pa_timeval_load_dylibloader_wrapper_pulse) = dlsym(handle, "pa_timeval_load");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// pa_rtclock_now
+	*(void **)(&pa_rtclock_now_dylibloader_wrapper_pulse) = dlsym(handle, "pa_rtclock_now");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	return 0;
 }

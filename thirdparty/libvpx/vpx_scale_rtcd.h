@@ -31,14 +31,13 @@ void vpx_yv12_copy_y_c(const struct yv12_buffer_config *src_ybc, struct yv12_buf
 void vpx_scale_rtcd(void);
 
 #ifdef RTCD_C
-static void setup_rtcd_internal(void)
-{
-    //Only MIPS has something here, but it is not supported
+static void setup_rtcd_internal(void) {
+	// Only MIPS has something here, but it is not supported
 }
 #endif
 
 #ifdef __cplusplus
-}  // extern "C"
+} // extern "C"
 #endif
 
 #endif

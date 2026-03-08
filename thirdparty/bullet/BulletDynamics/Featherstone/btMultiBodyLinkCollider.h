@@ -18,8 +18,8 @@ subject to the following restrictions:
 
 #include "BulletCollision/CollisionDispatch/btCollisionObject.h"
 
-#include "btMultiBody.h"
 #include "LinearMath/btSerializer.h"
+#include "btMultiBody.h"
 
 #ifdef BT_USE_DOUBLE_PRECISION
 #define btMultiBodyLinkColliderData btMultiBodyLinkColliderDoubleData
@@ -29,25 +29,20 @@ subject to the following restrictions:
 #define btMultiBodyLinkColliderDataName "btMultiBodyLinkColliderFloatData"
 #endif
 
-class btMultiBodyLinkCollider : public btCollisionObject
-{
-	//protected:
+class btMultiBodyLinkCollider : public btCollisionObject {
+	// protected:
 public:
-	btMultiBody* m_multiBody;
+	btMultiBody *m_multiBody;
 	int m_link;
 
-	virtual ~btMultiBodyLinkCollider()
-	{
-
+	virtual ~btMultiBodyLinkCollider() {
 	}
-	btMultiBodyLinkCollider(btMultiBody* multiBody, int link)
-		: m_multiBody(multiBody),
-		  m_link(link)
-	{
+	btMultiBodyLinkCollider(btMultiBody *multiBody, int link) : m_multiBody(multiBody),
+																m_link(link) {
 		m_checkCollideWith = true;
-		//we need to remove the 'CF_STATIC_OBJECT' flag, otherwise links/base doesn't merge islands
-		//this means that some constraints might point to bodies that are not in the islands, causing crashes
-		//if (link>=0 || (multiBody && !multiBody->hasFixedBase()))
+		// we need to remove the 'CF_STATIC_OBJECT' flag, otherwise links/base doesn't merge islands
+		// this means that some constraints might point to bodies that are not in the islands, causing crashes
+		// if (link>=0 || (multiBody && !multiBody->hasFixedBase()))
 		{
 			m_collisionFlags &= (~btCollisionObject::CF_STATIC_OBJECT);
 		}
@@ -58,22 +53,19 @@ public:
 
 		m_internalType = CO_FEATHERSTONE_LINK;
 	}
-	static btMultiBodyLinkCollider* upcast(btCollisionObject* colObj)
-	{
+	static btMultiBodyLinkCollider *upcast(btCollisionObject *colObj) {
 		if (colObj->getInternalType() & btCollisionObject::CO_FEATHERSTONE_LINK)
-			return (btMultiBodyLinkCollider*)colObj;
+			return (btMultiBodyLinkCollider *)colObj;
 		return 0;
 	}
-	static const btMultiBodyLinkCollider* upcast(const btCollisionObject* colObj)
-	{
+	static const btMultiBodyLinkCollider *upcast(const btCollisionObject *colObj) {
 		if (colObj->getInternalType() & btCollisionObject::CO_FEATHERSTONE_LINK)
-			return (btMultiBodyLinkCollider*)colObj;
+			return (btMultiBodyLinkCollider *)colObj;
 		return 0;
 	}
 
-	virtual bool checkCollideWithOverride(const btCollisionObject* co) const
-	{
-		const btMultiBodyLinkCollider* other = btMultiBodyLinkCollider::upcast(co);
+	virtual bool checkCollideWithOverride(const btCollisionObject *co) const {
+		const btMultiBodyLinkCollider *other = btMultiBodyLinkCollider::upcast(co);
 		if (!other)
 			return true;
 		if (other->m_multiBody != this->m_multiBody)
@@ -81,48 +73,37 @@ public:
 		if (!m_multiBody->hasSelfCollision())
 			return false;
 
-		//check if 'link' has collision disabled
-		if (m_link >= 0)
-		{
-			const btMultibodyLink& link = m_multiBody->getLink(this->m_link);
-			if (link.m_flags & BT_MULTIBODYLINKFLAGS_DISABLE_ALL_PARENT_COLLISION)
-			{
+		// check if 'link' has collision disabled
+		if (m_link >= 0) {
+			const btMultibodyLink &link = m_multiBody->getLink(this->m_link);
+			if (link.m_flags & BT_MULTIBODYLINKFLAGS_DISABLE_ALL_PARENT_COLLISION) {
 				int parent_of_this = m_link;
-				while (1)
-				{
+				while (1) {
 					if (parent_of_this == -1)
 						break;
 					parent_of_this = m_multiBody->getLink(parent_of_this).m_parent;
-					if (parent_of_this == other->m_link)
-					{
+					if (parent_of_this == other->m_link) {
 						return false;
 					}
 				}
-			}
-			else if (link.m_flags & BT_MULTIBODYLINKFLAGS_DISABLE_PARENT_COLLISION)
-			{
+			} else if (link.m_flags & BT_MULTIBODYLINKFLAGS_DISABLE_PARENT_COLLISION) {
 				if (link.m_parent == other->m_link)
 					return false;
 			}
 		}
 
-		if (other->m_link >= 0)
-		{
-			const btMultibodyLink& otherLink = other->m_multiBody->getLink(other->m_link);
-			if (otherLink.m_flags & BT_MULTIBODYLINKFLAGS_DISABLE_ALL_PARENT_COLLISION)
-			{
+		if (other->m_link >= 0) {
+			const btMultibodyLink &otherLink = other->m_multiBody->getLink(other->m_link);
+			if (otherLink.m_flags & BT_MULTIBODYLINKFLAGS_DISABLE_ALL_PARENT_COLLISION) {
 				int parent_of_other = other->m_link;
-				while (1)
-				{
+				while (1) {
 					if (parent_of_other == -1)
 						break;
 					parent_of_other = m_multiBody->getLink(parent_of_other).m_parent;
 					if (parent_of_other == this->m_link)
 						return false;
 				}
-			}
-			else if (otherLink.m_flags & BT_MULTIBODYLINKFLAGS_DISABLE_PARENT_COLLISION)
-			{
+			} else if (otherLink.m_flags & BT_MULTIBODYLINKFLAGS_DISABLE_PARENT_COLLISION) {
 				if (otherLink.m_parent == this->m_link)
 					return false;
 			}
@@ -132,8 +113,8 @@ public:
 
 	virtual int calculateSerializeBufferSize() const;
 
-	///fills the dataBuffer and returns the struct name (and 0 on failure)
-	virtual const char* serialize(void* dataBuffer, class btSerializer* serializer) const;
+	/// fills the dataBuffer and returns the struct name (and 0 on failure)
+	virtual const char *serialize(void *dataBuffer, class btSerializer *serializer) const;
 };
 
 // clang-format off
@@ -156,18 +137,16 @@ struct	btMultiBodyLinkColliderDoubleData
 
 // clang-format on
 
-SIMD_FORCE_INLINE int btMultiBodyLinkCollider::calculateSerializeBufferSize() const
-{
+SIMD_FORCE_INLINE int btMultiBodyLinkCollider::calculateSerializeBufferSize() const {
 	return sizeof(btMultiBodyLinkColliderData);
 }
 
-SIMD_FORCE_INLINE const char* btMultiBodyLinkCollider::serialize(void* dataBuffer, class btSerializer* serializer) const
-{
-	btMultiBodyLinkColliderData* dataOut = (btMultiBodyLinkColliderData*)dataBuffer;
+SIMD_FORCE_INLINE const char *btMultiBodyLinkCollider::serialize(void *dataBuffer, class btSerializer *serializer) const {
+	btMultiBodyLinkColliderData *dataOut = (btMultiBodyLinkColliderData *)dataBuffer;
 	btCollisionObject::serialize(&dataOut->m_colObjData, serializer);
 
 	dataOut->m_link = this->m_link;
-	dataOut->m_multiBody = (btMultiBodyData*)serializer->getUniquePointer(m_multiBody);
+	dataOut->m_multiBody = (btMultiBodyData *)serializer->getUniquePointer(m_multiBody);
 
 	// Fill padding with zeros to appease msan.
 	memset(dataOut->m_padding, 0, sizeof(dataOut->m_padding));
@@ -175,4 +154,4 @@ SIMD_FORCE_INLINE const char* btMultiBodyLinkCollider::serialize(void* dataBuffe
 	return btMultiBodyLinkColliderDataName;
 }
 
-#endif  //BT_FEATHERSTONE_LINK_COLLIDER_H
+#endif // BT_FEATHERSTONE_LINK_COLLIDER_H

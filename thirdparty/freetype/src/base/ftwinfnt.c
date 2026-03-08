@@ -15,38 +15,33 @@
  *
  */
 
-
-#include <freetype/internal/ftdebug.h>
 #include <freetype/ftwinfnt.h>
+#include <freetype/internal/ftdebug.h>
 #include <freetype/internal/ftobjs.h>
 #include <freetype/internal/services/svwinfnt.h>
 
+/* documentation is in ftwinfnt.h */
 
-  /* documentation is in ftwinfnt.h */
+FT_EXPORT_DEF(FT_Error)
+FT_Get_WinFNT_Header(FT_Face face,
+		FT_WinFNT_HeaderRec *header) {
+	FT_Service_WinFnt service;
+	FT_Error error;
 
-  FT_EXPORT_DEF( FT_Error )
-  FT_Get_WinFNT_Header( FT_Face               face,
-                        FT_WinFNT_HeaderRec  *header )
-  {
-    FT_Service_WinFnt  service;
-    FT_Error           error;
+	if (!face)
+		return FT_THROW(Invalid_Face_Handle);
 
+	if (!header)
+		return FT_THROW(Invalid_Argument);
 
-    if ( !face )
-      return FT_THROW( Invalid_Face_Handle );
+	FT_FACE_LOOKUP_SERVICE(face, service, WINFNT);
 
-    if ( !header )
-      return FT_THROW( Invalid_Argument );
+	if (service)
+		error = service->get_header(face, header);
+	else
+		error = FT_THROW(Invalid_Argument);
 
-    FT_FACE_LOOKUP_SERVICE( face, service, WINFNT );
-
-    if ( service )
-      error = service->get_header( face, header );
-    else
-      error = FT_THROW( Invalid_Argument );
-
-    return error;
-  }
-
+	return error;
+}
 
 /* END */

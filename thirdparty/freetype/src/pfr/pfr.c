@@ -15,7 +15,6 @@
  *
  */
 
-
 #define FT_MAKE_OPTION_SINGLE_OBJECT
 
 #include "pfrcmap.c"
@@ -24,6 +23,5 @@
 #include "pfrload.c"
 #include "pfrobjs.c"
 #include "pfrsbit.c"
-
 
 /* END */

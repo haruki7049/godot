@@ -14,7 +14,6 @@
 #include "vpx/vpx_integer.h"
 #include "vpx_dsp/vpx_dsp_common.h"
 
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -343,13 +342,12 @@ void vpx_ve_predictor_4x4_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *abo
 void vpx_dsp_rtcd(void);
 
 #ifdef RTCD_C
-static void setup_rtcd_internal(void)
-{
+static void setup_rtcd_internal(void) {
 }
 #endif
 
 #ifdef __cplusplus
-}  // extern "C"
+} // extern "C"
 #endif
 
 #endif

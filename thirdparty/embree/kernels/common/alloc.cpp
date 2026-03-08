@@ -4,76 +4,66 @@
 #include "alloc.h"
 #include "../../common/sys/thread.h"
 
-namespace embree
-{
-  __thread FastAllocator::ThreadLocal2* FastAllocator::thread_local_allocator2 = nullptr;
-  SpinLock FastAllocator::s_thread_local_allocators_lock;
-  std::vector<std::unique_ptr<FastAllocator::ThreadLocal2>> FastAllocator::s_thread_local_allocators;
-   
-  struct fast_allocator_regression_test : public RegressionTest
-  {
-    BarrierSys barrier;
-    std::atomic<size_t> numFailed;
-    std::unique_ptr<FastAllocator> alloc;
+namespace embree {
+__thread FastAllocator::ThreadLocal2 *FastAllocator::thread_local_allocator2 = nullptr;
+SpinLock FastAllocator::s_thread_local_allocators_lock;
+std::vector<std::unique_ptr<FastAllocator::ThreadLocal2>> FastAllocator::s_thread_local_allocators;
 
-    fast_allocator_regression_test() 
-      : RegressionTest("fast_allocator_regression_test"), numFailed(0)
-    {
-      registerRegressionTest(this);
-    }
+struct fast_allocator_regression_test : public RegressionTest {
+	BarrierSys barrier;
+	std::atomic<size_t> numFailed;
+	std::unique_ptr<FastAllocator> alloc;
 
-    static void thread_alloc(fast_allocator_regression_test* This)
-    {
-      FastAllocator::CachedAllocator threadalloc = This->alloc->getCachedAllocator();
+	fast_allocator_regression_test() : RegressionTest("fast_allocator_regression_test"), numFailed(0) {
+		registerRegressionTest(this);
+	}
 
-      size_t* ptrs[1000];
-      for (size_t j=0; j<1000; j++)
-      {
-        This->barrier.wait();
-        for (size_t i=0; i<1000; i++) {
-          ptrs[i] = (size_t*) threadalloc.malloc0(sizeof(size_t)+(i%32));
-          *ptrs[i] = size_t(threadalloc.talloc0) + i;
-        }
-        for (size_t i=0; i<1000; i++) {
-          if (*ptrs[i] != size_t(threadalloc.talloc0) + i) 
-            This->numFailed++;
-        }
-        This->barrier.wait();
-      }
-    }
-    
-    bool run ()
-    {
-      alloc = make_unique(new FastAllocator(nullptr,false));
-      numFailed.store(0);
+	static void thread_alloc(fast_allocator_regression_test *This) {
+		FastAllocator::CachedAllocator threadalloc = This->alloc->getCachedAllocator();
 
-      size_t numThreads = getNumberOfLogicalThreads();
-      barrier.init(numThreads+1);
+		size_t *ptrs[1000];
+		for (size_t j = 0; j < 1000; j++) {
+			This->barrier.wait();
+			for (size_t i = 0; i < 1000; i++) {
+				ptrs[i] = (size_t *)threadalloc.malloc0(sizeof(size_t) + (i % 32));
+				*ptrs[i] = size_t(threadalloc.talloc0) + i;
+			}
+			for (size_t i = 0; i < 1000; i++) {
+				if (*ptrs[i] != size_t(threadalloc.talloc0) + i)
+					This->numFailed++;
+			}
+			This->barrier.wait();
+		}
+	}
 
-      /* create threads */
-      std::vector<thread_t> threads;
-      for (size_t i=0; i<numThreads; i++)
-        threads.push_back(createThread((thread_func)thread_alloc,this));
+	bool run() {
+		alloc = make_unique(new FastAllocator(nullptr, false));
+		numFailed.store(0);
 
-      /* run test */ 
-      for (size_t i=0; i<1000; i++)
-      {
-        alloc->reset();
-        barrier.wait();
-        barrier.wait();
-      }
-     
-      /* destroy threads */
-      for (size_t i=0; i<numThreads; i++)
-        join(threads[i]);
+		size_t numThreads = getNumberOfLogicalThreads();
+		barrier.init(numThreads + 1);
 
-      alloc = nullptr;
+		/* create threads */
+		std::vector<thread_t> threads;
+		for (size_t i = 0; i < numThreads; i++)
+			threads.push_back(createThread((thread_func)thread_alloc, this));
 
-      return numFailed == 0;
-    }
-  };
+		/* run test */
+		for (size_t i = 0; i < 1000; i++) {
+			alloc->reset();
+			barrier.wait();
+			barrier.wait();
+		}
 
-  fast_allocator_regression_test fast_allocator_regression;
-}
+		/* destroy threads */
+		for (size_t i = 0; i < numThreads; i++)
+			join(threads[i]);
 
+		alloc = nullptr;
 
+		return numFailed == 0;
+	}
+};
+
+fast_allocator_regression_test fast_allocator_regression;
+} // namespace embree

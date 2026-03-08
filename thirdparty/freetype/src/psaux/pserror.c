@@ -35,18 +35,14 @@
  *
  */
 
-
-#include "psft.h"
 #include "pserror.h"
+#include "psft.h"
 
-
-  FT_LOCAL_DEF( void )
-  cf2_setError( FT_Error*  error,
-                FT_Error   value )
-  {
-    if ( error && !*error )
-      *error = value;
-  }
-
+FT_LOCAL_DEF(void)
+cf2_setError(FT_Error *error,
+		FT_Error value) {
+	if (error && !*error)
+		*error = value;
+}
 
 /* END */

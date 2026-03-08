@@ -18,18 +18,15 @@ subject to the following restrictions:
 
 #include "b3Common.h"
 
-namespace bParse
-{
-struct bNameInfo
-{
+namespace bParse {
+struct bNameInfo {
 	char *m_name;
 	bool m_isPointer;
 	int m_dim0;
 	int m_dim1;
 };
 
-class bDNA
-{
+class bDNA {
 public:
 	bDNA();
 	~bDNA();
@@ -37,20 +34,17 @@ public:
 	void init(char *data, int len, bool swap = false);
 
 	int getArraySize(char *str);
-	int getArraySizeNew(short name)
-	{
+	int getArraySizeNew(short name) {
 		const bNameInfo &nameInfo = m_Names[name];
 		return nameInfo.m_dim0 * nameInfo.m_dim1;
 	}
-	int getElementSize(short type, short name)
-	{
+	int getElementSize(short type, short name) {
 		const bNameInfo &nameInfo = m_Names[name];
 		int size = nameInfo.m_isPointer ? mPtrLen * nameInfo.m_dim0 * nameInfo.m_dim1 : mTlens[type] * nameInfo.m_dim0 * nameInfo.m_dim1;
 		return size;
 	}
 
-	int getNumNames() const
-	{
+	int getNumNames() const {
 		return m_Names.size();
 	}
 
@@ -76,8 +70,7 @@ public:
 	void dumpTypeDefinitions();
 
 private:
-	enum FileDNAFlags
-	{
+	enum FileDNAFlags {
 		FDF_NONE = 0,
 		FDF_STRUCT_NEQU,
 		FDF_STRUCT_EQU
@@ -96,6 +89,6 @@ private:
 
 	int mPtrLen;
 };
-}  // namespace bParse
+} // namespace bParse
 
-#endif  //__BDNA_H__
+#endif //__BDNA_H__

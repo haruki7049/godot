@@ -4,8 +4,8 @@ Copyright (c) 2003-2009 Erwin Coumans  http://bulletphysics.org
 
 This software is provided 'as-is', without any express or implied warranty.
 In no event will the authors be held liable for any damages arising from the use of this software.
-Permission is granted to anyone to use this software for any purpose, 
-including commercial applications, and to alter it and redistribute it freely, 
+Permission is granted to anyone to use this software for any purpose,
+including commercial applications, and to alter it and redistribute it freely,
 subject to the following restrictions:
 
 1. The origin of this software must not be misrepresented; you must not claim that you wrote the original software. If you use this software in a product, an acknowledgment in the product documentation would be appreciated but is not required.
@@ -17,28 +17,23 @@ subject to the following restrictions:
 
 #include "LinearMath/btQuaternion.h"
 
-btCapsuleShape::btCapsuleShape(btScalar radius, btScalar height) : btConvexInternalShape()
-{
+btCapsuleShape::btCapsuleShape(btScalar radius, btScalar height) : btConvexInternalShape() {
 	m_collisionMargin = radius;
 	m_shapeType = CAPSULE_SHAPE_PROXYTYPE;
 	m_upAxis = 1;
 	m_implicitShapeDimensions.setValue(radius, 0.5f * height, radius);
 }
 
-btVector3 btCapsuleShape::localGetSupportingVertexWithoutMargin(const btVector3& vec0) const
-{
+btVector3 btCapsuleShape::localGetSupportingVertexWithoutMargin(const btVector3 &vec0) const {
 	btVector3 supVec(0, 0, 0);
 
 	btScalar maxDot(btScalar(-BT_LARGE_FLOAT));
 
 	btVector3 vec = vec0;
 	btScalar lenSqr = vec.length2();
-	if (lenSqr < btScalar(0.0001))
-	{
+	if (lenSqr < btScalar(0.0001)) {
 		vec.setValue(1, 0, 0);
-	}
-	else
-	{
+	} else {
 		btScalar rlen = btScalar(1.) / btSqrt(lenSqr);
 		vec *= rlen;
 	}
@@ -52,8 +47,7 @@ btVector3 btCapsuleShape::localGetSupportingVertexWithoutMargin(const btVector3&
 
 		vtx = pos;
 		newDot = vec.dot(vtx);
-		if (newDot > maxDot)
-		{
+		if (newDot > maxDot) {
 			maxDot = newDot;
 			supVec = vtx;
 		}
@@ -64,8 +58,7 @@ btVector3 btCapsuleShape::localGetSupportingVertexWithoutMargin(const btVector3&
 
 		vtx = pos;
 		newDot = vec.dot(vtx);
-		if (newDot > maxDot)
-		{
+		if (newDot > maxDot) {
 			maxDot = newDot;
 			supVec = vtx;
 		}
@@ -74,12 +67,10 @@ btVector3 btCapsuleShape::localGetSupportingVertexWithoutMargin(const btVector3&
 	return supVec;
 }
 
-void btCapsuleShape::batchedUnitVectorGetSupportingVertexWithoutMargin(const btVector3* vectors, btVector3* supportVerticesOut, int numVectors) const
-{
-	for (int j = 0; j < numVectors; j++)
-	{
+void btCapsuleShape::batchedUnitVectorGetSupportingVertexWithoutMargin(const btVector3 *vectors, btVector3 *supportVerticesOut, int numVectors) const {
+	for (int j = 0; j < numVectors; j++) {
 		btScalar maxDot(btScalar(-BT_LARGE_FLOAT));
-		const btVector3& vec = vectors[j];
+		const btVector3 &vec = vectors[j];
 
 		btVector3 vtx;
 		btScalar newDot;
@@ -88,8 +79,7 @@ void btCapsuleShape::batchedUnitVectorGetSupportingVertexWithoutMargin(const btV
 			pos[getUpAxis()] = getHalfHeight();
 			vtx = pos;
 			newDot = vec.dot(vtx);
-			if (newDot > maxDot)
-			{
+			if (newDot > maxDot) {
 				maxDot = newDot;
 				supportVerticesOut[j] = vtx;
 			}
@@ -99,8 +89,7 @@ void btCapsuleShape::batchedUnitVectorGetSupportingVertexWithoutMargin(const btV
 			pos[getUpAxis()] = -getHalfHeight();
 			vtx = pos;
 			newDot = vec.dot(vtx);
-			if (newDot > maxDot)
-			{
+			if (newDot > maxDot) {
 				maxDot = newDot;
 				supportVerticesOut[j] = vtx;
 			}
@@ -108,9 +97,8 @@ void btCapsuleShape::batchedUnitVectorGetSupportingVertexWithoutMargin(const btV
 	}
 }
 
-void btCapsuleShape::calculateLocalInertia(btScalar mass, btVector3& inertia) const
-{
-	//as an approximation, take the inertia of the box that bounds the spheres
+void btCapsuleShape::calculateLocalInertia(btScalar mass, btVector3 &inertia) const {
+	// as an approximation, take the inertia of the box that bounds the spheres
 
 	btTransform ident;
 	ident.setIdentity();
@@ -133,15 +121,13 @@ void btCapsuleShape::calculateLocalInertia(btScalar mass, btVector3& inertia) co
 	inertia[2] = scaledmass * (x2 + y2);
 }
 
-btCapsuleShapeX::btCapsuleShapeX(btScalar radius, btScalar height)
-{
+btCapsuleShapeX::btCapsuleShapeX(btScalar radius, btScalar height) {
 	m_collisionMargin = radius;
 	m_upAxis = 0;
 	m_implicitShapeDimensions.setValue(0.5f * height, radius, radius);
 }
 
-btCapsuleShapeZ::btCapsuleShapeZ(btScalar radius, btScalar height)
-{
+btCapsuleShapeZ::btCapsuleShapeZ(btScalar radius, btScalar height) {
 	m_collisionMargin = radius;
 	m_upAxis = 2;
 	m_implicitShapeDimensions.setValue(radius, radius, 0.5f * height);

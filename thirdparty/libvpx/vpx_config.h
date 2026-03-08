@@ -10,62 +10,62 @@
 #define VPX_CONFIG_H
 #define RESTRICT
 #if defined(_MSC_VER) && (_MSC_VER < 1900)
-	#define INLINE __inline
+#define INLINE __inline
 #else
-	#define INLINE inline
+#define INLINE inline
 #endif
 
 #define HAVE_MIPS32 0
 #define HAVE_MEDIA 0
 
 #if defined(__i386) || defined(__i386__) || defined(_M_IX86)
-	#define ARCH_X86 1
-	#define ARCH_X86_64 0
+#define ARCH_X86 1
+#define ARCH_X86_64 0
 
-	#define ARCH_ARM 0
-	#define HAVE_NEON 0
-	#define HAVE_NEON_ASM 0
+#define ARCH_ARM 0
+#define HAVE_NEON 0
+#define HAVE_NEON_ASM 0
 
-	#define HAVE_MMX 1
-	#define HAVE_SSE2 1
-	#define HAVE_SSSE3 1
-	#define HAVE_AVX2 0
+#define HAVE_MMX 1
+#define HAVE_SSE2 1
+#define HAVE_SSSE3 1
+#define HAVE_AVX2 0
 #elif defined(__x86_64) || defined(__x86_64__) || defined(__amd64) || defined(_M_X64)
-	#define ARCH_X86 0
-	#define ARCH_X86_64 1
+#define ARCH_X86 0
+#define ARCH_X86_64 1
 
-	#define ARCH_ARM 0
-	#define HAVE_NEON 0
-	#define HAVE_NEON_ASM 0
+#define ARCH_ARM 0
+#define HAVE_NEON 0
+#define HAVE_NEON_ASM 0
 
-	#define HAVE_MMX 1
-	#define HAVE_SSE2 1
-	#define HAVE_SSSE3 1
-	#define HAVE_AVX2 0
+#define HAVE_MMX 1
+#define HAVE_SSE2 1
+#define HAVE_SSSE3 1
+#define HAVE_AVX2 0
 #elif defined(__arm__) || defined(__TARGET_ARCH_ARM) || defined(_M_ARM)
-	#define ARCH_X86 0
-	#define ARCH_X86_64 0
+#define ARCH_X86 0
+#define ARCH_X86_64 0
 
-	#define ARCH_ARM 1
-	#define HAVE_NEON 1
-	#define HAVE_NEON_ASM 1
+#define ARCH_ARM 1
+#define HAVE_NEON 1
+#define HAVE_NEON_ASM 1
 #elif defined(__aarch64__)
-	#define ARCH_X86 0
-	#define ARCH_X86_64 0
+#define ARCH_X86 0
+#define ARCH_X86_64 0
 
-	#define ARCH_ARM 1
-	#define HAVE_NEON 0
-	#define HAVE_NEON_ASM 0
+#define ARCH_ARM 1
+#define HAVE_NEON 0
+#define HAVE_NEON_ASM 0
 #else
-	#define ARCH_X86 0
-	#define ARCH_X86_64 0
+#define ARCH_X86 0
+#define ARCH_X86_64 0
 
-	#define ARCH_ARM 0
-	#define HAVE_NEON 0
-	#define HAVE_NEON_ASM 0
+#define ARCH_ARM 0
+#define HAVE_NEON 0
+#define HAVE_NEON_ASM 0
 #endif
 
-#define CONFIG_BIG_ENDIAN 0 //TODO: Autodetect
+#define CONFIG_BIG_ENDIAN 0 // TODO: Autodetect
 
 #ifdef __EMSCRIPTEN__
 #define CONFIG_MULTITHREAD 0
@@ -74,11 +74,11 @@
 #endif
 
 #ifdef _WIN32
-	#define HAVE_PTHREAD_H 0
-	#define HAVE_UNISTD_H 0
+#define HAVE_PTHREAD_H 0
+#define HAVE_UNISTD_H 0
 #else
-	#define HAVE_PTHREAD_H 1
-	#define HAVE_UNISTD_H 1
+#define HAVE_PTHREAD_H 1
+#define HAVE_UNISTD_H 1
 #endif
 
 /**/

@@ -13,8 +13,8 @@ subject to the following restrictions:
 3. This notice may not be removed or altered from any source distribution.
 */
 
-//Original author: Roman Ponomarev
-//Mostly Reimplemented by Erwin Coumans
+// Original author: Roman Ponomarev
+// Mostly Reimplemented by Erwin Coumans
 
 bool gDebugForceLoadingFromSource = false;
 bool gDebugSkipLoadingBinary = false;
@@ -27,12 +27,12 @@ bool gDebugSkipLoadingBinary = false;
 #pragma warning(disable : 4996)
 #endif
 #include "b3OpenCLUtils.h"
-//#include "b3OpenCLInclude.h"
+// #include "b3OpenCLInclude.h"
 
 #include <stdio.h>
 #include <stdlib.h>
 
-#define B3_MAX_CL_DEVICES 16  //who needs 16 devices?
+#define B3_MAX_CL_DEVICES 16 // who needs 16 devices?
 
 #ifdef _WIN32
 #include <windows.h>
@@ -45,46 +45,42 @@ bool gDebugSkipLoadingBinary = false;
 
 #endif
 
-static const char* sCachedBinaryPath = "cache";
+static const char *sCachedBinaryPath = "cache";
 
-//Set the preferred platform vendor using the OpenCL SDK
-static const char* spPlatformVendor =
+// Set the preferred platform vendor using the OpenCL SDK
+static const char *spPlatformVendor =
 #if defined(CL_PLATFORM_MINI_CL)
-	"MiniCL, SCEA";
+		"MiniCL, SCEA";
 #elif defined(CL_PLATFORM_AMD)
-	"Advanced Micro Devices, Inc.";
+		"Advanced Micro Devices, Inc.";
 #elif defined(CL_PLATFORM_NVIDIA)
-	"NVIDIA Corporation";
+		"NVIDIA Corporation";
 #elif defined(CL_PLATFORM_INTEL)
-	"Intel(R) Corporation";
+		"Intel(R) Corporation";
 #elif defined(B3_USE_CLEW)
-	"clew (OpenCL Extension Wrangler library)";
+		"clew (OpenCL Extension Wrangler library)";
 #else
-	"Unknown Vendor";
+		"Unknown Vendor";
 #endif
 
 #ifndef CL_PLATFORM_MINI_CL
 #ifdef _WIN32
 #ifndef B3_USE_CLEW
 #include "CL/cl_gl.h"
-#endif  //B3_USE_CLEW
-#endif  //_WIN32
+#endif // B3_USE_CLEW
+#endif //_WIN32
 #endif
 
-void MyFatalBreakAPPLE(const char* errstr,
-					   const void* private_info,
-					   size_t cb,
-					   void* user_data)
-{
-	const char* patloc = strstr(errstr, "Warning");
-	//find out if it is a warning or error, exit if error
+void MyFatalBreakAPPLE(const char *errstr,
+		const void *private_info,
+		size_t cb,
+		void *user_data) {
+	const char *patloc = strstr(errstr, "Warning");
+	// find out if it is a warning or error, exit if error
 
-	if (patloc)
-	{
+	if (patloc) {
 		b3Warning("Warning: %s\n", errstr);
-	}
-	else
-	{
+	} else {
 		b3Error("Error: %s\n", errstr);
 		b3Assert(0);
 	}
@@ -92,72 +88,60 @@ void MyFatalBreakAPPLE(const char* errstr,
 
 #ifdef B3_USE_CLEW
 
-int b3OpenCLUtils_clewInit()
-{
+int b3OpenCLUtils_clewInit() {
 	int result = -1;
 
 #ifdef _WIN32
-	const char* cl = "OpenCL.dll";
+	const char *cl = "OpenCL.dll";
 #elif defined __APPLE__
-	const char* cl = "/System/Library/Frameworks/OpenCL.framework/Versions/Current/OpenCL";
-#else  //presumable Linux? \
-	   //linux (tested on Ubuntu 12.10 with Catalyst 13.4 beta drivers, not that there is no symbolic link from libOpenCL.so
-	const char* cl = "libOpenCL.so.1";
+	const char *cl = "/System/Library/Frameworks/OpenCL.framework/Versions/Current/OpenCL";
+#else // presumable Linux? \
+	  // linux (tested on Ubuntu 12.10 with Catalyst 13.4 beta drivers, not that there is no symbolic link from libOpenCL.so
+	const char *cl = "libOpenCL.so.1";
 	result = clewInit(cl);
-	if (result != CLEW_SUCCESS)
-	{
+	if (result != CLEW_SUCCESS) {
 		cl = "libOpenCL.so";
-	}
-	else
-	{
+	} else {
 		clewExit();
 	}
 #endif
 	result = clewInit(cl);
-	if (result != CLEW_SUCCESS)
-	{
+	if (result != CLEW_SUCCESS) {
 		b3Error("clewInit failed with error code %d\n", result);
-	}
-	else
-	{
+	} else {
 		b3Printf("clewInit succesfull using %s\n", cl);
 	}
 	return result;
 }
 #endif
 
-int b3OpenCLUtils_getNumPlatforms(cl_int* pErrNum)
-{
+int b3OpenCLUtils_getNumPlatforms(cl_int *pErrNum) {
 #ifdef B3_USE_CLEW
 	b3OpenCLUtils_clewInit();
 #endif
 
-	cl_platform_id pPlatforms[10] = {0};
+	cl_platform_id pPlatforms[10] = { 0 };
 
 	cl_uint numPlatforms = 0;
 	cl_int ciErrNum = clGetPlatformIDs(10, pPlatforms, &numPlatforms);
-	//cl_int ciErrNum = clGetPlatformIDs(0, NULL, &numPlatforms);
+	// cl_int ciErrNum = clGetPlatformIDs(0, NULL, &numPlatforms);
 
-	if (ciErrNum != CL_SUCCESS)
-	{
+	if (ciErrNum != CL_SUCCESS) {
 		if (pErrNum != NULL)
 			*pErrNum = ciErrNum;
 	}
 	return numPlatforms;
 }
 
-const char* b3OpenCLUtils_getSdkVendorName()
-{
+const char *b3OpenCLUtils_getSdkVendorName() {
 	return spPlatformVendor;
 }
 
-void b3OpenCLUtils_setCachePath(const char* path)
-{
+void b3OpenCLUtils_setCachePath(const char *path) {
 	sCachedBinaryPath = path;
 }
 
-cl_platform_id b3OpenCLUtils_getPlatform(int platformIndex0, cl_int* pErrNum)
-{
+cl_platform_id b3OpenCLUtils_getPlatform(int platformIndex0, cl_int *pErrNum) {
 #ifdef B3_USE_CLEW
 	b3OpenCLUtils_clewInit();
 #endif
@@ -167,12 +151,10 @@ cl_platform_id b3OpenCLUtils_getPlatform(int platformIndex0, cl_int* pErrNum)
 	cl_uint numPlatforms;
 	cl_int ciErrNum = clGetPlatformIDs(0, NULL, &numPlatforms);
 
-	if (platformIndex < numPlatforms)
-	{
-		cl_platform_id* platforms = (cl_platform_id*)malloc(sizeof(cl_platform_id) * numPlatforms);
+	if (platformIndex < numPlatforms) {
+		cl_platform_id *platforms = (cl_platform_id *)malloc(sizeof(cl_platform_id) * numPlatforms);
 		ciErrNum = clGetPlatformIDs(numPlatforms, platforms, NULL);
-		if (ciErrNum != CL_SUCCESS)
-		{
+		if (ciErrNum != CL_SUCCESS) {
 			if (pErrNum != NULL)
 				*pErrNum = ciErrNum;
 			return platform;
@@ -186,8 +168,7 @@ cl_platform_id b3OpenCLUtils_getPlatform(int platformIndex0, cl_int* pErrNum)
 	return platform;
 }
 
-void b3OpenCLUtils::getPlatformInfo(cl_platform_id platform, b3OpenCLPlatformInfo* platformInfo)
-{
+void b3OpenCLUtils::getPlatformInfo(cl_platform_id platform, b3OpenCLPlatformInfo *platformInfo) {
 	b3Assert(platform);
 	cl_int ciErrNum;
 	ciErrNum = clGetPlatformInfo(platform, CL_PLATFORM_VENDOR, B3_MAX_STRING_LENGTH, platformInfo->m_platformVendor, NULL);
@@ -198,8 +179,7 @@ void b3OpenCLUtils::getPlatformInfo(cl_platform_id platform, b3OpenCLPlatformInf
 	oclCHECKERROR(ciErrNum, CL_SUCCESS);
 }
 
-void b3OpenCLUtils_printPlatformInfo(cl_platform_id platform)
-{
+void b3OpenCLUtils_printPlatformInfo(cl_platform_id platform) {
 	b3OpenCLPlatformInfo platformInfo;
 	b3OpenCLUtils::getPlatformInfo(platform, &platformInfo);
 	b3Printf("Platform info:\n");
@@ -208,46 +188,43 @@ void b3OpenCLUtils_printPlatformInfo(cl_platform_id platform)
 	b3Printf("  CL_PLATFORM_VERSION: \t\t\t%s\n", platformInfo.m_platformVersion);
 }
 
-cl_context b3OpenCLUtils_createContextFromPlatform(cl_platform_id platform, cl_device_type deviceType, cl_int* pErrNum, void* pGLContext, void* pGLDC, int preferredDeviceIndex, int preferredPlatformIndex)
-{
+cl_context b3OpenCLUtils_createContextFromPlatform(cl_platform_id platform, cl_device_type deviceType, cl_int *pErrNum, void *pGLContext, void *pGLDC, int preferredDeviceIndex, int preferredPlatformIndex) {
 	cl_context retContext = 0;
 	cl_int ciErrNum = 0;
 	cl_uint num_entries;
 	cl_device_id devices[B3_MAX_CL_DEVICES];
 	cl_uint num_devices;
-	cl_context_properties* cprops;
+	cl_context_properties *cprops;
 
 	/*
-	* If we could find our platform, use it. Otherwise pass a NULL and get whatever the
-	* implementation thinks we should be using.
-	*/
-	cl_context_properties cps[7] = {0, 0, 0, 0, 0, 0, 0};
+	 * If we could find our platform, use it. Otherwise pass a NULL and get whatever the
+	 * implementation thinks we should be using.
+	 */
+	cl_context_properties cps[7] = { 0, 0, 0, 0, 0, 0, 0 };
 	cps[0] = CL_CONTEXT_PLATFORM;
 	cps[1] = (cl_context_properties)platform;
 #ifdef _WIN32
 #ifndef B3_USE_CLEW
-	if (pGLContext && pGLDC)
-	{
+	if (pGLContext && pGLDC) {
 		cps[2] = CL_GL_CONTEXT_KHR;
 		cps[3] = (cl_context_properties)pGLContext;
 		cps[4] = CL_WGL_HDC_KHR;
 		cps[5] = (cl_context_properties)pGLDC;
 	}
-#endif  //B3_USE_CLEW
-#endif  //_WIN32
+#endif // B3_USE_CLEW
+#endif //_WIN32
 	num_entries = B3_MAX_CL_DEVICES;
 
 	num_devices = -1;
 
 	ciErrNum = clGetDeviceIDs(
-		platform,
-		deviceType,
-		num_entries,
-		devices,
-		&num_devices);
+			platform,
+			deviceType,
+			num_entries,
+			devices,
+			&num_devices);
 
-	if (ciErrNum < 0)
-	{
+	if (ciErrNum < 0) {
 		b3Printf("clGetDeviceIDs returned %d\n", ciErrNum);
 		return 0;
 	}
@@ -256,27 +233,20 @@ cl_context b3OpenCLUtils_createContextFromPlatform(cl_platform_id platform, cl_d
 	if (!num_devices)
 		return 0;
 
-	if (pGLContext)
-	{
-		//search for the GPU that relates to the OpenCL context
+	if (pGLContext) {
+		// search for the GPU that relates to the OpenCL context
 		unsigned int i;
-		for (i = 0; i < num_devices; i++)
-		{
+		for (i = 0; i < num_devices; i++) {
 			retContext = clCreateContext(cprops, 1, &devices[i], NULL, NULL, &ciErrNum);
 			if (ciErrNum == CL_SUCCESS)
 				break;
 		}
-	}
-	else
-	{
-		if (preferredDeviceIndex >= 0 && (unsigned int)preferredDeviceIndex < num_devices)
-		{
-			//create a context of the preferred device index
+	} else {
+		if (preferredDeviceIndex >= 0 && (unsigned int)preferredDeviceIndex < num_devices) {
+			// create a context of the preferred device index
 			retContext = clCreateContext(cprops, 1, &devices[preferredDeviceIndex], NULL, NULL, &ciErrNum);
-		}
-		else
-		{
-			//create a context of all devices
+		} else {
+			// create a context of all devices
 #if defined(__APPLE__)
 			retContext = clCreateContext(cprops, num_devices, devices, MyFatalBreakAPPLE, NULL, &ciErrNum);
 #else
@@ -286,16 +256,14 @@ cl_context b3OpenCLUtils_createContextFromPlatform(cl_platform_id platform, cl_d
 #endif
 		}
 	}
-	if (pErrNum != NULL)
-	{
+	if (pErrNum != NULL) {
 		*pErrNum = ciErrNum;
 	};
 
 	return retContext;
 }
 
-cl_context b3OpenCLUtils_createContextFromType(cl_device_type deviceType, cl_int* pErrNum, void* pGLContext, void* pGLDC, int preferredDeviceIndex, int preferredPlatformIndex, cl_platform_id* retPlatformId)
-{
+cl_context b3OpenCLUtils_createContextFromType(cl_device_type deviceType, cl_int *pErrNum, void *pGLContext, void *pGLDC, int preferredDeviceIndex, int preferredPlatformIndex, cl_platform_id *retPlatformId) {
 #ifdef B3_USE_CLEW
 	b3OpenCLUtils_clewInit();
 #endif
@@ -305,48 +273,41 @@ cl_context b3OpenCLUtils_createContextFromType(cl_device_type deviceType, cl_int
 	unsigned int i;
 
 	cl_int ciErrNum = clGetPlatformIDs(0, NULL, &numPlatforms);
-	if (ciErrNum != CL_SUCCESS)
-	{
-		if (pErrNum != NULL) *pErrNum = ciErrNum;
+	if (ciErrNum != CL_SUCCESS) {
+		if (pErrNum != NULL)
+			*pErrNum = ciErrNum;
 		return NULL;
 	}
-	if (numPlatforms > 0)
-	{
-		cl_platform_id* platforms = (cl_platform_id*)malloc(sizeof(cl_platform_id) * numPlatforms);
+	if (numPlatforms > 0) {
+		cl_platform_id *platforms = (cl_platform_id *)malloc(sizeof(cl_platform_id) * numPlatforms);
 		ciErrNum = clGetPlatformIDs(numPlatforms, platforms, NULL);
-		if (ciErrNum != CL_SUCCESS)
-		{
+		if (ciErrNum != CL_SUCCESS) {
 			if (pErrNum != NULL)
 				*pErrNum = ciErrNum;
 			free(platforms);
 			return NULL;
 		}
 
-		for (i = 0; i < numPlatforms; ++i)
-		{
+		for (i = 0; i < numPlatforms; ++i) {
 			char pbuf[128];
 			ciErrNum = clGetPlatformInfo(platforms[i],
-										 CL_PLATFORM_VENDOR,
-										 sizeof(pbuf),
-										 pbuf,
-										 NULL);
-			if (ciErrNum != CL_SUCCESS)
-			{
-				if (pErrNum != NULL) *pErrNum = ciErrNum;
+					CL_PLATFORM_VENDOR,
+					sizeof(pbuf),
+					pbuf,
+					NULL);
+			if (ciErrNum != CL_SUCCESS) {
+				if (pErrNum != NULL)
+					*pErrNum = ciErrNum;
 				return NULL;
 			}
 
-			if (preferredPlatformIndex >= 0 && i == preferredPlatformIndex)
-			{
+			if (preferredPlatformIndex >= 0 && i == preferredPlatformIndex) {
 				cl_platform_id tmpPlatform = platforms[0];
 				platforms[0] = platforms[i];
 				platforms[i] = tmpPlatform;
 				break;
-			}
-			else
-			{
-				if (!strcmp(pbuf, spPlatformVendor))
-				{
+			} else {
+				if (!strcmp(pbuf, spPlatformVendor)) {
 					cl_platform_id tmpPlatform = platforms[0];
 					platforms[0] = platforms[i];
 					platforms[i] = tmpPlatform;
@@ -354,15 +315,13 @@ cl_context b3OpenCLUtils_createContextFromType(cl_device_type deviceType, cl_int
 			}
 		}
 
-		for (i = 0; i < numPlatforms; ++i)
-		{
+		for (i = 0; i < numPlatforms; ++i) {
 			cl_platform_id platform = platforms[i];
 			assert(platform);
 
 			retContext = b3OpenCLUtils_createContextFromPlatform(platform, deviceType, pErrNum, pGLContext, pGLDC, preferredDeviceIndex, preferredPlatformIndex);
 
-			if (retContext)
-			{
+			if (retContext) {
 				//				printf("OpenCL platform details:\n");
 				b3OpenCLPlatformInfo platformInfo;
 
@@ -387,23 +346,21 @@ cl_context b3OpenCLUtils_createContextFromType(cl_device_type deviceType, cl_int
 //! @param cxMainContext         OpenCL context
 //! @param device_idx            index of the device of interest
 //////////////////////////////////////////////////////////////////////////////
-cl_device_id b3OpenCLUtils_getDevice(cl_context cxMainContext, int deviceIndex)
-{
+cl_device_id b3OpenCLUtils_getDevice(cl_context cxMainContext, int deviceIndex) {
 	assert(cxMainContext);
 
 	size_t szParmDataBytes;
-	cl_device_id* cdDevices;
+	cl_device_id *cdDevices;
 	cl_device_id device;
 
 	// get the list of devices associated with context
 	clGetContextInfo(cxMainContext, CL_CONTEXT_DEVICES, 0, NULL, &szParmDataBytes);
 
-	if (szParmDataBytes / sizeof(cl_device_id) < (unsigned int)deviceIndex)
-	{
+	if (szParmDataBytes / sizeof(cl_device_id) < (unsigned int)deviceIndex) {
 		return (cl_device_id)-1;
 	}
 
-	cdDevices = (cl_device_id*)malloc(szParmDataBytes);
+	cdDevices = (cl_device_id *)malloc(szParmDataBytes);
 
 	clGetContextInfo(cxMainContext, CL_CONTEXT_DEVICES, szParmDataBytes, cdDevices, NULL);
 
@@ -413,8 +370,7 @@ cl_device_id b3OpenCLUtils_getDevice(cl_context cxMainContext, int deviceIndex)
 	return device;
 }
 
-int b3OpenCLUtils_getNumDevices(cl_context cxMainContext)
-{
+int b3OpenCLUtils_getNumDevices(cl_context cxMainContext) {
 	size_t szParamDataBytes;
 	int device_count;
 	clGetContextInfo(cxMainContext, CL_CONTEXT_DEVICES, 0, NULL, &szParamDataBytes);
@@ -422,8 +378,7 @@ int b3OpenCLUtils_getNumDevices(cl_context cxMainContext)
 	return device_count;
 }
 
-void b3OpenCLUtils::getDeviceInfo(cl_device_id device, b3OpenCLDeviceInfo* info)
-{
+void b3OpenCLUtils::getDeviceInfo(cl_device_id device, b3OpenCLDeviceInfo *info) {
 	// CL_DEVICE_NAME
 	clGetDeviceInfo(device, CL_DEVICE_NAME, B3_MAX_STRING_LENGTH, &info->m_deviceName, NULL);
 
@@ -503,8 +458,7 @@ void b3OpenCLUtils::getDeviceInfo(cl_device_id device, b3OpenCLDeviceInfo* info)
 	clGetDeviceInfo(device, CL_DEVICE_PREFERRED_VECTOR_WIDTH_DOUBLE, sizeof(cl_uint), &info->m_vecWidthDouble, NULL);
 }
 
-void b3OpenCLUtils_printDeviceInfo(cl_device_id device)
-{
+void b3OpenCLUtils_printDeviceInfo(cl_device_id device) {
 	b3OpenCLDeviceInfo info;
 	b3OpenCLUtils::getDeviceInfo(device, &info);
 	b3Printf("Device Info:\n");
@@ -548,40 +502,33 @@ void b3OpenCLUtils_printDeviceInfo(cl_device_id device)
 	b3Printf("\t\t\t\t\t3D_MAX_WIDTH\t %u\n", info.m_image3dMaxWidth);
 	b3Printf("\t\t\t\t\t3D_MAX_HEIGHT\t %u\n", info.m_image3dMaxHeight);
 	b3Printf("\t\t\t\t\t3D_MAX_DEPTH\t %u\n", info.m_image3dMaxDepth);
-	if (*info.m_deviceExtensions != 0)
-	{
+	if (*info.m_deviceExtensions != 0) {
 		b3Printf("\n  CL_DEVICE_EXTENSIONS:%s\n", info.m_deviceExtensions);
-	}
-	else
-	{
+	} else {
 		b3Printf("  CL_DEVICE_EXTENSIONS: None\n");
 	}
 	b3Printf("  CL_DEVICE_PREFERRED_VECTOR_WIDTH_<t>\t");
 	b3Printf("CHAR %u, SHORT %u, INT %u,LONG %u, FLOAT %u, DOUBLE %u\n\n\n",
-			 info.m_vecWidthChar, info.m_vecWidthShort, info.m_vecWidthInt, info.m_vecWidthLong, info.m_vecWidthFloat, info.m_vecWidthDouble);
+			info.m_vecWidthChar, info.m_vecWidthShort, info.m_vecWidthInt, info.m_vecWidthLong, info.m_vecWidthFloat, info.m_vecWidthDouble);
 }
 
-static const char* strip2(const char* name, const char* pattern)
-{
+static const char *strip2(const char *name, const char *pattern) {
 	size_t const patlen = strlen(pattern);
 	size_t patcnt = 0;
-	const char* oriptr;
-	const char* patloc;
+	const char *oriptr;
+	const char *patloc;
 	// find how many times the pattern occurs in the original string
-	for (oriptr = name; (patloc = strstr(oriptr, pattern)); oriptr = patloc + patlen)
-	{
+	for (oriptr = name; (patloc = strstr(oriptr, pattern)); oriptr = patloc + patlen) {
 		patcnt++;
 	}
 	return oriptr;
 }
 
-cl_program b3OpenCLUtils_compileCLProgramFromString(cl_context clContext, cl_device_id device, const char* kernelSourceOrg, cl_int* pErrNum, const char* additionalMacrosArg, const char* clFileNameForCaching, bool disableBinaryCaching)
-{
-	const char* additionalMacros = additionalMacrosArg ? additionalMacrosArg : "";
+cl_program b3OpenCLUtils_compileCLProgramFromString(cl_context clContext, cl_device_id device, const char *kernelSourceOrg, cl_int *pErrNum, const char *additionalMacrosArg, const char *clFileNameForCaching, bool disableBinaryCaching) {
+	const char *additionalMacros = additionalMacrosArg ? additionalMacrosArg : "";
 
-	if (disableBinaryCaching)
-	{
-		//kernelSourceOrg = 0;
+	if (disableBinaryCaching) {
+		// kernelSourceOrg = 0;
 	}
 
 	cl_program m_cpProgram = 0;
@@ -591,13 +538,12 @@ cl_program b3OpenCLUtils_compileCLProgramFromString(cl_context clContext, cl_dev
 
 	char deviceName[256];
 	char driverVersion[256];
-	const char* strippedName;
+	const char *strippedName;
 	int fileUpToDate = 0;
 #ifdef _WIN32
 	int binaryFileValid = 0;
 #endif
-	if (!disableBinaryCaching && clFileNameForCaching)
-	{
+	if (!disableBinaryCaching && clFileNameForCaching) {
 		clGetDeviceInfo(device, CL_DEVICE_NAME, 256, &deviceName, NULL);
 		clGetDeviceInfo(device, CL_DRIVER_VERSION, 256, &driverVersion, NULL);
 
@@ -610,117 +556,92 @@ cl_program b3OpenCLUtils_compileCLProgramFromString(cl_context clContext, cl_dev
 		sprintf(binaryFileName, "%s/%s.%s.%s.bin", sCachedBinaryPath, strippedName, deviceName, driverVersion);
 #endif
 	}
-	if (clFileNameForCaching && !(disableBinaryCaching || gDebugSkipLoadingBinary || gDebugForceLoadingFromSource))
-	{
+	if (clFileNameForCaching && !(disableBinaryCaching || gDebugSkipLoadingBinary || gDebugForceLoadingFromSource)) {
 #ifdef _WIN32
-		char* bla = 0;
+		char *bla = 0;
 
-		//printf("searching for %s\n", binaryFileName);
+		// printf("searching for %s\n", binaryFileName);
 
 		FILETIME modtimeBinary;
 		CreateDirectoryA(sCachedBinaryPath, 0);
 		{
 			HANDLE binaryFileHandle = CreateFileA(binaryFileName, GENERIC_READ, 0, 0, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, 0);
-			if (binaryFileHandle == INVALID_HANDLE_VALUE)
-			{
+			if (binaryFileHandle == INVALID_HANDLE_VALUE) {
 				DWORD errorCode;
 				errorCode = GetLastError();
-				switch (errorCode)
-				{
-					case ERROR_FILE_NOT_FOUND:
-					{
+				switch (errorCode) {
+					case ERROR_FILE_NOT_FOUND: {
 						b3Warning("\nCached file not found %s\n", binaryFileName);
 						break;
 					}
-					case ERROR_PATH_NOT_FOUND:
-					{
+					case ERROR_PATH_NOT_FOUND: {
 						b3Warning("\nCached file path not found %s\n", binaryFileName);
 						break;
 					}
-					default:
-					{
+					default: {
 						b3Warning("\nFailed reading cached file with errorCode = %d\n", errorCode);
 					}
 				}
-			}
-			else
-			{
-				if (GetFileTime(binaryFileHandle, NULL, NULL, &modtimeBinary) == 0)
-				{
+			} else {
+				if (GetFileTime(binaryFileHandle, NULL, NULL, &modtimeBinary) == 0) {
 					DWORD errorCode;
 					errorCode = GetLastError();
 					b3Warning("\nGetFileTime errorCode = %d\n", errorCode);
-				}
-				else
-				{
+				} else {
 					binaryFileValid = 1;
 				}
 				CloseHandle(binaryFileHandle);
 			}
 
-			if (binaryFileValid)
-			{
+			if (binaryFileValid) {
 				HANDLE srcFileHandle = CreateFileA(clFileNameForCaching, GENERIC_READ, 0, 0, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, 0);
 
-				if (srcFileHandle == INVALID_HANDLE_VALUE)
-				{
-					const char* prefix[] = {"./", "../", "../../", "../../../", "../../../../"};
-					for (int i = 0; (srcFileHandle == INVALID_HANDLE_VALUE) && i < 5; i++)
-					{
+				if (srcFileHandle == INVALID_HANDLE_VALUE) {
+					const char *prefix[] = { "./", "../", "../../", "../../../", "../../../../" };
+					for (int i = 0; (srcFileHandle == INVALID_HANDLE_VALUE) && i < 5; i++) {
 						char relativeFileName[1024];
 						sprintf(relativeFileName, "%s%s", prefix[i], clFileNameForCaching);
 						srcFileHandle = CreateFileA(relativeFileName, GENERIC_READ, 0, 0, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, 0);
 					}
 				}
 
-				if (srcFileHandle != INVALID_HANDLE_VALUE)
-				{
+				if (srcFileHandle != INVALID_HANDLE_VALUE) {
 					FILETIME modtimeSrc;
-					if (GetFileTime(srcFileHandle, NULL, NULL, &modtimeSrc) == 0)
-					{
+					if (GetFileTime(srcFileHandle, NULL, NULL, &modtimeSrc) == 0) {
 						DWORD errorCode;
 						errorCode = GetLastError();
 						b3Warning("\nGetFileTime errorCode = %d\n", errorCode);
 					}
-					if ((modtimeSrc.dwHighDateTime < modtimeBinary.dwHighDateTime) || ((modtimeSrc.dwHighDateTime == modtimeBinary.dwHighDateTime) && (modtimeSrc.dwLowDateTime <= modtimeBinary.dwLowDateTime)))
-					{
+					if ((modtimeSrc.dwHighDateTime < modtimeBinary.dwHighDateTime) || ((modtimeSrc.dwHighDateTime == modtimeBinary.dwHighDateTime) && (modtimeSrc.dwLowDateTime <= modtimeBinary.dwLowDateTime))) {
 						fileUpToDate = 1;
-					}
-					else
-					{
+					} else {
 						b3Warning("\nCached binary file out-of-date (%s)\n", binaryFileName);
 					}
 					CloseHandle(srcFileHandle);
-				}
-				else
-				{
+				} else {
 #ifdef _DEBUG
 					DWORD errorCode;
 					errorCode = GetLastError();
-					switch (errorCode)
-					{
-						case ERROR_FILE_NOT_FOUND:
-						{
+					switch (errorCode) {
+						case ERROR_FILE_NOT_FOUND: {
 							b3Warning("\nSrc file not found %s\n", clFileNameForCaching);
 							break;
 						}
-						case ERROR_PATH_NOT_FOUND:
-						{
+						case ERROR_PATH_NOT_FOUND: {
 							b3Warning("\nSrc path not found %s\n", clFileNameForCaching);
 							break;
 						}
-						default:
-						{
+						default: {
 							b3Warning("\nnSrc file reading errorCode = %d\n", errorCode);
 						}
 					}
 
-					//we should make sure the src file exists so we can verify the timestamp with binary
+					// we should make sure the src file exists so we can verify the timestamp with binary
 					//					assert(0);
 					b3Warning("Warning: cannot find OpenCL kernel %s to verify timestamp of binary cached kernel %s\n", clFileNameForCaching, binaryFileName);
 					fileUpToDate = true;
 #else
-					//if we cannot find the source, assume it is OK in release builds
+					// if we cannot find the source, assume it is OK in release builds
 					fileUpToDate = true;
 #endif
 				}
@@ -729,50 +650,44 @@ cl_program b3OpenCLUtils_compileCLProgramFromString(cl_context clContext, cl_dev
 
 #else
 		fileUpToDate = true;
-		if (mkdir(sCachedBinaryPath, 0777) == -1)
-		{
-		}
-		else
-		{
+		if (mkdir(sCachedBinaryPath, 0777) == -1) {
+		} else {
 			b3Printf("Succesfully created cache directory: %s\n", sCachedBinaryPath);
 		}
-#endif  //_WIN32
+#endif //_WIN32
 	}
 
-	if (fileUpToDate)
-	{
+	if (fileUpToDate) {
 #ifdef _MSC_VER
-		FILE* file;
+		FILE *file;
 		if (fopen_s(&file, binaryFileName, "rb") != 0)
 			file = 0;
 #else
-		FILE* file = fopen(binaryFileName, "rb");
+		FILE *file = fopen(binaryFileName, "rb");
 #endif
 
-		if (file)
-		{
+		if (file) {
 			size_t binarySize = 0;
-			char* binary = 0;
+			char *binary = 0;
 
 			fseek(file, 0L, SEEK_END);
 			binarySize = ftell(file);
 			rewind(file);
-			binary = (char*)malloc(sizeof(char) * binarySize);
+			binary = (char *)malloc(sizeof(char) * binarySize);
 			int bytesRead;
 			bytesRead = fread(binary, sizeof(char), binarySize, file);
 			fclose(file);
 
-			m_cpProgram = clCreateProgramWithBinary(clContext, 1, &device, &binarySize, (const unsigned char**)&binary, 0, &status);
+			m_cpProgram = clCreateProgramWithBinary(clContext, 1, &device, &binarySize, (const unsigned char **)&binary, 0, &status);
 			b3Assert(status == CL_SUCCESS);
 			status = clBuildProgram(m_cpProgram, 1, &device, additionalMacros, 0, 0);
 			b3Assert(status == CL_SUCCESS);
 
-			if (status != CL_SUCCESS)
-			{
-				char* build_log;
+			if (status != CL_SUCCESS) {
+				char *build_log;
 				size_t ret_val_size;
 				clGetProgramBuildInfo(m_cpProgram, device, CL_PROGRAM_BUILD_LOG, 0, NULL, &ret_val_size);
-				build_log = (char*)malloc(sizeof(char) * (ret_val_size + 1));
+				build_log = (char *)malloc(sizeof(char) * (ret_val_size + 1));
 				clGetProgramBuildInfo(m_cpProgram, device, CL_PROGRAM_BUILD_LOG, ret_val_size, build_log, NULL);
 				build_log[ret_val_size] = '\0';
 				b3Error("%s\n", build_log);
@@ -781,53 +696,43 @@ cl_program b3OpenCLUtils_compileCLProgramFromString(cl_context clContext, cl_dev
 				m_cpProgram = 0;
 
 				b3Warning("clBuildProgram reported failure on cached binary: %s\n", binaryFileName);
-			}
-			else
-			{
+			} else {
 				b3Printf("clBuildProgram successfully compiled cached binary: %s\n", binaryFileName);
 			}
 			free(binary);
-		}
-		else
-		{
+		} else {
 			b3Warning("Cannot open cached binary: %s\n", binaryFileName);
 		}
 	}
 
-	if (!m_cpProgram)
-	{
+	if (!m_cpProgram) {
 		cl_int localErrNum;
-		char* compileFlags;
+		char *compileFlags;
 		int flagsize;
 
-		const char* kernelSource = kernelSourceOrg;
+		const char *kernelSource = kernelSourceOrg;
 
-		if (!kernelSourceOrg || gDebugForceLoadingFromSource)
-		{
-			if (clFileNameForCaching)
-			{
-				FILE* file = fopen(clFileNameForCaching, "rb");
-				//in many cases the relative path is a few levels up the directory hierarchy, so try it
-				if (!file)
-				{
-					const char* prefix[] = {"../", "../../", "../../../", "../../../../"};
-					for (int i = 0; !file && i < 3; i++)
-					{
+		if (!kernelSourceOrg || gDebugForceLoadingFromSource) {
+			if (clFileNameForCaching) {
+				FILE *file = fopen(clFileNameForCaching, "rb");
+				// in many cases the relative path is a few levels up the directory hierarchy, so try it
+				if (!file) {
+					const char *prefix[] = { "../", "../../", "../../../", "../../../../" };
+					for (int i = 0; !file && i < 3; i++) {
 						char relativeFileName[1024];
 						sprintf(relativeFileName, "%s%s", prefix[i], clFileNameForCaching);
 						file = fopen(relativeFileName, "rb");
 					}
 				}
 
-				if (file)
-				{
-					char* kernelSrc = 0;
+				if (file) {
+					char *kernelSrc = 0;
 					fseek(file, 0L, SEEK_END);
 					int kernelSize = ftell(file);
 					rewind(file);
-					kernelSrc = (char*)malloc(kernelSize + 1);
+					kernelSrc = (char *)malloc(kernelSize + 1);
 					int readBytes;
-					readBytes = fread((void*)kernelSrc, 1, kernelSize, file);
+					readBytes = fread((void *)kernelSrc, 1, kernelSize, file);
 					kernelSrc[kernelSize] = 0;
 					fclose(file);
 					kernelSource = kernelSrc;
@@ -836,15 +741,14 @@ cl_program b3OpenCLUtils_compileCLProgramFromString(cl_context clContext, cl_dev
 		}
 
 		size_t program_length = kernelSource ? strlen(kernelSource) : 0;
-#ifdef MAC  //or __APPLE__?
-		char* flags = "-cl-mad-enable -DMAC ";
+#ifdef MAC // or __APPLE__?
+		char *flags = "-cl-mad-enable -DMAC ";
 #else
-		const char* flags = "";
+		const char *flags = "";
 #endif
 
-		m_cpProgram = clCreateProgramWithSource(clContext, 1, (const char**)&kernelSource, &program_length, &localErrNum);
-		if (localErrNum != CL_SUCCESS)
-		{
+		m_cpProgram = clCreateProgramWithSource(clContext, 1, (const char **)&kernelSource, &program_length, &localErrNum);
+		if (localErrNum != CL_SUCCESS) {
 			if (pErrNum)
 				*pErrNum = localErrNum;
 			return 0;
@@ -853,19 +757,18 @@ cl_program b3OpenCLUtils_compileCLProgramFromString(cl_context clContext, cl_dev
 		// Build the program with 'mad' Optimization option
 
 		flagsize = sizeof(char) * (strlen(additionalMacros) + strlen(flags) + 5);
-		compileFlags = (char*)malloc(flagsize);
+		compileFlags = (char *)malloc(flagsize);
 #ifdef _MSC_VER
 		sprintf_s(compileFlags, flagsize, "%s %s", flags, additionalMacros);
 #else
 		sprintf(compileFlags, "%s %s", flags, additionalMacros);
 #endif
 		localErrNum = clBuildProgram(m_cpProgram, 1, &device, compileFlags, NULL, NULL);
-		if (localErrNum != CL_SUCCESS)
-		{
-			char* build_log;
+		if (localErrNum != CL_SUCCESS) {
+			char *build_log;
 			size_t ret_val_size;
 			clGetProgramBuildInfo(m_cpProgram, device, CL_PROGRAM_BUILD_LOG, 0, NULL, &ret_val_size);
-			build_log = (char*)malloc(sizeof(char) * (ret_val_size + 1));
+			build_log = (char *)malloc(sizeof(char) * (ret_val_size + 1));
 			clGetProgramBuildInfo(m_cpProgram, device, CL_PROGRAM_BUILD_LOG, ret_val_size, build_log, NULL);
 
 			// to be carefully, terminate with \0
@@ -879,40 +782,35 @@ cl_program b3OpenCLUtils_compileCLProgramFromString(cl_context clContext, cl_dev
 			return 0;
 		}
 
-		if (!disableBinaryCaching && clFileNameForCaching)
-		{  //	write to binary
+		if (!disableBinaryCaching && clFileNameForCaching) { //	write to binary
 
 			cl_uint numAssociatedDevices;
 			status = clGetProgramInfo(m_cpProgram, CL_PROGRAM_NUM_DEVICES, sizeof(cl_uint), &numAssociatedDevices, 0);
 			b3Assert(status == CL_SUCCESS);
-			if (numAssociatedDevices == 1)
-			{
+			if (numAssociatedDevices == 1) {
 				size_t binarySize;
-				char* binary;
+				char *binary;
 
 				status = clGetProgramInfo(m_cpProgram, CL_PROGRAM_BINARY_SIZES, sizeof(size_t), &binarySize, 0);
 				b3Assert(status == CL_SUCCESS);
 
-				binary = (char*)malloc(sizeof(char) * binarySize);
+				binary = (char *)malloc(sizeof(char) * binarySize);
 
-				status = clGetProgramInfo(m_cpProgram, CL_PROGRAM_BINARIES, sizeof(char*), &binary, 0);
+				status = clGetProgramInfo(m_cpProgram, CL_PROGRAM_BINARIES, sizeof(char *), &binary, 0);
 				b3Assert(status == CL_SUCCESS);
 
 				{
-					FILE* file = 0;
+					FILE *file = 0;
 #ifdef _MSC_VER
 					if (fopen_s(&file, binaryFileName, "wb") != 0)
 						file = 0;
 #else
 					file = fopen(binaryFileName, "wb");
 #endif
-					if (file)
-					{
+					if (file) {
 						fwrite(binary, sizeof(char), binarySize, file);
 						fclose(file);
-					}
-					else
-					{
+					} else {
 						b3Warning("cannot write file %s\n", binaryFileName);
 					}
 				}
@@ -926,8 +824,7 @@ cl_program b3OpenCLUtils_compileCLProgramFromString(cl_context clContext, cl_dev
 	return m_cpProgram;
 }
 
-cl_kernel b3OpenCLUtils_compileCLKernelFromString(cl_context clContext, cl_device_id device, const char* kernelSource, const char* kernelName, cl_int* pErrNum, cl_program prog, const char* additionalMacros)
-{
+cl_kernel b3OpenCLUtils_compileCLKernelFromString(cl_context clContext, cl_device_id device, const char *kernelSource, const char *kernelName, cl_int *pErrNum, cl_program prog, const char *additionalMacros) {
 	cl_kernel kernel;
 	cl_int localErrNum;
 
@@ -935,15 +832,13 @@ cl_kernel b3OpenCLUtils_compileCLKernelFromString(cl_context clContext, cl_devic
 
 	b3Printf("compiling kernel %s ", kernelName);
 
-	if (!m_cpProgram)
-	{
+	if (!m_cpProgram) {
 		m_cpProgram = b3OpenCLUtils_compileCLProgramFromString(clContext, device, kernelSource, pErrNum, additionalMacros, 0, false);
 	}
 
 	// Create the kernel
 	kernel = clCreateKernel(m_cpProgram, kernelName, &localErrNum);
-	if (localErrNum != CL_SUCCESS)
-	{
+	if (localErrNum != CL_SUCCESS) {
 		b3Error("Error in clCreateKernel, Line %u in file %s, cannot find kernel function %s !!!\n\n", __LINE__, __FILE__, kernelName);
 		assert(0);
 		if (pErrNum)
@@ -951,8 +846,7 @@ cl_kernel b3OpenCLUtils_compileCLKernelFromString(cl_context clContext, cl_devic
 		return 0;
 	}
 
-	if (!prog && m_cpProgram)
-	{
+	if (!prog && m_cpProgram) {
 		clReleaseProgram(m_cpProgram);
 	}
 	b3Printf("ready. \n");

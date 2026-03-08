@@ -17,25 +17,29 @@ extern "C" {
 
 /* sample of PortMappingEntry :
   <p:PortMappingEntry>
-    <p:NewRemoteHost>202.233.2.1</p:NewRemoteHost>
-    <p:NewExternalPort>2345</p:NewExternalPort>
-    <p:NewProtocol>TCP</p:NewProtocol>
-    <p:NewInternalPort>2345</p:NewInternalPort>
-    <p:NewInternalClient>192.168.1.137</p:NewInternalClient>
-    <p:NewEnabled>1</p:NewEnabled>
-    <p:NewDescription>dooom</p:NewDescription>
-    <p:NewLeaseTime>345</p:NewLeaseTime>
+	<p:NewRemoteHost>202.233.2.1</p:NewRemoteHost>
+	<p:NewExternalPort>2345</p:NewExternalPort>
+	<p:NewProtocol>TCP</p:NewProtocol>
+	<p:NewInternalPort>2345</p:NewInternalPort>
+	<p:NewInternalClient>192.168.1.137</p:NewInternalClient>
+	<p:NewEnabled>1</p:NewEnabled>
+	<p:NewDescription>dooom</p:NewDescription>
+	<p:NewLeaseTime>345</p:NewLeaseTime>
   </p:PortMappingEntry>
  */
 typedef enum { PortMappingEltNone,
-       PortMappingEntry, NewRemoteHost,
-       NewExternalPort, NewProtocol,
-       NewInternalPort, NewInternalClient,
-       NewEnabled, NewDescription,
-       NewLeaseTime } portMappingElt;
+	PortMappingEntry,
+	NewRemoteHost,
+	NewExternalPort,
+	NewProtocol,
+	NewInternalPort,
+	NewInternalClient,
+	NewEnabled,
+	NewDescription,
+	NewLeaseTime } portMappingElt;
 
 struct PortMapping {
-	struct PortMapping * l_next;	/* list next element */
+	struct PortMapping *l_next; /* list next element */
 	UNSIGNED_INTEGER leaseTime;
 	unsigned short externalPort;
 	unsigned short internalPort;
@@ -47,16 +51,16 @@ struct PortMapping {
 };
 
 struct PortMappingParserData {
-	struct PortMapping * l_head;	/* list head */
+	struct PortMapping *l_head; /* list head */
 	portMappingElt curelt;
 };
 
 MINIUPNP_LIBSPEC void
-ParsePortListing(const char * buffer, int bufsize,
-                 struct PortMappingParserData * pdata);
+ParsePortListing(const char *buffer, int bufsize,
+		struct PortMappingParserData *pdata);
 
 MINIUPNP_LIBSPEC void
-FreePortListing(struct PortMappingParserData * pdata);
+FreePortListing(struct PortMappingParserData *pdata);
 
 #ifdef __cplusplus
 }

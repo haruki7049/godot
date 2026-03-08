@@ -28,25 +28,24 @@
 #include <stddef.h>
 
 namespace mkvparser {
-	class IMkvReader;
-	class Segment;
-	class Cluster;
-	class Block;
-	class BlockEntry;
-	class VideoTrack;
-	class AudioTrack;
-}
+class IMkvReader;
+class Segment;
+class Cluster;
+class Block;
+class BlockEntry;
+class VideoTrack;
+class AudioTrack;
+} // namespace mkvparser
 
-class WebMFrame
-{
+class WebMFrame {
 	WebMFrame(const WebMFrame &);
-	void operator =(const WebMFrame &);
+	void operator=(const WebMFrame &);
+
 public:
 	WebMFrame();
 	~WebMFrame();
 
-	inline bool isValid() const
-	{
+	inline bool isValid() const {
 		return bufferSize > 0;
 	}
 
@@ -56,19 +55,17 @@ public:
 	bool key;
 };
 
-class WebMDemuxer
-{
+class WebMDemuxer {
 	WebMDemuxer(const WebMDemuxer &);
-	void operator =(const WebMDemuxer &);
+	void operator=(const WebMDemuxer &);
+
 public:
-	enum VIDEO_CODEC
-	{
+	enum VIDEO_CODEC {
 		NO_VIDEO,
 		VIDEO_VP8,
 		VIDEO_VP9
 	};
-	enum AUDIO_CODEC
-	{
+	enum AUDIO_CODEC {
 		NO_AUDIO,
 		AUDIO_VORBIS,
 		AUDIO_OPUS
@@ -77,12 +74,10 @@ public:
 	WebMDemuxer(mkvparser::IMkvReader *reader, int videoTrack = 0, int audioTrack = 0);
 	~WebMDemuxer();
 
-	inline bool isOpen() const
-	{
+	inline bool isOpen() const {
 		return m_isOpen;
 	}
-	inline bool isEOS() const
-	{
+	inline bool isEOS() const {
 		return m_eos;
 	}
 

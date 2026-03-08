@@ -15,16 +15,15 @@
  *
  */
 
-
 #define FT_MAKE_OPTION_SINGLE_OBJECT
 
 #include "afmparse.c"
+#include "cffdecode.c"
 #include "psauxmod.c"
 #include "psconv.c"
 #include "psobjs.c"
 #include "t1cmap.c"
 #include "t1decode.c"
-#include "cffdecode.c"
 
 #include "psarrst.c"
 #include "psblues.c"
@@ -35,6 +34,5 @@
 #include "psintrp.c"
 #include "psread.c"
 #include "psstack.c"
-
 
 /* END */

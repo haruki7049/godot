@@ -13,29 +13,28 @@ subject to the following restrictions:
 3. This notice may not be removed or altered from any source distribution.
 */
 
-///This file was written by Erwin Coumans
+/// This file was written by Erwin Coumans
 
 #ifndef BT_MULTIBODY_POINT2POINT_H
 #define BT_MULTIBODY_POINT2POINT_H
 
 #include "btMultiBodyConstraint.h"
 
-//#define BTMBP2PCONSTRAINT_BLOCK_ANGULAR_MOTION_TEST
+// #define BTMBP2PCONSTRAINT_BLOCK_ANGULAR_MOTION_TEST
 
 ATTRIBUTE_ALIGNED16(class)
-btMultiBodyPoint2Point : public btMultiBodyConstraint
-{
+btMultiBodyPoint2Point : public btMultiBodyConstraint {
 protected:
-	btRigidBody* m_rigidBodyA;
-	btRigidBody* m_rigidBodyB;
+	btRigidBody *m_rigidBodyA;
+	btRigidBody *m_rigidBodyB;
 	btVector3 m_pivotInA;
 	btVector3 m_pivotInB;
 
 public:
 	BT_DECLARE_ALIGNED_ALLOCATOR();
 
-	btMultiBodyPoint2Point(btMultiBody * body, int link, btRigidBody* bodyB, const btVector3& pivotInA, const btVector3& pivotInB);
-	btMultiBodyPoint2Point(btMultiBody * bodyA, int linkA, btMultiBody* bodyB, int linkB, const btVector3& pivotInA, const btVector3& pivotInB);
+	btMultiBodyPoint2Point(btMultiBody * body, int link, btRigidBody *bodyB, const btVector3 &pivotInA, const btVector3 &pivotInB);
+	btMultiBodyPoint2Point(btMultiBody * bodyA, int linkA, btMultiBody *bodyB, int linkB, const btVector3 &pivotInA, const btVector3 &pivotInB);
 
 	virtual ~btMultiBodyPoint2Point();
 
@@ -45,20 +44,18 @@ public:
 	virtual int getIslandIdB() const;
 
 	virtual void createConstraintRows(btMultiBodyConstraintArray & constraintRows,
-									  btMultiBodyJacobianData & data,
-									  const btContactSolverInfo& infoGlobal);
+			btMultiBodyJacobianData & data,
+			const btContactSolverInfo &infoGlobal);
 
-	const btVector3& getPivotInB() const
-	{
+	const btVector3 &getPivotInB() const {
 		return m_pivotInB;
 	}
 
-	virtual void setPivotInB(const btVector3& pivotInB)
-	{
+	virtual void setPivotInB(const btVector3 &pivotInB) {
 		m_pivotInB = pivotInB;
 	}
 
 	virtual void debugDraw(class btIDebugDraw * drawer);
 };
 
-#endif  //BT_MULTIBODY_POINT2POINT_H
+#endif // BT_MULTIBODY_POINT2POINT_H

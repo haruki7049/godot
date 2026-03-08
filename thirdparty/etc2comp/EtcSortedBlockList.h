@@ -16,109 +16,90 @@
 
 #pragma once
 
-namespace Etc
-{
-	class Block4x4;
+namespace Etc {
+class Block4x4;
 
-    class SortedBlockList
-    {
-    public:
+class SortedBlockList {
+public:
+	class Link {
+	public:
+		inline void Init(Block4x4 *a_pblock) {
+			m_pblock = a_pblock;
+			m_plinkNext = nullptr;
+		}
 
-		class Link
-		{
-		public:
+		inline Block4x4 *GetBlock(void) {
+			return m_pblock;
+		}
 
-			inline void Init(Block4x4 *a_pblock)
-			{
-				m_pblock = a_pblock;
-				m_plinkNext = nullptr;
-			}
+		inline void SetNext(Link *a_plinkNext) {
+			m_plinkNext = a_plinkNext;
+		}
 
-			inline Block4x4 * GetBlock(void)
-			{
-				return m_pblock;
-			}
+		inline Link *GetNext(void) {
+			return m_plinkNext;
+		}
 
-			inline void SetNext(Link *a_plinkNext)
-			{
-				m_plinkNext = a_plinkNext;
-			}
+		inline Link *Advance(unsigned int a_uiSteps = 1) {
+			Link *plink = this;
 
-			inline Link * GetNext(void)
-			{
-				return m_plinkNext;
-			}
-
-			inline Link * Advance(unsigned int a_uiSteps = 1)
-			{
-				Link *plink = this;
-
-				for (unsigned int uiStep = 0; uiStep < a_uiSteps; uiStep++)
-				{
-					if (plink == nullptr)
-					{
-						break;
-					}
-
-					plink = plink->m_plinkNext;
+			for (unsigned int uiStep = 0; uiStep < a_uiSteps; uiStep++) {
+				if (plink == nullptr) {
+					break;
 				}
 
-				return plink;
+				plink = plink->m_plinkNext;
 			}
 
-		private:
-
-			Block4x4 *m_pblock;
-			Link *m_plinkNext;
-		};
-
-		SortedBlockList(unsigned int a_uiImageBlocks, unsigned int a_uiBuckets);
-		~SortedBlockList(void);
-
-        void AddBlock(Block4x4 *a_pblock);
-
-        void Sort(void);
-
-		inline Link * GetLinkToFirstBlock(void)
-		{
-			return m_plinkFirst;
+			return plink;
 		}
-
-		inline unsigned int GetNumberOfAddedBlocks(void)
-		{
-			return m_uiAddedBlocks;
-		}
-
-		inline unsigned int GetNumberOfSortedBlocks(void)
-		{
-			return m_uiSortedBlocks;
-		}
-
-		void Print(void);
 
 	private:
+		Block4x4 *m_pblock;
+		Link *m_plinkNext;
+	};
 
-        void InitBuckets(void);
+	SortedBlockList(unsigned int a_uiImageBlocks, unsigned int a_uiBuckets);
+	~SortedBlockList(void);
 
-        class Bucket
-        {
-        public:
-            Link *plinkFirst;
-            Link *plinkLast;
-        };
+	void AddBlock(Block4x4 *a_pblock);
 
-        unsigned int m_uiImageBlocks;
-        int m_iBuckets;
+	void Sort(void);
 
-		unsigned int m_uiAddedBlocks;
-		unsigned int m_uiSortedBlocks;
-		Link *m_palinkPool;
-        Bucket *m_pabucket;
-        float m_fMaxError;
+	inline Link *GetLinkToFirstBlock(void) {
+		return m_plinkFirst;
+	}
 
-		Link *m_plinkFirst;
-		Link *m_plinkLast;
+	inline unsigned int GetNumberOfAddedBlocks(void) {
+		return m_uiAddedBlocks;
+	}
 
-    };
+	inline unsigned int GetNumberOfSortedBlocks(void) {
+		return m_uiSortedBlocks;
+	}
+
+	void Print(void);
+
+private:
+	void InitBuckets(void);
+
+	class Bucket {
+	public:
+		Link *plinkFirst;
+		Link *plinkLast;
+	};
+
+	unsigned int m_uiImageBlocks;
+	int m_iBuckets;
+
+	unsigned int m_uiAddedBlocks;
+	unsigned int m_uiSortedBlocks;
+	Link *m_palinkPool;
+	Bucket *m_pabucket;
+	float m_fMaxError;
+
+	Link *m_plinkFirst;
+	Link *m_plinkLast;
+};
 
 } // namespace Etc

@@ -21,8 +21,7 @@ subject to the following restrictions:
 #include "btGImpactShape.h"
 #include "btGImpactMassUtil.h"
 
-btGImpactMeshShapePart::btGImpactMeshShapePart(btStridingMeshInterface* meshInterface, int part)
-{
+btGImpactMeshShapePart::btGImpactMeshShapePart(btStridingMeshInterface *meshInterface, int part) {
 	// moved from .h to .cpp because of conditional compilation
 	// (The setting of BT_THREADSAFE may differ between various cpp files, so it is best to
 	// avoid using it in h files)
@@ -43,40 +42,36 @@ btGImpactMeshShapePart::btGImpactMeshShapePart(btStridingMeshInterface* meshInte
 #endif
 }
 
-btGImpactMeshShapePart::~btGImpactMeshShapePart()
-{
+btGImpactMeshShapePart::~btGImpactMeshShapePart() {
 	// moved from .h to .cpp because of conditional compilation
 #if BT_THREADSAFE
 	m_primitive_manager.unlock();
 #endif
 }
 
-void btGImpactMeshShapePart::lockChildShapes() const
-{
+void btGImpactMeshShapePart::lockChildShapes() const {
 	// moved from .h to .cpp because of conditional compilation
 #if !BT_THREADSAFE
 	// called in the narrowphase -- not threadsafe!
-	void* dummy = (void*)(m_box_set.getPrimitiveManager());
-	TrimeshPrimitiveManager* dummymanager = static_cast<TrimeshPrimitiveManager*>(dummy);
+	void *dummy = (void *)(m_box_set.getPrimitiveManager());
+	TrimeshPrimitiveManager *dummymanager = static_cast<TrimeshPrimitiveManager *>(dummy);
 	dummymanager->lock();
 #endif
 }
 
-void btGImpactMeshShapePart::unlockChildShapes() const
-{
+void btGImpactMeshShapePart::unlockChildShapes() const {
 	// moved from .h to .cpp because of conditional compilation
 #if !BT_THREADSAFE
 	// called in the narrowphase -- not threadsafe!
-	void* dummy = (void*)(m_box_set.getPrimitiveManager());
-	TrimeshPrimitiveManager* dummymanager = static_cast<TrimeshPrimitiveManager*>(dummy);
+	void *dummy = (void *)(m_box_set.getPrimitiveManager());
+	TrimeshPrimitiveManager *dummymanager = static_cast<TrimeshPrimitiveManager *>(dummy);
 	dummymanager->unlock();
 #endif
 }
 
 #define CALC_EXACT_INERTIA 1
 
-void btGImpactCompoundShape::calculateLocalInertia(btScalar mass, btVector3& inertia) const
-{
+void btGImpactCompoundShape::calculateLocalInertia(btScalar mass, btVector3 &inertia) const {
 	lockChildShapes();
 #ifdef CALC_EXACT_INERTIA
 	inertia.setValue(0.f, 0.f, 0.f);
@@ -84,16 +79,12 @@ void btGImpactCompoundShape::calculateLocalInertia(btScalar mass, btVector3& ine
 	int i = this->getNumChildShapes();
 	btScalar shapemass = mass / btScalar(i);
 
-	while (i--)
-	{
+	while (i--) {
 		btVector3 temp_inertia;
 		m_childShapes[i]->calculateLocalInertia(shapemass, temp_inertia);
-		if (childrenHasTransform())
-		{
+		if (childrenHasTransform()) {
 			inertia = gim_inertia_add_transformed(inertia, temp_inertia, m_childTransforms[i]);
-		}
-		else
-		{
+		} else {
 			inertia = gim_inertia_add_transformed(inertia, temp_inertia, btTransform::getIdentity());
 		}
 	}
@@ -116,8 +107,7 @@ void btGImpactCompoundShape::calculateLocalInertia(btScalar mass, btVector3& ine
 	unlockChildShapes();
 }
 
-void btGImpactMeshShapePart::calculateLocalInertia(btScalar mass, btVector3& inertia) const
-{
+void btGImpactMeshShapePart::calculateLocalInertia(btScalar mass, btVector3 &inertia) const {
 	lockChildShapes();
 
 #ifdef CALC_EXACT_INERTIA
@@ -126,8 +116,7 @@ void btGImpactMeshShapePart::calculateLocalInertia(btScalar mass, btVector3& ine
 	int i = this->getVertexCount();
 	btScalar pointmass = mass / btScalar(i);
 
-	while (i--)
-	{
+	while (i--) {
 		btVector3 pointintertia;
 		this->getVertex(i, pointintertia);
 		pointintertia = gim_get_point_inertia(pointintertia, pointmass);
@@ -153,16 +142,14 @@ void btGImpactMeshShapePart::calculateLocalInertia(btScalar mass, btVector3& ine
 	unlockChildShapes();
 }
 
-void btGImpactMeshShape::calculateLocalInertia(btScalar mass, btVector3& inertia) const
-{
+void btGImpactMeshShape::calculateLocalInertia(btScalar mass, btVector3 &inertia) const {
 #ifdef CALC_EXACT_INERTIA
 	inertia.setValue(0.f, 0.f, 0.f);
 
 	int i = this->getMeshPartCount();
 	btScalar partmass = mass / btScalar(i);
 
-	while (i--)
-	{
+	while (i--) {
 		btVector3 partinertia;
 		getMeshPart(i)->calculateLocalInertia(partmass, partinertia);
 		inertia += partinertia;
@@ -185,12 +172,10 @@ void btGImpactMeshShape::calculateLocalInertia(btScalar mass, btVector3& inertia
 #endif
 }
 
-void btGImpactMeshShape::rayTest(const btVector3& rayFrom, const btVector3& rayTo, btCollisionWorld::RayResultCallback& resultCallback) const
-{
+void btGImpactMeshShape::rayTest(const btVector3 &rayFrom, const btVector3 &rayTo, btCollisionWorld::RayResultCallback &resultCallback) const {
 }
 
-void btGImpactMeshShapePart::processAllTrianglesRay(btTriangleCallback* callback, const btVector3& rayFrom, const btVector3& rayTo) const
-{
+void btGImpactMeshShapePart::processAllTrianglesRay(btTriangleCallback *callback, const btVector3 &rayFrom, const btVector3 &rayTo) const {
 	lockChildShapes();
 
 	btAlignedObjectArray<int> collided;
@@ -198,8 +183,7 @@ void btGImpactMeshShapePart::processAllTrianglesRay(btTriangleCallback* callback
 	rayDir.normalize();
 	m_box_set.rayQuery(rayDir, rayFrom, collided);
 
-	if (collided.size() == 0)
-	{
+	if (collided.size() == 0) {
 		unlockChildShapes();
 		return;
 	}
@@ -207,16 +191,14 @@ void btGImpactMeshShapePart::processAllTrianglesRay(btTriangleCallback* callback
 	int part = (int)getPart();
 	btPrimitiveTriangle triangle;
 	int i = collided.size();
-	while (i--)
-	{
+	while (i--) {
 		getPrimitiveTriangle(collided[i], triangle);
 		callback->processTriangle(triangle.m_vertices, part, collided[i]);
 	}
 	unlockChildShapes();
 }
 
-void btGImpactMeshShapePart::processAllTriangles(btTriangleCallback* callback, const btVector3& aabbMin, const btVector3& aabbMax) const
-{
+void btGImpactMeshShapePart::processAllTriangles(btTriangleCallback *callback, const btVector3 &aabbMin, const btVector3 &aabbMax) const {
 	lockChildShapes();
 	btAABB box;
 	box.m_min = aabbMin;
@@ -225,8 +207,7 @@ void btGImpactMeshShapePart::processAllTriangles(btTriangleCallback* callback, c
 	btAlignedObjectArray<int> collided;
 	m_box_set.boxQuery(box, collided);
 
-	if (collided.size() == 0)
-	{
+	if (collided.size() == 0) {
 		unlockChildShapes();
 		return;
 	}
@@ -234,36 +215,30 @@ void btGImpactMeshShapePart::processAllTriangles(btTriangleCallback* callback, c
 	int part = (int)getPart();
 	btPrimitiveTriangle triangle;
 	int i = collided.size();
-	while (i--)
-	{
+	while (i--) {
 		this->getPrimitiveTriangle(collided[i], triangle);
 		callback->processTriangle(triangle.m_vertices, part, collided[i]);
 	}
 	unlockChildShapes();
 }
 
-void btGImpactMeshShape::processAllTriangles(btTriangleCallback* callback, const btVector3& aabbMin, const btVector3& aabbMax) const
-{
+void btGImpactMeshShape::processAllTriangles(btTriangleCallback *callback, const btVector3 &aabbMin, const btVector3 &aabbMax) const {
 	int i = m_mesh_parts.size();
-	while (i--)
-	{
+	while (i--) {
 		m_mesh_parts[i]->processAllTriangles(callback, aabbMin, aabbMax);
 	}
 }
 
-void btGImpactMeshShape::processAllTrianglesRay(btTriangleCallback* callback, const btVector3& rayFrom, const btVector3& rayTo) const
-{
+void btGImpactMeshShape::processAllTrianglesRay(btTriangleCallback *callback, const btVector3 &rayFrom, const btVector3 &rayTo) const {
 	int i = m_mesh_parts.size();
-	while (i--)
-	{
+	while (i--) {
 		m_mesh_parts[i]->processAllTrianglesRay(callback, rayFrom, rayTo);
 	}
 }
 
-///fills the dataBuffer and returns the struct name (and 0 on failure)
-const char* btGImpactMeshShape::serialize(void* dataBuffer, btSerializer* serializer) const
-{
-	btGImpactMeshShapeData* trimeshData = (btGImpactMeshShapeData*)dataBuffer;
+/// fills the dataBuffer and returns the struct name (and 0 on failure)
+const char *btGImpactMeshShape::serialize(void *dataBuffer, btSerializer *serializer) const {
+	btGImpactMeshShapeData *trimeshData = (btGImpactMeshShapeData *)dataBuffer;
 
 	btCollisionShape::serialize(&trimeshData->m_collisionShapeData, serializer);
 

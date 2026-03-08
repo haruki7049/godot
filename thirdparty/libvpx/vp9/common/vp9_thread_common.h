@@ -24,42 +24,42 @@ struct FRAME_COUNTS;
 // Loopfilter row synchronization
 typedef struct VP9LfSyncData {
 #if CONFIG_MULTITHREAD
-  pthread_mutex_t *mutex_;
-  pthread_cond_t *cond_;
+	pthread_mutex_t *mutex_;
+	pthread_cond_t *cond_;
 #endif
-  // Allocate memory to store the loop-filtered superblock index in each row.
-  int *cur_sb_col;
-  // The optimal sync_range for different resolution and platform should be
-  // determined by testing. Currently, it is chosen to be a power-of-2 number.
-  int sync_range;
-  int rows;
+	// Allocate memory to store the loop-filtered superblock index in each row.
+	int *cur_sb_col;
+	// The optimal sync_range for different resolution and platform should be
+	// determined by testing. Currently, it is chosen to be a power-of-2 number.
+	int sync_range;
+	int rows;
 
-  // Row-based parallel loopfilter data
-  LFWorkerData *lfdata;
-  int num_workers;
+	// Row-based parallel loopfilter data
+	LFWorkerData *lfdata;
+	int num_workers;
 } VP9LfSync;
 
 // Allocate memory for loopfilter row synchronization.
 void vp9_loop_filter_alloc(VP9LfSync *lf_sync, struct VP9Common *cm, int rows,
-                           int width, int num_workers);
+		int width, int num_workers);
 
 // Deallocate loopfilter synchronization related mutex and data.
 void vp9_loop_filter_dealloc(VP9LfSync *lf_sync);
 
 // Multi-threaded loopfilter that uses the tile threads.
 void vp9_loop_filter_frame_mt(YV12_BUFFER_CONFIG *frame,
-                              struct VP9Common *cm,
-                              struct macroblockd_plane planes[MAX_MB_PLANE],
-                              int frame_filter_level,
-                              int y_only, int partial_frame,
-                              VPxWorker *workers, int num_workers,
-                              VP9LfSync *lf_sync);
+		struct VP9Common *cm,
+		struct macroblockd_plane planes[MAX_MB_PLANE],
+		int frame_filter_level,
+		int y_only, int partial_frame,
+		VPxWorker *workers, int num_workers,
+		VP9LfSync *lf_sync);
 
 void vp9_accumulate_frame_counts(struct FRAME_COUNTS *accum,
-                                 const struct FRAME_COUNTS *counts, int is_dec);
+		const struct FRAME_COUNTS *counts, int is_dec);
 
 #ifdef __cplusplus
-}  // extern "C"
+} // extern "C"
 #endif
 
-#endif  // VP9_COMMON_VP9_THREAD_COMMON_H_
+#endif // VP9_COMMON_VP9_THREAD_COMMON_H_

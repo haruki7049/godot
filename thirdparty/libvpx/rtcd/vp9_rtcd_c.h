@@ -29,13 +29,12 @@ void vp9_iht8x8_64_add_c(const tran_low_t *input, uint8_t *dest, int dest_stride
 void vp9_rtcd(void);
 
 #ifdef RTCD_C
-static void setup_rtcd_internal(void)
-{
+static void setup_rtcd_internal(void) {
 }
 #endif
 
 #ifdef __cplusplus
-}  // extern "C"
+} // extern "C"
 #endif
 
 #endif

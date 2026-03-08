@@ -17,24 +17,22 @@ subject to the following restrictions:
 #define __BCOMMON_H__
 
 #include <assert.h>
-//#include "bLog.h"
+// #include "bLog.h"
 #include "Bullet3Common/b3AlignedObjectArray.h"
 #include "Bullet3Common/b3HashMap.h"
 
-namespace bParse
-{
+namespace bParse {
 class bMain;
 class bFileData;
 class bFile;
 class bDNA;
 
 // delete void* undefined
-typedef struct bStructHandle
-{
+typedef struct bStructHandle {
 	int unused;
 } bStructHandle;
-typedef b3AlignedObjectArray<bStructHandle*> bListBasePtr;
-typedef b3HashMap<b3HashPtr, bStructHandle*> bPtrMap;
-}  // namespace bParse
+typedef b3AlignedObjectArray<bStructHandle *> bListBasePtr;
+typedef b3HashMap<b3HashPtr, bStructHandle *> bPtrMap;
+} // namespace bParse
 
-#endif  //__BCOMMON_H__
+#endif //__BCOMMON_H__

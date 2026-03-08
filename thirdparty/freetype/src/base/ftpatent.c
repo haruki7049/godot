@@ -17,34 +17,30 @@
  */
 
 #include <freetype/freetype.h>
-#include <freetype/tttags.h>
 #include <freetype/internal/ftobjs.h>
 #include <freetype/internal/ftstream.h>
 #include <freetype/internal/services/svsfnt.h>
 #include <freetype/internal/services/svttglyf.h>
+#include <freetype/tttags.h>
 
+/* documentation is in freetype.h */
 
-  /* documentation is in freetype.h */
+FT_EXPORT_DEF(FT_Bool)
+FT_Face_CheckTrueTypePatents(FT_Face face) {
+	FT_UNUSED(face);
 
-  FT_EXPORT_DEF( FT_Bool )
-  FT_Face_CheckTrueTypePatents( FT_Face  face )
-  {
-    FT_UNUSED( face );
+	return FALSE;
+}
 
-    return FALSE;
-  }
+/* documentation is in freetype.h */
 
+FT_EXPORT_DEF(FT_Bool)
+FT_Face_SetUnpatentedHinting(FT_Face face,
+		FT_Bool value) {
+	FT_UNUSED(face);
+	FT_UNUSED(value);
 
-  /* documentation is in freetype.h */
-
-  FT_EXPORT_DEF( FT_Bool )
-  FT_Face_SetUnpatentedHinting( FT_Face  face,
-                                FT_Bool  value )
-  {
-    FT_UNUSED( face );
-    FT_UNUSED( value );
-
-    return FALSE;
-  }
+	return FALSE;
+}
 
 /* END */

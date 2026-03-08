@@ -54,7 +54,7 @@ void vp8_dequant_idct_add_uv_block_c(short *q, short *dq, unsigned char *dst_u, 
 void vp8_dequant_idct_add_y_block_c(short *q, short *dq, unsigned char *dst, int stride, char *eobs);
 #define vp8_dequant_idct_add_y_block vp8_dequant_idct_add_y_block_c
 
-void vp8_dequantize_b_c(struct blockd*, short *dqc);
+void vp8_dequantize_b_c(struct blockd *, short *dqc);
 #define vp8_dequantize_b vp8_dequantize_b_c
 
 void vp8_loop_filter_bh_c(unsigned char *y, unsigned char *u, unsigned char *v, int ystride, int uv_stride, struct loop_filter_info *lfi);
@@ -105,13 +105,12 @@ void vp8_sixtap_predict8x8_c(unsigned char *src, int src_pitch, int xofst, int y
 void vp8_rtcd(void);
 
 #ifdef RTCD_C
-static void setup_rtcd_internal(void)
-{
+static void setup_rtcd_internal(void) {
 }
 #endif
 
 #ifdef __cplusplus
-}  // extern "C"
+} // extern "C"
 #endif
 
 #endif

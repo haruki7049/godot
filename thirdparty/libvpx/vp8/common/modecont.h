@@ -8,7 +8,6 @@
  *  be found in the AUTHORS file in the root of the source tree.
  */
 
-
 #ifndef VP8_COMMON_MODECONT_H_
 #define VP8_COMMON_MODECONT_H_
 
@@ -19,7 +18,7 @@ extern "C" {
 extern const int vp8_mode_contexts[6][4];
 
 #ifdef __cplusplus
-}  // extern "C"
+} // extern "C"
 #endif
 
-#endif  // VP8_COMMON_MODECONT_H_
+#endif // VP8_COMMON_MODECONT_H_

@@ -16,114 +16,102 @@
 
 #pragma once
 
+#include "EtcBlock4x4EncodingBits.h"
 #include "EtcBlock4x4Encoding_RGB8.h"
 #include "EtcErrorMetric.h"
-#include "EtcBlock4x4EncodingBits.h"
 
-namespace Etc
-{
+namespace Etc {
 
-	// ################################################################################
-	// Block4x4Encoding_RGB8A1
-	// RGB8A1 if not completely opaque or transparent
-	// ################################################################################
+// ################################################################################
+// Block4x4Encoding_RGB8A1
+// RGB8A1 if not completely opaque or transparent
+// ################################################################################
 
-	class Block4x4Encoding_RGB8A1 : public Block4x4Encoding_RGB8
-	{
-	public:
+class Block4x4Encoding_RGB8A1 : public Block4x4Encoding_RGB8 {
+public:
+	static const unsigned int TRANSPARENT_SELECTOR = 2;
 
-		static const unsigned int TRANSPARENT_SELECTOR = 2;
+	Block4x4Encoding_RGB8A1(void);
+	virtual ~Block4x4Encoding_RGB8A1(void);
 
-		Block4x4Encoding_RGB8A1(void);
-		virtual ~Block4x4Encoding_RGB8A1(void);
+	virtual void InitFromSource(Block4x4 *a_pblockParent,
+			ColorFloatRGBA *a_pafrgbaSource,
+			unsigned char *a_paucEncodingBits,
+			ErrorMetric a_errormetric);
 
-		virtual void InitFromSource(Block4x4 *a_pblockParent,
-									ColorFloatRGBA *a_pafrgbaSource,
-									unsigned char *a_paucEncodingBits,
-									ErrorMetric a_errormetric);
+	virtual void InitFromEncodingBits(Block4x4 *a_pblockParent,
+			unsigned char *a_paucEncodingBits,
+			ColorFloatRGBA *a_pafrgbaSource,
+			ErrorMetric a_errormetric);
 
-		virtual void InitFromEncodingBits(Block4x4 *a_pblockParent,
-											unsigned char *a_paucEncodingBits,
-											ColorFloatRGBA *a_pafrgbaSource,
-											ErrorMetric a_errormetric);
+	virtual void PerformIteration(float a_fEffort);
 
-		virtual void PerformIteration(float a_fEffort);
+	virtual void SetEncodingBits(void);
 
-		virtual void SetEncodingBits(void);
+	void InitFromEncodingBits_ETC1(Block4x4 *a_pblockParent,
+			unsigned char *a_paucEncodingBits,
+			ColorFloatRGBA *a_pafrgbaSource,
+			ErrorMetric a_errormetric);
 
-		void InitFromEncodingBits_ETC1(Block4x4 *a_pblockParent,
-										unsigned char *a_paucEncodingBits,
-										ColorFloatRGBA *a_pafrgbaSource,
-										ErrorMetric a_errormetric);
+	void InitFromEncodingBits_T(void);
+	void InitFromEncodingBits_H(void);
 
-		void InitFromEncodingBits_T(void);
-		void InitFromEncodingBits_H(void);
+	void PerformFirstIteration(void);
 
-		void PerformFirstIteration(void);
+	void Decode_ETC1(void);
+	void DecodePixels_T(void);
+	void DecodePixels_H(void);
+	void SetEncodingBits_ETC1(void);
+	void SetEncodingBits_T(void);
+	void SetEncodingBits_H(void);
 
-		void Decode_ETC1(void);
-		void DecodePixels_T(void);
-		void DecodePixels_H(void);
-		void SetEncodingBits_ETC1(void);
-		void SetEncodingBits_T(void);
-		void SetEncodingBits_H(void);
+protected:
+	bool m_boolOpaque; // all source pixels have alpha >= 0.5
+	bool m_boolTransparent; // all source pixels have alpha < 0.5
+	bool m_boolPunchThroughPixels; // some source pixels have alpha < 0.5
 
-	protected:
+	static float s_aafCwOpaqueUnsetTable[CW_RANGES][SELECTORS];
 
-		bool m_boolOpaque;				// all source pixels have alpha >= 0.5
-		bool m_boolTransparent;			// all source pixels have alpha < 0.5
-		bool m_boolPunchThroughPixels;	// some source pixels have alpha < 0.5
+private:
+	void TryDifferential(bool a_boolFlip, unsigned int a_uiRadius,
+			int a_iGrayOffset1, int a_iGrayOffset2);
+	void TryDifferentialHalf(DifferentialTrys::Half *a_phalf);
 
-		static float s_aafCwOpaqueUnsetTable[CW_RANGES][SELECTORS];
+	void TryT(unsigned int a_uiRadius);
+	void TryT_BestSelectorCombination(void);
+	void TryH(unsigned int a_uiRadius);
+	void TryH_BestSelectorCombination(void);
 
-	private:
+	void TryDegenerates1(void);
+	void TryDegenerates2(void);
+	void TryDegenerates3(void);
+	void TryDegenerates4(void);
+};
 
-		void TryDifferential(bool a_boolFlip, unsigned int a_uiRadius,
-								int a_iGrayOffset1, int a_iGrayOffset2);
-		void TryDifferentialHalf(DifferentialTrys::Half *a_phalf);
+// ################################################################################
+// Block4x4Encoding_RGB8A1_Opaque
+// RGB8A1 if all pixels have alpha==1
+// ################################################################################
 
-		void TryT(unsigned int a_uiRadius);
-		void TryT_BestSelectorCombination(void);
-		void TryH(unsigned int a_uiRadius);
-		void TryH_BestSelectorCombination(void);
+class Block4x4Encoding_RGB8A1_Opaque : public Block4x4Encoding_RGB8A1 {
+public:
+	virtual void PerformIteration(float a_fEffort);
 
-		void TryDegenerates1(void);
-		void TryDegenerates2(void);
-		void TryDegenerates3(void);
-		void TryDegenerates4(void);
+	void PerformFirstIteration(void);
 
-	};
+private:
+};
 
-	// ################################################################################
-	// Block4x4Encoding_RGB8A1_Opaque
-	// RGB8A1 if all pixels have alpha==1
-	// ################################################################################
+// ################################################################################
+// Block4x4Encoding_RGB8A1_Transparent
+// RGB8A1 if all pixels have alpha==0
+// ################################################################################
 
-	class Block4x4Encoding_RGB8A1_Opaque : public Block4x4Encoding_RGB8A1
-	{
-	public:
+class Block4x4Encoding_RGB8A1_Transparent : public Block4x4Encoding_RGB8A1 {
+public:
+	virtual void PerformIteration(float a_fEffort);
 
-		virtual void PerformIteration(float a_fEffort);
-
-		void PerformFirstIteration(void);
-
-	private:
-
-	};
-
-	// ################################################################################
-	// Block4x4Encoding_RGB8A1_Transparent
-	// RGB8A1 if all pixels have alpha==0
-	// ################################################################################
-
-	class Block4x4Encoding_RGB8A1_Transparent : public Block4x4Encoding_RGB8A1
-	{
-	public:
-
-		virtual void PerformIteration(float a_fEffort);
-
-	private:
-
-	};
+private:
+};
 
 } // namespace Etc

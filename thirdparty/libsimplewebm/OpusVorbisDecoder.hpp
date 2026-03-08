@@ -30,24 +30,23 @@
 struct VorbisDecoder;
 struct OpusDecoder;
 
-class OpusVorbisDecoder
-{
+class OpusVorbisDecoder {
 	OpusVorbisDecoder(const OpusVorbisDecoder &);
-	void operator =(const OpusVorbisDecoder &);
+	void operator=(const OpusVorbisDecoder &);
+
 public:
 	OpusVorbisDecoder(const WebMDemuxer &demuxer);
 	~OpusVorbisDecoder();
 
 	bool isOpen() const;
 
-	inline int getBufferSamples() const
-	{
+	inline int getBufferSamples() const {
 		return m_numSamples;
 	}
 	bool getPCMS16(WebMFrame &frame, short *buffer, int &numOutSamples);
-// -- GODOT begin --
+	// -- GODOT begin --
 	bool getPCMF(WebMFrame &frame, float *buffer, int &numOutSamples);
-// -- GODOT end --
+	// -- GODOT end --
 
 private:
 	bool openVorbis(const WebMDemuxer &demuxer);
@@ -59,7 +58,6 @@ private:
 	OpusDecoder *m_opus;
 	int m_numSamples;
 	int m_channels;
-
 };
 
 #endif // OPUSVORBISDECODER_HPP

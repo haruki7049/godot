@@ -4,7 +4,7 @@
  * All rights reserved.  Email: russ@q12.org   Web: www.q12.org          *
  *                                                                       *
  * This library is free software; you can redistribute it and/or         *
- * modify it under the terms of                                          * 
+ * modify it under the terms of                                          *
  *   The BSD-style license that is included with this library in         *
  *   the file LICENSE-BSD.TXT.                                           *
  *                                                                       *
@@ -44,15 +44,14 @@ to be implemented. the first `nub' variables are assumed to have findex < 0.
 #ifndef _BT_LCP_H_
 #define _BT_LCP_H_
 
-#include <stdlib.h>
-#include <stdio.h>
 #include <assert.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-#include "LinearMath/btScalar.h"
 #include "LinearMath/btAlignedObjectArray.h"
+#include "LinearMath/btScalar.h"
 
-struct btDantzigScratchMemory
-{
+struct btDantzigScratchMemory {
 	btAlignedObjectArray<btScalar> m_scratch;
 	btAlignedObjectArray<btScalar> L;
 	btAlignedObjectArray<btScalar> d;
@@ -66,8 +65,8 @@ struct btDantzigScratchMemory
 	btAlignedObjectArray<bool> state;
 };
 
-//return false if solving failed
+// return false if solving failed
 bool btSolveDantzigLCP(int n, btScalar *A, btScalar *x, btScalar *b, btScalar *w,
-					   int nub, btScalar *lo, btScalar *hi, int *findex, btDantzigScratchMemory &scratch);
+		int nub, btScalar *lo, btScalar *hi, int *findex, btDantzigScratchMemory &scratch);
 
-#endif  //_BT_LCP_H_
+#endif //_BT_LCP_H_

@@ -16,26 +16,22 @@
 
 #pragma once
 
-namespace Etc
-{
+namespace Etc {
 
-	enum ErrorMetric
-	{
-		RGBA,
-		RGBX,
-		REC709,
-		NUMERIC,
-		NORMALXYZ,
-		//
-		ERROR_METRICS,
-		//
-		BT709 = REC709
-	};
+enum ErrorMetric {
+	RGBA,
+	RGBX,
+	REC709,
+	NUMERIC,
+	NORMALXYZ,
+	//
+	ERROR_METRICS,
+	//
+	BT709 = REC709
+};
 
-	inline const char *ErrorMetricToString(ErrorMetric errorMetric)
-	{
-		switch (errorMetric)
-		{
+inline const char *ErrorMetricToString(ErrorMetric errorMetric) {
+	switch (errorMetric) {
 		case RGBA:
 			return "RGBA";
 		case RGBX:
@@ -49,6 +45,6 @@ namespace Etc
 		case ERROR_METRICS:
 		default:
 			return "UNKNOWN";
-		}
 	}
+}
 } // namespace Etc

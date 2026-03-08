@@ -20,83 +20,81 @@
 
 namespace oidn {
 
-  class Buffer;
-  class Filter;
+class Buffer;
+class Filter;
 
-  class Device : public RefCount, public Verbose
-  {
-  private:
-    // Thread-safety
-    std::mutex mutex;
+class Device : public RefCount, public Verbose {
+private:
+	// Thread-safety
+	std::mutex mutex;
 
-    // Error handling
-    struct ErrorState
-    {
-      Error code = Error::None;
-      std::string message;
-    };
+	// Error handling
+	struct ErrorState {
+		Error code = Error::None;
+		std::string message;
+	};
 
-    static thread_local ErrorState globalError;
-    ThreadLocal<ErrorState> error;
-    ErrorFunction errorFunc = nullptr;
-    void* errorUserPtr = nullptr;
+	static thread_local ErrorState globalError;
+	ThreadLocal<ErrorState> error;
+	ErrorFunction errorFunc = nullptr;
+	void *errorUserPtr = nullptr;
 
-// -- GODOT start --
-//    // Tasking
-//    std::shared_ptr<tbb::task_arena> arena;
-//    std::shared_ptr<PinningObserver> observer;
-//    std::shared_ptr<ThreadAffinity> affinity;
-// -- GODOT end --
+	// -- GODOT start --
+	//    // Tasking
+	//    std::shared_ptr<tbb::task_arena> arena;
+	//    std::shared_ptr<PinningObserver> observer;
+	//    std::shared_ptr<ThreadAffinity> affinity;
+	// -- GODOT end --
 
-    // Parameters
-    int numThreads = 0; // autodetect by default
-    bool setAffinity = true;
+	// Parameters
+	int numThreads = 0; // autodetect by default
+	bool setAffinity = true;
 
-    bool dirty = true;
+	bool dirty = true;
 
-  public:
-    Device();
-    ~Device();
+public:
+	Device();
+	~Device();
 
-    static void setError(Device* device, Error code, const std::string& message);
-    static Error getError(Device* device, const char** outMessage);
+	static void setError(Device *device, Error code, const std::string &message);
+	static Error getError(Device *device, const char **outMessage);
 
-    void setErrorFunction(ErrorFunction func, void* userPtr);
+	void setErrorFunction(ErrorFunction func, void *userPtr);
 
-    int get1i(const std::string& name);
-    void set1i(const std::string& name, int value);
+	int get1i(const std::string &name);
+	void set1i(const std::string &name, int value);
 
-    void commit();
+	void commit();
 
-// -- GODOT start --
-//    template<typename F>
-//    void executeTask(F& f)
-//    {
-//      arena->execute(f);
-//    }
+	// -- GODOT start --
+	//    template<typename F>
+	//    void executeTask(F& f)
+	//    {
+	//      arena->execute(f);
+	//    }
 
-//    template<typename F>
-//    void executeTask(const F& f)
-//    {
-//      arena->execute(f);
-//    }
-// -- GODOT end --
+	//    template<typename F>
+	//    void executeTask(const F& f)
+	//    {
+	//      arena->execute(f);
+	//    }
+	// -- GODOT end --
 
-    Ref<Buffer> newBuffer(size_t byteSize);
-    Ref<Buffer> newBuffer(void* ptr, size_t byteSize);
-    Ref<Filter> newFilter(const std::string& type);
+	Ref<Buffer> newBuffer(size_t byteSize);
+	Ref<Buffer> newBuffer(void *ptr, size_t byteSize);
+	Ref<Filter> newFilter(const std::string &type);
 
-    __forceinline Device* getDevice() { return this; }
-    __forceinline std::mutex& getMutex() { return mutex; }
+	__forceinline Device *getDevice() { return this; }
+	__forceinline std::mutex &getMutex() { return mutex; }
 
-  private:
-// -- GODOT start --
-  //bool isCommitted() const { return bool(arena); }
-  bool isCommitted() const { return false; }
-// -- GODOT end --
-    void checkCommitted();
+private:
+	// -- GODOT start --
+	// bool isCommitted() const { return bool(arena); }
+	bool isCommitted() const { return false; }
+	// -- GODOT end --
+	void checkCommitted();
 
-    void print();
-  };
+	void print();
+};
 
 } // namespace oidn

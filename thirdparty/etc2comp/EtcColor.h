@@ -18,47 +18,35 @@
 
 #include <math.h>
 
-namespace Etc
-{
+namespace Etc {
 
-	inline float LogToLinear(float a_fLog)
-	{
-		static const float ALPHA = 0.055f;
-		static const float ONE_PLUS_ALPHA = 1.0f + ALPHA;
+inline float LogToLinear(float a_fLog) {
+	static const float ALPHA = 0.055f;
+	static const float ONE_PLUS_ALPHA = 1.0f + ALPHA;
 
-		if (a_fLog <= 0.04045f)
-		{
-			return a_fLog / 12.92f;
-		}
-		else
-		{
-			return powf((a_fLog + ALPHA) / ONE_PLUS_ALPHA, 2.4f);
-		}
+	if (a_fLog <= 0.04045f) {
+		return a_fLog / 12.92f;
+	} else {
+		return powf((a_fLog + ALPHA) / ONE_PLUS_ALPHA, 2.4f);
 	}
-
-	inline float LinearToLog(float &a_fLinear)
-	{
-		static const float ALPHA = 0.055f;
-		static const float ONE_PLUS_ALPHA = 1.0f + ALPHA;
-
-		if (a_fLinear <= 0.0031308f)
-		{
-			return 12.92f * a_fLinear;
-		}
-		else
-		{
-			return ONE_PLUS_ALPHA * powf(a_fLinear, (1.0f/2.4f)) - ALPHA;
-		}
-	}
-
-	class ColorR8G8B8A8
-	{
-	public:
-
-		unsigned char ucR;
-		unsigned char ucG;
-		unsigned char ucB;
-		unsigned char ucA;
-
-	};
 }
+
+inline float LinearToLog(float &a_fLinear) {
+	static const float ALPHA = 0.055f;
+	static const float ONE_PLUS_ALPHA = 1.0f + ALPHA;
+
+	if (a_fLinear <= 0.0031308f) {
+		return 12.92f * a_fLinear;
+	} else {
+		return ONE_PLUS_ALPHA * powf(a_fLinear, (1.0f / 2.4f)) - ALPHA;
+	}
+}
+
+class ColorR8G8B8A8 {
+public:
+	unsigned char ucR;
+	unsigned char ucG;
+	unsigned char ucB;
+	unsigned char ucA;
+};
+} // namespace Etc

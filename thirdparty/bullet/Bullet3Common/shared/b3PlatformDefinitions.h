@@ -1,18 +1,16 @@
 #ifndef B3_PLATFORM_DEFINITIONS_H
 #define B3_PLATFORM_DEFINITIONS_H
 
-struct MyTest
-{
+struct MyTest {
 	int bla;
 };
 
 #ifdef __cplusplus
-//#define b3ConstArray(a) const b3AlignedObjectArray<a>&
+// #define b3ConstArray(a) const b3AlignedObjectArray<a>&
 #define b3ConstArray(a) const a *
 #define b3AtomicInc(a) ((*a)++)
 
-inline int b3AtomicAdd(volatile int *p, int val)
-{
+inline int b3AtomicAdd(volatile int *p, int val) {
 	int oldValue = *p;
 	int newValue = oldValue + val;
 	*p = newValue;
@@ -23,7 +21,7 @@ inline int b3AtomicAdd(volatile int *p, int val)
 
 #define B3_STATIC static
 #else
-//keep B3_LARGE_FLOAT*B3_LARGE_FLOAT < FLT_MAX
+// keep B3_LARGE_FLOAT*B3_LARGE_FLOAT < FLT_MAX
 #define B3_LARGE_FLOAT 1e18f
 #define B3_INFINITY 1e18f
 #define b3Assert(a)

@@ -8,7 +8,6 @@
  *  be found in the AUTHORS file in the root of the source tree.
  */
 
-
 #ifndef VP8_COMMON_HEADER_H_
 #define VP8_COMMON_HEADER_H_
 
@@ -19,20 +18,20 @@ extern "C" {
 /* 24 bits total */
 typedef struct
 {
-    unsigned int type: 1;
-    unsigned int version: 3;
-    unsigned int show_frame: 1;
+	unsigned int type : 1;
+	unsigned int version : 3;
+	unsigned int show_frame : 1;
 
-    /* Allow 2^20 bytes = 8 megabits for first partition */
+	/* Allow 2^20 bytes = 8 megabits for first partition */
 
-    unsigned int first_partition_length_in_bytes: 19;
+	unsigned int first_partition_length_in_bytes : 19;
 
 #ifdef PACKET_TESTING
-    unsigned int frame_number;
-    unsigned int update_gold: 1;
-    unsigned int uses_gold: 1;
-    unsigned int update_last: 1;
-    unsigned int uses_last: 1;
+	unsigned int frame_number;
+	unsigned int update_gold : 1;
+	unsigned int uses_gold : 1;
+	unsigned int update_last : 1;
+	unsigned int uses_last : 1;
 #endif
 
 } VP8_HEADER;
@@ -43,9 +42,8 @@ typedef struct
 #define VP8_HEADER_SIZE 3
 #endif
 
-
 #ifdef __cplusplus
-}  // extern "C"
+} // extern "C"
 #endif
 
-#endif  // VP8_COMMON_HEADER_H_
+#endif // VP8_COMMON_HEADER_H_

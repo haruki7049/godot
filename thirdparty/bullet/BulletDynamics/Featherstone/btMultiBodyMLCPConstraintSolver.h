@@ -16,15 +16,14 @@ subject to the following restrictions:
 #ifndef BT_MULTIBODY_MLCP_CONSTRAINT_SOLVER_H
 #define BT_MULTIBODY_MLCP_CONSTRAINT_SOLVER_H
 
+#include "BulletDynamics/Featherstone/btMultiBodyConstraintSolver.h"
 #include "LinearMath/btMatrixX.h"
 #include "LinearMath/btThreads.h"
-#include "BulletDynamics/Featherstone/btMultiBodyConstraintSolver.h"
 
 class btMLCPSolverInterface;
 class btMultiBody;
 
-class btMultiBodyMLCPConstraintSolver : public btMultiBodyConstraintSolver
-{
+class btMultiBodyMLCPConstraintSolver : public btMultiBodyConstraintSolver {
 protected:
 	/// \name MLCP Formulation for Rigid Bodies
 	/// \{
@@ -95,13 +94,13 @@ protected:
 	btAlignedObjectArray<int> m_multiBodyLimitDependencies;
 
 	/// Array of all the rigid body constraints
-	btAlignedObjectArray<btSolverConstraint*> m_allConstraintPtrArray;
+	btAlignedObjectArray<btSolverConstraint *> m_allConstraintPtrArray;
 
 	/// Array of all the multibody constraints
-	btAlignedObjectArray<btMultiBodySolverConstraint*> m_multiBodyAllConstraintPtrArray;
+	btAlignedObjectArray<btMultiBodySolverConstraint *> m_multiBodyAllConstraintPtrArray;
 
 	/// MLCP solver
-	btMLCPSolverInterface* m_solver;
+	btMLCPSolverInterface *m_solver;
 
 	/// Count of fallbacks of using btSequentialImpulseConstraintSolver, which happens when the MLCP solver fails.
 	int m_fallback;
@@ -125,38 +124,38 @@ protected:
 	/// \}
 
 	/// Constructs MLCP terms, which are \c m_A, \c m_b, \c m_lo, and \c m_hi.
-	virtual void createMLCPFast(const btContactSolverInfo& infoGlobal);
+	virtual void createMLCPFast(const btContactSolverInfo &infoGlobal);
 
 	/// Constructs MLCP terms for constraints of two rigid bodies
-	void createMLCPFastRigidBody(const btContactSolverInfo& infoGlobal);
+	void createMLCPFastRigidBody(const btContactSolverInfo &infoGlobal);
 
 	/// Constructs MLCP terms for constraints of two multi-bodies or one rigid body and one multibody
-	void createMLCPFastMultiBody(const btContactSolverInfo& infoGlobal);
+	void createMLCPFastMultiBody(const btContactSolverInfo &infoGlobal);
 
 	/// Solves MLCP and returns the success
-	virtual bool solveMLCP(const btContactSolverInfo& infoGlobal);
+	virtual bool solveMLCP(const btContactSolverInfo &infoGlobal);
 
 	// Documentation inherited
 	btScalar solveGroupCacheFriendlySetup(
-		btCollisionObject** bodies,
-		int numBodies,
-		btPersistentManifold** manifoldPtr,
-		int numManifolds,
-		btTypedConstraint** constraints,
-		int numConstraints,
-		const btContactSolverInfo& infoGlobal,
-		btIDebugDraw* debugDrawer) BT_OVERRIDE;
+			btCollisionObject **bodies,
+			int numBodies,
+			btPersistentManifold **manifoldPtr,
+			int numManifolds,
+			btTypedConstraint **constraints,
+			int numConstraints,
+			const btContactSolverInfo &infoGlobal,
+			btIDebugDraw *debugDrawer) BT_OVERRIDE;
 
 	// Documentation inherited
 	btScalar solveGroupCacheFriendlyIterations(
-		btCollisionObject** bodies,
-		int numBodies,
-		btPersistentManifold** manifoldPtr,
-		int numManifolds,
-		btTypedConstraint** constraints,
-		int numConstraints,
-		const btContactSolverInfo& infoGlobal,
-		btIDebugDraw* debugDrawer) ;
+			btCollisionObject **bodies,
+			int numBodies,
+			btPersistentManifold **manifoldPtr,
+			int numManifolds,
+			btTypedConstraint **constraints,
+			int numConstraints,
+			const btContactSolverInfo &infoGlobal,
+			btIDebugDraw *debugDrawer);
 
 public:
 	BT_DECLARE_ALIGNED_ALLOCATOR()
@@ -165,13 +164,13 @@ public:
 	///
 	/// \param[in] solver MLCP solver. Assumed it's not null.
 	/// \param[in] maxLCPSize Maximum size of LCP to solve using MLCP solver. If the MLCP size exceeds this number, sequaltial impulse method will be used.
-	explicit btMultiBodyMLCPConstraintSolver(btMLCPSolverInterface* solver);
+	explicit btMultiBodyMLCPConstraintSolver(btMLCPSolverInterface *solver);
 
 	/// Destructor
 	virtual ~btMultiBodyMLCPConstraintSolver();
 
 	/// Sets MLCP solver. Assumed it's not null.
-	void setMLCPSolver(btMLCPSolverInterface* solver);
+	void setMLCPSolver(btMLCPSolverInterface *solver);
 
 	/// Returns the number of fallbacks of using btSequentialImpulseConstraintSolver, which happens when the MLCP
 	/// solver fails.
@@ -184,4 +183,4 @@ public:
 	virtual btConstraintSolverType getSolverType() const;
 };
 
-#endif  // BT_MULTIBODY_MLCP_CONSTRAINT_SOLVER_H
+#endif // BT_MULTIBODY_MLCP_CONSTRAINT_SOLVER_H

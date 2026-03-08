@@ -1,38 +1,33 @@
 #include "btMiniSDF.h"
 
 //
-//Based on code from DiscreGrid, https://github.com/InteractiveComputerGraphics/Discregrid
-//example:
-//GenerateSDF.exe -r "32 32 32" -d "-1.6 -1.6 -.6 1.6 1.6 .6" concave_box.obj
-//The MIT License (MIT)
+// Based on code from DiscreGrid, https://github.com/InteractiveComputerGraphics/Discregrid
+// example:
+// GenerateSDF.exe -r "32 32 32" -d "-1.6 -1.6 -.6 1.6 1.6 .6" concave_box.obj
+// The MIT License (MIT)
 //
-//Copyright (c) 2017 Dan Koschier
+// Copyright (c) 2017 Dan Koschier
 //
 
 #include <limits.h>
-#include <string.h>  //memcpy
+#include <string.h> //memcpy
 
-struct btSdfDataStream
-{
-	const char* m_data;
+struct btSdfDataStream {
+	const char *m_data;
 	int m_size;
 
 	int m_currentOffset;
 
-	btSdfDataStream(const char* data, int size)
-		: m_data(data),
-		  m_size(size),
-		  m_currentOffset(0)
-	{
+	btSdfDataStream(const char *data, int size) : m_data(data),
+												  m_size(size),
+												  m_currentOffset(0) {
 	}
 
 	template <class T>
-	bool read(T& val)
-	{
+	bool read(T &val) {
 		int bytes = sizeof(T);
-		if (m_currentOffset + bytes <= m_size)
-		{
-			char* dest = (char*)&val;
+		if (m_currentOffset + bytes <= m_size) {
+			char *dest = (char *)&val;
 			memcpy(dest, &m_data[m_currentOffset], bytes);
 			m_currentOffset += bytes;
 			return true;
@@ -42,8 +37,7 @@ struct btSdfDataStream
 	}
 };
 
-bool btMiniSDF::load(const char* data, int size)
-{
+bool btMiniSDF::load(const char *data, int size) {
 	int fileSize = -1;
 
 	btSdfDataStream ds(data, size);
@@ -95,20 +89,17 @@ bool btMiniSDF::load(const char* data, int size)
 	std::size_t n_nodes0;
 	ds.read(nodes0);
 	n_nodes0 = nodes0;
-	if (n_nodes0 > 1024 * 1024 * 1024)
-	{
+	if (n_nodes0 > 1024 * 1024 * 1024) {
 		return m_isValid;
 	}
 	m_nodes.resize(n_nodes0);
-	for (unsigned int i = 0; i < n_nodes0; i++)
-	{
+	for (unsigned int i = 0; i < n_nodes0; i++) {
 		unsigned long long int n_nodes1;
 		ds.read(n_nodes1);
-		btAlignedObjectArray<double>& nodes = m_nodes[i];
+		btAlignedObjectArray<double> &nodes = m_nodes[i];
 		nodes.resize(n_nodes1);
-		for (int j = 0; j < nodes.size(); j++)
-		{
-			double& node = nodes[j];
+		for (int j = 0; j < nodes.size(); j++) {
+			double &node = nodes[j];
 			ds.read(node);
 		}
 	}
@@ -116,15 +107,13 @@ bool btMiniSDF::load(const char* data, int size)
 	unsigned long long int n_cells0;
 	ds.read(n_cells0);
 	m_cells.resize(n_cells0);
-	for (int i = 0; i < n_cells0; i++)
-	{
+	for (int i = 0; i < n_cells0; i++) {
 		unsigned long long int n_cells1;
-		btAlignedObjectArray<btCell32>& cells = m_cells[i];
+		btAlignedObjectArray<btCell32> &cells = m_cells[i];
 		ds.read(n_cells1);
 		cells.resize(n_cells1);
-		for (int j = 0; j < n_cells1; j++)
-		{
-			btCell32& cell = cells[j];
+		for (int j = 0; j < n_cells1; j++) {
+			btCell32 &cell = cells[j];
 			ds.read(cell);
 		}
 	}
@@ -134,15 +123,13 @@ bool btMiniSDF::load(const char* data, int size)
 		ds.read(n_cell_maps0);
 
 		m_cell_map.resize(n_cell_maps0);
-		for (int i = 0; i < n_cell_maps0; i++)
-		{
+		for (int i = 0; i < n_cell_maps0; i++) {
 			unsigned long long int n_cell_maps1;
-			btAlignedObjectArray<unsigned int>& cell_maps = m_cell_map[i];
+			btAlignedObjectArray<unsigned int> &cell_maps = m_cell_map[i];
 			ds.read(n_cell_maps1);
 			cell_maps.resize(n_cell_maps1);
-			for (int j = 0; j < n_cell_maps1; j++)
-			{
-				unsigned int& cell_map = cell_maps[j];
+			for (int j = 0; j < n_cell_maps1; j++) {
+				unsigned int &cell_map = cell_maps[j];
 				ds.read(cell_map);
 			}
 		}
@@ -152,14 +139,12 @@ bool btMiniSDF::load(const char* data, int size)
 	return m_isValid;
 }
 
-unsigned int btMiniSDF::multiToSingleIndex(btMultiIndex const& ijk) const
-{
+unsigned int btMiniSDF::multiToSingleIndex(btMultiIndex const &ijk) const {
 	return m_resolution[1] * m_resolution[0] * ijk.ijk[2] + m_resolution[0] * ijk.ijk[1] + ijk.ijk[0];
 }
 
 btAlignedBox3d
-btMiniSDF::subdomain(btMultiIndex const& ijk) const
-{
+btMiniSDF::subdomain(btMultiIndex const &ijk) const {
 	btAssert(m_isValid);
 	btVector3 tmp;
 	tmp.m_floats[0] = m_cell_size[0] * (double)ijk.ijk[0];
@@ -173,8 +158,7 @@ btMiniSDF::subdomain(btMultiIndex const& ijk) const
 }
 
 btMultiIndex
-btMiniSDF::singleToMultiIndex(unsigned int l) const
-{
+btMiniSDF::singleToMultiIndex(unsigned int l) const {
 	btAssert(m_isValid);
 	unsigned int n01 = m_resolution[0] * m_resolution[1];
 	unsigned int k = l / n01;
@@ -189,15 +173,13 @@ btMiniSDF::singleToMultiIndex(unsigned int l) const
 }
 
 btAlignedBox3d
-btMiniSDF::subdomain(unsigned int l) const
-{
+btMiniSDF::subdomain(unsigned int l) const {
 	btAssert(m_isValid);
 	return subdomain(singleToMultiIndex(l));
 }
 
 btShapeMatrix
-btMiniSDF::shape_function_(btVector3 const& xi, btShapeGradients* gradient) const
-{
+btMiniSDF::shape_function_(btVector3 const &xi, btShapeGradients *gradient) const {
 	btAssert(m_isValid);
 	btShapeMatrix res;
 
@@ -293,9 +275,8 @@ btMiniSDF::shape_function_(btVector3 const& xi, btShapeGradients* gradient) cons
 	res[30] = fact1m3z * _1pxt1py;
 	res[31] = fact1p3z * _1pxt1py;
 
-	if (gradient)
-	{
-		btShapeGradients& dN = *gradient;
+	if (gradient) {
+		btShapeGradients &dN = *gradient;
 
 		btScalar _9t3x2py2pz2m19 = 9.0 * (3.0 * x2 + y2 + z2) - 19.0;
 		btScalar _9tx2p3y2pz2m19 = 9.0 * (x2 + 3.0 * y2 + z2) - 19.0;
@@ -439,9 +420,8 @@ btMiniSDF::shape_function_(btVector3 const& xi, btShapeGradients* gradient) cons
 	return res;
 }
 
-bool btMiniSDF::interpolate(unsigned int field_id, double& dist, btVector3 const& x,
-							btVector3* gradient) const
-{
+bool btMiniSDF::interpolate(unsigned int field_id, double &dist, btVector3 const &x,
+		btVector3 *gradient) const {
 	btAssert(m_isValid);
 	if (!m_isValid)
 		return false;
@@ -449,8 +429,8 @@ bool btMiniSDF::interpolate(unsigned int field_id, double& dist, btVector3 const
 	if (!m_domain.contains(x))
 		return false;
 
-	btVector3 tmpmi = ((x - m_domain.min()) * (m_inv_cell_size));  //.cast<unsigned int>().eval();
-	unsigned int mi[3] = {(unsigned int)tmpmi[0], (unsigned int)tmpmi[1], (unsigned int)tmpmi[2]};
+	btVector3 tmpmi = ((x - m_domain.min()) * (m_inv_cell_size)); //.cast<unsigned int>().eval();
+	unsigned int mi[3] = { (unsigned int)tmpmi[0], (unsigned int)tmpmi[1], (unsigned int)tmpmi[2] };
 	if (mi[0] >= m_resolution[0])
 		mi[0] = m_resolution[0] - 1;
 	if (mi[1] >= m_resolution[1])
@@ -468,25 +448,22 @@ bool btMiniSDF::interpolate(unsigned int field_id, double& dist, btVector3 const
 
 	btAlignedBox3d sd = subdomain(i);
 	i = i_;
-	btVector3 d = sd.m_max - sd.m_min;  //.diagonal().eval();
+	btVector3 d = sd.m_max - sd.m_min; //.diagonal().eval();
 
 	btVector3 denom = (sd.max() - sd.min());
 	btVector3 c0 = btVector3(2.0, 2.0, 2.0) / denom;
 	btVector3 c1 = (sd.max() + sd.min()) / denom;
 	btVector3 xi = (c0 * x - c1);
 
-	btCell32 const& cell = m_cells[field_id][i];
-	if (!gradient)
-	{
-		//auto phi = m_coefficients[field_id][i].dot(shape_function_(xi, 0));
+	btCell32 const &cell = m_cells[field_id][i];
+	if (!gradient) {
+		// auto phi = m_coefficients[field_id][i].dot(shape_function_(xi, 0));
 		double phi = 0.0;
 		btShapeMatrix N = shape_function_(xi, 0);
-		for (unsigned int j = 0u; j < 32u; ++j)
-		{
+		for (unsigned int j = 0u; j < 32u; ++j) {
 			unsigned int v = cell.m_cells[j];
 			double c = m_nodes[field_id][v];
-			if (c == DBL_MAX)
-			{
+			if (c == DBL_MAX) {
 				return false;
 				;
 			}
@@ -502,12 +479,10 @@ bool btMiniSDF::interpolate(unsigned int field_id, double& dist, btVector3 const
 
 	double phi = 0.0;
 	gradient->setZero();
-	for (unsigned int j = 0u; j < 32u; ++j)
-	{
+	for (unsigned int j = 0u; j < 32u; ++j) {
 		unsigned int v = cell.m_cells[j];
 		double c = m_nodes[field_id][v];
-		if (c == DBL_MAX)
-		{
+		if (c == DBL_MAX) {
 			gradient->setZero();
 			return false;
 		}

@@ -20,7 +20,7 @@ extern "C" {
 void vp8_decode_mode_mvs(VP8D_COMP *);
 
 #ifdef __cplusplus
-}  // extern "C"
+} // extern "C"
 #endif
 
-#endif  // VP8_DECODER_DECODEMV_H_
+#endif // VP8_DECODER_DECODEMV_H_

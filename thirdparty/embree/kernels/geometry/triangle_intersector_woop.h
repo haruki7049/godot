@@ -3,190 +3,185 @@
 
 #pragma once
 
-#include "triangle.h"
 #include "intersector_epilog.h"
+#include "triangle.h"
 
 /*! This intersector implements a modified version of the Woop's ray-triangle intersection test */
 
-namespace embree
-{
-  namespace isa
-  {
-    template<int M>
-    struct WoopHitM
-    {
-      __forceinline WoopHitM() {}
+namespace embree {
+namespace isa {
+template <int M>
+struct WoopHitM {
+	__forceinline WoopHitM() {}
 
-      __forceinline WoopHitM(const vbool<M>& valid, 
-                             const vfloat<M>& U, 
-                             const vfloat<M>& V, 
-                             const vfloat<M>& T, 
-                             const vfloat<M>& inv_det,                              
-                             const Vec3vf<M>& Ng)
-        : U(U), V(V), T(T), inv_det(inv_det), valid(valid), vNg(Ng) {}
-      
-      __forceinline void finalize() 
-      {
-        vt = T;
-        vu = U*inv_det;
-        vv = V*inv_det;
-      }
+	__forceinline WoopHitM(const vbool<M> &valid,
+			const vfloat<M> &U,
+			const vfloat<M> &V,
+			const vfloat<M> &T,
+			const vfloat<M> &inv_det,
+			const Vec3vf<M> &Ng) : U(U),
+								   V(V),
+								   T(T),
+								   inv_det(inv_det),
+								   valid(valid),
+								   vNg(Ng) {}
 
-      __forceinline Vec2f uv (const size_t i) const { return Vec2f(vu[i],vv[i]); }
-      __forceinline float t  (const size_t i) const { return vt[i]; }
-      __forceinline Vec3fa Ng(const size_t i) const { return Vec3fa(vNg.x[i],vNg.y[i],vNg.z[i]); }
-      
-    private:
-      const vfloat<M> U;
-      const vfloat<M> V;
-      const vfloat<M> T;
-      const vfloat<M> inv_det;
-      
-    public:
-      const vbool<M> valid;
-      vfloat<M> vu;
-      vfloat<M> vv;
-      vfloat<M> vt;
-      Vec3vf<M> vNg;
-    };
+	__forceinline void finalize() {
+		vt = T;
+		vu = U * inv_det;
+		vv = V * inv_det;
+	}
 
-    template<int M>
-    struct WoopPrecalculations1
-    {
-      unsigned int kx,ky,kz;
-      Vec3vf<M> org;
-      Vec3fa S;
-      __forceinline WoopPrecalculations1() {}
+	__forceinline Vec2f uv(const size_t i) const { return Vec2f(vu[i], vv[i]); }
+	__forceinline float t(const size_t i) const { return vt[i]; }
+	__forceinline Vec3fa Ng(const size_t i) const { return Vec3fa(vNg.x[i], vNg.y[i], vNg.z[i]); }
 
-      __forceinline WoopPrecalculations1(const Ray& ray, const void* ptr)
-      {
-        kz = maxDim(abs(ray.dir));
-        kx = (kz+1) % 3;
-        ky = (kx+1) % 3;
-        const float inv_dir_kz = rcp(ray.dir[kz]);
-        if (ray.dir[kz]) std::swap(kx,ky);
-        S.x = ray.dir[kx] * inv_dir_kz;
-        S.y = ray.dir[ky] * inv_dir_kz;
-        S.z = inv_dir_kz;
-        org = Vec3vf<M>(ray.org[kx],ray.org[ky],ray.org[kz]);
-      }
-    };
+private:
+	const vfloat<M> U;
+	const vfloat<M> V;
+	const vfloat<M> T;
+	const vfloat<M> inv_det;
 
-    
-    template<int M>
-    struct WoopIntersector1
-    {
+public:
+	const vbool<M> valid;
+	vfloat<M> vu;
+	vfloat<M> vv;
+	vfloat<M> vt;
+	Vec3vf<M> vNg;
+};
 
-        typedef WoopPrecalculations1<M> Precalculations;
+template <int M>
+struct WoopPrecalculations1 {
+	unsigned int kx, ky, kz;
+	Vec3vf<M> org;
+	Vec3fa S;
+	__forceinline WoopPrecalculations1() {}
 
-      __forceinline WoopIntersector1() {}
+	__forceinline WoopPrecalculations1(const Ray &ray, const void *ptr) {
+		kz = maxDim(abs(ray.dir));
+		kx = (kz + 1) % 3;
+		ky = (kx + 1) % 3;
+		const float inv_dir_kz = rcp(ray.dir[kz]);
+		if (ray.dir[kz])
+			std::swap(kx, ky);
+		S.x = ray.dir[kx] * inv_dir_kz;
+		S.y = ray.dir[ky] * inv_dir_kz;
+		S.z = inv_dir_kz;
+		org = Vec3vf<M>(ray.org[kx], ray.org[ky], ray.org[kz]);
+	}
+};
 
-      __forceinline WoopIntersector1(const Ray& ray, const void* ptr) {}
+template <int M>
+struct WoopIntersector1 {
+	typedef WoopPrecalculations1<M> Precalculations;
 
-      static __forceinline bool intersect(const vbool<M>& valid0,
-                                          Ray& ray,
-                                          const Precalculations& pre,
-                                          const Vec3vf<M>& tri_v0,
-                                          const Vec3vf<M>& tri_v1,
-                                          const Vec3vf<M>& tri_v2,
-                                          WoopHitM<M>& hit)
-      {       
-        vbool<M> valid = valid0;
+	__forceinline WoopIntersector1() {}
 
-        /* vertices relative to ray origin */
-        const Vec3vf<M> org = Vec3vf<M>(pre.org.x,pre.org.y,pre.org.z);
-        const Vec3vf<M> A = Vec3vf<M>(tri_v0[pre.kx],tri_v0[pre.ky],tri_v0[pre.kz]) - org;
-        const Vec3vf<M> B = Vec3vf<M>(tri_v1[pre.kx],tri_v1[pre.ky],tri_v1[pre.kz]) - org;
-        const Vec3vf<M> C = Vec3vf<M>(tri_v2[pre.kx],tri_v2[pre.ky],tri_v2[pre.kz]) - org;
+	__forceinline WoopIntersector1(const Ray &ray, const void *ptr) {}
 
-        /* shear and scale vertices */
-        const vfloat<M> Ax = nmadd(A.z,pre.S.x,A.x);
-        const vfloat<M> Ay = nmadd(A.z,pre.S.y,A.y);
-        const vfloat<M> Bx = nmadd(B.z,pre.S.x,B.x);
-        const vfloat<M> By = nmadd(B.z,pre.S.y,B.y);
-        const vfloat<M> Cx = nmadd(C.z,pre.S.x,C.x);
-        const vfloat<M> Cy = nmadd(C.z,pre.S.y,C.y);
+	static __forceinline bool intersect(const vbool<M> &valid0,
+			Ray &ray,
+			const Precalculations &pre,
+			const Vec3vf<M> &tri_v0,
+			const Vec3vf<M> &tri_v1,
+			const Vec3vf<M> &tri_v2,
+			WoopHitM<M> &hit) {
+		vbool<M> valid = valid0;
 
-        /* scaled barycentric */
-        const vfloat<M> U0 = Cx*By;
-        const vfloat<M> U1 = Cy*Bx;
-        const vfloat<M> V0 = Ax*Cy;
-        const vfloat<M> V1 = Ay*Cx;
-        const vfloat<M> W0 = Bx*Ay;
-        const vfloat<M> W1 = By*Ax;
+		/* vertices relative to ray origin */
+		const Vec3vf<M> org = Vec3vf<M>(pre.org.x, pre.org.y, pre.org.z);
+		const Vec3vf<M> A = Vec3vf<M>(tri_v0[pre.kx], tri_v0[pre.ky], tri_v0[pre.kz]) - org;
+		const Vec3vf<M> B = Vec3vf<M>(tri_v1[pre.kx], tri_v1[pre.ky], tri_v1[pre.kz]) - org;
+		const Vec3vf<M> C = Vec3vf<M>(tri_v2[pre.kx], tri_v2[pre.ky], tri_v2[pre.kz]) - org;
+
+		/* shear and scale vertices */
+		const vfloat<M> Ax = nmadd(A.z, pre.S.x, A.x);
+		const vfloat<M> Ay = nmadd(A.z, pre.S.y, A.y);
+		const vfloat<M> Bx = nmadd(B.z, pre.S.x, B.x);
+		const vfloat<M> By = nmadd(B.z, pre.S.y, B.y);
+		const vfloat<M> Cx = nmadd(C.z, pre.S.x, C.x);
+		const vfloat<M> Cy = nmadd(C.z, pre.S.y, C.y);
+
+		/* scaled barycentric */
+		const vfloat<M> U0 = Cx * By;
+		const vfloat<M> U1 = Cy * Bx;
+		const vfloat<M> V0 = Ax * Cy;
+		const vfloat<M> V1 = Ay * Cx;
+		const vfloat<M> W0 = Bx * Ay;
+		const vfloat<M> W1 = By * Ax;
 #if !defined(__AVX512F__)
-        valid &= (U0 >= U1) & (V0 >= V1) & (W0 >= W1) |
-          (U0 <= U1) & (V0 <= V1) & (W0 <= W1);
+		valid &= (U0 >= U1) & (V0 >= V1) & (W0 >= W1) |
+				 (U0 <= U1) & (V0 <= V1) & (W0 <= W1);
 #else
-        valid &= ge(ge(U0 >= U1,V0,V1),W0,W1) | le(le(U0 <= U1,V0,V1),W0,W1);
+		valid &= ge(ge(U0 >= U1, V0, V1), W0, W1) | le(le(U0 <= U1, V0, V1), W0, W1);
 #endif
 
-        if (likely(none(valid))) return false;
-        const vfloat<M> U = U0-U1;
-        const vfloat<M> V = V0-V1;
-        const vfloat<M> W = W0-W1;
+		if (likely(none(valid)))
+			return false;
+		const vfloat<M> U = U0 - U1;
+		const vfloat<M> V = V0 - V1;
+		const vfloat<M> W = W0 - W1;
 
-        const vfloat<M> det = U+V+W;
+		const vfloat<M> det = U + V + W;
 
-        valid &= det != 0.0f;
-        const vfloat<M> inv_det = rcp(det);
+		valid &= det != 0.0f;
+		const vfloat<M> inv_det = rcp(det);
 
-        const vfloat<M> Az = pre.S.z * A.z;
-        const vfloat<M> Bz = pre.S.z * B.z;
-        const vfloat<M> Cz = pre.S.z * C.z;
-        const vfloat<M> T  = madd(U,Az,madd(V,Bz,W*Cz)); 
-        const vfloat<M> t  = T * inv_det;
-        /* perform depth test */
-        valid &= (vfloat<M>(ray.tnear()) < t) & (t <= vfloat<M>(ray.tfar));
-        if (likely(none(valid))) return false;
-        
-        const Vec3vf<M> tri_Ng = cross(tri_v2-tri_v0,tri_v0-tri_v1);
+		const vfloat<M> Az = pre.S.z * A.z;
+		const vfloat<M> Bz = pre.S.z * B.z;
+		const vfloat<M> Cz = pre.S.z * C.z;
+		const vfloat<M> T = madd(U, Az, madd(V, Bz, W * Cz));
+		const vfloat<M> t = T * inv_det;
+		/* perform depth test */
+		valid &= (vfloat<M>(ray.tnear()) < t) & (t <= vfloat<M>(ray.tfar));
+		if (likely(none(valid)))
+			return false;
 
-        /* update hit information */
-        new (&hit) WoopHitM<M>(valid,U,V,t,inv_det,tri_Ng);
-        return true;
-      }
-      
-      static __forceinline bool intersect(Ray& ray,
-                                   const Precalculations& pre,
-                                   const Vec3vf<M>& v0,
-                                   const Vec3vf<M>& v1,
-                                   const Vec3vf<M>& v2,
-                                   WoopHitM<M>& hit)
-      {
-        vbool<M> valid = true;
-        return intersect(valid,ray,pre,v0,v1,v2,hit);
-      }
+		const Vec3vf<M> tri_Ng = cross(tri_v2 - tri_v0, tri_v0 - tri_v1);
 
+		/* update hit information */
+		new (&hit) WoopHitM<M>(valid, U, V, t, inv_det, tri_Ng);
+		return true;
+	}
 
-      template<typename Epilog>
-      static __forceinline bool intersect(Ray& ray,
-                                     const Precalculations& pre,
-                                     const Vec3vf<M>& v0,
-                                     const Vec3vf<M>& v1,
-                                     const Vec3vf<M>& v2,
-                                     const Epilog& epilog)
-      {
-        WoopHitM<M> hit;
-        if (likely(intersect(ray,pre,v0,v1,v2,hit))) return epilog(hit.valid,hit);
-        return false;
-      }
+	static __forceinline bool intersect(Ray &ray,
+			const Precalculations &pre,
+			const Vec3vf<M> &v0,
+			const Vec3vf<M> &v1,
+			const Vec3vf<M> &v2,
+			WoopHitM<M> &hit) {
+		vbool<M> valid = true;
+		return intersect(valid, ray, pre, v0, v1, v2, hit);
+	}
 
-      template<typename Epilog>
-      static __forceinline bool intersect(const vbool<M>& valid,
-                                   Ray& ray,
-                                   const Precalculations& pre,
-                                   const Vec3vf<M>& v0,
-                                   const Vec3vf<M>& v1,
-                                   const Vec3vf<M>& v2,
-                                   const Epilog& epilog)
-      {
-        WoopHitM<M> hit;
-        if (likely(intersect(valid,ray,pre,v0,v1,v2,hit))) return epilog(hit.valid,hit);
-        return false;
-      }
-    };
-    
+	template <typename Epilog>
+	static __forceinline bool intersect(Ray &ray,
+			const Precalculations &pre,
+			const Vec3vf<M> &v0,
+			const Vec3vf<M> &v1,
+			const Vec3vf<M> &v2,
+			const Epilog &epilog) {
+		WoopHitM<M> hit;
+		if (likely(intersect(ray, pre, v0, v1, v2, hit)))
+			return epilog(hit.valid, hit);
+		return false;
+	}
+
+	template <typename Epilog>
+	static __forceinline bool intersect(const vbool<M> &valid,
+			Ray &ray,
+			const Precalculations &pre,
+			const Vec3vf<M> &v0,
+			const Vec3vf<M> &v1,
+			const Vec3vf<M> &v2,
+			const Epilog &epilog) {
+		WoopHitM<M> hit;
+		if (likely(intersect(valid, ray, pre, v0, v1, v2, hit)))
+			return epilog(hit.valid, hit);
+		return false;
+	}
+};
+
 #if 0
     template<int K>
     struct WoopHitK
@@ -414,5 +409,5 @@ namespace embree
       }
     };
 #endif
-  }
-}
+} // namespace isa
+} // namespace embree

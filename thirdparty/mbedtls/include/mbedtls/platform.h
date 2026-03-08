@@ -68,7 +68,7 @@
 #include "platform_time.h"
 #endif
 
-#define MBEDTLS_ERR_PLATFORM_HW_ACCEL_FAILED     -0x0070 /**< Hardware accelerator failed */
+#define MBEDTLS_ERR_PLATFORM_HW_ACCEL_FAILED -0x0070 /**< Hardware accelerator failed */
 #define MBEDTLS_ERR_PLATFORM_FEATURE_UNSUPPORTED -0x0072 /**< The requested feature is not supported by the platform */
 
 #ifdef __cplusplus
@@ -89,44 +89,44 @@ extern "C" {
 #include <time.h>
 #if !defined(MBEDTLS_PLATFORM_STD_SNPRINTF)
 #if defined(_WIN32)
-#define MBEDTLS_PLATFORM_STD_SNPRINTF   mbedtls_platform_win32_snprintf /**< The default \c snprintf function to use.  */
+#define MBEDTLS_PLATFORM_STD_SNPRINTF mbedtls_platform_win32_snprintf /**< The default \c snprintf function to use.  */
 #else
-#define MBEDTLS_PLATFORM_STD_SNPRINTF   snprintf /**< The default \c snprintf function to use.  */
+#define MBEDTLS_PLATFORM_STD_SNPRINTF snprintf /**< The default \c snprintf function to use.  */
 #endif
 #endif
 #if !defined(MBEDTLS_PLATFORM_STD_PRINTF)
-#define MBEDTLS_PLATFORM_STD_PRINTF   printf /**< The default \c printf function to use. */
+#define MBEDTLS_PLATFORM_STD_PRINTF printf /**< The default \c printf function to use. */
 #endif
 #if !defined(MBEDTLS_PLATFORM_STD_FPRINTF)
 #define MBEDTLS_PLATFORM_STD_FPRINTF fprintf /**< The default \c fprintf function to use. */
 #endif
 #if !defined(MBEDTLS_PLATFORM_STD_CALLOC)
-#define MBEDTLS_PLATFORM_STD_CALLOC   calloc /**< The default \c calloc function to use. */
+#define MBEDTLS_PLATFORM_STD_CALLOC calloc /**< The default \c calloc function to use. */
 #endif
 #if !defined(MBEDTLS_PLATFORM_STD_FREE)
-#define MBEDTLS_PLATFORM_STD_FREE       free /**< The default \c free function to use. */
+#define MBEDTLS_PLATFORM_STD_FREE free /**< The default \c free function to use. */
 #endif
 #if !defined(MBEDTLS_PLATFORM_STD_EXIT)
-#define MBEDTLS_PLATFORM_STD_EXIT      exit /**< The default \c exit function to use. */
+#define MBEDTLS_PLATFORM_STD_EXIT exit /**< The default \c exit function to use. */
 #endif
 #if !defined(MBEDTLS_PLATFORM_STD_TIME)
-#define MBEDTLS_PLATFORM_STD_TIME       time    /**< The default \c time function to use. */
+#define MBEDTLS_PLATFORM_STD_TIME time /**< The default \c time function to use. */
 #endif
 #if !defined(MBEDTLS_PLATFORM_STD_EXIT_SUCCESS)
-#define MBEDTLS_PLATFORM_STD_EXIT_SUCCESS  EXIT_SUCCESS /**< The default exit value to use. */
+#define MBEDTLS_PLATFORM_STD_EXIT_SUCCESS EXIT_SUCCESS /**< The default exit value to use. */
 #endif
 #if !defined(MBEDTLS_PLATFORM_STD_EXIT_FAILURE)
-#define MBEDTLS_PLATFORM_STD_EXIT_FAILURE  EXIT_FAILURE /**< The default exit value to use. */
+#define MBEDTLS_PLATFORM_STD_EXIT_FAILURE EXIT_FAILURE /**< The default exit value to use. */
 #endif
 #if defined(MBEDTLS_FS_IO)
 #if !defined(MBEDTLS_PLATFORM_STD_NV_SEED_READ)
-#define MBEDTLS_PLATFORM_STD_NV_SEED_READ   mbedtls_platform_std_nv_seed_read
+#define MBEDTLS_PLATFORM_STD_NV_SEED_READ mbedtls_platform_std_nv_seed_read
 #endif
 #if !defined(MBEDTLS_PLATFORM_STD_NV_SEED_WRITE)
-#define MBEDTLS_PLATFORM_STD_NV_SEED_WRITE  mbedtls_platform_std_nv_seed_write
+#define MBEDTLS_PLATFORM_STD_NV_SEED_WRITE mbedtls_platform_std_nv_seed_write
 #endif
 #if !defined(MBEDTLS_PLATFORM_STD_NV_SEED_FILE)
-#define MBEDTLS_PLATFORM_STD_NV_SEED_FILE   "seedfile"
+#define MBEDTLS_PLATFORM_STD_NV_SEED_FILE "seedfile"
 #endif
 #endif /* MBEDTLS_FS_IO */
 #else /* MBEDTLS_PLATFORM_NO_STD_FUNCTIONS */
@@ -135,7 +135,6 @@ extern "C" {
 #endif
 #endif /* MBEDTLS_PLATFORM_NO_STD_FUNCTIONS */
 
-
 /* \} name SECTION: Module settings */
 
 /*
@@ -143,14 +142,14 @@ extern "C" {
  */
 #if defined(MBEDTLS_PLATFORM_MEMORY)
 #if defined(MBEDTLS_PLATFORM_FREE_MACRO) && \
-    defined(MBEDTLS_PLATFORM_CALLOC_MACRO)
-#define mbedtls_free       MBEDTLS_PLATFORM_FREE_MACRO
-#define mbedtls_calloc     MBEDTLS_PLATFORM_CALLOC_MACRO
+		defined(MBEDTLS_PLATFORM_CALLOC_MACRO)
+#define mbedtls_free MBEDTLS_PLATFORM_FREE_MACRO
+#define mbedtls_calloc MBEDTLS_PLATFORM_CALLOC_MACRO
 #else
 /* For size_t */
 #include <stddef.h>
-extern void *mbedtls_calloc( size_t n, size_t size );
-extern void mbedtls_free( void *ptr );
+extern void *mbedtls_calloc(size_t n, size_t size);
+extern void mbedtls_free(void *ptr);
 
 /**
  * \brief               This function dynamically sets the memory-management
@@ -161,12 +160,12 @@ extern void mbedtls_free( void *ptr );
  *
  * \return              \c 0.
  */
-int mbedtls_platform_set_calloc_free( void * (*calloc_func)( size_t, size_t ),
-                              void (*free_func)( void * ) );
+int mbedtls_platform_set_calloc_free(void *(*calloc_func)(size_t, size_t),
+		void (*free_func)(void *));
 #endif /* MBEDTLS_PLATFORM_FREE_MACRO && MBEDTLS_PLATFORM_CALLOC_MACRO */
 #else /* !MBEDTLS_PLATFORM_MEMORY */
-#define mbedtls_free       free
-#define mbedtls_calloc     calloc
+#define mbedtls_free free
+#define mbedtls_calloc calloc
 #endif /* MBEDTLS_PLATFORM_MEMORY && !MBEDTLS_PLATFORM_{FREE,CALLOC}_MACRO */
 
 /*
@@ -175,7 +174,7 @@ int mbedtls_platform_set_calloc_free( void * (*calloc_func)( size_t, size_t ),
 #if defined(MBEDTLS_PLATFORM_FPRINTF_ALT)
 /* We need FILE * */
 #include <stdio.h>
-extern int (*mbedtls_fprintf)( FILE *stream, const char *format, ... );
+extern int (*mbedtls_fprintf)(FILE *stream, const char *format, ...);
 
 /**
  * \brief                This function dynamically configures the fprintf
@@ -186,13 +185,13 @@ extern int (*mbedtls_fprintf)( FILE *stream, const char *format, ... );
  *
  * \return               \c 0.
  */
-int mbedtls_platform_set_fprintf( int (*fprintf_func)( FILE *stream, const char *,
-                                               ... ) );
+int mbedtls_platform_set_fprintf(int (*fprintf_func)(FILE *stream, const char *,
+		...));
 #else
 #if defined(MBEDTLS_PLATFORM_FPRINTF_MACRO)
-#define mbedtls_fprintf    MBEDTLS_PLATFORM_FPRINTF_MACRO
+#define mbedtls_fprintf MBEDTLS_PLATFORM_FPRINTF_MACRO
 #else
-#define mbedtls_fprintf    fprintf
+#define mbedtls_fprintf fprintf
 #endif /* MBEDTLS_PLATFORM_FPRINTF_MACRO */
 #endif /* MBEDTLS_PLATFORM_FPRINTF_ALT */
 
@@ -200,7 +199,7 @@ int mbedtls_platform_set_fprintf( int (*fprintf_func)( FILE *stream, const char 
  * The function pointers for printf
  */
 #if defined(MBEDTLS_PLATFORM_PRINTF_ALT)
-extern int (*mbedtls_printf)( const char *format, ... );
+extern int (*mbedtls_printf)(const char *format, ...);
 
 /**
  * \brief               This function dynamically configures the snprintf
@@ -211,12 +210,12 @@ extern int (*mbedtls_printf)( const char *format, ... );
  *
  * \return              \c 0 on success.
  */
-int mbedtls_platform_set_printf( int (*printf_func)( const char *, ... ) );
+int mbedtls_platform_set_printf(int (*printf_func)(const char *, ...));
 #else /* !MBEDTLS_PLATFORM_PRINTF_ALT */
 #if defined(MBEDTLS_PLATFORM_PRINTF_MACRO)
-#define mbedtls_printf     MBEDTLS_PLATFORM_PRINTF_MACRO
+#define mbedtls_printf MBEDTLS_PLATFORM_PRINTF_MACRO
 #else
-#define mbedtls_printf     printf
+#define mbedtls_printf printf
 #endif /* MBEDTLS_PLATFORM_PRINTF_MACRO */
 #endif /* MBEDTLS_PLATFORM_PRINTF_ALT */
 
@@ -231,11 +230,11 @@ int mbedtls_platform_set_printf( int (*printf_func)( const char *, ... ) );
  */
 #if defined(_WIN32)
 /* For Windows (inc. MSYS2), we provide our own fixed implementation */
-int mbedtls_platform_win32_snprintf( char *s, size_t n, const char *fmt, ... );
+int mbedtls_platform_win32_snprintf(char *s, size_t n, const char *fmt, ...);
 #endif
 
 #if defined(MBEDTLS_PLATFORM_SNPRINTF_ALT)
-extern int (*mbedtls_snprintf)( char * s, size_t n, const char * format, ... );
+extern int (*mbedtls_snprintf)(char *s, size_t n, const char *format, ...);
 
 /**
  * \brief                 This function allows configuring a custom
@@ -245,13 +244,13 @@ extern int (*mbedtls_snprintf)( char * s, size_t n, const char * format, ... );
  *
  * \return                \c 0 on success.
  */
-int mbedtls_platform_set_snprintf( int (*snprintf_func)( char * s, size_t n,
-                                                 const char * format, ... ) );
+int mbedtls_platform_set_snprintf(int (*snprintf_func)(char *s, size_t n,
+		const char *format, ...));
 #else /* MBEDTLS_PLATFORM_SNPRINTF_ALT */
 #if defined(MBEDTLS_PLATFORM_SNPRINTF_MACRO)
-#define mbedtls_snprintf   MBEDTLS_PLATFORM_SNPRINTF_MACRO
+#define mbedtls_snprintf MBEDTLS_PLATFORM_SNPRINTF_MACRO
 #else
-#define mbedtls_snprintf   MBEDTLS_PLATFORM_STD_SNPRINTF
+#define mbedtls_snprintf MBEDTLS_PLATFORM_STD_SNPRINTF
 #endif /* MBEDTLS_PLATFORM_SNPRINTF_MACRO */
 #endif /* MBEDTLS_PLATFORM_SNPRINTF_ALT */
 
@@ -259,7 +258,7 @@ int mbedtls_platform_set_snprintf( int (*snprintf_func)( char * s, size_t n,
  * The function pointers for exit
  */
 #if defined(MBEDTLS_PLATFORM_EXIT_ALT)
-extern void (*mbedtls_exit)( int status );
+extern void (*mbedtls_exit)(int status);
 
 /**
  * \brief             This function dynamically configures the exit
@@ -270,12 +269,12 @@ extern void (*mbedtls_exit)( int status );
  *
  * \return            \c 0 on success.
  */
-int mbedtls_platform_set_exit( void (*exit_func)( int status ) );
+int mbedtls_platform_set_exit(void (*exit_func)(int status));
 #else
 #if defined(MBEDTLS_PLATFORM_EXIT_MACRO)
-#define mbedtls_exit   MBEDTLS_PLATFORM_EXIT_MACRO
+#define mbedtls_exit MBEDTLS_PLATFORM_EXIT_MACRO
 #else
-#define mbedtls_exit   exit
+#define mbedtls_exit exit
 #endif /* MBEDTLS_PLATFORM_EXIT_MACRO */
 #endif /* MBEDTLS_PLATFORM_EXIT_ALT */
 
@@ -302,13 +301,13 @@ int mbedtls_platform_set_exit( void (*exit_func)( int status ) );
 #if defined(MBEDTLS_ENTROPY_NV_SEED)
 #if !defined(MBEDTLS_PLATFORM_NO_STD_FUNCTIONS) && defined(MBEDTLS_FS_IO)
 /* Internal standard platform definitions */
-int mbedtls_platform_std_nv_seed_read( unsigned char *buf, size_t buf_len );
-int mbedtls_platform_std_nv_seed_write( unsigned char *buf, size_t buf_len );
+int mbedtls_platform_std_nv_seed_read(unsigned char *buf, size_t buf_len);
+int mbedtls_platform_std_nv_seed_write(unsigned char *buf, size_t buf_len);
 #endif
 
 #if defined(MBEDTLS_PLATFORM_NV_SEED_ALT)
-extern int (*mbedtls_nv_seed_read)( unsigned char *buf, size_t buf_len );
-extern int (*mbedtls_nv_seed_write)( unsigned char *buf, size_t buf_len );
+extern int (*mbedtls_nv_seed_read)(unsigned char *buf, size_t buf_len);
+extern int (*mbedtls_nv_seed_write)(unsigned char *buf, size_t buf_len);
 
 /**
  * \brief   This function allows configuring custom seed file writing and
@@ -320,17 +319,16 @@ extern int (*mbedtls_nv_seed_write)( unsigned char *buf, size_t buf_len );
  * \return  \c 0 on success.
  */
 int mbedtls_platform_set_nv_seed(
-            int (*nv_seed_read_func)( unsigned char *buf, size_t buf_len ),
-            int (*nv_seed_write_func)( unsigned char *buf, size_t buf_len )
-            );
+		int (*nv_seed_read_func)(unsigned char *buf, size_t buf_len),
+		int (*nv_seed_write_func)(unsigned char *buf, size_t buf_len));
 #else
 #if defined(MBEDTLS_PLATFORM_NV_SEED_READ_MACRO) && \
-    defined(MBEDTLS_PLATFORM_NV_SEED_WRITE_MACRO)
-#define mbedtls_nv_seed_read    MBEDTLS_PLATFORM_NV_SEED_READ_MACRO
-#define mbedtls_nv_seed_write   MBEDTLS_PLATFORM_NV_SEED_WRITE_MACRO
+		defined(MBEDTLS_PLATFORM_NV_SEED_WRITE_MACRO)
+#define mbedtls_nv_seed_read MBEDTLS_PLATFORM_NV_SEED_READ_MACRO
+#define mbedtls_nv_seed_write MBEDTLS_PLATFORM_NV_SEED_WRITE_MACRO
 #else
-#define mbedtls_nv_seed_read    mbedtls_platform_std_nv_seed_read
-#define mbedtls_nv_seed_write   mbedtls_platform_std_nv_seed_write
+#define mbedtls_nv_seed_read mbedtls_platform_std_nv_seed_read
+#define mbedtls_nv_seed_write mbedtls_platform_std_nv_seed_write
 #endif
 #endif /* MBEDTLS_PLATFORM_NV_SEED_ALT */
 #endif /* MBEDTLS_ENTROPY_NV_SEED */
@@ -343,11 +341,9 @@ int mbedtls_platform_set_nv_seed(
  * \note    This structure may be used to assist platform-specific
  *          setup or teardown operations.
  */
-typedef struct mbedtls_platform_context
-{
-    char dummy; /**< A placeholder member, as empty structs are not portable. */
-}
-mbedtls_platform_context;
+typedef struct mbedtls_platform_context {
+	char dummy; /**< A placeholder member, as empty structs are not portable. */
+} mbedtls_platform_context;
 
 #else
 #include "platform_alt.h"
@@ -368,7 +364,7 @@ mbedtls_platform_context;
  *
  * \return  \c 0 on success.
  */
-int mbedtls_platform_setup( mbedtls_platform_context *ctx );
+int mbedtls_platform_setup(mbedtls_platform_context *ctx);
 /**
  * \brief   This function performs any platform teardown operations.
  *
@@ -383,7 +379,7 @@ int mbedtls_platform_setup( mbedtls_platform_context *ctx );
  * \param   ctx     The platform context.
  *
  */
-void mbedtls_platform_teardown( mbedtls_platform_context *ctx );
+void mbedtls_platform_teardown(mbedtls_platform_context *ctx);
 
 #ifdef __cplusplus
 }

@@ -11,7 +11,7 @@
  ********************************************************************
 
   function:
-    last mod: $Id: mmxfrag.c 16578 2009-09-25 19:50:48Z cristianadam $
+	last mod: $Id: mmxfrag.c 16578 2009-09-25 19:50:48Z cristianadam $
 
  ********************************************************************/
 
@@ -20,30 +20,30 @@
   Additional optimization by Nils Pipenbrinck.
   Note: Loops are unrolled for best performance.
   The iteration each instruction belongs to is marked in the comments as #i.*/
-#include <stddef.h>
-#include "x86int.h"
 #include "mmxfrag.h"
+#include "x86int.h"
+#include <stddef.h>
 
 #if defined(OC_X86_ASM)
 
 /*Copies an 8x8 block of pixels from _src to _dst, assuming _ystride bytes
    between rows.*/
 void oc_frag_copy_mmx(unsigned char *_dst,
- const unsigned char *_src,int _ystride){
+		const unsigned char *_src, int _ystride) {
 #define SRC edx
 #define DST eax
 #define YSTRIDE ecx
 #define YSTRIDE3 esi
-  OC_FRAG_COPY_MMX(_dst,_src,_ystride);
+	OC_FRAG_COPY_MMX(_dst, _src, _ystride);
 #undef SRC
 #undef DST
 #undef YSTRIDE
 #undef YSTRIDE3
 }
 
-void oc_frag_recon_intra_mmx(unsigned char *_dst,int _ystride,
- const ogg_int16_t *_residue){
-  __asm{
+void oc_frag_recon_intra_mmx(unsigned char *_dst, int _ystride,
+		const ogg_int16_t *_residue) {
+	__asm {
 #define DST edx
 #define DST4 esi
 #define YSTRIDE eax
@@ -54,123 +54,123 @@ void oc_frag_recon_intra_mmx(unsigned char *_dst,int _ystride,
     mov RESIDUE,_residue
     lea DST4,[DST+YSTRIDE*4]
     lea YSTRIDE3,[YSTRIDE+YSTRIDE*2]
-    /*Set mm0 to 0xFFFFFFFFFFFFFFFF.*/
+		/*Set mm0 to 0xFFFFFFFFFFFFFFFF.*/
     pcmpeqw mm0,mm0
-    /*#0 Load low residue.*/
+				/*#0 Load low residue.*/
     movq mm1,[0*8+RESIDUE]
-    /*#0 Load high residue.*/
+		/*#0 Load high residue.*/
     movq mm2,[1*8+RESIDUE]
-    /*Set mm0 to 0x8000800080008000.*/
+		/*Set mm0 to 0x8000800080008000.*/
     psllw mm0,15
-    /*#1 Load low residue.*/
+		/*#1 Load low residue.*/
     movq mm3,[2*8+RESIDUE]
-    /*#1 Load high residue.*/
+		/*#1 Load high residue.*/
     movq mm4,[3*8+RESIDUE]
-    /*Set mm0 to 0x0080008000800080.*/
+		/*Set mm0 to 0x0080008000800080.*/
     psrlw mm0,8
-    /*#2 Load low residue.*/
+		/*#2 Load low residue.*/
     movq mm5,[4*8+RESIDUE]
-    /*#2 Load high residue.*/
+		/*#2 Load high residue.*/
     movq mm6,[5*8+RESIDUE]
-    /*#0 Bias low  residue.*/
+		/*#0 Bias low  residue.*/
     paddsw mm1,mm0
-    /*#0 Bias high residue.*/
+				/*#0 Bias high residue.*/
     paddsw mm2,mm0
-    /*#0 Pack to byte.*/
+				/*#0 Pack to byte.*/
     packuswb mm1,mm2
-    /*#1 Bias low  residue.*/
+				/*#1 Bias low  residue.*/
     paddsw mm3,mm0
-    /*#1 Bias high residue.*/
+				/*#1 Bias high residue.*/
     paddsw mm4,mm0
-    /*#1 Pack to byte.*/
+				/*#1 Pack to byte.*/
     packuswb mm3,mm4
-    /*#2 Bias low  residue.*/
+				/*#2 Bias low  residue.*/
     paddsw mm5,mm0
-    /*#2 Bias high residue.*/
+				/*#2 Bias high residue.*/
     paddsw mm6,mm0
-    /*#2 Pack to byte.*/
+				/*#2 Pack to byte.*/
     packuswb mm5,mm6
-    /*#0 Write row.*/
+				/*#0 Write row.*/
     movq [DST],mm1
-    /*#1 Write row.*/
+				/*#1 Write row.*/
     movq [DST+YSTRIDE],mm3
-    /*#2 Write row.*/
+				/*#2 Write row.*/
     movq [DST+YSTRIDE*2],mm5
-    /*#3 Load low residue.*/
+				/*#3 Load low residue.*/
     movq mm1,[6*8+RESIDUE]
-    /*#3 Load high residue.*/
+		/*#3 Load high residue.*/
     movq mm2,[7*8+RESIDUE]
-    /*#4 Load high residue.*/
+		/*#4 Load high residue.*/
     movq mm3,[8*8+RESIDUE]
-    /*#4 Load high residue.*/
+		/*#4 Load high residue.*/
     movq mm4,[9*8+RESIDUE]
-    /*#5 Load high residue.*/
+		/*#5 Load high residue.*/
     movq mm5,[10*8+RESIDUE]
-    /*#5 Load high residue.*/
+		/*#5 Load high residue.*/
     movq mm6,[11*8+RESIDUE]
-    /*#3 Bias low  residue.*/
+		/*#3 Bias low  residue.*/
     paddsw mm1,mm0
-    /*#3 Bias high residue.*/
+				/*#3 Bias high residue.*/
     paddsw mm2,mm0
-    /*#3 Pack to byte.*/
+				/*#3 Pack to byte.*/
     packuswb mm1,mm2
-    /*#4 Bias low  residue.*/
+				/*#4 Bias low  residue.*/
     paddsw mm3,mm0
-    /*#4 Bias high residue.*/
+				/*#4 Bias high residue.*/
     paddsw mm4,mm0
-    /*#4 Pack to byte.*/
+				/*#4 Pack to byte.*/
     packuswb mm3,mm4
-    /*#5 Bias low  residue.*/
+				/*#5 Bias low  residue.*/
     paddsw mm5,mm0
-    /*#5 Bias high residue.*/
+				/*#5 Bias high residue.*/
     paddsw mm6,mm0
-    /*#5 Pack to byte.*/
+				/*#5 Pack to byte.*/
     packuswb mm5,mm6
-    /*#3 Write row.*/
+				/*#3 Write row.*/
     movq [DST+YSTRIDE3],mm1
-    /*#4 Write row.*/
+				/*#4 Write row.*/
     movq [DST4],mm3
-    /*#5 Write row.*/
+				/*#5 Write row.*/
     movq [DST4+YSTRIDE],mm5
-    /*#6 Load low residue.*/
+				/*#6 Load low residue.*/
     movq mm1,[12*8+RESIDUE]
-    /*#6 Load high residue.*/
+		/*#6 Load high residue.*/
     movq mm2,[13*8+RESIDUE]
-    /*#7 Load low residue.*/
+		/*#7 Load low residue.*/
     movq mm3,[14*8+RESIDUE]
-    /*#7 Load high residue.*/
+		/*#7 Load high residue.*/
     movq mm4,[15*8+RESIDUE]
-    /*#6 Bias low  residue.*/
+		/*#6 Bias low  residue.*/
     paddsw mm1,mm0
-    /*#6 Bias high residue.*/
+				/*#6 Bias high residue.*/
     paddsw mm2,mm0
-    /*#6 Pack to byte.*/
+				/*#6 Pack to byte.*/
     packuswb mm1,mm2
-    /*#7 Bias low  residue.*/
+				/*#7 Bias low  residue.*/
     paddsw mm3,mm0
-    /*#7 Bias high residue.*/
+				/*#7 Bias high residue.*/
     paddsw mm4,mm0
-    /*#7 Pack to byte.*/
+				/*#7 Pack to byte.*/
     packuswb mm3,mm4
-    /*#6 Write row.*/
+				/*#6 Write row.*/
     movq [DST4+YSTRIDE*2],mm1
-    /*#7 Write row.*/
+				/*#7 Write row.*/
     movq [DST4+YSTRIDE3],mm3
 #undef DST
 #undef DST4
 #undef YSTRIDE
 #undef YSTRIDE3
 #undef RESIDUE
-  }
+	}
 }
 
-void oc_frag_recon_inter_mmx(unsigned char *_dst,const unsigned char *_src,
- int _ystride,const ogg_int16_t *_residue){
-  int i;
-  /*Zero mm0.*/
-  __asm pxor mm0,mm0;
-  for(i=4;i-->0;){
-    __asm{
+void oc_frag_recon_inter_mmx(unsigned char *_dst, const unsigned char *_src,
+		int _ystride, const ogg_int16_t *_residue) {
+	int i;
+	/*Zero mm0.*/
+	__asm pxor mm0, mm0;
+	for (i = 4; i-- > 0;) {
+		__asm {
 #define DST edx
 #define SRC ecx
 #define YSTRIDE edi
@@ -179,43 +179,43 @@ void oc_frag_recon_inter_mmx(unsigned char *_dst,const unsigned char *_src,
       mov SRC,_src
       mov YSTRIDE,_ystride
       mov RESIDUE,_residue
-      /*#0 Load source.*/
+					/*#0 Load source.*/
       movq mm3,[SRC]
-      /*#1 Load source.*/
+			/*#1 Load source.*/
       movq mm7,[SRC+YSTRIDE]
-      /*#0 Get copy of src.*/
+			/*#0 Get copy of src.*/
       movq mm4,mm3
-      /*#0 Expand high source.*/
+					/*#0 Expand high source.*/
       punpckhbw mm4,mm0
-      /*#0 Expand low  source.*/
+					/*#0 Expand low  source.*/
       punpcklbw mm3,mm0
-      /*#0 Add residue high.*/
+					/*#0 Add residue high.*/
       paddsw mm4,[8+RESIDUE]
-      /*#1 Get copy of src.*/
+			/*#1 Get copy of src.*/
       movq mm2,mm7
-      /*#0 Add residue low.*/
+					/*#0 Add residue low.*/
       paddsw  mm3,[RESIDUE]
-      /*#1 Expand high source.*/
+			/*#1 Expand high source.*/
       punpckhbw mm2,mm0
-      /*#0 Pack final row pixels.*/
+					/*#0 Pack final row pixels.*/
       packuswb mm3,mm4
-      /*#1 Expand low  source.*/
+					/*#1 Expand low  source.*/
       punpcklbw mm7,mm0
-      /*#1 Add residue low.*/
+					/*#1 Add residue low.*/
       paddsw mm7,[16+RESIDUE]
-      /*#1 Add residue high.*/
+			/*#1 Add residue high.*/
       paddsw mm2,[24+RESIDUE]
-      /*Advance residue.*/
+			/*Advance residue.*/
       lea RESIDUE,[32+RESIDUE]
-      /*#1 Pack final row pixels.*/
+			/*#1 Pack final row pixels.*/
       packuswb mm7,mm2
-      /*Advance src.*/
+					/*Advance src.*/
       lea SRC,[SRC+YSTRIDE*2]
-      /*#0 Write row.*/
+			/*#0 Write row.*/
       movq [DST],mm3
-      /*#1 Write row.*/
+					/*#1 Write row.*/
       movq [DST+YSTRIDE],mm7
-      /*Advance dst.*/
+					/*Advance dst.*/
       lea DST,[DST+YSTRIDE*2]
       mov _residue,RESIDUE
       mov _dst,DST
@@ -224,17 +224,17 @@ void oc_frag_recon_inter_mmx(unsigned char *_dst,const unsigned char *_src,
 #undef SRC
 #undef YSTRIDE
 #undef RESIDUE
-    }
-  }
+		}
+	}
 }
 
-void oc_frag_recon_inter2_mmx(unsigned char *_dst,const unsigned char *_src1,
- const unsigned char *_src2,int _ystride,const ogg_int16_t *_residue){
-  int i;
-  /*Zero mm7.*/
-  __asm pxor mm7,mm7;
-  for(i=4;i-->0;){
-    __asm{
+void oc_frag_recon_inter2_mmx(unsigned char *_dst, const unsigned char *_src1,
+		const unsigned char *_src2, int _ystride, const ogg_int16_t *_residue) {
+	int i;
+	/*Zero mm7.*/
+	__asm pxor mm7, mm7;
+	for (i = 4; i-- > 0;) {
+		__asm {
 #define SRC1 ecx
 #define SRC2 edi
 #define YSTRIDE esi
@@ -245,77 +245,77 @@ void oc_frag_recon_inter2_mmx(unsigned char *_dst,const unsigned char *_src1,
       mov RESIDUE,_residue
       mov SRC1,_src1
       mov SRC2,_src2
-      /*#0 Load src1.*/
+					/*#0 Load src1.*/
       movq mm0,[SRC1]
-      /*#0 Load src2.*/
+			/*#0 Load src2.*/
       movq mm2,[SRC2]
-      /*#0 Copy src1.*/
+			/*#0 Copy src1.*/
       movq mm1,mm0
-      /*#0 Copy src2.*/
+					/*#0 Copy src2.*/
       movq mm3,mm2
-      /*#1 Load src1.*/
+					/*#1 Load src1.*/
       movq mm4,[SRC1+YSTRIDE]
-      /*#0 Unpack lower src1.*/
+			/*#0 Unpack lower src1.*/
       punpcklbw mm0,mm7
-      /*#1 Load src2.*/
+					/*#1 Load src2.*/
       movq mm5,[SRC2+YSTRIDE]
-      /*#0 Unpack higher src1.*/
+			/*#0 Unpack higher src1.*/
       punpckhbw mm1,mm7
-      /*#0 Unpack lower src2.*/
+					/*#0 Unpack lower src2.*/
       punpcklbw mm2,mm7
-      /*#0 Unpack higher src2.*/
+					/*#0 Unpack higher src2.*/
       punpckhbw mm3,mm7
-      /*Advance src1 ptr.*/
+					/*Advance src1 ptr.*/
       lea SRC1,[SRC1+YSTRIDE*2]
-      /*Advance src2 ptr.*/
+			/*Advance src2 ptr.*/
       lea SRC2,[SRC2+YSTRIDE*2]
-      /*#0 Lower src1+src2.*/
+			/*#0 Lower src1+src2.*/
       paddsw mm0,mm2
-      /*#0 Higher src1+src2.*/
+					/*#0 Higher src1+src2.*/
       paddsw mm1,mm3
-      /*#1 Copy src1.*/
+					/*#1 Copy src1.*/
       movq mm2,mm4
-      /*#0 Build lo average.*/
+					/*#0 Build lo average.*/
       psraw mm0,1
-      /*#1 Copy src2.*/
+			/*#1 Copy src2.*/
       movq mm3,mm5
-      /*#1 Unpack lower src1.*/
+					/*#1 Unpack lower src1.*/
       punpcklbw mm4,mm7
-      /*#0 Build hi average.*/
+					/*#0 Build hi average.*/
       psraw mm1,1
-      /*#1 Unpack higher src1.*/
+			/*#1 Unpack higher src1.*/
       punpckhbw mm2,mm7
-      /*#0 low+=residue.*/
+					/*#0 low+=residue.*/
       paddsw mm0,[RESIDUE]
-      /*#1 Unpack lower src2.*/
+			/*#1 Unpack lower src2.*/
       punpcklbw mm5,mm7
-      /*#0 high+=residue.*/
+					/*#0 high+=residue.*/
       paddsw mm1,[8+RESIDUE]
-      /*#1 Unpack higher src2.*/
+			/*#1 Unpack higher src2.*/
       punpckhbw mm3,mm7
-      /*#1 Lower src1+src2.*/
+					/*#1 Lower src1+src2.*/
       paddsw mm5,mm4
-      /*#0 Pack and saturate.*/
+					/*#0 Pack and saturate.*/
       packuswb mm0,mm1
-      /*#1 Higher src1+src2.*/
+					/*#1 Higher src1+src2.*/
       paddsw mm3,mm2
-      /*#0 Write row.*/
+					/*#0 Write row.*/
       movq [DST],mm0
-      /*#1 Build lo average.*/
+					/*#1 Build lo average.*/
       psraw mm5,1
-      /*#1 Build hi average.*/
+			/*#1 Build hi average.*/
       psraw mm3,1
-      /*#1 low+=residue.*/
+			/*#1 low+=residue.*/
       paddsw mm5,[16+RESIDUE]
-      /*#1 high+=residue.*/
+			/*#1 high+=residue.*/
       paddsw mm3,[24+RESIDUE]
-      /*#1 Pack and saturate.*/
+			/*#1 Pack and saturate.*/
       packuswb  mm5,mm3
-      /*#1 Write row ptr.*/
+					/*#1 Write row ptr.*/
       movq [DST+YSTRIDE],mm5
-      /*Advance residue ptr.*/
+					/*Advance residue ptr.*/
       add RESIDUE,32
-      /*Advance dest ptr.*/
+			/*Advance dest ptr.*/
       lea DST,[DST+YSTRIDE*2]
       mov _dst,DST
       mov _residue,RESIDUE
@@ -326,12 +326,12 @@ void oc_frag_recon_inter2_mmx(unsigned char *_dst,const unsigned char *_src1,
 #undef YSTRIDE
 #undef RESIDUE
 #undef DST
-    }
-  }
+		}
+	}
 }
 
-void oc_restore_fpu_mmx(void){
-  __asm emms;
+void oc_restore_fpu_mmx(void) {
+	__asm emms;
 }
 
 #endif

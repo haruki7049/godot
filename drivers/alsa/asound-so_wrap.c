@@ -2566,11527 +2566,11527 @@
 #undef snd_midi_event_decode
 #include <dlfcn.h>
 #include <stdio.h>
-const char* (*snd_asoundlib_version_dylibloader_wrapper_asound)( void);
-int (*snd_dlpath_dylibloader_wrapper_asound)( char*, size_t,const char*);
-void* (*snd_dlopen_dylibloader_wrapper_asound)(const char*, int, char*, size_t);
-void* (*snd_dlsym_dylibloader_wrapper_asound)( void*,const char*,const char*);
-int (*snd_dlclose_dylibloader_wrapper_asound)( void*);
-int (*snd_async_add_handler_dylibloader_wrapper_asound)( snd_async_handler_t**, int, snd_async_callback_t, void*);
-int (*snd_async_del_handler_dylibloader_wrapper_asound)( snd_async_handler_t*);
-int (*snd_async_handler_get_fd_dylibloader_wrapper_asound)( snd_async_handler_t*);
-int (*snd_async_handler_get_signo_dylibloader_wrapper_asound)( snd_async_handler_t*);
-void* (*snd_async_handler_get_callback_private_dylibloader_wrapper_asound)( snd_async_handler_t*);
-struct snd_shm_area* (*snd_shm_area_create_dylibloader_wrapper_asound)( int, void*);
-struct snd_shm_area* (*snd_shm_area_share_dylibloader_wrapper_asound)(struct snd_shm_area*);
-int (*snd_shm_area_destroy_dylibloader_wrapper_asound)(struct snd_shm_area*);
-int (*snd_user_file_dylibloader_wrapper_asound)(const char*, char**);
-int (*snd_input_stdio_open_dylibloader_wrapper_asound)( snd_input_t**,const char*,const char*);
-int (*snd_input_stdio_attach_dylibloader_wrapper_asound)( snd_input_t**, FILE*, int);
-int (*snd_input_buffer_open_dylibloader_wrapper_asound)( snd_input_t**,const char*, ssize_t);
-int (*snd_input_close_dylibloader_wrapper_asound)( snd_input_t*);
-int (*snd_input_scanf_dylibloader_wrapper_asound)( snd_input_t*,const char*,...);
-char* (*snd_input_gets_dylibloader_wrapper_asound)( snd_input_t*, char*, size_t);
-int (*snd_input_getc_dylibloader_wrapper_asound)( snd_input_t*);
-int (*snd_input_ungetc_dylibloader_wrapper_asound)( snd_input_t*, int);
-int (*snd_output_stdio_open_dylibloader_wrapper_asound)( snd_output_t**,const char*,const char*);
-int (*snd_output_stdio_attach_dylibloader_wrapper_asound)( snd_output_t**, FILE*, int);
-int (*snd_output_buffer_open_dylibloader_wrapper_asound)( snd_output_t**);
-size_t (*snd_output_buffer_string_dylibloader_wrapper_asound)( snd_output_t*, char**);
-int (*snd_output_close_dylibloader_wrapper_asound)( snd_output_t*);
-int (*snd_output_printf_dylibloader_wrapper_asound)( snd_output_t*,const char*,...);
-int (*snd_output_vprintf_dylibloader_wrapper_asound)( snd_output_t*,const char*, va_list);
-int (*snd_output_puts_dylibloader_wrapper_asound)( snd_output_t*,const char*);
-int (*snd_output_putc_dylibloader_wrapper_asound)( snd_output_t*, int);
-int (*snd_output_flush_dylibloader_wrapper_asound)( snd_output_t*);
-const char* (*snd_strerror_dylibloader_wrapper_asound)( int);
-int (*snd_lib_error_set_handler_dylibloader_wrapper_asound)( snd_lib_error_handler_t);
-snd_local_error_handler_t (*snd_lib_error_set_local_dylibloader_wrapper_asound)( snd_local_error_handler_t);
-const char* (*snd_config_topdir_dylibloader_wrapper_asound)( void);
-int (*snd_config_top_dylibloader_wrapper_asound)( snd_config_t**);
-int (*snd_config_load_dylibloader_wrapper_asound)( snd_config_t*, snd_input_t*);
-int (*snd_config_load_override_dylibloader_wrapper_asound)( snd_config_t*, snd_input_t*);
-int (*snd_config_save_dylibloader_wrapper_asound)( snd_config_t*, snd_output_t*);
-int (*snd_config_update_dylibloader_wrapper_asound)( void);
-int (*snd_config_update_r_dylibloader_wrapper_asound)( snd_config_t**, snd_config_update_t**,const char*);
-int (*snd_config_update_free_dylibloader_wrapper_asound)( snd_config_update_t*);
-int (*snd_config_update_free_global_dylibloader_wrapper_asound)( void);
-int (*snd_config_update_ref_dylibloader_wrapper_asound)( snd_config_t**);
-void (*snd_config_ref_dylibloader_wrapper_asound)( snd_config_t*);
-void (*snd_config_unref_dylibloader_wrapper_asound)( snd_config_t*);
-int (*snd_config_search_dylibloader_wrapper_asound)( snd_config_t*,const char*, snd_config_t**);
-int (*snd_config_searchv_dylibloader_wrapper_asound)( snd_config_t*, snd_config_t**,...);
-int (*snd_config_search_definition_dylibloader_wrapper_asound)( snd_config_t*,const char*,const char*, snd_config_t**);
-int (*snd_config_expand_dylibloader_wrapper_asound)( snd_config_t*, snd_config_t*,const char*, snd_config_t*, snd_config_t**);
-int (*snd_config_evaluate_dylibloader_wrapper_asound)( snd_config_t*, snd_config_t*, snd_config_t*, snd_config_t**);
-int (*snd_config_add_dylibloader_wrapper_asound)( snd_config_t*, snd_config_t*);
-int (*snd_config_add_before_dylibloader_wrapper_asound)( snd_config_t*, snd_config_t*);
-int (*snd_config_add_after_dylibloader_wrapper_asound)( snd_config_t*, snd_config_t*);
-int (*snd_config_remove_dylibloader_wrapper_asound)( snd_config_t*);
-int (*snd_config_delete_dylibloader_wrapper_asound)( snd_config_t*);
-int (*snd_config_delete_compound_members_dylibloader_wrapper_asound)(const snd_config_t*);
-int (*snd_config_copy_dylibloader_wrapper_asound)( snd_config_t**, snd_config_t*);
-int (*snd_config_make_dylibloader_wrapper_asound)( snd_config_t**,const char*, snd_config_type_t);
-int (*snd_config_make_integer_dylibloader_wrapper_asound)( snd_config_t**,const char*);
-int (*snd_config_make_integer64_dylibloader_wrapper_asound)( snd_config_t**,const char*);
-int (*snd_config_make_real_dylibloader_wrapper_asound)( snd_config_t**,const char*);
-int (*snd_config_make_string_dylibloader_wrapper_asound)( snd_config_t**,const char*);
-int (*snd_config_make_pointer_dylibloader_wrapper_asound)( snd_config_t**,const char*);
-int (*snd_config_make_compound_dylibloader_wrapper_asound)( snd_config_t**,const char*, int);
-int (*snd_config_imake_integer_dylibloader_wrapper_asound)( snd_config_t**,const char*,const long);
-int (*snd_config_imake_integer64_dylibloader_wrapper_asound)( snd_config_t**,const char*,const long long);
-int (*snd_config_imake_real_dylibloader_wrapper_asound)( snd_config_t**,const char*,const double);
-int (*snd_config_imake_string_dylibloader_wrapper_asound)( snd_config_t**,const char*,const char*);
-int (*snd_config_imake_safe_string_dylibloader_wrapper_asound)( snd_config_t**,const char*,const char*);
-int (*snd_config_imake_pointer_dylibloader_wrapper_asound)( snd_config_t**,const char*,const void*);
-snd_config_type_t (*snd_config_get_type_dylibloader_wrapper_asound)(const snd_config_t*);
-int (*snd_config_is_array_dylibloader_wrapper_asound)(const snd_config_t*);
-int (*snd_config_set_id_dylibloader_wrapper_asound)( snd_config_t*,const char*);
-int (*snd_config_set_integer_dylibloader_wrapper_asound)( snd_config_t*, long);
-int (*snd_config_set_integer64_dylibloader_wrapper_asound)( snd_config_t*, long long);
-int (*snd_config_set_real_dylibloader_wrapper_asound)( snd_config_t*, double);
-int (*snd_config_set_string_dylibloader_wrapper_asound)( snd_config_t*,const char*);
-int (*snd_config_set_ascii_dylibloader_wrapper_asound)( snd_config_t*,const char*);
-int (*snd_config_set_pointer_dylibloader_wrapper_asound)( snd_config_t*,const void*);
-int (*snd_config_get_id_dylibloader_wrapper_asound)(const snd_config_t*,const char**);
-int (*snd_config_get_integer_dylibloader_wrapper_asound)(const snd_config_t*, long*);
-int (*snd_config_get_integer64_dylibloader_wrapper_asound)(const snd_config_t*, long long*);
-int (*snd_config_get_real_dylibloader_wrapper_asound)(const snd_config_t*, double*);
-int (*snd_config_get_ireal_dylibloader_wrapper_asound)(const snd_config_t*, double*);
-int (*snd_config_get_string_dylibloader_wrapper_asound)(const snd_config_t*,const char**);
-int (*snd_config_get_ascii_dylibloader_wrapper_asound)(const snd_config_t*, char**);
-int (*snd_config_get_pointer_dylibloader_wrapper_asound)(const snd_config_t*,const void**);
-int (*snd_config_test_id_dylibloader_wrapper_asound)(const snd_config_t*,const char*);
-snd_config_iterator_t (*snd_config_iterator_first_dylibloader_wrapper_asound)(const snd_config_t*);
+const char *(*snd_asoundlib_version_dylibloader_wrapper_asound)(void);
+int (*snd_dlpath_dylibloader_wrapper_asound)(char *, size_t, const char *);
+void *(*snd_dlopen_dylibloader_wrapper_asound)(const char *, int, char *, size_t);
+void *(*snd_dlsym_dylibloader_wrapper_asound)(void *, const char *, const char *);
+int (*snd_dlclose_dylibloader_wrapper_asound)(void *);
+int (*snd_async_add_handler_dylibloader_wrapper_asound)(snd_async_handler_t **, int, snd_async_callback_t, void *);
+int (*snd_async_del_handler_dylibloader_wrapper_asound)(snd_async_handler_t *);
+int (*snd_async_handler_get_fd_dylibloader_wrapper_asound)(snd_async_handler_t *);
+int (*snd_async_handler_get_signo_dylibloader_wrapper_asound)(snd_async_handler_t *);
+void *(*snd_async_handler_get_callback_private_dylibloader_wrapper_asound)(snd_async_handler_t *);
+struct snd_shm_area *(*snd_shm_area_create_dylibloader_wrapper_asound)(int, void *);
+struct snd_shm_area *(*snd_shm_area_share_dylibloader_wrapper_asound)(struct snd_shm_area *);
+int (*snd_shm_area_destroy_dylibloader_wrapper_asound)(struct snd_shm_area *);
+int (*snd_user_file_dylibloader_wrapper_asound)(const char *, char **);
+int (*snd_input_stdio_open_dylibloader_wrapper_asound)(snd_input_t **, const char *, const char *);
+int (*snd_input_stdio_attach_dylibloader_wrapper_asound)(snd_input_t **, FILE *, int);
+int (*snd_input_buffer_open_dylibloader_wrapper_asound)(snd_input_t **, const char *, ssize_t);
+int (*snd_input_close_dylibloader_wrapper_asound)(snd_input_t *);
+int (*snd_input_scanf_dylibloader_wrapper_asound)(snd_input_t *, const char *, ...);
+char *(*snd_input_gets_dylibloader_wrapper_asound)(snd_input_t *, char *, size_t);
+int (*snd_input_getc_dylibloader_wrapper_asound)(snd_input_t *);
+int (*snd_input_ungetc_dylibloader_wrapper_asound)(snd_input_t *, int);
+int (*snd_output_stdio_open_dylibloader_wrapper_asound)(snd_output_t **, const char *, const char *);
+int (*snd_output_stdio_attach_dylibloader_wrapper_asound)(snd_output_t **, FILE *, int);
+int (*snd_output_buffer_open_dylibloader_wrapper_asound)(snd_output_t **);
+size_t (*snd_output_buffer_string_dylibloader_wrapper_asound)(snd_output_t *, char **);
+int (*snd_output_close_dylibloader_wrapper_asound)(snd_output_t *);
+int (*snd_output_printf_dylibloader_wrapper_asound)(snd_output_t *, const char *, ...);
+int (*snd_output_vprintf_dylibloader_wrapper_asound)(snd_output_t *, const char *, va_list);
+int (*snd_output_puts_dylibloader_wrapper_asound)(snd_output_t *, const char *);
+int (*snd_output_putc_dylibloader_wrapper_asound)(snd_output_t *, int);
+int (*snd_output_flush_dylibloader_wrapper_asound)(snd_output_t *);
+const char *(*snd_strerror_dylibloader_wrapper_asound)(int);
+int (*snd_lib_error_set_handler_dylibloader_wrapper_asound)(snd_lib_error_handler_t);
+snd_local_error_handler_t (*snd_lib_error_set_local_dylibloader_wrapper_asound)(snd_local_error_handler_t);
+const char *(*snd_config_topdir_dylibloader_wrapper_asound)(void);
+int (*snd_config_top_dylibloader_wrapper_asound)(snd_config_t **);
+int (*snd_config_load_dylibloader_wrapper_asound)(snd_config_t *, snd_input_t *);
+int (*snd_config_load_override_dylibloader_wrapper_asound)(snd_config_t *, snd_input_t *);
+int (*snd_config_save_dylibloader_wrapper_asound)(snd_config_t *, snd_output_t *);
+int (*snd_config_update_dylibloader_wrapper_asound)(void);
+int (*snd_config_update_r_dylibloader_wrapper_asound)(snd_config_t **, snd_config_update_t **, const char *);
+int (*snd_config_update_free_dylibloader_wrapper_asound)(snd_config_update_t *);
+int (*snd_config_update_free_global_dylibloader_wrapper_asound)(void);
+int (*snd_config_update_ref_dylibloader_wrapper_asound)(snd_config_t **);
+void (*snd_config_ref_dylibloader_wrapper_asound)(snd_config_t *);
+void (*snd_config_unref_dylibloader_wrapper_asound)(snd_config_t *);
+int (*snd_config_search_dylibloader_wrapper_asound)(snd_config_t *, const char *, snd_config_t **);
+int (*snd_config_searchv_dylibloader_wrapper_asound)(snd_config_t *, snd_config_t **, ...);
+int (*snd_config_search_definition_dylibloader_wrapper_asound)(snd_config_t *, const char *, const char *, snd_config_t **);
+int (*snd_config_expand_dylibloader_wrapper_asound)(snd_config_t *, snd_config_t *, const char *, snd_config_t *, snd_config_t **);
+int (*snd_config_evaluate_dylibloader_wrapper_asound)(snd_config_t *, snd_config_t *, snd_config_t *, snd_config_t **);
+int (*snd_config_add_dylibloader_wrapper_asound)(snd_config_t *, snd_config_t *);
+int (*snd_config_add_before_dylibloader_wrapper_asound)(snd_config_t *, snd_config_t *);
+int (*snd_config_add_after_dylibloader_wrapper_asound)(snd_config_t *, snd_config_t *);
+int (*snd_config_remove_dylibloader_wrapper_asound)(snd_config_t *);
+int (*snd_config_delete_dylibloader_wrapper_asound)(snd_config_t *);
+int (*snd_config_delete_compound_members_dylibloader_wrapper_asound)(const snd_config_t *);
+int (*snd_config_copy_dylibloader_wrapper_asound)(snd_config_t **, snd_config_t *);
+int (*snd_config_make_dylibloader_wrapper_asound)(snd_config_t **, const char *, snd_config_type_t);
+int (*snd_config_make_integer_dylibloader_wrapper_asound)(snd_config_t **, const char *);
+int (*snd_config_make_integer64_dylibloader_wrapper_asound)(snd_config_t **, const char *);
+int (*snd_config_make_real_dylibloader_wrapper_asound)(snd_config_t **, const char *);
+int (*snd_config_make_string_dylibloader_wrapper_asound)(snd_config_t **, const char *);
+int (*snd_config_make_pointer_dylibloader_wrapper_asound)(snd_config_t **, const char *);
+int (*snd_config_make_compound_dylibloader_wrapper_asound)(snd_config_t **, const char *, int);
+int (*snd_config_imake_integer_dylibloader_wrapper_asound)(snd_config_t **, const char *, const long);
+int (*snd_config_imake_integer64_dylibloader_wrapper_asound)(snd_config_t **, const char *, const long long);
+int (*snd_config_imake_real_dylibloader_wrapper_asound)(snd_config_t **, const char *, const double);
+int (*snd_config_imake_string_dylibloader_wrapper_asound)(snd_config_t **, const char *, const char *);
+int (*snd_config_imake_safe_string_dylibloader_wrapper_asound)(snd_config_t **, const char *, const char *);
+int (*snd_config_imake_pointer_dylibloader_wrapper_asound)(snd_config_t **, const char *, const void *);
+snd_config_type_t (*snd_config_get_type_dylibloader_wrapper_asound)(const snd_config_t *);
+int (*snd_config_is_array_dylibloader_wrapper_asound)(const snd_config_t *);
+int (*snd_config_set_id_dylibloader_wrapper_asound)(snd_config_t *, const char *);
+int (*snd_config_set_integer_dylibloader_wrapper_asound)(snd_config_t *, long);
+int (*snd_config_set_integer64_dylibloader_wrapper_asound)(snd_config_t *, long long);
+int (*snd_config_set_real_dylibloader_wrapper_asound)(snd_config_t *, double);
+int (*snd_config_set_string_dylibloader_wrapper_asound)(snd_config_t *, const char *);
+int (*snd_config_set_ascii_dylibloader_wrapper_asound)(snd_config_t *, const char *);
+int (*snd_config_set_pointer_dylibloader_wrapper_asound)(snd_config_t *, const void *);
+int (*snd_config_get_id_dylibloader_wrapper_asound)(const snd_config_t *, const char **);
+int (*snd_config_get_integer_dylibloader_wrapper_asound)(const snd_config_t *, long *);
+int (*snd_config_get_integer64_dylibloader_wrapper_asound)(const snd_config_t *, long long *);
+int (*snd_config_get_real_dylibloader_wrapper_asound)(const snd_config_t *, double *);
+int (*snd_config_get_ireal_dylibloader_wrapper_asound)(const snd_config_t *, double *);
+int (*snd_config_get_string_dylibloader_wrapper_asound)(const snd_config_t *, const char **);
+int (*snd_config_get_ascii_dylibloader_wrapper_asound)(const snd_config_t *, char **);
+int (*snd_config_get_pointer_dylibloader_wrapper_asound)(const snd_config_t *, const void **);
+int (*snd_config_test_id_dylibloader_wrapper_asound)(const snd_config_t *, const char *);
+snd_config_iterator_t (*snd_config_iterator_first_dylibloader_wrapper_asound)(const snd_config_t *);
 snd_config_iterator_t (*snd_config_iterator_next_dylibloader_wrapper_asound)(const snd_config_iterator_t);
-snd_config_iterator_t (*snd_config_iterator_end_dylibloader_wrapper_asound)(const snd_config_t*);
-snd_config_t* (*snd_config_iterator_entry_dylibloader_wrapper_asound)(const snd_config_iterator_t);
-int (*snd_config_get_bool_ascii_dylibloader_wrapper_asound)(const char*);
-int (*snd_config_get_bool_dylibloader_wrapper_asound)(const snd_config_t*);
-int (*snd_config_get_ctl_iface_ascii_dylibloader_wrapper_asound)(const char*);
-int (*snd_config_get_ctl_iface_dylibloader_wrapper_asound)(const snd_config_t*);
-int (*snd_names_list_dylibloader_wrapper_asound)(const char*, snd_devname_t**);
-void (*snd_names_list_free_dylibloader_wrapper_asound)( snd_devname_t*);
-int (*snd_pcm_open_dylibloader_wrapper_asound)( snd_pcm_t**,const char*, snd_pcm_stream_t, int);
-int (*snd_pcm_open_lconf_dylibloader_wrapper_asound)( snd_pcm_t**,const char*, snd_pcm_stream_t, int, snd_config_t*);
-int (*snd_pcm_open_fallback_dylibloader_wrapper_asound)( snd_pcm_t**, snd_config_t*,const char*,const char*, snd_pcm_stream_t, int);
-int (*snd_pcm_close_dylibloader_wrapper_asound)( snd_pcm_t*);
-const char* (*snd_pcm_name_dylibloader_wrapper_asound)( snd_pcm_t*);
-snd_pcm_type_t (*snd_pcm_type_dylibloader_wrapper_asound)( snd_pcm_t*);
-snd_pcm_stream_t (*snd_pcm_stream_dylibloader_wrapper_asound)( snd_pcm_t*);
-int (*snd_pcm_poll_descriptors_count_dylibloader_wrapper_asound)( snd_pcm_t*);
-int (*snd_pcm_poll_descriptors_dylibloader_wrapper_asound)( snd_pcm_t*,struct pollfd*, unsigned int);
-int (*snd_pcm_poll_descriptors_revents_dylibloader_wrapper_asound)( snd_pcm_t*,struct pollfd*, unsigned int, unsigned short*);
-int (*snd_pcm_nonblock_dylibloader_wrapper_asound)( snd_pcm_t*, int);
-int (*snd_async_add_pcm_handler_dylibloader_wrapper_asound)( snd_async_handler_t**, snd_pcm_t*, snd_async_callback_t, void*);
-snd_pcm_t* (*snd_async_handler_get_pcm_dylibloader_wrapper_asound)( snd_async_handler_t*);
-int (*snd_pcm_info_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_info_t*);
-int (*snd_pcm_hw_params_current_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*);
-int (*snd_pcm_hw_params_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*);
-int (*snd_pcm_hw_free_dylibloader_wrapper_asound)( snd_pcm_t*);
-int (*snd_pcm_sw_params_current_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_sw_params_t*);
-int (*snd_pcm_sw_params_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_sw_params_t*);
-int (*snd_pcm_prepare_dylibloader_wrapper_asound)( snd_pcm_t*);
-int (*snd_pcm_reset_dylibloader_wrapper_asound)( snd_pcm_t*);
-int (*snd_pcm_status_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_status_t*);
-int (*snd_pcm_start_dylibloader_wrapper_asound)( snd_pcm_t*);
-int (*snd_pcm_drop_dylibloader_wrapper_asound)( snd_pcm_t*);
-int (*snd_pcm_drain_dylibloader_wrapper_asound)( snd_pcm_t*);
-int (*snd_pcm_pause_dylibloader_wrapper_asound)( snd_pcm_t*, int);
-snd_pcm_state_t (*snd_pcm_state_dylibloader_wrapper_asound)( snd_pcm_t*);
-int (*snd_pcm_hwsync_dylibloader_wrapper_asound)( snd_pcm_t*);
-int (*snd_pcm_delay_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_sframes_t*);
-int (*snd_pcm_resume_dylibloader_wrapper_asound)( snd_pcm_t*);
-int (*snd_pcm_htimestamp_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_uframes_t*, snd_htimestamp_t*);
-snd_pcm_sframes_t (*snd_pcm_avail_dylibloader_wrapper_asound)( snd_pcm_t*);
-snd_pcm_sframes_t (*snd_pcm_avail_update_dylibloader_wrapper_asound)( snd_pcm_t*);
-int (*snd_pcm_avail_delay_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_sframes_t*, snd_pcm_sframes_t*);
-snd_pcm_sframes_t (*snd_pcm_rewindable_dylibloader_wrapper_asound)( snd_pcm_t*);
-snd_pcm_sframes_t (*snd_pcm_rewind_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_uframes_t);
-snd_pcm_sframes_t (*snd_pcm_forwardable_dylibloader_wrapper_asound)( snd_pcm_t*);
-snd_pcm_sframes_t (*snd_pcm_forward_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_uframes_t);
-snd_pcm_sframes_t (*snd_pcm_writei_dylibloader_wrapper_asound)( snd_pcm_t*,const void*, snd_pcm_uframes_t);
-snd_pcm_sframes_t (*snd_pcm_readi_dylibloader_wrapper_asound)( snd_pcm_t*, void*, snd_pcm_uframes_t);
-snd_pcm_sframes_t (*snd_pcm_writen_dylibloader_wrapper_asound)( snd_pcm_t*, void**, snd_pcm_uframes_t);
-snd_pcm_sframes_t (*snd_pcm_readn_dylibloader_wrapper_asound)( snd_pcm_t*, void**, snd_pcm_uframes_t);
-int (*snd_pcm_wait_dylibloader_wrapper_asound)( snd_pcm_t*, int);
-int (*snd_pcm_link_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_t*);
-int (*snd_pcm_unlink_dylibloader_wrapper_asound)( snd_pcm_t*);
-snd_pcm_chmap_query_t** (*snd_pcm_query_chmaps_dylibloader_wrapper_asound)( snd_pcm_t*);
-snd_pcm_chmap_query_t** (*snd_pcm_query_chmaps_from_hw_dylibloader_wrapper_asound)( int, int, int, snd_pcm_stream_t);
-void (*snd_pcm_free_chmaps_dylibloader_wrapper_asound)( snd_pcm_chmap_query_t**);
-snd_pcm_chmap_t* (*snd_pcm_get_chmap_dylibloader_wrapper_asound)( snd_pcm_t*);
-int (*snd_pcm_set_chmap_dylibloader_wrapper_asound)( snd_pcm_t*,const snd_pcm_chmap_t*);
-const char* (*snd_pcm_chmap_type_name_dylibloader_wrapper_asound)(enum snd_pcm_chmap_type);
-const char* (*snd_pcm_chmap_name_dylibloader_wrapper_asound)(enum snd_pcm_chmap_position);
-const char* (*snd_pcm_chmap_long_name_dylibloader_wrapper_asound)(enum snd_pcm_chmap_position);
-int (*snd_pcm_chmap_print_dylibloader_wrapper_asound)(const snd_pcm_chmap_t*, size_t, char*);
-unsigned int (*snd_pcm_chmap_from_string_dylibloader_wrapper_asound)(const char*);
-snd_pcm_chmap_t* (*snd_pcm_chmap_parse_string_dylibloader_wrapper_asound)(const char*);
-int (*snd_pcm_recover_dylibloader_wrapper_asound)( snd_pcm_t*, int, int);
-int (*snd_pcm_set_params_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_format_t, snd_pcm_access_t, unsigned int, unsigned int, int, unsigned int);
-int (*snd_pcm_get_params_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_uframes_t*, snd_pcm_uframes_t*);
-size_t (*snd_pcm_info_sizeof_dylibloader_wrapper_asound)( void);
-int (*snd_pcm_info_malloc_dylibloader_wrapper_asound)( snd_pcm_info_t**);
-void (*snd_pcm_info_free_dylibloader_wrapper_asound)( snd_pcm_info_t*);
-void (*snd_pcm_info_copy_dylibloader_wrapper_asound)( snd_pcm_info_t*,const snd_pcm_info_t*);
-unsigned int (*snd_pcm_info_get_device_dylibloader_wrapper_asound)(const snd_pcm_info_t*);
-unsigned int (*snd_pcm_info_get_subdevice_dylibloader_wrapper_asound)(const snd_pcm_info_t*);
-snd_pcm_stream_t (*snd_pcm_info_get_stream_dylibloader_wrapper_asound)(const snd_pcm_info_t*);
-int (*snd_pcm_info_get_card_dylibloader_wrapper_asound)(const snd_pcm_info_t*);
-const char* (*snd_pcm_info_get_id_dylibloader_wrapper_asound)(const snd_pcm_info_t*);
-const char* (*snd_pcm_info_get_name_dylibloader_wrapper_asound)(const snd_pcm_info_t*);
-const char* (*snd_pcm_info_get_subdevice_name_dylibloader_wrapper_asound)(const snd_pcm_info_t*);
-snd_pcm_class_t (*snd_pcm_info_get_class_dylibloader_wrapper_asound)(const snd_pcm_info_t*);
-snd_pcm_subclass_t (*snd_pcm_info_get_subclass_dylibloader_wrapper_asound)(const snd_pcm_info_t*);
-unsigned int (*snd_pcm_info_get_subdevices_count_dylibloader_wrapper_asound)(const snd_pcm_info_t*);
-unsigned int (*snd_pcm_info_get_subdevices_avail_dylibloader_wrapper_asound)(const snd_pcm_info_t*);
-snd_pcm_sync_id_t (*snd_pcm_info_get_sync_dylibloader_wrapper_asound)(const snd_pcm_info_t*);
-void (*snd_pcm_info_set_device_dylibloader_wrapper_asound)( snd_pcm_info_t*, unsigned int);
-void (*snd_pcm_info_set_subdevice_dylibloader_wrapper_asound)( snd_pcm_info_t*, unsigned int);
-void (*snd_pcm_info_set_stream_dylibloader_wrapper_asound)( snd_pcm_info_t*, snd_pcm_stream_t);
-int (*snd_pcm_hw_params_any_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*);
-int (*snd_pcm_hw_params_can_mmap_sample_resolution_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*);
-int (*snd_pcm_hw_params_is_double_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*);
-int (*snd_pcm_hw_params_is_batch_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*);
-int (*snd_pcm_hw_params_is_block_transfer_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*);
-int (*snd_pcm_hw_params_is_monotonic_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*);
-int (*snd_pcm_hw_params_can_overrange_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*);
-int (*snd_pcm_hw_params_can_pause_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*);
-int (*snd_pcm_hw_params_can_resume_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*);
-int (*snd_pcm_hw_params_is_half_duplex_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*);
-int (*snd_pcm_hw_params_is_joint_duplex_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*);
-int (*snd_pcm_hw_params_can_sync_start_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*);
-int (*snd_pcm_hw_params_can_disable_period_wakeup_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*);
-int (*snd_pcm_hw_params_supports_audio_wallclock_ts_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*);
-int (*snd_pcm_hw_params_supports_audio_ts_type_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*, int);
-int (*snd_pcm_hw_params_get_rate_numden_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*, unsigned int*, unsigned int*);
-int (*snd_pcm_hw_params_get_sbits_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*);
-int (*snd_pcm_hw_params_get_fifo_size_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*);
-size_t (*snd_pcm_hw_params_sizeof_dylibloader_wrapper_asound)( void);
-int (*snd_pcm_hw_params_malloc_dylibloader_wrapper_asound)( snd_pcm_hw_params_t**);
-void (*snd_pcm_hw_params_free_dylibloader_wrapper_asound)( snd_pcm_hw_params_t*);
-void (*snd_pcm_hw_params_copy_dylibloader_wrapper_asound)( snd_pcm_hw_params_t*,const snd_pcm_hw_params_t*);
-int (*snd_pcm_hw_params_get_access_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*, snd_pcm_access_t*);
-int (*snd_pcm_hw_params_test_access_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, snd_pcm_access_t);
-int (*snd_pcm_hw_params_set_access_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, snd_pcm_access_t);
-int (*snd_pcm_hw_params_set_access_first_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, snd_pcm_access_t*);
-int (*snd_pcm_hw_params_set_access_last_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, snd_pcm_access_t*);
-int (*snd_pcm_hw_params_set_access_mask_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, snd_pcm_access_mask_t*);
-int (*snd_pcm_hw_params_get_access_mask_dylibloader_wrapper_asound)( snd_pcm_hw_params_t*, snd_pcm_access_mask_t*);
-int (*snd_pcm_hw_params_get_format_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*, snd_pcm_format_t*);
-int (*snd_pcm_hw_params_test_format_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, snd_pcm_format_t);
-int (*snd_pcm_hw_params_set_format_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, snd_pcm_format_t);
-int (*snd_pcm_hw_params_set_format_first_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, snd_pcm_format_t*);
-int (*snd_pcm_hw_params_set_format_last_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, snd_pcm_format_t*);
-int (*snd_pcm_hw_params_set_format_mask_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, snd_pcm_format_mask_t*);
-void (*snd_pcm_hw_params_get_format_mask_dylibloader_wrapper_asound)( snd_pcm_hw_params_t*, snd_pcm_format_mask_t*);
-int (*snd_pcm_hw_params_get_subformat_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*, snd_pcm_subformat_t*);
-int (*snd_pcm_hw_params_test_subformat_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, snd_pcm_subformat_t);
-int (*snd_pcm_hw_params_set_subformat_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, snd_pcm_subformat_t);
-int (*snd_pcm_hw_params_set_subformat_first_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, snd_pcm_subformat_t*);
-int (*snd_pcm_hw_params_set_subformat_last_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, snd_pcm_subformat_t*);
-int (*snd_pcm_hw_params_set_subformat_mask_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, snd_pcm_subformat_mask_t*);
-void (*snd_pcm_hw_params_get_subformat_mask_dylibloader_wrapper_asound)( snd_pcm_hw_params_t*, snd_pcm_subformat_mask_t*);
-int (*snd_pcm_hw_params_get_channels_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*, unsigned int*);
-int (*snd_pcm_hw_params_get_channels_min_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*, unsigned int*);
-int (*snd_pcm_hw_params_get_channels_max_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*, unsigned int*);
-int (*snd_pcm_hw_params_test_channels_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int);
-int (*snd_pcm_hw_params_set_channels_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int);
-int (*snd_pcm_hw_params_set_channels_min_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int*);
-int (*snd_pcm_hw_params_set_channels_max_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int*);
-int (*snd_pcm_hw_params_set_channels_minmax_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int*, unsigned int*);
-int (*snd_pcm_hw_params_set_channels_near_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int*);
-int (*snd_pcm_hw_params_set_channels_first_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int*);
-int (*snd_pcm_hw_params_set_channels_last_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int*);
-int (*snd_pcm_hw_params_get_rate_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*, unsigned int*, int*);
-int (*snd_pcm_hw_params_get_rate_min_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*, unsigned int*, int*);
-int (*snd_pcm_hw_params_get_rate_max_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*, unsigned int*, int*);
-int (*snd_pcm_hw_params_test_rate_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int, int);
-int (*snd_pcm_hw_params_set_rate_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int, int);
-int (*snd_pcm_hw_params_set_rate_min_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int*, int*);
-int (*snd_pcm_hw_params_set_rate_max_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int*, int*);
-int (*snd_pcm_hw_params_set_rate_minmax_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int*, int*, unsigned int*, int*);
-int (*snd_pcm_hw_params_set_rate_near_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int*, int*);
-int (*snd_pcm_hw_params_set_rate_first_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int*, int*);
-int (*snd_pcm_hw_params_set_rate_last_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int*, int*);
-int (*snd_pcm_hw_params_set_rate_resample_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int);
-int (*snd_pcm_hw_params_get_rate_resample_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int*);
-int (*snd_pcm_hw_params_set_export_buffer_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int);
-int (*snd_pcm_hw_params_get_export_buffer_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int*);
-int (*snd_pcm_hw_params_set_period_wakeup_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int);
-int (*snd_pcm_hw_params_get_period_wakeup_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int*);
-int (*snd_pcm_hw_params_get_period_time_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*, unsigned int*, int*);
-int (*snd_pcm_hw_params_get_period_time_min_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*, unsigned int*, int*);
-int (*snd_pcm_hw_params_get_period_time_max_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*, unsigned int*, int*);
-int (*snd_pcm_hw_params_test_period_time_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int, int);
-int (*snd_pcm_hw_params_set_period_time_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int, int);
-int (*snd_pcm_hw_params_set_period_time_min_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int*, int*);
-int (*snd_pcm_hw_params_set_period_time_max_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int*, int*);
-int (*snd_pcm_hw_params_set_period_time_minmax_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int*, int*, unsigned int*, int*);
-int (*snd_pcm_hw_params_set_period_time_near_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int*, int*);
-int (*snd_pcm_hw_params_set_period_time_first_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int*, int*);
-int (*snd_pcm_hw_params_set_period_time_last_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int*, int*);
-int (*snd_pcm_hw_params_get_period_size_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*, snd_pcm_uframes_t*, int*);
-int (*snd_pcm_hw_params_get_period_size_min_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*, snd_pcm_uframes_t*, int*);
-int (*snd_pcm_hw_params_get_period_size_max_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*, snd_pcm_uframes_t*, int*);
-int (*snd_pcm_hw_params_test_period_size_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, snd_pcm_uframes_t, int);
-int (*snd_pcm_hw_params_set_period_size_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, snd_pcm_uframes_t, int);
-int (*snd_pcm_hw_params_set_period_size_min_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, snd_pcm_uframes_t*, int*);
-int (*snd_pcm_hw_params_set_period_size_max_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, snd_pcm_uframes_t*, int*);
-int (*snd_pcm_hw_params_set_period_size_minmax_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, snd_pcm_uframes_t*, int*, snd_pcm_uframes_t*, int*);
-int (*snd_pcm_hw_params_set_period_size_near_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, snd_pcm_uframes_t*, int*);
-int (*snd_pcm_hw_params_set_period_size_first_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, snd_pcm_uframes_t*, int*);
-int (*snd_pcm_hw_params_set_period_size_last_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, snd_pcm_uframes_t*, int*);
-int (*snd_pcm_hw_params_set_period_size_integer_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*);
-int (*snd_pcm_hw_params_get_periods_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*, unsigned int*, int*);
-int (*snd_pcm_hw_params_get_periods_min_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*, unsigned int*, int*);
-int (*snd_pcm_hw_params_get_periods_max_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*, unsigned int*, int*);
-int (*snd_pcm_hw_params_test_periods_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int, int);
-int (*snd_pcm_hw_params_set_periods_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int, int);
-int (*snd_pcm_hw_params_set_periods_min_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int*, int*);
-int (*snd_pcm_hw_params_set_periods_max_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int*, int*);
-int (*snd_pcm_hw_params_set_periods_minmax_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int*, int*, unsigned int*, int*);
-int (*snd_pcm_hw_params_set_periods_near_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int*, int*);
-int (*snd_pcm_hw_params_set_periods_first_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int*, int*);
-int (*snd_pcm_hw_params_set_periods_last_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int*, int*);
-int (*snd_pcm_hw_params_set_periods_integer_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*);
-int (*snd_pcm_hw_params_get_buffer_time_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*, unsigned int*, int*);
-int (*snd_pcm_hw_params_get_buffer_time_min_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*, unsigned int*, int*);
-int (*snd_pcm_hw_params_get_buffer_time_max_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*, unsigned int*, int*);
-int (*snd_pcm_hw_params_test_buffer_time_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int, int);
-int (*snd_pcm_hw_params_set_buffer_time_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int, int);
-int (*snd_pcm_hw_params_set_buffer_time_min_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int*, int*);
-int (*snd_pcm_hw_params_set_buffer_time_max_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int*, int*);
-int (*snd_pcm_hw_params_set_buffer_time_minmax_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int*, int*, unsigned int*, int*);
-int (*snd_pcm_hw_params_set_buffer_time_near_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int*, int*);
-int (*snd_pcm_hw_params_set_buffer_time_first_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int*, int*);
-int (*snd_pcm_hw_params_set_buffer_time_last_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int*, int*);
-int (*snd_pcm_hw_params_get_buffer_size_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*, snd_pcm_uframes_t*);
-int (*snd_pcm_hw_params_get_buffer_size_min_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*, snd_pcm_uframes_t*);
-int (*snd_pcm_hw_params_get_buffer_size_max_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*, snd_pcm_uframes_t*);
-int (*snd_pcm_hw_params_test_buffer_size_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, snd_pcm_uframes_t);
-int (*snd_pcm_hw_params_set_buffer_size_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, snd_pcm_uframes_t);
-int (*snd_pcm_hw_params_set_buffer_size_min_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, snd_pcm_uframes_t*);
-int (*snd_pcm_hw_params_set_buffer_size_max_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, snd_pcm_uframes_t*);
-int (*snd_pcm_hw_params_set_buffer_size_minmax_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, snd_pcm_uframes_t*, snd_pcm_uframes_t*);
-int (*snd_pcm_hw_params_set_buffer_size_near_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, snd_pcm_uframes_t*);
-int (*snd_pcm_hw_params_set_buffer_size_first_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, snd_pcm_uframes_t*);
-int (*snd_pcm_hw_params_set_buffer_size_last_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, snd_pcm_uframes_t*);
-int (*snd_pcm_hw_params_get_min_align_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*, snd_pcm_uframes_t*);
-size_t (*snd_pcm_sw_params_sizeof_dylibloader_wrapper_asound)( void);
-int (*snd_pcm_sw_params_malloc_dylibloader_wrapper_asound)( snd_pcm_sw_params_t**);
-void (*snd_pcm_sw_params_free_dylibloader_wrapper_asound)( snd_pcm_sw_params_t*);
-void (*snd_pcm_sw_params_copy_dylibloader_wrapper_asound)( snd_pcm_sw_params_t*,const snd_pcm_sw_params_t*);
-int (*snd_pcm_sw_params_get_boundary_dylibloader_wrapper_asound)(const snd_pcm_sw_params_t*, snd_pcm_uframes_t*);
-int (*snd_pcm_sw_params_set_tstamp_mode_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_sw_params_t*, snd_pcm_tstamp_t);
-int (*snd_pcm_sw_params_get_tstamp_mode_dylibloader_wrapper_asound)(const snd_pcm_sw_params_t*, snd_pcm_tstamp_t*);
-int (*snd_pcm_sw_params_set_avail_min_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_sw_params_t*, snd_pcm_uframes_t);
-int (*snd_pcm_sw_params_get_avail_min_dylibloader_wrapper_asound)(const snd_pcm_sw_params_t*, snd_pcm_uframes_t*);
-int (*snd_pcm_sw_params_set_period_event_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_sw_params_t*, int);
-int (*snd_pcm_sw_params_get_period_event_dylibloader_wrapper_asound)(const snd_pcm_sw_params_t*, int*);
-int (*snd_pcm_sw_params_set_start_threshold_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_sw_params_t*, snd_pcm_uframes_t);
-int (*snd_pcm_sw_params_get_start_threshold_dylibloader_wrapper_asound)(const snd_pcm_sw_params_t*, snd_pcm_uframes_t*);
-int (*snd_pcm_sw_params_set_stop_threshold_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_sw_params_t*, snd_pcm_uframes_t);
-int (*snd_pcm_sw_params_get_stop_threshold_dylibloader_wrapper_asound)(const snd_pcm_sw_params_t*, snd_pcm_uframes_t*);
-int (*snd_pcm_sw_params_set_silence_threshold_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_sw_params_t*, snd_pcm_uframes_t);
-int (*snd_pcm_sw_params_get_silence_threshold_dylibloader_wrapper_asound)(const snd_pcm_sw_params_t*, snd_pcm_uframes_t*);
-int (*snd_pcm_sw_params_set_silence_size_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_sw_params_t*, snd_pcm_uframes_t);
-int (*snd_pcm_sw_params_get_silence_size_dylibloader_wrapper_asound)(const snd_pcm_sw_params_t*, snd_pcm_uframes_t*);
-size_t (*snd_pcm_access_mask_sizeof_dylibloader_wrapper_asound)( void);
-int (*snd_pcm_access_mask_malloc_dylibloader_wrapper_asound)( snd_pcm_access_mask_t**);
-void (*snd_pcm_access_mask_free_dylibloader_wrapper_asound)( snd_pcm_access_mask_t*);
-void (*snd_pcm_access_mask_copy_dylibloader_wrapper_asound)( snd_pcm_access_mask_t*,const snd_pcm_access_mask_t*);
-void (*snd_pcm_access_mask_none_dylibloader_wrapper_asound)( snd_pcm_access_mask_t*);
-void (*snd_pcm_access_mask_any_dylibloader_wrapper_asound)( snd_pcm_access_mask_t*);
-int (*snd_pcm_access_mask_test_dylibloader_wrapper_asound)(const snd_pcm_access_mask_t*, snd_pcm_access_t);
-int (*snd_pcm_access_mask_empty_dylibloader_wrapper_asound)(const snd_pcm_access_mask_t*);
-void (*snd_pcm_access_mask_set_dylibloader_wrapper_asound)( snd_pcm_access_mask_t*, snd_pcm_access_t);
-void (*snd_pcm_access_mask_reset_dylibloader_wrapper_asound)( snd_pcm_access_mask_t*, snd_pcm_access_t);
-size_t (*snd_pcm_format_mask_sizeof_dylibloader_wrapper_asound)( void);
-int (*snd_pcm_format_mask_malloc_dylibloader_wrapper_asound)( snd_pcm_format_mask_t**);
-void (*snd_pcm_format_mask_free_dylibloader_wrapper_asound)( snd_pcm_format_mask_t*);
-void (*snd_pcm_format_mask_copy_dylibloader_wrapper_asound)( snd_pcm_format_mask_t*,const snd_pcm_format_mask_t*);
-void (*snd_pcm_format_mask_none_dylibloader_wrapper_asound)( snd_pcm_format_mask_t*);
-void (*snd_pcm_format_mask_any_dylibloader_wrapper_asound)( snd_pcm_format_mask_t*);
-int (*snd_pcm_format_mask_test_dylibloader_wrapper_asound)(const snd_pcm_format_mask_t*, snd_pcm_format_t);
-int (*snd_pcm_format_mask_empty_dylibloader_wrapper_asound)(const snd_pcm_format_mask_t*);
-void (*snd_pcm_format_mask_set_dylibloader_wrapper_asound)( snd_pcm_format_mask_t*, snd_pcm_format_t);
-void (*snd_pcm_format_mask_reset_dylibloader_wrapper_asound)( snd_pcm_format_mask_t*, snd_pcm_format_t);
-size_t (*snd_pcm_subformat_mask_sizeof_dylibloader_wrapper_asound)( void);
-int (*snd_pcm_subformat_mask_malloc_dylibloader_wrapper_asound)( snd_pcm_subformat_mask_t**);
-void (*snd_pcm_subformat_mask_free_dylibloader_wrapper_asound)( snd_pcm_subformat_mask_t*);
-void (*snd_pcm_subformat_mask_copy_dylibloader_wrapper_asound)( snd_pcm_subformat_mask_t*,const snd_pcm_subformat_mask_t*);
-void (*snd_pcm_subformat_mask_none_dylibloader_wrapper_asound)( snd_pcm_subformat_mask_t*);
-void (*snd_pcm_subformat_mask_any_dylibloader_wrapper_asound)( snd_pcm_subformat_mask_t*);
-int (*snd_pcm_subformat_mask_test_dylibloader_wrapper_asound)(const snd_pcm_subformat_mask_t*, snd_pcm_subformat_t);
-int (*snd_pcm_subformat_mask_empty_dylibloader_wrapper_asound)(const snd_pcm_subformat_mask_t*);
-void (*snd_pcm_subformat_mask_set_dylibloader_wrapper_asound)( snd_pcm_subformat_mask_t*, snd_pcm_subformat_t);
-void (*snd_pcm_subformat_mask_reset_dylibloader_wrapper_asound)( snd_pcm_subformat_mask_t*, snd_pcm_subformat_t);
-size_t (*snd_pcm_status_sizeof_dylibloader_wrapper_asound)( void);
-int (*snd_pcm_status_malloc_dylibloader_wrapper_asound)( snd_pcm_status_t**);
-void (*snd_pcm_status_free_dylibloader_wrapper_asound)( snd_pcm_status_t*);
-void (*snd_pcm_status_copy_dylibloader_wrapper_asound)( snd_pcm_status_t*,const snd_pcm_status_t*);
-snd_pcm_state_t (*snd_pcm_status_get_state_dylibloader_wrapper_asound)(const snd_pcm_status_t*);
-void (*snd_pcm_status_get_trigger_tstamp_dylibloader_wrapper_asound)(const snd_pcm_status_t*, snd_timestamp_t*);
-void (*snd_pcm_status_get_trigger_htstamp_dylibloader_wrapper_asound)(const snd_pcm_status_t*, snd_htimestamp_t*);
-void (*snd_pcm_status_get_tstamp_dylibloader_wrapper_asound)(const snd_pcm_status_t*, snd_timestamp_t*);
-void (*snd_pcm_status_get_htstamp_dylibloader_wrapper_asound)(const snd_pcm_status_t*, snd_htimestamp_t*);
-void (*snd_pcm_status_get_audio_htstamp_dylibloader_wrapper_asound)(const snd_pcm_status_t*, snd_htimestamp_t*);
-void (*snd_pcm_status_get_driver_htstamp_dylibloader_wrapper_asound)(const snd_pcm_status_t*, snd_htimestamp_t*);
-snd_pcm_sframes_t (*snd_pcm_status_get_delay_dylibloader_wrapper_asound)(const snd_pcm_status_t*);
-snd_pcm_uframes_t (*snd_pcm_status_get_avail_dylibloader_wrapper_asound)(const snd_pcm_status_t*);
-snd_pcm_uframes_t (*snd_pcm_status_get_avail_max_dylibloader_wrapper_asound)(const snd_pcm_status_t*);
-snd_pcm_uframes_t (*snd_pcm_status_get_overrange_dylibloader_wrapper_asound)(const snd_pcm_status_t*);
-const char* (*snd_pcm_type_name_dylibloader_wrapper_asound)( snd_pcm_type_t);
-const char* (*snd_pcm_stream_name_dylibloader_wrapper_asound)(const snd_pcm_stream_t);
-const char* (*snd_pcm_access_name_dylibloader_wrapper_asound)(const snd_pcm_access_t);
-const char* (*snd_pcm_format_name_dylibloader_wrapper_asound)(const snd_pcm_format_t);
-const char* (*snd_pcm_format_description_dylibloader_wrapper_asound)(const snd_pcm_format_t);
-const char* (*snd_pcm_subformat_name_dylibloader_wrapper_asound)(const snd_pcm_subformat_t);
-const char* (*snd_pcm_subformat_description_dylibloader_wrapper_asound)(const snd_pcm_subformat_t);
-snd_pcm_format_t (*snd_pcm_format_value_dylibloader_wrapper_asound)(const char*);
-const char* (*snd_pcm_tstamp_mode_name_dylibloader_wrapper_asound)(const snd_pcm_tstamp_t);
-const char* (*snd_pcm_state_name_dylibloader_wrapper_asound)(const snd_pcm_state_t);
-int (*snd_pcm_dump_dylibloader_wrapper_asound)( snd_pcm_t*, snd_output_t*);
-int (*snd_pcm_dump_hw_setup_dylibloader_wrapper_asound)( snd_pcm_t*, snd_output_t*);
-int (*snd_pcm_dump_sw_setup_dylibloader_wrapper_asound)( snd_pcm_t*, snd_output_t*);
-int (*snd_pcm_dump_setup_dylibloader_wrapper_asound)( snd_pcm_t*, snd_output_t*);
-int (*snd_pcm_hw_params_dump_dylibloader_wrapper_asound)( snd_pcm_hw_params_t*, snd_output_t*);
-int (*snd_pcm_sw_params_dump_dylibloader_wrapper_asound)( snd_pcm_sw_params_t*, snd_output_t*);
-int (*snd_pcm_status_dump_dylibloader_wrapper_asound)( snd_pcm_status_t*, snd_output_t*);
-int (*snd_pcm_mmap_begin_dylibloader_wrapper_asound)( snd_pcm_t*,const snd_pcm_channel_area_t**, snd_pcm_uframes_t*, snd_pcm_uframes_t*);
-snd_pcm_sframes_t (*snd_pcm_mmap_commit_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_uframes_t, snd_pcm_uframes_t);
-snd_pcm_sframes_t (*snd_pcm_mmap_writei_dylibloader_wrapper_asound)( snd_pcm_t*,const void*, snd_pcm_uframes_t);
-snd_pcm_sframes_t (*snd_pcm_mmap_readi_dylibloader_wrapper_asound)( snd_pcm_t*, void*, snd_pcm_uframes_t);
-snd_pcm_sframes_t (*snd_pcm_mmap_writen_dylibloader_wrapper_asound)( snd_pcm_t*, void**, snd_pcm_uframes_t);
-snd_pcm_sframes_t (*snd_pcm_mmap_readn_dylibloader_wrapper_asound)( snd_pcm_t*, void**, snd_pcm_uframes_t);
-int (*snd_pcm_format_signed_dylibloader_wrapper_asound)( snd_pcm_format_t);
-int (*snd_pcm_format_unsigned_dylibloader_wrapper_asound)( snd_pcm_format_t);
-int (*snd_pcm_format_linear_dylibloader_wrapper_asound)( snd_pcm_format_t);
-int (*snd_pcm_format_float_dylibloader_wrapper_asound)( snd_pcm_format_t);
-int (*snd_pcm_format_little_endian_dylibloader_wrapper_asound)( snd_pcm_format_t);
-int (*snd_pcm_format_big_endian_dylibloader_wrapper_asound)( snd_pcm_format_t);
-int (*snd_pcm_format_cpu_endian_dylibloader_wrapper_asound)( snd_pcm_format_t);
-int (*snd_pcm_format_width_dylibloader_wrapper_asound)( snd_pcm_format_t);
-int (*snd_pcm_format_physical_width_dylibloader_wrapper_asound)( snd_pcm_format_t);
-snd_pcm_format_t (*snd_pcm_build_linear_format_dylibloader_wrapper_asound)( int, int, int, int);
-ssize_t (*snd_pcm_format_size_dylibloader_wrapper_asound)( snd_pcm_format_t, size_t);
-uint8_t (*snd_pcm_format_silence_dylibloader_wrapper_asound)( snd_pcm_format_t);
-uint16_t (*snd_pcm_format_silence_16_dylibloader_wrapper_asound)( snd_pcm_format_t);
-uint32_t (*snd_pcm_format_silence_32_dylibloader_wrapper_asound)( snd_pcm_format_t);
-uint64_t (*snd_pcm_format_silence_64_dylibloader_wrapper_asound)( snd_pcm_format_t);
-int (*snd_pcm_format_set_silence_dylibloader_wrapper_asound)( snd_pcm_format_t, void*, unsigned int);
-snd_pcm_sframes_t (*snd_pcm_bytes_to_frames_dylibloader_wrapper_asound)( snd_pcm_t*, ssize_t);
-ssize_t (*snd_pcm_frames_to_bytes_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_sframes_t);
-long (*snd_pcm_bytes_to_samples_dylibloader_wrapper_asound)( snd_pcm_t*, ssize_t);
-ssize_t (*snd_pcm_samples_to_bytes_dylibloader_wrapper_asound)( snd_pcm_t*, long);
-int (*snd_pcm_area_silence_dylibloader_wrapper_asound)(const snd_pcm_channel_area_t*, snd_pcm_uframes_t, unsigned int, snd_pcm_format_t);
-int (*snd_pcm_areas_silence_dylibloader_wrapper_asound)(const snd_pcm_channel_area_t*, snd_pcm_uframes_t, unsigned int, snd_pcm_uframes_t, snd_pcm_format_t);
-int (*snd_pcm_area_copy_dylibloader_wrapper_asound)(const snd_pcm_channel_area_t*, snd_pcm_uframes_t,const snd_pcm_channel_area_t*, snd_pcm_uframes_t, unsigned int, snd_pcm_format_t);
-int (*snd_pcm_areas_copy_dylibloader_wrapper_asound)(const snd_pcm_channel_area_t*, snd_pcm_uframes_t,const snd_pcm_channel_area_t*, snd_pcm_uframes_t, unsigned int, snd_pcm_uframes_t, snd_pcm_format_t);
-int (*snd_pcm_areas_copy_wrap_dylibloader_wrapper_asound)(const snd_pcm_channel_area_t*, snd_pcm_uframes_t,const snd_pcm_uframes_t,const snd_pcm_channel_area_t*, snd_pcm_uframes_t,const snd_pcm_uframes_t,const unsigned int, snd_pcm_uframes_t,const snd_pcm_format_t);
-snd_pcm_t* (*snd_pcm_hook_get_pcm_dylibloader_wrapper_asound)( snd_pcm_hook_t*);
-void* (*snd_pcm_hook_get_private_dylibloader_wrapper_asound)( snd_pcm_hook_t*);
-void (*snd_pcm_hook_set_private_dylibloader_wrapper_asound)( snd_pcm_hook_t*, void*);
-int (*snd_pcm_hook_add_dylibloader_wrapper_asound)( snd_pcm_hook_t**, snd_pcm_t*, snd_pcm_hook_type_t, snd_pcm_hook_func_t, void*);
-int (*snd_pcm_hook_remove_dylibloader_wrapper_asound)( snd_pcm_hook_t*);
-snd_pcm_uframes_t (*snd_pcm_meter_get_bufsize_dylibloader_wrapper_asound)( snd_pcm_t*);
-unsigned int (*snd_pcm_meter_get_channels_dylibloader_wrapper_asound)( snd_pcm_t*);
-unsigned int (*snd_pcm_meter_get_rate_dylibloader_wrapper_asound)( snd_pcm_t*);
-snd_pcm_uframes_t (*snd_pcm_meter_get_now_dylibloader_wrapper_asound)( snd_pcm_t*);
-snd_pcm_uframes_t (*snd_pcm_meter_get_boundary_dylibloader_wrapper_asound)( snd_pcm_t*);
-int (*snd_pcm_meter_add_scope_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_scope_t*);
-snd_pcm_scope_t* (*snd_pcm_meter_search_scope_dylibloader_wrapper_asound)( snd_pcm_t*,const char*);
-int (*snd_pcm_scope_malloc_dylibloader_wrapper_asound)( snd_pcm_scope_t**);
-void (*snd_pcm_scope_set_ops_dylibloader_wrapper_asound)( snd_pcm_scope_t*,const snd_pcm_scope_ops_t*);
-void (*snd_pcm_scope_set_name_dylibloader_wrapper_asound)( snd_pcm_scope_t*,const char*);
-const char* (*snd_pcm_scope_get_name_dylibloader_wrapper_asound)( snd_pcm_scope_t*);
-void* (*snd_pcm_scope_get_callback_private_dylibloader_wrapper_asound)( snd_pcm_scope_t*);
-void (*snd_pcm_scope_set_callback_private_dylibloader_wrapper_asound)( snd_pcm_scope_t*, void*);
-int (*snd_pcm_scope_s16_open_dylibloader_wrapper_asound)( snd_pcm_t*,const char*, snd_pcm_scope_t**);
-int16_t* (*snd_pcm_scope_s16_get_channel_buffer_dylibloader_wrapper_asound)( snd_pcm_scope_t*, unsigned int);
-int (*snd_spcm_init_dylibloader_wrapper_asound)( snd_pcm_t*, unsigned int, unsigned int, snd_pcm_format_t, snd_pcm_subformat_t, snd_spcm_latency_t, snd_pcm_access_t, snd_spcm_xrun_type_t);
-int (*snd_spcm_init_duplex_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_t*, unsigned int, unsigned int, snd_pcm_format_t, snd_pcm_subformat_t, snd_spcm_latency_t, snd_pcm_access_t, snd_spcm_xrun_type_t, snd_spcm_duplex_type_t);
-int (*snd_spcm_init_get_params_dylibloader_wrapper_asound)( snd_pcm_t*, unsigned int*, snd_pcm_uframes_t*, snd_pcm_uframes_t*);
-const char* (*snd_pcm_start_mode_name_dylibloader_wrapper_asound)( snd_pcm_start_t);
-const char* (*snd_pcm_xrun_mode_name_dylibloader_wrapper_asound)( snd_pcm_xrun_t);
-int (*snd_pcm_sw_params_set_start_mode_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_sw_params_t*, snd_pcm_start_t);
-snd_pcm_start_t (*snd_pcm_sw_params_get_start_mode_dylibloader_wrapper_asound)(const snd_pcm_sw_params_t*);
-int (*snd_pcm_sw_params_set_xrun_mode_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_sw_params_t*, snd_pcm_xrun_t);
-snd_pcm_xrun_t (*snd_pcm_sw_params_get_xrun_mode_dylibloader_wrapper_asound)(const snd_pcm_sw_params_t*);
-int (*snd_pcm_sw_params_set_xfer_align_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_sw_params_t*, snd_pcm_uframes_t);
-int (*snd_pcm_sw_params_get_xfer_align_dylibloader_wrapper_asound)(const snd_pcm_sw_params_t*, snd_pcm_uframes_t*);
-int (*snd_pcm_sw_params_set_sleep_min_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_sw_params_t*, unsigned int);
-int (*snd_pcm_sw_params_get_sleep_min_dylibloader_wrapper_asound)(const snd_pcm_sw_params_t*, unsigned int*);
-int (*snd_pcm_hw_params_get_tick_time_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*, unsigned int*, int*);
-int (*snd_pcm_hw_params_get_tick_time_min_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*, unsigned int*, int*);
-int (*snd_pcm_hw_params_get_tick_time_max_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t*, unsigned int*, int*);
-int (*snd_pcm_hw_params_test_tick_time_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int, int);
-int (*snd_pcm_hw_params_set_tick_time_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int, int);
-int (*snd_pcm_hw_params_set_tick_time_min_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int*, int*);
-int (*snd_pcm_hw_params_set_tick_time_max_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int*, int*);
-int (*snd_pcm_hw_params_set_tick_time_minmax_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int*, int*, unsigned int*, int*);
-int (*snd_pcm_hw_params_set_tick_time_near_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int*, int*);
-int (*snd_pcm_hw_params_set_tick_time_first_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int*, int*);
-int (*snd_pcm_hw_params_set_tick_time_last_dylibloader_wrapper_asound)( snd_pcm_t*, snd_pcm_hw_params_t*, unsigned int*, int*);
-int (*snd_rawmidi_open_dylibloader_wrapper_asound)( snd_rawmidi_t**, snd_rawmidi_t**,const char*, int);
-int (*snd_rawmidi_open_lconf_dylibloader_wrapper_asound)( snd_rawmidi_t**, snd_rawmidi_t**,const char*, int, snd_config_t*);
-int (*snd_rawmidi_close_dylibloader_wrapper_asound)( snd_rawmidi_t*);
-int (*snd_rawmidi_poll_descriptors_count_dylibloader_wrapper_asound)( snd_rawmidi_t*);
-int (*snd_rawmidi_poll_descriptors_dylibloader_wrapper_asound)( snd_rawmidi_t*,struct pollfd*, unsigned int);
-int (*snd_rawmidi_poll_descriptors_revents_dylibloader_wrapper_asound)( snd_rawmidi_t*,struct pollfd*, unsigned int, unsigned short*);
-int (*snd_rawmidi_nonblock_dylibloader_wrapper_asound)( snd_rawmidi_t*, int);
-size_t (*snd_rawmidi_info_sizeof_dylibloader_wrapper_asound)( void);
-int (*snd_rawmidi_info_malloc_dylibloader_wrapper_asound)( snd_rawmidi_info_t**);
-void (*snd_rawmidi_info_free_dylibloader_wrapper_asound)( snd_rawmidi_info_t*);
-void (*snd_rawmidi_info_copy_dylibloader_wrapper_asound)( snd_rawmidi_info_t*,const snd_rawmidi_info_t*);
-unsigned int (*snd_rawmidi_info_get_device_dylibloader_wrapper_asound)(const snd_rawmidi_info_t*);
-unsigned int (*snd_rawmidi_info_get_subdevice_dylibloader_wrapper_asound)(const snd_rawmidi_info_t*);
-snd_rawmidi_stream_t (*snd_rawmidi_info_get_stream_dylibloader_wrapper_asound)(const snd_rawmidi_info_t*);
-int (*snd_rawmidi_info_get_card_dylibloader_wrapper_asound)(const snd_rawmidi_info_t*);
-unsigned int (*snd_rawmidi_info_get_flags_dylibloader_wrapper_asound)(const snd_rawmidi_info_t*);
-const char* (*snd_rawmidi_info_get_id_dylibloader_wrapper_asound)(const snd_rawmidi_info_t*);
-const char* (*snd_rawmidi_info_get_name_dylibloader_wrapper_asound)(const snd_rawmidi_info_t*);
-const char* (*snd_rawmidi_info_get_subdevice_name_dylibloader_wrapper_asound)(const snd_rawmidi_info_t*);
-unsigned int (*snd_rawmidi_info_get_subdevices_count_dylibloader_wrapper_asound)(const snd_rawmidi_info_t*);
-unsigned int (*snd_rawmidi_info_get_subdevices_avail_dylibloader_wrapper_asound)(const snd_rawmidi_info_t*);
-void (*snd_rawmidi_info_set_device_dylibloader_wrapper_asound)( snd_rawmidi_info_t*, unsigned int);
-void (*snd_rawmidi_info_set_subdevice_dylibloader_wrapper_asound)( snd_rawmidi_info_t*, unsigned int);
-void (*snd_rawmidi_info_set_stream_dylibloader_wrapper_asound)( snd_rawmidi_info_t*, snd_rawmidi_stream_t);
-int (*snd_rawmidi_info_dylibloader_wrapper_asound)( snd_rawmidi_t*, snd_rawmidi_info_t*);
-size_t (*snd_rawmidi_params_sizeof_dylibloader_wrapper_asound)( void);
-int (*snd_rawmidi_params_malloc_dylibloader_wrapper_asound)( snd_rawmidi_params_t**);
-void (*snd_rawmidi_params_free_dylibloader_wrapper_asound)( snd_rawmidi_params_t*);
-void (*snd_rawmidi_params_copy_dylibloader_wrapper_asound)( snd_rawmidi_params_t*,const snd_rawmidi_params_t*);
-int (*snd_rawmidi_params_set_buffer_size_dylibloader_wrapper_asound)( snd_rawmidi_t*, snd_rawmidi_params_t*, size_t);
-size_t (*snd_rawmidi_params_get_buffer_size_dylibloader_wrapper_asound)(const snd_rawmidi_params_t*);
-int (*snd_rawmidi_params_set_avail_min_dylibloader_wrapper_asound)( snd_rawmidi_t*, snd_rawmidi_params_t*, size_t);
-size_t (*snd_rawmidi_params_get_avail_min_dylibloader_wrapper_asound)(const snd_rawmidi_params_t*);
-int (*snd_rawmidi_params_set_no_active_sensing_dylibloader_wrapper_asound)( snd_rawmidi_t*, snd_rawmidi_params_t*, int);
-int (*snd_rawmidi_params_get_no_active_sensing_dylibloader_wrapper_asound)(const snd_rawmidi_params_t*);
-int (*snd_rawmidi_params_dylibloader_wrapper_asound)( snd_rawmidi_t*, snd_rawmidi_params_t*);
-int (*snd_rawmidi_params_current_dylibloader_wrapper_asound)( snd_rawmidi_t*, snd_rawmidi_params_t*);
-size_t (*snd_rawmidi_status_sizeof_dylibloader_wrapper_asound)( void);
-int (*snd_rawmidi_status_malloc_dylibloader_wrapper_asound)( snd_rawmidi_status_t**);
-void (*snd_rawmidi_status_free_dylibloader_wrapper_asound)( snd_rawmidi_status_t*);
-void (*snd_rawmidi_status_copy_dylibloader_wrapper_asound)( snd_rawmidi_status_t*,const snd_rawmidi_status_t*);
-void (*snd_rawmidi_status_get_tstamp_dylibloader_wrapper_asound)(const snd_rawmidi_status_t*, snd_htimestamp_t*);
-size_t (*snd_rawmidi_status_get_avail_dylibloader_wrapper_asound)(const snd_rawmidi_status_t*);
-size_t (*snd_rawmidi_status_get_xruns_dylibloader_wrapper_asound)(const snd_rawmidi_status_t*);
-int (*snd_rawmidi_status_dylibloader_wrapper_asound)( snd_rawmidi_t*, snd_rawmidi_status_t*);
-int (*snd_rawmidi_drain_dylibloader_wrapper_asound)( snd_rawmidi_t*);
-int (*snd_rawmidi_drop_dylibloader_wrapper_asound)( snd_rawmidi_t*);
-ssize_t (*snd_rawmidi_write_dylibloader_wrapper_asound)( snd_rawmidi_t*,const void*, size_t);
-ssize_t (*snd_rawmidi_read_dylibloader_wrapper_asound)( snd_rawmidi_t*, void*, size_t);
-const char* (*snd_rawmidi_name_dylibloader_wrapper_asound)( snd_rawmidi_t*);
-snd_rawmidi_type_t (*snd_rawmidi_type_dylibloader_wrapper_asound)( snd_rawmidi_t*);
-snd_rawmidi_stream_t (*snd_rawmidi_stream_dylibloader_wrapper_asound)( snd_rawmidi_t*);
-int (*snd_timer_query_open_dylibloader_wrapper_asound)( snd_timer_query_t**,const char*, int);
-int (*snd_timer_query_open_lconf_dylibloader_wrapper_asound)( snd_timer_query_t**,const char*, int, snd_config_t*);
-int (*snd_timer_query_close_dylibloader_wrapper_asound)( snd_timer_query_t*);
-int (*snd_timer_query_next_device_dylibloader_wrapper_asound)( snd_timer_query_t*, snd_timer_id_t*);
-int (*snd_timer_query_info_dylibloader_wrapper_asound)( snd_timer_query_t*, snd_timer_ginfo_t*);
-int (*snd_timer_query_params_dylibloader_wrapper_asound)( snd_timer_query_t*, snd_timer_gparams_t*);
-int (*snd_timer_query_status_dylibloader_wrapper_asound)( snd_timer_query_t*, snd_timer_gstatus_t*);
-int (*snd_timer_open_dylibloader_wrapper_asound)( snd_timer_t**,const char*, int);
-int (*snd_timer_open_lconf_dylibloader_wrapper_asound)( snd_timer_t**,const char*, int, snd_config_t*);
-int (*snd_timer_close_dylibloader_wrapper_asound)( snd_timer_t*);
-int (*snd_async_add_timer_handler_dylibloader_wrapper_asound)( snd_async_handler_t**, snd_timer_t*, snd_async_callback_t, void*);
-snd_timer_t* (*snd_async_handler_get_timer_dylibloader_wrapper_asound)( snd_async_handler_t*);
-int (*snd_timer_poll_descriptors_count_dylibloader_wrapper_asound)( snd_timer_t*);
-int (*snd_timer_poll_descriptors_dylibloader_wrapper_asound)( snd_timer_t*,struct pollfd*, unsigned int);
-int (*snd_timer_poll_descriptors_revents_dylibloader_wrapper_asound)( snd_timer_t*,struct pollfd*, unsigned int, unsigned short*);
-int (*snd_timer_info_dylibloader_wrapper_asound)( snd_timer_t*, snd_timer_info_t*);
-int (*snd_timer_params_dylibloader_wrapper_asound)( snd_timer_t*, snd_timer_params_t*);
-int (*snd_timer_status_dylibloader_wrapper_asound)( snd_timer_t*, snd_timer_status_t*);
-int (*snd_timer_start_dylibloader_wrapper_asound)( snd_timer_t*);
-int (*snd_timer_stop_dylibloader_wrapper_asound)( snd_timer_t*);
-int (*snd_timer_continue_dylibloader_wrapper_asound)( snd_timer_t*);
-ssize_t (*snd_timer_read_dylibloader_wrapper_asound)( snd_timer_t*, void*, size_t);
-size_t (*snd_timer_id_sizeof_dylibloader_wrapper_asound)( void);
-int (*snd_timer_id_malloc_dylibloader_wrapper_asound)( snd_timer_id_t**);
-void (*snd_timer_id_free_dylibloader_wrapper_asound)( snd_timer_id_t*);
-void (*snd_timer_id_copy_dylibloader_wrapper_asound)( snd_timer_id_t*,const snd_timer_id_t*);
-void (*snd_timer_id_set_class_dylibloader_wrapper_asound)( snd_timer_id_t*, int);
-int (*snd_timer_id_get_class_dylibloader_wrapper_asound)( snd_timer_id_t*);
-void (*snd_timer_id_set_sclass_dylibloader_wrapper_asound)( snd_timer_id_t*, int);
-int (*snd_timer_id_get_sclass_dylibloader_wrapper_asound)( snd_timer_id_t*);
-void (*snd_timer_id_set_card_dylibloader_wrapper_asound)( snd_timer_id_t*, int);
-int (*snd_timer_id_get_card_dylibloader_wrapper_asound)( snd_timer_id_t*);
-void (*snd_timer_id_set_device_dylibloader_wrapper_asound)( snd_timer_id_t*, int);
-int (*snd_timer_id_get_device_dylibloader_wrapper_asound)( snd_timer_id_t*);
-void (*snd_timer_id_set_subdevice_dylibloader_wrapper_asound)( snd_timer_id_t*, int);
-int (*snd_timer_id_get_subdevice_dylibloader_wrapper_asound)( snd_timer_id_t*);
-size_t (*snd_timer_ginfo_sizeof_dylibloader_wrapper_asound)( void);
-int (*snd_timer_ginfo_malloc_dylibloader_wrapper_asound)( snd_timer_ginfo_t**);
-void (*snd_timer_ginfo_free_dylibloader_wrapper_asound)( snd_timer_ginfo_t*);
-void (*snd_timer_ginfo_copy_dylibloader_wrapper_asound)( snd_timer_ginfo_t*,const snd_timer_ginfo_t*);
-int (*snd_timer_ginfo_set_tid_dylibloader_wrapper_asound)( snd_timer_ginfo_t*, snd_timer_id_t*);
-snd_timer_id_t* (*snd_timer_ginfo_get_tid_dylibloader_wrapper_asound)( snd_timer_ginfo_t*);
-unsigned int (*snd_timer_ginfo_get_flags_dylibloader_wrapper_asound)( snd_timer_ginfo_t*);
-int (*snd_timer_ginfo_get_card_dylibloader_wrapper_asound)( snd_timer_ginfo_t*);
-char* (*snd_timer_ginfo_get_id_dylibloader_wrapper_asound)( snd_timer_ginfo_t*);
-char* (*snd_timer_ginfo_get_name_dylibloader_wrapper_asound)( snd_timer_ginfo_t*);
-unsigned long (*snd_timer_ginfo_get_resolution_dylibloader_wrapper_asound)( snd_timer_ginfo_t*);
-unsigned long (*snd_timer_ginfo_get_resolution_min_dylibloader_wrapper_asound)( snd_timer_ginfo_t*);
-unsigned long (*snd_timer_ginfo_get_resolution_max_dylibloader_wrapper_asound)( snd_timer_ginfo_t*);
-unsigned int (*snd_timer_ginfo_get_clients_dylibloader_wrapper_asound)( snd_timer_ginfo_t*);
-size_t (*snd_timer_info_sizeof_dylibloader_wrapper_asound)( void);
-int (*snd_timer_info_malloc_dylibloader_wrapper_asound)( snd_timer_info_t**);
-void (*snd_timer_info_free_dylibloader_wrapper_asound)( snd_timer_info_t*);
-void (*snd_timer_info_copy_dylibloader_wrapper_asound)( snd_timer_info_t*,const snd_timer_info_t*);
-int (*snd_timer_info_is_slave_dylibloader_wrapper_asound)( snd_timer_info_t*);
-int (*snd_timer_info_get_card_dylibloader_wrapper_asound)( snd_timer_info_t*);
-const char* (*snd_timer_info_get_id_dylibloader_wrapper_asound)( snd_timer_info_t*);
-const char* (*snd_timer_info_get_name_dylibloader_wrapper_asound)( snd_timer_info_t*);
-long (*snd_timer_info_get_resolution_dylibloader_wrapper_asound)( snd_timer_info_t*);
-size_t (*snd_timer_params_sizeof_dylibloader_wrapper_asound)( void);
-int (*snd_timer_params_malloc_dylibloader_wrapper_asound)( snd_timer_params_t**);
-void (*snd_timer_params_free_dylibloader_wrapper_asound)( snd_timer_params_t*);
-void (*snd_timer_params_copy_dylibloader_wrapper_asound)( snd_timer_params_t*,const snd_timer_params_t*);
-int (*snd_timer_params_set_auto_start_dylibloader_wrapper_asound)( snd_timer_params_t*, int);
-int (*snd_timer_params_get_auto_start_dylibloader_wrapper_asound)( snd_timer_params_t*);
-int (*snd_timer_params_set_exclusive_dylibloader_wrapper_asound)( snd_timer_params_t*, int);
-int (*snd_timer_params_get_exclusive_dylibloader_wrapper_asound)( snd_timer_params_t*);
-int (*snd_timer_params_set_early_event_dylibloader_wrapper_asound)( snd_timer_params_t*, int);
-int (*snd_timer_params_get_early_event_dylibloader_wrapper_asound)( snd_timer_params_t*);
-void (*snd_timer_params_set_ticks_dylibloader_wrapper_asound)( snd_timer_params_t*, long);
-long (*snd_timer_params_get_ticks_dylibloader_wrapper_asound)( snd_timer_params_t*);
-void (*snd_timer_params_set_queue_size_dylibloader_wrapper_asound)( snd_timer_params_t*, long);
-long (*snd_timer_params_get_queue_size_dylibloader_wrapper_asound)( snd_timer_params_t*);
-void (*snd_timer_params_set_filter_dylibloader_wrapper_asound)( snd_timer_params_t*, unsigned int);
-unsigned int (*snd_timer_params_get_filter_dylibloader_wrapper_asound)( snd_timer_params_t*);
-size_t (*snd_timer_status_sizeof_dylibloader_wrapper_asound)( void);
-int (*snd_timer_status_malloc_dylibloader_wrapper_asound)( snd_timer_status_t**);
-void (*snd_timer_status_free_dylibloader_wrapper_asound)( snd_timer_status_t*);
-void (*snd_timer_status_copy_dylibloader_wrapper_asound)( snd_timer_status_t*,const snd_timer_status_t*);
-snd_htimestamp_t (*snd_timer_status_get_timestamp_dylibloader_wrapper_asound)( snd_timer_status_t*);
-long (*snd_timer_status_get_resolution_dylibloader_wrapper_asound)( snd_timer_status_t*);
-long (*snd_timer_status_get_lost_dylibloader_wrapper_asound)( snd_timer_status_t*);
-long (*snd_timer_status_get_overrun_dylibloader_wrapper_asound)( snd_timer_status_t*);
-long (*snd_timer_status_get_queue_dylibloader_wrapper_asound)( snd_timer_status_t*);
-long (*snd_timer_info_get_ticks_dylibloader_wrapper_asound)( snd_timer_info_t*);
-int (*snd_hwdep_open_dylibloader_wrapper_asound)( snd_hwdep_t**,const char*, int);
-int (*snd_hwdep_close_dylibloader_wrapper_asound)( snd_hwdep_t*);
-int (*snd_hwdep_poll_descriptors_dylibloader_wrapper_asound)( snd_hwdep_t*,struct pollfd*, unsigned int);
-int (*snd_hwdep_poll_descriptors_count_dylibloader_wrapper_asound)( snd_hwdep_t*);
-int (*snd_hwdep_poll_descriptors_revents_dylibloader_wrapper_asound)( snd_hwdep_t*,struct pollfd*, unsigned int, unsigned short*);
-int (*snd_hwdep_nonblock_dylibloader_wrapper_asound)( snd_hwdep_t*, int);
-int (*snd_hwdep_info_dylibloader_wrapper_asound)( snd_hwdep_t*, snd_hwdep_info_t*);
-int (*snd_hwdep_dsp_status_dylibloader_wrapper_asound)( snd_hwdep_t*, snd_hwdep_dsp_status_t*);
-int (*snd_hwdep_dsp_load_dylibloader_wrapper_asound)( snd_hwdep_t*, snd_hwdep_dsp_image_t*);
-int (*snd_hwdep_ioctl_dylibloader_wrapper_asound)( snd_hwdep_t*, unsigned int, void*);
-ssize_t (*snd_hwdep_write_dylibloader_wrapper_asound)( snd_hwdep_t*,const void*, size_t);
-ssize_t (*snd_hwdep_read_dylibloader_wrapper_asound)( snd_hwdep_t*, void*, size_t);
-size_t (*snd_hwdep_info_sizeof_dylibloader_wrapper_asound)( void);
-int (*snd_hwdep_info_malloc_dylibloader_wrapper_asound)( snd_hwdep_info_t**);
-void (*snd_hwdep_info_free_dylibloader_wrapper_asound)( snd_hwdep_info_t*);
-void (*snd_hwdep_info_copy_dylibloader_wrapper_asound)( snd_hwdep_info_t*,const snd_hwdep_info_t*);
-unsigned int (*snd_hwdep_info_get_device_dylibloader_wrapper_asound)(const snd_hwdep_info_t*);
-int (*snd_hwdep_info_get_card_dylibloader_wrapper_asound)(const snd_hwdep_info_t*);
-const char* (*snd_hwdep_info_get_id_dylibloader_wrapper_asound)(const snd_hwdep_info_t*);
-const char* (*snd_hwdep_info_get_name_dylibloader_wrapper_asound)(const snd_hwdep_info_t*);
-snd_hwdep_iface_t (*snd_hwdep_info_get_iface_dylibloader_wrapper_asound)(const snd_hwdep_info_t*);
-void (*snd_hwdep_info_set_device_dylibloader_wrapper_asound)( snd_hwdep_info_t*, unsigned int);
-size_t (*snd_hwdep_dsp_status_sizeof_dylibloader_wrapper_asound)( void);
-int (*snd_hwdep_dsp_status_malloc_dylibloader_wrapper_asound)( snd_hwdep_dsp_status_t**);
-void (*snd_hwdep_dsp_status_free_dylibloader_wrapper_asound)( snd_hwdep_dsp_status_t*);
-void (*snd_hwdep_dsp_status_copy_dylibloader_wrapper_asound)( snd_hwdep_dsp_status_t*,const snd_hwdep_dsp_status_t*);
-unsigned int (*snd_hwdep_dsp_status_get_version_dylibloader_wrapper_asound)(const snd_hwdep_dsp_status_t*);
-const char* (*snd_hwdep_dsp_status_get_id_dylibloader_wrapper_asound)(const snd_hwdep_dsp_status_t*);
-unsigned int (*snd_hwdep_dsp_status_get_num_dsps_dylibloader_wrapper_asound)(const snd_hwdep_dsp_status_t*);
-unsigned int (*snd_hwdep_dsp_status_get_dsp_loaded_dylibloader_wrapper_asound)(const snd_hwdep_dsp_status_t*);
-unsigned int (*snd_hwdep_dsp_status_get_chip_ready_dylibloader_wrapper_asound)(const snd_hwdep_dsp_status_t*);
-size_t (*snd_hwdep_dsp_image_sizeof_dylibloader_wrapper_asound)( void);
-int (*snd_hwdep_dsp_image_malloc_dylibloader_wrapper_asound)( snd_hwdep_dsp_image_t**);
-void (*snd_hwdep_dsp_image_free_dylibloader_wrapper_asound)( snd_hwdep_dsp_image_t*);
-void (*snd_hwdep_dsp_image_copy_dylibloader_wrapper_asound)( snd_hwdep_dsp_image_t*,const snd_hwdep_dsp_image_t*);
-unsigned int (*snd_hwdep_dsp_image_get_index_dylibloader_wrapper_asound)(const snd_hwdep_dsp_image_t*);
-const char* (*snd_hwdep_dsp_image_get_name_dylibloader_wrapper_asound)(const snd_hwdep_dsp_image_t*);
-const void* (*snd_hwdep_dsp_image_get_image_dylibloader_wrapper_asound)(const snd_hwdep_dsp_image_t*);
-size_t (*snd_hwdep_dsp_image_get_length_dylibloader_wrapper_asound)(const snd_hwdep_dsp_image_t*);
-void (*snd_hwdep_dsp_image_set_index_dylibloader_wrapper_asound)( snd_hwdep_dsp_image_t*, unsigned int);
-void (*snd_hwdep_dsp_image_set_name_dylibloader_wrapper_asound)( snd_hwdep_dsp_image_t*,const char*);
-void (*snd_hwdep_dsp_image_set_image_dylibloader_wrapper_asound)( snd_hwdep_dsp_image_t*, void*);
-void (*snd_hwdep_dsp_image_set_length_dylibloader_wrapper_asound)( snd_hwdep_dsp_image_t*, size_t);
-int (*snd_card_load_dylibloader_wrapper_asound)( int);
-int (*snd_card_next_dylibloader_wrapper_asound)( int*);
-int (*snd_card_get_index_dylibloader_wrapper_asound)(const char*);
-int (*snd_card_get_name_dylibloader_wrapper_asound)( int, char**);
-int (*snd_card_get_longname_dylibloader_wrapper_asound)( int, char**);
-int (*snd_device_name_hint_dylibloader_wrapper_asound)( int,const char*, void***);
-int (*snd_device_name_free_hint_dylibloader_wrapper_asound)( void**);
-char* (*snd_device_name_get_hint_dylibloader_wrapper_asound)(const void*,const char*);
-int (*snd_ctl_open_dylibloader_wrapper_asound)( snd_ctl_t**,const char*, int);
-int (*snd_ctl_open_lconf_dylibloader_wrapper_asound)( snd_ctl_t**,const char*, int, snd_config_t*);
-int (*snd_ctl_open_fallback_dylibloader_wrapper_asound)( snd_ctl_t**, snd_config_t*,const char*,const char*, int);
-int (*snd_ctl_close_dylibloader_wrapper_asound)( snd_ctl_t*);
-int (*snd_ctl_nonblock_dylibloader_wrapper_asound)( snd_ctl_t*, int);
-int (*snd_async_add_ctl_handler_dylibloader_wrapper_asound)( snd_async_handler_t**, snd_ctl_t*, snd_async_callback_t, void*);
-snd_ctl_t* (*snd_async_handler_get_ctl_dylibloader_wrapper_asound)( snd_async_handler_t*);
-int (*snd_ctl_poll_descriptors_count_dylibloader_wrapper_asound)( snd_ctl_t*);
-int (*snd_ctl_poll_descriptors_dylibloader_wrapper_asound)( snd_ctl_t*,struct pollfd*, unsigned int);
-int (*snd_ctl_poll_descriptors_revents_dylibloader_wrapper_asound)( snd_ctl_t*,struct pollfd*, unsigned int, unsigned short*);
-int (*snd_ctl_subscribe_events_dylibloader_wrapper_asound)( snd_ctl_t*, int);
-int (*snd_ctl_card_info_dylibloader_wrapper_asound)( snd_ctl_t*, snd_ctl_card_info_t*);
-int (*snd_ctl_elem_list_dylibloader_wrapper_asound)( snd_ctl_t*, snd_ctl_elem_list_t*);
-int (*snd_ctl_elem_info_dylibloader_wrapper_asound)( snd_ctl_t*, snd_ctl_elem_info_t*);
-int (*snd_ctl_elem_read_dylibloader_wrapper_asound)( snd_ctl_t*, snd_ctl_elem_value_t*);
-int (*snd_ctl_elem_write_dylibloader_wrapper_asound)( snd_ctl_t*, snd_ctl_elem_value_t*);
-int (*snd_ctl_elem_lock_dylibloader_wrapper_asound)( snd_ctl_t*, snd_ctl_elem_id_t*);
-int (*snd_ctl_elem_unlock_dylibloader_wrapper_asound)( snd_ctl_t*, snd_ctl_elem_id_t*);
-int (*snd_ctl_elem_tlv_read_dylibloader_wrapper_asound)( snd_ctl_t*,const snd_ctl_elem_id_t*, unsigned int*, unsigned int);
-int (*snd_ctl_elem_tlv_write_dylibloader_wrapper_asound)( snd_ctl_t*,const snd_ctl_elem_id_t*,const unsigned int*);
-int (*snd_ctl_elem_tlv_command_dylibloader_wrapper_asound)( snd_ctl_t*,const snd_ctl_elem_id_t*,const unsigned int*);
-int (*snd_ctl_hwdep_next_device_dylibloader_wrapper_asound)( snd_ctl_t*, int*);
-int (*snd_ctl_hwdep_info_dylibloader_wrapper_asound)( snd_ctl_t*, snd_hwdep_info_t*);
-int (*snd_ctl_pcm_next_device_dylibloader_wrapper_asound)( snd_ctl_t*, int*);
-int (*snd_ctl_pcm_info_dylibloader_wrapper_asound)( snd_ctl_t*, snd_pcm_info_t*);
-int (*snd_ctl_pcm_prefer_subdevice_dylibloader_wrapper_asound)( snd_ctl_t*, int);
-int (*snd_ctl_rawmidi_next_device_dylibloader_wrapper_asound)( snd_ctl_t*, int*);
-int (*snd_ctl_rawmidi_info_dylibloader_wrapper_asound)( snd_ctl_t*, snd_rawmidi_info_t*);
-int (*snd_ctl_rawmidi_prefer_subdevice_dylibloader_wrapper_asound)( snd_ctl_t*, int);
-int (*snd_ctl_set_power_state_dylibloader_wrapper_asound)( snd_ctl_t*, unsigned int);
-int (*snd_ctl_get_power_state_dylibloader_wrapper_asound)( snd_ctl_t*, unsigned int*);
-int (*snd_ctl_read_dylibloader_wrapper_asound)( snd_ctl_t*, snd_ctl_event_t*);
-int (*snd_ctl_wait_dylibloader_wrapper_asound)( snd_ctl_t*, int);
-const char* (*snd_ctl_name_dylibloader_wrapper_asound)( snd_ctl_t*);
-snd_ctl_type_t (*snd_ctl_type_dylibloader_wrapper_asound)( snd_ctl_t*);
-const char* (*snd_ctl_elem_type_name_dylibloader_wrapper_asound)( snd_ctl_elem_type_t);
-const char* (*snd_ctl_elem_iface_name_dylibloader_wrapper_asound)( snd_ctl_elem_iface_t);
-const char* (*snd_ctl_event_type_name_dylibloader_wrapper_asound)( snd_ctl_event_type_t);
-unsigned int (*snd_ctl_event_elem_get_mask_dylibloader_wrapper_asound)(const snd_ctl_event_t*);
-unsigned int (*snd_ctl_event_elem_get_numid_dylibloader_wrapper_asound)(const snd_ctl_event_t*);
-void (*snd_ctl_event_elem_get_id_dylibloader_wrapper_asound)(const snd_ctl_event_t*, snd_ctl_elem_id_t*);
-snd_ctl_elem_iface_t (*snd_ctl_event_elem_get_interface_dylibloader_wrapper_asound)(const snd_ctl_event_t*);
-unsigned int (*snd_ctl_event_elem_get_device_dylibloader_wrapper_asound)(const snd_ctl_event_t*);
-unsigned int (*snd_ctl_event_elem_get_subdevice_dylibloader_wrapper_asound)(const snd_ctl_event_t*);
-const char* (*snd_ctl_event_elem_get_name_dylibloader_wrapper_asound)(const snd_ctl_event_t*);
-unsigned int (*snd_ctl_event_elem_get_index_dylibloader_wrapper_asound)(const snd_ctl_event_t*);
-int (*snd_ctl_elem_list_alloc_space_dylibloader_wrapper_asound)( snd_ctl_elem_list_t*, unsigned int);
-void (*snd_ctl_elem_list_free_space_dylibloader_wrapper_asound)( snd_ctl_elem_list_t*);
-char* (*snd_ctl_ascii_elem_id_get_dylibloader_wrapper_asound)( snd_ctl_elem_id_t*);
-int (*snd_ctl_ascii_elem_id_parse_dylibloader_wrapper_asound)( snd_ctl_elem_id_t*,const char*);
-int (*snd_ctl_ascii_value_parse_dylibloader_wrapper_asound)( snd_ctl_t*, snd_ctl_elem_value_t*, snd_ctl_elem_info_t*,const char*);
-size_t (*snd_ctl_elem_id_sizeof_dylibloader_wrapper_asound)( void);
-int (*snd_ctl_elem_id_malloc_dylibloader_wrapper_asound)( snd_ctl_elem_id_t**);
-void (*snd_ctl_elem_id_free_dylibloader_wrapper_asound)( snd_ctl_elem_id_t*);
-void (*snd_ctl_elem_id_clear_dylibloader_wrapper_asound)( snd_ctl_elem_id_t*);
-void (*snd_ctl_elem_id_copy_dylibloader_wrapper_asound)( snd_ctl_elem_id_t*,const snd_ctl_elem_id_t*);
-unsigned int (*snd_ctl_elem_id_get_numid_dylibloader_wrapper_asound)(const snd_ctl_elem_id_t*);
-snd_ctl_elem_iface_t (*snd_ctl_elem_id_get_interface_dylibloader_wrapper_asound)(const snd_ctl_elem_id_t*);
-unsigned int (*snd_ctl_elem_id_get_device_dylibloader_wrapper_asound)(const snd_ctl_elem_id_t*);
-unsigned int (*snd_ctl_elem_id_get_subdevice_dylibloader_wrapper_asound)(const snd_ctl_elem_id_t*);
-const char* (*snd_ctl_elem_id_get_name_dylibloader_wrapper_asound)(const snd_ctl_elem_id_t*);
-unsigned int (*snd_ctl_elem_id_get_index_dylibloader_wrapper_asound)(const snd_ctl_elem_id_t*);
-void (*snd_ctl_elem_id_set_numid_dylibloader_wrapper_asound)( snd_ctl_elem_id_t*, unsigned int);
-void (*snd_ctl_elem_id_set_interface_dylibloader_wrapper_asound)( snd_ctl_elem_id_t*, snd_ctl_elem_iface_t);
-void (*snd_ctl_elem_id_set_device_dylibloader_wrapper_asound)( snd_ctl_elem_id_t*, unsigned int);
-void (*snd_ctl_elem_id_set_subdevice_dylibloader_wrapper_asound)( snd_ctl_elem_id_t*, unsigned int);
-void (*snd_ctl_elem_id_set_name_dylibloader_wrapper_asound)( snd_ctl_elem_id_t*,const char*);
-void (*snd_ctl_elem_id_set_index_dylibloader_wrapper_asound)( snd_ctl_elem_id_t*, unsigned int);
-size_t (*snd_ctl_card_info_sizeof_dylibloader_wrapper_asound)( void);
-int (*snd_ctl_card_info_malloc_dylibloader_wrapper_asound)( snd_ctl_card_info_t**);
-void (*snd_ctl_card_info_free_dylibloader_wrapper_asound)( snd_ctl_card_info_t*);
-void (*snd_ctl_card_info_clear_dylibloader_wrapper_asound)( snd_ctl_card_info_t*);
-void (*snd_ctl_card_info_copy_dylibloader_wrapper_asound)( snd_ctl_card_info_t*,const snd_ctl_card_info_t*);
-int (*snd_ctl_card_info_get_card_dylibloader_wrapper_asound)(const snd_ctl_card_info_t*);
-const char* (*snd_ctl_card_info_get_id_dylibloader_wrapper_asound)(const snd_ctl_card_info_t*);
-const char* (*snd_ctl_card_info_get_driver_dylibloader_wrapper_asound)(const snd_ctl_card_info_t*);
-const char* (*snd_ctl_card_info_get_name_dylibloader_wrapper_asound)(const snd_ctl_card_info_t*);
-const char* (*snd_ctl_card_info_get_longname_dylibloader_wrapper_asound)(const snd_ctl_card_info_t*);
-const char* (*snd_ctl_card_info_get_mixername_dylibloader_wrapper_asound)(const snd_ctl_card_info_t*);
-const char* (*snd_ctl_card_info_get_components_dylibloader_wrapper_asound)(const snd_ctl_card_info_t*);
-size_t (*snd_ctl_event_sizeof_dylibloader_wrapper_asound)( void);
-int (*snd_ctl_event_malloc_dylibloader_wrapper_asound)( snd_ctl_event_t**);
-void (*snd_ctl_event_free_dylibloader_wrapper_asound)( snd_ctl_event_t*);
-void (*snd_ctl_event_clear_dylibloader_wrapper_asound)( snd_ctl_event_t*);
-void (*snd_ctl_event_copy_dylibloader_wrapper_asound)( snd_ctl_event_t*,const snd_ctl_event_t*);
-snd_ctl_event_type_t (*snd_ctl_event_get_type_dylibloader_wrapper_asound)(const snd_ctl_event_t*);
-size_t (*snd_ctl_elem_list_sizeof_dylibloader_wrapper_asound)( void);
-int (*snd_ctl_elem_list_malloc_dylibloader_wrapper_asound)( snd_ctl_elem_list_t**);
-void (*snd_ctl_elem_list_free_dylibloader_wrapper_asound)( snd_ctl_elem_list_t*);
-void (*snd_ctl_elem_list_clear_dylibloader_wrapper_asound)( snd_ctl_elem_list_t*);
-void (*snd_ctl_elem_list_copy_dylibloader_wrapper_asound)( snd_ctl_elem_list_t*,const snd_ctl_elem_list_t*);
-void (*snd_ctl_elem_list_set_offset_dylibloader_wrapper_asound)( snd_ctl_elem_list_t*, unsigned int);
-unsigned int (*snd_ctl_elem_list_get_used_dylibloader_wrapper_asound)(const snd_ctl_elem_list_t*);
-unsigned int (*snd_ctl_elem_list_get_count_dylibloader_wrapper_asound)(const snd_ctl_elem_list_t*);
-void (*snd_ctl_elem_list_get_id_dylibloader_wrapper_asound)(const snd_ctl_elem_list_t*, unsigned int, snd_ctl_elem_id_t*);
-unsigned int (*snd_ctl_elem_list_get_numid_dylibloader_wrapper_asound)(const snd_ctl_elem_list_t*, unsigned int);
-snd_ctl_elem_iface_t (*snd_ctl_elem_list_get_interface_dylibloader_wrapper_asound)(const snd_ctl_elem_list_t*, unsigned int);
-unsigned int (*snd_ctl_elem_list_get_device_dylibloader_wrapper_asound)(const snd_ctl_elem_list_t*, unsigned int);
-unsigned int (*snd_ctl_elem_list_get_subdevice_dylibloader_wrapper_asound)(const snd_ctl_elem_list_t*, unsigned int);
-const char* (*snd_ctl_elem_list_get_name_dylibloader_wrapper_asound)(const snd_ctl_elem_list_t*, unsigned int);
-unsigned int (*snd_ctl_elem_list_get_index_dylibloader_wrapper_asound)(const snd_ctl_elem_list_t*, unsigned int);
-size_t (*snd_ctl_elem_info_sizeof_dylibloader_wrapper_asound)( void);
-int (*snd_ctl_elem_info_malloc_dylibloader_wrapper_asound)( snd_ctl_elem_info_t**);
-void (*snd_ctl_elem_info_free_dylibloader_wrapper_asound)( snd_ctl_elem_info_t*);
-void (*snd_ctl_elem_info_clear_dylibloader_wrapper_asound)( snd_ctl_elem_info_t*);
-void (*snd_ctl_elem_info_copy_dylibloader_wrapper_asound)( snd_ctl_elem_info_t*,const snd_ctl_elem_info_t*);
-snd_ctl_elem_type_t (*snd_ctl_elem_info_get_type_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t*);
-int (*snd_ctl_elem_info_is_readable_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t*);
-int (*snd_ctl_elem_info_is_writable_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t*);
-int (*snd_ctl_elem_info_is_volatile_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t*);
-int (*snd_ctl_elem_info_is_inactive_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t*);
-int (*snd_ctl_elem_info_is_locked_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t*);
-int (*snd_ctl_elem_info_is_tlv_readable_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t*);
-int (*snd_ctl_elem_info_is_tlv_writable_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t*);
-int (*snd_ctl_elem_info_is_tlv_commandable_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t*);
-int (*snd_ctl_elem_info_is_owner_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t*);
-int (*snd_ctl_elem_info_is_user_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t*);
-pid_t (*snd_ctl_elem_info_get_owner_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t*);
-unsigned int (*snd_ctl_elem_info_get_count_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t*);
-long (*snd_ctl_elem_info_get_min_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t*);
-long (*snd_ctl_elem_info_get_max_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t*);
-long (*snd_ctl_elem_info_get_step_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t*);
-long long (*snd_ctl_elem_info_get_min64_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t*);
-long long (*snd_ctl_elem_info_get_max64_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t*);
-long long (*snd_ctl_elem_info_get_step64_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t*);
-unsigned int (*snd_ctl_elem_info_get_items_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t*);
-void (*snd_ctl_elem_info_set_item_dylibloader_wrapper_asound)( snd_ctl_elem_info_t*, unsigned int);
-const char* (*snd_ctl_elem_info_get_item_name_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t*);
-int (*snd_ctl_elem_info_get_dimensions_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t*);
-int (*snd_ctl_elem_info_get_dimension_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t*, unsigned int);
-int (*snd_ctl_elem_info_set_dimension_dylibloader_wrapper_asound)( snd_ctl_elem_info_t*,const int [4]);
-void (*snd_ctl_elem_info_get_id_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t*, snd_ctl_elem_id_t*);
-unsigned int (*snd_ctl_elem_info_get_numid_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t*);
-snd_ctl_elem_iface_t (*snd_ctl_elem_info_get_interface_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t*);
-unsigned int (*snd_ctl_elem_info_get_device_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t*);
-unsigned int (*snd_ctl_elem_info_get_subdevice_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t*);
-const char* (*snd_ctl_elem_info_get_name_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t*);
-unsigned int (*snd_ctl_elem_info_get_index_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t*);
-void (*snd_ctl_elem_info_set_id_dylibloader_wrapper_asound)( snd_ctl_elem_info_t*,const snd_ctl_elem_id_t*);
-void (*snd_ctl_elem_info_set_numid_dylibloader_wrapper_asound)( snd_ctl_elem_info_t*, unsigned int);
-void (*snd_ctl_elem_info_set_interface_dylibloader_wrapper_asound)( snd_ctl_elem_info_t*, snd_ctl_elem_iface_t);
-void (*snd_ctl_elem_info_set_device_dylibloader_wrapper_asound)( snd_ctl_elem_info_t*, unsigned int);
-void (*snd_ctl_elem_info_set_subdevice_dylibloader_wrapper_asound)( snd_ctl_elem_info_t*, unsigned int);
-void (*snd_ctl_elem_info_set_name_dylibloader_wrapper_asound)( snd_ctl_elem_info_t*,const char*);
-void (*snd_ctl_elem_info_set_index_dylibloader_wrapper_asound)( snd_ctl_elem_info_t*, unsigned int);
-int (*snd_ctl_add_integer_elem_set_dylibloader_wrapper_asound)( snd_ctl_t*, snd_ctl_elem_info_t*, unsigned int, unsigned int, long, long, long);
-int (*snd_ctl_add_integer64_elem_set_dylibloader_wrapper_asound)( snd_ctl_t*, snd_ctl_elem_info_t*, unsigned int, unsigned int, long long, long long, long long);
-int (*snd_ctl_add_boolean_elem_set_dylibloader_wrapper_asound)( snd_ctl_t*, snd_ctl_elem_info_t*, unsigned int, unsigned int);
-int (*snd_ctl_add_enumerated_elem_set_dylibloader_wrapper_asound)( snd_ctl_t*, snd_ctl_elem_info_t*, unsigned int, unsigned int, unsigned int,const char* []);
-int (*snd_ctl_add_bytes_elem_set_dylibloader_wrapper_asound)( snd_ctl_t*, snd_ctl_elem_info_t*, unsigned int, unsigned int);
-int (*snd_ctl_elem_add_integer_dylibloader_wrapper_asound)( snd_ctl_t*,const snd_ctl_elem_id_t*, unsigned int, long, long, long);
-int (*snd_ctl_elem_add_integer64_dylibloader_wrapper_asound)( snd_ctl_t*,const snd_ctl_elem_id_t*, unsigned int, long long, long long, long long);
-int (*snd_ctl_elem_add_boolean_dylibloader_wrapper_asound)( snd_ctl_t*,const snd_ctl_elem_id_t*, unsigned int);
-int (*snd_ctl_elem_add_enumerated_dylibloader_wrapper_asound)( snd_ctl_t*,const snd_ctl_elem_id_t*, unsigned int, unsigned int,const char* []);
-int (*snd_ctl_elem_add_iec958_dylibloader_wrapper_asound)( snd_ctl_t*,const snd_ctl_elem_id_t*);
-int (*snd_ctl_elem_remove_dylibloader_wrapper_asound)( snd_ctl_t*, snd_ctl_elem_id_t*);
-size_t (*snd_ctl_elem_value_sizeof_dylibloader_wrapper_asound)( void);
-int (*snd_ctl_elem_value_malloc_dylibloader_wrapper_asound)( snd_ctl_elem_value_t**);
-void (*snd_ctl_elem_value_free_dylibloader_wrapper_asound)( snd_ctl_elem_value_t*);
-void (*snd_ctl_elem_value_clear_dylibloader_wrapper_asound)( snd_ctl_elem_value_t*);
-void (*snd_ctl_elem_value_copy_dylibloader_wrapper_asound)( snd_ctl_elem_value_t*,const snd_ctl_elem_value_t*);
-int (*snd_ctl_elem_value_compare_dylibloader_wrapper_asound)( snd_ctl_elem_value_t*,const snd_ctl_elem_value_t*);
-void (*snd_ctl_elem_value_get_id_dylibloader_wrapper_asound)(const snd_ctl_elem_value_t*, snd_ctl_elem_id_t*);
-unsigned int (*snd_ctl_elem_value_get_numid_dylibloader_wrapper_asound)(const snd_ctl_elem_value_t*);
-snd_ctl_elem_iface_t (*snd_ctl_elem_value_get_interface_dylibloader_wrapper_asound)(const snd_ctl_elem_value_t*);
-unsigned int (*snd_ctl_elem_value_get_device_dylibloader_wrapper_asound)(const snd_ctl_elem_value_t*);
-unsigned int (*snd_ctl_elem_value_get_subdevice_dylibloader_wrapper_asound)(const snd_ctl_elem_value_t*);
-const char* (*snd_ctl_elem_value_get_name_dylibloader_wrapper_asound)(const snd_ctl_elem_value_t*);
-unsigned int (*snd_ctl_elem_value_get_index_dylibloader_wrapper_asound)(const snd_ctl_elem_value_t*);
-void (*snd_ctl_elem_value_set_id_dylibloader_wrapper_asound)( snd_ctl_elem_value_t*,const snd_ctl_elem_id_t*);
-void (*snd_ctl_elem_value_set_numid_dylibloader_wrapper_asound)( snd_ctl_elem_value_t*, unsigned int);
-void (*snd_ctl_elem_value_set_interface_dylibloader_wrapper_asound)( snd_ctl_elem_value_t*, snd_ctl_elem_iface_t);
-void (*snd_ctl_elem_value_set_device_dylibloader_wrapper_asound)( snd_ctl_elem_value_t*, unsigned int);
-void (*snd_ctl_elem_value_set_subdevice_dylibloader_wrapper_asound)( snd_ctl_elem_value_t*, unsigned int);
-void (*snd_ctl_elem_value_set_name_dylibloader_wrapper_asound)( snd_ctl_elem_value_t*,const char*);
-void (*snd_ctl_elem_value_set_index_dylibloader_wrapper_asound)( snd_ctl_elem_value_t*, unsigned int);
-int (*snd_ctl_elem_value_get_boolean_dylibloader_wrapper_asound)(const snd_ctl_elem_value_t*, unsigned int);
-long (*snd_ctl_elem_value_get_integer_dylibloader_wrapper_asound)(const snd_ctl_elem_value_t*, unsigned int);
-long long (*snd_ctl_elem_value_get_integer64_dylibloader_wrapper_asound)(const snd_ctl_elem_value_t*, unsigned int);
-unsigned int (*snd_ctl_elem_value_get_enumerated_dylibloader_wrapper_asound)(const snd_ctl_elem_value_t*, unsigned int);
-unsigned char (*snd_ctl_elem_value_get_byte_dylibloader_wrapper_asound)(const snd_ctl_elem_value_t*, unsigned int);
-void (*snd_ctl_elem_value_set_boolean_dylibloader_wrapper_asound)( snd_ctl_elem_value_t*, unsigned int, long);
-void (*snd_ctl_elem_value_set_integer_dylibloader_wrapper_asound)( snd_ctl_elem_value_t*, unsigned int, long);
-void (*snd_ctl_elem_value_set_integer64_dylibloader_wrapper_asound)( snd_ctl_elem_value_t*, unsigned int, long long);
-void (*snd_ctl_elem_value_set_enumerated_dylibloader_wrapper_asound)( snd_ctl_elem_value_t*, unsigned int, unsigned int);
-void (*snd_ctl_elem_value_set_byte_dylibloader_wrapper_asound)( snd_ctl_elem_value_t*, unsigned int, unsigned char);
-void (*snd_ctl_elem_set_bytes_dylibloader_wrapper_asound)( snd_ctl_elem_value_t*, void*, size_t);
-const void* (*snd_ctl_elem_value_get_bytes_dylibloader_wrapper_asound)(const snd_ctl_elem_value_t*);
-void (*snd_ctl_elem_value_get_iec958_dylibloader_wrapper_asound)(const snd_ctl_elem_value_t*, snd_aes_iec958_t*);
-void (*snd_ctl_elem_value_set_iec958_dylibloader_wrapper_asound)( snd_ctl_elem_value_t*,const snd_aes_iec958_t*);
-int (*snd_tlv_parse_dB_info_dylibloader_wrapper_asound)( unsigned int*, unsigned int, unsigned int**);
-int (*snd_tlv_get_dB_range_dylibloader_wrapper_asound)( unsigned int*, long, long, long*, long*);
-int (*snd_tlv_convert_to_dB_dylibloader_wrapper_asound)( unsigned int*, long, long, long, long*);
-int (*snd_tlv_convert_from_dB_dylibloader_wrapper_asound)( unsigned int*, long, long, long, long*, int);
-int (*snd_ctl_get_dB_range_dylibloader_wrapper_asound)( snd_ctl_t*,const snd_ctl_elem_id_t*, long*, long*);
-int (*snd_ctl_convert_to_dB_dylibloader_wrapper_asound)( snd_ctl_t*,const snd_ctl_elem_id_t*, long, long*);
-int (*snd_ctl_convert_from_dB_dylibloader_wrapper_asound)( snd_ctl_t*,const snd_ctl_elem_id_t*, long, long*, int);
-int (*snd_hctl_compare_fast_dylibloader_wrapper_asound)(const snd_hctl_elem_t*,const snd_hctl_elem_t*);
-int (*snd_hctl_open_dylibloader_wrapper_asound)( snd_hctl_t**,const char*, int);
-int (*snd_hctl_open_ctl_dylibloader_wrapper_asound)( snd_hctl_t**, snd_ctl_t*);
-int (*snd_hctl_close_dylibloader_wrapper_asound)( snd_hctl_t*);
-int (*snd_hctl_nonblock_dylibloader_wrapper_asound)( snd_hctl_t*, int);
-int (*snd_hctl_poll_descriptors_count_dylibloader_wrapper_asound)( snd_hctl_t*);
-int (*snd_hctl_poll_descriptors_dylibloader_wrapper_asound)( snd_hctl_t*,struct pollfd*, unsigned int);
-int (*snd_hctl_poll_descriptors_revents_dylibloader_wrapper_asound)( snd_hctl_t*,struct pollfd*, unsigned int, unsigned short*);
-unsigned int (*snd_hctl_get_count_dylibloader_wrapper_asound)( snd_hctl_t*);
-int (*snd_hctl_set_compare_dylibloader_wrapper_asound)( snd_hctl_t*, snd_hctl_compare_t);
-snd_hctl_elem_t* (*snd_hctl_first_elem_dylibloader_wrapper_asound)( snd_hctl_t*);
-snd_hctl_elem_t* (*snd_hctl_last_elem_dylibloader_wrapper_asound)( snd_hctl_t*);
-snd_hctl_elem_t* (*snd_hctl_find_elem_dylibloader_wrapper_asound)( snd_hctl_t*,const snd_ctl_elem_id_t*);
-void (*snd_hctl_set_callback_dylibloader_wrapper_asound)( snd_hctl_t*, snd_hctl_callback_t);
-void (*snd_hctl_set_callback_private_dylibloader_wrapper_asound)( snd_hctl_t*, void*);
-void* (*snd_hctl_get_callback_private_dylibloader_wrapper_asound)( snd_hctl_t*);
-int (*snd_hctl_load_dylibloader_wrapper_asound)( snd_hctl_t*);
-int (*snd_hctl_free_dylibloader_wrapper_asound)( snd_hctl_t*);
-int (*snd_hctl_handle_events_dylibloader_wrapper_asound)( snd_hctl_t*);
-const char* (*snd_hctl_name_dylibloader_wrapper_asound)( snd_hctl_t*);
-int (*snd_hctl_wait_dylibloader_wrapper_asound)( snd_hctl_t*, int);
-snd_ctl_t* (*snd_hctl_ctl_dylibloader_wrapper_asound)( snd_hctl_t*);
-snd_hctl_elem_t* (*snd_hctl_elem_next_dylibloader_wrapper_asound)( snd_hctl_elem_t*);
-snd_hctl_elem_t* (*snd_hctl_elem_prev_dylibloader_wrapper_asound)( snd_hctl_elem_t*);
-int (*snd_hctl_elem_info_dylibloader_wrapper_asound)( snd_hctl_elem_t*, snd_ctl_elem_info_t*);
-int (*snd_hctl_elem_read_dylibloader_wrapper_asound)( snd_hctl_elem_t*, snd_ctl_elem_value_t*);
-int (*snd_hctl_elem_write_dylibloader_wrapper_asound)( snd_hctl_elem_t*, snd_ctl_elem_value_t*);
-int (*snd_hctl_elem_tlv_read_dylibloader_wrapper_asound)( snd_hctl_elem_t*, unsigned int*, unsigned int);
-int (*snd_hctl_elem_tlv_write_dylibloader_wrapper_asound)( snd_hctl_elem_t*,const unsigned int*);
-int (*snd_hctl_elem_tlv_command_dylibloader_wrapper_asound)( snd_hctl_elem_t*,const unsigned int*);
-snd_hctl_t* (*snd_hctl_elem_get_hctl_dylibloader_wrapper_asound)( snd_hctl_elem_t*);
-void (*snd_hctl_elem_get_id_dylibloader_wrapper_asound)(const snd_hctl_elem_t*, snd_ctl_elem_id_t*);
-unsigned int (*snd_hctl_elem_get_numid_dylibloader_wrapper_asound)(const snd_hctl_elem_t*);
-snd_ctl_elem_iface_t (*snd_hctl_elem_get_interface_dylibloader_wrapper_asound)(const snd_hctl_elem_t*);
-unsigned int (*snd_hctl_elem_get_device_dylibloader_wrapper_asound)(const snd_hctl_elem_t*);
-unsigned int (*snd_hctl_elem_get_subdevice_dylibloader_wrapper_asound)(const snd_hctl_elem_t*);
-const char* (*snd_hctl_elem_get_name_dylibloader_wrapper_asound)(const snd_hctl_elem_t*);
-unsigned int (*snd_hctl_elem_get_index_dylibloader_wrapper_asound)(const snd_hctl_elem_t*);
-void (*snd_hctl_elem_set_callback_dylibloader_wrapper_asound)( snd_hctl_elem_t*, snd_hctl_elem_callback_t);
-void* (*snd_hctl_elem_get_callback_private_dylibloader_wrapper_asound)(const snd_hctl_elem_t*);
-void (*snd_hctl_elem_set_callback_private_dylibloader_wrapper_asound)( snd_hctl_elem_t*, void*);
-int (*snd_sctl_build_dylibloader_wrapper_asound)( snd_sctl_t**, snd_ctl_t*, snd_config_t*, snd_config_t*, int);
-int (*snd_sctl_free_dylibloader_wrapper_asound)( snd_sctl_t*);
-int (*snd_sctl_install_dylibloader_wrapper_asound)( snd_sctl_t*);
-int (*snd_sctl_remove_dylibloader_wrapper_asound)( snd_sctl_t*);
-int (*snd_mixer_open_dylibloader_wrapper_asound)( snd_mixer_t**, int);
-int (*snd_mixer_close_dylibloader_wrapper_asound)( snd_mixer_t*);
-snd_mixer_elem_t* (*snd_mixer_first_elem_dylibloader_wrapper_asound)( snd_mixer_t*);
-snd_mixer_elem_t* (*snd_mixer_last_elem_dylibloader_wrapper_asound)( snd_mixer_t*);
-int (*snd_mixer_handle_events_dylibloader_wrapper_asound)( snd_mixer_t*);
-int (*snd_mixer_attach_dylibloader_wrapper_asound)( snd_mixer_t*,const char*);
-int (*snd_mixer_attach_hctl_dylibloader_wrapper_asound)( snd_mixer_t*, snd_hctl_t*);
-int (*snd_mixer_detach_dylibloader_wrapper_asound)( snd_mixer_t*,const char*);
-int (*snd_mixer_detach_hctl_dylibloader_wrapper_asound)( snd_mixer_t*, snd_hctl_t*);
-int (*snd_mixer_get_hctl_dylibloader_wrapper_asound)( snd_mixer_t*,const char*, snd_hctl_t**);
-int (*snd_mixer_poll_descriptors_count_dylibloader_wrapper_asound)( snd_mixer_t*);
-int (*snd_mixer_poll_descriptors_dylibloader_wrapper_asound)( snd_mixer_t*,struct pollfd*, unsigned int);
-int (*snd_mixer_poll_descriptors_revents_dylibloader_wrapper_asound)( snd_mixer_t*,struct pollfd*, unsigned int, unsigned short*);
-int (*snd_mixer_load_dylibloader_wrapper_asound)( snd_mixer_t*);
-void (*snd_mixer_free_dylibloader_wrapper_asound)( snd_mixer_t*);
-int (*snd_mixer_wait_dylibloader_wrapper_asound)( snd_mixer_t*, int);
-int (*snd_mixer_set_compare_dylibloader_wrapper_asound)( snd_mixer_t*, snd_mixer_compare_t);
-void (*snd_mixer_set_callback_dylibloader_wrapper_asound)( snd_mixer_t*, snd_mixer_callback_t);
-void* (*snd_mixer_get_callback_private_dylibloader_wrapper_asound)(const snd_mixer_t*);
-void (*snd_mixer_set_callback_private_dylibloader_wrapper_asound)( snd_mixer_t*, void*);
-unsigned int (*snd_mixer_get_count_dylibloader_wrapper_asound)(const snd_mixer_t*);
-int (*snd_mixer_class_unregister_dylibloader_wrapper_asound)( snd_mixer_class_t*);
-snd_mixer_elem_t* (*snd_mixer_elem_next_dylibloader_wrapper_asound)( snd_mixer_elem_t*);
-snd_mixer_elem_t* (*snd_mixer_elem_prev_dylibloader_wrapper_asound)( snd_mixer_elem_t*);
-void (*snd_mixer_elem_set_callback_dylibloader_wrapper_asound)( snd_mixer_elem_t*, snd_mixer_elem_callback_t);
-void* (*snd_mixer_elem_get_callback_private_dylibloader_wrapper_asound)(const snd_mixer_elem_t*);
-void (*snd_mixer_elem_set_callback_private_dylibloader_wrapper_asound)( snd_mixer_elem_t*, void*);
-snd_mixer_elem_type_t (*snd_mixer_elem_get_type_dylibloader_wrapper_asound)(const snd_mixer_elem_t*);
-int (*snd_mixer_class_register_dylibloader_wrapper_asound)( snd_mixer_class_t*, snd_mixer_t*);
-int (*snd_mixer_elem_new_dylibloader_wrapper_asound)( snd_mixer_elem_t**, snd_mixer_elem_type_t, int, void*, void*);
-int (*snd_mixer_elem_add_dylibloader_wrapper_asound)( snd_mixer_elem_t*, snd_mixer_class_t*);
-int (*snd_mixer_elem_remove_dylibloader_wrapper_asound)( snd_mixer_elem_t*);
-void (*snd_mixer_elem_free_dylibloader_wrapper_asound)( snd_mixer_elem_t*);
-int (*snd_mixer_elem_info_dylibloader_wrapper_asound)( snd_mixer_elem_t*);
-int (*snd_mixer_elem_value_dylibloader_wrapper_asound)( snd_mixer_elem_t*);
-int (*snd_mixer_elem_attach_dylibloader_wrapper_asound)( snd_mixer_elem_t*, snd_hctl_elem_t*);
-int (*snd_mixer_elem_detach_dylibloader_wrapper_asound)( snd_mixer_elem_t*, snd_hctl_elem_t*);
-int (*snd_mixer_elem_empty_dylibloader_wrapper_asound)( snd_mixer_elem_t*);
-void* (*snd_mixer_elem_get_private_dylibloader_wrapper_asound)(const snd_mixer_elem_t*);
-size_t (*snd_mixer_class_sizeof_dylibloader_wrapper_asound)( void);
-int (*snd_mixer_class_malloc_dylibloader_wrapper_asound)( snd_mixer_class_t**);
-void (*snd_mixer_class_free_dylibloader_wrapper_asound)( snd_mixer_class_t*);
-void (*snd_mixer_class_copy_dylibloader_wrapper_asound)( snd_mixer_class_t*,const snd_mixer_class_t*);
-snd_mixer_t* (*snd_mixer_class_get_mixer_dylibloader_wrapper_asound)(const snd_mixer_class_t*);
-snd_mixer_event_t (*snd_mixer_class_get_event_dylibloader_wrapper_asound)(const snd_mixer_class_t*);
-void* (*snd_mixer_class_get_private_dylibloader_wrapper_asound)(const snd_mixer_class_t*);
-snd_mixer_compare_t (*snd_mixer_class_get_compare_dylibloader_wrapper_asound)(const snd_mixer_class_t*);
-int (*snd_mixer_class_set_event_dylibloader_wrapper_asound)( snd_mixer_class_t*, snd_mixer_event_t);
-int (*snd_mixer_class_set_private_dylibloader_wrapper_asound)( snd_mixer_class_t*, void*);
-int (*snd_mixer_class_set_private_free_dylibloader_wrapper_asound)( snd_mixer_class_t*, void*);
-int (*snd_mixer_class_set_compare_dylibloader_wrapper_asound)( snd_mixer_class_t*, snd_mixer_compare_t);
-const char* (*snd_mixer_selem_channel_name_dylibloader_wrapper_asound)( snd_mixer_selem_channel_id_t);
-int (*snd_mixer_selem_register_dylibloader_wrapper_asound)( snd_mixer_t*,struct snd_mixer_selem_regopt*, snd_mixer_class_t**);
-void (*snd_mixer_selem_get_id_dylibloader_wrapper_asound)( snd_mixer_elem_t*, snd_mixer_selem_id_t*);
-const char* (*snd_mixer_selem_get_name_dylibloader_wrapper_asound)( snd_mixer_elem_t*);
-unsigned int (*snd_mixer_selem_get_index_dylibloader_wrapper_asound)( snd_mixer_elem_t*);
-snd_mixer_elem_t* (*snd_mixer_find_selem_dylibloader_wrapper_asound)( snd_mixer_t*,const snd_mixer_selem_id_t*);
-int (*snd_mixer_selem_is_active_dylibloader_wrapper_asound)( snd_mixer_elem_t*);
-int (*snd_mixer_selem_is_playback_mono_dylibloader_wrapper_asound)( snd_mixer_elem_t*);
-int (*snd_mixer_selem_has_playback_channel_dylibloader_wrapper_asound)( snd_mixer_elem_t*, snd_mixer_selem_channel_id_t);
-int (*snd_mixer_selem_is_capture_mono_dylibloader_wrapper_asound)( snd_mixer_elem_t*);
-int (*snd_mixer_selem_has_capture_channel_dylibloader_wrapper_asound)( snd_mixer_elem_t*, snd_mixer_selem_channel_id_t);
-int (*snd_mixer_selem_get_capture_group_dylibloader_wrapper_asound)( snd_mixer_elem_t*);
-int (*snd_mixer_selem_has_common_volume_dylibloader_wrapper_asound)( snd_mixer_elem_t*);
-int (*snd_mixer_selem_has_playback_volume_dylibloader_wrapper_asound)( snd_mixer_elem_t*);
-int (*snd_mixer_selem_has_playback_volume_joined_dylibloader_wrapper_asound)( snd_mixer_elem_t*);
-int (*snd_mixer_selem_has_capture_volume_dylibloader_wrapper_asound)( snd_mixer_elem_t*);
-int (*snd_mixer_selem_has_capture_volume_joined_dylibloader_wrapper_asound)( snd_mixer_elem_t*);
-int (*snd_mixer_selem_has_common_switch_dylibloader_wrapper_asound)( snd_mixer_elem_t*);
-int (*snd_mixer_selem_has_playback_switch_dylibloader_wrapper_asound)( snd_mixer_elem_t*);
-int (*snd_mixer_selem_has_playback_switch_joined_dylibloader_wrapper_asound)( snd_mixer_elem_t*);
-int (*snd_mixer_selem_has_capture_switch_dylibloader_wrapper_asound)( snd_mixer_elem_t*);
-int (*snd_mixer_selem_has_capture_switch_joined_dylibloader_wrapper_asound)( snd_mixer_elem_t*);
-int (*snd_mixer_selem_has_capture_switch_exclusive_dylibloader_wrapper_asound)( snd_mixer_elem_t*);
-int (*snd_mixer_selem_ask_playback_vol_dB_dylibloader_wrapper_asound)( snd_mixer_elem_t*, long, long*);
-int (*snd_mixer_selem_ask_capture_vol_dB_dylibloader_wrapper_asound)( snd_mixer_elem_t*, long, long*);
-int (*snd_mixer_selem_ask_playback_dB_vol_dylibloader_wrapper_asound)( snd_mixer_elem_t*, long, int, long*);
-int (*snd_mixer_selem_ask_capture_dB_vol_dylibloader_wrapper_asound)( snd_mixer_elem_t*, long, int, long*);
-int (*snd_mixer_selem_get_playback_volume_dylibloader_wrapper_asound)( snd_mixer_elem_t*, snd_mixer_selem_channel_id_t, long*);
-int (*snd_mixer_selem_get_capture_volume_dylibloader_wrapper_asound)( snd_mixer_elem_t*, snd_mixer_selem_channel_id_t, long*);
-int (*snd_mixer_selem_get_playback_dB_dylibloader_wrapper_asound)( snd_mixer_elem_t*, snd_mixer_selem_channel_id_t, long*);
-int (*snd_mixer_selem_get_capture_dB_dylibloader_wrapper_asound)( snd_mixer_elem_t*, snd_mixer_selem_channel_id_t, long*);
-int (*snd_mixer_selem_get_playback_switch_dylibloader_wrapper_asound)( snd_mixer_elem_t*, snd_mixer_selem_channel_id_t, int*);
-int (*snd_mixer_selem_get_capture_switch_dylibloader_wrapper_asound)( snd_mixer_elem_t*, snd_mixer_selem_channel_id_t, int*);
-int (*snd_mixer_selem_set_playback_volume_dylibloader_wrapper_asound)( snd_mixer_elem_t*, snd_mixer_selem_channel_id_t, long);
-int (*snd_mixer_selem_set_capture_volume_dylibloader_wrapper_asound)( snd_mixer_elem_t*, snd_mixer_selem_channel_id_t, long);
-int (*snd_mixer_selem_set_playback_dB_dylibloader_wrapper_asound)( snd_mixer_elem_t*, snd_mixer_selem_channel_id_t, long, int);
-int (*snd_mixer_selem_set_capture_dB_dylibloader_wrapper_asound)( snd_mixer_elem_t*, snd_mixer_selem_channel_id_t, long, int);
-int (*snd_mixer_selem_set_playback_volume_all_dylibloader_wrapper_asound)( snd_mixer_elem_t*, long);
-int (*snd_mixer_selem_set_capture_volume_all_dylibloader_wrapper_asound)( snd_mixer_elem_t*, long);
-int (*snd_mixer_selem_set_playback_dB_all_dylibloader_wrapper_asound)( snd_mixer_elem_t*, long, int);
-int (*snd_mixer_selem_set_capture_dB_all_dylibloader_wrapper_asound)( snd_mixer_elem_t*, long, int);
-int (*snd_mixer_selem_set_playback_switch_dylibloader_wrapper_asound)( snd_mixer_elem_t*, snd_mixer_selem_channel_id_t, int);
-int (*snd_mixer_selem_set_capture_switch_dylibloader_wrapper_asound)( snd_mixer_elem_t*, snd_mixer_selem_channel_id_t, int);
-int (*snd_mixer_selem_set_playback_switch_all_dylibloader_wrapper_asound)( snd_mixer_elem_t*, int);
-int (*snd_mixer_selem_set_capture_switch_all_dylibloader_wrapper_asound)( snd_mixer_elem_t*, int);
-int (*snd_mixer_selem_get_playback_volume_range_dylibloader_wrapper_asound)( snd_mixer_elem_t*, long*, long*);
-int (*snd_mixer_selem_get_playback_dB_range_dylibloader_wrapper_asound)( snd_mixer_elem_t*, long*, long*);
-int (*snd_mixer_selem_set_playback_volume_range_dylibloader_wrapper_asound)( snd_mixer_elem_t*, long, long);
-int (*snd_mixer_selem_get_capture_volume_range_dylibloader_wrapper_asound)( snd_mixer_elem_t*, long*, long*);
-int (*snd_mixer_selem_get_capture_dB_range_dylibloader_wrapper_asound)( snd_mixer_elem_t*, long*, long*);
-int (*snd_mixer_selem_set_capture_volume_range_dylibloader_wrapper_asound)( snd_mixer_elem_t*, long, long);
-int (*snd_mixer_selem_is_enumerated_dylibloader_wrapper_asound)( snd_mixer_elem_t*);
-int (*snd_mixer_selem_is_enum_playback_dylibloader_wrapper_asound)( snd_mixer_elem_t*);
-int (*snd_mixer_selem_is_enum_capture_dylibloader_wrapper_asound)( snd_mixer_elem_t*);
-int (*snd_mixer_selem_get_enum_items_dylibloader_wrapper_asound)( snd_mixer_elem_t*);
-int (*snd_mixer_selem_get_enum_item_name_dylibloader_wrapper_asound)( snd_mixer_elem_t*, unsigned int, size_t, char*);
-int (*snd_mixer_selem_get_enum_item_dylibloader_wrapper_asound)( snd_mixer_elem_t*, snd_mixer_selem_channel_id_t, unsigned int*);
-int (*snd_mixer_selem_set_enum_item_dylibloader_wrapper_asound)( snd_mixer_elem_t*, snd_mixer_selem_channel_id_t, unsigned int);
-size_t (*snd_mixer_selem_id_sizeof_dylibloader_wrapper_asound)( void);
-int (*snd_mixer_selem_id_malloc_dylibloader_wrapper_asound)( snd_mixer_selem_id_t**);
-void (*snd_mixer_selem_id_free_dylibloader_wrapper_asound)( snd_mixer_selem_id_t*);
-void (*snd_mixer_selem_id_copy_dylibloader_wrapper_asound)( snd_mixer_selem_id_t*,const snd_mixer_selem_id_t*);
-const char* (*snd_mixer_selem_id_get_name_dylibloader_wrapper_asound)(const snd_mixer_selem_id_t*);
-unsigned int (*snd_mixer_selem_id_get_index_dylibloader_wrapper_asound)(const snd_mixer_selem_id_t*);
-void (*snd_mixer_selem_id_set_name_dylibloader_wrapper_asound)( snd_mixer_selem_id_t*,const char*);
-void (*snd_mixer_selem_id_set_index_dylibloader_wrapper_asound)( snd_mixer_selem_id_t*, unsigned int);
-int (*snd_mixer_selem_id_parse_dylibloader_wrapper_asound)( snd_mixer_selem_id_t*,const char*);
-int (*snd_seq_open_dylibloader_wrapper_asound)( snd_seq_t**,const char*, int, int);
-int (*snd_seq_open_lconf_dylibloader_wrapper_asound)( snd_seq_t**,const char*, int, int, snd_config_t*);
-const char* (*snd_seq_name_dylibloader_wrapper_asound)( snd_seq_t*);
-snd_seq_type_t (*snd_seq_type_dylibloader_wrapper_asound)( snd_seq_t*);
-int (*snd_seq_close_dylibloader_wrapper_asound)( snd_seq_t*);
-int (*snd_seq_poll_descriptors_count_dylibloader_wrapper_asound)( snd_seq_t*, short);
-int (*snd_seq_poll_descriptors_dylibloader_wrapper_asound)( snd_seq_t*,struct pollfd*, unsigned int, short);
-int (*snd_seq_poll_descriptors_revents_dylibloader_wrapper_asound)( snd_seq_t*,struct pollfd*, unsigned int, unsigned short*);
-int (*snd_seq_nonblock_dylibloader_wrapper_asound)( snd_seq_t*, int);
-int (*snd_seq_client_id_dylibloader_wrapper_asound)( snd_seq_t*);
-size_t (*snd_seq_get_output_buffer_size_dylibloader_wrapper_asound)( snd_seq_t*);
-size_t (*snd_seq_get_input_buffer_size_dylibloader_wrapper_asound)( snd_seq_t*);
-int (*snd_seq_set_output_buffer_size_dylibloader_wrapper_asound)( snd_seq_t*, size_t);
-int (*snd_seq_set_input_buffer_size_dylibloader_wrapper_asound)( snd_seq_t*, size_t);
-size_t (*snd_seq_system_info_sizeof_dylibloader_wrapper_asound)( void);
-int (*snd_seq_system_info_malloc_dylibloader_wrapper_asound)( snd_seq_system_info_t**);
-void (*snd_seq_system_info_free_dylibloader_wrapper_asound)( snd_seq_system_info_t*);
-void (*snd_seq_system_info_copy_dylibloader_wrapper_asound)( snd_seq_system_info_t*,const snd_seq_system_info_t*);
-int (*snd_seq_system_info_get_queues_dylibloader_wrapper_asound)(const snd_seq_system_info_t*);
-int (*snd_seq_system_info_get_clients_dylibloader_wrapper_asound)(const snd_seq_system_info_t*);
-int (*snd_seq_system_info_get_ports_dylibloader_wrapper_asound)(const snd_seq_system_info_t*);
-int (*snd_seq_system_info_get_channels_dylibloader_wrapper_asound)(const snd_seq_system_info_t*);
-int (*snd_seq_system_info_get_cur_clients_dylibloader_wrapper_asound)(const snd_seq_system_info_t*);
-int (*snd_seq_system_info_get_cur_queues_dylibloader_wrapper_asound)(const snd_seq_system_info_t*);
-int (*snd_seq_system_info_dylibloader_wrapper_asound)( snd_seq_t*, snd_seq_system_info_t*);
-size_t (*snd_seq_client_info_sizeof_dylibloader_wrapper_asound)( void);
-int (*snd_seq_client_info_malloc_dylibloader_wrapper_asound)( snd_seq_client_info_t**);
-void (*snd_seq_client_info_free_dylibloader_wrapper_asound)( snd_seq_client_info_t*);
-void (*snd_seq_client_info_copy_dylibloader_wrapper_asound)( snd_seq_client_info_t*,const snd_seq_client_info_t*);
-int (*snd_seq_client_info_get_client_dylibloader_wrapper_asound)(const snd_seq_client_info_t*);
-snd_seq_client_type_t (*snd_seq_client_info_get_type_dylibloader_wrapper_asound)(const snd_seq_client_info_t*);
-const char* (*snd_seq_client_info_get_name_dylibloader_wrapper_asound)( snd_seq_client_info_t*);
-int (*snd_seq_client_info_get_broadcast_filter_dylibloader_wrapper_asound)(const snd_seq_client_info_t*);
-int (*snd_seq_client_info_get_error_bounce_dylibloader_wrapper_asound)(const snd_seq_client_info_t*);
-int (*snd_seq_client_info_get_card_dylibloader_wrapper_asound)(const snd_seq_client_info_t*);
-int (*snd_seq_client_info_get_pid_dylibloader_wrapper_asound)(const snd_seq_client_info_t*);
-const unsigned char* (*snd_seq_client_info_get_event_filter_dylibloader_wrapper_asound)(const snd_seq_client_info_t*);
-int (*snd_seq_client_info_get_num_ports_dylibloader_wrapper_asound)(const snd_seq_client_info_t*);
-int (*snd_seq_client_info_get_event_lost_dylibloader_wrapper_asound)(const snd_seq_client_info_t*);
-void (*snd_seq_client_info_set_client_dylibloader_wrapper_asound)( snd_seq_client_info_t*, int);
-void (*snd_seq_client_info_set_name_dylibloader_wrapper_asound)( snd_seq_client_info_t*,const char*);
-void (*snd_seq_client_info_set_broadcast_filter_dylibloader_wrapper_asound)( snd_seq_client_info_t*, int);
-void (*snd_seq_client_info_set_error_bounce_dylibloader_wrapper_asound)( snd_seq_client_info_t*, int);
-void (*snd_seq_client_info_set_event_filter_dylibloader_wrapper_asound)( snd_seq_client_info_t*, unsigned char*);
-void (*snd_seq_client_info_event_filter_clear_dylibloader_wrapper_asound)( snd_seq_client_info_t*);
-void (*snd_seq_client_info_event_filter_add_dylibloader_wrapper_asound)( snd_seq_client_info_t*, int);
-void (*snd_seq_client_info_event_filter_del_dylibloader_wrapper_asound)( snd_seq_client_info_t*, int);
-int (*snd_seq_client_info_event_filter_check_dylibloader_wrapper_asound)( snd_seq_client_info_t*, int);
-int (*snd_seq_get_client_info_dylibloader_wrapper_asound)( snd_seq_t*, snd_seq_client_info_t*);
-int (*snd_seq_get_any_client_info_dylibloader_wrapper_asound)( snd_seq_t*, int, snd_seq_client_info_t*);
-int (*snd_seq_set_client_info_dylibloader_wrapper_asound)( snd_seq_t*, snd_seq_client_info_t*);
-int (*snd_seq_query_next_client_dylibloader_wrapper_asound)( snd_seq_t*, snd_seq_client_info_t*);
-size_t (*snd_seq_client_pool_sizeof_dylibloader_wrapper_asound)( void);
-int (*snd_seq_client_pool_malloc_dylibloader_wrapper_asound)( snd_seq_client_pool_t**);
-void (*snd_seq_client_pool_free_dylibloader_wrapper_asound)( snd_seq_client_pool_t*);
-void (*snd_seq_client_pool_copy_dylibloader_wrapper_asound)( snd_seq_client_pool_t*,const snd_seq_client_pool_t*);
-int (*snd_seq_client_pool_get_client_dylibloader_wrapper_asound)(const snd_seq_client_pool_t*);
-size_t (*snd_seq_client_pool_get_output_pool_dylibloader_wrapper_asound)(const snd_seq_client_pool_t*);
-size_t (*snd_seq_client_pool_get_input_pool_dylibloader_wrapper_asound)(const snd_seq_client_pool_t*);
-size_t (*snd_seq_client_pool_get_output_room_dylibloader_wrapper_asound)(const snd_seq_client_pool_t*);
-size_t (*snd_seq_client_pool_get_output_free_dylibloader_wrapper_asound)(const snd_seq_client_pool_t*);
-size_t (*snd_seq_client_pool_get_input_free_dylibloader_wrapper_asound)(const snd_seq_client_pool_t*);
-void (*snd_seq_client_pool_set_output_pool_dylibloader_wrapper_asound)( snd_seq_client_pool_t*, size_t);
-void (*snd_seq_client_pool_set_input_pool_dylibloader_wrapper_asound)( snd_seq_client_pool_t*, size_t);
-void (*snd_seq_client_pool_set_output_room_dylibloader_wrapper_asound)( snd_seq_client_pool_t*, size_t);
-int (*snd_seq_get_client_pool_dylibloader_wrapper_asound)( snd_seq_t*, snd_seq_client_pool_t*);
-int (*snd_seq_set_client_pool_dylibloader_wrapper_asound)( snd_seq_t*, snd_seq_client_pool_t*);
-size_t (*snd_seq_port_info_sizeof_dylibloader_wrapper_asound)( void);
-int (*snd_seq_port_info_malloc_dylibloader_wrapper_asound)( snd_seq_port_info_t**);
-void (*snd_seq_port_info_free_dylibloader_wrapper_asound)( snd_seq_port_info_t*);
-void (*snd_seq_port_info_copy_dylibloader_wrapper_asound)( snd_seq_port_info_t*,const snd_seq_port_info_t*);
-int (*snd_seq_port_info_get_client_dylibloader_wrapper_asound)(const snd_seq_port_info_t*);
-int (*snd_seq_port_info_get_port_dylibloader_wrapper_asound)(const snd_seq_port_info_t*);
-const snd_seq_addr_t* (*snd_seq_port_info_get_addr_dylibloader_wrapper_asound)(const snd_seq_port_info_t*);
-const char* (*snd_seq_port_info_get_name_dylibloader_wrapper_asound)(const snd_seq_port_info_t*);
-unsigned int (*snd_seq_port_info_get_capability_dylibloader_wrapper_asound)(const snd_seq_port_info_t*);
-unsigned int (*snd_seq_port_info_get_type_dylibloader_wrapper_asound)(const snd_seq_port_info_t*);
-int (*snd_seq_port_info_get_midi_channels_dylibloader_wrapper_asound)(const snd_seq_port_info_t*);
-int (*snd_seq_port_info_get_midi_voices_dylibloader_wrapper_asound)(const snd_seq_port_info_t*);
-int (*snd_seq_port_info_get_synth_voices_dylibloader_wrapper_asound)(const snd_seq_port_info_t*);
-int (*snd_seq_port_info_get_read_use_dylibloader_wrapper_asound)(const snd_seq_port_info_t*);
-int (*snd_seq_port_info_get_write_use_dylibloader_wrapper_asound)(const snd_seq_port_info_t*);
-int (*snd_seq_port_info_get_port_specified_dylibloader_wrapper_asound)(const snd_seq_port_info_t*);
-int (*snd_seq_port_info_get_timestamping_dylibloader_wrapper_asound)(const snd_seq_port_info_t*);
-int (*snd_seq_port_info_get_timestamp_real_dylibloader_wrapper_asound)(const snd_seq_port_info_t*);
-int (*snd_seq_port_info_get_timestamp_queue_dylibloader_wrapper_asound)(const snd_seq_port_info_t*);
-void (*snd_seq_port_info_set_client_dylibloader_wrapper_asound)( snd_seq_port_info_t*, int);
-void (*snd_seq_port_info_set_port_dylibloader_wrapper_asound)( snd_seq_port_info_t*, int);
-void (*snd_seq_port_info_set_addr_dylibloader_wrapper_asound)( snd_seq_port_info_t*,const snd_seq_addr_t*);
-void (*snd_seq_port_info_set_name_dylibloader_wrapper_asound)( snd_seq_port_info_t*,const char*);
-void (*snd_seq_port_info_set_capability_dylibloader_wrapper_asound)( snd_seq_port_info_t*, unsigned int);
-void (*snd_seq_port_info_set_type_dylibloader_wrapper_asound)( snd_seq_port_info_t*, unsigned int);
-void (*snd_seq_port_info_set_midi_channels_dylibloader_wrapper_asound)( snd_seq_port_info_t*, int);
-void (*snd_seq_port_info_set_midi_voices_dylibloader_wrapper_asound)( snd_seq_port_info_t*, int);
-void (*snd_seq_port_info_set_synth_voices_dylibloader_wrapper_asound)( snd_seq_port_info_t*, int);
-void (*snd_seq_port_info_set_port_specified_dylibloader_wrapper_asound)( snd_seq_port_info_t*, int);
-void (*snd_seq_port_info_set_timestamping_dylibloader_wrapper_asound)( snd_seq_port_info_t*, int);
-void (*snd_seq_port_info_set_timestamp_real_dylibloader_wrapper_asound)( snd_seq_port_info_t*, int);
-void (*snd_seq_port_info_set_timestamp_queue_dylibloader_wrapper_asound)( snd_seq_port_info_t*, int);
-int (*snd_seq_create_port_dylibloader_wrapper_asound)( snd_seq_t*, snd_seq_port_info_t*);
-int (*snd_seq_delete_port_dylibloader_wrapper_asound)( snd_seq_t*, int);
-int (*snd_seq_get_port_info_dylibloader_wrapper_asound)( snd_seq_t*, int, snd_seq_port_info_t*);
-int (*snd_seq_get_any_port_info_dylibloader_wrapper_asound)( snd_seq_t*, int, int, snd_seq_port_info_t*);
-int (*snd_seq_set_port_info_dylibloader_wrapper_asound)( snd_seq_t*, int, snd_seq_port_info_t*);
-int (*snd_seq_query_next_port_dylibloader_wrapper_asound)( snd_seq_t*, snd_seq_port_info_t*);
-size_t (*snd_seq_port_subscribe_sizeof_dylibloader_wrapper_asound)( void);
-int (*snd_seq_port_subscribe_malloc_dylibloader_wrapper_asound)( snd_seq_port_subscribe_t**);
-void (*snd_seq_port_subscribe_free_dylibloader_wrapper_asound)( snd_seq_port_subscribe_t*);
-void (*snd_seq_port_subscribe_copy_dylibloader_wrapper_asound)( snd_seq_port_subscribe_t*,const snd_seq_port_subscribe_t*);
-const snd_seq_addr_t* (*snd_seq_port_subscribe_get_sender_dylibloader_wrapper_asound)(const snd_seq_port_subscribe_t*);
-const snd_seq_addr_t* (*snd_seq_port_subscribe_get_dest_dylibloader_wrapper_asound)(const snd_seq_port_subscribe_t*);
-int (*snd_seq_port_subscribe_get_queue_dylibloader_wrapper_asound)(const snd_seq_port_subscribe_t*);
-int (*snd_seq_port_subscribe_get_exclusive_dylibloader_wrapper_asound)(const snd_seq_port_subscribe_t*);
-int (*snd_seq_port_subscribe_get_time_update_dylibloader_wrapper_asound)(const snd_seq_port_subscribe_t*);
-int (*snd_seq_port_subscribe_get_time_real_dylibloader_wrapper_asound)(const snd_seq_port_subscribe_t*);
-void (*snd_seq_port_subscribe_set_sender_dylibloader_wrapper_asound)( snd_seq_port_subscribe_t*,const snd_seq_addr_t*);
-void (*snd_seq_port_subscribe_set_dest_dylibloader_wrapper_asound)( snd_seq_port_subscribe_t*,const snd_seq_addr_t*);
-void (*snd_seq_port_subscribe_set_queue_dylibloader_wrapper_asound)( snd_seq_port_subscribe_t*, int);
-void (*snd_seq_port_subscribe_set_exclusive_dylibloader_wrapper_asound)( snd_seq_port_subscribe_t*, int);
-void (*snd_seq_port_subscribe_set_time_update_dylibloader_wrapper_asound)( snd_seq_port_subscribe_t*, int);
-void (*snd_seq_port_subscribe_set_time_real_dylibloader_wrapper_asound)( snd_seq_port_subscribe_t*, int);
-int (*snd_seq_get_port_subscription_dylibloader_wrapper_asound)( snd_seq_t*, snd_seq_port_subscribe_t*);
-int (*snd_seq_subscribe_port_dylibloader_wrapper_asound)( snd_seq_t*, snd_seq_port_subscribe_t*);
-int (*snd_seq_unsubscribe_port_dylibloader_wrapper_asound)( snd_seq_t*, snd_seq_port_subscribe_t*);
-size_t (*snd_seq_query_subscribe_sizeof_dylibloader_wrapper_asound)( void);
-int (*snd_seq_query_subscribe_malloc_dylibloader_wrapper_asound)( snd_seq_query_subscribe_t**);
-void (*snd_seq_query_subscribe_free_dylibloader_wrapper_asound)( snd_seq_query_subscribe_t*);
-void (*snd_seq_query_subscribe_copy_dylibloader_wrapper_asound)( snd_seq_query_subscribe_t*,const snd_seq_query_subscribe_t*);
-int (*snd_seq_query_subscribe_get_client_dylibloader_wrapper_asound)(const snd_seq_query_subscribe_t*);
-int (*snd_seq_query_subscribe_get_port_dylibloader_wrapper_asound)(const snd_seq_query_subscribe_t*);
-const snd_seq_addr_t* (*snd_seq_query_subscribe_get_root_dylibloader_wrapper_asound)(const snd_seq_query_subscribe_t*);
-snd_seq_query_subs_type_t (*snd_seq_query_subscribe_get_type_dylibloader_wrapper_asound)(const snd_seq_query_subscribe_t*);
-int (*snd_seq_query_subscribe_get_index_dylibloader_wrapper_asound)(const snd_seq_query_subscribe_t*);
-int (*snd_seq_query_subscribe_get_num_subs_dylibloader_wrapper_asound)(const snd_seq_query_subscribe_t*);
-const snd_seq_addr_t* (*snd_seq_query_subscribe_get_addr_dylibloader_wrapper_asound)(const snd_seq_query_subscribe_t*);
-int (*snd_seq_query_subscribe_get_queue_dylibloader_wrapper_asound)(const snd_seq_query_subscribe_t*);
-int (*snd_seq_query_subscribe_get_exclusive_dylibloader_wrapper_asound)(const snd_seq_query_subscribe_t*);
-int (*snd_seq_query_subscribe_get_time_update_dylibloader_wrapper_asound)(const snd_seq_query_subscribe_t*);
-int (*snd_seq_query_subscribe_get_time_real_dylibloader_wrapper_asound)(const snd_seq_query_subscribe_t*);
-void (*snd_seq_query_subscribe_set_client_dylibloader_wrapper_asound)( snd_seq_query_subscribe_t*, int);
-void (*snd_seq_query_subscribe_set_port_dylibloader_wrapper_asound)( snd_seq_query_subscribe_t*, int);
-void (*snd_seq_query_subscribe_set_root_dylibloader_wrapper_asound)( snd_seq_query_subscribe_t*,const snd_seq_addr_t*);
-void (*snd_seq_query_subscribe_set_type_dylibloader_wrapper_asound)( snd_seq_query_subscribe_t*, snd_seq_query_subs_type_t);
-void (*snd_seq_query_subscribe_set_index_dylibloader_wrapper_asound)( snd_seq_query_subscribe_t*, int);
-int (*snd_seq_query_port_subscribers_dylibloader_wrapper_asound)( snd_seq_t*, snd_seq_query_subscribe_t*);
-size_t (*snd_seq_queue_info_sizeof_dylibloader_wrapper_asound)( void);
-int (*snd_seq_queue_info_malloc_dylibloader_wrapper_asound)( snd_seq_queue_info_t**);
-void (*snd_seq_queue_info_free_dylibloader_wrapper_asound)( snd_seq_queue_info_t*);
-void (*snd_seq_queue_info_copy_dylibloader_wrapper_asound)( snd_seq_queue_info_t*,const snd_seq_queue_info_t*);
-int (*snd_seq_queue_info_get_queue_dylibloader_wrapper_asound)(const snd_seq_queue_info_t*);
-const char* (*snd_seq_queue_info_get_name_dylibloader_wrapper_asound)(const snd_seq_queue_info_t*);
-int (*snd_seq_queue_info_get_owner_dylibloader_wrapper_asound)(const snd_seq_queue_info_t*);
-int (*snd_seq_queue_info_get_locked_dylibloader_wrapper_asound)(const snd_seq_queue_info_t*);
-unsigned int (*snd_seq_queue_info_get_flags_dylibloader_wrapper_asound)(const snd_seq_queue_info_t*);
-void (*snd_seq_queue_info_set_name_dylibloader_wrapper_asound)( snd_seq_queue_info_t*,const char*);
-void (*snd_seq_queue_info_set_owner_dylibloader_wrapper_asound)( snd_seq_queue_info_t*, int);
-void (*snd_seq_queue_info_set_locked_dylibloader_wrapper_asound)( snd_seq_queue_info_t*, int);
-void (*snd_seq_queue_info_set_flags_dylibloader_wrapper_asound)( snd_seq_queue_info_t*, unsigned int);
-int (*snd_seq_create_queue_dylibloader_wrapper_asound)( snd_seq_t*, snd_seq_queue_info_t*);
-int (*snd_seq_alloc_named_queue_dylibloader_wrapper_asound)( snd_seq_t*,const char*);
-int (*snd_seq_alloc_queue_dylibloader_wrapper_asound)( snd_seq_t*);
-int (*snd_seq_free_queue_dylibloader_wrapper_asound)( snd_seq_t*, int);
-int (*snd_seq_get_queue_info_dylibloader_wrapper_asound)( snd_seq_t*, int, snd_seq_queue_info_t*);
-int (*snd_seq_set_queue_info_dylibloader_wrapper_asound)( snd_seq_t*, int, snd_seq_queue_info_t*);
-int (*snd_seq_query_named_queue_dylibloader_wrapper_asound)( snd_seq_t*,const char*);
-int (*snd_seq_get_queue_usage_dylibloader_wrapper_asound)( snd_seq_t*, int);
-int (*snd_seq_set_queue_usage_dylibloader_wrapper_asound)( snd_seq_t*, int, int);
-size_t (*snd_seq_queue_status_sizeof_dylibloader_wrapper_asound)( void);
-int (*snd_seq_queue_status_malloc_dylibloader_wrapper_asound)( snd_seq_queue_status_t**);
-void (*snd_seq_queue_status_free_dylibloader_wrapper_asound)( snd_seq_queue_status_t*);
-void (*snd_seq_queue_status_copy_dylibloader_wrapper_asound)( snd_seq_queue_status_t*,const snd_seq_queue_status_t*);
-int (*snd_seq_queue_status_get_queue_dylibloader_wrapper_asound)(const snd_seq_queue_status_t*);
-int (*snd_seq_queue_status_get_events_dylibloader_wrapper_asound)(const snd_seq_queue_status_t*);
-snd_seq_tick_time_t (*snd_seq_queue_status_get_tick_time_dylibloader_wrapper_asound)(const snd_seq_queue_status_t*);
-const snd_seq_real_time_t* (*snd_seq_queue_status_get_real_time_dylibloader_wrapper_asound)(const snd_seq_queue_status_t*);
-unsigned int (*snd_seq_queue_status_get_status_dylibloader_wrapper_asound)(const snd_seq_queue_status_t*);
-int (*snd_seq_get_queue_status_dylibloader_wrapper_asound)( snd_seq_t*, int, snd_seq_queue_status_t*);
-size_t (*snd_seq_queue_tempo_sizeof_dylibloader_wrapper_asound)( void);
-int (*snd_seq_queue_tempo_malloc_dylibloader_wrapper_asound)( snd_seq_queue_tempo_t**);
-void (*snd_seq_queue_tempo_free_dylibloader_wrapper_asound)( snd_seq_queue_tempo_t*);
-void (*snd_seq_queue_tempo_copy_dylibloader_wrapper_asound)( snd_seq_queue_tempo_t*,const snd_seq_queue_tempo_t*);
-int (*snd_seq_queue_tempo_get_queue_dylibloader_wrapper_asound)(const snd_seq_queue_tempo_t*);
-unsigned int (*snd_seq_queue_tempo_get_tempo_dylibloader_wrapper_asound)(const snd_seq_queue_tempo_t*);
-int (*snd_seq_queue_tempo_get_ppq_dylibloader_wrapper_asound)(const snd_seq_queue_tempo_t*);
-unsigned int (*snd_seq_queue_tempo_get_skew_dylibloader_wrapper_asound)(const snd_seq_queue_tempo_t*);
-unsigned int (*snd_seq_queue_tempo_get_skew_base_dylibloader_wrapper_asound)(const snd_seq_queue_tempo_t*);
-void (*snd_seq_queue_tempo_set_tempo_dylibloader_wrapper_asound)( snd_seq_queue_tempo_t*, unsigned int);
-void (*snd_seq_queue_tempo_set_ppq_dylibloader_wrapper_asound)( snd_seq_queue_tempo_t*, int);
-void (*snd_seq_queue_tempo_set_skew_dylibloader_wrapper_asound)( snd_seq_queue_tempo_t*, unsigned int);
-void (*snd_seq_queue_tempo_set_skew_base_dylibloader_wrapper_asound)( snd_seq_queue_tempo_t*, unsigned int);
-int (*snd_seq_get_queue_tempo_dylibloader_wrapper_asound)( snd_seq_t*, int, snd_seq_queue_tempo_t*);
-int (*snd_seq_set_queue_tempo_dylibloader_wrapper_asound)( snd_seq_t*, int, snd_seq_queue_tempo_t*);
-size_t (*snd_seq_queue_timer_sizeof_dylibloader_wrapper_asound)( void);
-int (*snd_seq_queue_timer_malloc_dylibloader_wrapper_asound)( snd_seq_queue_timer_t**);
-void (*snd_seq_queue_timer_free_dylibloader_wrapper_asound)( snd_seq_queue_timer_t*);
-void (*snd_seq_queue_timer_copy_dylibloader_wrapper_asound)( snd_seq_queue_timer_t*,const snd_seq_queue_timer_t*);
-int (*snd_seq_queue_timer_get_queue_dylibloader_wrapper_asound)(const snd_seq_queue_timer_t*);
-snd_seq_queue_timer_type_t (*snd_seq_queue_timer_get_type_dylibloader_wrapper_asound)(const snd_seq_queue_timer_t*);
-const snd_timer_id_t* (*snd_seq_queue_timer_get_id_dylibloader_wrapper_asound)(const snd_seq_queue_timer_t*);
-unsigned int (*snd_seq_queue_timer_get_resolution_dylibloader_wrapper_asound)(const snd_seq_queue_timer_t*);
-void (*snd_seq_queue_timer_set_type_dylibloader_wrapper_asound)( snd_seq_queue_timer_t*, snd_seq_queue_timer_type_t);
-void (*snd_seq_queue_timer_set_id_dylibloader_wrapper_asound)( snd_seq_queue_timer_t*,const snd_timer_id_t*);
-void (*snd_seq_queue_timer_set_resolution_dylibloader_wrapper_asound)( snd_seq_queue_timer_t*, unsigned int);
-int (*snd_seq_get_queue_timer_dylibloader_wrapper_asound)( snd_seq_t*, int, snd_seq_queue_timer_t*);
-int (*snd_seq_set_queue_timer_dylibloader_wrapper_asound)( snd_seq_t*, int, snd_seq_queue_timer_t*);
-int (*snd_seq_free_event_dylibloader_wrapper_asound)( snd_seq_event_t*);
-ssize_t (*snd_seq_event_length_dylibloader_wrapper_asound)( snd_seq_event_t*);
-int (*snd_seq_event_output_dylibloader_wrapper_asound)( snd_seq_t*, snd_seq_event_t*);
-int (*snd_seq_event_output_buffer_dylibloader_wrapper_asound)( snd_seq_t*, snd_seq_event_t*);
-int (*snd_seq_event_output_direct_dylibloader_wrapper_asound)( snd_seq_t*, snd_seq_event_t*);
-int (*snd_seq_event_input_dylibloader_wrapper_asound)( snd_seq_t*, snd_seq_event_t**);
-int (*snd_seq_event_input_pending_dylibloader_wrapper_asound)( snd_seq_t*, int);
-int (*snd_seq_drain_output_dylibloader_wrapper_asound)( snd_seq_t*);
-int (*snd_seq_event_output_pending_dylibloader_wrapper_asound)( snd_seq_t*);
-int (*snd_seq_extract_output_dylibloader_wrapper_asound)( snd_seq_t*, snd_seq_event_t**);
-int (*snd_seq_drop_output_dylibloader_wrapper_asound)( snd_seq_t*);
-int (*snd_seq_drop_output_buffer_dylibloader_wrapper_asound)( snd_seq_t*);
-int (*snd_seq_drop_input_dylibloader_wrapper_asound)( snd_seq_t*);
-int (*snd_seq_drop_input_buffer_dylibloader_wrapper_asound)( snd_seq_t*);
-size_t (*snd_seq_remove_events_sizeof_dylibloader_wrapper_asound)( void);
-int (*snd_seq_remove_events_malloc_dylibloader_wrapper_asound)( snd_seq_remove_events_t**);
-void (*snd_seq_remove_events_free_dylibloader_wrapper_asound)( snd_seq_remove_events_t*);
-void (*snd_seq_remove_events_copy_dylibloader_wrapper_asound)( snd_seq_remove_events_t*,const snd_seq_remove_events_t*);
-unsigned int (*snd_seq_remove_events_get_condition_dylibloader_wrapper_asound)(const snd_seq_remove_events_t*);
-int (*snd_seq_remove_events_get_queue_dylibloader_wrapper_asound)(const snd_seq_remove_events_t*);
-const snd_seq_timestamp_t* (*snd_seq_remove_events_get_time_dylibloader_wrapper_asound)(const snd_seq_remove_events_t*);
-const snd_seq_addr_t* (*snd_seq_remove_events_get_dest_dylibloader_wrapper_asound)(const snd_seq_remove_events_t*);
-int (*snd_seq_remove_events_get_channel_dylibloader_wrapper_asound)(const snd_seq_remove_events_t*);
-int (*snd_seq_remove_events_get_event_type_dylibloader_wrapper_asound)(const snd_seq_remove_events_t*);
-int (*snd_seq_remove_events_get_tag_dylibloader_wrapper_asound)(const snd_seq_remove_events_t*);
-void (*snd_seq_remove_events_set_condition_dylibloader_wrapper_asound)( snd_seq_remove_events_t*, unsigned int);
-void (*snd_seq_remove_events_set_queue_dylibloader_wrapper_asound)( snd_seq_remove_events_t*, int);
-void (*snd_seq_remove_events_set_time_dylibloader_wrapper_asound)( snd_seq_remove_events_t*,const snd_seq_timestamp_t*);
-void (*snd_seq_remove_events_set_dest_dylibloader_wrapper_asound)( snd_seq_remove_events_t*,const snd_seq_addr_t*);
-void (*snd_seq_remove_events_set_channel_dylibloader_wrapper_asound)( snd_seq_remove_events_t*, int);
-void (*snd_seq_remove_events_set_event_type_dylibloader_wrapper_asound)( snd_seq_remove_events_t*, int);
-void (*snd_seq_remove_events_set_tag_dylibloader_wrapper_asound)( snd_seq_remove_events_t*, int);
-int (*snd_seq_remove_events_dylibloader_wrapper_asound)( snd_seq_t*, snd_seq_remove_events_t*);
-void (*snd_seq_set_bit_dylibloader_wrapper_asound)( int, void*);
-void (*snd_seq_unset_bit_dylibloader_wrapper_asound)( int, void*);
-int (*snd_seq_change_bit_dylibloader_wrapper_asound)( int, void*);
-int (*snd_seq_get_bit_dylibloader_wrapper_asound)( int, void*);
-int (*snd_seq_control_queue_dylibloader_wrapper_asound)( snd_seq_t*, int, int, int, snd_seq_event_t*);
-int (*snd_seq_create_simple_port_dylibloader_wrapper_asound)( snd_seq_t*,const char*, unsigned int, unsigned int);
-int (*snd_seq_delete_simple_port_dylibloader_wrapper_asound)( snd_seq_t*, int);
-int (*snd_seq_connect_from_dylibloader_wrapper_asound)( snd_seq_t*, int, int, int);
-int (*snd_seq_connect_to_dylibloader_wrapper_asound)( snd_seq_t*, int, int, int);
-int (*snd_seq_disconnect_from_dylibloader_wrapper_asound)( snd_seq_t*, int, int, int);
-int (*snd_seq_disconnect_to_dylibloader_wrapper_asound)( snd_seq_t*, int, int, int);
-int (*snd_seq_set_client_name_dylibloader_wrapper_asound)( snd_seq_t*,const char*);
-int (*snd_seq_set_client_event_filter_dylibloader_wrapper_asound)( snd_seq_t*, int);
-int (*snd_seq_set_client_pool_output_dylibloader_wrapper_asound)( snd_seq_t*, size_t);
-int (*snd_seq_set_client_pool_output_room_dylibloader_wrapper_asound)( snd_seq_t*, size_t);
-int (*snd_seq_set_client_pool_input_dylibloader_wrapper_asound)( snd_seq_t*, size_t);
-int (*snd_seq_sync_output_queue_dylibloader_wrapper_asound)( snd_seq_t*);
-int (*snd_seq_parse_address_dylibloader_wrapper_asound)( snd_seq_t*, snd_seq_addr_t*,const char*);
-int (*snd_seq_reset_pool_output_dylibloader_wrapper_asound)( snd_seq_t*);
-int (*snd_seq_reset_pool_input_dylibloader_wrapper_asound)( snd_seq_t*);
-int (*snd_midi_event_new_dylibloader_wrapper_asound)( size_t, snd_midi_event_t**);
-int (*snd_midi_event_resize_buffer_dylibloader_wrapper_asound)( snd_midi_event_t*, size_t);
-void (*snd_midi_event_free_dylibloader_wrapper_asound)( snd_midi_event_t*);
-void (*snd_midi_event_init_dylibloader_wrapper_asound)( snd_midi_event_t*);
-void (*snd_midi_event_reset_encode_dylibloader_wrapper_asound)( snd_midi_event_t*);
-void (*snd_midi_event_reset_decode_dylibloader_wrapper_asound)( snd_midi_event_t*);
-void (*snd_midi_event_no_status_dylibloader_wrapper_asound)( snd_midi_event_t*, int);
-long (*snd_midi_event_encode_dylibloader_wrapper_asound)( snd_midi_event_t*,const unsigned char*, long, snd_seq_event_t*);
-int (*snd_midi_event_encode_byte_dylibloader_wrapper_asound)( snd_midi_event_t*, int, snd_seq_event_t*);
-long (*snd_midi_event_decode_dylibloader_wrapper_asound)( snd_midi_event_t*, unsigned char*, long,const snd_seq_event_t*);
+snd_config_iterator_t (*snd_config_iterator_end_dylibloader_wrapper_asound)(const snd_config_t *);
+snd_config_t *(*snd_config_iterator_entry_dylibloader_wrapper_asound)(const snd_config_iterator_t);
+int (*snd_config_get_bool_ascii_dylibloader_wrapper_asound)(const char *);
+int (*snd_config_get_bool_dylibloader_wrapper_asound)(const snd_config_t *);
+int (*snd_config_get_ctl_iface_ascii_dylibloader_wrapper_asound)(const char *);
+int (*snd_config_get_ctl_iface_dylibloader_wrapper_asound)(const snd_config_t *);
+int (*snd_names_list_dylibloader_wrapper_asound)(const char *, snd_devname_t **);
+void (*snd_names_list_free_dylibloader_wrapper_asound)(snd_devname_t *);
+int (*snd_pcm_open_dylibloader_wrapper_asound)(snd_pcm_t **, const char *, snd_pcm_stream_t, int);
+int (*snd_pcm_open_lconf_dylibloader_wrapper_asound)(snd_pcm_t **, const char *, snd_pcm_stream_t, int, snd_config_t *);
+int (*snd_pcm_open_fallback_dylibloader_wrapper_asound)(snd_pcm_t **, snd_config_t *, const char *, const char *, snd_pcm_stream_t, int);
+int (*snd_pcm_close_dylibloader_wrapper_asound)(snd_pcm_t *);
+const char *(*snd_pcm_name_dylibloader_wrapper_asound)(snd_pcm_t *);
+snd_pcm_type_t (*snd_pcm_type_dylibloader_wrapper_asound)(snd_pcm_t *);
+snd_pcm_stream_t (*snd_pcm_stream_dylibloader_wrapper_asound)(snd_pcm_t *);
+int (*snd_pcm_poll_descriptors_count_dylibloader_wrapper_asound)(snd_pcm_t *);
+int (*snd_pcm_poll_descriptors_dylibloader_wrapper_asound)(snd_pcm_t *, struct pollfd *, unsigned int);
+int (*snd_pcm_poll_descriptors_revents_dylibloader_wrapper_asound)(snd_pcm_t *, struct pollfd *, unsigned int, unsigned short *);
+int (*snd_pcm_nonblock_dylibloader_wrapper_asound)(snd_pcm_t *, int);
+int (*snd_async_add_pcm_handler_dylibloader_wrapper_asound)(snd_async_handler_t **, snd_pcm_t *, snd_async_callback_t, void *);
+snd_pcm_t *(*snd_async_handler_get_pcm_dylibloader_wrapper_asound)(snd_async_handler_t *);
+int (*snd_pcm_info_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_info_t *);
+int (*snd_pcm_hw_params_current_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *);
+int (*snd_pcm_hw_params_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *);
+int (*snd_pcm_hw_free_dylibloader_wrapper_asound)(snd_pcm_t *);
+int (*snd_pcm_sw_params_current_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_sw_params_t *);
+int (*snd_pcm_sw_params_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_sw_params_t *);
+int (*snd_pcm_prepare_dylibloader_wrapper_asound)(snd_pcm_t *);
+int (*snd_pcm_reset_dylibloader_wrapper_asound)(snd_pcm_t *);
+int (*snd_pcm_status_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_status_t *);
+int (*snd_pcm_start_dylibloader_wrapper_asound)(snd_pcm_t *);
+int (*snd_pcm_drop_dylibloader_wrapper_asound)(snd_pcm_t *);
+int (*snd_pcm_drain_dylibloader_wrapper_asound)(snd_pcm_t *);
+int (*snd_pcm_pause_dylibloader_wrapper_asound)(snd_pcm_t *, int);
+snd_pcm_state_t (*snd_pcm_state_dylibloader_wrapper_asound)(snd_pcm_t *);
+int (*snd_pcm_hwsync_dylibloader_wrapper_asound)(snd_pcm_t *);
+int (*snd_pcm_delay_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_sframes_t *);
+int (*snd_pcm_resume_dylibloader_wrapper_asound)(snd_pcm_t *);
+int (*snd_pcm_htimestamp_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_uframes_t *, snd_htimestamp_t *);
+snd_pcm_sframes_t (*snd_pcm_avail_dylibloader_wrapper_asound)(snd_pcm_t *);
+snd_pcm_sframes_t (*snd_pcm_avail_update_dylibloader_wrapper_asound)(snd_pcm_t *);
+int (*snd_pcm_avail_delay_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_sframes_t *, snd_pcm_sframes_t *);
+snd_pcm_sframes_t (*snd_pcm_rewindable_dylibloader_wrapper_asound)(snd_pcm_t *);
+snd_pcm_sframes_t (*snd_pcm_rewind_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_uframes_t);
+snd_pcm_sframes_t (*snd_pcm_forwardable_dylibloader_wrapper_asound)(snd_pcm_t *);
+snd_pcm_sframes_t (*snd_pcm_forward_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_uframes_t);
+snd_pcm_sframes_t (*snd_pcm_writei_dylibloader_wrapper_asound)(snd_pcm_t *, const void *, snd_pcm_uframes_t);
+snd_pcm_sframes_t (*snd_pcm_readi_dylibloader_wrapper_asound)(snd_pcm_t *, void *, snd_pcm_uframes_t);
+snd_pcm_sframes_t (*snd_pcm_writen_dylibloader_wrapper_asound)(snd_pcm_t *, void **, snd_pcm_uframes_t);
+snd_pcm_sframes_t (*snd_pcm_readn_dylibloader_wrapper_asound)(snd_pcm_t *, void **, snd_pcm_uframes_t);
+int (*snd_pcm_wait_dylibloader_wrapper_asound)(snd_pcm_t *, int);
+int (*snd_pcm_link_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_t *);
+int (*snd_pcm_unlink_dylibloader_wrapper_asound)(snd_pcm_t *);
+snd_pcm_chmap_query_t **(*snd_pcm_query_chmaps_dylibloader_wrapper_asound)(snd_pcm_t *);
+snd_pcm_chmap_query_t **(*snd_pcm_query_chmaps_from_hw_dylibloader_wrapper_asound)(int, int, int, snd_pcm_stream_t);
+void (*snd_pcm_free_chmaps_dylibloader_wrapper_asound)(snd_pcm_chmap_query_t **);
+snd_pcm_chmap_t *(*snd_pcm_get_chmap_dylibloader_wrapper_asound)(snd_pcm_t *);
+int (*snd_pcm_set_chmap_dylibloader_wrapper_asound)(snd_pcm_t *, const snd_pcm_chmap_t *);
+const char *(*snd_pcm_chmap_type_name_dylibloader_wrapper_asound)(enum snd_pcm_chmap_type);
+const char *(*snd_pcm_chmap_name_dylibloader_wrapper_asound)(enum snd_pcm_chmap_position);
+const char *(*snd_pcm_chmap_long_name_dylibloader_wrapper_asound)(enum snd_pcm_chmap_position);
+int (*snd_pcm_chmap_print_dylibloader_wrapper_asound)(const snd_pcm_chmap_t *, size_t, char *);
+unsigned int (*snd_pcm_chmap_from_string_dylibloader_wrapper_asound)(const char *);
+snd_pcm_chmap_t *(*snd_pcm_chmap_parse_string_dylibloader_wrapper_asound)(const char *);
+int (*snd_pcm_recover_dylibloader_wrapper_asound)(snd_pcm_t *, int, int);
+int (*snd_pcm_set_params_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_format_t, snd_pcm_access_t, unsigned int, unsigned int, int, unsigned int);
+int (*snd_pcm_get_params_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_uframes_t *, snd_pcm_uframes_t *);
+size_t (*snd_pcm_info_sizeof_dylibloader_wrapper_asound)(void);
+int (*snd_pcm_info_malloc_dylibloader_wrapper_asound)(snd_pcm_info_t **);
+void (*snd_pcm_info_free_dylibloader_wrapper_asound)(snd_pcm_info_t *);
+void (*snd_pcm_info_copy_dylibloader_wrapper_asound)(snd_pcm_info_t *, const snd_pcm_info_t *);
+unsigned int (*snd_pcm_info_get_device_dylibloader_wrapper_asound)(const snd_pcm_info_t *);
+unsigned int (*snd_pcm_info_get_subdevice_dylibloader_wrapper_asound)(const snd_pcm_info_t *);
+snd_pcm_stream_t (*snd_pcm_info_get_stream_dylibloader_wrapper_asound)(const snd_pcm_info_t *);
+int (*snd_pcm_info_get_card_dylibloader_wrapper_asound)(const snd_pcm_info_t *);
+const char *(*snd_pcm_info_get_id_dylibloader_wrapper_asound)(const snd_pcm_info_t *);
+const char *(*snd_pcm_info_get_name_dylibloader_wrapper_asound)(const snd_pcm_info_t *);
+const char *(*snd_pcm_info_get_subdevice_name_dylibloader_wrapper_asound)(const snd_pcm_info_t *);
+snd_pcm_class_t (*snd_pcm_info_get_class_dylibloader_wrapper_asound)(const snd_pcm_info_t *);
+snd_pcm_subclass_t (*snd_pcm_info_get_subclass_dylibloader_wrapper_asound)(const snd_pcm_info_t *);
+unsigned int (*snd_pcm_info_get_subdevices_count_dylibloader_wrapper_asound)(const snd_pcm_info_t *);
+unsigned int (*snd_pcm_info_get_subdevices_avail_dylibloader_wrapper_asound)(const snd_pcm_info_t *);
+snd_pcm_sync_id_t (*snd_pcm_info_get_sync_dylibloader_wrapper_asound)(const snd_pcm_info_t *);
+void (*snd_pcm_info_set_device_dylibloader_wrapper_asound)(snd_pcm_info_t *, unsigned int);
+void (*snd_pcm_info_set_subdevice_dylibloader_wrapper_asound)(snd_pcm_info_t *, unsigned int);
+void (*snd_pcm_info_set_stream_dylibloader_wrapper_asound)(snd_pcm_info_t *, snd_pcm_stream_t);
+int (*snd_pcm_hw_params_any_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *);
+int (*snd_pcm_hw_params_can_mmap_sample_resolution_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *);
+int (*snd_pcm_hw_params_is_double_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *);
+int (*snd_pcm_hw_params_is_batch_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *);
+int (*snd_pcm_hw_params_is_block_transfer_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *);
+int (*snd_pcm_hw_params_is_monotonic_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *);
+int (*snd_pcm_hw_params_can_overrange_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *);
+int (*snd_pcm_hw_params_can_pause_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *);
+int (*snd_pcm_hw_params_can_resume_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *);
+int (*snd_pcm_hw_params_is_half_duplex_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *);
+int (*snd_pcm_hw_params_is_joint_duplex_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *);
+int (*snd_pcm_hw_params_can_sync_start_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *);
+int (*snd_pcm_hw_params_can_disable_period_wakeup_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *);
+int (*snd_pcm_hw_params_supports_audio_wallclock_ts_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *);
+int (*snd_pcm_hw_params_supports_audio_ts_type_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *, int);
+int (*snd_pcm_hw_params_get_rate_numden_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *, unsigned int *, unsigned int *);
+int (*snd_pcm_hw_params_get_sbits_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *);
+int (*snd_pcm_hw_params_get_fifo_size_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *);
+size_t (*snd_pcm_hw_params_sizeof_dylibloader_wrapper_asound)(void);
+int (*snd_pcm_hw_params_malloc_dylibloader_wrapper_asound)(snd_pcm_hw_params_t **);
+void (*snd_pcm_hw_params_free_dylibloader_wrapper_asound)(snd_pcm_hw_params_t *);
+void (*snd_pcm_hw_params_copy_dylibloader_wrapper_asound)(snd_pcm_hw_params_t *, const snd_pcm_hw_params_t *);
+int (*snd_pcm_hw_params_get_access_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *, snd_pcm_access_t *);
+int (*snd_pcm_hw_params_test_access_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, snd_pcm_access_t);
+int (*snd_pcm_hw_params_set_access_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, snd_pcm_access_t);
+int (*snd_pcm_hw_params_set_access_first_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, snd_pcm_access_t *);
+int (*snd_pcm_hw_params_set_access_last_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, snd_pcm_access_t *);
+int (*snd_pcm_hw_params_set_access_mask_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, snd_pcm_access_mask_t *);
+int (*snd_pcm_hw_params_get_access_mask_dylibloader_wrapper_asound)(snd_pcm_hw_params_t *, snd_pcm_access_mask_t *);
+int (*snd_pcm_hw_params_get_format_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *, snd_pcm_format_t *);
+int (*snd_pcm_hw_params_test_format_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, snd_pcm_format_t);
+int (*snd_pcm_hw_params_set_format_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, snd_pcm_format_t);
+int (*snd_pcm_hw_params_set_format_first_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, snd_pcm_format_t *);
+int (*snd_pcm_hw_params_set_format_last_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, snd_pcm_format_t *);
+int (*snd_pcm_hw_params_set_format_mask_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, snd_pcm_format_mask_t *);
+void (*snd_pcm_hw_params_get_format_mask_dylibloader_wrapper_asound)(snd_pcm_hw_params_t *, snd_pcm_format_mask_t *);
+int (*snd_pcm_hw_params_get_subformat_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *, snd_pcm_subformat_t *);
+int (*snd_pcm_hw_params_test_subformat_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, snd_pcm_subformat_t);
+int (*snd_pcm_hw_params_set_subformat_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, snd_pcm_subformat_t);
+int (*snd_pcm_hw_params_set_subformat_first_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, snd_pcm_subformat_t *);
+int (*snd_pcm_hw_params_set_subformat_last_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, snd_pcm_subformat_t *);
+int (*snd_pcm_hw_params_set_subformat_mask_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, snd_pcm_subformat_mask_t *);
+void (*snd_pcm_hw_params_get_subformat_mask_dylibloader_wrapper_asound)(snd_pcm_hw_params_t *, snd_pcm_subformat_mask_t *);
+int (*snd_pcm_hw_params_get_channels_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *, unsigned int *);
+int (*snd_pcm_hw_params_get_channels_min_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *, unsigned int *);
+int (*snd_pcm_hw_params_get_channels_max_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *, unsigned int *);
+int (*snd_pcm_hw_params_test_channels_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int);
+int (*snd_pcm_hw_params_set_channels_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int);
+int (*snd_pcm_hw_params_set_channels_min_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int *);
+int (*snd_pcm_hw_params_set_channels_max_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int *);
+int (*snd_pcm_hw_params_set_channels_minmax_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int *, unsigned int *);
+int (*snd_pcm_hw_params_set_channels_near_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int *);
+int (*snd_pcm_hw_params_set_channels_first_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int *);
+int (*snd_pcm_hw_params_set_channels_last_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int *);
+int (*snd_pcm_hw_params_get_rate_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *, unsigned int *, int *);
+int (*snd_pcm_hw_params_get_rate_min_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *, unsigned int *, int *);
+int (*snd_pcm_hw_params_get_rate_max_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *, unsigned int *, int *);
+int (*snd_pcm_hw_params_test_rate_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int, int);
+int (*snd_pcm_hw_params_set_rate_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int, int);
+int (*snd_pcm_hw_params_set_rate_min_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int *, int *);
+int (*snd_pcm_hw_params_set_rate_max_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int *, int *);
+int (*snd_pcm_hw_params_set_rate_minmax_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int *, int *, unsigned int *, int *);
+int (*snd_pcm_hw_params_set_rate_near_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int *, int *);
+int (*snd_pcm_hw_params_set_rate_first_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int *, int *);
+int (*snd_pcm_hw_params_set_rate_last_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int *, int *);
+int (*snd_pcm_hw_params_set_rate_resample_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int);
+int (*snd_pcm_hw_params_get_rate_resample_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int *);
+int (*snd_pcm_hw_params_set_export_buffer_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int);
+int (*snd_pcm_hw_params_get_export_buffer_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int *);
+int (*snd_pcm_hw_params_set_period_wakeup_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int);
+int (*snd_pcm_hw_params_get_period_wakeup_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int *);
+int (*snd_pcm_hw_params_get_period_time_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *, unsigned int *, int *);
+int (*snd_pcm_hw_params_get_period_time_min_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *, unsigned int *, int *);
+int (*snd_pcm_hw_params_get_period_time_max_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *, unsigned int *, int *);
+int (*snd_pcm_hw_params_test_period_time_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int, int);
+int (*snd_pcm_hw_params_set_period_time_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int, int);
+int (*snd_pcm_hw_params_set_period_time_min_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int *, int *);
+int (*snd_pcm_hw_params_set_period_time_max_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int *, int *);
+int (*snd_pcm_hw_params_set_period_time_minmax_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int *, int *, unsigned int *, int *);
+int (*snd_pcm_hw_params_set_period_time_near_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int *, int *);
+int (*snd_pcm_hw_params_set_period_time_first_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int *, int *);
+int (*snd_pcm_hw_params_set_period_time_last_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int *, int *);
+int (*snd_pcm_hw_params_get_period_size_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *, snd_pcm_uframes_t *, int *);
+int (*snd_pcm_hw_params_get_period_size_min_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *, snd_pcm_uframes_t *, int *);
+int (*snd_pcm_hw_params_get_period_size_max_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *, snd_pcm_uframes_t *, int *);
+int (*snd_pcm_hw_params_test_period_size_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, snd_pcm_uframes_t, int);
+int (*snd_pcm_hw_params_set_period_size_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, snd_pcm_uframes_t, int);
+int (*snd_pcm_hw_params_set_period_size_min_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, snd_pcm_uframes_t *, int *);
+int (*snd_pcm_hw_params_set_period_size_max_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, snd_pcm_uframes_t *, int *);
+int (*snd_pcm_hw_params_set_period_size_minmax_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, snd_pcm_uframes_t *, int *, snd_pcm_uframes_t *, int *);
+int (*snd_pcm_hw_params_set_period_size_near_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, snd_pcm_uframes_t *, int *);
+int (*snd_pcm_hw_params_set_period_size_first_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, snd_pcm_uframes_t *, int *);
+int (*snd_pcm_hw_params_set_period_size_last_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, snd_pcm_uframes_t *, int *);
+int (*snd_pcm_hw_params_set_period_size_integer_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *);
+int (*snd_pcm_hw_params_get_periods_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *, unsigned int *, int *);
+int (*snd_pcm_hw_params_get_periods_min_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *, unsigned int *, int *);
+int (*snd_pcm_hw_params_get_periods_max_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *, unsigned int *, int *);
+int (*snd_pcm_hw_params_test_periods_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int, int);
+int (*snd_pcm_hw_params_set_periods_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int, int);
+int (*snd_pcm_hw_params_set_periods_min_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int *, int *);
+int (*snd_pcm_hw_params_set_periods_max_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int *, int *);
+int (*snd_pcm_hw_params_set_periods_minmax_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int *, int *, unsigned int *, int *);
+int (*snd_pcm_hw_params_set_periods_near_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int *, int *);
+int (*snd_pcm_hw_params_set_periods_first_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int *, int *);
+int (*snd_pcm_hw_params_set_periods_last_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int *, int *);
+int (*snd_pcm_hw_params_set_periods_integer_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *);
+int (*snd_pcm_hw_params_get_buffer_time_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *, unsigned int *, int *);
+int (*snd_pcm_hw_params_get_buffer_time_min_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *, unsigned int *, int *);
+int (*snd_pcm_hw_params_get_buffer_time_max_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *, unsigned int *, int *);
+int (*snd_pcm_hw_params_test_buffer_time_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int, int);
+int (*snd_pcm_hw_params_set_buffer_time_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int, int);
+int (*snd_pcm_hw_params_set_buffer_time_min_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int *, int *);
+int (*snd_pcm_hw_params_set_buffer_time_max_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int *, int *);
+int (*snd_pcm_hw_params_set_buffer_time_minmax_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int *, int *, unsigned int *, int *);
+int (*snd_pcm_hw_params_set_buffer_time_near_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int *, int *);
+int (*snd_pcm_hw_params_set_buffer_time_first_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int *, int *);
+int (*snd_pcm_hw_params_set_buffer_time_last_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int *, int *);
+int (*snd_pcm_hw_params_get_buffer_size_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *, snd_pcm_uframes_t *);
+int (*snd_pcm_hw_params_get_buffer_size_min_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *, snd_pcm_uframes_t *);
+int (*snd_pcm_hw_params_get_buffer_size_max_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *, snd_pcm_uframes_t *);
+int (*snd_pcm_hw_params_test_buffer_size_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, snd_pcm_uframes_t);
+int (*snd_pcm_hw_params_set_buffer_size_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, snd_pcm_uframes_t);
+int (*snd_pcm_hw_params_set_buffer_size_min_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, snd_pcm_uframes_t *);
+int (*snd_pcm_hw_params_set_buffer_size_max_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, snd_pcm_uframes_t *);
+int (*snd_pcm_hw_params_set_buffer_size_minmax_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, snd_pcm_uframes_t *, snd_pcm_uframes_t *);
+int (*snd_pcm_hw_params_set_buffer_size_near_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, snd_pcm_uframes_t *);
+int (*snd_pcm_hw_params_set_buffer_size_first_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, snd_pcm_uframes_t *);
+int (*snd_pcm_hw_params_set_buffer_size_last_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, snd_pcm_uframes_t *);
+int (*snd_pcm_hw_params_get_min_align_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *, snd_pcm_uframes_t *);
+size_t (*snd_pcm_sw_params_sizeof_dylibloader_wrapper_asound)(void);
+int (*snd_pcm_sw_params_malloc_dylibloader_wrapper_asound)(snd_pcm_sw_params_t **);
+void (*snd_pcm_sw_params_free_dylibloader_wrapper_asound)(snd_pcm_sw_params_t *);
+void (*snd_pcm_sw_params_copy_dylibloader_wrapper_asound)(snd_pcm_sw_params_t *, const snd_pcm_sw_params_t *);
+int (*snd_pcm_sw_params_get_boundary_dylibloader_wrapper_asound)(const snd_pcm_sw_params_t *, snd_pcm_uframes_t *);
+int (*snd_pcm_sw_params_set_tstamp_mode_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_sw_params_t *, snd_pcm_tstamp_t);
+int (*snd_pcm_sw_params_get_tstamp_mode_dylibloader_wrapper_asound)(const snd_pcm_sw_params_t *, snd_pcm_tstamp_t *);
+int (*snd_pcm_sw_params_set_avail_min_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_sw_params_t *, snd_pcm_uframes_t);
+int (*snd_pcm_sw_params_get_avail_min_dylibloader_wrapper_asound)(const snd_pcm_sw_params_t *, snd_pcm_uframes_t *);
+int (*snd_pcm_sw_params_set_period_event_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_sw_params_t *, int);
+int (*snd_pcm_sw_params_get_period_event_dylibloader_wrapper_asound)(const snd_pcm_sw_params_t *, int *);
+int (*snd_pcm_sw_params_set_start_threshold_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_sw_params_t *, snd_pcm_uframes_t);
+int (*snd_pcm_sw_params_get_start_threshold_dylibloader_wrapper_asound)(const snd_pcm_sw_params_t *, snd_pcm_uframes_t *);
+int (*snd_pcm_sw_params_set_stop_threshold_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_sw_params_t *, snd_pcm_uframes_t);
+int (*snd_pcm_sw_params_get_stop_threshold_dylibloader_wrapper_asound)(const snd_pcm_sw_params_t *, snd_pcm_uframes_t *);
+int (*snd_pcm_sw_params_set_silence_threshold_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_sw_params_t *, snd_pcm_uframes_t);
+int (*snd_pcm_sw_params_get_silence_threshold_dylibloader_wrapper_asound)(const snd_pcm_sw_params_t *, snd_pcm_uframes_t *);
+int (*snd_pcm_sw_params_set_silence_size_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_sw_params_t *, snd_pcm_uframes_t);
+int (*snd_pcm_sw_params_get_silence_size_dylibloader_wrapper_asound)(const snd_pcm_sw_params_t *, snd_pcm_uframes_t *);
+size_t (*snd_pcm_access_mask_sizeof_dylibloader_wrapper_asound)(void);
+int (*snd_pcm_access_mask_malloc_dylibloader_wrapper_asound)(snd_pcm_access_mask_t **);
+void (*snd_pcm_access_mask_free_dylibloader_wrapper_asound)(snd_pcm_access_mask_t *);
+void (*snd_pcm_access_mask_copy_dylibloader_wrapper_asound)(snd_pcm_access_mask_t *, const snd_pcm_access_mask_t *);
+void (*snd_pcm_access_mask_none_dylibloader_wrapper_asound)(snd_pcm_access_mask_t *);
+void (*snd_pcm_access_mask_any_dylibloader_wrapper_asound)(snd_pcm_access_mask_t *);
+int (*snd_pcm_access_mask_test_dylibloader_wrapper_asound)(const snd_pcm_access_mask_t *, snd_pcm_access_t);
+int (*snd_pcm_access_mask_empty_dylibloader_wrapper_asound)(const snd_pcm_access_mask_t *);
+void (*snd_pcm_access_mask_set_dylibloader_wrapper_asound)(snd_pcm_access_mask_t *, snd_pcm_access_t);
+void (*snd_pcm_access_mask_reset_dylibloader_wrapper_asound)(snd_pcm_access_mask_t *, snd_pcm_access_t);
+size_t (*snd_pcm_format_mask_sizeof_dylibloader_wrapper_asound)(void);
+int (*snd_pcm_format_mask_malloc_dylibloader_wrapper_asound)(snd_pcm_format_mask_t **);
+void (*snd_pcm_format_mask_free_dylibloader_wrapper_asound)(snd_pcm_format_mask_t *);
+void (*snd_pcm_format_mask_copy_dylibloader_wrapper_asound)(snd_pcm_format_mask_t *, const snd_pcm_format_mask_t *);
+void (*snd_pcm_format_mask_none_dylibloader_wrapper_asound)(snd_pcm_format_mask_t *);
+void (*snd_pcm_format_mask_any_dylibloader_wrapper_asound)(snd_pcm_format_mask_t *);
+int (*snd_pcm_format_mask_test_dylibloader_wrapper_asound)(const snd_pcm_format_mask_t *, snd_pcm_format_t);
+int (*snd_pcm_format_mask_empty_dylibloader_wrapper_asound)(const snd_pcm_format_mask_t *);
+void (*snd_pcm_format_mask_set_dylibloader_wrapper_asound)(snd_pcm_format_mask_t *, snd_pcm_format_t);
+void (*snd_pcm_format_mask_reset_dylibloader_wrapper_asound)(snd_pcm_format_mask_t *, snd_pcm_format_t);
+size_t (*snd_pcm_subformat_mask_sizeof_dylibloader_wrapper_asound)(void);
+int (*snd_pcm_subformat_mask_malloc_dylibloader_wrapper_asound)(snd_pcm_subformat_mask_t **);
+void (*snd_pcm_subformat_mask_free_dylibloader_wrapper_asound)(snd_pcm_subformat_mask_t *);
+void (*snd_pcm_subformat_mask_copy_dylibloader_wrapper_asound)(snd_pcm_subformat_mask_t *, const snd_pcm_subformat_mask_t *);
+void (*snd_pcm_subformat_mask_none_dylibloader_wrapper_asound)(snd_pcm_subformat_mask_t *);
+void (*snd_pcm_subformat_mask_any_dylibloader_wrapper_asound)(snd_pcm_subformat_mask_t *);
+int (*snd_pcm_subformat_mask_test_dylibloader_wrapper_asound)(const snd_pcm_subformat_mask_t *, snd_pcm_subformat_t);
+int (*snd_pcm_subformat_mask_empty_dylibloader_wrapper_asound)(const snd_pcm_subformat_mask_t *);
+void (*snd_pcm_subformat_mask_set_dylibloader_wrapper_asound)(snd_pcm_subformat_mask_t *, snd_pcm_subformat_t);
+void (*snd_pcm_subformat_mask_reset_dylibloader_wrapper_asound)(snd_pcm_subformat_mask_t *, snd_pcm_subformat_t);
+size_t (*snd_pcm_status_sizeof_dylibloader_wrapper_asound)(void);
+int (*snd_pcm_status_malloc_dylibloader_wrapper_asound)(snd_pcm_status_t **);
+void (*snd_pcm_status_free_dylibloader_wrapper_asound)(snd_pcm_status_t *);
+void (*snd_pcm_status_copy_dylibloader_wrapper_asound)(snd_pcm_status_t *, const snd_pcm_status_t *);
+snd_pcm_state_t (*snd_pcm_status_get_state_dylibloader_wrapper_asound)(const snd_pcm_status_t *);
+void (*snd_pcm_status_get_trigger_tstamp_dylibloader_wrapper_asound)(const snd_pcm_status_t *, snd_timestamp_t *);
+void (*snd_pcm_status_get_trigger_htstamp_dylibloader_wrapper_asound)(const snd_pcm_status_t *, snd_htimestamp_t *);
+void (*snd_pcm_status_get_tstamp_dylibloader_wrapper_asound)(const snd_pcm_status_t *, snd_timestamp_t *);
+void (*snd_pcm_status_get_htstamp_dylibloader_wrapper_asound)(const snd_pcm_status_t *, snd_htimestamp_t *);
+void (*snd_pcm_status_get_audio_htstamp_dylibloader_wrapper_asound)(const snd_pcm_status_t *, snd_htimestamp_t *);
+void (*snd_pcm_status_get_driver_htstamp_dylibloader_wrapper_asound)(const snd_pcm_status_t *, snd_htimestamp_t *);
+snd_pcm_sframes_t (*snd_pcm_status_get_delay_dylibloader_wrapper_asound)(const snd_pcm_status_t *);
+snd_pcm_uframes_t (*snd_pcm_status_get_avail_dylibloader_wrapper_asound)(const snd_pcm_status_t *);
+snd_pcm_uframes_t (*snd_pcm_status_get_avail_max_dylibloader_wrapper_asound)(const snd_pcm_status_t *);
+snd_pcm_uframes_t (*snd_pcm_status_get_overrange_dylibloader_wrapper_asound)(const snd_pcm_status_t *);
+const char *(*snd_pcm_type_name_dylibloader_wrapper_asound)(snd_pcm_type_t);
+const char *(*snd_pcm_stream_name_dylibloader_wrapper_asound)(const snd_pcm_stream_t);
+const char *(*snd_pcm_access_name_dylibloader_wrapper_asound)(const snd_pcm_access_t);
+const char *(*snd_pcm_format_name_dylibloader_wrapper_asound)(const snd_pcm_format_t);
+const char *(*snd_pcm_format_description_dylibloader_wrapper_asound)(const snd_pcm_format_t);
+const char *(*snd_pcm_subformat_name_dylibloader_wrapper_asound)(const snd_pcm_subformat_t);
+const char *(*snd_pcm_subformat_description_dylibloader_wrapper_asound)(const snd_pcm_subformat_t);
+snd_pcm_format_t (*snd_pcm_format_value_dylibloader_wrapper_asound)(const char *);
+const char *(*snd_pcm_tstamp_mode_name_dylibloader_wrapper_asound)(const snd_pcm_tstamp_t);
+const char *(*snd_pcm_state_name_dylibloader_wrapper_asound)(const snd_pcm_state_t);
+int (*snd_pcm_dump_dylibloader_wrapper_asound)(snd_pcm_t *, snd_output_t *);
+int (*snd_pcm_dump_hw_setup_dylibloader_wrapper_asound)(snd_pcm_t *, snd_output_t *);
+int (*snd_pcm_dump_sw_setup_dylibloader_wrapper_asound)(snd_pcm_t *, snd_output_t *);
+int (*snd_pcm_dump_setup_dylibloader_wrapper_asound)(snd_pcm_t *, snd_output_t *);
+int (*snd_pcm_hw_params_dump_dylibloader_wrapper_asound)(snd_pcm_hw_params_t *, snd_output_t *);
+int (*snd_pcm_sw_params_dump_dylibloader_wrapper_asound)(snd_pcm_sw_params_t *, snd_output_t *);
+int (*snd_pcm_status_dump_dylibloader_wrapper_asound)(snd_pcm_status_t *, snd_output_t *);
+int (*snd_pcm_mmap_begin_dylibloader_wrapper_asound)(snd_pcm_t *, const snd_pcm_channel_area_t **, snd_pcm_uframes_t *, snd_pcm_uframes_t *);
+snd_pcm_sframes_t (*snd_pcm_mmap_commit_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_uframes_t, snd_pcm_uframes_t);
+snd_pcm_sframes_t (*snd_pcm_mmap_writei_dylibloader_wrapper_asound)(snd_pcm_t *, const void *, snd_pcm_uframes_t);
+snd_pcm_sframes_t (*snd_pcm_mmap_readi_dylibloader_wrapper_asound)(snd_pcm_t *, void *, snd_pcm_uframes_t);
+snd_pcm_sframes_t (*snd_pcm_mmap_writen_dylibloader_wrapper_asound)(snd_pcm_t *, void **, snd_pcm_uframes_t);
+snd_pcm_sframes_t (*snd_pcm_mmap_readn_dylibloader_wrapper_asound)(snd_pcm_t *, void **, snd_pcm_uframes_t);
+int (*snd_pcm_format_signed_dylibloader_wrapper_asound)(snd_pcm_format_t);
+int (*snd_pcm_format_unsigned_dylibloader_wrapper_asound)(snd_pcm_format_t);
+int (*snd_pcm_format_linear_dylibloader_wrapper_asound)(snd_pcm_format_t);
+int (*snd_pcm_format_float_dylibloader_wrapper_asound)(snd_pcm_format_t);
+int (*snd_pcm_format_little_endian_dylibloader_wrapper_asound)(snd_pcm_format_t);
+int (*snd_pcm_format_big_endian_dylibloader_wrapper_asound)(snd_pcm_format_t);
+int (*snd_pcm_format_cpu_endian_dylibloader_wrapper_asound)(snd_pcm_format_t);
+int (*snd_pcm_format_width_dylibloader_wrapper_asound)(snd_pcm_format_t);
+int (*snd_pcm_format_physical_width_dylibloader_wrapper_asound)(snd_pcm_format_t);
+snd_pcm_format_t (*snd_pcm_build_linear_format_dylibloader_wrapper_asound)(int, int, int, int);
+ssize_t (*snd_pcm_format_size_dylibloader_wrapper_asound)(snd_pcm_format_t, size_t);
+uint8_t (*snd_pcm_format_silence_dylibloader_wrapper_asound)(snd_pcm_format_t);
+uint16_t (*snd_pcm_format_silence_16_dylibloader_wrapper_asound)(snd_pcm_format_t);
+uint32_t (*snd_pcm_format_silence_32_dylibloader_wrapper_asound)(snd_pcm_format_t);
+uint64_t (*snd_pcm_format_silence_64_dylibloader_wrapper_asound)(snd_pcm_format_t);
+int (*snd_pcm_format_set_silence_dylibloader_wrapper_asound)(snd_pcm_format_t, void *, unsigned int);
+snd_pcm_sframes_t (*snd_pcm_bytes_to_frames_dylibloader_wrapper_asound)(snd_pcm_t *, ssize_t);
+ssize_t (*snd_pcm_frames_to_bytes_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_sframes_t);
+long (*snd_pcm_bytes_to_samples_dylibloader_wrapper_asound)(snd_pcm_t *, ssize_t);
+ssize_t (*snd_pcm_samples_to_bytes_dylibloader_wrapper_asound)(snd_pcm_t *, long);
+int (*snd_pcm_area_silence_dylibloader_wrapper_asound)(const snd_pcm_channel_area_t *, snd_pcm_uframes_t, unsigned int, snd_pcm_format_t);
+int (*snd_pcm_areas_silence_dylibloader_wrapper_asound)(const snd_pcm_channel_area_t *, snd_pcm_uframes_t, unsigned int, snd_pcm_uframes_t, snd_pcm_format_t);
+int (*snd_pcm_area_copy_dylibloader_wrapper_asound)(const snd_pcm_channel_area_t *, snd_pcm_uframes_t, const snd_pcm_channel_area_t *, snd_pcm_uframes_t, unsigned int, snd_pcm_format_t);
+int (*snd_pcm_areas_copy_dylibloader_wrapper_asound)(const snd_pcm_channel_area_t *, snd_pcm_uframes_t, const snd_pcm_channel_area_t *, snd_pcm_uframes_t, unsigned int, snd_pcm_uframes_t, snd_pcm_format_t);
+int (*snd_pcm_areas_copy_wrap_dylibloader_wrapper_asound)(const snd_pcm_channel_area_t *, snd_pcm_uframes_t, const snd_pcm_uframes_t, const snd_pcm_channel_area_t *, snd_pcm_uframes_t, const snd_pcm_uframes_t, const unsigned int, snd_pcm_uframes_t, const snd_pcm_format_t);
+snd_pcm_t *(*snd_pcm_hook_get_pcm_dylibloader_wrapper_asound)(snd_pcm_hook_t *);
+void *(*snd_pcm_hook_get_private_dylibloader_wrapper_asound)(snd_pcm_hook_t *);
+void (*snd_pcm_hook_set_private_dylibloader_wrapper_asound)(snd_pcm_hook_t *, void *);
+int (*snd_pcm_hook_add_dylibloader_wrapper_asound)(snd_pcm_hook_t **, snd_pcm_t *, snd_pcm_hook_type_t, snd_pcm_hook_func_t, void *);
+int (*snd_pcm_hook_remove_dylibloader_wrapper_asound)(snd_pcm_hook_t *);
+snd_pcm_uframes_t (*snd_pcm_meter_get_bufsize_dylibloader_wrapper_asound)(snd_pcm_t *);
+unsigned int (*snd_pcm_meter_get_channels_dylibloader_wrapper_asound)(snd_pcm_t *);
+unsigned int (*snd_pcm_meter_get_rate_dylibloader_wrapper_asound)(snd_pcm_t *);
+snd_pcm_uframes_t (*snd_pcm_meter_get_now_dylibloader_wrapper_asound)(snd_pcm_t *);
+snd_pcm_uframes_t (*snd_pcm_meter_get_boundary_dylibloader_wrapper_asound)(snd_pcm_t *);
+int (*snd_pcm_meter_add_scope_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_scope_t *);
+snd_pcm_scope_t *(*snd_pcm_meter_search_scope_dylibloader_wrapper_asound)(snd_pcm_t *, const char *);
+int (*snd_pcm_scope_malloc_dylibloader_wrapper_asound)(snd_pcm_scope_t **);
+void (*snd_pcm_scope_set_ops_dylibloader_wrapper_asound)(snd_pcm_scope_t *, const snd_pcm_scope_ops_t *);
+void (*snd_pcm_scope_set_name_dylibloader_wrapper_asound)(snd_pcm_scope_t *, const char *);
+const char *(*snd_pcm_scope_get_name_dylibloader_wrapper_asound)(snd_pcm_scope_t *);
+void *(*snd_pcm_scope_get_callback_private_dylibloader_wrapper_asound)(snd_pcm_scope_t *);
+void (*snd_pcm_scope_set_callback_private_dylibloader_wrapper_asound)(snd_pcm_scope_t *, void *);
+int (*snd_pcm_scope_s16_open_dylibloader_wrapper_asound)(snd_pcm_t *, const char *, snd_pcm_scope_t **);
+int16_t *(*snd_pcm_scope_s16_get_channel_buffer_dylibloader_wrapper_asound)(snd_pcm_scope_t *, unsigned int);
+int (*snd_spcm_init_dylibloader_wrapper_asound)(snd_pcm_t *, unsigned int, unsigned int, snd_pcm_format_t, snd_pcm_subformat_t, snd_spcm_latency_t, snd_pcm_access_t, snd_spcm_xrun_type_t);
+int (*snd_spcm_init_duplex_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_t *, unsigned int, unsigned int, snd_pcm_format_t, snd_pcm_subformat_t, snd_spcm_latency_t, snd_pcm_access_t, snd_spcm_xrun_type_t, snd_spcm_duplex_type_t);
+int (*snd_spcm_init_get_params_dylibloader_wrapper_asound)(snd_pcm_t *, unsigned int *, snd_pcm_uframes_t *, snd_pcm_uframes_t *);
+const char *(*snd_pcm_start_mode_name_dylibloader_wrapper_asound)(snd_pcm_start_t);
+const char *(*snd_pcm_xrun_mode_name_dylibloader_wrapper_asound)(snd_pcm_xrun_t);
+int (*snd_pcm_sw_params_set_start_mode_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_sw_params_t *, snd_pcm_start_t);
+snd_pcm_start_t (*snd_pcm_sw_params_get_start_mode_dylibloader_wrapper_asound)(const snd_pcm_sw_params_t *);
+int (*snd_pcm_sw_params_set_xrun_mode_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_sw_params_t *, snd_pcm_xrun_t);
+snd_pcm_xrun_t (*snd_pcm_sw_params_get_xrun_mode_dylibloader_wrapper_asound)(const snd_pcm_sw_params_t *);
+int (*snd_pcm_sw_params_set_xfer_align_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_sw_params_t *, snd_pcm_uframes_t);
+int (*snd_pcm_sw_params_get_xfer_align_dylibloader_wrapper_asound)(const snd_pcm_sw_params_t *, snd_pcm_uframes_t *);
+int (*snd_pcm_sw_params_set_sleep_min_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_sw_params_t *, unsigned int);
+int (*snd_pcm_sw_params_get_sleep_min_dylibloader_wrapper_asound)(const snd_pcm_sw_params_t *, unsigned int *);
+int (*snd_pcm_hw_params_get_tick_time_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *, unsigned int *, int *);
+int (*snd_pcm_hw_params_get_tick_time_min_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *, unsigned int *, int *);
+int (*snd_pcm_hw_params_get_tick_time_max_dylibloader_wrapper_asound)(const snd_pcm_hw_params_t *, unsigned int *, int *);
+int (*snd_pcm_hw_params_test_tick_time_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int, int);
+int (*snd_pcm_hw_params_set_tick_time_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int, int);
+int (*snd_pcm_hw_params_set_tick_time_min_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int *, int *);
+int (*snd_pcm_hw_params_set_tick_time_max_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int *, int *);
+int (*snd_pcm_hw_params_set_tick_time_minmax_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int *, int *, unsigned int *, int *);
+int (*snd_pcm_hw_params_set_tick_time_near_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int *, int *);
+int (*snd_pcm_hw_params_set_tick_time_first_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int *, int *);
+int (*snd_pcm_hw_params_set_tick_time_last_dylibloader_wrapper_asound)(snd_pcm_t *, snd_pcm_hw_params_t *, unsigned int *, int *);
+int (*snd_rawmidi_open_dylibloader_wrapper_asound)(snd_rawmidi_t **, snd_rawmidi_t **, const char *, int);
+int (*snd_rawmidi_open_lconf_dylibloader_wrapper_asound)(snd_rawmidi_t **, snd_rawmidi_t **, const char *, int, snd_config_t *);
+int (*snd_rawmidi_close_dylibloader_wrapper_asound)(snd_rawmidi_t *);
+int (*snd_rawmidi_poll_descriptors_count_dylibloader_wrapper_asound)(snd_rawmidi_t *);
+int (*snd_rawmidi_poll_descriptors_dylibloader_wrapper_asound)(snd_rawmidi_t *, struct pollfd *, unsigned int);
+int (*snd_rawmidi_poll_descriptors_revents_dylibloader_wrapper_asound)(snd_rawmidi_t *, struct pollfd *, unsigned int, unsigned short *);
+int (*snd_rawmidi_nonblock_dylibloader_wrapper_asound)(snd_rawmidi_t *, int);
+size_t (*snd_rawmidi_info_sizeof_dylibloader_wrapper_asound)(void);
+int (*snd_rawmidi_info_malloc_dylibloader_wrapper_asound)(snd_rawmidi_info_t **);
+void (*snd_rawmidi_info_free_dylibloader_wrapper_asound)(snd_rawmidi_info_t *);
+void (*snd_rawmidi_info_copy_dylibloader_wrapper_asound)(snd_rawmidi_info_t *, const snd_rawmidi_info_t *);
+unsigned int (*snd_rawmidi_info_get_device_dylibloader_wrapper_asound)(const snd_rawmidi_info_t *);
+unsigned int (*snd_rawmidi_info_get_subdevice_dylibloader_wrapper_asound)(const snd_rawmidi_info_t *);
+snd_rawmidi_stream_t (*snd_rawmidi_info_get_stream_dylibloader_wrapper_asound)(const snd_rawmidi_info_t *);
+int (*snd_rawmidi_info_get_card_dylibloader_wrapper_asound)(const snd_rawmidi_info_t *);
+unsigned int (*snd_rawmidi_info_get_flags_dylibloader_wrapper_asound)(const snd_rawmidi_info_t *);
+const char *(*snd_rawmidi_info_get_id_dylibloader_wrapper_asound)(const snd_rawmidi_info_t *);
+const char *(*snd_rawmidi_info_get_name_dylibloader_wrapper_asound)(const snd_rawmidi_info_t *);
+const char *(*snd_rawmidi_info_get_subdevice_name_dylibloader_wrapper_asound)(const snd_rawmidi_info_t *);
+unsigned int (*snd_rawmidi_info_get_subdevices_count_dylibloader_wrapper_asound)(const snd_rawmidi_info_t *);
+unsigned int (*snd_rawmidi_info_get_subdevices_avail_dylibloader_wrapper_asound)(const snd_rawmidi_info_t *);
+void (*snd_rawmidi_info_set_device_dylibloader_wrapper_asound)(snd_rawmidi_info_t *, unsigned int);
+void (*snd_rawmidi_info_set_subdevice_dylibloader_wrapper_asound)(snd_rawmidi_info_t *, unsigned int);
+void (*snd_rawmidi_info_set_stream_dylibloader_wrapper_asound)(snd_rawmidi_info_t *, snd_rawmidi_stream_t);
+int (*snd_rawmidi_info_dylibloader_wrapper_asound)(snd_rawmidi_t *, snd_rawmidi_info_t *);
+size_t (*snd_rawmidi_params_sizeof_dylibloader_wrapper_asound)(void);
+int (*snd_rawmidi_params_malloc_dylibloader_wrapper_asound)(snd_rawmidi_params_t **);
+void (*snd_rawmidi_params_free_dylibloader_wrapper_asound)(snd_rawmidi_params_t *);
+void (*snd_rawmidi_params_copy_dylibloader_wrapper_asound)(snd_rawmidi_params_t *, const snd_rawmidi_params_t *);
+int (*snd_rawmidi_params_set_buffer_size_dylibloader_wrapper_asound)(snd_rawmidi_t *, snd_rawmidi_params_t *, size_t);
+size_t (*snd_rawmidi_params_get_buffer_size_dylibloader_wrapper_asound)(const snd_rawmidi_params_t *);
+int (*snd_rawmidi_params_set_avail_min_dylibloader_wrapper_asound)(snd_rawmidi_t *, snd_rawmidi_params_t *, size_t);
+size_t (*snd_rawmidi_params_get_avail_min_dylibloader_wrapper_asound)(const snd_rawmidi_params_t *);
+int (*snd_rawmidi_params_set_no_active_sensing_dylibloader_wrapper_asound)(snd_rawmidi_t *, snd_rawmidi_params_t *, int);
+int (*snd_rawmidi_params_get_no_active_sensing_dylibloader_wrapper_asound)(const snd_rawmidi_params_t *);
+int (*snd_rawmidi_params_dylibloader_wrapper_asound)(snd_rawmidi_t *, snd_rawmidi_params_t *);
+int (*snd_rawmidi_params_current_dylibloader_wrapper_asound)(snd_rawmidi_t *, snd_rawmidi_params_t *);
+size_t (*snd_rawmidi_status_sizeof_dylibloader_wrapper_asound)(void);
+int (*snd_rawmidi_status_malloc_dylibloader_wrapper_asound)(snd_rawmidi_status_t **);
+void (*snd_rawmidi_status_free_dylibloader_wrapper_asound)(snd_rawmidi_status_t *);
+void (*snd_rawmidi_status_copy_dylibloader_wrapper_asound)(snd_rawmidi_status_t *, const snd_rawmidi_status_t *);
+void (*snd_rawmidi_status_get_tstamp_dylibloader_wrapper_asound)(const snd_rawmidi_status_t *, snd_htimestamp_t *);
+size_t (*snd_rawmidi_status_get_avail_dylibloader_wrapper_asound)(const snd_rawmidi_status_t *);
+size_t (*snd_rawmidi_status_get_xruns_dylibloader_wrapper_asound)(const snd_rawmidi_status_t *);
+int (*snd_rawmidi_status_dylibloader_wrapper_asound)(snd_rawmidi_t *, snd_rawmidi_status_t *);
+int (*snd_rawmidi_drain_dylibloader_wrapper_asound)(snd_rawmidi_t *);
+int (*snd_rawmidi_drop_dylibloader_wrapper_asound)(snd_rawmidi_t *);
+ssize_t (*snd_rawmidi_write_dylibloader_wrapper_asound)(snd_rawmidi_t *, const void *, size_t);
+ssize_t (*snd_rawmidi_read_dylibloader_wrapper_asound)(snd_rawmidi_t *, void *, size_t);
+const char *(*snd_rawmidi_name_dylibloader_wrapper_asound)(snd_rawmidi_t *);
+snd_rawmidi_type_t (*snd_rawmidi_type_dylibloader_wrapper_asound)(snd_rawmidi_t *);
+snd_rawmidi_stream_t (*snd_rawmidi_stream_dylibloader_wrapper_asound)(snd_rawmidi_t *);
+int (*snd_timer_query_open_dylibloader_wrapper_asound)(snd_timer_query_t **, const char *, int);
+int (*snd_timer_query_open_lconf_dylibloader_wrapper_asound)(snd_timer_query_t **, const char *, int, snd_config_t *);
+int (*snd_timer_query_close_dylibloader_wrapper_asound)(snd_timer_query_t *);
+int (*snd_timer_query_next_device_dylibloader_wrapper_asound)(snd_timer_query_t *, snd_timer_id_t *);
+int (*snd_timer_query_info_dylibloader_wrapper_asound)(snd_timer_query_t *, snd_timer_ginfo_t *);
+int (*snd_timer_query_params_dylibloader_wrapper_asound)(snd_timer_query_t *, snd_timer_gparams_t *);
+int (*snd_timer_query_status_dylibloader_wrapper_asound)(snd_timer_query_t *, snd_timer_gstatus_t *);
+int (*snd_timer_open_dylibloader_wrapper_asound)(snd_timer_t **, const char *, int);
+int (*snd_timer_open_lconf_dylibloader_wrapper_asound)(snd_timer_t **, const char *, int, snd_config_t *);
+int (*snd_timer_close_dylibloader_wrapper_asound)(snd_timer_t *);
+int (*snd_async_add_timer_handler_dylibloader_wrapper_asound)(snd_async_handler_t **, snd_timer_t *, snd_async_callback_t, void *);
+snd_timer_t *(*snd_async_handler_get_timer_dylibloader_wrapper_asound)(snd_async_handler_t *);
+int (*snd_timer_poll_descriptors_count_dylibloader_wrapper_asound)(snd_timer_t *);
+int (*snd_timer_poll_descriptors_dylibloader_wrapper_asound)(snd_timer_t *, struct pollfd *, unsigned int);
+int (*snd_timer_poll_descriptors_revents_dylibloader_wrapper_asound)(snd_timer_t *, struct pollfd *, unsigned int, unsigned short *);
+int (*snd_timer_info_dylibloader_wrapper_asound)(snd_timer_t *, snd_timer_info_t *);
+int (*snd_timer_params_dylibloader_wrapper_asound)(snd_timer_t *, snd_timer_params_t *);
+int (*snd_timer_status_dylibloader_wrapper_asound)(snd_timer_t *, snd_timer_status_t *);
+int (*snd_timer_start_dylibloader_wrapper_asound)(snd_timer_t *);
+int (*snd_timer_stop_dylibloader_wrapper_asound)(snd_timer_t *);
+int (*snd_timer_continue_dylibloader_wrapper_asound)(snd_timer_t *);
+ssize_t (*snd_timer_read_dylibloader_wrapper_asound)(snd_timer_t *, void *, size_t);
+size_t (*snd_timer_id_sizeof_dylibloader_wrapper_asound)(void);
+int (*snd_timer_id_malloc_dylibloader_wrapper_asound)(snd_timer_id_t **);
+void (*snd_timer_id_free_dylibloader_wrapper_asound)(snd_timer_id_t *);
+void (*snd_timer_id_copy_dylibloader_wrapper_asound)(snd_timer_id_t *, const snd_timer_id_t *);
+void (*snd_timer_id_set_class_dylibloader_wrapper_asound)(snd_timer_id_t *, int);
+int (*snd_timer_id_get_class_dylibloader_wrapper_asound)(snd_timer_id_t *);
+void (*snd_timer_id_set_sclass_dylibloader_wrapper_asound)(snd_timer_id_t *, int);
+int (*snd_timer_id_get_sclass_dylibloader_wrapper_asound)(snd_timer_id_t *);
+void (*snd_timer_id_set_card_dylibloader_wrapper_asound)(snd_timer_id_t *, int);
+int (*snd_timer_id_get_card_dylibloader_wrapper_asound)(snd_timer_id_t *);
+void (*snd_timer_id_set_device_dylibloader_wrapper_asound)(snd_timer_id_t *, int);
+int (*snd_timer_id_get_device_dylibloader_wrapper_asound)(snd_timer_id_t *);
+void (*snd_timer_id_set_subdevice_dylibloader_wrapper_asound)(snd_timer_id_t *, int);
+int (*snd_timer_id_get_subdevice_dylibloader_wrapper_asound)(snd_timer_id_t *);
+size_t (*snd_timer_ginfo_sizeof_dylibloader_wrapper_asound)(void);
+int (*snd_timer_ginfo_malloc_dylibloader_wrapper_asound)(snd_timer_ginfo_t **);
+void (*snd_timer_ginfo_free_dylibloader_wrapper_asound)(snd_timer_ginfo_t *);
+void (*snd_timer_ginfo_copy_dylibloader_wrapper_asound)(snd_timer_ginfo_t *, const snd_timer_ginfo_t *);
+int (*snd_timer_ginfo_set_tid_dylibloader_wrapper_asound)(snd_timer_ginfo_t *, snd_timer_id_t *);
+snd_timer_id_t *(*snd_timer_ginfo_get_tid_dylibloader_wrapper_asound)(snd_timer_ginfo_t *);
+unsigned int (*snd_timer_ginfo_get_flags_dylibloader_wrapper_asound)(snd_timer_ginfo_t *);
+int (*snd_timer_ginfo_get_card_dylibloader_wrapper_asound)(snd_timer_ginfo_t *);
+char *(*snd_timer_ginfo_get_id_dylibloader_wrapper_asound)(snd_timer_ginfo_t *);
+char *(*snd_timer_ginfo_get_name_dylibloader_wrapper_asound)(snd_timer_ginfo_t *);
+unsigned long (*snd_timer_ginfo_get_resolution_dylibloader_wrapper_asound)(snd_timer_ginfo_t *);
+unsigned long (*snd_timer_ginfo_get_resolution_min_dylibloader_wrapper_asound)(snd_timer_ginfo_t *);
+unsigned long (*snd_timer_ginfo_get_resolution_max_dylibloader_wrapper_asound)(snd_timer_ginfo_t *);
+unsigned int (*snd_timer_ginfo_get_clients_dylibloader_wrapper_asound)(snd_timer_ginfo_t *);
+size_t (*snd_timer_info_sizeof_dylibloader_wrapper_asound)(void);
+int (*snd_timer_info_malloc_dylibloader_wrapper_asound)(snd_timer_info_t **);
+void (*snd_timer_info_free_dylibloader_wrapper_asound)(snd_timer_info_t *);
+void (*snd_timer_info_copy_dylibloader_wrapper_asound)(snd_timer_info_t *, const snd_timer_info_t *);
+int (*snd_timer_info_is_slave_dylibloader_wrapper_asound)(snd_timer_info_t *);
+int (*snd_timer_info_get_card_dylibloader_wrapper_asound)(snd_timer_info_t *);
+const char *(*snd_timer_info_get_id_dylibloader_wrapper_asound)(snd_timer_info_t *);
+const char *(*snd_timer_info_get_name_dylibloader_wrapper_asound)(snd_timer_info_t *);
+long (*snd_timer_info_get_resolution_dylibloader_wrapper_asound)(snd_timer_info_t *);
+size_t (*snd_timer_params_sizeof_dylibloader_wrapper_asound)(void);
+int (*snd_timer_params_malloc_dylibloader_wrapper_asound)(snd_timer_params_t **);
+void (*snd_timer_params_free_dylibloader_wrapper_asound)(snd_timer_params_t *);
+void (*snd_timer_params_copy_dylibloader_wrapper_asound)(snd_timer_params_t *, const snd_timer_params_t *);
+int (*snd_timer_params_set_auto_start_dylibloader_wrapper_asound)(snd_timer_params_t *, int);
+int (*snd_timer_params_get_auto_start_dylibloader_wrapper_asound)(snd_timer_params_t *);
+int (*snd_timer_params_set_exclusive_dylibloader_wrapper_asound)(snd_timer_params_t *, int);
+int (*snd_timer_params_get_exclusive_dylibloader_wrapper_asound)(snd_timer_params_t *);
+int (*snd_timer_params_set_early_event_dylibloader_wrapper_asound)(snd_timer_params_t *, int);
+int (*snd_timer_params_get_early_event_dylibloader_wrapper_asound)(snd_timer_params_t *);
+void (*snd_timer_params_set_ticks_dylibloader_wrapper_asound)(snd_timer_params_t *, long);
+long (*snd_timer_params_get_ticks_dylibloader_wrapper_asound)(snd_timer_params_t *);
+void (*snd_timer_params_set_queue_size_dylibloader_wrapper_asound)(snd_timer_params_t *, long);
+long (*snd_timer_params_get_queue_size_dylibloader_wrapper_asound)(snd_timer_params_t *);
+void (*snd_timer_params_set_filter_dylibloader_wrapper_asound)(snd_timer_params_t *, unsigned int);
+unsigned int (*snd_timer_params_get_filter_dylibloader_wrapper_asound)(snd_timer_params_t *);
+size_t (*snd_timer_status_sizeof_dylibloader_wrapper_asound)(void);
+int (*snd_timer_status_malloc_dylibloader_wrapper_asound)(snd_timer_status_t **);
+void (*snd_timer_status_free_dylibloader_wrapper_asound)(snd_timer_status_t *);
+void (*snd_timer_status_copy_dylibloader_wrapper_asound)(snd_timer_status_t *, const snd_timer_status_t *);
+snd_htimestamp_t (*snd_timer_status_get_timestamp_dylibloader_wrapper_asound)(snd_timer_status_t *);
+long (*snd_timer_status_get_resolution_dylibloader_wrapper_asound)(snd_timer_status_t *);
+long (*snd_timer_status_get_lost_dylibloader_wrapper_asound)(snd_timer_status_t *);
+long (*snd_timer_status_get_overrun_dylibloader_wrapper_asound)(snd_timer_status_t *);
+long (*snd_timer_status_get_queue_dylibloader_wrapper_asound)(snd_timer_status_t *);
+long (*snd_timer_info_get_ticks_dylibloader_wrapper_asound)(snd_timer_info_t *);
+int (*snd_hwdep_open_dylibloader_wrapper_asound)(snd_hwdep_t **, const char *, int);
+int (*snd_hwdep_close_dylibloader_wrapper_asound)(snd_hwdep_t *);
+int (*snd_hwdep_poll_descriptors_dylibloader_wrapper_asound)(snd_hwdep_t *, struct pollfd *, unsigned int);
+int (*snd_hwdep_poll_descriptors_count_dylibloader_wrapper_asound)(snd_hwdep_t *);
+int (*snd_hwdep_poll_descriptors_revents_dylibloader_wrapper_asound)(snd_hwdep_t *, struct pollfd *, unsigned int, unsigned short *);
+int (*snd_hwdep_nonblock_dylibloader_wrapper_asound)(snd_hwdep_t *, int);
+int (*snd_hwdep_info_dylibloader_wrapper_asound)(snd_hwdep_t *, snd_hwdep_info_t *);
+int (*snd_hwdep_dsp_status_dylibloader_wrapper_asound)(snd_hwdep_t *, snd_hwdep_dsp_status_t *);
+int (*snd_hwdep_dsp_load_dylibloader_wrapper_asound)(snd_hwdep_t *, snd_hwdep_dsp_image_t *);
+int (*snd_hwdep_ioctl_dylibloader_wrapper_asound)(snd_hwdep_t *, unsigned int, void *);
+ssize_t (*snd_hwdep_write_dylibloader_wrapper_asound)(snd_hwdep_t *, const void *, size_t);
+ssize_t (*snd_hwdep_read_dylibloader_wrapper_asound)(snd_hwdep_t *, void *, size_t);
+size_t (*snd_hwdep_info_sizeof_dylibloader_wrapper_asound)(void);
+int (*snd_hwdep_info_malloc_dylibloader_wrapper_asound)(snd_hwdep_info_t **);
+void (*snd_hwdep_info_free_dylibloader_wrapper_asound)(snd_hwdep_info_t *);
+void (*snd_hwdep_info_copy_dylibloader_wrapper_asound)(snd_hwdep_info_t *, const snd_hwdep_info_t *);
+unsigned int (*snd_hwdep_info_get_device_dylibloader_wrapper_asound)(const snd_hwdep_info_t *);
+int (*snd_hwdep_info_get_card_dylibloader_wrapper_asound)(const snd_hwdep_info_t *);
+const char *(*snd_hwdep_info_get_id_dylibloader_wrapper_asound)(const snd_hwdep_info_t *);
+const char *(*snd_hwdep_info_get_name_dylibloader_wrapper_asound)(const snd_hwdep_info_t *);
+snd_hwdep_iface_t (*snd_hwdep_info_get_iface_dylibloader_wrapper_asound)(const snd_hwdep_info_t *);
+void (*snd_hwdep_info_set_device_dylibloader_wrapper_asound)(snd_hwdep_info_t *, unsigned int);
+size_t (*snd_hwdep_dsp_status_sizeof_dylibloader_wrapper_asound)(void);
+int (*snd_hwdep_dsp_status_malloc_dylibloader_wrapper_asound)(snd_hwdep_dsp_status_t **);
+void (*snd_hwdep_dsp_status_free_dylibloader_wrapper_asound)(snd_hwdep_dsp_status_t *);
+void (*snd_hwdep_dsp_status_copy_dylibloader_wrapper_asound)(snd_hwdep_dsp_status_t *, const snd_hwdep_dsp_status_t *);
+unsigned int (*snd_hwdep_dsp_status_get_version_dylibloader_wrapper_asound)(const snd_hwdep_dsp_status_t *);
+const char *(*snd_hwdep_dsp_status_get_id_dylibloader_wrapper_asound)(const snd_hwdep_dsp_status_t *);
+unsigned int (*snd_hwdep_dsp_status_get_num_dsps_dylibloader_wrapper_asound)(const snd_hwdep_dsp_status_t *);
+unsigned int (*snd_hwdep_dsp_status_get_dsp_loaded_dylibloader_wrapper_asound)(const snd_hwdep_dsp_status_t *);
+unsigned int (*snd_hwdep_dsp_status_get_chip_ready_dylibloader_wrapper_asound)(const snd_hwdep_dsp_status_t *);
+size_t (*snd_hwdep_dsp_image_sizeof_dylibloader_wrapper_asound)(void);
+int (*snd_hwdep_dsp_image_malloc_dylibloader_wrapper_asound)(snd_hwdep_dsp_image_t **);
+void (*snd_hwdep_dsp_image_free_dylibloader_wrapper_asound)(snd_hwdep_dsp_image_t *);
+void (*snd_hwdep_dsp_image_copy_dylibloader_wrapper_asound)(snd_hwdep_dsp_image_t *, const snd_hwdep_dsp_image_t *);
+unsigned int (*snd_hwdep_dsp_image_get_index_dylibloader_wrapper_asound)(const snd_hwdep_dsp_image_t *);
+const char *(*snd_hwdep_dsp_image_get_name_dylibloader_wrapper_asound)(const snd_hwdep_dsp_image_t *);
+const void *(*snd_hwdep_dsp_image_get_image_dylibloader_wrapper_asound)(const snd_hwdep_dsp_image_t *);
+size_t (*snd_hwdep_dsp_image_get_length_dylibloader_wrapper_asound)(const snd_hwdep_dsp_image_t *);
+void (*snd_hwdep_dsp_image_set_index_dylibloader_wrapper_asound)(snd_hwdep_dsp_image_t *, unsigned int);
+void (*snd_hwdep_dsp_image_set_name_dylibloader_wrapper_asound)(snd_hwdep_dsp_image_t *, const char *);
+void (*snd_hwdep_dsp_image_set_image_dylibloader_wrapper_asound)(snd_hwdep_dsp_image_t *, void *);
+void (*snd_hwdep_dsp_image_set_length_dylibloader_wrapper_asound)(snd_hwdep_dsp_image_t *, size_t);
+int (*snd_card_load_dylibloader_wrapper_asound)(int);
+int (*snd_card_next_dylibloader_wrapper_asound)(int *);
+int (*snd_card_get_index_dylibloader_wrapper_asound)(const char *);
+int (*snd_card_get_name_dylibloader_wrapper_asound)(int, char **);
+int (*snd_card_get_longname_dylibloader_wrapper_asound)(int, char **);
+int (*snd_device_name_hint_dylibloader_wrapper_asound)(int, const char *, void ***);
+int (*snd_device_name_free_hint_dylibloader_wrapper_asound)(void **);
+char *(*snd_device_name_get_hint_dylibloader_wrapper_asound)(const void *, const char *);
+int (*snd_ctl_open_dylibloader_wrapper_asound)(snd_ctl_t **, const char *, int);
+int (*snd_ctl_open_lconf_dylibloader_wrapper_asound)(snd_ctl_t **, const char *, int, snd_config_t *);
+int (*snd_ctl_open_fallback_dylibloader_wrapper_asound)(snd_ctl_t **, snd_config_t *, const char *, const char *, int);
+int (*snd_ctl_close_dylibloader_wrapper_asound)(snd_ctl_t *);
+int (*snd_ctl_nonblock_dylibloader_wrapper_asound)(snd_ctl_t *, int);
+int (*snd_async_add_ctl_handler_dylibloader_wrapper_asound)(snd_async_handler_t **, snd_ctl_t *, snd_async_callback_t, void *);
+snd_ctl_t *(*snd_async_handler_get_ctl_dylibloader_wrapper_asound)(snd_async_handler_t *);
+int (*snd_ctl_poll_descriptors_count_dylibloader_wrapper_asound)(snd_ctl_t *);
+int (*snd_ctl_poll_descriptors_dylibloader_wrapper_asound)(snd_ctl_t *, struct pollfd *, unsigned int);
+int (*snd_ctl_poll_descriptors_revents_dylibloader_wrapper_asound)(snd_ctl_t *, struct pollfd *, unsigned int, unsigned short *);
+int (*snd_ctl_subscribe_events_dylibloader_wrapper_asound)(snd_ctl_t *, int);
+int (*snd_ctl_card_info_dylibloader_wrapper_asound)(snd_ctl_t *, snd_ctl_card_info_t *);
+int (*snd_ctl_elem_list_dylibloader_wrapper_asound)(snd_ctl_t *, snd_ctl_elem_list_t *);
+int (*snd_ctl_elem_info_dylibloader_wrapper_asound)(snd_ctl_t *, snd_ctl_elem_info_t *);
+int (*snd_ctl_elem_read_dylibloader_wrapper_asound)(snd_ctl_t *, snd_ctl_elem_value_t *);
+int (*snd_ctl_elem_write_dylibloader_wrapper_asound)(snd_ctl_t *, snd_ctl_elem_value_t *);
+int (*snd_ctl_elem_lock_dylibloader_wrapper_asound)(snd_ctl_t *, snd_ctl_elem_id_t *);
+int (*snd_ctl_elem_unlock_dylibloader_wrapper_asound)(snd_ctl_t *, snd_ctl_elem_id_t *);
+int (*snd_ctl_elem_tlv_read_dylibloader_wrapper_asound)(snd_ctl_t *, const snd_ctl_elem_id_t *, unsigned int *, unsigned int);
+int (*snd_ctl_elem_tlv_write_dylibloader_wrapper_asound)(snd_ctl_t *, const snd_ctl_elem_id_t *, const unsigned int *);
+int (*snd_ctl_elem_tlv_command_dylibloader_wrapper_asound)(snd_ctl_t *, const snd_ctl_elem_id_t *, const unsigned int *);
+int (*snd_ctl_hwdep_next_device_dylibloader_wrapper_asound)(snd_ctl_t *, int *);
+int (*snd_ctl_hwdep_info_dylibloader_wrapper_asound)(snd_ctl_t *, snd_hwdep_info_t *);
+int (*snd_ctl_pcm_next_device_dylibloader_wrapper_asound)(snd_ctl_t *, int *);
+int (*snd_ctl_pcm_info_dylibloader_wrapper_asound)(snd_ctl_t *, snd_pcm_info_t *);
+int (*snd_ctl_pcm_prefer_subdevice_dylibloader_wrapper_asound)(snd_ctl_t *, int);
+int (*snd_ctl_rawmidi_next_device_dylibloader_wrapper_asound)(snd_ctl_t *, int *);
+int (*snd_ctl_rawmidi_info_dylibloader_wrapper_asound)(snd_ctl_t *, snd_rawmidi_info_t *);
+int (*snd_ctl_rawmidi_prefer_subdevice_dylibloader_wrapper_asound)(snd_ctl_t *, int);
+int (*snd_ctl_set_power_state_dylibloader_wrapper_asound)(snd_ctl_t *, unsigned int);
+int (*snd_ctl_get_power_state_dylibloader_wrapper_asound)(snd_ctl_t *, unsigned int *);
+int (*snd_ctl_read_dylibloader_wrapper_asound)(snd_ctl_t *, snd_ctl_event_t *);
+int (*snd_ctl_wait_dylibloader_wrapper_asound)(snd_ctl_t *, int);
+const char *(*snd_ctl_name_dylibloader_wrapper_asound)(snd_ctl_t *);
+snd_ctl_type_t (*snd_ctl_type_dylibloader_wrapper_asound)(snd_ctl_t *);
+const char *(*snd_ctl_elem_type_name_dylibloader_wrapper_asound)(snd_ctl_elem_type_t);
+const char *(*snd_ctl_elem_iface_name_dylibloader_wrapper_asound)(snd_ctl_elem_iface_t);
+const char *(*snd_ctl_event_type_name_dylibloader_wrapper_asound)(snd_ctl_event_type_t);
+unsigned int (*snd_ctl_event_elem_get_mask_dylibloader_wrapper_asound)(const snd_ctl_event_t *);
+unsigned int (*snd_ctl_event_elem_get_numid_dylibloader_wrapper_asound)(const snd_ctl_event_t *);
+void (*snd_ctl_event_elem_get_id_dylibloader_wrapper_asound)(const snd_ctl_event_t *, snd_ctl_elem_id_t *);
+snd_ctl_elem_iface_t (*snd_ctl_event_elem_get_interface_dylibloader_wrapper_asound)(const snd_ctl_event_t *);
+unsigned int (*snd_ctl_event_elem_get_device_dylibloader_wrapper_asound)(const snd_ctl_event_t *);
+unsigned int (*snd_ctl_event_elem_get_subdevice_dylibloader_wrapper_asound)(const snd_ctl_event_t *);
+const char *(*snd_ctl_event_elem_get_name_dylibloader_wrapper_asound)(const snd_ctl_event_t *);
+unsigned int (*snd_ctl_event_elem_get_index_dylibloader_wrapper_asound)(const snd_ctl_event_t *);
+int (*snd_ctl_elem_list_alloc_space_dylibloader_wrapper_asound)(snd_ctl_elem_list_t *, unsigned int);
+void (*snd_ctl_elem_list_free_space_dylibloader_wrapper_asound)(snd_ctl_elem_list_t *);
+char *(*snd_ctl_ascii_elem_id_get_dylibloader_wrapper_asound)(snd_ctl_elem_id_t *);
+int (*snd_ctl_ascii_elem_id_parse_dylibloader_wrapper_asound)(snd_ctl_elem_id_t *, const char *);
+int (*snd_ctl_ascii_value_parse_dylibloader_wrapper_asound)(snd_ctl_t *, snd_ctl_elem_value_t *, snd_ctl_elem_info_t *, const char *);
+size_t (*snd_ctl_elem_id_sizeof_dylibloader_wrapper_asound)(void);
+int (*snd_ctl_elem_id_malloc_dylibloader_wrapper_asound)(snd_ctl_elem_id_t **);
+void (*snd_ctl_elem_id_free_dylibloader_wrapper_asound)(snd_ctl_elem_id_t *);
+void (*snd_ctl_elem_id_clear_dylibloader_wrapper_asound)(snd_ctl_elem_id_t *);
+void (*snd_ctl_elem_id_copy_dylibloader_wrapper_asound)(snd_ctl_elem_id_t *, const snd_ctl_elem_id_t *);
+unsigned int (*snd_ctl_elem_id_get_numid_dylibloader_wrapper_asound)(const snd_ctl_elem_id_t *);
+snd_ctl_elem_iface_t (*snd_ctl_elem_id_get_interface_dylibloader_wrapper_asound)(const snd_ctl_elem_id_t *);
+unsigned int (*snd_ctl_elem_id_get_device_dylibloader_wrapper_asound)(const snd_ctl_elem_id_t *);
+unsigned int (*snd_ctl_elem_id_get_subdevice_dylibloader_wrapper_asound)(const snd_ctl_elem_id_t *);
+const char *(*snd_ctl_elem_id_get_name_dylibloader_wrapper_asound)(const snd_ctl_elem_id_t *);
+unsigned int (*snd_ctl_elem_id_get_index_dylibloader_wrapper_asound)(const snd_ctl_elem_id_t *);
+void (*snd_ctl_elem_id_set_numid_dylibloader_wrapper_asound)(snd_ctl_elem_id_t *, unsigned int);
+void (*snd_ctl_elem_id_set_interface_dylibloader_wrapper_asound)(snd_ctl_elem_id_t *, snd_ctl_elem_iface_t);
+void (*snd_ctl_elem_id_set_device_dylibloader_wrapper_asound)(snd_ctl_elem_id_t *, unsigned int);
+void (*snd_ctl_elem_id_set_subdevice_dylibloader_wrapper_asound)(snd_ctl_elem_id_t *, unsigned int);
+void (*snd_ctl_elem_id_set_name_dylibloader_wrapper_asound)(snd_ctl_elem_id_t *, const char *);
+void (*snd_ctl_elem_id_set_index_dylibloader_wrapper_asound)(snd_ctl_elem_id_t *, unsigned int);
+size_t (*snd_ctl_card_info_sizeof_dylibloader_wrapper_asound)(void);
+int (*snd_ctl_card_info_malloc_dylibloader_wrapper_asound)(snd_ctl_card_info_t **);
+void (*snd_ctl_card_info_free_dylibloader_wrapper_asound)(snd_ctl_card_info_t *);
+void (*snd_ctl_card_info_clear_dylibloader_wrapper_asound)(snd_ctl_card_info_t *);
+void (*snd_ctl_card_info_copy_dylibloader_wrapper_asound)(snd_ctl_card_info_t *, const snd_ctl_card_info_t *);
+int (*snd_ctl_card_info_get_card_dylibloader_wrapper_asound)(const snd_ctl_card_info_t *);
+const char *(*snd_ctl_card_info_get_id_dylibloader_wrapper_asound)(const snd_ctl_card_info_t *);
+const char *(*snd_ctl_card_info_get_driver_dylibloader_wrapper_asound)(const snd_ctl_card_info_t *);
+const char *(*snd_ctl_card_info_get_name_dylibloader_wrapper_asound)(const snd_ctl_card_info_t *);
+const char *(*snd_ctl_card_info_get_longname_dylibloader_wrapper_asound)(const snd_ctl_card_info_t *);
+const char *(*snd_ctl_card_info_get_mixername_dylibloader_wrapper_asound)(const snd_ctl_card_info_t *);
+const char *(*snd_ctl_card_info_get_components_dylibloader_wrapper_asound)(const snd_ctl_card_info_t *);
+size_t (*snd_ctl_event_sizeof_dylibloader_wrapper_asound)(void);
+int (*snd_ctl_event_malloc_dylibloader_wrapper_asound)(snd_ctl_event_t **);
+void (*snd_ctl_event_free_dylibloader_wrapper_asound)(snd_ctl_event_t *);
+void (*snd_ctl_event_clear_dylibloader_wrapper_asound)(snd_ctl_event_t *);
+void (*snd_ctl_event_copy_dylibloader_wrapper_asound)(snd_ctl_event_t *, const snd_ctl_event_t *);
+snd_ctl_event_type_t (*snd_ctl_event_get_type_dylibloader_wrapper_asound)(const snd_ctl_event_t *);
+size_t (*snd_ctl_elem_list_sizeof_dylibloader_wrapper_asound)(void);
+int (*snd_ctl_elem_list_malloc_dylibloader_wrapper_asound)(snd_ctl_elem_list_t **);
+void (*snd_ctl_elem_list_free_dylibloader_wrapper_asound)(snd_ctl_elem_list_t *);
+void (*snd_ctl_elem_list_clear_dylibloader_wrapper_asound)(snd_ctl_elem_list_t *);
+void (*snd_ctl_elem_list_copy_dylibloader_wrapper_asound)(snd_ctl_elem_list_t *, const snd_ctl_elem_list_t *);
+void (*snd_ctl_elem_list_set_offset_dylibloader_wrapper_asound)(snd_ctl_elem_list_t *, unsigned int);
+unsigned int (*snd_ctl_elem_list_get_used_dylibloader_wrapper_asound)(const snd_ctl_elem_list_t *);
+unsigned int (*snd_ctl_elem_list_get_count_dylibloader_wrapper_asound)(const snd_ctl_elem_list_t *);
+void (*snd_ctl_elem_list_get_id_dylibloader_wrapper_asound)(const snd_ctl_elem_list_t *, unsigned int, snd_ctl_elem_id_t *);
+unsigned int (*snd_ctl_elem_list_get_numid_dylibloader_wrapper_asound)(const snd_ctl_elem_list_t *, unsigned int);
+snd_ctl_elem_iface_t (*snd_ctl_elem_list_get_interface_dylibloader_wrapper_asound)(const snd_ctl_elem_list_t *, unsigned int);
+unsigned int (*snd_ctl_elem_list_get_device_dylibloader_wrapper_asound)(const snd_ctl_elem_list_t *, unsigned int);
+unsigned int (*snd_ctl_elem_list_get_subdevice_dylibloader_wrapper_asound)(const snd_ctl_elem_list_t *, unsigned int);
+const char *(*snd_ctl_elem_list_get_name_dylibloader_wrapper_asound)(const snd_ctl_elem_list_t *, unsigned int);
+unsigned int (*snd_ctl_elem_list_get_index_dylibloader_wrapper_asound)(const snd_ctl_elem_list_t *, unsigned int);
+size_t (*snd_ctl_elem_info_sizeof_dylibloader_wrapper_asound)(void);
+int (*snd_ctl_elem_info_malloc_dylibloader_wrapper_asound)(snd_ctl_elem_info_t **);
+void (*snd_ctl_elem_info_free_dylibloader_wrapper_asound)(snd_ctl_elem_info_t *);
+void (*snd_ctl_elem_info_clear_dylibloader_wrapper_asound)(snd_ctl_elem_info_t *);
+void (*snd_ctl_elem_info_copy_dylibloader_wrapper_asound)(snd_ctl_elem_info_t *, const snd_ctl_elem_info_t *);
+snd_ctl_elem_type_t (*snd_ctl_elem_info_get_type_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t *);
+int (*snd_ctl_elem_info_is_readable_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t *);
+int (*snd_ctl_elem_info_is_writable_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t *);
+int (*snd_ctl_elem_info_is_volatile_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t *);
+int (*snd_ctl_elem_info_is_inactive_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t *);
+int (*snd_ctl_elem_info_is_locked_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t *);
+int (*snd_ctl_elem_info_is_tlv_readable_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t *);
+int (*snd_ctl_elem_info_is_tlv_writable_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t *);
+int (*snd_ctl_elem_info_is_tlv_commandable_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t *);
+int (*snd_ctl_elem_info_is_owner_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t *);
+int (*snd_ctl_elem_info_is_user_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t *);
+pid_t (*snd_ctl_elem_info_get_owner_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t *);
+unsigned int (*snd_ctl_elem_info_get_count_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t *);
+long (*snd_ctl_elem_info_get_min_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t *);
+long (*snd_ctl_elem_info_get_max_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t *);
+long (*snd_ctl_elem_info_get_step_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t *);
+long long (*snd_ctl_elem_info_get_min64_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t *);
+long long (*snd_ctl_elem_info_get_max64_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t *);
+long long (*snd_ctl_elem_info_get_step64_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t *);
+unsigned int (*snd_ctl_elem_info_get_items_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t *);
+void (*snd_ctl_elem_info_set_item_dylibloader_wrapper_asound)(snd_ctl_elem_info_t *, unsigned int);
+const char *(*snd_ctl_elem_info_get_item_name_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t *);
+int (*snd_ctl_elem_info_get_dimensions_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t *);
+int (*snd_ctl_elem_info_get_dimension_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t *, unsigned int);
+int (*snd_ctl_elem_info_set_dimension_dylibloader_wrapper_asound)(snd_ctl_elem_info_t *, const int[4]);
+void (*snd_ctl_elem_info_get_id_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t *, snd_ctl_elem_id_t *);
+unsigned int (*snd_ctl_elem_info_get_numid_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t *);
+snd_ctl_elem_iface_t (*snd_ctl_elem_info_get_interface_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t *);
+unsigned int (*snd_ctl_elem_info_get_device_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t *);
+unsigned int (*snd_ctl_elem_info_get_subdevice_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t *);
+const char *(*snd_ctl_elem_info_get_name_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t *);
+unsigned int (*snd_ctl_elem_info_get_index_dylibloader_wrapper_asound)(const snd_ctl_elem_info_t *);
+void (*snd_ctl_elem_info_set_id_dylibloader_wrapper_asound)(snd_ctl_elem_info_t *, const snd_ctl_elem_id_t *);
+void (*snd_ctl_elem_info_set_numid_dylibloader_wrapper_asound)(snd_ctl_elem_info_t *, unsigned int);
+void (*snd_ctl_elem_info_set_interface_dylibloader_wrapper_asound)(snd_ctl_elem_info_t *, snd_ctl_elem_iface_t);
+void (*snd_ctl_elem_info_set_device_dylibloader_wrapper_asound)(snd_ctl_elem_info_t *, unsigned int);
+void (*snd_ctl_elem_info_set_subdevice_dylibloader_wrapper_asound)(snd_ctl_elem_info_t *, unsigned int);
+void (*snd_ctl_elem_info_set_name_dylibloader_wrapper_asound)(snd_ctl_elem_info_t *, const char *);
+void (*snd_ctl_elem_info_set_index_dylibloader_wrapper_asound)(snd_ctl_elem_info_t *, unsigned int);
+int (*snd_ctl_add_integer_elem_set_dylibloader_wrapper_asound)(snd_ctl_t *, snd_ctl_elem_info_t *, unsigned int, unsigned int, long, long, long);
+int (*snd_ctl_add_integer64_elem_set_dylibloader_wrapper_asound)(snd_ctl_t *, snd_ctl_elem_info_t *, unsigned int, unsigned int, long long, long long, long long);
+int (*snd_ctl_add_boolean_elem_set_dylibloader_wrapper_asound)(snd_ctl_t *, snd_ctl_elem_info_t *, unsigned int, unsigned int);
+int (*snd_ctl_add_enumerated_elem_set_dylibloader_wrapper_asound)(snd_ctl_t *, snd_ctl_elem_info_t *, unsigned int, unsigned int, unsigned int, const char *[]);
+int (*snd_ctl_add_bytes_elem_set_dylibloader_wrapper_asound)(snd_ctl_t *, snd_ctl_elem_info_t *, unsigned int, unsigned int);
+int (*snd_ctl_elem_add_integer_dylibloader_wrapper_asound)(snd_ctl_t *, const snd_ctl_elem_id_t *, unsigned int, long, long, long);
+int (*snd_ctl_elem_add_integer64_dylibloader_wrapper_asound)(snd_ctl_t *, const snd_ctl_elem_id_t *, unsigned int, long long, long long, long long);
+int (*snd_ctl_elem_add_boolean_dylibloader_wrapper_asound)(snd_ctl_t *, const snd_ctl_elem_id_t *, unsigned int);
+int (*snd_ctl_elem_add_enumerated_dylibloader_wrapper_asound)(snd_ctl_t *, const snd_ctl_elem_id_t *, unsigned int, unsigned int, const char *[]);
+int (*snd_ctl_elem_add_iec958_dylibloader_wrapper_asound)(snd_ctl_t *, const snd_ctl_elem_id_t *);
+int (*snd_ctl_elem_remove_dylibloader_wrapper_asound)(snd_ctl_t *, snd_ctl_elem_id_t *);
+size_t (*snd_ctl_elem_value_sizeof_dylibloader_wrapper_asound)(void);
+int (*snd_ctl_elem_value_malloc_dylibloader_wrapper_asound)(snd_ctl_elem_value_t **);
+void (*snd_ctl_elem_value_free_dylibloader_wrapper_asound)(snd_ctl_elem_value_t *);
+void (*snd_ctl_elem_value_clear_dylibloader_wrapper_asound)(snd_ctl_elem_value_t *);
+void (*snd_ctl_elem_value_copy_dylibloader_wrapper_asound)(snd_ctl_elem_value_t *, const snd_ctl_elem_value_t *);
+int (*snd_ctl_elem_value_compare_dylibloader_wrapper_asound)(snd_ctl_elem_value_t *, const snd_ctl_elem_value_t *);
+void (*snd_ctl_elem_value_get_id_dylibloader_wrapper_asound)(const snd_ctl_elem_value_t *, snd_ctl_elem_id_t *);
+unsigned int (*snd_ctl_elem_value_get_numid_dylibloader_wrapper_asound)(const snd_ctl_elem_value_t *);
+snd_ctl_elem_iface_t (*snd_ctl_elem_value_get_interface_dylibloader_wrapper_asound)(const snd_ctl_elem_value_t *);
+unsigned int (*snd_ctl_elem_value_get_device_dylibloader_wrapper_asound)(const snd_ctl_elem_value_t *);
+unsigned int (*snd_ctl_elem_value_get_subdevice_dylibloader_wrapper_asound)(const snd_ctl_elem_value_t *);
+const char *(*snd_ctl_elem_value_get_name_dylibloader_wrapper_asound)(const snd_ctl_elem_value_t *);
+unsigned int (*snd_ctl_elem_value_get_index_dylibloader_wrapper_asound)(const snd_ctl_elem_value_t *);
+void (*snd_ctl_elem_value_set_id_dylibloader_wrapper_asound)(snd_ctl_elem_value_t *, const snd_ctl_elem_id_t *);
+void (*snd_ctl_elem_value_set_numid_dylibloader_wrapper_asound)(snd_ctl_elem_value_t *, unsigned int);
+void (*snd_ctl_elem_value_set_interface_dylibloader_wrapper_asound)(snd_ctl_elem_value_t *, snd_ctl_elem_iface_t);
+void (*snd_ctl_elem_value_set_device_dylibloader_wrapper_asound)(snd_ctl_elem_value_t *, unsigned int);
+void (*snd_ctl_elem_value_set_subdevice_dylibloader_wrapper_asound)(snd_ctl_elem_value_t *, unsigned int);
+void (*snd_ctl_elem_value_set_name_dylibloader_wrapper_asound)(snd_ctl_elem_value_t *, const char *);
+void (*snd_ctl_elem_value_set_index_dylibloader_wrapper_asound)(snd_ctl_elem_value_t *, unsigned int);
+int (*snd_ctl_elem_value_get_boolean_dylibloader_wrapper_asound)(const snd_ctl_elem_value_t *, unsigned int);
+long (*snd_ctl_elem_value_get_integer_dylibloader_wrapper_asound)(const snd_ctl_elem_value_t *, unsigned int);
+long long (*snd_ctl_elem_value_get_integer64_dylibloader_wrapper_asound)(const snd_ctl_elem_value_t *, unsigned int);
+unsigned int (*snd_ctl_elem_value_get_enumerated_dylibloader_wrapper_asound)(const snd_ctl_elem_value_t *, unsigned int);
+unsigned char (*snd_ctl_elem_value_get_byte_dylibloader_wrapper_asound)(const snd_ctl_elem_value_t *, unsigned int);
+void (*snd_ctl_elem_value_set_boolean_dylibloader_wrapper_asound)(snd_ctl_elem_value_t *, unsigned int, long);
+void (*snd_ctl_elem_value_set_integer_dylibloader_wrapper_asound)(snd_ctl_elem_value_t *, unsigned int, long);
+void (*snd_ctl_elem_value_set_integer64_dylibloader_wrapper_asound)(snd_ctl_elem_value_t *, unsigned int, long long);
+void (*snd_ctl_elem_value_set_enumerated_dylibloader_wrapper_asound)(snd_ctl_elem_value_t *, unsigned int, unsigned int);
+void (*snd_ctl_elem_value_set_byte_dylibloader_wrapper_asound)(snd_ctl_elem_value_t *, unsigned int, unsigned char);
+void (*snd_ctl_elem_set_bytes_dylibloader_wrapper_asound)(snd_ctl_elem_value_t *, void *, size_t);
+const void *(*snd_ctl_elem_value_get_bytes_dylibloader_wrapper_asound)(const snd_ctl_elem_value_t *);
+void (*snd_ctl_elem_value_get_iec958_dylibloader_wrapper_asound)(const snd_ctl_elem_value_t *, snd_aes_iec958_t *);
+void (*snd_ctl_elem_value_set_iec958_dylibloader_wrapper_asound)(snd_ctl_elem_value_t *, const snd_aes_iec958_t *);
+int (*snd_tlv_parse_dB_info_dylibloader_wrapper_asound)(unsigned int *, unsigned int, unsigned int **);
+int (*snd_tlv_get_dB_range_dylibloader_wrapper_asound)(unsigned int *, long, long, long *, long *);
+int (*snd_tlv_convert_to_dB_dylibloader_wrapper_asound)(unsigned int *, long, long, long, long *);
+int (*snd_tlv_convert_from_dB_dylibloader_wrapper_asound)(unsigned int *, long, long, long, long *, int);
+int (*snd_ctl_get_dB_range_dylibloader_wrapper_asound)(snd_ctl_t *, const snd_ctl_elem_id_t *, long *, long *);
+int (*snd_ctl_convert_to_dB_dylibloader_wrapper_asound)(snd_ctl_t *, const snd_ctl_elem_id_t *, long, long *);
+int (*snd_ctl_convert_from_dB_dylibloader_wrapper_asound)(snd_ctl_t *, const snd_ctl_elem_id_t *, long, long *, int);
+int (*snd_hctl_compare_fast_dylibloader_wrapper_asound)(const snd_hctl_elem_t *, const snd_hctl_elem_t *);
+int (*snd_hctl_open_dylibloader_wrapper_asound)(snd_hctl_t **, const char *, int);
+int (*snd_hctl_open_ctl_dylibloader_wrapper_asound)(snd_hctl_t **, snd_ctl_t *);
+int (*snd_hctl_close_dylibloader_wrapper_asound)(snd_hctl_t *);
+int (*snd_hctl_nonblock_dylibloader_wrapper_asound)(snd_hctl_t *, int);
+int (*snd_hctl_poll_descriptors_count_dylibloader_wrapper_asound)(snd_hctl_t *);
+int (*snd_hctl_poll_descriptors_dylibloader_wrapper_asound)(snd_hctl_t *, struct pollfd *, unsigned int);
+int (*snd_hctl_poll_descriptors_revents_dylibloader_wrapper_asound)(snd_hctl_t *, struct pollfd *, unsigned int, unsigned short *);
+unsigned int (*snd_hctl_get_count_dylibloader_wrapper_asound)(snd_hctl_t *);
+int (*snd_hctl_set_compare_dylibloader_wrapper_asound)(snd_hctl_t *, snd_hctl_compare_t);
+snd_hctl_elem_t *(*snd_hctl_first_elem_dylibloader_wrapper_asound)(snd_hctl_t *);
+snd_hctl_elem_t *(*snd_hctl_last_elem_dylibloader_wrapper_asound)(snd_hctl_t *);
+snd_hctl_elem_t *(*snd_hctl_find_elem_dylibloader_wrapper_asound)(snd_hctl_t *, const snd_ctl_elem_id_t *);
+void (*snd_hctl_set_callback_dylibloader_wrapper_asound)(snd_hctl_t *, snd_hctl_callback_t);
+void (*snd_hctl_set_callback_private_dylibloader_wrapper_asound)(snd_hctl_t *, void *);
+void *(*snd_hctl_get_callback_private_dylibloader_wrapper_asound)(snd_hctl_t *);
+int (*snd_hctl_load_dylibloader_wrapper_asound)(snd_hctl_t *);
+int (*snd_hctl_free_dylibloader_wrapper_asound)(snd_hctl_t *);
+int (*snd_hctl_handle_events_dylibloader_wrapper_asound)(snd_hctl_t *);
+const char *(*snd_hctl_name_dylibloader_wrapper_asound)(snd_hctl_t *);
+int (*snd_hctl_wait_dylibloader_wrapper_asound)(snd_hctl_t *, int);
+snd_ctl_t *(*snd_hctl_ctl_dylibloader_wrapper_asound)(snd_hctl_t *);
+snd_hctl_elem_t *(*snd_hctl_elem_next_dylibloader_wrapper_asound)(snd_hctl_elem_t *);
+snd_hctl_elem_t *(*snd_hctl_elem_prev_dylibloader_wrapper_asound)(snd_hctl_elem_t *);
+int (*snd_hctl_elem_info_dylibloader_wrapper_asound)(snd_hctl_elem_t *, snd_ctl_elem_info_t *);
+int (*snd_hctl_elem_read_dylibloader_wrapper_asound)(snd_hctl_elem_t *, snd_ctl_elem_value_t *);
+int (*snd_hctl_elem_write_dylibloader_wrapper_asound)(snd_hctl_elem_t *, snd_ctl_elem_value_t *);
+int (*snd_hctl_elem_tlv_read_dylibloader_wrapper_asound)(snd_hctl_elem_t *, unsigned int *, unsigned int);
+int (*snd_hctl_elem_tlv_write_dylibloader_wrapper_asound)(snd_hctl_elem_t *, const unsigned int *);
+int (*snd_hctl_elem_tlv_command_dylibloader_wrapper_asound)(snd_hctl_elem_t *, const unsigned int *);
+snd_hctl_t *(*snd_hctl_elem_get_hctl_dylibloader_wrapper_asound)(snd_hctl_elem_t *);
+void (*snd_hctl_elem_get_id_dylibloader_wrapper_asound)(const snd_hctl_elem_t *, snd_ctl_elem_id_t *);
+unsigned int (*snd_hctl_elem_get_numid_dylibloader_wrapper_asound)(const snd_hctl_elem_t *);
+snd_ctl_elem_iface_t (*snd_hctl_elem_get_interface_dylibloader_wrapper_asound)(const snd_hctl_elem_t *);
+unsigned int (*snd_hctl_elem_get_device_dylibloader_wrapper_asound)(const snd_hctl_elem_t *);
+unsigned int (*snd_hctl_elem_get_subdevice_dylibloader_wrapper_asound)(const snd_hctl_elem_t *);
+const char *(*snd_hctl_elem_get_name_dylibloader_wrapper_asound)(const snd_hctl_elem_t *);
+unsigned int (*snd_hctl_elem_get_index_dylibloader_wrapper_asound)(const snd_hctl_elem_t *);
+void (*snd_hctl_elem_set_callback_dylibloader_wrapper_asound)(snd_hctl_elem_t *, snd_hctl_elem_callback_t);
+void *(*snd_hctl_elem_get_callback_private_dylibloader_wrapper_asound)(const snd_hctl_elem_t *);
+void (*snd_hctl_elem_set_callback_private_dylibloader_wrapper_asound)(snd_hctl_elem_t *, void *);
+int (*snd_sctl_build_dylibloader_wrapper_asound)(snd_sctl_t **, snd_ctl_t *, snd_config_t *, snd_config_t *, int);
+int (*snd_sctl_free_dylibloader_wrapper_asound)(snd_sctl_t *);
+int (*snd_sctl_install_dylibloader_wrapper_asound)(snd_sctl_t *);
+int (*snd_sctl_remove_dylibloader_wrapper_asound)(snd_sctl_t *);
+int (*snd_mixer_open_dylibloader_wrapper_asound)(snd_mixer_t **, int);
+int (*snd_mixer_close_dylibloader_wrapper_asound)(snd_mixer_t *);
+snd_mixer_elem_t *(*snd_mixer_first_elem_dylibloader_wrapper_asound)(snd_mixer_t *);
+snd_mixer_elem_t *(*snd_mixer_last_elem_dylibloader_wrapper_asound)(snd_mixer_t *);
+int (*snd_mixer_handle_events_dylibloader_wrapper_asound)(snd_mixer_t *);
+int (*snd_mixer_attach_dylibloader_wrapper_asound)(snd_mixer_t *, const char *);
+int (*snd_mixer_attach_hctl_dylibloader_wrapper_asound)(snd_mixer_t *, snd_hctl_t *);
+int (*snd_mixer_detach_dylibloader_wrapper_asound)(snd_mixer_t *, const char *);
+int (*snd_mixer_detach_hctl_dylibloader_wrapper_asound)(snd_mixer_t *, snd_hctl_t *);
+int (*snd_mixer_get_hctl_dylibloader_wrapper_asound)(snd_mixer_t *, const char *, snd_hctl_t **);
+int (*snd_mixer_poll_descriptors_count_dylibloader_wrapper_asound)(snd_mixer_t *);
+int (*snd_mixer_poll_descriptors_dylibloader_wrapper_asound)(snd_mixer_t *, struct pollfd *, unsigned int);
+int (*snd_mixer_poll_descriptors_revents_dylibloader_wrapper_asound)(snd_mixer_t *, struct pollfd *, unsigned int, unsigned short *);
+int (*snd_mixer_load_dylibloader_wrapper_asound)(snd_mixer_t *);
+void (*snd_mixer_free_dylibloader_wrapper_asound)(snd_mixer_t *);
+int (*snd_mixer_wait_dylibloader_wrapper_asound)(snd_mixer_t *, int);
+int (*snd_mixer_set_compare_dylibloader_wrapper_asound)(snd_mixer_t *, snd_mixer_compare_t);
+void (*snd_mixer_set_callback_dylibloader_wrapper_asound)(snd_mixer_t *, snd_mixer_callback_t);
+void *(*snd_mixer_get_callback_private_dylibloader_wrapper_asound)(const snd_mixer_t *);
+void (*snd_mixer_set_callback_private_dylibloader_wrapper_asound)(snd_mixer_t *, void *);
+unsigned int (*snd_mixer_get_count_dylibloader_wrapper_asound)(const snd_mixer_t *);
+int (*snd_mixer_class_unregister_dylibloader_wrapper_asound)(snd_mixer_class_t *);
+snd_mixer_elem_t *(*snd_mixer_elem_next_dylibloader_wrapper_asound)(snd_mixer_elem_t *);
+snd_mixer_elem_t *(*snd_mixer_elem_prev_dylibloader_wrapper_asound)(snd_mixer_elem_t *);
+void (*snd_mixer_elem_set_callback_dylibloader_wrapper_asound)(snd_mixer_elem_t *, snd_mixer_elem_callback_t);
+void *(*snd_mixer_elem_get_callback_private_dylibloader_wrapper_asound)(const snd_mixer_elem_t *);
+void (*snd_mixer_elem_set_callback_private_dylibloader_wrapper_asound)(snd_mixer_elem_t *, void *);
+snd_mixer_elem_type_t (*snd_mixer_elem_get_type_dylibloader_wrapper_asound)(const snd_mixer_elem_t *);
+int (*snd_mixer_class_register_dylibloader_wrapper_asound)(snd_mixer_class_t *, snd_mixer_t *);
+int (*snd_mixer_elem_new_dylibloader_wrapper_asound)(snd_mixer_elem_t **, snd_mixer_elem_type_t, int, void *, void *);
+int (*snd_mixer_elem_add_dylibloader_wrapper_asound)(snd_mixer_elem_t *, snd_mixer_class_t *);
+int (*snd_mixer_elem_remove_dylibloader_wrapper_asound)(snd_mixer_elem_t *);
+void (*snd_mixer_elem_free_dylibloader_wrapper_asound)(snd_mixer_elem_t *);
+int (*snd_mixer_elem_info_dylibloader_wrapper_asound)(snd_mixer_elem_t *);
+int (*snd_mixer_elem_value_dylibloader_wrapper_asound)(snd_mixer_elem_t *);
+int (*snd_mixer_elem_attach_dylibloader_wrapper_asound)(snd_mixer_elem_t *, snd_hctl_elem_t *);
+int (*snd_mixer_elem_detach_dylibloader_wrapper_asound)(snd_mixer_elem_t *, snd_hctl_elem_t *);
+int (*snd_mixer_elem_empty_dylibloader_wrapper_asound)(snd_mixer_elem_t *);
+void *(*snd_mixer_elem_get_private_dylibloader_wrapper_asound)(const snd_mixer_elem_t *);
+size_t (*snd_mixer_class_sizeof_dylibloader_wrapper_asound)(void);
+int (*snd_mixer_class_malloc_dylibloader_wrapper_asound)(snd_mixer_class_t **);
+void (*snd_mixer_class_free_dylibloader_wrapper_asound)(snd_mixer_class_t *);
+void (*snd_mixer_class_copy_dylibloader_wrapper_asound)(snd_mixer_class_t *, const snd_mixer_class_t *);
+snd_mixer_t *(*snd_mixer_class_get_mixer_dylibloader_wrapper_asound)(const snd_mixer_class_t *);
+snd_mixer_event_t (*snd_mixer_class_get_event_dylibloader_wrapper_asound)(const snd_mixer_class_t *);
+void *(*snd_mixer_class_get_private_dylibloader_wrapper_asound)(const snd_mixer_class_t *);
+snd_mixer_compare_t (*snd_mixer_class_get_compare_dylibloader_wrapper_asound)(const snd_mixer_class_t *);
+int (*snd_mixer_class_set_event_dylibloader_wrapper_asound)(snd_mixer_class_t *, snd_mixer_event_t);
+int (*snd_mixer_class_set_private_dylibloader_wrapper_asound)(snd_mixer_class_t *, void *);
+int (*snd_mixer_class_set_private_free_dylibloader_wrapper_asound)(snd_mixer_class_t *, void *);
+int (*snd_mixer_class_set_compare_dylibloader_wrapper_asound)(snd_mixer_class_t *, snd_mixer_compare_t);
+const char *(*snd_mixer_selem_channel_name_dylibloader_wrapper_asound)(snd_mixer_selem_channel_id_t);
+int (*snd_mixer_selem_register_dylibloader_wrapper_asound)(snd_mixer_t *, struct snd_mixer_selem_regopt *, snd_mixer_class_t **);
+void (*snd_mixer_selem_get_id_dylibloader_wrapper_asound)(snd_mixer_elem_t *, snd_mixer_selem_id_t *);
+const char *(*snd_mixer_selem_get_name_dylibloader_wrapper_asound)(snd_mixer_elem_t *);
+unsigned int (*snd_mixer_selem_get_index_dylibloader_wrapper_asound)(snd_mixer_elem_t *);
+snd_mixer_elem_t *(*snd_mixer_find_selem_dylibloader_wrapper_asound)(snd_mixer_t *, const snd_mixer_selem_id_t *);
+int (*snd_mixer_selem_is_active_dylibloader_wrapper_asound)(snd_mixer_elem_t *);
+int (*snd_mixer_selem_is_playback_mono_dylibloader_wrapper_asound)(snd_mixer_elem_t *);
+int (*snd_mixer_selem_has_playback_channel_dylibloader_wrapper_asound)(snd_mixer_elem_t *, snd_mixer_selem_channel_id_t);
+int (*snd_mixer_selem_is_capture_mono_dylibloader_wrapper_asound)(snd_mixer_elem_t *);
+int (*snd_mixer_selem_has_capture_channel_dylibloader_wrapper_asound)(snd_mixer_elem_t *, snd_mixer_selem_channel_id_t);
+int (*snd_mixer_selem_get_capture_group_dylibloader_wrapper_asound)(snd_mixer_elem_t *);
+int (*snd_mixer_selem_has_common_volume_dylibloader_wrapper_asound)(snd_mixer_elem_t *);
+int (*snd_mixer_selem_has_playback_volume_dylibloader_wrapper_asound)(snd_mixer_elem_t *);
+int (*snd_mixer_selem_has_playback_volume_joined_dylibloader_wrapper_asound)(snd_mixer_elem_t *);
+int (*snd_mixer_selem_has_capture_volume_dylibloader_wrapper_asound)(snd_mixer_elem_t *);
+int (*snd_mixer_selem_has_capture_volume_joined_dylibloader_wrapper_asound)(snd_mixer_elem_t *);
+int (*snd_mixer_selem_has_common_switch_dylibloader_wrapper_asound)(snd_mixer_elem_t *);
+int (*snd_mixer_selem_has_playback_switch_dylibloader_wrapper_asound)(snd_mixer_elem_t *);
+int (*snd_mixer_selem_has_playback_switch_joined_dylibloader_wrapper_asound)(snd_mixer_elem_t *);
+int (*snd_mixer_selem_has_capture_switch_dylibloader_wrapper_asound)(snd_mixer_elem_t *);
+int (*snd_mixer_selem_has_capture_switch_joined_dylibloader_wrapper_asound)(snd_mixer_elem_t *);
+int (*snd_mixer_selem_has_capture_switch_exclusive_dylibloader_wrapper_asound)(snd_mixer_elem_t *);
+int (*snd_mixer_selem_ask_playback_vol_dB_dylibloader_wrapper_asound)(snd_mixer_elem_t *, long, long *);
+int (*snd_mixer_selem_ask_capture_vol_dB_dylibloader_wrapper_asound)(snd_mixer_elem_t *, long, long *);
+int (*snd_mixer_selem_ask_playback_dB_vol_dylibloader_wrapper_asound)(snd_mixer_elem_t *, long, int, long *);
+int (*snd_mixer_selem_ask_capture_dB_vol_dylibloader_wrapper_asound)(snd_mixer_elem_t *, long, int, long *);
+int (*snd_mixer_selem_get_playback_volume_dylibloader_wrapper_asound)(snd_mixer_elem_t *, snd_mixer_selem_channel_id_t, long *);
+int (*snd_mixer_selem_get_capture_volume_dylibloader_wrapper_asound)(snd_mixer_elem_t *, snd_mixer_selem_channel_id_t, long *);
+int (*snd_mixer_selem_get_playback_dB_dylibloader_wrapper_asound)(snd_mixer_elem_t *, snd_mixer_selem_channel_id_t, long *);
+int (*snd_mixer_selem_get_capture_dB_dylibloader_wrapper_asound)(snd_mixer_elem_t *, snd_mixer_selem_channel_id_t, long *);
+int (*snd_mixer_selem_get_playback_switch_dylibloader_wrapper_asound)(snd_mixer_elem_t *, snd_mixer_selem_channel_id_t, int *);
+int (*snd_mixer_selem_get_capture_switch_dylibloader_wrapper_asound)(snd_mixer_elem_t *, snd_mixer_selem_channel_id_t, int *);
+int (*snd_mixer_selem_set_playback_volume_dylibloader_wrapper_asound)(snd_mixer_elem_t *, snd_mixer_selem_channel_id_t, long);
+int (*snd_mixer_selem_set_capture_volume_dylibloader_wrapper_asound)(snd_mixer_elem_t *, snd_mixer_selem_channel_id_t, long);
+int (*snd_mixer_selem_set_playback_dB_dylibloader_wrapper_asound)(snd_mixer_elem_t *, snd_mixer_selem_channel_id_t, long, int);
+int (*snd_mixer_selem_set_capture_dB_dylibloader_wrapper_asound)(snd_mixer_elem_t *, snd_mixer_selem_channel_id_t, long, int);
+int (*snd_mixer_selem_set_playback_volume_all_dylibloader_wrapper_asound)(snd_mixer_elem_t *, long);
+int (*snd_mixer_selem_set_capture_volume_all_dylibloader_wrapper_asound)(snd_mixer_elem_t *, long);
+int (*snd_mixer_selem_set_playback_dB_all_dylibloader_wrapper_asound)(snd_mixer_elem_t *, long, int);
+int (*snd_mixer_selem_set_capture_dB_all_dylibloader_wrapper_asound)(snd_mixer_elem_t *, long, int);
+int (*snd_mixer_selem_set_playback_switch_dylibloader_wrapper_asound)(snd_mixer_elem_t *, snd_mixer_selem_channel_id_t, int);
+int (*snd_mixer_selem_set_capture_switch_dylibloader_wrapper_asound)(snd_mixer_elem_t *, snd_mixer_selem_channel_id_t, int);
+int (*snd_mixer_selem_set_playback_switch_all_dylibloader_wrapper_asound)(snd_mixer_elem_t *, int);
+int (*snd_mixer_selem_set_capture_switch_all_dylibloader_wrapper_asound)(snd_mixer_elem_t *, int);
+int (*snd_mixer_selem_get_playback_volume_range_dylibloader_wrapper_asound)(snd_mixer_elem_t *, long *, long *);
+int (*snd_mixer_selem_get_playback_dB_range_dylibloader_wrapper_asound)(snd_mixer_elem_t *, long *, long *);
+int (*snd_mixer_selem_set_playback_volume_range_dylibloader_wrapper_asound)(snd_mixer_elem_t *, long, long);
+int (*snd_mixer_selem_get_capture_volume_range_dylibloader_wrapper_asound)(snd_mixer_elem_t *, long *, long *);
+int (*snd_mixer_selem_get_capture_dB_range_dylibloader_wrapper_asound)(snd_mixer_elem_t *, long *, long *);
+int (*snd_mixer_selem_set_capture_volume_range_dylibloader_wrapper_asound)(snd_mixer_elem_t *, long, long);
+int (*snd_mixer_selem_is_enumerated_dylibloader_wrapper_asound)(snd_mixer_elem_t *);
+int (*snd_mixer_selem_is_enum_playback_dylibloader_wrapper_asound)(snd_mixer_elem_t *);
+int (*snd_mixer_selem_is_enum_capture_dylibloader_wrapper_asound)(snd_mixer_elem_t *);
+int (*snd_mixer_selem_get_enum_items_dylibloader_wrapper_asound)(snd_mixer_elem_t *);
+int (*snd_mixer_selem_get_enum_item_name_dylibloader_wrapper_asound)(snd_mixer_elem_t *, unsigned int, size_t, char *);
+int (*snd_mixer_selem_get_enum_item_dylibloader_wrapper_asound)(snd_mixer_elem_t *, snd_mixer_selem_channel_id_t, unsigned int *);
+int (*snd_mixer_selem_set_enum_item_dylibloader_wrapper_asound)(snd_mixer_elem_t *, snd_mixer_selem_channel_id_t, unsigned int);
+size_t (*snd_mixer_selem_id_sizeof_dylibloader_wrapper_asound)(void);
+int (*snd_mixer_selem_id_malloc_dylibloader_wrapper_asound)(snd_mixer_selem_id_t **);
+void (*snd_mixer_selem_id_free_dylibloader_wrapper_asound)(snd_mixer_selem_id_t *);
+void (*snd_mixer_selem_id_copy_dylibloader_wrapper_asound)(snd_mixer_selem_id_t *, const snd_mixer_selem_id_t *);
+const char *(*snd_mixer_selem_id_get_name_dylibloader_wrapper_asound)(const snd_mixer_selem_id_t *);
+unsigned int (*snd_mixer_selem_id_get_index_dylibloader_wrapper_asound)(const snd_mixer_selem_id_t *);
+void (*snd_mixer_selem_id_set_name_dylibloader_wrapper_asound)(snd_mixer_selem_id_t *, const char *);
+void (*snd_mixer_selem_id_set_index_dylibloader_wrapper_asound)(snd_mixer_selem_id_t *, unsigned int);
+int (*snd_mixer_selem_id_parse_dylibloader_wrapper_asound)(snd_mixer_selem_id_t *, const char *);
+int (*snd_seq_open_dylibloader_wrapper_asound)(snd_seq_t **, const char *, int, int);
+int (*snd_seq_open_lconf_dylibloader_wrapper_asound)(snd_seq_t **, const char *, int, int, snd_config_t *);
+const char *(*snd_seq_name_dylibloader_wrapper_asound)(snd_seq_t *);
+snd_seq_type_t (*snd_seq_type_dylibloader_wrapper_asound)(snd_seq_t *);
+int (*snd_seq_close_dylibloader_wrapper_asound)(snd_seq_t *);
+int (*snd_seq_poll_descriptors_count_dylibloader_wrapper_asound)(snd_seq_t *, short);
+int (*snd_seq_poll_descriptors_dylibloader_wrapper_asound)(snd_seq_t *, struct pollfd *, unsigned int, short);
+int (*snd_seq_poll_descriptors_revents_dylibloader_wrapper_asound)(snd_seq_t *, struct pollfd *, unsigned int, unsigned short *);
+int (*snd_seq_nonblock_dylibloader_wrapper_asound)(snd_seq_t *, int);
+int (*snd_seq_client_id_dylibloader_wrapper_asound)(snd_seq_t *);
+size_t (*snd_seq_get_output_buffer_size_dylibloader_wrapper_asound)(snd_seq_t *);
+size_t (*snd_seq_get_input_buffer_size_dylibloader_wrapper_asound)(snd_seq_t *);
+int (*snd_seq_set_output_buffer_size_dylibloader_wrapper_asound)(snd_seq_t *, size_t);
+int (*snd_seq_set_input_buffer_size_dylibloader_wrapper_asound)(snd_seq_t *, size_t);
+size_t (*snd_seq_system_info_sizeof_dylibloader_wrapper_asound)(void);
+int (*snd_seq_system_info_malloc_dylibloader_wrapper_asound)(snd_seq_system_info_t **);
+void (*snd_seq_system_info_free_dylibloader_wrapper_asound)(snd_seq_system_info_t *);
+void (*snd_seq_system_info_copy_dylibloader_wrapper_asound)(snd_seq_system_info_t *, const snd_seq_system_info_t *);
+int (*snd_seq_system_info_get_queues_dylibloader_wrapper_asound)(const snd_seq_system_info_t *);
+int (*snd_seq_system_info_get_clients_dylibloader_wrapper_asound)(const snd_seq_system_info_t *);
+int (*snd_seq_system_info_get_ports_dylibloader_wrapper_asound)(const snd_seq_system_info_t *);
+int (*snd_seq_system_info_get_channels_dylibloader_wrapper_asound)(const snd_seq_system_info_t *);
+int (*snd_seq_system_info_get_cur_clients_dylibloader_wrapper_asound)(const snd_seq_system_info_t *);
+int (*snd_seq_system_info_get_cur_queues_dylibloader_wrapper_asound)(const snd_seq_system_info_t *);
+int (*snd_seq_system_info_dylibloader_wrapper_asound)(snd_seq_t *, snd_seq_system_info_t *);
+size_t (*snd_seq_client_info_sizeof_dylibloader_wrapper_asound)(void);
+int (*snd_seq_client_info_malloc_dylibloader_wrapper_asound)(snd_seq_client_info_t **);
+void (*snd_seq_client_info_free_dylibloader_wrapper_asound)(snd_seq_client_info_t *);
+void (*snd_seq_client_info_copy_dylibloader_wrapper_asound)(snd_seq_client_info_t *, const snd_seq_client_info_t *);
+int (*snd_seq_client_info_get_client_dylibloader_wrapper_asound)(const snd_seq_client_info_t *);
+snd_seq_client_type_t (*snd_seq_client_info_get_type_dylibloader_wrapper_asound)(const snd_seq_client_info_t *);
+const char *(*snd_seq_client_info_get_name_dylibloader_wrapper_asound)(snd_seq_client_info_t *);
+int (*snd_seq_client_info_get_broadcast_filter_dylibloader_wrapper_asound)(const snd_seq_client_info_t *);
+int (*snd_seq_client_info_get_error_bounce_dylibloader_wrapper_asound)(const snd_seq_client_info_t *);
+int (*snd_seq_client_info_get_card_dylibloader_wrapper_asound)(const snd_seq_client_info_t *);
+int (*snd_seq_client_info_get_pid_dylibloader_wrapper_asound)(const snd_seq_client_info_t *);
+const unsigned char *(*snd_seq_client_info_get_event_filter_dylibloader_wrapper_asound)(const snd_seq_client_info_t *);
+int (*snd_seq_client_info_get_num_ports_dylibloader_wrapper_asound)(const snd_seq_client_info_t *);
+int (*snd_seq_client_info_get_event_lost_dylibloader_wrapper_asound)(const snd_seq_client_info_t *);
+void (*snd_seq_client_info_set_client_dylibloader_wrapper_asound)(snd_seq_client_info_t *, int);
+void (*snd_seq_client_info_set_name_dylibloader_wrapper_asound)(snd_seq_client_info_t *, const char *);
+void (*snd_seq_client_info_set_broadcast_filter_dylibloader_wrapper_asound)(snd_seq_client_info_t *, int);
+void (*snd_seq_client_info_set_error_bounce_dylibloader_wrapper_asound)(snd_seq_client_info_t *, int);
+void (*snd_seq_client_info_set_event_filter_dylibloader_wrapper_asound)(snd_seq_client_info_t *, unsigned char *);
+void (*snd_seq_client_info_event_filter_clear_dylibloader_wrapper_asound)(snd_seq_client_info_t *);
+void (*snd_seq_client_info_event_filter_add_dylibloader_wrapper_asound)(snd_seq_client_info_t *, int);
+void (*snd_seq_client_info_event_filter_del_dylibloader_wrapper_asound)(snd_seq_client_info_t *, int);
+int (*snd_seq_client_info_event_filter_check_dylibloader_wrapper_asound)(snd_seq_client_info_t *, int);
+int (*snd_seq_get_client_info_dylibloader_wrapper_asound)(snd_seq_t *, snd_seq_client_info_t *);
+int (*snd_seq_get_any_client_info_dylibloader_wrapper_asound)(snd_seq_t *, int, snd_seq_client_info_t *);
+int (*snd_seq_set_client_info_dylibloader_wrapper_asound)(snd_seq_t *, snd_seq_client_info_t *);
+int (*snd_seq_query_next_client_dylibloader_wrapper_asound)(snd_seq_t *, snd_seq_client_info_t *);
+size_t (*snd_seq_client_pool_sizeof_dylibloader_wrapper_asound)(void);
+int (*snd_seq_client_pool_malloc_dylibloader_wrapper_asound)(snd_seq_client_pool_t **);
+void (*snd_seq_client_pool_free_dylibloader_wrapper_asound)(snd_seq_client_pool_t *);
+void (*snd_seq_client_pool_copy_dylibloader_wrapper_asound)(snd_seq_client_pool_t *, const snd_seq_client_pool_t *);
+int (*snd_seq_client_pool_get_client_dylibloader_wrapper_asound)(const snd_seq_client_pool_t *);
+size_t (*snd_seq_client_pool_get_output_pool_dylibloader_wrapper_asound)(const snd_seq_client_pool_t *);
+size_t (*snd_seq_client_pool_get_input_pool_dylibloader_wrapper_asound)(const snd_seq_client_pool_t *);
+size_t (*snd_seq_client_pool_get_output_room_dylibloader_wrapper_asound)(const snd_seq_client_pool_t *);
+size_t (*snd_seq_client_pool_get_output_free_dylibloader_wrapper_asound)(const snd_seq_client_pool_t *);
+size_t (*snd_seq_client_pool_get_input_free_dylibloader_wrapper_asound)(const snd_seq_client_pool_t *);
+void (*snd_seq_client_pool_set_output_pool_dylibloader_wrapper_asound)(snd_seq_client_pool_t *, size_t);
+void (*snd_seq_client_pool_set_input_pool_dylibloader_wrapper_asound)(snd_seq_client_pool_t *, size_t);
+void (*snd_seq_client_pool_set_output_room_dylibloader_wrapper_asound)(snd_seq_client_pool_t *, size_t);
+int (*snd_seq_get_client_pool_dylibloader_wrapper_asound)(snd_seq_t *, snd_seq_client_pool_t *);
+int (*snd_seq_set_client_pool_dylibloader_wrapper_asound)(snd_seq_t *, snd_seq_client_pool_t *);
+size_t (*snd_seq_port_info_sizeof_dylibloader_wrapper_asound)(void);
+int (*snd_seq_port_info_malloc_dylibloader_wrapper_asound)(snd_seq_port_info_t **);
+void (*snd_seq_port_info_free_dylibloader_wrapper_asound)(snd_seq_port_info_t *);
+void (*snd_seq_port_info_copy_dylibloader_wrapper_asound)(snd_seq_port_info_t *, const snd_seq_port_info_t *);
+int (*snd_seq_port_info_get_client_dylibloader_wrapper_asound)(const snd_seq_port_info_t *);
+int (*snd_seq_port_info_get_port_dylibloader_wrapper_asound)(const snd_seq_port_info_t *);
+const snd_seq_addr_t *(*snd_seq_port_info_get_addr_dylibloader_wrapper_asound)(const snd_seq_port_info_t *);
+const char *(*snd_seq_port_info_get_name_dylibloader_wrapper_asound)(const snd_seq_port_info_t *);
+unsigned int (*snd_seq_port_info_get_capability_dylibloader_wrapper_asound)(const snd_seq_port_info_t *);
+unsigned int (*snd_seq_port_info_get_type_dylibloader_wrapper_asound)(const snd_seq_port_info_t *);
+int (*snd_seq_port_info_get_midi_channels_dylibloader_wrapper_asound)(const snd_seq_port_info_t *);
+int (*snd_seq_port_info_get_midi_voices_dylibloader_wrapper_asound)(const snd_seq_port_info_t *);
+int (*snd_seq_port_info_get_synth_voices_dylibloader_wrapper_asound)(const snd_seq_port_info_t *);
+int (*snd_seq_port_info_get_read_use_dylibloader_wrapper_asound)(const snd_seq_port_info_t *);
+int (*snd_seq_port_info_get_write_use_dylibloader_wrapper_asound)(const snd_seq_port_info_t *);
+int (*snd_seq_port_info_get_port_specified_dylibloader_wrapper_asound)(const snd_seq_port_info_t *);
+int (*snd_seq_port_info_get_timestamping_dylibloader_wrapper_asound)(const snd_seq_port_info_t *);
+int (*snd_seq_port_info_get_timestamp_real_dylibloader_wrapper_asound)(const snd_seq_port_info_t *);
+int (*snd_seq_port_info_get_timestamp_queue_dylibloader_wrapper_asound)(const snd_seq_port_info_t *);
+void (*snd_seq_port_info_set_client_dylibloader_wrapper_asound)(snd_seq_port_info_t *, int);
+void (*snd_seq_port_info_set_port_dylibloader_wrapper_asound)(snd_seq_port_info_t *, int);
+void (*snd_seq_port_info_set_addr_dylibloader_wrapper_asound)(snd_seq_port_info_t *, const snd_seq_addr_t *);
+void (*snd_seq_port_info_set_name_dylibloader_wrapper_asound)(snd_seq_port_info_t *, const char *);
+void (*snd_seq_port_info_set_capability_dylibloader_wrapper_asound)(snd_seq_port_info_t *, unsigned int);
+void (*snd_seq_port_info_set_type_dylibloader_wrapper_asound)(snd_seq_port_info_t *, unsigned int);
+void (*snd_seq_port_info_set_midi_channels_dylibloader_wrapper_asound)(snd_seq_port_info_t *, int);
+void (*snd_seq_port_info_set_midi_voices_dylibloader_wrapper_asound)(snd_seq_port_info_t *, int);
+void (*snd_seq_port_info_set_synth_voices_dylibloader_wrapper_asound)(snd_seq_port_info_t *, int);
+void (*snd_seq_port_info_set_port_specified_dylibloader_wrapper_asound)(snd_seq_port_info_t *, int);
+void (*snd_seq_port_info_set_timestamping_dylibloader_wrapper_asound)(snd_seq_port_info_t *, int);
+void (*snd_seq_port_info_set_timestamp_real_dylibloader_wrapper_asound)(snd_seq_port_info_t *, int);
+void (*snd_seq_port_info_set_timestamp_queue_dylibloader_wrapper_asound)(snd_seq_port_info_t *, int);
+int (*snd_seq_create_port_dylibloader_wrapper_asound)(snd_seq_t *, snd_seq_port_info_t *);
+int (*snd_seq_delete_port_dylibloader_wrapper_asound)(snd_seq_t *, int);
+int (*snd_seq_get_port_info_dylibloader_wrapper_asound)(snd_seq_t *, int, snd_seq_port_info_t *);
+int (*snd_seq_get_any_port_info_dylibloader_wrapper_asound)(snd_seq_t *, int, int, snd_seq_port_info_t *);
+int (*snd_seq_set_port_info_dylibloader_wrapper_asound)(snd_seq_t *, int, snd_seq_port_info_t *);
+int (*snd_seq_query_next_port_dylibloader_wrapper_asound)(snd_seq_t *, snd_seq_port_info_t *);
+size_t (*snd_seq_port_subscribe_sizeof_dylibloader_wrapper_asound)(void);
+int (*snd_seq_port_subscribe_malloc_dylibloader_wrapper_asound)(snd_seq_port_subscribe_t **);
+void (*snd_seq_port_subscribe_free_dylibloader_wrapper_asound)(snd_seq_port_subscribe_t *);
+void (*snd_seq_port_subscribe_copy_dylibloader_wrapper_asound)(snd_seq_port_subscribe_t *, const snd_seq_port_subscribe_t *);
+const snd_seq_addr_t *(*snd_seq_port_subscribe_get_sender_dylibloader_wrapper_asound)(const snd_seq_port_subscribe_t *);
+const snd_seq_addr_t *(*snd_seq_port_subscribe_get_dest_dylibloader_wrapper_asound)(const snd_seq_port_subscribe_t *);
+int (*snd_seq_port_subscribe_get_queue_dylibloader_wrapper_asound)(const snd_seq_port_subscribe_t *);
+int (*snd_seq_port_subscribe_get_exclusive_dylibloader_wrapper_asound)(const snd_seq_port_subscribe_t *);
+int (*snd_seq_port_subscribe_get_time_update_dylibloader_wrapper_asound)(const snd_seq_port_subscribe_t *);
+int (*snd_seq_port_subscribe_get_time_real_dylibloader_wrapper_asound)(const snd_seq_port_subscribe_t *);
+void (*snd_seq_port_subscribe_set_sender_dylibloader_wrapper_asound)(snd_seq_port_subscribe_t *, const snd_seq_addr_t *);
+void (*snd_seq_port_subscribe_set_dest_dylibloader_wrapper_asound)(snd_seq_port_subscribe_t *, const snd_seq_addr_t *);
+void (*snd_seq_port_subscribe_set_queue_dylibloader_wrapper_asound)(snd_seq_port_subscribe_t *, int);
+void (*snd_seq_port_subscribe_set_exclusive_dylibloader_wrapper_asound)(snd_seq_port_subscribe_t *, int);
+void (*snd_seq_port_subscribe_set_time_update_dylibloader_wrapper_asound)(snd_seq_port_subscribe_t *, int);
+void (*snd_seq_port_subscribe_set_time_real_dylibloader_wrapper_asound)(snd_seq_port_subscribe_t *, int);
+int (*snd_seq_get_port_subscription_dylibloader_wrapper_asound)(snd_seq_t *, snd_seq_port_subscribe_t *);
+int (*snd_seq_subscribe_port_dylibloader_wrapper_asound)(snd_seq_t *, snd_seq_port_subscribe_t *);
+int (*snd_seq_unsubscribe_port_dylibloader_wrapper_asound)(snd_seq_t *, snd_seq_port_subscribe_t *);
+size_t (*snd_seq_query_subscribe_sizeof_dylibloader_wrapper_asound)(void);
+int (*snd_seq_query_subscribe_malloc_dylibloader_wrapper_asound)(snd_seq_query_subscribe_t **);
+void (*snd_seq_query_subscribe_free_dylibloader_wrapper_asound)(snd_seq_query_subscribe_t *);
+void (*snd_seq_query_subscribe_copy_dylibloader_wrapper_asound)(snd_seq_query_subscribe_t *, const snd_seq_query_subscribe_t *);
+int (*snd_seq_query_subscribe_get_client_dylibloader_wrapper_asound)(const snd_seq_query_subscribe_t *);
+int (*snd_seq_query_subscribe_get_port_dylibloader_wrapper_asound)(const snd_seq_query_subscribe_t *);
+const snd_seq_addr_t *(*snd_seq_query_subscribe_get_root_dylibloader_wrapper_asound)(const snd_seq_query_subscribe_t *);
+snd_seq_query_subs_type_t (*snd_seq_query_subscribe_get_type_dylibloader_wrapper_asound)(const snd_seq_query_subscribe_t *);
+int (*snd_seq_query_subscribe_get_index_dylibloader_wrapper_asound)(const snd_seq_query_subscribe_t *);
+int (*snd_seq_query_subscribe_get_num_subs_dylibloader_wrapper_asound)(const snd_seq_query_subscribe_t *);
+const snd_seq_addr_t *(*snd_seq_query_subscribe_get_addr_dylibloader_wrapper_asound)(const snd_seq_query_subscribe_t *);
+int (*snd_seq_query_subscribe_get_queue_dylibloader_wrapper_asound)(const snd_seq_query_subscribe_t *);
+int (*snd_seq_query_subscribe_get_exclusive_dylibloader_wrapper_asound)(const snd_seq_query_subscribe_t *);
+int (*snd_seq_query_subscribe_get_time_update_dylibloader_wrapper_asound)(const snd_seq_query_subscribe_t *);
+int (*snd_seq_query_subscribe_get_time_real_dylibloader_wrapper_asound)(const snd_seq_query_subscribe_t *);
+void (*snd_seq_query_subscribe_set_client_dylibloader_wrapper_asound)(snd_seq_query_subscribe_t *, int);
+void (*snd_seq_query_subscribe_set_port_dylibloader_wrapper_asound)(snd_seq_query_subscribe_t *, int);
+void (*snd_seq_query_subscribe_set_root_dylibloader_wrapper_asound)(snd_seq_query_subscribe_t *, const snd_seq_addr_t *);
+void (*snd_seq_query_subscribe_set_type_dylibloader_wrapper_asound)(snd_seq_query_subscribe_t *, snd_seq_query_subs_type_t);
+void (*snd_seq_query_subscribe_set_index_dylibloader_wrapper_asound)(snd_seq_query_subscribe_t *, int);
+int (*snd_seq_query_port_subscribers_dylibloader_wrapper_asound)(snd_seq_t *, snd_seq_query_subscribe_t *);
+size_t (*snd_seq_queue_info_sizeof_dylibloader_wrapper_asound)(void);
+int (*snd_seq_queue_info_malloc_dylibloader_wrapper_asound)(snd_seq_queue_info_t **);
+void (*snd_seq_queue_info_free_dylibloader_wrapper_asound)(snd_seq_queue_info_t *);
+void (*snd_seq_queue_info_copy_dylibloader_wrapper_asound)(snd_seq_queue_info_t *, const snd_seq_queue_info_t *);
+int (*snd_seq_queue_info_get_queue_dylibloader_wrapper_asound)(const snd_seq_queue_info_t *);
+const char *(*snd_seq_queue_info_get_name_dylibloader_wrapper_asound)(const snd_seq_queue_info_t *);
+int (*snd_seq_queue_info_get_owner_dylibloader_wrapper_asound)(const snd_seq_queue_info_t *);
+int (*snd_seq_queue_info_get_locked_dylibloader_wrapper_asound)(const snd_seq_queue_info_t *);
+unsigned int (*snd_seq_queue_info_get_flags_dylibloader_wrapper_asound)(const snd_seq_queue_info_t *);
+void (*snd_seq_queue_info_set_name_dylibloader_wrapper_asound)(snd_seq_queue_info_t *, const char *);
+void (*snd_seq_queue_info_set_owner_dylibloader_wrapper_asound)(snd_seq_queue_info_t *, int);
+void (*snd_seq_queue_info_set_locked_dylibloader_wrapper_asound)(snd_seq_queue_info_t *, int);
+void (*snd_seq_queue_info_set_flags_dylibloader_wrapper_asound)(snd_seq_queue_info_t *, unsigned int);
+int (*snd_seq_create_queue_dylibloader_wrapper_asound)(snd_seq_t *, snd_seq_queue_info_t *);
+int (*snd_seq_alloc_named_queue_dylibloader_wrapper_asound)(snd_seq_t *, const char *);
+int (*snd_seq_alloc_queue_dylibloader_wrapper_asound)(snd_seq_t *);
+int (*snd_seq_free_queue_dylibloader_wrapper_asound)(snd_seq_t *, int);
+int (*snd_seq_get_queue_info_dylibloader_wrapper_asound)(snd_seq_t *, int, snd_seq_queue_info_t *);
+int (*snd_seq_set_queue_info_dylibloader_wrapper_asound)(snd_seq_t *, int, snd_seq_queue_info_t *);
+int (*snd_seq_query_named_queue_dylibloader_wrapper_asound)(snd_seq_t *, const char *);
+int (*snd_seq_get_queue_usage_dylibloader_wrapper_asound)(snd_seq_t *, int);
+int (*snd_seq_set_queue_usage_dylibloader_wrapper_asound)(snd_seq_t *, int, int);
+size_t (*snd_seq_queue_status_sizeof_dylibloader_wrapper_asound)(void);
+int (*snd_seq_queue_status_malloc_dylibloader_wrapper_asound)(snd_seq_queue_status_t **);
+void (*snd_seq_queue_status_free_dylibloader_wrapper_asound)(snd_seq_queue_status_t *);
+void (*snd_seq_queue_status_copy_dylibloader_wrapper_asound)(snd_seq_queue_status_t *, const snd_seq_queue_status_t *);
+int (*snd_seq_queue_status_get_queue_dylibloader_wrapper_asound)(const snd_seq_queue_status_t *);
+int (*snd_seq_queue_status_get_events_dylibloader_wrapper_asound)(const snd_seq_queue_status_t *);
+snd_seq_tick_time_t (*snd_seq_queue_status_get_tick_time_dylibloader_wrapper_asound)(const snd_seq_queue_status_t *);
+const snd_seq_real_time_t *(*snd_seq_queue_status_get_real_time_dylibloader_wrapper_asound)(const snd_seq_queue_status_t *);
+unsigned int (*snd_seq_queue_status_get_status_dylibloader_wrapper_asound)(const snd_seq_queue_status_t *);
+int (*snd_seq_get_queue_status_dylibloader_wrapper_asound)(snd_seq_t *, int, snd_seq_queue_status_t *);
+size_t (*snd_seq_queue_tempo_sizeof_dylibloader_wrapper_asound)(void);
+int (*snd_seq_queue_tempo_malloc_dylibloader_wrapper_asound)(snd_seq_queue_tempo_t **);
+void (*snd_seq_queue_tempo_free_dylibloader_wrapper_asound)(snd_seq_queue_tempo_t *);
+void (*snd_seq_queue_tempo_copy_dylibloader_wrapper_asound)(snd_seq_queue_tempo_t *, const snd_seq_queue_tempo_t *);
+int (*snd_seq_queue_tempo_get_queue_dylibloader_wrapper_asound)(const snd_seq_queue_tempo_t *);
+unsigned int (*snd_seq_queue_tempo_get_tempo_dylibloader_wrapper_asound)(const snd_seq_queue_tempo_t *);
+int (*snd_seq_queue_tempo_get_ppq_dylibloader_wrapper_asound)(const snd_seq_queue_tempo_t *);
+unsigned int (*snd_seq_queue_tempo_get_skew_dylibloader_wrapper_asound)(const snd_seq_queue_tempo_t *);
+unsigned int (*snd_seq_queue_tempo_get_skew_base_dylibloader_wrapper_asound)(const snd_seq_queue_tempo_t *);
+void (*snd_seq_queue_tempo_set_tempo_dylibloader_wrapper_asound)(snd_seq_queue_tempo_t *, unsigned int);
+void (*snd_seq_queue_tempo_set_ppq_dylibloader_wrapper_asound)(snd_seq_queue_tempo_t *, int);
+void (*snd_seq_queue_tempo_set_skew_dylibloader_wrapper_asound)(snd_seq_queue_tempo_t *, unsigned int);
+void (*snd_seq_queue_tempo_set_skew_base_dylibloader_wrapper_asound)(snd_seq_queue_tempo_t *, unsigned int);
+int (*snd_seq_get_queue_tempo_dylibloader_wrapper_asound)(snd_seq_t *, int, snd_seq_queue_tempo_t *);
+int (*snd_seq_set_queue_tempo_dylibloader_wrapper_asound)(snd_seq_t *, int, snd_seq_queue_tempo_t *);
+size_t (*snd_seq_queue_timer_sizeof_dylibloader_wrapper_asound)(void);
+int (*snd_seq_queue_timer_malloc_dylibloader_wrapper_asound)(snd_seq_queue_timer_t **);
+void (*snd_seq_queue_timer_free_dylibloader_wrapper_asound)(snd_seq_queue_timer_t *);
+void (*snd_seq_queue_timer_copy_dylibloader_wrapper_asound)(snd_seq_queue_timer_t *, const snd_seq_queue_timer_t *);
+int (*snd_seq_queue_timer_get_queue_dylibloader_wrapper_asound)(const snd_seq_queue_timer_t *);
+snd_seq_queue_timer_type_t (*snd_seq_queue_timer_get_type_dylibloader_wrapper_asound)(const snd_seq_queue_timer_t *);
+const snd_timer_id_t *(*snd_seq_queue_timer_get_id_dylibloader_wrapper_asound)(const snd_seq_queue_timer_t *);
+unsigned int (*snd_seq_queue_timer_get_resolution_dylibloader_wrapper_asound)(const snd_seq_queue_timer_t *);
+void (*snd_seq_queue_timer_set_type_dylibloader_wrapper_asound)(snd_seq_queue_timer_t *, snd_seq_queue_timer_type_t);
+void (*snd_seq_queue_timer_set_id_dylibloader_wrapper_asound)(snd_seq_queue_timer_t *, const snd_timer_id_t *);
+void (*snd_seq_queue_timer_set_resolution_dylibloader_wrapper_asound)(snd_seq_queue_timer_t *, unsigned int);
+int (*snd_seq_get_queue_timer_dylibloader_wrapper_asound)(snd_seq_t *, int, snd_seq_queue_timer_t *);
+int (*snd_seq_set_queue_timer_dylibloader_wrapper_asound)(snd_seq_t *, int, snd_seq_queue_timer_t *);
+int (*snd_seq_free_event_dylibloader_wrapper_asound)(snd_seq_event_t *);
+ssize_t (*snd_seq_event_length_dylibloader_wrapper_asound)(snd_seq_event_t *);
+int (*snd_seq_event_output_dylibloader_wrapper_asound)(snd_seq_t *, snd_seq_event_t *);
+int (*snd_seq_event_output_buffer_dylibloader_wrapper_asound)(snd_seq_t *, snd_seq_event_t *);
+int (*snd_seq_event_output_direct_dylibloader_wrapper_asound)(snd_seq_t *, snd_seq_event_t *);
+int (*snd_seq_event_input_dylibloader_wrapper_asound)(snd_seq_t *, snd_seq_event_t **);
+int (*snd_seq_event_input_pending_dylibloader_wrapper_asound)(snd_seq_t *, int);
+int (*snd_seq_drain_output_dylibloader_wrapper_asound)(snd_seq_t *);
+int (*snd_seq_event_output_pending_dylibloader_wrapper_asound)(snd_seq_t *);
+int (*snd_seq_extract_output_dylibloader_wrapper_asound)(snd_seq_t *, snd_seq_event_t **);
+int (*snd_seq_drop_output_dylibloader_wrapper_asound)(snd_seq_t *);
+int (*snd_seq_drop_output_buffer_dylibloader_wrapper_asound)(snd_seq_t *);
+int (*snd_seq_drop_input_dylibloader_wrapper_asound)(snd_seq_t *);
+int (*snd_seq_drop_input_buffer_dylibloader_wrapper_asound)(snd_seq_t *);
+size_t (*snd_seq_remove_events_sizeof_dylibloader_wrapper_asound)(void);
+int (*snd_seq_remove_events_malloc_dylibloader_wrapper_asound)(snd_seq_remove_events_t **);
+void (*snd_seq_remove_events_free_dylibloader_wrapper_asound)(snd_seq_remove_events_t *);
+void (*snd_seq_remove_events_copy_dylibloader_wrapper_asound)(snd_seq_remove_events_t *, const snd_seq_remove_events_t *);
+unsigned int (*snd_seq_remove_events_get_condition_dylibloader_wrapper_asound)(const snd_seq_remove_events_t *);
+int (*snd_seq_remove_events_get_queue_dylibloader_wrapper_asound)(const snd_seq_remove_events_t *);
+const snd_seq_timestamp_t *(*snd_seq_remove_events_get_time_dylibloader_wrapper_asound)(const snd_seq_remove_events_t *);
+const snd_seq_addr_t *(*snd_seq_remove_events_get_dest_dylibloader_wrapper_asound)(const snd_seq_remove_events_t *);
+int (*snd_seq_remove_events_get_channel_dylibloader_wrapper_asound)(const snd_seq_remove_events_t *);
+int (*snd_seq_remove_events_get_event_type_dylibloader_wrapper_asound)(const snd_seq_remove_events_t *);
+int (*snd_seq_remove_events_get_tag_dylibloader_wrapper_asound)(const snd_seq_remove_events_t *);
+void (*snd_seq_remove_events_set_condition_dylibloader_wrapper_asound)(snd_seq_remove_events_t *, unsigned int);
+void (*snd_seq_remove_events_set_queue_dylibloader_wrapper_asound)(snd_seq_remove_events_t *, int);
+void (*snd_seq_remove_events_set_time_dylibloader_wrapper_asound)(snd_seq_remove_events_t *, const snd_seq_timestamp_t *);
+void (*snd_seq_remove_events_set_dest_dylibloader_wrapper_asound)(snd_seq_remove_events_t *, const snd_seq_addr_t *);
+void (*snd_seq_remove_events_set_channel_dylibloader_wrapper_asound)(snd_seq_remove_events_t *, int);
+void (*snd_seq_remove_events_set_event_type_dylibloader_wrapper_asound)(snd_seq_remove_events_t *, int);
+void (*snd_seq_remove_events_set_tag_dylibloader_wrapper_asound)(snd_seq_remove_events_t *, int);
+int (*snd_seq_remove_events_dylibloader_wrapper_asound)(snd_seq_t *, snd_seq_remove_events_t *);
+void (*snd_seq_set_bit_dylibloader_wrapper_asound)(int, void *);
+void (*snd_seq_unset_bit_dylibloader_wrapper_asound)(int, void *);
+int (*snd_seq_change_bit_dylibloader_wrapper_asound)(int, void *);
+int (*snd_seq_get_bit_dylibloader_wrapper_asound)(int, void *);
+int (*snd_seq_control_queue_dylibloader_wrapper_asound)(snd_seq_t *, int, int, int, snd_seq_event_t *);
+int (*snd_seq_create_simple_port_dylibloader_wrapper_asound)(snd_seq_t *, const char *, unsigned int, unsigned int);
+int (*snd_seq_delete_simple_port_dylibloader_wrapper_asound)(snd_seq_t *, int);
+int (*snd_seq_connect_from_dylibloader_wrapper_asound)(snd_seq_t *, int, int, int);
+int (*snd_seq_connect_to_dylibloader_wrapper_asound)(snd_seq_t *, int, int, int);
+int (*snd_seq_disconnect_from_dylibloader_wrapper_asound)(snd_seq_t *, int, int, int);
+int (*snd_seq_disconnect_to_dylibloader_wrapper_asound)(snd_seq_t *, int, int, int);
+int (*snd_seq_set_client_name_dylibloader_wrapper_asound)(snd_seq_t *, const char *);
+int (*snd_seq_set_client_event_filter_dylibloader_wrapper_asound)(snd_seq_t *, int);
+int (*snd_seq_set_client_pool_output_dylibloader_wrapper_asound)(snd_seq_t *, size_t);
+int (*snd_seq_set_client_pool_output_room_dylibloader_wrapper_asound)(snd_seq_t *, size_t);
+int (*snd_seq_set_client_pool_input_dylibloader_wrapper_asound)(snd_seq_t *, size_t);
+int (*snd_seq_sync_output_queue_dylibloader_wrapper_asound)(snd_seq_t *);
+int (*snd_seq_parse_address_dylibloader_wrapper_asound)(snd_seq_t *, snd_seq_addr_t *, const char *);
+int (*snd_seq_reset_pool_output_dylibloader_wrapper_asound)(snd_seq_t *);
+int (*snd_seq_reset_pool_input_dylibloader_wrapper_asound)(snd_seq_t *);
+int (*snd_midi_event_new_dylibloader_wrapper_asound)(size_t, snd_midi_event_t **);
+int (*snd_midi_event_resize_buffer_dylibloader_wrapper_asound)(snd_midi_event_t *, size_t);
+void (*snd_midi_event_free_dylibloader_wrapper_asound)(snd_midi_event_t *);
+void (*snd_midi_event_init_dylibloader_wrapper_asound)(snd_midi_event_t *);
+void (*snd_midi_event_reset_encode_dylibloader_wrapper_asound)(snd_midi_event_t *);
+void (*snd_midi_event_reset_decode_dylibloader_wrapper_asound)(snd_midi_event_t *);
+void (*snd_midi_event_no_status_dylibloader_wrapper_asound)(snd_midi_event_t *, int);
+long (*snd_midi_event_encode_dylibloader_wrapper_asound)(snd_midi_event_t *, const unsigned char *, long, snd_seq_event_t *);
+int (*snd_midi_event_encode_byte_dylibloader_wrapper_asound)(snd_midi_event_t *, int, snd_seq_event_t *);
+long (*snd_midi_event_decode_dylibloader_wrapper_asound)(snd_midi_event_t *, unsigned char *, long, const snd_seq_event_t *);
 int initialize_asound(int verbose) {
-  void *handle;
-  char *error;
-  handle = dlopen("libasound.so.2", RTLD_LAZY);
-  if (!handle) {
-    if (verbose) {
-      fprintf(stderr, "%s\n", dlerror());
-    }
-    return(1);
-  }
-  dlerror();
-// snd_asoundlib_version
-  *(void **) (&snd_asoundlib_version_dylibloader_wrapper_asound) = dlsym(handle, "snd_asoundlib_version");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_dlpath
-  *(void **) (&snd_dlpath_dylibloader_wrapper_asound) = dlsym(handle, "snd_dlpath");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_dlopen
-  *(void **) (&snd_dlopen_dylibloader_wrapper_asound) = dlsym(handle, "snd_dlopen");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_dlsym
-  *(void **) (&snd_dlsym_dylibloader_wrapper_asound) = dlsym(handle, "snd_dlsym");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_dlclose
-  *(void **) (&snd_dlclose_dylibloader_wrapper_asound) = dlsym(handle, "snd_dlclose");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_async_add_handler
-  *(void **) (&snd_async_add_handler_dylibloader_wrapper_asound) = dlsym(handle, "snd_async_add_handler");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_async_del_handler
-  *(void **) (&snd_async_del_handler_dylibloader_wrapper_asound) = dlsym(handle, "snd_async_del_handler");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_async_handler_get_fd
-  *(void **) (&snd_async_handler_get_fd_dylibloader_wrapper_asound) = dlsym(handle, "snd_async_handler_get_fd");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_async_handler_get_signo
-  *(void **) (&snd_async_handler_get_signo_dylibloader_wrapper_asound) = dlsym(handle, "snd_async_handler_get_signo");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_async_handler_get_callback_private
-  *(void **) (&snd_async_handler_get_callback_private_dylibloader_wrapper_asound) = dlsym(handle, "snd_async_handler_get_callback_private");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_shm_area_create
-  *(void **) (&snd_shm_area_create_dylibloader_wrapper_asound) = dlsym(handle, "snd_shm_area_create");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_shm_area_share
-  *(void **) (&snd_shm_area_share_dylibloader_wrapper_asound) = dlsym(handle, "snd_shm_area_share");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_shm_area_destroy
-  *(void **) (&snd_shm_area_destroy_dylibloader_wrapper_asound) = dlsym(handle, "snd_shm_area_destroy");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_user_file
-  *(void **) (&snd_user_file_dylibloader_wrapper_asound) = dlsym(handle, "snd_user_file");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_input_stdio_open
-  *(void **) (&snd_input_stdio_open_dylibloader_wrapper_asound) = dlsym(handle, "snd_input_stdio_open");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_input_stdio_attach
-  *(void **) (&snd_input_stdio_attach_dylibloader_wrapper_asound) = dlsym(handle, "snd_input_stdio_attach");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_input_buffer_open
-  *(void **) (&snd_input_buffer_open_dylibloader_wrapper_asound) = dlsym(handle, "snd_input_buffer_open");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_input_close
-  *(void **) (&snd_input_close_dylibloader_wrapper_asound) = dlsym(handle, "snd_input_close");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_input_scanf
-  *(void **) (&snd_input_scanf_dylibloader_wrapper_asound) = dlsym(handle, "snd_input_scanf");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_input_gets
-  *(void **) (&snd_input_gets_dylibloader_wrapper_asound) = dlsym(handle, "snd_input_gets");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_input_getc
-  *(void **) (&snd_input_getc_dylibloader_wrapper_asound) = dlsym(handle, "snd_input_getc");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_input_ungetc
-  *(void **) (&snd_input_ungetc_dylibloader_wrapper_asound) = dlsym(handle, "snd_input_ungetc");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_output_stdio_open
-  *(void **) (&snd_output_stdio_open_dylibloader_wrapper_asound) = dlsym(handle, "snd_output_stdio_open");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_output_stdio_attach
-  *(void **) (&snd_output_stdio_attach_dylibloader_wrapper_asound) = dlsym(handle, "snd_output_stdio_attach");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_output_buffer_open
-  *(void **) (&snd_output_buffer_open_dylibloader_wrapper_asound) = dlsym(handle, "snd_output_buffer_open");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_output_buffer_string
-  *(void **) (&snd_output_buffer_string_dylibloader_wrapper_asound) = dlsym(handle, "snd_output_buffer_string");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_output_close
-  *(void **) (&snd_output_close_dylibloader_wrapper_asound) = dlsym(handle, "snd_output_close");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_output_printf
-  *(void **) (&snd_output_printf_dylibloader_wrapper_asound) = dlsym(handle, "snd_output_printf");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_output_vprintf
-  *(void **) (&snd_output_vprintf_dylibloader_wrapper_asound) = dlsym(handle, "snd_output_vprintf");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_output_puts
-  *(void **) (&snd_output_puts_dylibloader_wrapper_asound) = dlsym(handle, "snd_output_puts");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_output_putc
-  *(void **) (&snd_output_putc_dylibloader_wrapper_asound) = dlsym(handle, "snd_output_putc");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_output_flush
-  *(void **) (&snd_output_flush_dylibloader_wrapper_asound) = dlsym(handle, "snd_output_flush");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_strerror
-  *(void **) (&snd_strerror_dylibloader_wrapper_asound) = dlsym(handle, "snd_strerror");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_lib_error_set_handler
-  *(void **) (&snd_lib_error_set_handler_dylibloader_wrapper_asound) = dlsym(handle, "snd_lib_error_set_handler");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_lib_error_set_local
-  *(void **) (&snd_lib_error_set_local_dylibloader_wrapper_asound) = dlsym(handle, "snd_lib_error_set_local");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_topdir
-  *(void **) (&snd_config_topdir_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_topdir");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_top
-  *(void **) (&snd_config_top_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_top");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_load
-  *(void **) (&snd_config_load_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_load");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_load_override
-  *(void **) (&snd_config_load_override_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_load_override");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_save
-  *(void **) (&snd_config_save_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_save");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_update
-  *(void **) (&snd_config_update_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_update");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_update_r
-  *(void **) (&snd_config_update_r_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_update_r");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_update_free
-  *(void **) (&snd_config_update_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_update_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_update_free_global
-  *(void **) (&snd_config_update_free_global_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_update_free_global");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_update_ref
-  *(void **) (&snd_config_update_ref_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_update_ref");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_ref
-  *(void **) (&snd_config_ref_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_ref");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_unref
-  *(void **) (&snd_config_unref_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_unref");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_search
-  *(void **) (&snd_config_search_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_search");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_searchv
-  *(void **) (&snd_config_searchv_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_searchv");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_search_definition
-  *(void **) (&snd_config_search_definition_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_search_definition");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_expand
-  *(void **) (&snd_config_expand_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_expand");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_evaluate
-  *(void **) (&snd_config_evaluate_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_evaluate");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_add
-  *(void **) (&snd_config_add_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_add");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_add_before
-  *(void **) (&snd_config_add_before_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_add_before");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_add_after
-  *(void **) (&snd_config_add_after_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_add_after");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_remove
-  *(void **) (&snd_config_remove_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_remove");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_delete
-  *(void **) (&snd_config_delete_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_delete");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_delete_compound_members
-  *(void **) (&snd_config_delete_compound_members_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_delete_compound_members");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_copy
-  *(void **) (&snd_config_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_copy");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_make
-  *(void **) (&snd_config_make_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_make");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_make_integer
-  *(void **) (&snd_config_make_integer_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_make_integer");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_make_integer64
-  *(void **) (&snd_config_make_integer64_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_make_integer64");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_make_real
-  *(void **) (&snd_config_make_real_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_make_real");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_make_string
-  *(void **) (&snd_config_make_string_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_make_string");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_make_pointer
-  *(void **) (&snd_config_make_pointer_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_make_pointer");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_make_compound
-  *(void **) (&snd_config_make_compound_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_make_compound");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_imake_integer
-  *(void **) (&snd_config_imake_integer_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_imake_integer");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_imake_integer64
-  *(void **) (&snd_config_imake_integer64_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_imake_integer64");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_imake_real
-  *(void **) (&snd_config_imake_real_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_imake_real");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_imake_string
-  *(void **) (&snd_config_imake_string_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_imake_string");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_imake_safe_string
-  *(void **) (&snd_config_imake_safe_string_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_imake_safe_string");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_imake_pointer
-  *(void **) (&snd_config_imake_pointer_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_imake_pointer");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_get_type
-  *(void **) (&snd_config_get_type_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_get_type");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_is_array
-  *(void **) (&snd_config_is_array_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_is_array");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_set_id
-  *(void **) (&snd_config_set_id_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_set_id");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_set_integer
-  *(void **) (&snd_config_set_integer_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_set_integer");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_set_integer64
-  *(void **) (&snd_config_set_integer64_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_set_integer64");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_set_real
-  *(void **) (&snd_config_set_real_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_set_real");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_set_string
-  *(void **) (&snd_config_set_string_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_set_string");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_set_ascii
-  *(void **) (&snd_config_set_ascii_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_set_ascii");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_set_pointer
-  *(void **) (&snd_config_set_pointer_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_set_pointer");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_get_id
-  *(void **) (&snd_config_get_id_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_get_id");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_get_integer
-  *(void **) (&snd_config_get_integer_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_get_integer");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_get_integer64
-  *(void **) (&snd_config_get_integer64_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_get_integer64");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_get_real
-  *(void **) (&snd_config_get_real_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_get_real");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_get_ireal
-  *(void **) (&snd_config_get_ireal_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_get_ireal");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_get_string
-  *(void **) (&snd_config_get_string_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_get_string");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_get_ascii
-  *(void **) (&snd_config_get_ascii_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_get_ascii");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_get_pointer
-  *(void **) (&snd_config_get_pointer_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_get_pointer");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_test_id
-  *(void **) (&snd_config_test_id_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_test_id");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_iterator_first
-  *(void **) (&snd_config_iterator_first_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_iterator_first");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_iterator_next
-  *(void **) (&snd_config_iterator_next_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_iterator_next");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_iterator_end
-  *(void **) (&snd_config_iterator_end_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_iterator_end");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_iterator_entry
-  *(void **) (&snd_config_iterator_entry_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_iterator_entry");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_get_bool_ascii
-  *(void **) (&snd_config_get_bool_ascii_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_get_bool_ascii");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_get_bool
-  *(void **) (&snd_config_get_bool_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_get_bool");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_get_ctl_iface_ascii
-  *(void **) (&snd_config_get_ctl_iface_ascii_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_get_ctl_iface_ascii");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_config_get_ctl_iface
-  *(void **) (&snd_config_get_ctl_iface_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_get_ctl_iface");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_names_list
-  *(void **) (&snd_names_list_dylibloader_wrapper_asound) = dlsym(handle, "snd_names_list");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_names_list_free
-  *(void **) (&snd_names_list_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_names_list_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_open
-  *(void **) (&snd_pcm_open_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_open");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_open_lconf
-  *(void **) (&snd_pcm_open_lconf_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_open_lconf");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_open_fallback
-  *(void **) (&snd_pcm_open_fallback_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_open_fallback");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_close
-  *(void **) (&snd_pcm_close_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_close");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_name
-  *(void **) (&snd_pcm_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_type
-  *(void **) (&snd_pcm_type_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_type");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_stream
-  *(void **) (&snd_pcm_stream_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_stream");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_poll_descriptors_count
-  *(void **) (&snd_pcm_poll_descriptors_count_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_poll_descriptors_count");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_poll_descriptors
-  *(void **) (&snd_pcm_poll_descriptors_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_poll_descriptors");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_poll_descriptors_revents
-  *(void **) (&snd_pcm_poll_descriptors_revents_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_poll_descriptors_revents");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_nonblock
-  *(void **) (&snd_pcm_nonblock_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_nonblock");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_async_add_pcm_handler
-  *(void **) (&snd_async_add_pcm_handler_dylibloader_wrapper_asound) = dlsym(handle, "snd_async_add_pcm_handler");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_async_handler_get_pcm
-  *(void **) (&snd_async_handler_get_pcm_dylibloader_wrapper_asound) = dlsym(handle, "snd_async_handler_get_pcm");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_info
-  *(void **) (&snd_pcm_info_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_info");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_current
-  *(void **) (&snd_pcm_hw_params_current_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_current");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params
-  *(void **) (&snd_pcm_hw_params_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_free
-  *(void **) (&snd_pcm_hw_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_sw_params_current
-  *(void **) (&snd_pcm_sw_params_current_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_current");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_sw_params
-  *(void **) (&snd_pcm_sw_params_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_prepare
-  *(void **) (&snd_pcm_prepare_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_prepare");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_reset
-  *(void **) (&snd_pcm_reset_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_reset");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_status
-  *(void **) (&snd_pcm_status_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_status");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_start
-  *(void **) (&snd_pcm_start_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_start");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_drop
-  *(void **) (&snd_pcm_drop_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_drop");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_drain
-  *(void **) (&snd_pcm_drain_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_drain");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_pause
-  *(void **) (&snd_pcm_pause_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_pause");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_state
-  *(void **) (&snd_pcm_state_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_state");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hwsync
-  *(void **) (&snd_pcm_hwsync_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hwsync");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_delay
-  *(void **) (&snd_pcm_delay_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_delay");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_resume
-  *(void **) (&snd_pcm_resume_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_resume");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_htimestamp
-  *(void **) (&snd_pcm_htimestamp_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_htimestamp");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_avail
-  *(void **) (&snd_pcm_avail_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_avail");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_avail_update
-  *(void **) (&snd_pcm_avail_update_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_avail_update");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_avail_delay
-  *(void **) (&snd_pcm_avail_delay_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_avail_delay");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_rewindable
-  *(void **) (&snd_pcm_rewindable_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_rewindable");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_rewind
-  *(void **) (&snd_pcm_rewind_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_rewind");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_forwardable
-  *(void **) (&snd_pcm_forwardable_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_forwardable");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_forward
-  *(void **) (&snd_pcm_forward_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_forward");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_writei
-  *(void **) (&snd_pcm_writei_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_writei");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_readi
-  *(void **) (&snd_pcm_readi_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_readi");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_writen
-  *(void **) (&snd_pcm_writen_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_writen");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_readn
-  *(void **) (&snd_pcm_readn_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_readn");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_wait
-  *(void **) (&snd_pcm_wait_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_wait");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_link
-  *(void **) (&snd_pcm_link_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_link");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_unlink
-  *(void **) (&snd_pcm_unlink_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_unlink");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_query_chmaps
-  *(void **) (&snd_pcm_query_chmaps_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_query_chmaps");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_query_chmaps_from_hw
-  *(void **) (&snd_pcm_query_chmaps_from_hw_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_query_chmaps_from_hw");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_free_chmaps
-  *(void **) (&snd_pcm_free_chmaps_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_free_chmaps");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_get_chmap
-  *(void **) (&snd_pcm_get_chmap_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_get_chmap");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_set_chmap
-  *(void **) (&snd_pcm_set_chmap_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_set_chmap");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_chmap_type_name
-  *(void **) (&snd_pcm_chmap_type_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_chmap_type_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_chmap_name
-  *(void **) (&snd_pcm_chmap_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_chmap_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_chmap_long_name
-  *(void **) (&snd_pcm_chmap_long_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_chmap_long_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_chmap_print
-  *(void **) (&snd_pcm_chmap_print_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_chmap_print");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_chmap_from_string
-  *(void **) (&snd_pcm_chmap_from_string_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_chmap_from_string");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_chmap_parse_string
-  *(void **) (&snd_pcm_chmap_parse_string_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_chmap_parse_string");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_recover
-  *(void **) (&snd_pcm_recover_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_recover");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_set_params
-  *(void **) (&snd_pcm_set_params_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_set_params");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_get_params
-  *(void **) (&snd_pcm_get_params_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_get_params");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_info_sizeof
-  *(void **) (&snd_pcm_info_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_info_sizeof");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_info_malloc
-  *(void **) (&snd_pcm_info_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_info_malloc");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_info_free
-  *(void **) (&snd_pcm_info_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_info_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_info_copy
-  *(void **) (&snd_pcm_info_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_info_copy");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_info_get_device
-  *(void **) (&snd_pcm_info_get_device_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_info_get_device");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_info_get_subdevice
-  *(void **) (&snd_pcm_info_get_subdevice_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_info_get_subdevice");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_info_get_stream
-  *(void **) (&snd_pcm_info_get_stream_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_info_get_stream");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_info_get_card
-  *(void **) (&snd_pcm_info_get_card_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_info_get_card");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_info_get_id
-  *(void **) (&snd_pcm_info_get_id_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_info_get_id");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_info_get_name
-  *(void **) (&snd_pcm_info_get_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_info_get_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_info_get_subdevice_name
-  *(void **) (&snd_pcm_info_get_subdevice_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_info_get_subdevice_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_info_get_class
-  *(void **) (&snd_pcm_info_get_class_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_info_get_class");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_info_get_subclass
-  *(void **) (&snd_pcm_info_get_subclass_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_info_get_subclass");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_info_get_subdevices_count
-  *(void **) (&snd_pcm_info_get_subdevices_count_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_info_get_subdevices_count");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_info_get_subdevices_avail
-  *(void **) (&snd_pcm_info_get_subdevices_avail_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_info_get_subdevices_avail");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_info_get_sync
-  *(void **) (&snd_pcm_info_get_sync_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_info_get_sync");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_info_set_device
-  *(void **) (&snd_pcm_info_set_device_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_info_set_device");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_info_set_subdevice
-  *(void **) (&snd_pcm_info_set_subdevice_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_info_set_subdevice");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_info_set_stream
-  *(void **) (&snd_pcm_info_set_stream_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_info_set_stream");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_any
-  *(void **) (&snd_pcm_hw_params_any_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_any");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_can_mmap_sample_resolution
-  *(void **) (&snd_pcm_hw_params_can_mmap_sample_resolution_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_can_mmap_sample_resolution");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_is_double
-  *(void **) (&snd_pcm_hw_params_is_double_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_is_double");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_is_batch
-  *(void **) (&snd_pcm_hw_params_is_batch_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_is_batch");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_is_block_transfer
-  *(void **) (&snd_pcm_hw_params_is_block_transfer_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_is_block_transfer");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_is_monotonic
-  *(void **) (&snd_pcm_hw_params_is_monotonic_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_is_monotonic");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_can_overrange
-  *(void **) (&snd_pcm_hw_params_can_overrange_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_can_overrange");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_can_pause
-  *(void **) (&snd_pcm_hw_params_can_pause_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_can_pause");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_can_resume
-  *(void **) (&snd_pcm_hw_params_can_resume_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_can_resume");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_is_half_duplex
-  *(void **) (&snd_pcm_hw_params_is_half_duplex_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_is_half_duplex");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_is_joint_duplex
-  *(void **) (&snd_pcm_hw_params_is_joint_duplex_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_is_joint_duplex");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_can_sync_start
-  *(void **) (&snd_pcm_hw_params_can_sync_start_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_can_sync_start");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_can_disable_period_wakeup
-  *(void **) (&snd_pcm_hw_params_can_disable_period_wakeup_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_can_disable_period_wakeup");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_supports_audio_wallclock_ts
-  *(void **) (&snd_pcm_hw_params_supports_audio_wallclock_ts_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_supports_audio_wallclock_ts");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_supports_audio_ts_type
-  *(void **) (&snd_pcm_hw_params_supports_audio_ts_type_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_supports_audio_ts_type");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_get_rate_numden
-  *(void **) (&snd_pcm_hw_params_get_rate_numden_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_rate_numden");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_get_sbits
-  *(void **) (&snd_pcm_hw_params_get_sbits_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_sbits");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_get_fifo_size
-  *(void **) (&snd_pcm_hw_params_get_fifo_size_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_fifo_size");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_sizeof
-  *(void **) (&snd_pcm_hw_params_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_sizeof");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_malloc
-  *(void **) (&snd_pcm_hw_params_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_malloc");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_free
-  *(void **) (&snd_pcm_hw_params_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_copy
-  *(void **) (&snd_pcm_hw_params_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_copy");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_get_access
-  *(void **) (&snd_pcm_hw_params_get_access_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_access");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_test_access
-  *(void **) (&snd_pcm_hw_params_test_access_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_test_access");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_access
-  *(void **) (&snd_pcm_hw_params_set_access_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_access");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_access_first
-  *(void **) (&snd_pcm_hw_params_set_access_first_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_access_first");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_access_last
-  *(void **) (&snd_pcm_hw_params_set_access_last_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_access_last");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_access_mask
-  *(void **) (&snd_pcm_hw_params_set_access_mask_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_access_mask");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_get_access_mask
-  *(void **) (&snd_pcm_hw_params_get_access_mask_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_access_mask");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_get_format
-  *(void **) (&snd_pcm_hw_params_get_format_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_format");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_test_format
-  *(void **) (&snd_pcm_hw_params_test_format_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_test_format");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_format
-  *(void **) (&snd_pcm_hw_params_set_format_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_format");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_format_first
-  *(void **) (&snd_pcm_hw_params_set_format_first_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_format_first");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_format_last
-  *(void **) (&snd_pcm_hw_params_set_format_last_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_format_last");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_format_mask
-  *(void **) (&snd_pcm_hw_params_set_format_mask_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_format_mask");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_get_format_mask
-  *(void **) (&snd_pcm_hw_params_get_format_mask_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_format_mask");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_get_subformat
-  *(void **) (&snd_pcm_hw_params_get_subformat_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_subformat");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_test_subformat
-  *(void **) (&snd_pcm_hw_params_test_subformat_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_test_subformat");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_subformat
-  *(void **) (&snd_pcm_hw_params_set_subformat_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_subformat");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_subformat_first
-  *(void **) (&snd_pcm_hw_params_set_subformat_first_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_subformat_first");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_subformat_last
-  *(void **) (&snd_pcm_hw_params_set_subformat_last_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_subformat_last");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_subformat_mask
-  *(void **) (&snd_pcm_hw_params_set_subformat_mask_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_subformat_mask");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_get_subformat_mask
-  *(void **) (&snd_pcm_hw_params_get_subformat_mask_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_subformat_mask");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_get_channels
-  *(void **) (&snd_pcm_hw_params_get_channels_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_channels");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_get_channels_min
-  *(void **) (&snd_pcm_hw_params_get_channels_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_channels_min");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_get_channels_max
-  *(void **) (&snd_pcm_hw_params_get_channels_max_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_channels_max");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_test_channels
-  *(void **) (&snd_pcm_hw_params_test_channels_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_test_channels");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_channels
-  *(void **) (&snd_pcm_hw_params_set_channels_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_channels");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_channels_min
-  *(void **) (&snd_pcm_hw_params_set_channels_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_channels_min");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_channels_max
-  *(void **) (&snd_pcm_hw_params_set_channels_max_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_channels_max");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_channels_minmax
-  *(void **) (&snd_pcm_hw_params_set_channels_minmax_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_channels_minmax");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_channels_near
-  *(void **) (&snd_pcm_hw_params_set_channels_near_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_channels_near");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_channels_first
-  *(void **) (&snd_pcm_hw_params_set_channels_first_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_channels_first");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_channels_last
-  *(void **) (&snd_pcm_hw_params_set_channels_last_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_channels_last");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_get_rate
-  *(void **) (&snd_pcm_hw_params_get_rate_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_rate");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_get_rate_min
-  *(void **) (&snd_pcm_hw_params_get_rate_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_rate_min");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_get_rate_max
-  *(void **) (&snd_pcm_hw_params_get_rate_max_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_rate_max");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_test_rate
-  *(void **) (&snd_pcm_hw_params_test_rate_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_test_rate");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_rate
-  *(void **) (&snd_pcm_hw_params_set_rate_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_rate");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_rate_min
-  *(void **) (&snd_pcm_hw_params_set_rate_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_rate_min");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_rate_max
-  *(void **) (&snd_pcm_hw_params_set_rate_max_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_rate_max");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_rate_minmax
-  *(void **) (&snd_pcm_hw_params_set_rate_minmax_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_rate_minmax");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_rate_near
-  *(void **) (&snd_pcm_hw_params_set_rate_near_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_rate_near");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_rate_first
-  *(void **) (&snd_pcm_hw_params_set_rate_first_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_rate_first");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_rate_last
-  *(void **) (&snd_pcm_hw_params_set_rate_last_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_rate_last");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_rate_resample
-  *(void **) (&snd_pcm_hw_params_set_rate_resample_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_rate_resample");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_get_rate_resample
-  *(void **) (&snd_pcm_hw_params_get_rate_resample_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_rate_resample");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_export_buffer
-  *(void **) (&snd_pcm_hw_params_set_export_buffer_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_export_buffer");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_get_export_buffer
-  *(void **) (&snd_pcm_hw_params_get_export_buffer_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_export_buffer");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_period_wakeup
-  *(void **) (&snd_pcm_hw_params_set_period_wakeup_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_period_wakeup");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_get_period_wakeup
-  *(void **) (&snd_pcm_hw_params_get_period_wakeup_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_period_wakeup");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_get_period_time
-  *(void **) (&snd_pcm_hw_params_get_period_time_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_period_time");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_get_period_time_min
-  *(void **) (&snd_pcm_hw_params_get_period_time_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_period_time_min");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_get_period_time_max
-  *(void **) (&snd_pcm_hw_params_get_period_time_max_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_period_time_max");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_test_period_time
-  *(void **) (&snd_pcm_hw_params_test_period_time_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_test_period_time");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_period_time
-  *(void **) (&snd_pcm_hw_params_set_period_time_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_period_time");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_period_time_min
-  *(void **) (&snd_pcm_hw_params_set_period_time_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_period_time_min");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_period_time_max
-  *(void **) (&snd_pcm_hw_params_set_period_time_max_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_period_time_max");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_period_time_minmax
-  *(void **) (&snd_pcm_hw_params_set_period_time_minmax_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_period_time_minmax");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_period_time_near
-  *(void **) (&snd_pcm_hw_params_set_period_time_near_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_period_time_near");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_period_time_first
-  *(void **) (&snd_pcm_hw_params_set_period_time_first_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_period_time_first");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_period_time_last
-  *(void **) (&snd_pcm_hw_params_set_period_time_last_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_period_time_last");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_get_period_size
-  *(void **) (&snd_pcm_hw_params_get_period_size_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_period_size");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_get_period_size_min
-  *(void **) (&snd_pcm_hw_params_get_period_size_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_period_size_min");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_get_period_size_max
-  *(void **) (&snd_pcm_hw_params_get_period_size_max_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_period_size_max");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_test_period_size
-  *(void **) (&snd_pcm_hw_params_test_period_size_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_test_period_size");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_period_size
-  *(void **) (&snd_pcm_hw_params_set_period_size_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_period_size");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_period_size_min
-  *(void **) (&snd_pcm_hw_params_set_period_size_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_period_size_min");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_period_size_max
-  *(void **) (&snd_pcm_hw_params_set_period_size_max_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_period_size_max");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_period_size_minmax
-  *(void **) (&snd_pcm_hw_params_set_period_size_minmax_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_period_size_minmax");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_period_size_near
-  *(void **) (&snd_pcm_hw_params_set_period_size_near_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_period_size_near");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_period_size_first
-  *(void **) (&snd_pcm_hw_params_set_period_size_first_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_period_size_first");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_period_size_last
-  *(void **) (&snd_pcm_hw_params_set_period_size_last_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_period_size_last");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_period_size_integer
-  *(void **) (&snd_pcm_hw_params_set_period_size_integer_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_period_size_integer");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_get_periods
-  *(void **) (&snd_pcm_hw_params_get_periods_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_periods");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_get_periods_min
-  *(void **) (&snd_pcm_hw_params_get_periods_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_periods_min");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_get_periods_max
-  *(void **) (&snd_pcm_hw_params_get_periods_max_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_periods_max");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_test_periods
-  *(void **) (&snd_pcm_hw_params_test_periods_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_test_periods");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_periods
-  *(void **) (&snd_pcm_hw_params_set_periods_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_periods");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_periods_min
-  *(void **) (&snd_pcm_hw_params_set_periods_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_periods_min");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_periods_max
-  *(void **) (&snd_pcm_hw_params_set_periods_max_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_periods_max");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_periods_minmax
-  *(void **) (&snd_pcm_hw_params_set_periods_minmax_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_periods_minmax");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_periods_near
-  *(void **) (&snd_pcm_hw_params_set_periods_near_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_periods_near");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_periods_first
-  *(void **) (&snd_pcm_hw_params_set_periods_first_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_periods_first");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_periods_last
-  *(void **) (&snd_pcm_hw_params_set_periods_last_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_periods_last");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_periods_integer
-  *(void **) (&snd_pcm_hw_params_set_periods_integer_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_periods_integer");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_get_buffer_time
-  *(void **) (&snd_pcm_hw_params_get_buffer_time_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_buffer_time");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_get_buffer_time_min
-  *(void **) (&snd_pcm_hw_params_get_buffer_time_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_buffer_time_min");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_get_buffer_time_max
-  *(void **) (&snd_pcm_hw_params_get_buffer_time_max_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_buffer_time_max");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_test_buffer_time
-  *(void **) (&snd_pcm_hw_params_test_buffer_time_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_test_buffer_time");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_buffer_time
-  *(void **) (&snd_pcm_hw_params_set_buffer_time_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_buffer_time");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_buffer_time_min
-  *(void **) (&snd_pcm_hw_params_set_buffer_time_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_buffer_time_min");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_buffer_time_max
-  *(void **) (&snd_pcm_hw_params_set_buffer_time_max_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_buffer_time_max");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_buffer_time_minmax
-  *(void **) (&snd_pcm_hw_params_set_buffer_time_minmax_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_buffer_time_minmax");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_buffer_time_near
-  *(void **) (&snd_pcm_hw_params_set_buffer_time_near_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_buffer_time_near");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_buffer_time_first
-  *(void **) (&snd_pcm_hw_params_set_buffer_time_first_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_buffer_time_first");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_buffer_time_last
-  *(void **) (&snd_pcm_hw_params_set_buffer_time_last_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_buffer_time_last");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_get_buffer_size
-  *(void **) (&snd_pcm_hw_params_get_buffer_size_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_buffer_size");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_get_buffer_size_min
-  *(void **) (&snd_pcm_hw_params_get_buffer_size_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_buffer_size_min");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_get_buffer_size_max
-  *(void **) (&snd_pcm_hw_params_get_buffer_size_max_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_buffer_size_max");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_test_buffer_size
-  *(void **) (&snd_pcm_hw_params_test_buffer_size_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_test_buffer_size");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_buffer_size
-  *(void **) (&snd_pcm_hw_params_set_buffer_size_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_buffer_size");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_buffer_size_min
-  *(void **) (&snd_pcm_hw_params_set_buffer_size_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_buffer_size_min");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_buffer_size_max
-  *(void **) (&snd_pcm_hw_params_set_buffer_size_max_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_buffer_size_max");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_buffer_size_minmax
-  *(void **) (&snd_pcm_hw_params_set_buffer_size_minmax_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_buffer_size_minmax");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_buffer_size_near
-  *(void **) (&snd_pcm_hw_params_set_buffer_size_near_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_buffer_size_near");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_buffer_size_first
-  *(void **) (&snd_pcm_hw_params_set_buffer_size_first_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_buffer_size_first");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_buffer_size_last
-  *(void **) (&snd_pcm_hw_params_set_buffer_size_last_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_buffer_size_last");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_get_min_align
-  *(void **) (&snd_pcm_hw_params_get_min_align_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_min_align");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_sw_params_sizeof
-  *(void **) (&snd_pcm_sw_params_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_sizeof");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_sw_params_malloc
-  *(void **) (&snd_pcm_sw_params_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_malloc");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_sw_params_free
-  *(void **) (&snd_pcm_sw_params_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_sw_params_copy
-  *(void **) (&snd_pcm_sw_params_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_copy");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_sw_params_get_boundary
-  *(void **) (&snd_pcm_sw_params_get_boundary_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_get_boundary");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_sw_params_set_tstamp_mode
-  *(void **) (&snd_pcm_sw_params_set_tstamp_mode_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_set_tstamp_mode");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_sw_params_get_tstamp_mode
-  *(void **) (&snd_pcm_sw_params_get_tstamp_mode_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_get_tstamp_mode");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_sw_params_set_avail_min
-  *(void **) (&snd_pcm_sw_params_set_avail_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_set_avail_min");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_sw_params_get_avail_min
-  *(void **) (&snd_pcm_sw_params_get_avail_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_get_avail_min");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_sw_params_set_period_event
-  *(void **) (&snd_pcm_sw_params_set_period_event_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_set_period_event");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_sw_params_get_period_event
-  *(void **) (&snd_pcm_sw_params_get_period_event_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_get_period_event");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_sw_params_set_start_threshold
-  *(void **) (&snd_pcm_sw_params_set_start_threshold_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_set_start_threshold");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_sw_params_get_start_threshold
-  *(void **) (&snd_pcm_sw_params_get_start_threshold_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_get_start_threshold");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_sw_params_set_stop_threshold
-  *(void **) (&snd_pcm_sw_params_set_stop_threshold_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_set_stop_threshold");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_sw_params_get_stop_threshold
-  *(void **) (&snd_pcm_sw_params_get_stop_threshold_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_get_stop_threshold");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_sw_params_set_silence_threshold
-  *(void **) (&snd_pcm_sw_params_set_silence_threshold_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_set_silence_threshold");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_sw_params_get_silence_threshold
-  *(void **) (&snd_pcm_sw_params_get_silence_threshold_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_get_silence_threshold");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_sw_params_set_silence_size
-  *(void **) (&snd_pcm_sw_params_set_silence_size_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_set_silence_size");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_sw_params_get_silence_size
-  *(void **) (&snd_pcm_sw_params_get_silence_size_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_get_silence_size");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_access_mask_sizeof
-  *(void **) (&snd_pcm_access_mask_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_access_mask_sizeof");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_access_mask_malloc
-  *(void **) (&snd_pcm_access_mask_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_access_mask_malloc");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_access_mask_free
-  *(void **) (&snd_pcm_access_mask_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_access_mask_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_access_mask_copy
-  *(void **) (&snd_pcm_access_mask_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_access_mask_copy");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_access_mask_none
-  *(void **) (&snd_pcm_access_mask_none_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_access_mask_none");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_access_mask_any
-  *(void **) (&snd_pcm_access_mask_any_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_access_mask_any");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_access_mask_test
-  *(void **) (&snd_pcm_access_mask_test_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_access_mask_test");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_access_mask_empty
-  *(void **) (&snd_pcm_access_mask_empty_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_access_mask_empty");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_access_mask_set
-  *(void **) (&snd_pcm_access_mask_set_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_access_mask_set");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_access_mask_reset
-  *(void **) (&snd_pcm_access_mask_reset_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_access_mask_reset");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_format_mask_sizeof
-  *(void **) (&snd_pcm_format_mask_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_mask_sizeof");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_format_mask_malloc
-  *(void **) (&snd_pcm_format_mask_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_mask_malloc");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_format_mask_free
-  *(void **) (&snd_pcm_format_mask_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_mask_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_format_mask_copy
-  *(void **) (&snd_pcm_format_mask_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_mask_copy");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_format_mask_none
-  *(void **) (&snd_pcm_format_mask_none_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_mask_none");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_format_mask_any
-  *(void **) (&snd_pcm_format_mask_any_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_mask_any");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_format_mask_test
-  *(void **) (&snd_pcm_format_mask_test_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_mask_test");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_format_mask_empty
-  *(void **) (&snd_pcm_format_mask_empty_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_mask_empty");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_format_mask_set
-  *(void **) (&snd_pcm_format_mask_set_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_mask_set");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_format_mask_reset
-  *(void **) (&snd_pcm_format_mask_reset_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_mask_reset");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_subformat_mask_sizeof
-  *(void **) (&snd_pcm_subformat_mask_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_subformat_mask_sizeof");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_subformat_mask_malloc
-  *(void **) (&snd_pcm_subformat_mask_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_subformat_mask_malloc");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_subformat_mask_free
-  *(void **) (&snd_pcm_subformat_mask_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_subformat_mask_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_subformat_mask_copy
-  *(void **) (&snd_pcm_subformat_mask_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_subformat_mask_copy");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_subformat_mask_none
-  *(void **) (&snd_pcm_subformat_mask_none_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_subformat_mask_none");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_subformat_mask_any
-  *(void **) (&snd_pcm_subformat_mask_any_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_subformat_mask_any");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_subformat_mask_test
-  *(void **) (&snd_pcm_subformat_mask_test_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_subformat_mask_test");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_subformat_mask_empty
-  *(void **) (&snd_pcm_subformat_mask_empty_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_subformat_mask_empty");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_subformat_mask_set
-  *(void **) (&snd_pcm_subformat_mask_set_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_subformat_mask_set");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_subformat_mask_reset
-  *(void **) (&snd_pcm_subformat_mask_reset_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_subformat_mask_reset");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_status_sizeof
-  *(void **) (&snd_pcm_status_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_status_sizeof");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_status_malloc
-  *(void **) (&snd_pcm_status_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_status_malloc");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_status_free
-  *(void **) (&snd_pcm_status_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_status_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_status_copy
-  *(void **) (&snd_pcm_status_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_status_copy");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_status_get_state
-  *(void **) (&snd_pcm_status_get_state_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_status_get_state");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_status_get_trigger_tstamp
-  *(void **) (&snd_pcm_status_get_trigger_tstamp_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_status_get_trigger_tstamp");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_status_get_trigger_htstamp
-  *(void **) (&snd_pcm_status_get_trigger_htstamp_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_status_get_trigger_htstamp");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_status_get_tstamp
-  *(void **) (&snd_pcm_status_get_tstamp_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_status_get_tstamp");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_status_get_htstamp
-  *(void **) (&snd_pcm_status_get_htstamp_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_status_get_htstamp");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_status_get_audio_htstamp
-  *(void **) (&snd_pcm_status_get_audio_htstamp_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_status_get_audio_htstamp");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_status_get_driver_htstamp
-  *(void **) (&snd_pcm_status_get_driver_htstamp_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_status_get_driver_htstamp");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_status_get_delay
-  *(void **) (&snd_pcm_status_get_delay_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_status_get_delay");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_status_get_avail
-  *(void **) (&snd_pcm_status_get_avail_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_status_get_avail");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_status_get_avail_max
-  *(void **) (&snd_pcm_status_get_avail_max_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_status_get_avail_max");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_status_get_overrange
-  *(void **) (&snd_pcm_status_get_overrange_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_status_get_overrange");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_type_name
-  *(void **) (&snd_pcm_type_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_type_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_stream_name
-  *(void **) (&snd_pcm_stream_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_stream_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_access_name
-  *(void **) (&snd_pcm_access_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_access_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_format_name
-  *(void **) (&snd_pcm_format_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_format_description
-  *(void **) (&snd_pcm_format_description_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_description");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_subformat_name
-  *(void **) (&snd_pcm_subformat_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_subformat_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_subformat_description
-  *(void **) (&snd_pcm_subformat_description_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_subformat_description");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_format_value
-  *(void **) (&snd_pcm_format_value_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_value");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_tstamp_mode_name
-  *(void **) (&snd_pcm_tstamp_mode_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_tstamp_mode_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_state_name
-  *(void **) (&snd_pcm_state_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_state_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_dump
-  *(void **) (&snd_pcm_dump_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_dump");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_dump_hw_setup
-  *(void **) (&snd_pcm_dump_hw_setup_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_dump_hw_setup");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_dump_sw_setup
-  *(void **) (&snd_pcm_dump_sw_setup_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_dump_sw_setup");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_dump_setup
-  *(void **) (&snd_pcm_dump_setup_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_dump_setup");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_dump
-  *(void **) (&snd_pcm_hw_params_dump_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_dump");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_sw_params_dump
-  *(void **) (&snd_pcm_sw_params_dump_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_dump");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_status_dump
-  *(void **) (&snd_pcm_status_dump_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_status_dump");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_mmap_begin
-  *(void **) (&snd_pcm_mmap_begin_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_mmap_begin");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_mmap_commit
-  *(void **) (&snd_pcm_mmap_commit_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_mmap_commit");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_mmap_writei
-  *(void **) (&snd_pcm_mmap_writei_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_mmap_writei");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_mmap_readi
-  *(void **) (&snd_pcm_mmap_readi_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_mmap_readi");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_mmap_writen
-  *(void **) (&snd_pcm_mmap_writen_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_mmap_writen");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_mmap_readn
-  *(void **) (&snd_pcm_mmap_readn_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_mmap_readn");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_format_signed
-  *(void **) (&snd_pcm_format_signed_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_signed");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_format_unsigned
-  *(void **) (&snd_pcm_format_unsigned_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_unsigned");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_format_linear
-  *(void **) (&snd_pcm_format_linear_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_linear");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_format_float
-  *(void **) (&snd_pcm_format_float_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_float");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_format_little_endian
-  *(void **) (&snd_pcm_format_little_endian_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_little_endian");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_format_big_endian
-  *(void **) (&snd_pcm_format_big_endian_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_big_endian");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_format_cpu_endian
-  *(void **) (&snd_pcm_format_cpu_endian_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_cpu_endian");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_format_width
-  *(void **) (&snd_pcm_format_width_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_width");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_format_physical_width
-  *(void **) (&snd_pcm_format_physical_width_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_physical_width");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_build_linear_format
-  *(void **) (&snd_pcm_build_linear_format_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_build_linear_format");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_format_size
-  *(void **) (&snd_pcm_format_size_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_size");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_format_silence
-  *(void **) (&snd_pcm_format_silence_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_silence");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_format_silence_16
-  *(void **) (&snd_pcm_format_silence_16_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_silence_16");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_format_silence_32
-  *(void **) (&snd_pcm_format_silence_32_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_silence_32");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_format_silence_64
-  *(void **) (&snd_pcm_format_silence_64_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_silence_64");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_format_set_silence
-  *(void **) (&snd_pcm_format_set_silence_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_set_silence");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_bytes_to_frames
-  *(void **) (&snd_pcm_bytes_to_frames_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_bytes_to_frames");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_frames_to_bytes
-  *(void **) (&snd_pcm_frames_to_bytes_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_frames_to_bytes");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_bytes_to_samples
-  *(void **) (&snd_pcm_bytes_to_samples_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_bytes_to_samples");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_samples_to_bytes
-  *(void **) (&snd_pcm_samples_to_bytes_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_samples_to_bytes");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_area_silence
-  *(void **) (&snd_pcm_area_silence_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_area_silence");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_areas_silence
-  *(void **) (&snd_pcm_areas_silence_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_areas_silence");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_area_copy
-  *(void **) (&snd_pcm_area_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_area_copy");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_areas_copy
-  *(void **) (&snd_pcm_areas_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_areas_copy");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_areas_copy_wrap
-  *(void **) (&snd_pcm_areas_copy_wrap_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_areas_copy_wrap");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hook_get_pcm
-  *(void **) (&snd_pcm_hook_get_pcm_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hook_get_pcm");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hook_get_private
-  *(void **) (&snd_pcm_hook_get_private_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hook_get_private");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hook_set_private
-  *(void **) (&snd_pcm_hook_set_private_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hook_set_private");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hook_add
-  *(void **) (&snd_pcm_hook_add_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hook_add");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hook_remove
-  *(void **) (&snd_pcm_hook_remove_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hook_remove");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_meter_get_bufsize
-  *(void **) (&snd_pcm_meter_get_bufsize_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_meter_get_bufsize");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_meter_get_channels
-  *(void **) (&snd_pcm_meter_get_channels_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_meter_get_channels");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_meter_get_rate
-  *(void **) (&snd_pcm_meter_get_rate_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_meter_get_rate");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_meter_get_now
-  *(void **) (&snd_pcm_meter_get_now_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_meter_get_now");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_meter_get_boundary
-  *(void **) (&snd_pcm_meter_get_boundary_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_meter_get_boundary");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_meter_add_scope
-  *(void **) (&snd_pcm_meter_add_scope_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_meter_add_scope");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_meter_search_scope
-  *(void **) (&snd_pcm_meter_search_scope_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_meter_search_scope");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_scope_malloc
-  *(void **) (&snd_pcm_scope_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_scope_malloc");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_scope_set_ops
-  *(void **) (&snd_pcm_scope_set_ops_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_scope_set_ops");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_scope_set_name
-  *(void **) (&snd_pcm_scope_set_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_scope_set_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_scope_get_name
-  *(void **) (&snd_pcm_scope_get_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_scope_get_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_scope_get_callback_private
-  *(void **) (&snd_pcm_scope_get_callback_private_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_scope_get_callback_private");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_scope_set_callback_private
-  *(void **) (&snd_pcm_scope_set_callback_private_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_scope_set_callback_private");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_scope_s16_open
-  *(void **) (&snd_pcm_scope_s16_open_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_scope_s16_open");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_scope_s16_get_channel_buffer
-  *(void **) (&snd_pcm_scope_s16_get_channel_buffer_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_scope_s16_get_channel_buffer");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_spcm_init
-  *(void **) (&snd_spcm_init_dylibloader_wrapper_asound) = dlsym(handle, "snd_spcm_init");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_spcm_init_duplex
-  *(void **) (&snd_spcm_init_duplex_dylibloader_wrapper_asound) = dlsym(handle, "snd_spcm_init_duplex");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_spcm_init_get_params
-  *(void **) (&snd_spcm_init_get_params_dylibloader_wrapper_asound) = dlsym(handle, "snd_spcm_init_get_params");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_start_mode_name
-  *(void **) (&snd_pcm_start_mode_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_start_mode_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_xrun_mode_name
-  *(void **) (&snd_pcm_xrun_mode_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_xrun_mode_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_sw_params_set_start_mode
-  *(void **) (&snd_pcm_sw_params_set_start_mode_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_set_start_mode");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_sw_params_get_start_mode
-  *(void **) (&snd_pcm_sw_params_get_start_mode_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_get_start_mode");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_sw_params_set_xrun_mode
-  *(void **) (&snd_pcm_sw_params_set_xrun_mode_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_set_xrun_mode");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_sw_params_get_xrun_mode
-  *(void **) (&snd_pcm_sw_params_get_xrun_mode_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_get_xrun_mode");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_sw_params_set_xfer_align
-  *(void **) (&snd_pcm_sw_params_set_xfer_align_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_set_xfer_align");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_sw_params_get_xfer_align
-  *(void **) (&snd_pcm_sw_params_get_xfer_align_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_get_xfer_align");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_sw_params_set_sleep_min
-  *(void **) (&snd_pcm_sw_params_set_sleep_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_set_sleep_min");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_sw_params_get_sleep_min
-  *(void **) (&snd_pcm_sw_params_get_sleep_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_get_sleep_min");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_get_tick_time
-  *(void **) (&snd_pcm_hw_params_get_tick_time_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_tick_time");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_get_tick_time_min
-  *(void **) (&snd_pcm_hw_params_get_tick_time_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_tick_time_min");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_get_tick_time_max
-  *(void **) (&snd_pcm_hw_params_get_tick_time_max_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_tick_time_max");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_test_tick_time
-  *(void **) (&snd_pcm_hw_params_test_tick_time_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_test_tick_time");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_tick_time
-  *(void **) (&snd_pcm_hw_params_set_tick_time_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_tick_time");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_tick_time_min
-  *(void **) (&snd_pcm_hw_params_set_tick_time_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_tick_time_min");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_tick_time_max
-  *(void **) (&snd_pcm_hw_params_set_tick_time_max_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_tick_time_max");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_tick_time_minmax
-  *(void **) (&snd_pcm_hw_params_set_tick_time_minmax_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_tick_time_minmax");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_tick_time_near
-  *(void **) (&snd_pcm_hw_params_set_tick_time_near_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_tick_time_near");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_tick_time_first
-  *(void **) (&snd_pcm_hw_params_set_tick_time_first_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_tick_time_first");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_pcm_hw_params_set_tick_time_last
-  *(void **) (&snd_pcm_hw_params_set_tick_time_last_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_tick_time_last");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_open
-  *(void **) (&snd_rawmidi_open_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_open");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_open_lconf
-  *(void **) (&snd_rawmidi_open_lconf_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_open_lconf");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_close
-  *(void **) (&snd_rawmidi_close_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_close");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_poll_descriptors_count
-  *(void **) (&snd_rawmidi_poll_descriptors_count_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_poll_descriptors_count");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_poll_descriptors
-  *(void **) (&snd_rawmidi_poll_descriptors_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_poll_descriptors");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_poll_descriptors_revents
-  *(void **) (&snd_rawmidi_poll_descriptors_revents_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_poll_descriptors_revents");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_nonblock
-  *(void **) (&snd_rawmidi_nonblock_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_nonblock");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_info_sizeof
-  *(void **) (&snd_rawmidi_info_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_info_sizeof");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_info_malloc
-  *(void **) (&snd_rawmidi_info_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_info_malloc");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_info_free
-  *(void **) (&snd_rawmidi_info_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_info_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_info_copy
-  *(void **) (&snd_rawmidi_info_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_info_copy");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_info_get_device
-  *(void **) (&snd_rawmidi_info_get_device_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_info_get_device");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_info_get_subdevice
-  *(void **) (&snd_rawmidi_info_get_subdevice_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_info_get_subdevice");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_info_get_stream
-  *(void **) (&snd_rawmidi_info_get_stream_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_info_get_stream");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_info_get_card
-  *(void **) (&snd_rawmidi_info_get_card_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_info_get_card");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_info_get_flags
-  *(void **) (&snd_rawmidi_info_get_flags_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_info_get_flags");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_info_get_id
-  *(void **) (&snd_rawmidi_info_get_id_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_info_get_id");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_info_get_name
-  *(void **) (&snd_rawmidi_info_get_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_info_get_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_info_get_subdevice_name
-  *(void **) (&snd_rawmidi_info_get_subdevice_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_info_get_subdevice_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_info_get_subdevices_count
-  *(void **) (&snd_rawmidi_info_get_subdevices_count_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_info_get_subdevices_count");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_info_get_subdevices_avail
-  *(void **) (&snd_rawmidi_info_get_subdevices_avail_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_info_get_subdevices_avail");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_info_set_device
-  *(void **) (&snd_rawmidi_info_set_device_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_info_set_device");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_info_set_subdevice
-  *(void **) (&snd_rawmidi_info_set_subdevice_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_info_set_subdevice");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_info_set_stream
-  *(void **) (&snd_rawmidi_info_set_stream_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_info_set_stream");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_info
-  *(void **) (&snd_rawmidi_info_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_info");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_params_sizeof
-  *(void **) (&snd_rawmidi_params_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_params_sizeof");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_params_malloc
-  *(void **) (&snd_rawmidi_params_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_params_malloc");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_params_free
-  *(void **) (&snd_rawmidi_params_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_params_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_params_copy
-  *(void **) (&snd_rawmidi_params_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_params_copy");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_params_set_buffer_size
-  *(void **) (&snd_rawmidi_params_set_buffer_size_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_params_set_buffer_size");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_params_get_buffer_size
-  *(void **) (&snd_rawmidi_params_get_buffer_size_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_params_get_buffer_size");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_params_set_avail_min
-  *(void **) (&snd_rawmidi_params_set_avail_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_params_set_avail_min");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_params_get_avail_min
-  *(void **) (&snd_rawmidi_params_get_avail_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_params_get_avail_min");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_params_set_no_active_sensing
-  *(void **) (&snd_rawmidi_params_set_no_active_sensing_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_params_set_no_active_sensing");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_params_get_no_active_sensing
-  *(void **) (&snd_rawmidi_params_get_no_active_sensing_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_params_get_no_active_sensing");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_params
-  *(void **) (&snd_rawmidi_params_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_params");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_params_current
-  *(void **) (&snd_rawmidi_params_current_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_params_current");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_status_sizeof
-  *(void **) (&snd_rawmidi_status_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_status_sizeof");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_status_malloc
-  *(void **) (&snd_rawmidi_status_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_status_malloc");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_status_free
-  *(void **) (&snd_rawmidi_status_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_status_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_status_copy
-  *(void **) (&snd_rawmidi_status_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_status_copy");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_status_get_tstamp
-  *(void **) (&snd_rawmidi_status_get_tstamp_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_status_get_tstamp");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_status_get_avail
-  *(void **) (&snd_rawmidi_status_get_avail_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_status_get_avail");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_status_get_xruns
-  *(void **) (&snd_rawmidi_status_get_xruns_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_status_get_xruns");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_status
-  *(void **) (&snd_rawmidi_status_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_status");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_drain
-  *(void **) (&snd_rawmidi_drain_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_drain");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_drop
-  *(void **) (&snd_rawmidi_drop_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_drop");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_write
-  *(void **) (&snd_rawmidi_write_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_write");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_read
-  *(void **) (&snd_rawmidi_read_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_read");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_name
-  *(void **) (&snd_rawmidi_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_type
-  *(void **) (&snd_rawmidi_type_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_type");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_rawmidi_stream
-  *(void **) (&snd_rawmidi_stream_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_stream");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_query_open
-  *(void **) (&snd_timer_query_open_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_query_open");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_query_open_lconf
-  *(void **) (&snd_timer_query_open_lconf_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_query_open_lconf");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_query_close
-  *(void **) (&snd_timer_query_close_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_query_close");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_query_next_device
-  *(void **) (&snd_timer_query_next_device_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_query_next_device");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_query_info
-  *(void **) (&snd_timer_query_info_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_query_info");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_query_params
-  *(void **) (&snd_timer_query_params_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_query_params");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_query_status
-  *(void **) (&snd_timer_query_status_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_query_status");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_open
-  *(void **) (&snd_timer_open_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_open");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_open_lconf
-  *(void **) (&snd_timer_open_lconf_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_open_lconf");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_close
-  *(void **) (&snd_timer_close_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_close");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_async_add_timer_handler
-  *(void **) (&snd_async_add_timer_handler_dylibloader_wrapper_asound) = dlsym(handle, "snd_async_add_timer_handler");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_async_handler_get_timer
-  *(void **) (&snd_async_handler_get_timer_dylibloader_wrapper_asound) = dlsym(handle, "snd_async_handler_get_timer");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_poll_descriptors_count
-  *(void **) (&snd_timer_poll_descriptors_count_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_poll_descriptors_count");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_poll_descriptors
-  *(void **) (&snd_timer_poll_descriptors_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_poll_descriptors");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_poll_descriptors_revents
-  *(void **) (&snd_timer_poll_descriptors_revents_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_poll_descriptors_revents");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_info
-  *(void **) (&snd_timer_info_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_info");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_params
-  *(void **) (&snd_timer_params_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_params");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_status
-  *(void **) (&snd_timer_status_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_status");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_start
-  *(void **) (&snd_timer_start_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_start");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_stop
-  *(void **) (&snd_timer_stop_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_stop");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_continue
-  *(void **) (&snd_timer_continue_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_continue");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_read
-  *(void **) (&snd_timer_read_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_read");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_id_sizeof
-  *(void **) (&snd_timer_id_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_id_sizeof");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_id_malloc
-  *(void **) (&snd_timer_id_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_id_malloc");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_id_free
-  *(void **) (&snd_timer_id_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_id_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_id_copy
-  *(void **) (&snd_timer_id_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_id_copy");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_id_set_class
-  *(void **) (&snd_timer_id_set_class_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_id_set_class");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_id_get_class
-  *(void **) (&snd_timer_id_get_class_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_id_get_class");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_id_set_sclass
-  *(void **) (&snd_timer_id_set_sclass_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_id_set_sclass");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_id_get_sclass
-  *(void **) (&snd_timer_id_get_sclass_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_id_get_sclass");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_id_set_card
-  *(void **) (&snd_timer_id_set_card_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_id_set_card");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_id_get_card
-  *(void **) (&snd_timer_id_get_card_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_id_get_card");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_id_set_device
-  *(void **) (&snd_timer_id_set_device_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_id_set_device");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_id_get_device
-  *(void **) (&snd_timer_id_get_device_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_id_get_device");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_id_set_subdevice
-  *(void **) (&snd_timer_id_set_subdevice_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_id_set_subdevice");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_id_get_subdevice
-  *(void **) (&snd_timer_id_get_subdevice_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_id_get_subdevice");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_ginfo_sizeof
-  *(void **) (&snd_timer_ginfo_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_ginfo_sizeof");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_ginfo_malloc
-  *(void **) (&snd_timer_ginfo_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_ginfo_malloc");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_ginfo_free
-  *(void **) (&snd_timer_ginfo_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_ginfo_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_ginfo_copy
-  *(void **) (&snd_timer_ginfo_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_ginfo_copy");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_ginfo_set_tid
-  *(void **) (&snd_timer_ginfo_set_tid_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_ginfo_set_tid");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_ginfo_get_tid
-  *(void **) (&snd_timer_ginfo_get_tid_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_ginfo_get_tid");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_ginfo_get_flags
-  *(void **) (&snd_timer_ginfo_get_flags_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_ginfo_get_flags");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_ginfo_get_card
-  *(void **) (&snd_timer_ginfo_get_card_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_ginfo_get_card");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_ginfo_get_id
-  *(void **) (&snd_timer_ginfo_get_id_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_ginfo_get_id");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_ginfo_get_name
-  *(void **) (&snd_timer_ginfo_get_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_ginfo_get_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_ginfo_get_resolution
-  *(void **) (&snd_timer_ginfo_get_resolution_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_ginfo_get_resolution");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_ginfo_get_resolution_min
-  *(void **) (&snd_timer_ginfo_get_resolution_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_ginfo_get_resolution_min");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_ginfo_get_resolution_max
-  *(void **) (&snd_timer_ginfo_get_resolution_max_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_ginfo_get_resolution_max");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_ginfo_get_clients
-  *(void **) (&snd_timer_ginfo_get_clients_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_ginfo_get_clients");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_info_sizeof
-  *(void **) (&snd_timer_info_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_info_sizeof");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_info_malloc
-  *(void **) (&snd_timer_info_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_info_malloc");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_info_free
-  *(void **) (&snd_timer_info_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_info_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_info_copy
-  *(void **) (&snd_timer_info_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_info_copy");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_info_is_slave
-  *(void **) (&snd_timer_info_is_slave_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_info_is_slave");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_info_get_card
-  *(void **) (&snd_timer_info_get_card_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_info_get_card");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_info_get_id
-  *(void **) (&snd_timer_info_get_id_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_info_get_id");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_info_get_name
-  *(void **) (&snd_timer_info_get_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_info_get_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_info_get_resolution
-  *(void **) (&snd_timer_info_get_resolution_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_info_get_resolution");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_params_sizeof
-  *(void **) (&snd_timer_params_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_params_sizeof");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_params_malloc
-  *(void **) (&snd_timer_params_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_params_malloc");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_params_free
-  *(void **) (&snd_timer_params_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_params_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_params_copy
-  *(void **) (&snd_timer_params_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_params_copy");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_params_set_auto_start
-  *(void **) (&snd_timer_params_set_auto_start_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_params_set_auto_start");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_params_get_auto_start
-  *(void **) (&snd_timer_params_get_auto_start_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_params_get_auto_start");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_params_set_exclusive
-  *(void **) (&snd_timer_params_set_exclusive_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_params_set_exclusive");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_params_get_exclusive
-  *(void **) (&snd_timer_params_get_exclusive_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_params_get_exclusive");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_params_set_early_event
-  *(void **) (&snd_timer_params_set_early_event_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_params_set_early_event");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_params_get_early_event
-  *(void **) (&snd_timer_params_get_early_event_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_params_get_early_event");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_params_set_ticks
-  *(void **) (&snd_timer_params_set_ticks_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_params_set_ticks");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_params_get_ticks
-  *(void **) (&snd_timer_params_get_ticks_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_params_get_ticks");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_params_set_queue_size
-  *(void **) (&snd_timer_params_set_queue_size_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_params_set_queue_size");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_params_get_queue_size
-  *(void **) (&snd_timer_params_get_queue_size_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_params_get_queue_size");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_params_set_filter
-  *(void **) (&snd_timer_params_set_filter_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_params_set_filter");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_params_get_filter
-  *(void **) (&snd_timer_params_get_filter_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_params_get_filter");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_status_sizeof
-  *(void **) (&snd_timer_status_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_status_sizeof");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_status_malloc
-  *(void **) (&snd_timer_status_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_status_malloc");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_status_free
-  *(void **) (&snd_timer_status_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_status_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_status_copy
-  *(void **) (&snd_timer_status_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_status_copy");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_status_get_timestamp
-  *(void **) (&snd_timer_status_get_timestamp_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_status_get_timestamp");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_status_get_resolution
-  *(void **) (&snd_timer_status_get_resolution_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_status_get_resolution");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_status_get_lost
-  *(void **) (&snd_timer_status_get_lost_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_status_get_lost");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_status_get_overrun
-  *(void **) (&snd_timer_status_get_overrun_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_status_get_overrun");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_status_get_queue
-  *(void **) (&snd_timer_status_get_queue_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_status_get_queue");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_timer_info_get_ticks
-  *(void **) (&snd_timer_info_get_ticks_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_info_get_ticks");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hwdep_open
-  *(void **) (&snd_hwdep_open_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_open");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hwdep_close
-  *(void **) (&snd_hwdep_close_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_close");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hwdep_poll_descriptors
-  *(void **) (&snd_hwdep_poll_descriptors_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_poll_descriptors");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hwdep_poll_descriptors_count
-  *(void **) (&snd_hwdep_poll_descriptors_count_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_poll_descriptors_count");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hwdep_poll_descriptors_revents
-  *(void **) (&snd_hwdep_poll_descriptors_revents_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_poll_descriptors_revents");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hwdep_nonblock
-  *(void **) (&snd_hwdep_nonblock_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_nonblock");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hwdep_info
-  *(void **) (&snd_hwdep_info_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_info");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hwdep_dsp_status
-  *(void **) (&snd_hwdep_dsp_status_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_status");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hwdep_dsp_load
-  *(void **) (&snd_hwdep_dsp_load_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_load");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hwdep_ioctl
-  *(void **) (&snd_hwdep_ioctl_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_ioctl");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hwdep_write
-  *(void **) (&snd_hwdep_write_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_write");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hwdep_read
-  *(void **) (&snd_hwdep_read_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_read");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hwdep_info_sizeof
-  *(void **) (&snd_hwdep_info_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_info_sizeof");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hwdep_info_malloc
-  *(void **) (&snd_hwdep_info_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_info_malloc");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hwdep_info_free
-  *(void **) (&snd_hwdep_info_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_info_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hwdep_info_copy
-  *(void **) (&snd_hwdep_info_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_info_copy");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hwdep_info_get_device
-  *(void **) (&snd_hwdep_info_get_device_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_info_get_device");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hwdep_info_get_card
-  *(void **) (&snd_hwdep_info_get_card_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_info_get_card");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hwdep_info_get_id
-  *(void **) (&snd_hwdep_info_get_id_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_info_get_id");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hwdep_info_get_name
-  *(void **) (&snd_hwdep_info_get_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_info_get_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hwdep_info_get_iface
-  *(void **) (&snd_hwdep_info_get_iface_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_info_get_iface");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hwdep_info_set_device
-  *(void **) (&snd_hwdep_info_set_device_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_info_set_device");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hwdep_dsp_status_sizeof
-  *(void **) (&snd_hwdep_dsp_status_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_status_sizeof");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hwdep_dsp_status_malloc
-  *(void **) (&snd_hwdep_dsp_status_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_status_malloc");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hwdep_dsp_status_free
-  *(void **) (&snd_hwdep_dsp_status_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_status_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hwdep_dsp_status_copy
-  *(void **) (&snd_hwdep_dsp_status_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_status_copy");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hwdep_dsp_status_get_version
-  *(void **) (&snd_hwdep_dsp_status_get_version_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_status_get_version");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hwdep_dsp_status_get_id
-  *(void **) (&snd_hwdep_dsp_status_get_id_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_status_get_id");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hwdep_dsp_status_get_num_dsps
-  *(void **) (&snd_hwdep_dsp_status_get_num_dsps_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_status_get_num_dsps");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hwdep_dsp_status_get_dsp_loaded
-  *(void **) (&snd_hwdep_dsp_status_get_dsp_loaded_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_status_get_dsp_loaded");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hwdep_dsp_status_get_chip_ready
-  *(void **) (&snd_hwdep_dsp_status_get_chip_ready_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_status_get_chip_ready");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hwdep_dsp_image_sizeof
-  *(void **) (&snd_hwdep_dsp_image_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_image_sizeof");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hwdep_dsp_image_malloc
-  *(void **) (&snd_hwdep_dsp_image_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_image_malloc");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hwdep_dsp_image_free
-  *(void **) (&snd_hwdep_dsp_image_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_image_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hwdep_dsp_image_copy
-  *(void **) (&snd_hwdep_dsp_image_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_image_copy");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hwdep_dsp_image_get_index
-  *(void **) (&snd_hwdep_dsp_image_get_index_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_image_get_index");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hwdep_dsp_image_get_name
-  *(void **) (&snd_hwdep_dsp_image_get_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_image_get_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hwdep_dsp_image_get_image
-  *(void **) (&snd_hwdep_dsp_image_get_image_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_image_get_image");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hwdep_dsp_image_get_length
-  *(void **) (&snd_hwdep_dsp_image_get_length_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_image_get_length");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hwdep_dsp_image_set_index
-  *(void **) (&snd_hwdep_dsp_image_set_index_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_image_set_index");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hwdep_dsp_image_set_name
-  *(void **) (&snd_hwdep_dsp_image_set_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_image_set_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hwdep_dsp_image_set_image
-  *(void **) (&snd_hwdep_dsp_image_set_image_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_image_set_image");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hwdep_dsp_image_set_length
-  *(void **) (&snd_hwdep_dsp_image_set_length_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_image_set_length");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_card_load
-  *(void **) (&snd_card_load_dylibloader_wrapper_asound) = dlsym(handle, "snd_card_load");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_card_next
-  *(void **) (&snd_card_next_dylibloader_wrapper_asound) = dlsym(handle, "snd_card_next");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_card_get_index
-  *(void **) (&snd_card_get_index_dylibloader_wrapper_asound) = dlsym(handle, "snd_card_get_index");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_card_get_name
-  *(void **) (&snd_card_get_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_card_get_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_card_get_longname
-  *(void **) (&snd_card_get_longname_dylibloader_wrapper_asound) = dlsym(handle, "snd_card_get_longname");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_device_name_hint
-  *(void **) (&snd_device_name_hint_dylibloader_wrapper_asound) = dlsym(handle, "snd_device_name_hint");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_device_name_free_hint
-  *(void **) (&snd_device_name_free_hint_dylibloader_wrapper_asound) = dlsym(handle, "snd_device_name_free_hint");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_device_name_get_hint
-  *(void **) (&snd_device_name_get_hint_dylibloader_wrapper_asound) = dlsym(handle, "snd_device_name_get_hint");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_open
-  *(void **) (&snd_ctl_open_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_open");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_open_lconf
-  *(void **) (&snd_ctl_open_lconf_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_open_lconf");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_open_fallback
-  *(void **) (&snd_ctl_open_fallback_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_open_fallback");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_close
-  *(void **) (&snd_ctl_close_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_close");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_nonblock
-  *(void **) (&snd_ctl_nonblock_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_nonblock");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_async_add_ctl_handler
-  *(void **) (&snd_async_add_ctl_handler_dylibloader_wrapper_asound) = dlsym(handle, "snd_async_add_ctl_handler");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_async_handler_get_ctl
-  *(void **) (&snd_async_handler_get_ctl_dylibloader_wrapper_asound) = dlsym(handle, "snd_async_handler_get_ctl");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_poll_descriptors_count
-  *(void **) (&snd_ctl_poll_descriptors_count_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_poll_descriptors_count");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_poll_descriptors
-  *(void **) (&snd_ctl_poll_descriptors_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_poll_descriptors");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_poll_descriptors_revents
-  *(void **) (&snd_ctl_poll_descriptors_revents_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_poll_descriptors_revents");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_subscribe_events
-  *(void **) (&snd_ctl_subscribe_events_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_subscribe_events");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_card_info
-  *(void **) (&snd_ctl_card_info_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_card_info");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_list
-  *(void **) (&snd_ctl_elem_list_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_list");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info
-  *(void **) (&snd_ctl_elem_info_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_read
-  *(void **) (&snd_ctl_elem_read_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_read");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_write
-  *(void **) (&snd_ctl_elem_write_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_write");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_lock
-  *(void **) (&snd_ctl_elem_lock_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_lock");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_unlock
-  *(void **) (&snd_ctl_elem_unlock_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_unlock");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_tlv_read
-  *(void **) (&snd_ctl_elem_tlv_read_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_tlv_read");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_tlv_write
-  *(void **) (&snd_ctl_elem_tlv_write_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_tlv_write");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_tlv_command
-  *(void **) (&snd_ctl_elem_tlv_command_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_tlv_command");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_hwdep_next_device
-  *(void **) (&snd_ctl_hwdep_next_device_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_hwdep_next_device");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_hwdep_info
-  *(void **) (&snd_ctl_hwdep_info_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_hwdep_info");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_pcm_next_device
-  *(void **) (&snd_ctl_pcm_next_device_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_pcm_next_device");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_pcm_info
-  *(void **) (&snd_ctl_pcm_info_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_pcm_info");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_pcm_prefer_subdevice
-  *(void **) (&snd_ctl_pcm_prefer_subdevice_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_pcm_prefer_subdevice");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_rawmidi_next_device
-  *(void **) (&snd_ctl_rawmidi_next_device_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_rawmidi_next_device");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_rawmidi_info
-  *(void **) (&snd_ctl_rawmidi_info_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_rawmidi_info");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_rawmidi_prefer_subdevice
-  *(void **) (&snd_ctl_rawmidi_prefer_subdevice_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_rawmidi_prefer_subdevice");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_set_power_state
-  *(void **) (&snd_ctl_set_power_state_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_set_power_state");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_get_power_state
-  *(void **) (&snd_ctl_get_power_state_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_get_power_state");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_read
-  *(void **) (&snd_ctl_read_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_read");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_wait
-  *(void **) (&snd_ctl_wait_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_wait");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_name
-  *(void **) (&snd_ctl_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_type
-  *(void **) (&snd_ctl_type_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_type");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_type_name
-  *(void **) (&snd_ctl_elem_type_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_type_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_iface_name
-  *(void **) (&snd_ctl_elem_iface_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_iface_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_event_type_name
-  *(void **) (&snd_ctl_event_type_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_event_type_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_event_elem_get_mask
-  *(void **) (&snd_ctl_event_elem_get_mask_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_event_elem_get_mask");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_event_elem_get_numid
-  *(void **) (&snd_ctl_event_elem_get_numid_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_event_elem_get_numid");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_event_elem_get_id
-  *(void **) (&snd_ctl_event_elem_get_id_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_event_elem_get_id");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_event_elem_get_interface
-  *(void **) (&snd_ctl_event_elem_get_interface_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_event_elem_get_interface");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_event_elem_get_device
-  *(void **) (&snd_ctl_event_elem_get_device_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_event_elem_get_device");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_event_elem_get_subdevice
-  *(void **) (&snd_ctl_event_elem_get_subdevice_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_event_elem_get_subdevice");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_event_elem_get_name
-  *(void **) (&snd_ctl_event_elem_get_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_event_elem_get_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_event_elem_get_index
-  *(void **) (&snd_ctl_event_elem_get_index_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_event_elem_get_index");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_list_alloc_space
-  *(void **) (&snd_ctl_elem_list_alloc_space_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_list_alloc_space");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_list_free_space
-  *(void **) (&snd_ctl_elem_list_free_space_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_list_free_space");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_ascii_elem_id_get
-  *(void **) (&snd_ctl_ascii_elem_id_get_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_ascii_elem_id_get");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_ascii_elem_id_parse
-  *(void **) (&snd_ctl_ascii_elem_id_parse_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_ascii_elem_id_parse");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_ascii_value_parse
-  *(void **) (&snd_ctl_ascii_value_parse_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_ascii_value_parse");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_id_sizeof
-  *(void **) (&snd_ctl_elem_id_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_id_sizeof");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_id_malloc
-  *(void **) (&snd_ctl_elem_id_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_id_malloc");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_id_free
-  *(void **) (&snd_ctl_elem_id_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_id_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_id_clear
-  *(void **) (&snd_ctl_elem_id_clear_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_id_clear");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_id_copy
-  *(void **) (&snd_ctl_elem_id_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_id_copy");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_id_get_numid
-  *(void **) (&snd_ctl_elem_id_get_numid_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_id_get_numid");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_id_get_interface
-  *(void **) (&snd_ctl_elem_id_get_interface_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_id_get_interface");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_id_get_device
-  *(void **) (&snd_ctl_elem_id_get_device_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_id_get_device");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_id_get_subdevice
-  *(void **) (&snd_ctl_elem_id_get_subdevice_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_id_get_subdevice");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_id_get_name
-  *(void **) (&snd_ctl_elem_id_get_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_id_get_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_id_get_index
-  *(void **) (&snd_ctl_elem_id_get_index_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_id_get_index");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_id_set_numid
-  *(void **) (&snd_ctl_elem_id_set_numid_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_id_set_numid");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_id_set_interface
-  *(void **) (&snd_ctl_elem_id_set_interface_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_id_set_interface");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_id_set_device
-  *(void **) (&snd_ctl_elem_id_set_device_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_id_set_device");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_id_set_subdevice
-  *(void **) (&snd_ctl_elem_id_set_subdevice_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_id_set_subdevice");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_id_set_name
-  *(void **) (&snd_ctl_elem_id_set_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_id_set_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_id_set_index
-  *(void **) (&snd_ctl_elem_id_set_index_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_id_set_index");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_card_info_sizeof
-  *(void **) (&snd_ctl_card_info_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_card_info_sizeof");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_card_info_malloc
-  *(void **) (&snd_ctl_card_info_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_card_info_malloc");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_card_info_free
-  *(void **) (&snd_ctl_card_info_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_card_info_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_card_info_clear
-  *(void **) (&snd_ctl_card_info_clear_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_card_info_clear");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_card_info_copy
-  *(void **) (&snd_ctl_card_info_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_card_info_copy");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_card_info_get_card
-  *(void **) (&snd_ctl_card_info_get_card_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_card_info_get_card");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_card_info_get_id
-  *(void **) (&snd_ctl_card_info_get_id_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_card_info_get_id");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_card_info_get_driver
-  *(void **) (&snd_ctl_card_info_get_driver_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_card_info_get_driver");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_card_info_get_name
-  *(void **) (&snd_ctl_card_info_get_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_card_info_get_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_card_info_get_longname
-  *(void **) (&snd_ctl_card_info_get_longname_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_card_info_get_longname");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_card_info_get_mixername
-  *(void **) (&snd_ctl_card_info_get_mixername_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_card_info_get_mixername");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_card_info_get_components
-  *(void **) (&snd_ctl_card_info_get_components_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_card_info_get_components");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_event_sizeof
-  *(void **) (&snd_ctl_event_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_event_sizeof");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_event_malloc
-  *(void **) (&snd_ctl_event_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_event_malloc");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_event_free
-  *(void **) (&snd_ctl_event_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_event_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_event_clear
-  *(void **) (&snd_ctl_event_clear_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_event_clear");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_event_copy
-  *(void **) (&snd_ctl_event_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_event_copy");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_event_get_type
-  *(void **) (&snd_ctl_event_get_type_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_event_get_type");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_list_sizeof
-  *(void **) (&snd_ctl_elem_list_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_list_sizeof");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_list_malloc
-  *(void **) (&snd_ctl_elem_list_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_list_malloc");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_list_free
-  *(void **) (&snd_ctl_elem_list_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_list_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_list_clear
-  *(void **) (&snd_ctl_elem_list_clear_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_list_clear");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_list_copy
-  *(void **) (&snd_ctl_elem_list_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_list_copy");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_list_set_offset
-  *(void **) (&snd_ctl_elem_list_set_offset_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_list_set_offset");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_list_get_used
-  *(void **) (&snd_ctl_elem_list_get_used_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_list_get_used");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_list_get_count
-  *(void **) (&snd_ctl_elem_list_get_count_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_list_get_count");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_list_get_id
-  *(void **) (&snd_ctl_elem_list_get_id_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_list_get_id");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_list_get_numid
-  *(void **) (&snd_ctl_elem_list_get_numid_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_list_get_numid");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_list_get_interface
-  *(void **) (&snd_ctl_elem_list_get_interface_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_list_get_interface");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_list_get_device
-  *(void **) (&snd_ctl_elem_list_get_device_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_list_get_device");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_list_get_subdevice
-  *(void **) (&snd_ctl_elem_list_get_subdevice_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_list_get_subdevice");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_list_get_name
-  *(void **) (&snd_ctl_elem_list_get_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_list_get_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_list_get_index
-  *(void **) (&snd_ctl_elem_list_get_index_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_list_get_index");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info_sizeof
-  *(void **) (&snd_ctl_elem_info_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_sizeof");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info_malloc
-  *(void **) (&snd_ctl_elem_info_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_malloc");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info_free
-  *(void **) (&snd_ctl_elem_info_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info_clear
-  *(void **) (&snd_ctl_elem_info_clear_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_clear");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info_copy
-  *(void **) (&snd_ctl_elem_info_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_copy");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info_get_type
-  *(void **) (&snd_ctl_elem_info_get_type_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_get_type");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info_is_readable
-  *(void **) (&snd_ctl_elem_info_is_readable_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_is_readable");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info_is_writable
-  *(void **) (&snd_ctl_elem_info_is_writable_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_is_writable");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info_is_volatile
-  *(void **) (&snd_ctl_elem_info_is_volatile_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_is_volatile");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info_is_inactive
-  *(void **) (&snd_ctl_elem_info_is_inactive_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_is_inactive");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info_is_locked
-  *(void **) (&snd_ctl_elem_info_is_locked_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_is_locked");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info_is_tlv_readable
-  *(void **) (&snd_ctl_elem_info_is_tlv_readable_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_is_tlv_readable");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info_is_tlv_writable
-  *(void **) (&snd_ctl_elem_info_is_tlv_writable_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_is_tlv_writable");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info_is_tlv_commandable
-  *(void **) (&snd_ctl_elem_info_is_tlv_commandable_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_is_tlv_commandable");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info_is_owner
-  *(void **) (&snd_ctl_elem_info_is_owner_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_is_owner");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info_is_user
-  *(void **) (&snd_ctl_elem_info_is_user_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_is_user");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info_get_owner
-  *(void **) (&snd_ctl_elem_info_get_owner_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_get_owner");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info_get_count
-  *(void **) (&snd_ctl_elem_info_get_count_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_get_count");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info_get_min
-  *(void **) (&snd_ctl_elem_info_get_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_get_min");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info_get_max
-  *(void **) (&snd_ctl_elem_info_get_max_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_get_max");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info_get_step
-  *(void **) (&snd_ctl_elem_info_get_step_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_get_step");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info_get_min64
-  *(void **) (&snd_ctl_elem_info_get_min64_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_get_min64");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info_get_max64
-  *(void **) (&snd_ctl_elem_info_get_max64_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_get_max64");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info_get_step64
-  *(void **) (&snd_ctl_elem_info_get_step64_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_get_step64");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info_get_items
-  *(void **) (&snd_ctl_elem_info_get_items_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_get_items");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info_set_item
-  *(void **) (&snd_ctl_elem_info_set_item_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_set_item");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info_get_item_name
-  *(void **) (&snd_ctl_elem_info_get_item_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_get_item_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info_get_dimensions
-  *(void **) (&snd_ctl_elem_info_get_dimensions_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_get_dimensions");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info_get_dimension
-  *(void **) (&snd_ctl_elem_info_get_dimension_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_get_dimension");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info_set_dimension
-  *(void **) (&snd_ctl_elem_info_set_dimension_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_set_dimension");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info_get_id
-  *(void **) (&snd_ctl_elem_info_get_id_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_get_id");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info_get_numid
-  *(void **) (&snd_ctl_elem_info_get_numid_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_get_numid");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info_get_interface
-  *(void **) (&snd_ctl_elem_info_get_interface_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_get_interface");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info_get_device
-  *(void **) (&snd_ctl_elem_info_get_device_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_get_device");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info_get_subdevice
-  *(void **) (&snd_ctl_elem_info_get_subdevice_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_get_subdevice");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info_get_name
-  *(void **) (&snd_ctl_elem_info_get_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_get_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info_get_index
-  *(void **) (&snd_ctl_elem_info_get_index_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_get_index");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info_set_id
-  *(void **) (&snd_ctl_elem_info_set_id_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_set_id");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info_set_numid
-  *(void **) (&snd_ctl_elem_info_set_numid_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_set_numid");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info_set_interface
-  *(void **) (&snd_ctl_elem_info_set_interface_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_set_interface");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info_set_device
-  *(void **) (&snd_ctl_elem_info_set_device_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_set_device");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info_set_subdevice
-  *(void **) (&snd_ctl_elem_info_set_subdevice_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_set_subdevice");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info_set_name
-  *(void **) (&snd_ctl_elem_info_set_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_set_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_info_set_index
-  *(void **) (&snd_ctl_elem_info_set_index_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_set_index");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_add_integer_elem_set
-  *(void **) (&snd_ctl_add_integer_elem_set_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_add_integer_elem_set");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_add_integer64_elem_set
-  *(void **) (&snd_ctl_add_integer64_elem_set_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_add_integer64_elem_set");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_add_boolean_elem_set
-  *(void **) (&snd_ctl_add_boolean_elem_set_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_add_boolean_elem_set");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_add_enumerated_elem_set
-  *(void **) (&snd_ctl_add_enumerated_elem_set_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_add_enumerated_elem_set");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_add_bytes_elem_set
-  *(void **) (&snd_ctl_add_bytes_elem_set_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_add_bytes_elem_set");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_add_integer
-  *(void **) (&snd_ctl_elem_add_integer_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_add_integer");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_add_integer64
-  *(void **) (&snd_ctl_elem_add_integer64_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_add_integer64");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_add_boolean
-  *(void **) (&snd_ctl_elem_add_boolean_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_add_boolean");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_add_enumerated
-  *(void **) (&snd_ctl_elem_add_enumerated_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_add_enumerated");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_add_iec958
-  *(void **) (&snd_ctl_elem_add_iec958_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_add_iec958");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_remove
-  *(void **) (&snd_ctl_elem_remove_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_remove");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_value_sizeof
-  *(void **) (&snd_ctl_elem_value_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_sizeof");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_value_malloc
-  *(void **) (&snd_ctl_elem_value_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_malloc");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_value_free
-  *(void **) (&snd_ctl_elem_value_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_value_clear
-  *(void **) (&snd_ctl_elem_value_clear_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_clear");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_value_copy
-  *(void **) (&snd_ctl_elem_value_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_copy");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_value_compare
-  *(void **) (&snd_ctl_elem_value_compare_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_compare");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_value_get_id
-  *(void **) (&snd_ctl_elem_value_get_id_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_get_id");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_value_get_numid
-  *(void **) (&snd_ctl_elem_value_get_numid_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_get_numid");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_value_get_interface
-  *(void **) (&snd_ctl_elem_value_get_interface_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_get_interface");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_value_get_device
-  *(void **) (&snd_ctl_elem_value_get_device_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_get_device");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_value_get_subdevice
-  *(void **) (&snd_ctl_elem_value_get_subdevice_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_get_subdevice");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_value_get_name
-  *(void **) (&snd_ctl_elem_value_get_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_get_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_value_get_index
-  *(void **) (&snd_ctl_elem_value_get_index_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_get_index");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_value_set_id
-  *(void **) (&snd_ctl_elem_value_set_id_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_set_id");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_value_set_numid
-  *(void **) (&snd_ctl_elem_value_set_numid_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_set_numid");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_value_set_interface
-  *(void **) (&snd_ctl_elem_value_set_interface_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_set_interface");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_value_set_device
-  *(void **) (&snd_ctl_elem_value_set_device_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_set_device");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_value_set_subdevice
-  *(void **) (&snd_ctl_elem_value_set_subdevice_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_set_subdevice");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_value_set_name
-  *(void **) (&snd_ctl_elem_value_set_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_set_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_value_set_index
-  *(void **) (&snd_ctl_elem_value_set_index_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_set_index");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_value_get_boolean
-  *(void **) (&snd_ctl_elem_value_get_boolean_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_get_boolean");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_value_get_integer
-  *(void **) (&snd_ctl_elem_value_get_integer_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_get_integer");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_value_get_integer64
-  *(void **) (&snd_ctl_elem_value_get_integer64_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_get_integer64");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_value_get_enumerated
-  *(void **) (&snd_ctl_elem_value_get_enumerated_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_get_enumerated");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_value_get_byte
-  *(void **) (&snd_ctl_elem_value_get_byte_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_get_byte");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_value_set_boolean
-  *(void **) (&snd_ctl_elem_value_set_boolean_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_set_boolean");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_value_set_integer
-  *(void **) (&snd_ctl_elem_value_set_integer_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_set_integer");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_value_set_integer64
-  *(void **) (&snd_ctl_elem_value_set_integer64_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_set_integer64");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_value_set_enumerated
-  *(void **) (&snd_ctl_elem_value_set_enumerated_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_set_enumerated");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_value_set_byte
-  *(void **) (&snd_ctl_elem_value_set_byte_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_set_byte");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_set_bytes
-  *(void **) (&snd_ctl_elem_set_bytes_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_set_bytes");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_value_get_bytes
-  *(void **) (&snd_ctl_elem_value_get_bytes_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_get_bytes");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_value_get_iec958
-  *(void **) (&snd_ctl_elem_value_get_iec958_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_get_iec958");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_elem_value_set_iec958
-  *(void **) (&snd_ctl_elem_value_set_iec958_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_set_iec958");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_tlv_parse_dB_info
-  *(void **) (&snd_tlv_parse_dB_info_dylibloader_wrapper_asound) = dlsym(handle, "snd_tlv_parse_dB_info");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_tlv_get_dB_range
-  *(void **) (&snd_tlv_get_dB_range_dylibloader_wrapper_asound) = dlsym(handle, "snd_tlv_get_dB_range");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_tlv_convert_to_dB
-  *(void **) (&snd_tlv_convert_to_dB_dylibloader_wrapper_asound) = dlsym(handle, "snd_tlv_convert_to_dB");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_tlv_convert_from_dB
-  *(void **) (&snd_tlv_convert_from_dB_dylibloader_wrapper_asound) = dlsym(handle, "snd_tlv_convert_from_dB");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_get_dB_range
-  *(void **) (&snd_ctl_get_dB_range_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_get_dB_range");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_convert_to_dB
-  *(void **) (&snd_ctl_convert_to_dB_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_convert_to_dB");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_ctl_convert_from_dB
-  *(void **) (&snd_ctl_convert_from_dB_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_convert_from_dB");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hctl_compare_fast
-  *(void **) (&snd_hctl_compare_fast_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_compare_fast");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hctl_open
-  *(void **) (&snd_hctl_open_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_open");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hctl_open_ctl
-  *(void **) (&snd_hctl_open_ctl_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_open_ctl");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hctl_close
-  *(void **) (&snd_hctl_close_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_close");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hctl_nonblock
-  *(void **) (&snd_hctl_nonblock_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_nonblock");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hctl_poll_descriptors_count
-  *(void **) (&snd_hctl_poll_descriptors_count_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_poll_descriptors_count");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hctl_poll_descriptors
-  *(void **) (&snd_hctl_poll_descriptors_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_poll_descriptors");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hctl_poll_descriptors_revents
-  *(void **) (&snd_hctl_poll_descriptors_revents_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_poll_descriptors_revents");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hctl_get_count
-  *(void **) (&snd_hctl_get_count_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_get_count");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hctl_set_compare
-  *(void **) (&snd_hctl_set_compare_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_set_compare");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hctl_first_elem
-  *(void **) (&snd_hctl_first_elem_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_first_elem");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hctl_last_elem
-  *(void **) (&snd_hctl_last_elem_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_last_elem");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hctl_find_elem
-  *(void **) (&snd_hctl_find_elem_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_find_elem");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hctl_set_callback
-  *(void **) (&snd_hctl_set_callback_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_set_callback");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hctl_set_callback_private
-  *(void **) (&snd_hctl_set_callback_private_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_set_callback_private");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hctl_get_callback_private
-  *(void **) (&snd_hctl_get_callback_private_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_get_callback_private");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hctl_load
-  *(void **) (&snd_hctl_load_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_load");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hctl_free
-  *(void **) (&snd_hctl_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hctl_handle_events
-  *(void **) (&snd_hctl_handle_events_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_handle_events");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hctl_name
-  *(void **) (&snd_hctl_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hctl_wait
-  *(void **) (&snd_hctl_wait_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_wait");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hctl_ctl
-  *(void **) (&snd_hctl_ctl_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_ctl");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hctl_elem_next
-  *(void **) (&snd_hctl_elem_next_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_elem_next");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hctl_elem_prev
-  *(void **) (&snd_hctl_elem_prev_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_elem_prev");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hctl_elem_info
-  *(void **) (&snd_hctl_elem_info_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_elem_info");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hctl_elem_read
-  *(void **) (&snd_hctl_elem_read_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_elem_read");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hctl_elem_write
-  *(void **) (&snd_hctl_elem_write_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_elem_write");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hctl_elem_tlv_read
-  *(void **) (&snd_hctl_elem_tlv_read_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_elem_tlv_read");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hctl_elem_tlv_write
-  *(void **) (&snd_hctl_elem_tlv_write_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_elem_tlv_write");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hctl_elem_tlv_command
-  *(void **) (&snd_hctl_elem_tlv_command_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_elem_tlv_command");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hctl_elem_get_hctl
-  *(void **) (&snd_hctl_elem_get_hctl_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_elem_get_hctl");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hctl_elem_get_id
-  *(void **) (&snd_hctl_elem_get_id_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_elem_get_id");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hctl_elem_get_numid
-  *(void **) (&snd_hctl_elem_get_numid_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_elem_get_numid");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hctl_elem_get_interface
-  *(void **) (&snd_hctl_elem_get_interface_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_elem_get_interface");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hctl_elem_get_device
-  *(void **) (&snd_hctl_elem_get_device_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_elem_get_device");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hctl_elem_get_subdevice
-  *(void **) (&snd_hctl_elem_get_subdevice_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_elem_get_subdevice");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hctl_elem_get_name
-  *(void **) (&snd_hctl_elem_get_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_elem_get_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hctl_elem_get_index
-  *(void **) (&snd_hctl_elem_get_index_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_elem_get_index");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hctl_elem_set_callback
-  *(void **) (&snd_hctl_elem_set_callback_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_elem_set_callback");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hctl_elem_get_callback_private
-  *(void **) (&snd_hctl_elem_get_callback_private_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_elem_get_callback_private");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_hctl_elem_set_callback_private
-  *(void **) (&snd_hctl_elem_set_callback_private_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_elem_set_callback_private");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_sctl_build
-  *(void **) (&snd_sctl_build_dylibloader_wrapper_asound) = dlsym(handle, "snd_sctl_build");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_sctl_free
-  *(void **) (&snd_sctl_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_sctl_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_sctl_install
-  *(void **) (&snd_sctl_install_dylibloader_wrapper_asound) = dlsym(handle, "snd_sctl_install");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_sctl_remove
-  *(void **) (&snd_sctl_remove_dylibloader_wrapper_asound) = dlsym(handle, "snd_sctl_remove");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_open
-  *(void **) (&snd_mixer_open_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_open");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_close
-  *(void **) (&snd_mixer_close_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_close");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_first_elem
-  *(void **) (&snd_mixer_first_elem_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_first_elem");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_last_elem
-  *(void **) (&snd_mixer_last_elem_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_last_elem");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_handle_events
-  *(void **) (&snd_mixer_handle_events_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_handle_events");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_attach
-  *(void **) (&snd_mixer_attach_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_attach");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_attach_hctl
-  *(void **) (&snd_mixer_attach_hctl_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_attach_hctl");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_detach
-  *(void **) (&snd_mixer_detach_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_detach");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_detach_hctl
-  *(void **) (&snd_mixer_detach_hctl_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_detach_hctl");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_get_hctl
-  *(void **) (&snd_mixer_get_hctl_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_get_hctl");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_poll_descriptors_count
-  *(void **) (&snd_mixer_poll_descriptors_count_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_poll_descriptors_count");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_poll_descriptors
-  *(void **) (&snd_mixer_poll_descriptors_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_poll_descriptors");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_poll_descriptors_revents
-  *(void **) (&snd_mixer_poll_descriptors_revents_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_poll_descriptors_revents");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_load
-  *(void **) (&snd_mixer_load_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_load");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_free
-  *(void **) (&snd_mixer_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_wait
-  *(void **) (&snd_mixer_wait_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_wait");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_set_compare
-  *(void **) (&snd_mixer_set_compare_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_set_compare");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_set_callback
-  *(void **) (&snd_mixer_set_callback_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_set_callback");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_get_callback_private
-  *(void **) (&snd_mixer_get_callback_private_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_get_callback_private");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_set_callback_private
-  *(void **) (&snd_mixer_set_callback_private_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_set_callback_private");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_get_count
-  *(void **) (&snd_mixer_get_count_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_get_count");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_class_unregister
-  *(void **) (&snd_mixer_class_unregister_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_class_unregister");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_elem_next
-  *(void **) (&snd_mixer_elem_next_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_elem_next");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_elem_prev
-  *(void **) (&snd_mixer_elem_prev_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_elem_prev");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_elem_set_callback
-  *(void **) (&snd_mixer_elem_set_callback_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_elem_set_callback");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_elem_get_callback_private
-  *(void **) (&snd_mixer_elem_get_callback_private_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_elem_get_callback_private");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_elem_set_callback_private
-  *(void **) (&snd_mixer_elem_set_callback_private_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_elem_set_callback_private");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_elem_get_type
-  *(void **) (&snd_mixer_elem_get_type_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_elem_get_type");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_class_register
-  *(void **) (&snd_mixer_class_register_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_class_register");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_elem_new
-  *(void **) (&snd_mixer_elem_new_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_elem_new");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_elem_add
-  *(void **) (&snd_mixer_elem_add_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_elem_add");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_elem_remove
-  *(void **) (&snd_mixer_elem_remove_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_elem_remove");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_elem_free
-  *(void **) (&snd_mixer_elem_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_elem_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_elem_info
-  *(void **) (&snd_mixer_elem_info_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_elem_info");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_elem_value
-  *(void **) (&snd_mixer_elem_value_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_elem_value");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_elem_attach
-  *(void **) (&snd_mixer_elem_attach_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_elem_attach");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_elem_detach
-  *(void **) (&snd_mixer_elem_detach_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_elem_detach");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_elem_empty
-  *(void **) (&snd_mixer_elem_empty_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_elem_empty");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_elem_get_private
-  *(void **) (&snd_mixer_elem_get_private_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_elem_get_private");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_class_sizeof
-  *(void **) (&snd_mixer_class_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_class_sizeof");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_class_malloc
-  *(void **) (&snd_mixer_class_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_class_malloc");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_class_free
-  *(void **) (&snd_mixer_class_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_class_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_class_copy
-  *(void **) (&snd_mixer_class_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_class_copy");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_class_get_mixer
-  *(void **) (&snd_mixer_class_get_mixer_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_class_get_mixer");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_class_get_event
-  *(void **) (&snd_mixer_class_get_event_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_class_get_event");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_class_get_private
-  *(void **) (&snd_mixer_class_get_private_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_class_get_private");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_class_get_compare
-  *(void **) (&snd_mixer_class_get_compare_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_class_get_compare");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_class_set_event
-  *(void **) (&snd_mixer_class_set_event_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_class_set_event");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_class_set_private
-  *(void **) (&snd_mixer_class_set_private_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_class_set_private");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_class_set_private_free
-  *(void **) (&snd_mixer_class_set_private_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_class_set_private_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_class_set_compare
-  *(void **) (&snd_mixer_class_set_compare_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_class_set_compare");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_channel_name
-  *(void **) (&snd_mixer_selem_channel_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_channel_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_register
-  *(void **) (&snd_mixer_selem_register_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_register");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_get_id
-  *(void **) (&snd_mixer_selem_get_id_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_get_id");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_get_name
-  *(void **) (&snd_mixer_selem_get_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_get_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_get_index
-  *(void **) (&snd_mixer_selem_get_index_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_get_index");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_find_selem
-  *(void **) (&snd_mixer_find_selem_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_find_selem");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_is_active
-  *(void **) (&snd_mixer_selem_is_active_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_is_active");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_is_playback_mono
-  *(void **) (&snd_mixer_selem_is_playback_mono_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_is_playback_mono");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_has_playback_channel
-  *(void **) (&snd_mixer_selem_has_playback_channel_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_has_playback_channel");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_is_capture_mono
-  *(void **) (&snd_mixer_selem_is_capture_mono_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_is_capture_mono");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_has_capture_channel
-  *(void **) (&snd_mixer_selem_has_capture_channel_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_has_capture_channel");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_get_capture_group
-  *(void **) (&snd_mixer_selem_get_capture_group_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_get_capture_group");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_has_common_volume
-  *(void **) (&snd_mixer_selem_has_common_volume_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_has_common_volume");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_has_playback_volume
-  *(void **) (&snd_mixer_selem_has_playback_volume_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_has_playback_volume");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_has_playback_volume_joined
-  *(void **) (&snd_mixer_selem_has_playback_volume_joined_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_has_playback_volume_joined");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_has_capture_volume
-  *(void **) (&snd_mixer_selem_has_capture_volume_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_has_capture_volume");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_has_capture_volume_joined
-  *(void **) (&snd_mixer_selem_has_capture_volume_joined_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_has_capture_volume_joined");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_has_common_switch
-  *(void **) (&snd_mixer_selem_has_common_switch_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_has_common_switch");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_has_playback_switch
-  *(void **) (&snd_mixer_selem_has_playback_switch_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_has_playback_switch");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_has_playback_switch_joined
-  *(void **) (&snd_mixer_selem_has_playback_switch_joined_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_has_playback_switch_joined");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_has_capture_switch
-  *(void **) (&snd_mixer_selem_has_capture_switch_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_has_capture_switch");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_has_capture_switch_joined
-  *(void **) (&snd_mixer_selem_has_capture_switch_joined_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_has_capture_switch_joined");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_has_capture_switch_exclusive
-  *(void **) (&snd_mixer_selem_has_capture_switch_exclusive_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_has_capture_switch_exclusive");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_ask_playback_vol_dB
-  *(void **) (&snd_mixer_selem_ask_playback_vol_dB_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_ask_playback_vol_dB");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_ask_capture_vol_dB
-  *(void **) (&snd_mixer_selem_ask_capture_vol_dB_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_ask_capture_vol_dB");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_ask_playback_dB_vol
-  *(void **) (&snd_mixer_selem_ask_playback_dB_vol_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_ask_playback_dB_vol");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_ask_capture_dB_vol
-  *(void **) (&snd_mixer_selem_ask_capture_dB_vol_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_ask_capture_dB_vol");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_get_playback_volume
-  *(void **) (&snd_mixer_selem_get_playback_volume_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_get_playback_volume");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_get_capture_volume
-  *(void **) (&snd_mixer_selem_get_capture_volume_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_get_capture_volume");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_get_playback_dB
-  *(void **) (&snd_mixer_selem_get_playback_dB_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_get_playback_dB");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_get_capture_dB
-  *(void **) (&snd_mixer_selem_get_capture_dB_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_get_capture_dB");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_get_playback_switch
-  *(void **) (&snd_mixer_selem_get_playback_switch_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_get_playback_switch");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_get_capture_switch
-  *(void **) (&snd_mixer_selem_get_capture_switch_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_get_capture_switch");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_set_playback_volume
-  *(void **) (&snd_mixer_selem_set_playback_volume_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_set_playback_volume");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_set_capture_volume
-  *(void **) (&snd_mixer_selem_set_capture_volume_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_set_capture_volume");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_set_playback_dB
-  *(void **) (&snd_mixer_selem_set_playback_dB_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_set_playback_dB");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_set_capture_dB
-  *(void **) (&snd_mixer_selem_set_capture_dB_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_set_capture_dB");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_set_playback_volume_all
-  *(void **) (&snd_mixer_selem_set_playback_volume_all_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_set_playback_volume_all");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_set_capture_volume_all
-  *(void **) (&snd_mixer_selem_set_capture_volume_all_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_set_capture_volume_all");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_set_playback_dB_all
-  *(void **) (&snd_mixer_selem_set_playback_dB_all_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_set_playback_dB_all");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_set_capture_dB_all
-  *(void **) (&snd_mixer_selem_set_capture_dB_all_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_set_capture_dB_all");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_set_playback_switch
-  *(void **) (&snd_mixer_selem_set_playback_switch_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_set_playback_switch");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_set_capture_switch
-  *(void **) (&snd_mixer_selem_set_capture_switch_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_set_capture_switch");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_set_playback_switch_all
-  *(void **) (&snd_mixer_selem_set_playback_switch_all_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_set_playback_switch_all");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_set_capture_switch_all
-  *(void **) (&snd_mixer_selem_set_capture_switch_all_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_set_capture_switch_all");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_get_playback_volume_range
-  *(void **) (&snd_mixer_selem_get_playback_volume_range_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_get_playback_volume_range");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_get_playback_dB_range
-  *(void **) (&snd_mixer_selem_get_playback_dB_range_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_get_playback_dB_range");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_set_playback_volume_range
-  *(void **) (&snd_mixer_selem_set_playback_volume_range_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_set_playback_volume_range");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_get_capture_volume_range
-  *(void **) (&snd_mixer_selem_get_capture_volume_range_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_get_capture_volume_range");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_get_capture_dB_range
-  *(void **) (&snd_mixer_selem_get_capture_dB_range_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_get_capture_dB_range");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_set_capture_volume_range
-  *(void **) (&snd_mixer_selem_set_capture_volume_range_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_set_capture_volume_range");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_is_enumerated
-  *(void **) (&snd_mixer_selem_is_enumerated_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_is_enumerated");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_is_enum_playback
-  *(void **) (&snd_mixer_selem_is_enum_playback_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_is_enum_playback");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_is_enum_capture
-  *(void **) (&snd_mixer_selem_is_enum_capture_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_is_enum_capture");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_get_enum_items
-  *(void **) (&snd_mixer_selem_get_enum_items_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_get_enum_items");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_get_enum_item_name
-  *(void **) (&snd_mixer_selem_get_enum_item_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_get_enum_item_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_get_enum_item
-  *(void **) (&snd_mixer_selem_get_enum_item_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_get_enum_item");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_set_enum_item
-  *(void **) (&snd_mixer_selem_set_enum_item_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_set_enum_item");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_id_sizeof
-  *(void **) (&snd_mixer_selem_id_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_id_sizeof");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_id_malloc
-  *(void **) (&snd_mixer_selem_id_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_id_malloc");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_id_free
-  *(void **) (&snd_mixer_selem_id_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_id_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_id_copy
-  *(void **) (&snd_mixer_selem_id_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_id_copy");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_id_get_name
-  *(void **) (&snd_mixer_selem_id_get_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_id_get_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_id_get_index
-  *(void **) (&snd_mixer_selem_id_get_index_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_id_get_index");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_id_set_name
-  *(void **) (&snd_mixer_selem_id_set_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_id_set_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_id_set_index
-  *(void **) (&snd_mixer_selem_id_set_index_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_id_set_index");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_mixer_selem_id_parse
-  *(void **) (&snd_mixer_selem_id_parse_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_id_parse");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_open
-  *(void **) (&snd_seq_open_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_open");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_open_lconf
-  *(void **) (&snd_seq_open_lconf_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_open_lconf");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_name
-  *(void **) (&snd_seq_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_type
-  *(void **) (&snd_seq_type_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_type");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_close
-  *(void **) (&snd_seq_close_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_close");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_poll_descriptors_count
-  *(void **) (&snd_seq_poll_descriptors_count_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_poll_descriptors_count");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_poll_descriptors
-  *(void **) (&snd_seq_poll_descriptors_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_poll_descriptors");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_poll_descriptors_revents
-  *(void **) (&snd_seq_poll_descriptors_revents_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_poll_descriptors_revents");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_nonblock
-  *(void **) (&snd_seq_nonblock_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_nonblock");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_client_id
-  *(void **) (&snd_seq_client_id_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_id");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_get_output_buffer_size
-  *(void **) (&snd_seq_get_output_buffer_size_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_get_output_buffer_size");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_get_input_buffer_size
-  *(void **) (&snd_seq_get_input_buffer_size_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_get_input_buffer_size");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_set_output_buffer_size
-  *(void **) (&snd_seq_set_output_buffer_size_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_set_output_buffer_size");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_set_input_buffer_size
-  *(void **) (&snd_seq_set_input_buffer_size_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_set_input_buffer_size");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_system_info_sizeof
-  *(void **) (&snd_seq_system_info_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_system_info_sizeof");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_system_info_malloc
-  *(void **) (&snd_seq_system_info_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_system_info_malloc");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_system_info_free
-  *(void **) (&snd_seq_system_info_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_system_info_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_system_info_copy
-  *(void **) (&snd_seq_system_info_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_system_info_copy");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_system_info_get_queues
-  *(void **) (&snd_seq_system_info_get_queues_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_system_info_get_queues");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_system_info_get_clients
-  *(void **) (&snd_seq_system_info_get_clients_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_system_info_get_clients");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_system_info_get_ports
-  *(void **) (&snd_seq_system_info_get_ports_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_system_info_get_ports");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_system_info_get_channels
-  *(void **) (&snd_seq_system_info_get_channels_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_system_info_get_channels");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_system_info_get_cur_clients
-  *(void **) (&snd_seq_system_info_get_cur_clients_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_system_info_get_cur_clients");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_system_info_get_cur_queues
-  *(void **) (&snd_seq_system_info_get_cur_queues_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_system_info_get_cur_queues");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_system_info
-  *(void **) (&snd_seq_system_info_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_system_info");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_client_info_sizeof
-  *(void **) (&snd_seq_client_info_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_sizeof");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_client_info_malloc
-  *(void **) (&snd_seq_client_info_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_malloc");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_client_info_free
-  *(void **) (&snd_seq_client_info_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_client_info_copy
-  *(void **) (&snd_seq_client_info_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_copy");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_client_info_get_client
-  *(void **) (&snd_seq_client_info_get_client_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_get_client");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_client_info_get_type
-  *(void **) (&snd_seq_client_info_get_type_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_get_type");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_client_info_get_name
-  *(void **) (&snd_seq_client_info_get_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_get_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_client_info_get_broadcast_filter
-  *(void **) (&snd_seq_client_info_get_broadcast_filter_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_get_broadcast_filter");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_client_info_get_error_bounce
-  *(void **) (&snd_seq_client_info_get_error_bounce_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_get_error_bounce");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_client_info_get_card
-  *(void **) (&snd_seq_client_info_get_card_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_get_card");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_client_info_get_pid
-  *(void **) (&snd_seq_client_info_get_pid_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_get_pid");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_client_info_get_event_filter
-  *(void **) (&snd_seq_client_info_get_event_filter_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_get_event_filter");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_client_info_get_num_ports
-  *(void **) (&snd_seq_client_info_get_num_ports_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_get_num_ports");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_client_info_get_event_lost
-  *(void **) (&snd_seq_client_info_get_event_lost_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_get_event_lost");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_client_info_set_client
-  *(void **) (&snd_seq_client_info_set_client_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_set_client");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_client_info_set_name
-  *(void **) (&snd_seq_client_info_set_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_set_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_client_info_set_broadcast_filter
-  *(void **) (&snd_seq_client_info_set_broadcast_filter_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_set_broadcast_filter");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_client_info_set_error_bounce
-  *(void **) (&snd_seq_client_info_set_error_bounce_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_set_error_bounce");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_client_info_set_event_filter
-  *(void **) (&snd_seq_client_info_set_event_filter_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_set_event_filter");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_client_info_event_filter_clear
-  *(void **) (&snd_seq_client_info_event_filter_clear_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_event_filter_clear");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_client_info_event_filter_add
-  *(void **) (&snd_seq_client_info_event_filter_add_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_event_filter_add");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_client_info_event_filter_del
-  *(void **) (&snd_seq_client_info_event_filter_del_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_event_filter_del");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_client_info_event_filter_check
-  *(void **) (&snd_seq_client_info_event_filter_check_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_event_filter_check");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_get_client_info
-  *(void **) (&snd_seq_get_client_info_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_get_client_info");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_get_any_client_info
-  *(void **) (&snd_seq_get_any_client_info_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_get_any_client_info");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_set_client_info
-  *(void **) (&snd_seq_set_client_info_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_set_client_info");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_query_next_client
-  *(void **) (&snd_seq_query_next_client_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_next_client");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_client_pool_sizeof
-  *(void **) (&snd_seq_client_pool_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_pool_sizeof");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_client_pool_malloc
-  *(void **) (&snd_seq_client_pool_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_pool_malloc");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_client_pool_free
-  *(void **) (&snd_seq_client_pool_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_pool_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_client_pool_copy
-  *(void **) (&snd_seq_client_pool_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_pool_copy");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_client_pool_get_client
-  *(void **) (&snd_seq_client_pool_get_client_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_pool_get_client");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_client_pool_get_output_pool
-  *(void **) (&snd_seq_client_pool_get_output_pool_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_pool_get_output_pool");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_client_pool_get_input_pool
-  *(void **) (&snd_seq_client_pool_get_input_pool_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_pool_get_input_pool");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_client_pool_get_output_room
-  *(void **) (&snd_seq_client_pool_get_output_room_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_pool_get_output_room");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_client_pool_get_output_free
-  *(void **) (&snd_seq_client_pool_get_output_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_pool_get_output_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_client_pool_get_input_free
-  *(void **) (&snd_seq_client_pool_get_input_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_pool_get_input_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_client_pool_set_output_pool
-  *(void **) (&snd_seq_client_pool_set_output_pool_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_pool_set_output_pool");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_client_pool_set_input_pool
-  *(void **) (&snd_seq_client_pool_set_input_pool_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_pool_set_input_pool");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_client_pool_set_output_room
-  *(void **) (&snd_seq_client_pool_set_output_room_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_pool_set_output_room");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_get_client_pool
-  *(void **) (&snd_seq_get_client_pool_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_get_client_pool");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_set_client_pool
-  *(void **) (&snd_seq_set_client_pool_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_set_client_pool");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_info_sizeof
-  *(void **) (&snd_seq_port_info_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_sizeof");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_info_malloc
-  *(void **) (&snd_seq_port_info_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_malloc");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_info_free
-  *(void **) (&snd_seq_port_info_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_info_copy
-  *(void **) (&snd_seq_port_info_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_copy");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_info_get_client
-  *(void **) (&snd_seq_port_info_get_client_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_get_client");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_info_get_port
-  *(void **) (&snd_seq_port_info_get_port_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_get_port");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_info_get_addr
-  *(void **) (&snd_seq_port_info_get_addr_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_get_addr");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_info_get_name
-  *(void **) (&snd_seq_port_info_get_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_get_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_info_get_capability
-  *(void **) (&snd_seq_port_info_get_capability_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_get_capability");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_info_get_type
-  *(void **) (&snd_seq_port_info_get_type_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_get_type");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_info_get_midi_channels
-  *(void **) (&snd_seq_port_info_get_midi_channels_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_get_midi_channels");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_info_get_midi_voices
-  *(void **) (&snd_seq_port_info_get_midi_voices_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_get_midi_voices");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_info_get_synth_voices
-  *(void **) (&snd_seq_port_info_get_synth_voices_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_get_synth_voices");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_info_get_read_use
-  *(void **) (&snd_seq_port_info_get_read_use_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_get_read_use");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_info_get_write_use
-  *(void **) (&snd_seq_port_info_get_write_use_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_get_write_use");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_info_get_port_specified
-  *(void **) (&snd_seq_port_info_get_port_specified_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_get_port_specified");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_info_get_timestamping
-  *(void **) (&snd_seq_port_info_get_timestamping_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_get_timestamping");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_info_get_timestamp_real
-  *(void **) (&snd_seq_port_info_get_timestamp_real_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_get_timestamp_real");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_info_get_timestamp_queue
-  *(void **) (&snd_seq_port_info_get_timestamp_queue_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_get_timestamp_queue");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_info_set_client
-  *(void **) (&snd_seq_port_info_set_client_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_set_client");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_info_set_port
-  *(void **) (&snd_seq_port_info_set_port_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_set_port");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_info_set_addr
-  *(void **) (&snd_seq_port_info_set_addr_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_set_addr");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_info_set_name
-  *(void **) (&snd_seq_port_info_set_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_set_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_info_set_capability
-  *(void **) (&snd_seq_port_info_set_capability_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_set_capability");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_info_set_type
-  *(void **) (&snd_seq_port_info_set_type_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_set_type");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_info_set_midi_channels
-  *(void **) (&snd_seq_port_info_set_midi_channels_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_set_midi_channels");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_info_set_midi_voices
-  *(void **) (&snd_seq_port_info_set_midi_voices_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_set_midi_voices");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_info_set_synth_voices
-  *(void **) (&snd_seq_port_info_set_synth_voices_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_set_synth_voices");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_info_set_port_specified
-  *(void **) (&snd_seq_port_info_set_port_specified_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_set_port_specified");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_info_set_timestamping
-  *(void **) (&snd_seq_port_info_set_timestamping_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_set_timestamping");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_info_set_timestamp_real
-  *(void **) (&snd_seq_port_info_set_timestamp_real_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_set_timestamp_real");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_info_set_timestamp_queue
-  *(void **) (&snd_seq_port_info_set_timestamp_queue_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_set_timestamp_queue");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_create_port
-  *(void **) (&snd_seq_create_port_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_create_port");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_delete_port
-  *(void **) (&snd_seq_delete_port_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_delete_port");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_get_port_info
-  *(void **) (&snd_seq_get_port_info_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_get_port_info");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_get_any_port_info
-  *(void **) (&snd_seq_get_any_port_info_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_get_any_port_info");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_set_port_info
-  *(void **) (&snd_seq_set_port_info_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_set_port_info");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_query_next_port
-  *(void **) (&snd_seq_query_next_port_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_next_port");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_subscribe_sizeof
-  *(void **) (&snd_seq_port_subscribe_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_subscribe_sizeof");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_subscribe_malloc
-  *(void **) (&snd_seq_port_subscribe_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_subscribe_malloc");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_subscribe_free
-  *(void **) (&snd_seq_port_subscribe_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_subscribe_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_subscribe_copy
-  *(void **) (&snd_seq_port_subscribe_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_subscribe_copy");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_subscribe_get_sender
-  *(void **) (&snd_seq_port_subscribe_get_sender_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_subscribe_get_sender");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_subscribe_get_dest
-  *(void **) (&snd_seq_port_subscribe_get_dest_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_subscribe_get_dest");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_subscribe_get_queue
-  *(void **) (&snd_seq_port_subscribe_get_queue_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_subscribe_get_queue");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_subscribe_get_exclusive
-  *(void **) (&snd_seq_port_subscribe_get_exclusive_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_subscribe_get_exclusive");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_subscribe_get_time_update
-  *(void **) (&snd_seq_port_subscribe_get_time_update_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_subscribe_get_time_update");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_subscribe_get_time_real
-  *(void **) (&snd_seq_port_subscribe_get_time_real_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_subscribe_get_time_real");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_subscribe_set_sender
-  *(void **) (&snd_seq_port_subscribe_set_sender_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_subscribe_set_sender");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_subscribe_set_dest
-  *(void **) (&snd_seq_port_subscribe_set_dest_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_subscribe_set_dest");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_subscribe_set_queue
-  *(void **) (&snd_seq_port_subscribe_set_queue_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_subscribe_set_queue");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_subscribe_set_exclusive
-  *(void **) (&snd_seq_port_subscribe_set_exclusive_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_subscribe_set_exclusive");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_subscribe_set_time_update
-  *(void **) (&snd_seq_port_subscribe_set_time_update_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_subscribe_set_time_update");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_port_subscribe_set_time_real
-  *(void **) (&snd_seq_port_subscribe_set_time_real_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_subscribe_set_time_real");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_get_port_subscription
-  *(void **) (&snd_seq_get_port_subscription_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_get_port_subscription");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_subscribe_port
-  *(void **) (&snd_seq_subscribe_port_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_subscribe_port");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_unsubscribe_port
-  *(void **) (&snd_seq_unsubscribe_port_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_unsubscribe_port");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_query_subscribe_sizeof
-  *(void **) (&snd_seq_query_subscribe_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_subscribe_sizeof");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_query_subscribe_malloc
-  *(void **) (&snd_seq_query_subscribe_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_subscribe_malloc");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_query_subscribe_free
-  *(void **) (&snd_seq_query_subscribe_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_subscribe_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_query_subscribe_copy
-  *(void **) (&snd_seq_query_subscribe_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_subscribe_copy");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_query_subscribe_get_client
-  *(void **) (&snd_seq_query_subscribe_get_client_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_subscribe_get_client");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_query_subscribe_get_port
-  *(void **) (&snd_seq_query_subscribe_get_port_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_subscribe_get_port");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_query_subscribe_get_root
-  *(void **) (&snd_seq_query_subscribe_get_root_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_subscribe_get_root");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_query_subscribe_get_type
-  *(void **) (&snd_seq_query_subscribe_get_type_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_subscribe_get_type");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_query_subscribe_get_index
-  *(void **) (&snd_seq_query_subscribe_get_index_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_subscribe_get_index");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_query_subscribe_get_num_subs
-  *(void **) (&snd_seq_query_subscribe_get_num_subs_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_subscribe_get_num_subs");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_query_subscribe_get_addr
-  *(void **) (&snd_seq_query_subscribe_get_addr_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_subscribe_get_addr");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_query_subscribe_get_queue
-  *(void **) (&snd_seq_query_subscribe_get_queue_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_subscribe_get_queue");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_query_subscribe_get_exclusive
-  *(void **) (&snd_seq_query_subscribe_get_exclusive_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_subscribe_get_exclusive");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_query_subscribe_get_time_update
-  *(void **) (&snd_seq_query_subscribe_get_time_update_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_subscribe_get_time_update");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_query_subscribe_get_time_real
-  *(void **) (&snd_seq_query_subscribe_get_time_real_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_subscribe_get_time_real");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_query_subscribe_set_client
-  *(void **) (&snd_seq_query_subscribe_set_client_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_subscribe_set_client");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_query_subscribe_set_port
-  *(void **) (&snd_seq_query_subscribe_set_port_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_subscribe_set_port");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_query_subscribe_set_root
-  *(void **) (&snd_seq_query_subscribe_set_root_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_subscribe_set_root");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_query_subscribe_set_type
-  *(void **) (&snd_seq_query_subscribe_set_type_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_subscribe_set_type");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_query_subscribe_set_index
-  *(void **) (&snd_seq_query_subscribe_set_index_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_subscribe_set_index");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_query_port_subscribers
-  *(void **) (&snd_seq_query_port_subscribers_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_port_subscribers");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_info_sizeof
-  *(void **) (&snd_seq_queue_info_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_info_sizeof");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_info_malloc
-  *(void **) (&snd_seq_queue_info_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_info_malloc");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_info_free
-  *(void **) (&snd_seq_queue_info_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_info_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_info_copy
-  *(void **) (&snd_seq_queue_info_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_info_copy");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_info_get_queue
-  *(void **) (&snd_seq_queue_info_get_queue_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_info_get_queue");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_info_get_name
-  *(void **) (&snd_seq_queue_info_get_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_info_get_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_info_get_owner
-  *(void **) (&snd_seq_queue_info_get_owner_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_info_get_owner");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_info_get_locked
-  *(void **) (&snd_seq_queue_info_get_locked_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_info_get_locked");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_info_get_flags
-  *(void **) (&snd_seq_queue_info_get_flags_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_info_get_flags");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_info_set_name
-  *(void **) (&snd_seq_queue_info_set_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_info_set_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_info_set_owner
-  *(void **) (&snd_seq_queue_info_set_owner_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_info_set_owner");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_info_set_locked
-  *(void **) (&snd_seq_queue_info_set_locked_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_info_set_locked");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_info_set_flags
-  *(void **) (&snd_seq_queue_info_set_flags_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_info_set_flags");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_create_queue
-  *(void **) (&snd_seq_create_queue_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_create_queue");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_alloc_named_queue
-  *(void **) (&snd_seq_alloc_named_queue_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_alloc_named_queue");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_alloc_queue
-  *(void **) (&snd_seq_alloc_queue_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_alloc_queue");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_free_queue
-  *(void **) (&snd_seq_free_queue_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_free_queue");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_get_queue_info
-  *(void **) (&snd_seq_get_queue_info_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_get_queue_info");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_set_queue_info
-  *(void **) (&snd_seq_set_queue_info_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_set_queue_info");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_query_named_queue
-  *(void **) (&snd_seq_query_named_queue_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_named_queue");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_get_queue_usage
-  *(void **) (&snd_seq_get_queue_usage_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_get_queue_usage");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_set_queue_usage
-  *(void **) (&snd_seq_set_queue_usage_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_set_queue_usage");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_status_sizeof
-  *(void **) (&snd_seq_queue_status_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_status_sizeof");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_status_malloc
-  *(void **) (&snd_seq_queue_status_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_status_malloc");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_status_free
-  *(void **) (&snd_seq_queue_status_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_status_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_status_copy
-  *(void **) (&snd_seq_queue_status_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_status_copy");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_status_get_queue
-  *(void **) (&snd_seq_queue_status_get_queue_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_status_get_queue");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_status_get_events
-  *(void **) (&snd_seq_queue_status_get_events_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_status_get_events");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_status_get_tick_time
-  *(void **) (&snd_seq_queue_status_get_tick_time_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_status_get_tick_time");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_status_get_real_time
-  *(void **) (&snd_seq_queue_status_get_real_time_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_status_get_real_time");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_status_get_status
-  *(void **) (&snd_seq_queue_status_get_status_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_status_get_status");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_get_queue_status
-  *(void **) (&snd_seq_get_queue_status_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_get_queue_status");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_tempo_sizeof
-  *(void **) (&snd_seq_queue_tempo_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_tempo_sizeof");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_tempo_malloc
-  *(void **) (&snd_seq_queue_tempo_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_tempo_malloc");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_tempo_free
-  *(void **) (&snd_seq_queue_tempo_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_tempo_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_tempo_copy
-  *(void **) (&snd_seq_queue_tempo_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_tempo_copy");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_tempo_get_queue
-  *(void **) (&snd_seq_queue_tempo_get_queue_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_tempo_get_queue");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_tempo_get_tempo
-  *(void **) (&snd_seq_queue_tempo_get_tempo_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_tempo_get_tempo");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_tempo_get_ppq
-  *(void **) (&snd_seq_queue_tempo_get_ppq_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_tempo_get_ppq");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_tempo_get_skew
-  *(void **) (&snd_seq_queue_tempo_get_skew_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_tempo_get_skew");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_tempo_get_skew_base
-  *(void **) (&snd_seq_queue_tempo_get_skew_base_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_tempo_get_skew_base");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_tempo_set_tempo
-  *(void **) (&snd_seq_queue_tempo_set_tempo_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_tempo_set_tempo");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_tempo_set_ppq
-  *(void **) (&snd_seq_queue_tempo_set_ppq_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_tempo_set_ppq");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_tempo_set_skew
-  *(void **) (&snd_seq_queue_tempo_set_skew_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_tempo_set_skew");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_tempo_set_skew_base
-  *(void **) (&snd_seq_queue_tempo_set_skew_base_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_tempo_set_skew_base");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_get_queue_tempo
-  *(void **) (&snd_seq_get_queue_tempo_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_get_queue_tempo");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_set_queue_tempo
-  *(void **) (&snd_seq_set_queue_tempo_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_set_queue_tempo");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_timer_sizeof
-  *(void **) (&snd_seq_queue_timer_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_timer_sizeof");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_timer_malloc
-  *(void **) (&snd_seq_queue_timer_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_timer_malloc");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_timer_free
-  *(void **) (&snd_seq_queue_timer_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_timer_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_timer_copy
-  *(void **) (&snd_seq_queue_timer_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_timer_copy");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_timer_get_queue
-  *(void **) (&snd_seq_queue_timer_get_queue_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_timer_get_queue");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_timer_get_type
-  *(void **) (&snd_seq_queue_timer_get_type_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_timer_get_type");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_timer_get_id
-  *(void **) (&snd_seq_queue_timer_get_id_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_timer_get_id");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_timer_get_resolution
-  *(void **) (&snd_seq_queue_timer_get_resolution_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_timer_get_resolution");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_timer_set_type
-  *(void **) (&snd_seq_queue_timer_set_type_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_timer_set_type");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_timer_set_id
-  *(void **) (&snd_seq_queue_timer_set_id_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_timer_set_id");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_queue_timer_set_resolution
-  *(void **) (&snd_seq_queue_timer_set_resolution_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_timer_set_resolution");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_get_queue_timer
-  *(void **) (&snd_seq_get_queue_timer_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_get_queue_timer");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_set_queue_timer
-  *(void **) (&snd_seq_set_queue_timer_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_set_queue_timer");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_free_event
-  *(void **) (&snd_seq_free_event_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_free_event");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_event_length
-  *(void **) (&snd_seq_event_length_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_event_length");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_event_output
-  *(void **) (&snd_seq_event_output_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_event_output");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_event_output_buffer
-  *(void **) (&snd_seq_event_output_buffer_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_event_output_buffer");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_event_output_direct
-  *(void **) (&snd_seq_event_output_direct_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_event_output_direct");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_event_input
-  *(void **) (&snd_seq_event_input_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_event_input");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_event_input_pending
-  *(void **) (&snd_seq_event_input_pending_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_event_input_pending");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_drain_output
-  *(void **) (&snd_seq_drain_output_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_drain_output");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_event_output_pending
-  *(void **) (&snd_seq_event_output_pending_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_event_output_pending");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_extract_output
-  *(void **) (&snd_seq_extract_output_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_extract_output");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_drop_output
-  *(void **) (&snd_seq_drop_output_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_drop_output");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_drop_output_buffer
-  *(void **) (&snd_seq_drop_output_buffer_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_drop_output_buffer");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_drop_input
-  *(void **) (&snd_seq_drop_input_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_drop_input");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_drop_input_buffer
-  *(void **) (&snd_seq_drop_input_buffer_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_drop_input_buffer");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_remove_events_sizeof
-  *(void **) (&snd_seq_remove_events_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_remove_events_sizeof");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_remove_events_malloc
-  *(void **) (&snd_seq_remove_events_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_remove_events_malloc");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_remove_events_free
-  *(void **) (&snd_seq_remove_events_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_remove_events_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_remove_events_copy
-  *(void **) (&snd_seq_remove_events_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_remove_events_copy");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_remove_events_get_condition
-  *(void **) (&snd_seq_remove_events_get_condition_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_remove_events_get_condition");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_remove_events_get_queue
-  *(void **) (&snd_seq_remove_events_get_queue_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_remove_events_get_queue");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_remove_events_get_time
-  *(void **) (&snd_seq_remove_events_get_time_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_remove_events_get_time");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_remove_events_get_dest
-  *(void **) (&snd_seq_remove_events_get_dest_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_remove_events_get_dest");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_remove_events_get_channel
-  *(void **) (&snd_seq_remove_events_get_channel_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_remove_events_get_channel");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_remove_events_get_event_type
-  *(void **) (&snd_seq_remove_events_get_event_type_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_remove_events_get_event_type");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_remove_events_get_tag
-  *(void **) (&snd_seq_remove_events_get_tag_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_remove_events_get_tag");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_remove_events_set_condition
-  *(void **) (&snd_seq_remove_events_set_condition_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_remove_events_set_condition");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_remove_events_set_queue
-  *(void **) (&snd_seq_remove_events_set_queue_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_remove_events_set_queue");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_remove_events_set_time
-  *(void **) (&snd_seq_remove_events_set_time_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_remove_events_set_time");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_remove_events_set_dest
-  *(void **) (&snd_seq_remove_events_set_dest_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_remove_events_set_dest");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_remove_events_set_channel
-  *(void **) (&snd_seq_remove_events_set_channel_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_remove_events_set_channel");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_remove_events_set_event_type
-  *(void **) (&snd_seq_remove_events_set_event_type_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_remove_events_set_event_type");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_remove_events_set_tag
-  *(void **) (&snd_seq_remove_events_set_tag_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_remove_events_set_tag");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_remove_events
-  *(void **) (&snd_seq_remove_events_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_remove_events");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_set_bit
-  *(void **) (&snd_seq_set_bit_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_set_bit");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_unset_bit
-  *(void **) (&snd_seq_unset_bit_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_unset_bit");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_change_bit
-  *(void **) (&snd_seq_change_bit_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_change_bit");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_get_bit
-  *(void **) (&snd_seq_get_bit_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_get_bit");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_control_queue
-  *(void **) (&snd_seq_control_queue_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_control_queue");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_create_simple_port
-  *(void **) (&snd_seq_create_simple_port_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_create_simple_port");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_delete_simple_port
-  *(void **) (&snd_seq_delete_simple_port_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_delete_simple_port");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_connect_from
-  *(void **) (&snd_seq_connect_from_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_connect_from");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_connect_to
-  *(void **) (&snd_seq_connect_to_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_connect_to");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_disconnect_from
-  *(void **) (&snd_seq_disconnect_from_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_disconnect_from");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_disconnect_to
-  *(void **) (&snd_seq_disconnect_to_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_disconnect_to");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_set_client_name
-  *(void **) (&snd_seq_set_client_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_set_client_name");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_set_client_event_filter
-  *(void **) (&snd_seq_set_client_event_filter_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_set_client_event_filter");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_set_client_pool_output
-  *(void **) (&snd_seq_set_client_pool_output_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_set_client_pool_output");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_set_client_pool_output_room
-  *(void **) (&snd_seq_set_client_pool_output_room_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_set_client_pool_output_room");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_set_client_pool_input
-  *(void **) (&snd_seq_set_client_pool_input_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_set_client_pool_input");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_sync_output_queue
-  *(void **) (&snd_seq_sync_output_queue_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_sync_output_queue");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_parse_address
-  *(void **) (&snd_seq_parse_address_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_parse_address");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_reset_pool_output
-  *(void **) (&snd_seq_reset_pool_output_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_reset_pool_output");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_seq_reset_pool_input
-  *(void **) (&snd_seq_reset_pool_input_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_reset_pool_input");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_midi_event_new
-  *(void **) (&snd_midi_event_new_dylibloader_wrapper_asound) = dlsym(handle, "snd_midi_event_new");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_midi_event_resize_buffer
-  *(void **) (&snd_midi_event_resize_buffer_dylibloader_wrapper_asound) = dlsym(handle, "snd_midi_event_resize_buffer");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_midi_event_free
-  *(void **) (&snd_midi_event_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_midi_event_free");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_midi_event_init
-  *(void **) (&snd_midi_event_init_dylibloader_wrapper_asound) = dlsym(handle, "snd_midi_event_init");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_midi_event_reset_encode
-  *(void **) (&snd_midi_event_reset_encode_dylibloader_wrapper_asound) = dlsym(handle, "snd_midi_event_reset_encode");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_midi_event_reset_decode
-  *(void **) (&snd_midi_event_reset_decode_dylibloader_wrapper_asound) = dlsym(handle, "snd_midi_event_reset_decode");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_midi_event_no_status
-  *(void **) (&snd_midi_event_no_status_dylibloader_wrapper_asound) = dlsym(handle, "snd_midi_event_no_status");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_midi_event_encode
-  *(void **) (&snd_midi_event_encode_dylibloader_wrapper_asound) = dlsym(handle, "snd_midi_event_encode");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_midi_event_encode_byte
-  *(void **) (&snd_midi_event_encode_byte_dylibloader_wrapper_asound) = dlsym(handle, "snd_midi_event_encode_byte");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-// snd_midi_event_decode
-  *(void **) (&snd_midi_event_decode_dylibloader_wrapper_asound) = dlsym(handle, "snd_midi_event_decode");
-  if (verbose) {
-    error = dlerror();
-    if (error != NULL) {
-      fprintf(stderr, "%s\n", error);
-    }
-  }
-return 0;
+	void *handle;
+	char *error;
+	handle = dlopen("libasound.so.2", RTLD_LAZY);
+	if (!handle) {
+		if (verbose) {
+			fprintf(stderr, "%s\n", dlerror());
+		}
+		return (1);
+	}
+	dlerror();
+	// snd_asoundlib_version
+	*(void **)(&snd_asoundlib_version_dylibloader_wrapper_asound) = dlsym(handle, "snd_asoundlib_version");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_dlpath
+	*(void **)(&snd_dlpath_dylibloader_wrapper_asound) = dlsym(handle, "snd_dlpath");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_dlopen
+	*(void **)(&snd_dlopen_dylibloader_wrapper_asound) = dlsym(handle, "snd_dlopen");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_dlsym
+	*(void **)(&snd_dlsym_dylibloader_wrapper_asound) = dlsym(handle, "snd_dlsym");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_dlclose
+	*(void **)(&snd_dlclose_dylibloader_wrapper_asound) = dlsym(handle, "snd_dlclose");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_async_add_handler
+	*(void **)(&snd_async_add_handler_dylibloader_wrapper_asound) = dlsym(handle, "snd_async_add_handler");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_async_del_handler
+	*(void **)(&snd_async_del_handler_dylibloader_wrapper_asound) = dlsym(handle, "snd_async_del_handler");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_async_handler_get_fd
+	*(void **)(&snd_async_handler_get_fd_dylibloader_wrapper_asound) = dlsym(handle, "snd_async_handler_get_fd");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_async_handler_get_signo
+	*(void **)(&snd_async_handler_get_signo_dylibloader_wrapper_asound) = dlsym(handle, "snd_async_handler_get_signo");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_async_handler_get_callback_private
+	*(void **)(&snd_async_handler_get_callback_private_dylibloader_wrapper_asound) = dlsym(handle, "snd_async_handler_get_callback_private");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_shm_area_create
+	*(void **)(&snd_shm_area_create_dylibloader_wrapper_asound) = dlsym(handle, "snd_shm_area_create");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_shm_area_share
+	*(void **)(&snd_shm_area_share_dylibloader_wrapper_asound) = dlsym(handle, "snd_shm_area_share");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_shm_area_destroy
+	*(void **)(&snd_shm_area_destroy_dylibloader_wrapper_asound) = dlsym(handle, "snd_shm_area_destroy");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_user_file
+	*(void **)(&snd_user_file_dylibloader_wrapper_asound) = dlsym(handle, "snd_user_file");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_input_stdio_open
+	*(void **)(&snd_input_stdio_open_dylibloader_wrapper_asound) = dlsym(handle, "snd_input_stdio_open");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_input_stdio_attach
+	*(void **)(&snd_input_stdio_attach_dylibloader_wrapper_asound) = dlsym(handle, "snd_input_stdio_attach");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_input_buffer_open
+	*(void **)(&snd_input_buffer_open_dylibloader_wrapper_asound) = dlsym(handle, "snd_input_buffer_open");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_input_close
+	*(void **)(&snd_input_close_dylibloader_wrapper_asound) = dlsym(handle, "snd_input_close");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_input_scanf
+	*(void **)(&snd_input_scanf_dylibloader_wrapper_asound) = dlsym(handle, "snd_input_scanf");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_input_gets
+	*(void **)(&snd_input_gets_dylibloader_wrapper_asound) = dlsym(handle, "snd_input_gets");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_input_getc
+	*(void **)(&snd_input_getc_dylibloader_wrapper_asound) = dlsym(handle, "snd_input_getc");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_input_ungetc
+	*(void **)(&snd_input_ungetc_dylibloader_wrapper_asound) = dlsym(handle, "snd_input_ungetc");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_output_stdio_open
+	*(void **)(&snd_output_stdio_open_dylibloader_wrapper_asound) = dlsym(handle, "snd_output_stdio_open");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_output_stdio_attach
+	*(void **)(&snd_output_stdio_attach_dylibloader_wrapper_asound) = dlsym(handle, "snd_output_stdio_attach");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_output_buffer_open
+	*(void **)(&snd_output_buffer_open_dylibloader_wrapper_asound) = dlsym(handle, "snd_output_buffer_open");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_output_buffer_string
+	*(void **)(&snd_output_buffer_string_dylibloader_wrapper_asound) = dlsym(handle, "snd_output_buffer_string");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_output_close
+	*(void **)(&snd_output_close_dylibloader_wrapper_asound) = dlsym(handle, "snd_output_close");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_output_printf
+	*(void **)(&snd_output_printf_dylibloader_wrapper_asound) = dlsym(handle, "snd_output_printf");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_output_vprintf
+	*(void **)(&snd_output_vprintf_dylibloader_wrapper_asound) = dlsym(handle, "snd_output_vprintf");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_output_puts
+	*(void **)(&snd_output_puts_dylibloader_wrapper_asound) = dlsym(handle, "snd_output_puts");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_output_putc
+	*(void **)(&snd_output_putc_dylibloader_wrapper_asound) = dlsym(handle, "snd_output_putc");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_output_flush
+	*(void **)(&snd_output_flush_dylibloader_wrapper_asound) = dlsym(handle, "snd_output_flush");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_strerror
+	*(void **)(&snd_strerror_dylibloader_wrapper_asound) = dlsym(handle, "snd_strerror");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_lib_error_set_handler
+	*(void **)(&snd_lib_error_set_handler_dylibloader_wrapper_asound) = dlsym(handle, "snd_lib_error_set_handler");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_lib_error_set_local
+	*(void **)(&snd_lib_error_set_local_dylibloader_wrapper_asound) = dlsym(handle, "snd_lib_error_set_local");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_topdir
+	*(void **)(&snd_config_topdir_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_topdir");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_top
+	*(void **)(&snd_config_top_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_top");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_load
+	*(void **)(&snd_config_load_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_load");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_load_override
+	*(void **)(&snd_config_load_override_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_load_override");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_save
+	*(void **)(&snd_config_save_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_save");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_update
+	*(void **)(&snd_config_update_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_update");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_update_r
+	*(void **)(&snd_config_update_r_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_update_r");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_update_free
+	*(void **)(&snd_config_update_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_update_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_update_free_global
+	*(void **)(&snd_config_update_free_global_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_update_free_global");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_update_ref
+	*(void **)(&snd_config_update_ref_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_update_ref");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_ref
+	*(void **)(&snd_config_ref_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_ref");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_unref
+	*(void **)(&snd_config_unref_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_unref");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_search
+	*(void **)(&snd_config_search_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_search");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_searchv
+	*(void **)(&snd_config_searchv_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_searchv");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_search_definition
+	*(void **)(&snd_config_search_definition_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_search_definition");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_expand
+	*(void **)(&snd_config_expand_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_expand");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_evaluate
+	*(void **)(&snd_config_evaluate_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_evaluate");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_add
+	*(void **)(&snd_config_add_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_add");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_add_before
+	*(void **)(&snd_config_add_before_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_add_before");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_add_after
+	*(void **)(&snd_config_add_after_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_add_after");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_remove
+	*(void **)(&snd_config_remove_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_remove");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_delete
+	*(void **)(&snd_config_delete_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_delete");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_delete_compound_members
+	*(void **)(&snd_config_delete_compound_members_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_delete_compound_members");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_copy
+	*(void **)(&snd_config_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_copy");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_make
+	*(void **)(&snd_config_make_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_make");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_make_integer
+	*(void **)(&snd_config_make_integer_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_make_integer");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_make_integer64
+	*(void **)(&snd_config_make_integer64_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_make_integer64");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_make_real
+	*(void **)(&snd_config_make_real_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_make_real");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_make_string
+	*(void **)(&snd_config_make_string_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_make_string");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_make_pointer
+	*(void **)(&snd_config_make_pointer_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_make_pointer");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_make_compound
+	*(void **)(&snd_config_make_compound_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_make_compound");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_imake_integer
+	*(void **)(&snd_config_imake_integer_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_imake_integer");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_imake_integer64
+	*(void **)(&snd_config_imake_integer64_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_imake_integer64");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_imake_real
+	*(void **)(&snd_config_imake_real_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_imake_real");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_imake_string
+	*(void **)(&snd_config_imake_string_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_imake_string");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_imake_safe_string
+	*(void **)(&snd_config_imake_safe_string_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_imake_safe_string");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_imake_pointer
+	*(void **)(&snd_config_imake_pointer_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_imake_pointer");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_get_type
+	*(void **)(&snd_config_get_type_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_get_type");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_is_array
+	*(void **)(&snd_config_is_array_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_is_array");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_set_id
+	*(void **)(&snd_config_set_id_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_set_id");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_set_integer
+	*(void **)(&snd_config_set_integer_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_set_integer");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_set_integer64
+	*(void **)(&snd_config_set_integer64_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_set_integer64");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_set_real
+	*(void **)(&snd_config_set_real_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_set_real");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_set_string
+	*(void **)(&snd_config_set_string_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_set_string");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_set_ascii
+	*(void **)(&snd_config_set_ascii_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_set_ascii");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_set_pointer
+	*(void **)(&snd_config_set_pointer_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_set_pointer");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_get_id
+	*(void **)(&snd_config_get_id_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_get_id");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_get_integer
+	*(void **)(&snd_config_get_integer_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_get_integer");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_get_integer64
+	*(void **)(&snd_config_get_integer64_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_get_integer64");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_get_real
+	*(void **)(&snd_config_get_real_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_get_real");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_get_ireal
+	*(void **)(&snd_config_get_ireal_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_get_ireal");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_get_string
+	*(void **)(&snd_config_get_string_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_get_string");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_get_ascii
+	*(void **)(&snd_config_get_ascii_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_get_ascii");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_get_pointer
+	*(void **)(&snd_config_get_pointer_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_get_pointer");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_test_id
+	*(void **)(&snd_config_test_id_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_test_id");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_iterator_first
+	*(void **)(&snd_config_iterator_first_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_iterator_first");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_iterator_next
+	*(void **)(&snd_config_iterator_next_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_iterator_next");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_iterator_end
+	*(void **)(&snd_config_iterator_end_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_iterator_end");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_iterator_entry
+	*(void **)(&snd_config_iterator_entry_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_iterator_entry");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_get_bool_ascii
+	*(void **)(&snd_config_get_bool_ascii_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_get_bool_ascii");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_get_bool
+	*(void **)(&snd_config_get_bool_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_get_bool");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_get_ctl_iface_ascii
+	*(void **)(&snd_config_get_ctl_iface_ascii_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_get_ctl_iface_ascii");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_config_get_ctl_iface
+	*(void **)(&snd_config_get_ctl_iface_dylibloader_wrapper_asound) = dlsym(handle, "snd_config_get_ctl_iface");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_names_list
+	*(void **)(&snd_names_list_dylibloader_wrapper_asound) = dlsym(handle, "snd_names_list");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_names_list_free
+	*(void **)(&snd_names_list_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_names_list_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_open
+	*(void **)(&snd_pcm_open_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_open");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_open_lconf
+	*(void **)(&snd_pcm_open_lconf_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_open_lconf");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_open_fallback
+	*(void **)(&snd_pcm_open_fallback_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_open_fallback");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_close
+	*(void **)(&snd_pcm_close_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_close");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_name
+	*(void **)(&snd_pcm_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_type
+	*(void **)(&snd_pcm_type_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_type");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_stream
+	*(void **)(&snd_pcm_stream_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_stream");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_poll_descriptors_count
+	*(void **)(&snd_pcm_poll_descriptors_count_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_poll_descriptors_count");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_poll_descriptors
+	*(void **)(&snd_pcm_poll_descriptors_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_poll_descriptors");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_poll_descriptors_revents
+	*(void **)(&snd_pcm_poll_descriptors_revents_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_poll_descriptors_revents");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_nonblock
+	*(void **)(&snd_pcm_nonblock_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_nonblock");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_async_add_pcm_handler
+	*(void **)(&snd_async_add_pcm_handler_dylibloader_wrapper_asound) = dlsym(handle, "snd_async_add_pcm_handler");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_async_handler_get_pcm
+	*(void **)(&snd_async_handler_get_pcm_dylibloader_wrapper_asound) = dlsym(handle, "snd_async_handler_get_pcm");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_info
+	*(void **)(&snd_pcm_info_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_info");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_current
+	*(void **)(&snd_pcm_hw_params_current_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_current");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params
+	*(void **)(&snd_pcm_hw_params_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_free
+	*(void **)(&snd_pcm_hw_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_sw_params_current
+	*(void **)(&snd_pcm_sw_params_current_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_current");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_sw_params
+	*(void **)(&snd_pcm_sw_params_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_prepare
+	*(void **)(&snd_pcm_prepare_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_prepare");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_reset
+	*(void **)(&snd_pcm_reset_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_reset");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_status
+	*(void **)(&snd_pcm_status_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_status");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_start
+	*(void **)(&snd_pcm_start_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_start");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_drop
+	*(void **)(&snd_pcm_drop_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_drop");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_drain
+	*(void **)(&snd_pcm_drain_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_drain");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_pause
+	*(void **)(&snd_pcm_pause_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_pause");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_state
+	*(void **)(&snd_pcm_state_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_state");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hwsync
+	*(void **)(&snd_pcm_hwsync_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hwsync");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_delay
+	*(void **)(&snd_pcm_delay_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_delay");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_resume
+	*(void **)(&snd_pcm_resume_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_resume");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_htimestamp
+	*(void **)(&snd_pcm_htimestamp_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_htimestamp");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_avail
+	*(void **)(&snd_pcm_avail_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_avail");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_avail_update
+	*(void **)(&snd_pcm_avail_update_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_avail_update");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_avail_delay
+	*(void **)(&snd_pcm_avail_delay_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_avail_delay");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_rewindable
+	*(void **)(&snd_pcm_rewindable_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_rewindable");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_rewind
+	*(void **)(&snd_pcm_rewind_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_rewind");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_forwardable
+	*(void **)(&snd_pcm_forwardable_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_forwardable");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_forward
+	*(void **)(&snd_pcm_forward_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_forward");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_writei
+	*(void **)(&snd_pcm_writei_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_writei");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_readi
+	*(void **)(&snd_pcm_readi_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_readi");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_writen
+	*(void **)(&snd_pcm_writen_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_writen");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_readn
+	*(void **)(&snd_pcm_readn_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_readn");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_wait
+	*(void **)(&snd_pcm_wait_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_wait");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_link
+	*(void **)(&snd_pcm_link_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_link");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_unlink
+	*(void **)(&snd_pcm_unlink_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_unlink");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_query_chmaps
+	*(void **)(&snd_pcm_query_chmaps_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_query_chmaps");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_query_chmaps_from_hw
+	*(void **)(&snd_pcm_query_chmaps_from_hw_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_query_chmaps_from_hw");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_free_chmaps
+	*(void **)(&snd_pcm_free_chmaps_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_free_chmaps");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_get_chmap
+	*(void **)(&snd_pcm_get_chmap_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_get_chmap");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_set_chmap
+	*(void **)(&snd_pcm_set_chmap_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_set_chmap");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_chmap_type_name
+	*(void **)(&snd_pcm_chmap_type_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_chmap_type_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_chmap_name
+	*(void **)(&snd_pcm_chmap_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_chmap_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_chmap_long_name
+	*(void **)(&snd_pcm_chmap_long_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_chmap_long_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_chmap_print
+	*(void **)(&snd_pcm_chmap_print_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_chmap_print");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_chmap_from_string
+	*(void **)(&snd_pcm_chmap_from_string_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_chmap_from_string");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_chmap_parse_string
+	*(void **)(&snd_pcm_chmap_parse_string_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_chmap_parse_string");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_recover
+	*(void **)(&snd_pcm_recover_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_recover");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_set_params
+	*(void **)(&snd_pcm_set_params_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_set_params");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_get_params
+	*(void **)(&snd_pcm_get_params_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_get_params");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_info_sizeof
+	*(void **)(&snd_pcm_info_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_info_sizeof");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_info_malloc
+	*(void **)(&snd_pcm_info_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_info_malloc");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_info_free
+	*(void **)(&snd_pcm_info_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_info_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_info_copy
+	*(void **)(&snd_pcm_info_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_info_copy");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_info_get_device
+	*(void **)(&snd_pcm_info_get_device_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_info_get_device");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_info_get_subdevice
+	*(void **)(&snd_pcm_info_get_subdevice_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_info_get_subdevice");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_info_get_stream
+	*(void **)(&snd_pcm_info_get_stream_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_info_get_stream");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_info_get_card
+	*(void **)(&snd_pcm_info_get_card_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_info_get_card");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_info_get_id
+	*(void **)(&snd_pcm_info_get_id_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_info_get_id");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_info_get_name
+	*(void **)(&snd_pcm_info_get_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_info_get_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_info_get_subdevice_name
+	*(void **)(&snd_pcm_info_get_subdevice_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_info_get_subdevice_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_info_get_class
+	*(void **)(&snd_pcm_info_get_class_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_info_get_class");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_info_get_subclass
+	*(void **)(&snd_pcm_info_get_subclass_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_info_get_subclass");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_info_get_subdevices_count
+	*(void **)(&snd_pcm_info_get_subdevices_count_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_info_get_subdevices_count");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_info_get_subdevices_avail
+	*(void **)(&snd_pcm_info_get_subdevices_avail_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_info_get_subdevices_avail");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_info_get_sync
+	*(void **)(&snd_pcm_info_get_sync_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_info_get_sync");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_info_set_device
+	*(void **)(&snd_pcm_info_set_device_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_info_set_device");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_info_set_subdevice
+	*(void **)(&snd_pcm_info_set_subdevice_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_info_set_subdevice");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_info_set_stream
+	*(void **)(&snd_pcm_info_set_stream_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_info_set_stream");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_any
+	*(void **)(&snd_pcm_hw_params_any_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_any");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_can_mmap_sample_resolution
+	*(void **)(&snd_pcm_hw_params_can_mmap_sample_resolution_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_can_mmap_sample_resolution");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_is_double
+	*(void **)(&snd_pcm_hw_params_is_double_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_is_double");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_is_batch
+	*(void **)(&snd_pcm_hw_params_is_batch_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_is_batch");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_is_block_transfer
+	*(void **)(&snd_pcm_hw_params_is_block_transfer_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_is_block_transfer");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_is_monotonic
+	*(void **)(&snd_pcm_hw_params_is_monotonic_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_is_monotonic");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_can_overrange
+	*(void **)(&snd_pcm_hw_params_can_overrange_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_can_overrange");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_can_pause
+	*(void **)(&snd_pcm_hw_params_can_pause_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_can_pause");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_can_resume
+	*(void **)(&snd_pcm_hw_params_can_resume_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_can_resume");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_is_half_duplex
+	*(void **)(&snd_pcm_hw_params_is_half_duplex_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_is_half_duplex");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_is_joint_duplex
+	*(void **)(&snd_pcm_hw_params_is_joint_duplex_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_is_joint_duplex");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_can_sync_start
+	*(void **)(&snd_pcm_hw_params_can_sync_start_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_can_sync_start");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_can_disable_period_wakeup
+	*(void **)(&snd_pcm_hw_params_can_disable_period_wakeup_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_can_disable_period_wakeup");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_supports_audio_wallclock_ts
+	*(void **)(&snd_pcm_hw_params_supports_audio_wallclock_ts_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_supports_audio_wallclock_ts");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_supports_audio_ts_type
+	*(void **)(&snd_pcm_hw_params_supports_audio_ts_type_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_supports_audio_ts_type");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_get_rate_numden
+	*(void **)(&snd_pcm_hw_params_get_rate_numden_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_rate_numden");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_get_sbits
+	*(void **)(&snd_pcm_hw_params_get_sbits_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_sbits");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_get_fifo_size
+	*(void **)(&snd_pcm_hw_params_get_fifo_size_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_fifo_size");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_sizeof
+	*(void **)(&snd_pcm_hw_params_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_sizeof");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_malloc
+	*(void **)(&snd_pcm_hw_params_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_malloc");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_free
+	*(void **)(&snd_pcm_hw_params_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_copy
+	*(void **)(&snd_pcm_hw_params_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_copy");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_get_access
+	*(void **)(&snd_pcm_hw_params_get_access_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_access");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_test_access
+	*(void **)(&snd_pcm_hw_params_test_access_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_test_access");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_access
+	*(void **)(&snd_pcm_hw_params_set_access_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_access");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_access_first
+	*(void **)(&snd_pcm_hw_params_set_access_first_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_access_first");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_access_last
+	*(void **)(&snd_pcm_hw_params_set_access_last_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_access_last");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_access_mask
+	*(void **)(&snd_pcm_hw_params_set_access_mask_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_access_mask");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_get_access_mask
+	*(void **)(&snd_pcm_hw_params_get_access_mask_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_access_mask");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_get_format
+	*(void **)(&snd_pcm_hw_params_get_format_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_format");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_test_format
+	*(void **)(&snd_pcm_hw_params_test_format_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_test_format");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_format
+	*(void **)(&snd_pcm_hw_params_set_format_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_format");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_format_first
+	*(void **)(&snd_pcm_hw_params_set_format_first_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_format_first");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_format_last
+	*(void **)(&snd_pcm_hw_params_set_format_last_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_format_last");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_format_mask
+	*(void **)(&snd_pcm_hw_params_set_format_mask_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_format_mask");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_get_format_mask
+	*(void **)(&snd_pcm_hw_params_get_format_mask_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_format_mask");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_get_subformat
+	*(void **)(&snd_pcm_hw_params_get_subformat_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_subformat");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_test_subformat
+	*(void **)(&snd_pcm_hw_params_test_subformat_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_test_subformat");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_subformat
+	*(void **)(&snd_pcm_hw_params_set_subformat_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_subformat");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_subformat_first
+	*(void **)(&snd_pcm_hw_params_set_subformat_first_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_subformat_first");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_subformat_last
+	*(void **)(&snd_pcm_hw_params_set_subformat_last_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_subformat_last");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_subformat_mask
+	*(void **)(&snd_pcm_hw_params_set_subformat_mask_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_subformat_mask");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_get_subformat_mask
+	*(void **)(&snd_pcm_hw_params_get_subformat_mask_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_subformat_mask");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_get_channels
+	*(void **)(&snd_pcm_hw_params_get_channels_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_channels");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_get_channels_min
+	*(void **)(&snd_pcm_hw_params_get_channels_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_channels_min");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_get_channels_max
+	*(void **)(&snd_pcm_hw_params_get_channels_max_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_channels_max");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_test_channels
+	*(void **)(&snd_pcm_hw_params_test_channels_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_test_channels");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_channels
+	*(void **)(&snd_pcm_hw_params_set_channels_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_channels");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_channels_min
+	*(void **)(&snd_pcm_hw_params_set_channels_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_channels_min");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_channels_max
+	*(void **)(&snd_pcm_hw_params_set_channels_max_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_channels_max");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_channels_minmax
+	*(void **)(&snd_pcm_hw_params_set_channels_minmax_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_channels_minmax");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_channels_near
+	*(void **)(&snd_pcm_hw_params_set_channels_near_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_channels_near");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_channels_first
+	*(void **)(&snd_pcm_hw_params_set_channels_first_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_channels_first");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_channels_last
+	*(void **)(&snd_pcm_hw_params_set_channels_last_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_channels_last");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_get_rate
+	*(void **)(&snd_pcm_hw_params_get_rate_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_rate");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_get_rate_min
+	*(void **)(&snd_pcm_hw_params_get_rate_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_rate_min");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_get_rate_max
+	*(void **)(&snd_pcm_hw_params_get_rate_max_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_rate_max");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_test_rate
+	*(void **)(&snd_pcm_hw_params_test_rate_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_test_rate");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_rate
+	*(void **)(&snd_pcm_hw_params_set_rate_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_rate");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_rate_min
+	*(void **)(&snd_pcm_hw_params_set_rate_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_rate_min");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_rate_max
+	*(void **)(&snd_pcm_hw_params_set_rate_max_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_rate_max");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_rate_minmax
+	*(void **)(&snd_pcm_hw_params_set_rate_minmax_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_rate_minmax");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_rate_near
+	*(void **)(&snd_pcm_hw_params_set_rate_near_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_rate_near");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_rate_first
+	*(void **)(&snd_pcm_hw_params_set_rate_first_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_rate_first");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_rate_last
+	*(void **)(&snd_pcm_hw_params_set_rate_last_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_rate_last");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_rate_resample
+	*(void **)(&snd_pcm_hw_params_set_rate_resample_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_rate_resample");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_get_rate_resample
+	*(void **)(&snd_pcm_hw_params_get_rate_resample_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_rate_resample");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_export_buffer
+	*(void **)(&snd_pcm_hw_params_set_export_buffer_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_export_buffer");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_get_export_buffer
+	*(void **)(&snd_pcm_hw_params_get_export_buffer_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_export_buffer");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_period_wakeup
+	*(void **)(&snd_pcm_hw_params_set_period_wakeup_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_period_wakeup");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_get_period_wakeup
+	*(void **)(&snd_pcm_hw_params_get_period_wakeup_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_period_wakeup");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_get_period_time
+	*(void **)(&snd_pcm_hw_params_get_period_time_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_period_time");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_get_period_time_min
+	*(void **)(&snd_pcm_hw_params_get_period_time_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_period_time_min");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_get_period_time_max
+	*(void **)(&snd_pcm_hw_params_get_period_time_max_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_period_time_max");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_test_period_time
+	*(void **)(&snd_pcm_hw_params_test_period_time_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_test_period_time");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_period_time
+	*(void **)(&snd_pcm_hw_params_set_period_time_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_period_time");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_period_time_min
+	*(void **)(&snd_pcm_hw_params_set_period_time_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_period_time_min");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_period_time_max
+	*(void **)(&snd_pcm_hw_params_set_period_time_max_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_period_time_max");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_period_time_minmax
+	*(void **)(&snd_pcm_hw_params_set_period_time_minmax_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_period_time_minmax");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_period_time_near
+	*(void **)(&snd_pcm_hw_params_set_period_time_near_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_period_time_near");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_period_time_first
+	*(void **)(&snd_pcm_hw_params_set_period_time_first_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_period_time_first");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_period_time_last
+	*(void **)(&snd_pcm_hw_params_set_period_time_last_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_period_time_last");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_get_period_size
+	*(void **)(&snd_pcm_hw_params_get_period_size_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_period_size");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_get_period_size_min
+	*(void **)(&snd_pcm_hw_params_get_period_size_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_period_size_min");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_get_period_size_max
+	*(void **)(&snd_pcm_hw_params_get_period_size_max_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_period_size_max");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_test_period_size
+	*(void **)(&snd_pcm_hw_params_test_period_size_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_test_period_size");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_period_size
+	*(void **)(&snd_pcm_hw_params_set_period_size_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_period_size");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_period_size_min
+	*(void **)(&snd_pcm_hw_params_set_period_size_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_period_size_min");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_period_size_max
+	*(void **)(&snd_pcm_hw_params_set_period_size_max_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_period_size_max");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_period_size_minmax
+	*(void **)(&snd_pcm_hw_params_set_period_size_minmax_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_period_size_minmax");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_period_size_near
+	*(void **)(&snd_pcm_hw_params_set_period_size_near_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_period_size_near");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_period_size_first
+	*(void **)(&snd_pcm_hw_params_set_period_size_first_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_period_size_first");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_period_size_last
+	*(void **)(&snd_pcm_hw_params_set_period_size_last_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_period_size_last");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_period_size_integer
+	*(void **)(&snd_pcm_hw_params_set_period_size_integer_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_period_size_integer");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_get_periods
+	*(void **)(&snd_pcm_hw_params_get_periods_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_periods");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_get_periods_min
+	*(void **)(&snd_pcm_hw_params_get_periods_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_periods_min");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_get_periods_max
+	*(void **)(&snd_pcm_hw_params_get_periods_max_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_periods_max");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_test_periods
+	*(void **)(&snd_pcm_hw_params_test_periods_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_test_periods");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_periods
+	*(void **)(&snd_pcm_hw_params_set_periods_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_periods");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_periods_min
+	*(void **)(&snd_pcm_hw_params_set_periods_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_periods_min");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_periods_max
+	*(void **)(&snd_pcm_hw_params_set_periods_max_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_periods_max");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_periods_minmax
+	*(void **)(&snd_pcm_hw_params_set_periods_minmax_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_periods_minmax");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_periods_near
+	*(void **)(&snd_pcm_hw_params_set_periods_near_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_periods_near");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_periods_first
+	*(void **)(&snd_pcm_hw_params_set_periods_first_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_periods_first");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_periods_last
+	*(void **)(&snd_pcm_hw_params_set_periods_last_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_periods_last");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_periods_integer
+	*(void **)(&snd_pcm_hw_params_set_periods_integer_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_periods_integer");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_get_buffer_time
+	*(void **)(&snd_pcm_hw_params_get_buffer_time_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_buffer_time");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_get_buffer_time_min
+	*(void **)(&snd_pcm_hw_params_get_buffer_time_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_buffer_time_min");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_get_buffer_time_max
+	*(void **)(&snd_pcm_hw_params_get_buffer_time_max_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_buffer_time_max");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_test_buffer_time
+	*(void **)(&snd_pcm_hw_params_test_buffer_time_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_test_buffer_time");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_buffer_time
+	*(void **)(&snd_pcm_hw_params_set_buffer_time_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_buffer_time");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_buffer_time_min
+	*(void **)(&snd_pcm_hw_params_set_buffer_time_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_buffer_time_min");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_buffer_time_max
+	*(void **)(&snd_pcm_hw_params_set_buffer_time_max_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_buffer_time_max");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_buffer_time_minmax
+	*(void **)(&snd_pcm_hw_params_set_buffer_time_minmax_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_buffer_time_minmax");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_buffer_time_near
+	*(void **)(&snd_pcm_hw_params_set_buffer_time_near_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_buffer_time_near");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_buffer_time_first
+	*(void **)(&snd_pcm_hw_params_set_buffer_time_first_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_buffer_time_first");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_buffer_time_last
+	*(void **)(&snd_pcm_hw_params_set_buffer_time_last_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_buffer_time_last");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_get_buffer_size
+	*(void **)(&snd_pcm_hw_params_get_buffer_size_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_buffer_size");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_get_buffer_size_min
+	*(void **)(&snd_pcm_hw_params_get_buffer_size_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_buffer_size_min");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_get_buffer_size_max
+	*(void **)(&snd_pcm_hw_params_get_buffer_size_max_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_buffer_size_max");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_test_buffer_size
+	*(void **)(&snd_pcm_hw_params_test_buffer_size_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_test_buffer_size");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_buffer_size
+	*(void **)(&snd_pcm_hw_params_set_buffer_size_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_buffer_size");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_buffer_size_min
+	*(void **)(&snd_pcm_hw_params_set_buffer_size_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_buffer_size_min");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_buffer_size_max
+	*(void **)(&snd_pcm_hw_params_set_buffer_size_max_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_buffer_size_max");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_buffer_size_minmax
+	*(void **)(&snd_pcm_hw_params_set_buffer_size_minmax_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_buffer_size_minmax");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_buffer_size_near
+	*(void **)(&snd_pcm_hw_params_set_buffer_size_near_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_buffer_size_near");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_buffer_size_first
+	*(void **)(&snd_pcm_hw_params_set_buffer_size_first_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_buffer_size_first");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_buffer_size_last
+	*(void **)(&snd_pcm_hw_params_set_buffer_size_last_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_buffer_size_last");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_get_min_align
+	*(void **)(&snd_pcm_hw_params_get_min_align_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_min_align");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_sw_params_sizeof
+	*(void **)(&snd_pcm_sw_params_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_sizeof");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_sw_params_malloc
+	*(void **)(&snd_pcm_sw_params_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_malloc");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_sw_params_free
+	*(void **)(&snd_pcm_sw_params_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_sw_params_copy
+	*(void **)(&snd_pcm_sw_params_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_copy");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_sw_params_get_boundary
+	*(void **)(&snd_pcm_sw_params_get_boundary_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_get_boundary");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_sw_params_set_tstamp_mode
+	*(void **)(&snd_pcm_sw_params_set_tstamp_mode_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_set_tstamp_mode");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_sw_params_get_tstamp_mode
+	*(void **)(&snd_pcm_sw_params_get_tstamp_mode_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_get_tstamp_mode");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_sw_params_set_avail_min
+	*(void **)(&snd_pcm_sw_params_set_avail_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_set_avail_min");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_sw_params_get_avail_min
+	*(void **)(&snd_pcm_sw_params_get_avail_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_get_avail_min");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_sw_params_set_period_event
+	*(void **)(&snd_pcm_sw_params_set_period_event_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_set_period_event");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_sw_params_get_period_event
+	*(void **)(&snd_pcm_sw_params_get_period_event_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_get_period_event");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_sw_params_set_start_threshold
+	*(void **)(&snd_pcm_sw_params_set_start_threshold_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_set_start_threshold");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_sw_params_get_start_threshold
+	*(void **)(&snd_pcm_sw_params_get_start_threshold_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_get_start_threshold");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_sw_params_set_stop_threshold
+	*(void **)(&snd_pcm_sw_params_set_stop_threshold_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_set_stop_threshold");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_sw_params_get_stop_threshold
+	*(void **)(&snd_pcm_sw_params_get_stop_threshold_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_get_stop_threshold");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_sw_params_set_silence_threshold
+	*(void **)(&snd_pcm_sw_params_set_silence_threshold_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_set_silence_threshold");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_sw_params_get_silence_threshold
+	*(void **)(&snd_pcm_sw_params_get_silence_threshold_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_get_silence_threshold");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_sw_params_set_silence_size
+	*(void **)(&snd_pcm_sw_params_set_silence_size_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_set_silence_size");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_sw_params_get_silence_size
+	*(void **)(&snd_pcm_sw_params_get_silence_size_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_get_silence_size");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_access_mask_sizeof
+	*(void **)(&snd_pcm_access_mask_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_access_mask_sizeof");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_access_mask_malloc
+	*(void **)(&snd_pcm_access_mask_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_access_mask_malloc");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_access_mask_free
+	*(void **)(&snd_pcm_access_mask_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_access_mask_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_access_mask_copy
+	*(void **)(&snd_pcm_access_mask_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_access_mask_copy");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_access_mask_none
+	*(void **)(&snd_pcm_access_mask_none_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_access_mask_none");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_access_mask_any
+	*(void **)(&snd_pcm_access_mask_any_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_access_mask_any");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_access_mask_test
+	*(void **)(&snd_pcm_access_mask_test_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_access_mask_test");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_access_mask_empty
+	*(void **)(&snd_pcm_access_mask_empty_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_access_mask_empty");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_access_mask_set
+	*(void **)(&snd_pcm_access_mask_set_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_access_mask_set");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_access_mask_reset
+	*(void **)(&snd_pcm_access_mask_reset_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_access_mask_reset");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_format_mask_sizeof
+	*(void **)(&snd_pcm_format_mask_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_mask_sizeof");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_format_mask_malloc
+	*(void **)(&snd_pcm_format_mask_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_mask_malloc");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_format_mask_free
+	*(void **)(&snd_pcm_format_mask_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_mask_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_format_mask_copy
+	*(void **)(&snd_pcm_format_mask_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_mask_copy");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_format_mask_none
+	*(void **)(&snd_pcm_format_mask_none_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_mask_none");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_format_mask_any
+	*(void **)(&snd_pcm_format_mask_any_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_mask_any");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_format_mask_test
+	*(void **)(&snd_pcm_format_mask_test_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_mask_test");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_format_mask_empty
+	*(void **)(&snd_pcm_format_mask_empty_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_mask_empty");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_format_mask_set
+	*(void **)(&snd_pcm_format_mask_set_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_mask_set");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_format_mask_reset
+	*(void **)(&snd_pcm_format_mask_reset_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_mask_reset");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_subformat_mask_sizeof
+	*(void **)(&snd_pcm_subformat_mask_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_subformat_mask_sizeof");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_subformat_mask_malloc
+	*(void **)(&snd_pcm_subformat_mask_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_subformat_mask_malloc");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_subformat_mask_free
+	*(void **)(&snd_pcm_subformat_mask_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_subformat_mask_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_subformat_mask_copy
+	*(void **)(&snd_pcm_subformat_mask_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_subformat_mask_copy");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_subformat_mask_none
+	*(void **)(&snd_pcm_subformat_mask_none_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_subformat_mask_none");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_subformat_mask_any
+	*(void **)(&snd_pcm_subformat_mask_any_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_subformat_mask_any");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_subformat_mask_test
+	*(void **)(&snd_pcm_subformat_mask_test_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_subformat_mask_test");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_subformat_mask_empty
+	*(void **)(&snd_pcm_subformat_mask_empty_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_subformat_mask_empty");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_subformat_mask_set
+	*(void **)(&snd_pcm_subformat_mask_set_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_subformat_mask_set");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_subformat_mask_reset
+	*(void **)(&snd_pcm_subformat_mask_reset_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_subformat_mask_reset");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_status_sizeof
+	*(void **)(&snd_pcm_status_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_status_sizeof");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_status_malloc
+	*(void **)(&snd_pcm_status_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_status_malloc");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_status_free
+	*(void **)(&snd_pcm_status_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_status_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_status_copy
+	*(void **)(&snd_pcm_status_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_status_copy");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_status_get_state
+	*(void **)(&snd_pcm_status_get_state_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_status_get_state");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_status_get_trigger_tstamp
+	*(void **)(&snd_pcm_status_get_trigger_tstamp_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_status_get_trigger_tstamp");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_status_get_trigger_htstamp
+	*(void **)(&snd_pcm_status_get_trigger_htstamp_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_status_get_trigger_htstamp");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_status_get_tstamp
+	*(void **)(&snd_pcm_status_get_tstamp_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_status_get_tstamp");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_status_get_htstamp
+	*(void **)(&snd_pcm_status_get_htstamp_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_status_get_htstamp");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_status_get_audio_htstamp
+	*(void **)(&snd_pcm_status_get_audio_htstamp_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_status_get_audio_htstamp");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_status_get_driver_htstamp
+	*(void **)(&snd_pcm_status_get_driver_htstamp_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_status_get_driver_htstamp");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_status_get_delay
+	*(void **)(&snd_pcm_status_get_delay_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_status_get_delay");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_status_get_avail
+	*(void **)(&snd_pcm_status_get_avail_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_status_get_avail");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_status_get_avail_max
+	*(void **)(&snd_pcm_status_get_avail_max_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_status_get_avail_max");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_status_get_overrange
+	*(void **)(&snd_pcm_status_get_overrange_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_status_get_overrange");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_type_name
+	*(void **)(&snd_pcm_type_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_type_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_stream_name
+	*(void **)(&snd_pcm_stream_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_stream_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_access_name
+	*(void **)(&snd_pcm_access_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_access_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_format_name
+	*(void **)(&snd_pcm_format_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_format_description
+	*(void **)(&snd_pcm_format_description_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_description");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_subformat_name
+	*(void **)(&snd_pcm_subformat_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_subformat_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_subformat_description
+	*(void **)(&snd_pcm_subformat_description_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_subformat_description");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_format_value
+	*(void **)(&snd_pcm_format_value_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_value");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_tstamp_mode_name
+	*(void **)(&snd_pcm_tstamp_mode_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_tstamp_mode_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_state_name
+	*(void **)(&snd_pcm_state_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_state_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_dump
+	*(void **)(&snd_pcm_dump_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_dump");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_dump_hw_setup
+	*(void **)(&snd_pcm_dump_hw_setup_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_dump_hw_setup");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_dump_sw_setup
+	*(void **)(&snd_pcm_dump_sw_setup_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_dump_sw_setup");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_dump_setup
+	*(void **)(&snd_pcm_dump_setup_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_dump_setup");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_dump
+	*(void **)(&snd_pcm_hw_params_dump_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_dump");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_sw_params_dump
+	*(void **)(&snd_pcm_sw_params_dump_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_dump");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_status_dump
+	*(void **)(&snd_pcm_status_dump_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_status_dump");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_mmap_begin
+	*(void **)(&snd_pcm_mmap_begin_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_mmap_begin");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_mmap_commit
+	*(void **)(&snd_pcm_mmap_commit_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_mmap_commit");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_mmap_writei
+	*(void **)(&snd_pcm_mmap_writei_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_mmap_writei");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_mmap_readi
+	*(void **)(&snd_pcm_mmap_readi_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_mmap_readi");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_mmap_writen
+	*(void **)(&snd_pcm_mmap_writen_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_mmap_writen");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_mmap_readn
+	*(void **)(&snd_pcm_mmap_readn_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_mmap_readn");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_format_signed
+	*(void **)(&snd_pcm_format_signed_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_signed");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_format_unsigned
+	*(void **)(&snd_pcm_format_unsigned_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_unsigned");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_format_linear
+	*(void **)(&snd_pcm_format_linear_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_linear");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_format_float
+	*(void **)(&snd_pcm_format_float_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_float");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_format_little_endian
+	*(void **)(&snd_pcm_format_little_endian_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_little_endian");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_format_big_endian
+	*(void **)(&snd_pcm_format_big_endian_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_big_endian");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_format_cpu_endian
+	*(void **)(&snd_pcm_format_cpu_endian_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_cpu_endian");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_format_width
+	*(void **)(&snd_pcm_format_width_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_width");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_format_physical_width
+	*(void **)(&snd_pcm_format_physical_width_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_physical_width");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_build_linear_format
+	*(void **)(&snd_pcm_build_linear_format_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_build_linear_format");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_format_size
+	*(void **)(&snd_pcm_format_size_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_size");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_format_silence
+	*(void **)(&snd_pcm_format_silence_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_silence");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_format_silence_16
+	*(void **)(&snd_pcm_format_silence_16_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_silence_16");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_format_silence_32
+	*(void **)(&snd_pcm_format_silence_32_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_silence_32");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_format_silence_64
+	*(void **)(&snd_pcm_format_silence_64_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_silence_64");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_format_set_silence
+	*(void **)(&snd_pcm_format_set_silence_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_format_set_silence");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_bytes_to_frames
+	*(void **)(&snd_pcm_bytes_to_frames_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_bytes_to_frames");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_frames_to_bytes
+	*(void **)(&snd_pcm_frames_to_bytes_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_frames_to_bytes");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_bytes_to_samples
+	*(void **)(&snd_pcm_bytes_to_samples_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_bytes_to_samples");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_samples_to_bytes
+	*(void **)(&snd_pcm_samples_to_bytes_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_samples_to_bytes");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_area_silence
+	*(void **)(&snd_pcm_area_silence_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_area_silence");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_areas_silence
+	*(void **)(&snd_pcm_areas_silence_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_areas_silence");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_area_copy
+	*(void **)(&snd_pcm_area_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_area_copy");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_areas_copy
+	*(void **)(&snd_pcm_areas_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_areas_copy");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_areas_copy_wrap
+	*(void **)(&snd_pcm_areas_copy_wrap_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_areas_copy_wrap");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hook_get_pcm
+	*(void **)(&snd_pcm_hook_get_pcm_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hook_get_pcm");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hook_get_private
+	*(void **)(&snd_pcm_hook_get_private_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hook_get_private");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hook_set_private
+	*(void **)(&snd_pcm_hook_set_private_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hook_set_private");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hook_add
+	*(void **)(&snd_pcm_hook_add_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hook_add");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hook_remove
+	*(void **)(&snd_pcm_hook_remove_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hook_remove");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_meter_get_bufsize
+	*(void **)(&snd_pcm_meter_get_bufsize_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_meter_get_bufsize");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_meter_get_channels
+	*(void **)(&snd_pcm_meter_get_channels_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_meter_get_channels");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_meter_get_rate
+	*(void **)(&snd_pcm_meter_get_rate_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_meter_get_rate");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_meter_get_now
+	*(void **)(&snd_pcm_meter_get_now_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_meter_get_now");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_meter_get_boundary
+	*(void **)(&snd_pcm_meter_get_boundary_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_meter_get_boundary");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_meter_add_scope
+	*(void **)(&snd_pcm_meter_add_scope_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_meter_add_scope");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_meter_search_scope
+	*(void **)(&snd_pcm_meter_search_scope_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_meter_search_scope");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_scope_malloc
+	*(void **)(&snd_pcm_scope_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_scope_malloc");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_scope_set_ops
+	*(void **)(&snd_pcm_scope_set_ops_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_scope_set_ops");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_scope_set_name
+	*(void **)(&snd_pcm_scope_set_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_scope_set_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_scope_get_name
+	*(void **)(&snd_pcm_scope_get_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_scope_get_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_scope_get_callback_private
+	*(void **)(&snd_pcm_scope_get_callback_private_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_scope_get_callback_private");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_scope_set_callback_private
+	*(void **)(&snd_pcm_scope_set_callback_private_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_scope_set_callback_private");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_scope_s16_open
+	*(void **)(&snd_pcm_scope_s16_open_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_scope_s16_open");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_scope_s16_get_channel_buffer
+	*(void **)(&snd_pcm_scope_s16_get_channel_buffer_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_scope_s16_get_channel_buffer");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_spcm_init
+	*(void **)(&snd_spcm_init_dylibloader_wrapper_asound) = dlsym(handle, "snd_spcm_init");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_spcm_init_duplex
+	*(void **)(&snd_spcm_init_duplex_dylibloader_wrapper_asound) = dlsym(handle, "snd_spcm_init_duplex");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_spcm_init_get_params
+	*(void **)(&snd_spcm_init_get_params_dylibloader_wrapper_asound) = dlsym(handle, "snd_spcm_init_get_params");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_start_mode_name
+	*(void **)(&snd_pcm_start_mode_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_start_mode_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_xrun_mode_name
+	*(void **)(&snd_pcm_xrun_mode_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_xrun_mode_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_sw_params_set_start_mode
+	*(void **)(&snd_pcm_sw_params_set_start_mode_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_set_start_mode");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_sw_params_get_start_mode
+	*(void **)(&snd_pcm_sw_params_get_start_mode_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_get_start_mode");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_sw_params_set_xrun_mode
+	*(void **)(&snd_pcm_sw_params_set_xrun_mode_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_set_xrun_mode");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_sw_params_get_xrun_mode
+	*(void **)(&snd_pcm_sw_params_get_xrun_mode_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_get_xrun_mode");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_sw_params_set_xfer_align
+	*(void **)(&snd_pcm_sw_params_set_xfer_align_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_set_xfer_align");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_sw_params_get_xfer_align
+	*(void **)(&snd_pcm_sw_params_get_xfer_align_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_get_xfer_align");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_sw_params_set_sleep_min
+	*(void **)(&snd_pcm_sw_params_set_sleep_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_set_sleep_min");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_sw_params_get_sleep_min
+	*(void **)(&snd_pcm_sw_params_get_sleep_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_sw_params_get_sleep_min");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_get_tick_time
+	*(void **)(&snd_pcm_hw_params_get_tick_time_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_tick_time");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_get_tick_time_min
+	*(void **)(&snd_pcm_hw_params_get_tick_time_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_tick_time_min");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_get_tick_time_max
+	*(void **)(&snd_pcm_hw_params_get_tick_time_max_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_get_tick_time_max");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_test_tick_time
+	*(void **)(&snd_pcm_hw_params_test_tick_time_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_test_tick_time");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_tick_time
+	*(void **)(&snd_pcm_hw_params_set_tick_time_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_tick_time");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_tick_time_min
+	*(void **)(&snd_pcm_hw_params_set_tick_time_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_tick_time_min");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_tick_time_max
+	*(void **)(&snd_pcm_hw_params_set_tick_time_max_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_tick_time_max");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_tick_time_minmax
+	*(void **)(&snd_pcm_hw_params_set_tick_time_minmax_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_tick_time_minmax");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_tick_time_near
+	*(void **)(&snd_pcm_hw_params_set_tick_time_near_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_tick_time_near");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_tick_time_first
+	*(void **)(&snd_pcm_hw_params_set_tick_time_first_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_tick_time_first");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_pcm_hw_params_set_tick_time_last
+	*(void **)(&snd_pcm_hw_params_set_tick_time_last_dylibloader_wrapper_asound) = dlsym(handle, "snd_pcm_hw_params_set_tick_time_last");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_open
+	*(void **)(&snd_rawmidi_open_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_open");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_open_lconf
+	*(void **)(&snd_rawmidi_open_lconf_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_open_lconf");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_close
+	*(void **)(&snd_rawmidi_close_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_close");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_poll_descriptors_count
+	*(void **)(&snd_rawmidi_poll_descriptors_count_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_poll_descriptors_count");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_poll_descriptors
+	*(void **)(&snd_rawmidi_poll_descriptors_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_poll_descriptors");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_poll_descriptors_revents
+	*(void **)(&snd_rawmidi_poll_descriptors_revents_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_poll_descriptors_revents");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_nonblock
+	*(void **)(&snd_rawmidi_nonblock_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_nonblock");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_info_sizeof
+	*(void **)(&snd_rawmidi_info_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_info_sizeof");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_info_malloc
+	*(void **)(&snd_rawmidi_info_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_info_malloc");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_info_free
+	*(void **)(&snd_rawmidi_info_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_info_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_info_copy
+	*(void **)(&snd_rawmidi_info_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_info_copy");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_info_get_device
+	*(void **)(&snd_rawmidi_info_get_device_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_info_get_device");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_info_get_subdevice
+	*(void **)(&snd_rawmidi_info_get_subdevice_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_info_get_subdevice");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_info_get_stream
+	*(void **)(&snd_rawmidi_info_get_stream_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_info_get_stream");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_info_get_card
+	*(void **)(&snd_rawmidi_info_get_card_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_info_get_card");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_info_get_flags
+	*(void **)(&snd_rawmidi_info_get_flags_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_info_get_flags");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_info_get_id
+	*(void **)(&snd_rawmidi_info_get_id_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_info_get_id");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_info_get_name
+	*(void **)(&snd_rawmidi_info_get_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_info_get_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_info_get_subdevice_name
+	*(void **)(&snd_rawmidi_info_get_subdevice_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_info_get_subdevice_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_info_get_subdevices_count
+	*(void **)(&snd_rawmidi_info_get_subdevices_count_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_info_get_subdevices_count");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_info_get_subdevices_avail
+	*(void **)(&snd_rawmidi_info_get_subdevices_avail_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_info_get_subdevices_avail");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_info_set_device
+	*(void **)(&snd_rawmidi_info_set_device_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_info_set_device");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_info_set_subdevice
+	*(void **)(&snd_rawmidi_info_set_subdevice_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_info_set_subdevice");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_info_set_stream
+	*(void **)(&snd_rawmidi_info_set_stream_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_info_set_stream");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_info
+	*(void **)(&snd_rawmidi_info_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_info");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_params_sizeof
+	*(void **)(&snd_rawmidi_params_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_params_sizeof");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_params_malloc
+	*(void **)(&snd_rawmidi_params_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_params_malloc");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_params_free
+	*(void **)(&snd_rawmidi_params_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_params_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_params_copy
+	*(void **)(&snd_rawmidi_params_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_params_copy");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_params_set_buffer_size
+	*(void **)(&snd_rawmidi_params_set_buffer_size_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_params_set_buffer_size");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_params_get_buffer_size
+	*(void **)(&snd_rawmidi_params_get_buffer_size_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_params_get_buffer_size");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_params_set_avail_min
+	*(void **)(&snd_rawmidi_params_set_avail_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_params_set_avail_min");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_params_get_avail_min
+	*(void **)(&snd_rawmidi_params_get_avail_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_params_get_avail_min");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_params_set_no_active_sensing
+	*(void **)(&snd_rawmidi_params_set_no_active_sensing_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_params_set_no_active_sensing");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_params_get_no_active_sensing
+	*(void **)(&snd_rawmidi_params_get_no_active_sensing_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_params_get_no_active_sensing");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_params
+	*(void **)(&snd_rawmidi_params_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_params");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_params_current
+	*(void **)(&snd_rawmidi_params_current_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_params_current");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_status_sizeof
+	*(void **)(&snd_rawmidi_status_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_status_sizeof");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_status_malloc
+	*(void **)(&snd_rawmidi_status_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_status_malloc");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_status_free
+	*(void **)(&snd_rawmidi_status_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_status_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_status_copy
+	*(void **)(&snd_rawmidi_status_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_status_copy");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_status_get_tstamp
+	*(void **)(&snd_rawmidi_status_get_tstamp_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_status_get_tstamp");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_status_get_avail
+	*(void **)(&snd_rawmidi_status_get_avail_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_status_get_avail");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_status_get_xruns
+	*(void **)(&snd_rawmidi_status_get_xruns_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_status_get_xruns");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_status
+	*(void **)(&snd_rawmidi_status_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_status");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_drain
+	*(void **)(&snd_rawmidi_drain_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_drain");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_drop
+	*(void **)(&snd_rawmidi_drop_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_drop");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_write
+	*(void **)(&snd_rawmidi_write_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_write");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_read
+	*(void **)(&snd_rawmidi_read_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_read");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_name
+	*(void **)(&snd_rawmidi_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_type
+	*(void **)(&snd_rawmidi_type_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_type");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_rawmidi_stream
+	*(void **)(&snd_rawmidi_stream_dylibloader_wrapper_asound) = dlsym(handle, "snd_rawmidi_stream");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_query_open
+	*(void **)(&snd_timer_query_open_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_query_open");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_query_open_lconf
+	*(void **)(&snd_timer_query_open_lconf_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_query_open_lconf");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_query_close
+	*(void **)(&snd_timer_query_close_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_query_close");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_query_next_device
+	*(void **)(&snd_timer_query_next_device_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_query_next_device");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_query_info
+	*(void **)(&snd_timer_query_info_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_query_info");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_query_params
+	*(void **)(&snd_timer_query_params_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_query_params");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_query_status
+	*(void **)(&snd_timer_query_status_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_query_status");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_open
+	*(void **)(&snd_timer_open_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_open");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_open_lconf
+	*(void **)(&snd_timer_open_lconf_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_open_lconf");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_close
+	*(void **)(&snd_timer_close_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_close");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_async_add_timer_handler
+	*(void **)(&snd_async_add_timer_handler_dylibloader_wrapper_asound) = dlsym(handle, "snd_async_add_timer_handler");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_async_handler_get_timer
+	*(void **)(&snd_async_handler_get_timer_dylibloader_wrapper_asound) = dlsym(handle, "snd_async_handler_get_timer");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_poll_descriptors_count
+	*(void **)(&snd_timer_poll_descriptors_count_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_poll_descriptors_count");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_poll_descriptors
+	*(void **)(&snd_timer_poll_descriptors_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_poll_descriptors");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_poll_descriptors_revents
+	*(void **)(&snd_timer_poll_descriptors_revents_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_poll_descriptors_revents");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_info
+	*(void **)(&snd_timer_info_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_info");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_params
+	*(void **)(&snd_timer_params_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_params");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_status
+	*(void **)(&snd_timer_status_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_status");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_start
+	*(void **)(&snd_timer_start_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_start");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_stop
+	*(void **)(&snd_timer_stop_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_stop");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_continue
+	*(void **)(&snd_timer_continue_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_continue");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_read
+	*(void **)(&snd_timer_read_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_read");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_id_sizeof
+	*(void **)(&snd_timer_id_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_id_sizeof");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_id_malloc
+	*(void **)(&snd_timer_id_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_id_malloc");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_id_free
+	*(void **)(&snd_timer_id_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_id_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_id_copy
+	*(void **)(&snd_timer_id_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_id_copy");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_id_set_class
+	*(void **)(&snd_timer_id_set_class_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_id_set_class");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_id_get_class
+	*(void **)(&snd_timer_id_get_class_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_id_get_class");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_id_set_sclass
+	*(void **)(&snd_timer_id_set_sclass_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_id_set_sclass");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_id_get_sclass
+	*(void **)(&snd_timer_id_get_sclass_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_id_get_sclass");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_id_set_card
+	*(void **)(&snd_timer_id_set_card_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_id_set_card");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_id_get_card
+	*(void **)(&snd_timer_id_get_card_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_id_get_card");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_id_set_device
+	*(void **)(&snd_timer_id_set_device_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_id_set_device");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_id_get_device
+	*(void **)(&snd_timer_id_get_device_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_id_get_device");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_id_set_subdevice
+	*(void **)(&snd_timer_id_set_subdevice_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_id_set_subdevice");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_id_get_subdevice
+	*(void **)(&snd_timer_id_get_subdevice_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_id_get_subdevice");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_ginfo_sizeof
+	*(void **)(&snd_timer_ginfo_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_ginfo_sizeof");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_ginfo_malloc
+	*(void **)(&snd_timer_ginfo_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_ginfo_malloc");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_ginfo_free
+	*(void **)(&snd_timer_ginfo_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_ginfo_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_ginfo_copy
+	*(void **)(&snd_timer_ginfo_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_ginfo_copy");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_ginfo_set_tid
+	*(void **)(&snd_timer_ginfo_set_tid_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_ginfo_set_tid");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_ginfo_get_tid
+	*(void **)(&snd_timer_ginfo_get_tid_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_ginfo_get_tid");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_ginfo_get_flags
+	*(void **)(&snd_timer_ginfo_get_flags_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_ginfo_get_flags");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_ginfo_get_card
+	*(void **)(&snd_timer_ginfo_get_card_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_ginfo_get_card");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_ginfo_get_id
+	*(void **)(&snd_timer_ginfo_get_id_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_ginfo_get_id");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_ginfo_get_name
+	*(void **)(&snd_timer_ginfo_get_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_ginfo_get_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_ginfo_get_resolution
+	*(void **)(&snd_timer_ginfo_get_resolution_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_ginfo_get_resolution");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_ginfo_get_resolution_min
+	*(void **)(&snd_timer_ginfo_get_resolution_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_ginfo_get_resolution_min");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_ginfo_get_resolution_max
+	*(void **)(&snd_timer_ginfo_get_resolution_max_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_ginfo_get_resolution_max");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_ginfo_get_clients
+	*(void **)(&snd_timer_ginfo_get_clients_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_ginfo_get_clients");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_info_sizeof
+	*(void **)(&snd_timer_info_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_info_sizeof");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_info_malloc
+	*(void **)(&snd_timer_info_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_info_malloc");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_info_free
+	*(void **)(&snd_timer_info_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_info_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_info_copy
+	*(void **)(&snd_timer_info_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_info_copy");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_info_is_slave
+	*(void **)(&snd_timer_info_is_slave_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_info_is_slave");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_info_get_card
+	*(void **)(&snd_timer_info_get_card_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_info_get_card");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_info_get_id
+	*(void **)(&snd_timer_info_get_id_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_info_get_id");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_info_get_name
+	*(void **)(&snd_timer_info_get_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_info_get_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_info_get_resolution
+	*(void **)(&snd_timer_info_get_resolution_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_info_get_resolution");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_params_sizeof
+	*(void **)(&snd_timer_params_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_params_sizeof");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_params_malloc
+	*(void **)(&snd_timer_params_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_params_malloc");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_params_free
+	*(void **)(&snd_timer_params_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_params_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_params_copy
+	*(void **)(&snd_timer_params_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_params_copy");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_params_set_auto_start
+	*(void **)(&snd_timer_params_set_auto_start_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_params_set_auto_start");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_params_get_auto_start
+	*(void **)(&snd_timer_params_get_auto_start_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_params_get_auto_start");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_params_set_exclusive
+	*(void **)(&snd_timer_params_set_exclusive_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_params_set_exclusive");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_params_get_exclusive
+	*(void **)(&snd_timer_params_get_exclusive_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_params_get_exclusive");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_params_set_early_event
+	*(void **)(&snd_timer_params_set_early_event_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_params_set_early_event");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_params_get_early_event
+	*(void **)(&snd_timer_params_get_early_event_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_params_get_early_event");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_params_set_ticks
+	*(void **)(&snd_timer_params_set_ticks_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_params_set_ticks");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_params_get_ticks
+	*(void **)(&snd_timer_params_get_ticks_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_params_get_ticks");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_params_set_queue_size
+	*(void **)(&snd_timer_params_set_queue_size_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_params_set_queue_size");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_params_get_queue_size
+	*(void **)(&snd_timer_params_get_queue_size_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_params_get_queue_size");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_params_set_filter
+	*(void **)(&snd_timer_params_set_filter_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_params_set_filter");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_params_get_filter
+	*(void **)(&snd_timer_params_get_filter_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_params_get_filter");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_status_sizeof
+	*(void **)(&snd_timer_status_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_status_sizeof");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_status_malloc
+	*(void **)(&snd_timer_status_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_status_malloc");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_status_free
+	*(void **)(&snd_timer_status_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_status_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_status_copy
+	*(void **)(&snd_timer_status_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_status_copy");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_status_get_timestamp
+	*(void **)(&snd_timer_status_get_timestamp_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_status_get_timestamp");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_status_get_resolution
+	*(void **)(&snd_timer_status_get_resolution_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_status_get_resolution");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_status_get_lost
+	*(void **)(&snd_timer_status_get_lost_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_status_get_lost");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_status_get_overrun
+	*(void **)(&snd_timer_status_get_overrun_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_status_get_overrun");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_status_get_queue
+	*(void **)(&snd_timer_status_get_queue_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_status_get_queue");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_timer_info_get_ticks
+	*(void **)(&snd_timer_info_get_ticks_dylibloader_wrapper_asound) = dlsym(handle, "snd_timer_info_get_ticks");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hwdep_open
+	*(void **)(&snd_hwdep_open_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_open");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hwdep_close
+	*(void **)(&snd_hwdep_close_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_close");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hwdep_poll_descriptors
+	*(void **)(&snd_hwdep_poll_descriptors_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_poll_descriptors");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hwdep_poll_descriptors_count
+	*(void **)(&snd_hwdep_poll_descriptors_count_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_poll_descriptors_count");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hwdep_poll_descriptors_revents
+	*(void **)(&snd_hwdep_poll_descriptors_revents_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_poll_descriptors_revents");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hwdep_nonblock
+	*(void **)(&snd_hwdep_nonblock_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_nonblock");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hwdep_info
+	*(void **)(&snd_hwdep_info_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_info");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hwdep_dsp_status
+	*(void **)(&snd_hwdep_dsp_status_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_status");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hwdep_dsp_load
+	*(void **)(&snd_hwdep_dsp_load_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_load");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hwdep_ioctl
+	*(void **)(&snd_hwdep_ioctl_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_ioctl");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hwdep_write
+	*(void **)(&snd_hwdep_write_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_write");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hwdep_read
+	*(void **)(&snd_hwdep_read_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_read");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hwdep_info_sizeof
+	*(void **)(&snd_hwdep_info_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_info_sizeof");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hwdep_info_malloc
+	*(void **)(&snd_hwdep_info_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_info_malloc");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hwdep_info_free
+	*(void **)(&snd_hwdep_info_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_info_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hwdep_info_copy
+	*(void **)(&snd_hwdep_info_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_info_copy");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hwdep_info_get_device
+	*(void **)(&snd_hwdep_info_get_device_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_info_get_device");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hwdep_info_get_card
+	*(void **)(&snd_hwdep_info_get_card_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_info_get_card");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hwdep_info_get_id
+	*(void **)(&snd_hwdep_info_get_id_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_info_get_id");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hwdep_info_get_name
+	*(void **)(&snd_hwdep_info_get_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_info_get_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hwdep_info_get_iface
+	*(void **)(&snd_hwdep_info_get_iface_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_info_get_iface");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hwdep_info_set_device
+	*(void **)(&snd_hwdep_info_set_device_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_info_set_device");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hwdep_dsp_status_sizeof
+	*(void **)(&snd_hwdep_dsp_status_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_status_sizeof");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hwdep_dsp_status_malloc
+	*(void **)(&snd_hwdep_dsp_status_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_status_malloc");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hwdep_dsp_status_free
+	*(void **)(&snd_hwdep_dsp_status_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_status_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hwdep_dsp_status_copy
+	*(void **)(&snd_hwdep_dsp_status_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_status_copy");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hwdep_dsp_status_get_version
+	*(void **)(&snd_hwdep_dsp_status_get_version_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_status_get_version");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hwdep_dsp_status_get_id
+	*(void **)(&snd_hwdep_dsp_status_get_id_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_status_get_id");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hwdep_dsp_status_get_num_dsps
+	*(void **)(&snd_hwdep_dsp_status_get_num_dsps_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_status_get_num_dsps");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hwdep_dsp_status_get_dsp_loaded
+	*(void **)(&snd_hwdep_dsp_status_get_dsp_loaded_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_status_get_dsp_loaded");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hwdep_dsp_status_get_chip_ready
+	*(void **)(&snd_hwdep_dsp_status_get_chip_ready_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_status_get_chip_ready");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hwdep_dsp_image_sizeof
+	*(void **)(&snd_hwdep_dsp_image_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_image_sizeof");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hwdep_dsp_image_malloc
+	*(void **)(&snd_hwdep_dsp_image_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_image_malloc");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hwdep_dsp_image_free
+	*(void **)(&snd_hwdep_dsp_image_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_image_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hwdep_dsp_image_copy
+	*(void **)(&snd_hwdep_dsp_image_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_image_copy");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hwdep_dsp_image_get_index
+	*(void **)(&snd_hwdep_dsp_image_get_index_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_image_get_index");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hwdep_dsp_image_get_name
+	*(void **)(&snd_hwdep_dsp_image_get_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_image_get_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hwdep_dsp_image_get_image
+	*(void **)(&snd_hwdep_dsp_image_get_image_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_image_get_image");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hwdep_dsp_image_get_length
+	*(void **)(&snd_hwdep_dsp_image_get_length_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_image_get_length");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hwdep_dsp_image_set_index
+	*(void **)(&snd_hwdep_dsp_image_set_index_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_image_set_index");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hwdep_dsp_image_set_name
+	*(void **)(&snd_hwdep_dsp_image_set_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_image_set_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hwdep_dsp_image_set_image
+	*(void **)(&snd_hwdep_dsp_image_set_image_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_image_set_image");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hwdep_dsp_image_set_length
+	*(void **)(&snd_hwdep_dsp_image_set_length_dylibloader_wrapper_asound) = dlsym(handle, "snd_hwdep_dsp_image_set_length");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_card_load
+	*(void **)(&snd_card_load_dylibloader_wrapper_asound) = dlsym(handle, "snd_card_load");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_card_next
+	*(void **)(&snd_card_next_dylibloader_wrapper_asound) = dlsym(handle, "snd_card_next");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_card_get_index
+	*(void **)(&snd_card_get_index_dylibloader_wrapper_asound) = dlsym(handle, "snd_card_get_index");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_card_get_name
+	*(void **)(&snd_card_get_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_card_get_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_card_get_longname
+	*(void **)(&snd_card_get_longname_dylibloader_wrapper_asound) = dlsym(handle, "snd_card_get_longname");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_device_name_hint
+	*(void **)(&snd_device_name_hint_dylibloader_wrapper_asound) = dlsym(handle, "snd_device_name_hint");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_device_name_free_hint
+	*(void **)(&snd_device_name_free_hint_dylibloader_wrapper_asound) = dlsym(handle, "snd_device_name_free_hint");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_device_name_get_hint
+	*(void **)(&snd_device_name_get_hint_dylibloader_wrapper_asound) = dlsym(handle, "snd_device_name_get_hint");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_open
+	*(void **)(&snd_ctl_open_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_open");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_open_lconf
+	*(void **)(&snd_ctl_open_lconf_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_open_lconf");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_open_fallback
+	*(void **)(&snd_ctl_open_fallback_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_open_fallback");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_close
+	*(void **)(&snd_ctl_close_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_close");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_nonblock
+	*(void **)(&snd_ctl_nonblock_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_nonblock");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_async_add_ctl_handler
+	*(void **)(&snd_async_add_ctl_handler_dylibloader_wrapper_asound) = dlsym(handle, "snd_async_add_ctl_handler");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_async_handler_get_ctl
+	*(void **)(&snd_async_handler_get_ctl_dylibloader_wrapper_asound) = dlsym(handle, "snd_async_handler_get_ctl");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_poll_descriptors_count
+	*(void **)(&snd_ctl_poll_descriptors_count_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_poll_descriptors_count");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_poll_descriptors
+	*(void **)(&snd_ctl_poll_descriptors_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_poll_descriptors");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_poll_descriptors_revents
+	*(void **)(&snd_ctl_poll_descriptors_revents_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_poll_descriptors_revents");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_subscribe_events
+	*(void **)(&snd_ctl_subscribe_events_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_subscribe_events");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_card_info
+	*(void **)(&snd_ctl_card_info_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_card_info");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_list
+	*(void **)(&snd_ctl_elem_list_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_list");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info
+	*(void **)(&snd_ctl_elem_info_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_read
+	*(void **)(&snd_ctl_elem_read_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_read");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_write
+	*(void **)(&snd_ctl_elem_write_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_write");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_lock
+	*(void **)(&snd_ctl_elem_lock_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_lock");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_unlock
+	*(void **)(&snd_ctl_elem_unlock_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_unlock");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_tlv_read
+	*(void **)(&snd_ctl_elem_tlv_read_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_tlv_read");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_tlv_write
+	*(void **)(&snd_ctl_elem_tlv_write_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_tlv_write");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_tlv_command
+	*(void **)(&snd_ctl_elem_tlv_command_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_tlv_command");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_hwdep_next_device
+	*(void **)(&snd_ctl_hwdep_next_device_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_hwdep_next_device");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_hwdep_info
+	*(void **)(&snd_ctl_hwdep_info_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_hwdep_info");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_pcm_next_device
+	*(void **)(&snd_ctl_pcm_next_device_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_pcm_next_device");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_pcm_info
+	*(void **)(&snd_ctl_pcm_info_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_pcm_info");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_pcm_prefer_subdevice
+	*(void **)(&snd_ctl_pcm_prefer_subdevice_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_pcm_prefer_subdevice");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_rawmidi_next_device
+	*(void **)(&snd_ctl_rawmidi_next_device_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_rawmidi_next_device");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_rawmidi_info
+	*(void **)(&snd_ctl_rawmidi_info_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_rawmidi_info");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_rawmidi_prefer_subdevice
+	*(void **)(&snd_ctl_rawmidi_prefer_subdevice_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_rawmidi_prefer_subdevice");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_set_power_state
+	*(void **)(&snd_ctl_set_power_state_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_set_power_state");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_get_power_state
+	*(void **)(&snd_ctl_get_power_state_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_get_power_state");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_read
+	*(void **)(&snd_ctl_read_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_read");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_wait
+	*(void **)(&snd_ctl_wait_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_wait");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_name
+	*(void **)(&snd_ctl_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_type
+	*(void **)(&snd_ctl_type_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_type");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_type_name
+	*(void **)(&snd_ctl_elem_type_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_type_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_iface_name
+	*(void **)(&snd_ctl_elem_iface_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_iface_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_event_type_name
+	*(void **)(&snd_ctl_event_type_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_event_type_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_event_elem_get_mask
+	*(void **)(&snd_ctl_event_elem_get_mask_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_event_elem_get_mask");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_event_elem_get_numid
+	*(void **)(&snd_ctl_event_elem_get_numid_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_event_elem_get_numid");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_event_elem_get_id
+	*(void **)(&snd_ctl_event_elem_get_id_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_event_elem_get_id");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_event_elem_get_interface
+	*(void **)(&snd_ctl_event_elem_get_interface_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_event_elem_get_interface");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_event_elem_get_device
+	*(void **)(&snd_ctl_event_elem_get_device_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_event_elem_get_device");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_event_elem_get_subdevice
+	*(void **)(&snd_ctl_event_elem_get_subdevice_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_event_elem_get_subdevice");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_event_elem_get_name
+	*(void **)(&snd_ctl_event_elem_get_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_event_elem_get_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_event_elem_get_index
+	*(void **)(&snd_ctl_event_elem_get_index_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_event_elem_get_index");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_list_alloc_space
+	*(void **)(&snd_ctl_elem_list_alloc_space_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_list_alloc_space");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_list_free_space
+	*(void **)(&snd_ctl_elem_list_free_space_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_list_free_space");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_ascii_elem_id_get
+	*(void **)(&snd_ctl_ascii_elem_id_get_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_ascii_elem_id_get");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_ascii_elem_id_parse
+	*(void **)(&snd_ctl_ascii_elem_id_parse_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_ascii_elem_id_parse");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_ascii_value_parse
+	*(void **)(&snd_ctl_ascii_value_parse_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_ascii_value_parse");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_id_sizeof
+	*(void **)(&snd_ctl_elem_id_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_id_sizeof");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_id_malloc
+	*(void **)(&snd_ctl_elem_id_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_id_malloc");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_id_free
+	*(void **)(&snd_ctl_elem_id_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_id_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_id_clear
+	*(void **)(&snd_ctl_elem_id_clear_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_id_clear");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_id_copy
+	*(void **)(&snd_ctl_elem_id_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_id_copy");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_id_get_numid
+	*(void **)(&snd_ctl_elem_id_get_numid_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_id_get_numid");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_id_get_interface
+	*(void **)(&snd_ctl_elem_id_get_interface_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_id_get_interface");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_id_get_device
+	*(void **)(&snd_ctl_elem_id_get_device_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_id_get_device");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_id_get_subdevice
+	*(void **)(&snd_ctl_elem_id_get_subdevice_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_id_get_subdevice");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_id_get_name
+	*(void **)(&snd_ctl_elem_id_get_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_id_get_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_id_get_index
+	*(void **)(&snd_ctl_elem_id_get_index_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_id_get_index");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_id_set_numid
+	*(void **)(&snd_ctl_elem_id_set_numid_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_id_set_numid");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_id_set_interface
+	*(void **)(&snd_ctl_elem_id_set_interface_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_id_set_interface");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_id_set_device
+	*(void **)(&snd_ctl_elem_id_set_device_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_id_set_device");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_id_set_subdevice
+	*(void **)(&snd_ctl_elem_id_set_subdevice_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_id_set_subdevice");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_id_set_name
+	*(void **)(&snd_ctl_elem_id_set_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_id_set_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_id_set_index
+	*(void **)(&snd_ctl_elem_id_set_index_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_id_set_index");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_card_info_sizeof
+	*(void **)(&snd_ctl_card_info_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_card_info_sizeof");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_card_info_malloc
+	*(void **)(&snd_ctl_card_info_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_card_info_malloc");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_card_info_free
+	*(void **)(&snd_ctl_card_info_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_card_info_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_card_info_clear
+	*(void **)(&snd_ctl_card_info_clear_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_card_info_clear");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_card_info_copy
+	*(void **)(&snd_ctl_card_info_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_card_info_copy");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_card_info_get_card
+	*(void **)(&snd_ctl_card_info_get_card_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_card_info_get_card");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_card_info_get_id
+	*(void **)(&snd_ctl_card_info_get_id_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_card_info_get_id");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_card_info_get_driver
+	*(void **)(&snd_ctl_card_info_get_driver_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_card_info_get_driver");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_card_info_get_name
+	*(void **)(&snd_ctl_card_info_get_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_card_info_get_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_card_info_get_longname
+	*(void **)(&snd_ctl_card_info_get_longname_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_card_info_get_longname");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_card_info_get_mixername
+	*(void **)(&snd_ctl_card_info_get_mixername_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_card_info_get_mixername");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_card_info_get_components
+	*(void **)(&snd_ctl_card_info_get_components_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_card_info_get_components");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_event_sizeof
+	*(void **)(&snd_ctl_event_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_event_sizeof");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_event_malloc
+	*(void **)(&snd_ctl_event_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_event_malloc");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_event_free
+	*(void **)(&snd_ctl_event_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_event_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_event_clear
+	*(void **)(&snd_ctl_event_clear_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_event_clear");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_event_copy
+	*(void **)(&snd_ctl_event_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_event_copy");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_event_get_type
+	*(void **)(&snd_ctl_event_get_type_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_event_get_type");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_list_sizeof
+	*(void **)(&snd_ctl_elem_list_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_list_sizeof");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_list_malloc
+	*(void **)(&snd_ctl_elem_list_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_list_malloc");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_list_free
+	*(void **)(&snd_ctl_elem_list_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_list_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_list_clear
+	*(void **)(&snd_ctl_elem_list_clear_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_list_clear");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_list_copy
+	*(void **)(&snd_ctl_elem_list_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_list_copy");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_list_set_offset
+	*(void **)(&snd_ctl_elem_list_set_offset_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_list_set_offset");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_list_get_used
+	*(void **)(&snd_ctl_elem_list_get_used_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_list_get_used");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_list_get_count
+	*(void **)(&snd_ctl_elem_list_get_count_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_list_get_count");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_list_get_id
+	*(void **)(&snd_ctl_elem_list_get_id_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_list_get_id");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_list_get_numid
+	*(void **)(&snd_ctl_elem_list_get_numid_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_list_get_numid");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_list_get_interface
+	*(void **)(&snd_ctl_elem_list_get_interface_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_list_get_interface");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_list_get_device
+	*(void **)(&snd_ctl_elem_list_get_device_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_list_get_device");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_list_get_subdevice
+	*(void **)(&snd_ctl_elem_list_get_subdevice_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_list_get_subdevice");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_list_get_name
+	*(void **)(&snd_ctl_elem_list_get_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_list_get_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_list_get_index
+	*(void **)(&snd_ctl_elem_list_get_index_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_list_get_index");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info_sizeof
+	*(void **)(&snd_ctl_elem_info_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_sizeof");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info_malloc
+	*(void **)(&snd_ctl_elem_info_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_malloc");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info_free
+	*(void **)(&snd_ctl_elem_info_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info_clear
+	*(void **)(&snd_ctl_elem_info_clear_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_clear");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info_copy
+	*(void **)(&snd_ctl_elem_info_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_copy");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info_get_type
+	*(void **)(&snd_ctl_elem_info_get_type_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_get_type");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info_is_readable
+	*(void **)(&snd_ctl_elem_info_is_readable_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_is_readable");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info_is_writable
+	*(void **)(&snd_ctl_elem_info_is_writable_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_is_writable");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info_is_volatile
+	*(void **)(&snd_ctl_elem_info_is_volatile_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_is_volatile");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info_is_inactive
+	*(void **)(&snd_ctl_elem_info_is_inactive_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_is_inactive");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info_is_locked
+	*(void **)(&snd_ctl_elem_info_is_locked_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_is_locked");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info_is_tlv_readable
+	*(void **)(&snd_ctl_elem_info_is_tlv_readable_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_is_tlv_readable");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info_is_tlv_writable
+	*(void **)(&snd_ctl_elem_info_is_tlv_writable_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_is_tlv_writable");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info_is_tlv_commandable
+	*(void **)(&snd_ctl_elem_info_is_tlv_commandable_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_is_tlv_commandable");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info_is_owner
+	*(void **)(&snd_ctl_elem_info_is_owner_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_is_owner");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info_is_user
+	*(void **)(&snd_ctl_elem_info_is_user_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_is_user");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info_get_owner
+	*(void **)(&snd_ctl_elem_info_get_owner_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_get_owner");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info_get_count
+	*(void **)(&snd_ctl_elem_info_get_count_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_get_count");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info_get_min
+	*(void **)(&snd_ctl_elem_info_get_min_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_get_min");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info_get_max
+	*(void **)(&snd_ctl_elem_info_get_max_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_get_max");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info_get_step
+	*(void **)(&snd_ctl_elem_info_get_step_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_get_step");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info_get_min64
+	*(void **)(&snd_ctl_elem_info_get_min64_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_get_min64");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info_get_max64
+	*(void **)(&snd_ctl_elem_info_get_max64_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_get_max64");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info_get_step64
+	*(void **)(&snd_ctl_elem_info_get_step64_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_get_step64");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info_get_items
+	*(void **)(&snd_ctl_elem_info_get_items_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_get_items");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info_set_item
+	*(void **)(&snd_ctl_elem_info_set_item_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_set_item");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info_get_item_name
+	*(void **)(&snd_ctl_elem_info_get_item_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_get_item_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info_get_dimensions
+	*(void **)(&snd_ctl_elem_info_get_dimensions_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_get_dimensions");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info_get_dimension
+	*(void **)(&snd_ctl_elem_info_get_dimension_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_get_dimension");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info_set_dimension
+	*(void **)(&snd_ctl_elem_info_set_dimension_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_set_dimension");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info_get_id
+	*(void **)(&snd_ctl_elem_info_get_id_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_get_id");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info_get_numid
+	*(void **)(&snd_ctl_elem_info_get_numid_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_get_numid");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info_get_interface
+	*(void **)(&snd_ctl_elem_info_get_interface_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_get_interface");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info_get_device
+	*(void **)(&snd_ctl_elem_info_get_device_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_get_device");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info_get_subdevice
+	*(void **)(&snd_ctl_elem_info_get_subdevice_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_get_subdevice");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info_get_name
+	*(void **)(&snd_ctl_elem_info_get_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_get_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info_get_index
+	*(void **)(&snd_ctl_elem_info_get_index_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_get_index");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info_set_id
+	*(void **)(&snd_ctl_elem_info_set_id_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_set_id");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info_set_numid
+	*(void **)(&snd_ctl_elem_info_set_numid_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_set_numid");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info_set_interface
+	*(void **)(&snd_ctl_elem_info_set_interface_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_set_interface");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info_set_device
+	*(void **)(&snd_ctl_elem_info_set_device_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_set_device");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info_set_subdevice
+	*(void **)(&snd_ctl_elem_info_set_subdevice_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_set_subdevice");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info_set_name
+	*(void **)(&snd_ctl_elem_info_set_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_set_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_info_set_index
+	*(void **)(&snd_ctl_elem_info_set_index_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_info_set_index");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_add_integer_elem_set
+	*(void **)(&snd_ctl_add_integer_elem_set_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_add_integer_elem_set");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_add_integer64_elem_set
+	*(void **)(&snd_ctl_add_integer64_elem_set_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_add_integer64_elem_set");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_add_boolean_elem_set
+	*(void **)(&snd_ctl_add_boolean_elem_set_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_add_boolean_elem_set");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_add_enumerated_elem_set
+	*(void **)(&snd_ctl_add_enumerated_elem_set_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_add_enumerated_elem_set");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_add_bytes_elem_set
+	*(void **)(&snd_ctl_add_bytes_elem_set_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_add_bytes_elem_set");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_add_integer
+	*(void **)(&snd_ctl_elem_add_integer_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_add_integer");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_add_integer64
+	*(void **)(&snd_ctl_elem_add_integer64_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_add_integer64");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_add_boolean
+	*(void **)(&snd_ctl_elem_add_boolean_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_add_boolean");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_add_enumerated
+	*(void **)(&snd_ctl_elem_add_enumerated_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_add_enumerated");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_add_iec958
+	*(void **)(&snd_ctl_elem_add_iec958_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_add_iec958");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_remove
+	*(void **)(&snd_ctl_elem_remove_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_remove");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_value_sizeof
+	*(void **)(&snd_ctl_elem_value_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_sizeof");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_value_malloc
+	*(void **)(&snd_ctl_elem_value_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_malloc");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_value_free
+	*(void **)(&snd_ctl_elem_value_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_value_clear
+	*(void **)(&snd_ctl_elem_value_clear_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_clear");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_value_copy
+	*(void **)(&snd_ctl_elem_value_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_copy");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_value_compare
+	*(void **)(&snd_ctl_elem_value_compare_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_compare");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_value_get_id
+	*(void **)(&snd_ctl_elem_value_get_id_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_get_id");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_value_get_numid
+	*(void **)(&snd_ctl_elem_value_get_numid_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_get_numid");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_value_get_interface
+	*(void **)(&snd_ctl_elem_value_get_interface_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_get_interface");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_value_get_device
+	*(void **)(&snd_ctl_elem_value_get_device_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_get_device");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_value_get_subdevice
+	*(void **)(&snd_ctl_elem_value_get_subdevice_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_get_subdevice");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_value_get_name
+	*(void **)(&snd_ctl_elem_value_get_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_get_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_value_get_index
+	*(void **)(&snd_ctl_elem_value_get_index_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_get_index");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_value_set_id
+	*(void **)(&snd_ctl_elem_value_set_id_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_set_id");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_value_set_numid
+	*(void **)(&snd_ctl_elem_value_set_numid_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_set_numid");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_value_set_interface
+	*(void **)(&snd_ctl_elem_value_set_interface_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_set_interface");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_value_set_device
+	*(void **)(&snd_ctl_elem_value_set_device_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_set_device");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_value_set_subdevice
+	*(void **)(&snd_ctl_elem_value_set_subdevice_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_set_subdevice");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_value_set_name
+	*(void **)(&snd_ctl_elem_value_set_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_set_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_value_set_index
+	*(void **)(&snd_ctl_elem_value_set_index_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_set_index");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_value_get_boolean
+	*(void **)(&snd_ctl_elem_value_get_boolean_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_get_boolean");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_value_get_integer
+	*(void **)(&snd_ctl_elem_value_get_integer_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_get_integer");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_value_get_integer64
+	*(void **)(&snd_ctl_elem_value_get_integer64_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_get_integer64");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_value_get_enumerated
+	*(void **)(&snd_ctl_elem_value_get_enumerated_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_get_enumerated");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_value_get_byte
+	*(void **)(&snd_ctl_elem_value_get_byte_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_get_byte");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_value_set_boolean
+	*(void **)(&snd_ctl_elem_value_set_boolean_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_set_boolean");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_value_set_integer
+	*(void **)(&snd_ctl_elem_value_set_integer_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_set_integer");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_value_set_integer64
+	*(void **)(&snd_ctl_elem_value_set_integer64_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_set_integer64");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_value_set_enumerated
+	*(void **)(&snd_ctl_elem_value_set_enumerated_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_set_enumerated");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_value_set_byte
+	*(void **)(&snd_ctl_elem_value_set_byte_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_set_byte");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_set_bytes
+	*(void **)(&snd_ctl_elem_set_bytes_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_set_bytes");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_value_get_bytes
+	*(void **)(&snd_ctl_elem_value_get_bytes_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_get_bytes");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_value_get_iec958
+	*(void **)(&snd_ctl_elem_value_get_iec958_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_get_iec958");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_elem_value_set_iec958
+	*(void **)(&snd_ctl_elem_value_set_iec958_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_elem_value_set_iec958");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_tlv_parse_dB_info
+	*(void **)(&snd_tlv_parse_dB_info_dylibloader_wrapper_asound) = dlsym(handle, "snd_tlv_parse_dB_info");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_tlv_get_dB_range
+	*(void **)(&snd_tlv_get_dB_range_dylibloader_wrapper_asound) = dlsym(handle, "snd_tlv_get_dB_range");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_tlv_convert_to_dB
+	*(void **)(&snd_tlv_convert_to_dB_dylibloader_wrapper_asound) = dlsym(handle, "snd_tlv_convert_to_dB");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_tlv_convert_from_dB
+	*(void **)(&snd_tlv_convert_from_dB_dylibloader_wrapper_asound) = dlsym(handle, "snd_tlv_convert_from_dB");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_get_dB_range
+	*(void **)(&snd_ctl_get_dB_range_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_get_dB_range");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_convert_to_dB
+	*(void **)(&snd_ctl_convert_to_dB_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_convert_to_dB");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_ctl_convert_from_dB
+	*(void **)(&snd_ctl_convert_from_dB_dylibloader_wrapper_asound) = dlsym(handle, "snd_ctl_convert_from_dB");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hctl_compare_fast
+	*(void **)(&snd_hctl_compare_fast_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_compare_fast");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hctl_open
+	*(void **)(&snd_hctl_open_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_open");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hctl_open_ctl
+	*(void **)(&snd_hctl_open_ctl_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_open_ctl");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hctl_close
+	*(void **)(&snd_hctl_close_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_close");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hctl_nonblock
+	*(void **)(&snd_hctl_nonblock_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_nonblock");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hctl_poll_descriptors_count
+	*(void **)(&snd_hctl_poll_descriptors_count_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_poll_descriptors_count");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hctl_poll_descriptors
+	*(void **)(&snd_hctl_poll_descriptors_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_poll_descriptors");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hctl_poll_descriptors_revents
+	*(void **)(&snd_hctl_poll_descriptors_revents_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_poll_descriptors_revents");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hctl_get_count
+	*(void **)(&snd_hctl_get_count_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_get_count");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hctl_set_compare
+	*(void **)(&snd_hctl_set_compare_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_set_compare");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hctl_first_elem
+	*(void **)(&snd_hctl_first_elem_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_first_elem");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hctl_last_elem
+	*(void **)(&snd_hctl_last_elem_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_last_elem");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hctl_find_elem
+	*(void **)(&snd_hctl_find_elem_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_find_elem");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hctl_set_callback
+	*(void **)(&snd_hctl_set_callback_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_set_callback");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hctl_set_callback_private
+	*(void **)(&snd_hctl_set_callback_private_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_set_callback_private");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hctl_get_callback_private
+	*(void **)(&snd_hctl_get_callback_private_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_get_callback_private");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hctl_load
+	*(void **)(&snd_hctl_load_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_load");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hctl_free
+	*(void **)(&snd_hctl_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hctl_handle_events
+	*(void **)(&snd_hctl_handle_events_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_handle_events");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hctl_name
+	*(void **)(&snd_hctl_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hctl_wait
+	*(void **)(&snd_hctl_wait_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_wait");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hctl_ctl
+	*(void **)(&snd_hctl_ctl_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_ctl");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hctl_elem_next
+	*(void **)(&snd_hctl_elem_next_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_elem_next");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hctl_elem_prev
+	*(void **)(&snd_hctl_elem_prev_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_elem_prev");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hctl_elem_info
+	*(void **)(&snd_hctl_elem_info_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_elem_info");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hctl_elem_read
+	*(void **)(&snd_hctl_elem_read_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_elem_read");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hctl_elem_write
+	*(void **)(&snd_hctl_elem_write_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_elem_write");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hctl_elem_tlv_read
+	*(void **)(&snd_hctl_elem_tlv_read_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_elem_tlv_read");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hctl_elem_tlv_write
+	*(void **)(&snd_hctl_elem_tlv_write_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_elem_tlv_write");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hctl_elem_tlv_command
+	*(void **)(&snd_hctl_elem_tlv_command_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_elem_tlv_command");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hctl_elem_get_hctl
+	*(void **)(&snd_hctl_elem_get_hctl_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_elem_get_hctl");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hctl_elem_get_id
+	*(void **)(&snd_hctl_elem_get_id_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_elem_get_id");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hctl_elem_get_numid
+	*(void **)(&snd_hctl_elem_get_numid_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_elem_get_numid");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hctl_elem_get_interface
+	*(void **)(&snd_hctl_elem_get_interface_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_elem_get_interface");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hctl_elem_get_device
+	*(void **)(&snd_hctl_elem_get_device_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_elem_get_device");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hctl_elem_get_subdevice
+	*(void **)(&snd_hctl_elem_get_subdevice_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_elem_get_subdevice");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hctl_elem_get_name
+	*(void **)(&snd_hctl_elem_get_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_elem_get_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hctl_elem_get_index
+	*(void **)(&snd_hctl_elem_get_index_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_elem_get_index");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hctl_elem_set_callback
+	*(void **)(&snd_hctl_elem_set_callback_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_elem_set_callback");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hctl_elem_get_callback_private
+	*(void **)(&snd_hctl_elem_get_callback_private_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_elem_get_callback_private");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_hctl_elem_set_callback_private
+	*(void **)(&snd_hctl_elem_set_callback_private_dylibloader_wrapper_asound) = dlsym(handle, "snd_hctl_elem_set_callback_private");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_sctl_build
+	*(void **)(&snd_sctl_build_dylibloader_wrapper_asound) = dlsym(handle, "snd_sctl_build");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_sctl_free
+	*(void **)(&snd_sctl_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_sctl_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_sctl_install
+	*(void **)(&snd_sctl_install_dylibloader_wrapper_asound) = dlsym(handle, "snd_sctl_install");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_sctl_remove
+	*(void **)(&snd_sctl_remove_dylibloader_wrapper_asound) = dlsym(handle, "snd_sctl_remove");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_open
+	*(void **)(&snd_mixer_open_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_open");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_close
+	*(void **)(&snd_mixer_close_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_close");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_first_elem
+	*(void **)(&snd_mixer_first_elem_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_first_elem");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_last_elem
+	*(void **)(&snd_mixer_last_elem_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_last_elem");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_handle_events
+	*(void **)(&snd_mixer_handle_events_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_handle_events");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_attach
+	*(void **)(&snd_mixer_attach_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_attach");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_attach_hctl
+	*(void **)(&snd_mixer_attach_hctl_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_attach_hctl");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_detach
+	*(void **)(&snd_mixer_detach_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_detach");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_detach_hctl
+	*(void **)(&snd_mixer_detach_hctl_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_detach_hctl");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_get_hctl
+	*(void **)(&snd_mixer_get_hctl_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_get_hctl");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_poll_descriptors_count
+	*(void **)(&snd_mixer_poll_descriptors_count_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_poll_descriptors_count");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_poll_descriptors
+	*(void **)(&snd_mixer_poll_descriptors_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_poll_descriptors");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_poll_descriptors_revents
+	*(void **)(&snd_mixer_poll_descriptors_revents_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_poll_descriptors_revents");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_load
+	*(void **)(&snd_mixer_load_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_load");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_free
+	*(void **)(&snd_mixer_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_wait
+	*(void **)(&snd_mixer_wait_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_wait");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_set_compare
+	*(void **)(&snd_mixer_set_compare_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_set_compare");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_set_callback
+	*(void **)(&snd_mixer_set_callback_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_set_callback");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_get_callback_private
+	*(void **)(&snd_mixer_get_callback_private_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_get_callback_private");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_set_callback_private
+	*(void **)(&snd_mixer_set_callback_private_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_set_callback_private");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_get_count
+	*(void **)(&snd_mixer_get_count_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_get_count");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_class_unregister
+	*(void **)(&snd_mixer_class_unregister_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_class_unregister");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_elem_next
+	*(void **)(&snd_mixer_elem_next_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_elem_next");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_elem_prev
+	*(void **)(&snd_mixer_elem_prev_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_elem_prev");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_elem_set_callback
+	*(void **)(&snd_mixer_elem_set_callback_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_elem_set_callback");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_elem_get_callback_private
+	*(void **)(&snd_mixer_elem_get_callback_private_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_elem_get_callback_private");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_elem_set_callback_private
+	*(void **)(&snd_mixer_elem_set_callback_private_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_elem_set_callback_private");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_elem_get_type
+	*(void **)(&snd_mixer_elem_get_type_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_elem_get_type");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_class_register
+	*(void **)(&snd_mixer_class_register_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_class_register");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_elem_new
+	*(void **)(&snd_mixer_elem_new_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_elem_new");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_elem_add
+	*(void **)(&snd_mixer_elem_add_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_elem_add");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_elem_remove
+	*(void **)(&snd_mixer_elem_remove_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_elem_remove");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_elem_free
+	*(void **)(&snd_mixer_elem_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_elem_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_elem_info
+	*(void **)(&snd_mixer_elem_info_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_elem_info");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_elem_value
+	*(void **)(&snd_mixer_elem_value_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_elem_value");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_elem_attach
+	*(void **)(&snd_mixer_elem_attach_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_elem_attach");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_elem_detach
+	*(void **)(&snd_mixer_elem_detach_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_elem_detach");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_elem_empty
+	*(void **)(&snd_mixer_elem_empty_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_elem_empty");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_elem_get_private
+	*(void **)(&snd_mixer_elem_get_private_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_elem_get_private");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_class_sizeof
+	*(void **)(&snd_mixer_class_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_class_sizeof");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_class_malloc
+	*(void **)(&snd_mixer_class_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_class_malloc");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_class_free
+	*(void **)(&snd_mixer_class_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_class_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_class_copy
+	*(void **)(&snd_mixer_class_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_class_copy");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_class_get_mixer
+	*(void **)(&snd_mixer_class_get_mixer_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_class_get_mixer");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_class_get_event
+	*(void **)(&snd_mixer_class_get_event_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_class_get_event");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_class_get_private
+	*(void **)(&snd_mixer_class_get_private_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_class_get_private");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_class_get_compare
+	*(void **)(&snd_mixer_class_get_compare_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_class_get_compare");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_class_set_event
+	*(void **)(&snd_mixer_class_set_event_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_class_set_event");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_class_set_private
+	*(void **)(&snd_mixer_class_set_private_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_class_set_private");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_class_set_private_free
+	*(void **)(&snd_mixer_class_set_private_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_class_set_private_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_class_set_compare
+	*(void **)(&snd_mixer_class_set_compare_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_class_set_compare");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_channel_name
+	*(void **)(&snd_mixer_selem_channel_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_channel_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_register
+	*(void **)(&snd_mixer_selem_register_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_register");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_get_id
+	*(void **)(&snd_mixer_selem_get_id_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_get_id");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_get_name
+	*(void **)(&snd_mixer_selem_get_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_get_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_get_index
+	*(void **)(&snd_mixer_selem_get_index_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_get_index");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_find_selem
+	*(void **)(&snd_mixer_find_selem_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_find_selem");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_is_active
+	*(void **)(&snd_mixer_selem_is_active_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_is_active");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_is_playback_mono
+	*(void **)(&snd_mixer_selem_is_playback_mono_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_is_playback_mono");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_has_playback_channel
+	*(void **)(&snd_mixer_selem_has_playback_channel_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_has_playback_channel");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_is_capture_mono
+	*(void **)(&snd_mixer_selem_is_capture_mono_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_is_capture_mono");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_has_capture_channel
+	*(void **)(&snd_mixer_selem_has_capture_channel_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_has_capture_channel");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_get_capture_group
+	*(void **)(&snd_mixer_selem_get_capture_group_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_get_capture_group");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_has_common_volume
+	*(void **)(&snd_mixer_selem_has_common_volume_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_has_common_volume");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_has_playback_volume
+	*(void **)(&snd_mixer_selem_has_playback_volume_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_has_playback_volume");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_has_playback_volume_joined
+	*(void **)(&snd_mixer_selem_has_playback_volume_joined_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_has_playback_volume_joined");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_has_capture_volume
+	*(void **)(&snd_mixer_selem_has_capture_volume_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_has_capture_volume");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_has_capture_volume_joined
+	*(void **)(&snd_mixer_selem_has_capture_volume_joined_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_has_capture_volume_joined");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_has_common_switch
+	*(void **)(&snd_mixer_selem_has_common_switch_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_has_common_switch");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_has_playback_switch
+	*(void **)(&snd_mixer_selem_has_playback_switch_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_has_playback_switch");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_has_playback_switch_joined
+	*(void **)(&snd_mixer_selem_has_playback_switch_joined_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_has_playback_switch_joined");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_has_capture_switch
+	*(void **)(&snd_mixer_selem_has_capture_switch_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_has_capture_switch");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_has_capture_switch_joined
+	*(void **)(&snd_mixer_selem_has_capture_switch_joined_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_has_capture_switch_joined");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_has_capture_switch_exclusive
+	*(void **)(&snd_mixer_selem_has_capture_switch_exclusive_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_has_capture_switch_exclusive");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_ask_playback_vol_dB
+	*(void **)(&snd_mixer_selem_ask_playback_vol_dB_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_ask_playback_vol_dB");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_ask_capture_vol_dB
+	*(void **)(&snd_mixer_selem_ask_capture_vol_dB_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_ask_capture_vol_dB");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_ask_playback_dB_vol
+	*(void **)(&snd_mixer_selem_ask_playback_dB_vol_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_ask_playback_dB_vol");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_ask_capture_dB_vol
+	*(void **)(&snd_mixer_selem_ask_capture_dB_vol_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_ask_capture_dB_vol");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_get_playback_volume
+	*(void **)(&snd_mixer_selem_get_playback_volume_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_get_playback_volume");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_get_capture_volume
+	*(void **)(&snd_mixer_selem_get_capture_volume_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_get_capture_volume");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_get_playback_dB
+	*(void **)(&snd_mixer_selem_get_playback_dB_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_get_playback_dB");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_get_capture_dB
+	*(void **)(&snd_mixer_selem_get_capture_dB_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_get_capture_dB");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_get_playback_switch
+	*(void **)(&snd_mixer_selem_get_playback_switch_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_get_playback_switch");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_get_capture_switch
+	*(void **)(&snd_mixer_selem_get_capture_switch_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_get_capture_switch");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_set_playback_volume
+	*(void **)(&snd_mixer_selem_set_playback_volume_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_set_playback_volume");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_set_capture_volume
+	*(void **)(&snd_mixer_selem_set_capture_volume_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_set_capture_volume");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_set_playback_dB
+	*(void **)(&snd_mixer_selem_set_playback_dB_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_set_playback_dB");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_set_capture_dB
+	*(void **)(&snd_mixer_selem_set_capture_dB_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_set_capture_dB");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_set_playback_volume_all
+	*(void **)(&snd_mixer_selem_set_playback_volume_all_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_set_playback_volume_all");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_set_capture_volume_all
+	*(void **)(&snd_mixer_selem_set_capture_volume_all_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_set_capture_volume_all");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_set_playback_dB_all
+	*(void **)(&snd_mixer_selem_set_playback_dB_all_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_set_playback_dB_all");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_set_capture_dB_all
+	*(void **)(&snd_mixer_selem_set_capture_dB_all_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_set_capture_dB_all");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_set_playback_switch
+	*(void **)(&snd_mixer_selem_set_playback_switch_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_set_playback_switch");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_set_capture_switch
+	*(void **)(&snd_mixer_selem_set_capture_switch_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_set_capture_switch");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_set_playback_switch_all
+	*(void **)(&snd_mixer_selem_set_playback_switch_all_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_set_playback_switch_all");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_set_capture_switch_all
+	*(void **)(&snd_mixer_selem_set_capture_switch_all_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_set_capture_switch_all");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_get_playback_volume_range
+	*(void **)(&snd_mixer_selem_get_playback_volume_range_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_get_playback_volume_range");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_get_playback_dB_range
+	*(void **)(&snd_mixer_selem_get_playback_dB_range_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_get_playback_dB_range");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_set_playback_volume_range
+	*(void **)(&snd_mixer_selem_set_playback_volume_range_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_set_playback_volume_range");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_get_capture_volume_range
+	*(void **)(&snd_mixer_selem_get_capture_volume_range_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_get_capture_volume_range");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_get_capture_dB_range
+	*(void **)(&snd_mixer_selem_get_capture_dB_range_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_get_capture_dB_range");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_set_capture_volume_range
+	*(void **)(&snd_mixer_selem_set_capture_volume_range_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_set_capture_volume_range");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_is_enumerated
+	*(void **)(&snd_mixer_selem_is_enumerated_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_is_enumerated");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_is_enum_playback
+	*(void **)(&snd_mixer_selem_is_enum_playback_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_is_enum_playback");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_is_enum_capture
+	*(void **)(&snd_mixer_selem_is_enum_capture_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_is_enum_capture");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_get_enum_items
+	*(void **)(&snd_mixer_selem_get_enum_items_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_get_enum_items");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_get_enum_item_name
+	*(void **)(&snd_mixer_selem_get_enum_item_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_get_enum_item_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_get_enum_item
+	*(void **)(&snd_mixer_selem_get_enum_item_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_get_enum_item");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_set_enum_item
+	*(void **)(&snd_mixer_selem_set_enum_item_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_set_enum_item");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_id_sizeof
+	*(void **)(&snd_mixer_selem_id_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_id_sizeof");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_id_malloc
+	*(void **)(&snd_mixer_selem_id_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_id_malloc");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_id_free
+	*(void **)(&snd_mixer_selem_id_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_id_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_id_copy
+	*(void **)(&snd_mixer_selem_id_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_id_copy");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_id_get_name
+	*(void **)(&snd_mixer_selem_id_get_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_id_get_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_id_get_index
+	*(void **)(&snd_mixer_selem_id_get_index_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_id_get_index");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_id_set_name
+	*(void **)(&snd_mixer_selem_id_set_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_id_set_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_id_set_index
+	*(void **)(&snd_mixer_selem_id_set_index_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_id_set_index");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_mixer_selem_id_parse
+	*(void **)(&snd_mixer_selem_id_parse_dylibloader_wrapper_asound) = dlsym(handle, "snd_mixer_selem_id_parse");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_open
+	*(void **)(&snd_seq_open_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_open");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_open_lconf
+	*(void **)(&snd_seq_open_lconf_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_open_lconf");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_name
+	*(void **)(&snd_seq_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_type
+	*(void **)(&snd_seq_type_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_type");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_close
+	*(void **)(&snd_seq_close_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_close");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_poll_descriptors_count
+	*(void **)(&snd_seq_poll_descriptors_count_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_poll_descriptors_count");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_poll_descriptors
+	*(void **)(&snd_seq_poll_descriptors_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_poll_descriptors");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_poll_descriptors_revents
+	*(void **)(&snd_seq_poll_descriptors_revents_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_poll_descriptors_revents");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_nonblock
+	*(void **)(&snd_seq_nonblock_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_nonblock");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_client_id
+	*(void **)(&snd_seq_client_id_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_id");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_get_output_buffer_size
+	*(void **)(&snd_seq_get_output_buffer_size_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_get_output_buffer_size");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_get_input_buffer_size
+	*(void **)(&snd_seq_get_input_buffer_size_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_get_input_buffer_size");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_set_output_buffer_size
+	*(void **)(&snd_seq_set_output_buffer_size_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_set_output_buffer_size");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_set_input_buffer_size
+	*(void **)(&snd_seq_set_input_buffer_size_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_set_input_buffer_size");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_system_info_sizeof
+	*(void **)(&snd_seq_system_info_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_system_info_sizeof");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_system_info_malloc
+	*(void **)(&snd_seq_system_info_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_system_info_malloc");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_system_info_free
+	*(void **)(&snd_seq_system_info_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_system_info_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_system_info_copy
+	*(void **)(&snd_seq_system_info_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_system_info_copy");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_system_info_get_queues
+	*(void **)(&snd_seq_system_info_get_queues_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_system_info_get_queues");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_system_info_get_clients
+	*(void **)(&snd_seq_system_info_get_clients_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_system_info_get_clients");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_system_info_get_ports
+	*(void **)(&snd_seq_system_info_get_ports_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_system_info_get_ports");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_system_info_get_channels
+	*(void **)(&snd_seq_system_info_get_channels_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_system_info_get_channels");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_system_info_get_cur_clients
+	*(void **)(&snd_seq_system_info_get_cur_clients_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_system_info_get_cur_clients");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_system_info_get_cur_queues
+	*(void **)(&snd_seq_system_info_get_cur_queues_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_system_info_get_cur_queues");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_system_info
+	*(void **)(&snd_seq_system_info_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_system_info");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_client_info_sizeof
+	*(void **)(&snd_seq_client_info_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_sizeof");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_client_info_malloc
+	*(void **)(&snd_seq_client_info_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_malloc");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_client_info_free
+	*(void **)(&snd_seq_client_info_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_client_info_copy
+	*(void **)(&snd_seq_client_info_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_copy");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_client_info_get_client
+	*(void **)(&snd_seq_client_info_get_client_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_get_client");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_client_info_get_type
+	*(void **)(&snd_seq_client_info_get_type_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_get_type");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_client_info_get_name
+	*(void **)(&snd_seq_client_info_get_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_get_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_client_info_get_broadcast_filter
+	*(void **)(&snd_seq_client_info_get_broadcast_filter_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_get_broadcast_filter");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_client_info_get_error_bounce
+	*(void **)(&snd_seq_client_info_get_error_bounce_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_get_error_bounce");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_client_info_get_card
+	*(void **)(&snd_seq_client_info_get_card_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_get_card");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_client_info_get_pid
+	*(void **)(&snd_seq_client_info_get_pid_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_get_pid");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_client_info_get_event_filter
+	*(void **)(&snd_seq_client_info_get_event_filter_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_get_event_filter");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_client_info_get_num_ports
+	*(void **)(&snd_seq_client_info_get_num_ports_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_get_num_ports");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_client_info_get_event_lost
+	*(void **)(&snd_seq_client_info_get_event_lost_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_get_event_lost");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_client_info_set_client
+	*(void **)(&snd_seq_client_info_set_client_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_set_client");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_client_info_set_name
+	*(void **)(&snd_seq_client_info_set_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_set_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_client_info_set_broadcast_filter
+	*(void **)(&snd_seq_client_info_set_broadcast_filter_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_set_broadcast_filter");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_client_info_set_error_bounce
+	*(void **)(&snd_seq_client_info_set_error_bounce_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_set_error_bounce");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_client_info_set_event_filter
+	*(void **)(&snd_seq_client_info_set_event_filter_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_set_event_filter");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_client_info_event_filter_clear
+	*(void **)(&snd_seq_client_info_event_filter_clear_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_event_filter_clear");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_client_info_event_filter_add
+	*(void **)(&snd_seq_client_info_event_filter_add_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_event_filter_add");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_client_info_event_filter_del
+	*(void **)(&snd_seq_client_info_event_filter_del_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_event_filter_del");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_client_info_event_filter_check
+	*(void **)(&snd_seq_client_info_event_filter_check_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_info_event_filter_check");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_get_client_info
+	*(void **)(&snd_seq_get_client_info_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_get_client_info");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_get_any_client_info
+	*(void **)(&snd_seq_get_any_client_info_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_get_any_client_info");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_set_client_info
+	*(void **)(&snd_seq_set_client_info_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_set_client_info");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_query_next_client
+	*(void **)(&snd_seq_query_next_client_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_next_client");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_client_pool_sizeof
+	*(void **)(&snd_seq_client_pool_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_pool_sizeof");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_client_pool_malloc
+	*(void **)(&snd_seq_client_pool_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_pool_malloc");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_client_pool_free
+	*(void **)(&snd_seq_client_pool_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_pool_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_client_pool_copy
+	*(void **)(&snd_seq_client_pool_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_pool_copy");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_client_pool_get_client
+	*(void **)(&snd_seq_client_pool_get_client_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_pool_get_client");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_client_pool_get_output_pool
+	*(void **)(&snd_seq_client_pool_get_output_pool_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_pool_get_output_pool");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_client_pool_get_input_pool
+	*(void **)(&snd_seq_client_pool_get_input_pool_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_pool_get_input_pool");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_client_pool_get_output_room
+	*(void **)(&snd_seq_client_pool_get_output_room_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_pool_get_output_room");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_client_pool_get_output_free
+	*(void **)(&snd_seq_client_pool_get_output_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_pool_get_output_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_client_pool_get_input_free
+	*(void **)(&snd_seq_client_pool_get_input_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_pool_get_input_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_client_pool_set_output_pool
+	*(void **)(&snd_seq_client_pool_set_output_pool_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_pool_set_output_pool");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_client_pool_set_input_pool
+	*(void **)(&snd_seq_client_pool_set_input_pool_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_pool_set_input_pool");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_client_pool_set_output_room
+	*(void **)(&snd_seq_client_pool_set_output_room_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_client_pool_set_output_room");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_get_client_pool
+	*(void **)(&snd_seq_get_client_pool_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_get_client_pool");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_set_client_pool
+	*(void **)(&snd_seq_set_client_pool_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_set_client_pool");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_info_sizeof
+	*(void **)(&snd_seq_port_info_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_sizeof");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_info_malloc
+	*(void **)(&snd_seq_port_info_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_malloc");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_info_free
+	*(void **)(&snd_seq_port_info_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_info_copy
+	*(void **)(&snd_seq_port_info_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_copy");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_info_get_client
+	*(void **)(&snd_seq_port_info_get_client_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_get_client");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_info_get_port
+	*(void **)(&snd_seq_port_info_get_port_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_get_port");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_info_get_addr
+	*(void **)(&snd_seq_port_info_get_addr_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_get_addr");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_info_get_name
+	*(void **)(&snd_seq_port_info_get_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_get_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_info_get_capability
+	*(void **)(&snd_seq_port_info_get_capability_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_get_capability");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_info_get_type
+	*(void **)(&snd_seq_port_info_get_type_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_get_type");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_info_get_midi_channels
+	*(void **)(&snd_seq_port_info_get_midi_channels_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_get_midi_channels");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_info_get_midi_voices
+	*(void **)(&snd_seq_port_info_get_midi_voices_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_get_midi_voices");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_info_get_synth_voices
+	*(void **)(&snd_seq_port_info_get_synth_voices_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_get_synth_voices");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_info_get_read_use
+	*(void **)(&snd_seq_port_info_get_read_use_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_get_read_use");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_info_get_write_use
+	*(void **)(&snd_seq_port_info_get_write_use_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_get_write_use");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_info_get_port_specified
+	*(void **)(&snd_seq_port_info_get_port_specified_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_get_port_specified");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_info_get_timestamping
+	*(void **)(&snd_seq_port_info_get_timestamping_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_get_timestamping");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_info_get_timestamp_real
+	*(void **)(&snd_seq_port_info_get_timestamp_real_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_get_timestamp_real");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_info_get_timestamp_queue
+	*(void **)(&snd_seq_port_info_get_timestamp_queue_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_get_timestamp_queue");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_info_set_client
+	*(void **)(&snd_seq_port_info_set_client_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_set_client");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_info_set_port
+	*(void **)(&snd_seq_port_info_set_port_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_set_port");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_info_set_addr
+	*(void **)(&snd_seq_port_info_set_addr_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_set_addr");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_info_set_name
+	*(void **)(&snd_seq_port_info_set_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_set_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_info_set_capability
+	*(void **)(&snd_seq_port_info_set_capability_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_set_capability");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_info_set_type
+	*(void **)(&snd_seq_port_info_set_type_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_set_type");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_info_set_midi_channels
+	*(void **)(&snd_seq_port_info_set_midi_channels_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_set_midi_channels");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_info_set_midi_voices
+	*(void **)(&snd_seq_port_info_set_midi_voices_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_set_midi_voices");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_info_set_synth_voices
+	*(void **)(&snd_seq_port_info_set_synth_voices_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_set_synth_voices");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_info_set_port_specified
+	*(void **)(&snd_seq_port_info_set_port_specified_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_set_port_specified");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_info_set_timestamping
+	*(void **)(&snd_seq_port_info_set_timestamping_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_set_timestamping");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_info_set_timestamp_real
+	*(void **)(&snd_seq_port_info_set_timestamp_real_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_set_timestamp_real");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_info_set_timestamp_queue
+	*(void **)(&snd_seq_port_info_set_timestamp_queue_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_info_set_timestamp_queue");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_create_port
+	*(void **)(&snd_seq_create_port_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_create_port");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_delete_port
+	*(void **)(&snd_seq_delete_port_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_delete_port");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_get_port_info
+	*(void **)(&snd_seq_get_port_info_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_get_port_info");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_get_any_port_info
+	*(void **)(&snd_seq_get_any_port_info_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_get_any_port_info");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_set_port_info
+	*(void **)(&snd_seq_set_port_info_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_set_port_info");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_query_next_port
+	*(void **)(&snd_seq_query_next_port_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_next_port");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_subscribe_sizeof
+	*(void **)(&snd_seq_port_subscribe_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_subscribe_sizeof");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_subscribe_malloc
+	*(void **)(&snd_seq_port_subscribe_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_subscribe_malloc");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_subscribe_free
+	*(void **)(&snd_seq_port_subscribe_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_subscribe_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_subscribe_copy
+	*(void **)(&snd_seq_port_subscribe_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_subscribe_copy");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_subscribe_get_sender
+	*(void **)(&snd_seq_port_subscribe_get_sender_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_subscribe_get_sender");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_subscribe_get_dest
+	*(void **)(&snd_seq_port_subscribe_get_dest_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_subscribe_get_dest");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_subscribe_get_queue
+	*(void **)(&snd_seq_port_subscribe_get_queue_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_subscribe_get_queue");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_subscribe_get_exclusive
+	*(void **)(&snd_seq_port_subscribe_get_exclusive_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_subscribe_get_exclusive");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_subscribe_get_time_update
+	*(void **)(&snd_seq_port_subscribe_get_time_update_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_subscribe_get_time_update");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_subscribe_get_time_real
+	*(void **)(&snd_seq_port_subscribe_get_time_real_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_subscribe_get_time_real");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_subscribe_set_sender
+	*(void **)(&snd_seq_port_subscribe_set_sender_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_subscribe_set_sender");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_subscribe_set_dest
+	*(void **)(&snd_seq_port_subscribe_set_dest_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_subscribe_set_dest");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_subscribe_set_queue
+	*(void **)(&snd_seq_port_subscribe_set_queue_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_subscribe_set_queue");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_subscribe_set_exclusive
+	*(void **)(&snd_seq_port_subscribe_set_exclusive_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_subscribe_set_exclusive");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_subscribe_set_time_update
+	*(void **)(&snd_seq_port_subscribe_set_time_update_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_subscribe_set_time_update");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_port_subscribe_set_time_real
+	*(void **)(&snd_seq_port_subscribe_set_time_real_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_port_subscribe_set_time_real");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_get_port_subscription
+	*(void **)(&snd_seq_get_port_subscription_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_get_port_subscription");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_subscribe_port
+	*(void **)(&snd_seq_subscribe_port_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_subscribe_port");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_unsubscribe_port
+	*(void **)(&snd_seq_unsubscribe_port_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_unsubscribe_port");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_query_subscribe_sizeof
+	*(void **)(&snd_seq_query_subscribe_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_subscribe_sizeof");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_query_subscribe_malloc
+	*(void **)(&snd_seq_query_subscribe_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_subscribe_malloc");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_query_subscribe_free
+	*(void **)(&snd_seq_query_subscribe_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_subscribe_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_query_subscribe_copy
+	*(void **)(&snd_seq_query_subscribe_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_subscribe_copy");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_query_subscribe_get_client
+	*(void **)(&snd_seq_query_subscribe_get_client_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_subscribe_get_client");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_query_subscribe_get_port
+	*(void **)(&snd_seq_query_subscribe_get_port_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_subscribe_get_port");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_query_subscribe_get_root
+	*(void **)(&snd_seq_query_subscribe_get_root_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_subscribe_get_root");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_query_subscribe_get_type
+	*(void **)(&snd_seq_query_subscribe_get_type_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_subscribe_get_type");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_query_subscribe_get_index
+	*(void **)(&snd_seq_query_subscribe_get_index_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_subscribe_get_index");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_query_subscribe_get_num_subs
+	*(void **)(&snd_seq_query_subscribe_get_num_subs_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_subscribe_get_num_subs");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_query_subscribe_get_addr
+	*(void **)(&snd_seq_query_subscribe_get_addr_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_subscribe_get_addr");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_query_subscribe_get_queue
+	*(void **)(&snd_seq_query_subscribe_get_queue_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_subscribe_get_queue");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_query_subscribe_get_exclusive
+	*(void **)(&snd_seq_query_subscribe_get_exclusive_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_subscribe_get_exclusive");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_query_subscribe_get_time_update
+	*(void **)(&snd_seq_query_subscribe_get_time_update_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_subscribe_get_time_update");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_query_subscribe_get_time_real
+	*(void **)(&snd_seq_query_subscribe_get_time_real_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_subscribe_get_time_real");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_query_subscribe_set_client
+	*(void **)(&snd_seq_query_subscribe_set_client_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_subscribe_set_client");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_query_subscribe_set_port
+	*(void **)(&snd_seq_query_subscribe_set_port_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_subscribe_set_port");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_query_subscribe_set_root
+	*(void **)(&snd_seq_query_subscribe_set_root_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_subscribe_set_root");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_query_subscribe_set_type
+	*(void **)(&snd_seq_query_subscribe_set_type_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_subscribe_set_type");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_query_subscribe_set_index
+	*(void **)(&snd_seq_query_subscribe_set_index_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_subscribe_set_index");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_query_port_subscribers
+	*(void **)(&snd_seq_query_port_subscribers_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_port_subscribers");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_info_sizeof
+	*(void **)(&snd_seq_queue_info_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_info_sizeof");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_info_malloc
+	*(void **)(&snd_seq_queue_info_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_info_malloc");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_info_free
+	*(void **)(&snd_seq_queue_info_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_info_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_info_copy
+	*(void **)(&snd_seq_queue_info_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_info_copy");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_info_get_queue
+	*(void **)(&snd_seq_queue_info_get_queue_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_info_get_queue");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_info_get_name
+	*(void **)(&snd_seq_queue_info_get_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_info_get_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_info_get_owner
+	*(void **)(&snd_seq_queue_info_get_owner_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_info_get_owner");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_info_get_locked
+	*(void **)(&snd_seq_queue_info_get_locked_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_info_get_locked");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_info_get_flags
+	*(void **)(&snd_seq_queue_info_get_flags_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_info_get_flags");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_info_set_name
+	*(void **)(&snd_seq_queue_info_set_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_info_set_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_info_set_owner
+	*(void **)(&snd_seq_queue_info_set_owner_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_info_set_owner");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_info_set_locked
+	*(void **)(&snd_seq_queue_info_set_locked_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_info_set_locked");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_info_set_flags
+	*(void **)(&snd_seq_queue_info_set_flags_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_info_set_flags");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_create_queue
+	*(void **)(&snd_seq_create_queue_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_create_queue");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_alloc_named_queue
+	*(void **)(&snd_seq_alloc_named_queue_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_alloc_named_queue");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_alloc_queue
+	*(void **)(&snd_seq_alloc_queue_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_alloc_queue");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_free_queue
+	*(void **)(&snd_seq_free_queue_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_free_queue");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_get_queue_info
+	*(void **)(&snd_seq_get_queue_info_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_get_queue_info");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_set_queue_info
+	*(void **)(&snd_seq_set_queue_info_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_set_queue_info");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_query_named_queue
+	*(void **)(&snd_seq_query_named_queue_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_query_named_queue");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_get_queue_usage
+	*(void **)(&snd_seq_get_queue_usage_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_get_queue_usage");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_set_queue_usage
+	*(void **)(&snd_seq_set_queue_usage_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_set_queue_usage");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_status_sizeof
+	*(void **)(&snd_seq_queue_status_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_status_sizeof");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_status_malloc
+	*(void **)(&snd_seq_queue_status_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_status_malloc");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_status_free
+	*(void **)(&snd_seq_queue_status_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_status_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_status_copy
+	*(void **)(&snd_seq_queue_status_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_status_copy");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_status_get_queue
+	*(void **)(&snd_seq_queue_status_get_queue_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_status_get_queue");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_status_get_events
+	*(void **)(&snd_seq_queue_status_get_events_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_status_get_events");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_status_get_tick_time
+	*(void **)(&snd_seq_queue_status_get_tick_time_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_status_get_tick_time");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_status_get_real_time
+	*(void **)(&snd_seq_queue_status_get_real_time_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_status_get_real_time");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_status_get_status
+	*(void **)(&snd_seq_queue_status_get_status_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_status_get_status");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_get_queue_status
+	*(void **)(&snd_seq_get_queue_status_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_get_queue_status");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_tempo_sizeof
+	*(void **)(&snd_seq_queue_tempo_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_tempo_sizeof");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_tempo_malloc
+	*(void **)(&snd_seq_queue_tempo_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_tempo_malloc");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_tempo_free
+	*(void **)(&snd_seq_queue_tempo_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_tempo_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_tempo_copy
+	*(void **)(&snd_seq_queue_tempo_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_tempo_copy");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_tempo_get_queue
+	*(void **)(&snd_seq_queue_tempo_get_queue_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_tempo_get_queue");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_tempo_get_tempo
+	*(void **)(&snd_seq_queue_tempo_get_tempo_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_tempo_get_tempo");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_tempo_get_ppq
+	*(void **)(&snd_seq_queue_tempo_get_ppq_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_tempo_get_ppq");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_tempo_get_skew
+	*(void **)(&snd_seq_queue_tempo_get_skew_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_tempo_get_skew");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_tempo_get_skew_base
+	*(void **)(&snd_seq_queue_tempo_get_skew_base_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_tempo_get_skew_base");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_tempo_set_tempo
+	*(void **)(&snd_seq_queue_tempo_set_tempo_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_tempo_set_tempo");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_tempo_set_ppq
+	*(void **)(&snd_seq_queue_tempo_set_ppq_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_tempo_set_ppq");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_tempo_set_skew
+	*(void **)(&snd_seq_queue_tempo_set_skew_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_tempo_set_skew");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_tempo_set_skew_base
+	*(void **)(&snd_seq_queue_tempo_set_skew_base_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_tempo_set_skew_base");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_get_queue_tempo
+	*(void **)(&snd_seq_get_queue_tempo_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_get_queue_tempo");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_set_queue_tempo
+	*(void **)(&snd_seq_set_queue_tempo_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_set_queue_tempo");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_timer_sizeof
+	*(void **)(&snd_seq_queue_timer_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_timer_sizeof");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_timer_malloc
+	*(void **)(&snd_seq_queue_timer_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_timer_malloc");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_timer_free
+	*(void **)(&snd_seq_queue_timer_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_timer_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_timer_copy
+	*(void **)(&snd_seq_queue_timer_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_timer_copy");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_timer_get_queue
+	*(void **)(&snd_seq_queue_timer_get_queue_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_timer_get_queue");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_timer_get_type
+	*(void **)(&snd_seq_queue_timer_get_type_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_timer_get_type");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_timer_get_id
+	*(void **)(&snd_seq_queue_timer_get_id_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_timer_get_id");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_timer_get_resolution
+	*(void **)(&snd_seq_queue_timer_get_resolution_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_timer_get_resolution");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_timer_set_type
+	*(void **)(&snd_seq_queue_timer_set_type_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_timer_set_type");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_timer_set_id
+	*(void **)(&snd_seq_queue_timer_set_id_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_timer_set_id");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_queue_timer_set_resolution
+	*(void **)(&snd_seq_queue_timer_set_resolution_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_queue_timer_set_resolution");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_get_queue_timer
+	*(void **)(&snd_seq_get_queue_timer_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_get_queue_timer");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_set_queue_timer
+	*(void **)(&snd_seq_set_queue_timer_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_set_queue_timer");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_free_event
+	*(void **)(&snd_seq_free_event_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_free_event");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_event_length
+	*(void **)(&snd_seq_event_length_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_event_length");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_event_output
+	*(void **)(&snd_seq_event_output_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_event_output");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_event_output_buffer
+	*(void **)(&snd_seq_event_output_buffer_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_event_output_buffer");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_event_output_direct
+	*(void **)(&snd_seq_event_output_direct_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_event_output_direct");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_event_input
+	*(void **)(&snd_seq_event_input_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_event_input");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_event_input_pending
+	*(void **)(&snd_seq_event_input_pending_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_event_input_pending");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_drain_output
+	*(void **)(&snd_seq_drain_output_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_drain_output");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_event_output_pending
+	*(void **)(&snd_seq_event_output_pending_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_event_output_pending");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_extract_output
+	*(void **)(&snd_seq_extract_output_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_extract_output");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_drop_output
+	*(void **)(&snd_seq_drop_output_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_drop_output");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_drop_output_buffer
+	*(void **)(&snd_seq_drop_output_buffer_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_drop_output_buffer");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_drop_input
+	*(void **)(&snd_seq_drop_input_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_drop_input");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_drop_input_buffer
+	*(void **)(&snd_seq_drop_input_buffer_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_drop_input_buffer");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_remove_events_sizeof
+	*(void **)(&snd_seq_remove_events_sizeof_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_remove_events_sizeof");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_remove_events_malloc
+	*(void **)(&snd_seq_remove_events_malloc_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_remove_events_malloc");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_remove_events_free
+	*(void **)(&snd_seq_remove_events_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_remove_events_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_remove_events_copy
+	*(void **)(&snd_seq_remove_events_copy_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_remove_events_copy");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_remove_events_get_condition
+	*(void **)(&snd_seq_remove_events_get_condition_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_remove_events_get_condition");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_remove_events_get_queue
+	*(void **)(&snd_seq_remove_events_get_queue_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_remove_events_get_queue");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_remove_events_get_time
+	*(void **)(&snd_seq_remove_events_get_time_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_remove_events_get_time");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_remove_events_get_dest
+	*(void **)(&snd_seq_remove_events_get_dest_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_remove_events_get_dest");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_remove_events_get_channel
+	*(void **)(&snd_seq_remove_events_get_channel_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_remove_events_get_channel");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_remove_events_get_event_type
+	*(void **)(&snd_seq_remove_events_get_event_type_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_remove_events_get_event_type");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_remove_events_get_tag
+	*(void **)(&snd_seq_remove_events_get_tag_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_remove_events_get_tag");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_remove_events_set_condition
+	*(void **)(&snd_seq_remove_events_set_condition_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_remove_events_set_condition");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_remove_events_set_queue
+	*(void **)(&snd_seq_remove_events_set_queue_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_remove_events_set_queue");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_remove_events_set_time
+	*(void **)(&snd_seq_remove_events_set_time_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_remove_events_set_time");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_remove_events_set_dest
+	*(void **)(&snd_seq_remove_events_set_dest_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_remove_events_set_dest");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_remove_events_set_channel
+	*(void **)(&snd_seq_remove_events_set_channel_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_remove_events_set_channel");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_remove_events_set_event_type
+	*(void **)(&snd_seq_remove_events_set_event_type_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_remove_events_set_event_type");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_remove_events_set_tag
+	*(void **)(&snd_seq_remove_events_set_tag_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_remove_events_set_tag");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_remove_events
+	*(void **)(&snd_seq_remove_events_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_remove_events");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_set_bit
+	*(void **)(&snd_seq_set_bit_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_set_bit");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_unset_bit
+	*(void **)(&snd_seq_unset_bit_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_unset_bit");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_change_bit
+	*(void **)(&snd_seq_change_bit_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_change_bit");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_get_bit
+	*(void **)(&snd_seq_get_bit_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_get_bit");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_control_queue
+	*(void **)(&snd_seq_control_queue_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_control_queue");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_create_simple_port
+	*(void **)(&snd_seq_create_simple_port_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_create_simple_port");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_delete_simple_port
+	*(void **)(&snd_seq_delete_simple_port_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_delete_simple_port");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_connect_from
+	*(void **)(&snd_seq_connect_from_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_connect_from");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_connect_to
+	*(void **)(&snd_seq_connect_to_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_connect_to");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_disconnect_from
+	*(void **)(&snd_seq_disconnect_from_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_disconnect_from");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_disconnect_to
+	*(void **)(&snd_seq_disconnect_to_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_disconnect_to");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_set_client_name
+	*(void **)(&snd_seq_set_client_name_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_set_client_name");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_set_client_event_filter
+	*(void **)(&snd_seq_set_client_event_filter_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_set_client_event_filter");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_set_client_pool_output
+	*(void **)(&snd_seq_set_client_pool_output_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_set_client_pool_output");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_set_client_pool_output_room
+	*(void **)(&snd_seq_set_client_pool_output_room_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_set_client_pool_output_room");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_set_client_pool_input
+	*(void **)(&snd_seq_set_client_pool_input_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_set_client_pool_input");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_sync_output_queue
+	*(void **)(&snd_seq_sync_output_queue_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_sync_output_queue");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_parse_address
+	*(void **)(&snd_seq_parse_address_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_parse_address");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_reset_pool_output
+	*(void **)(&snd_seq_reset_pool_output_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_reset_pool_output");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_seq_reset_pool_input
+	*(void **)(&snd_seq_reset_pool_input_dylibloader_wrapper_asound) = dlsym(handle, "snd_seq_reset_pool_input");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_midi_event_new
+	*(void **)(&snd_midi_event_new_dylibloader_wrapper_asound) = dlsym(handle, "snd_midi_event_new");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_midi_event_resize_buffer
+	*(void **)(&snd_midi_event_resize_buffer_dylibloader_wrapper_asound) = dlsym(handle, "snd_midi_event_resize_buffer");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_midi_event_free
+	*(void **)(&snd_midi_event_free_dylibloader_wrapper_asound) = dlsym(handle, "snd_midi_event_free");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_midi_event_init
+	*(void **)(&snd_midi_event_init_dylibloader_wrapper_asound) = dlsym(handle, "snd_midi_event_init");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_midi_event_reset_encode
+	*(void **)(&snd_midi_event_reset_encode_dylibloader_wrapper_asound) = dlsym(handle, "snd_midi_event_reset_encode");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_midi_event_reset_decode
+	*(void **)(&snd_midi_event_reset_decode_dylibloader_wrapper_asound) = dlsym(handle, "snd_midi_event_reset_decode");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_midi_event_no_status
+	*(void **)(&snd_midi_event_no_status_dylibloader_wrapper_asound) = dlsym(handle, "snd_midi_event_no_status");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_midi_event_encode
+	*(void **)(&snd_midi_event_encode_dylibloader_wrapper_asound) = dlsym(handle, "snd_midi_event_encode");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_midi_event_encode_byte
+	*(void **)(&snd_midi_event_encode_byte_dylibloader_wrapper_asound) = dlsym(handle, "snd_midi_event_encode_byte");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	// snd_midi_event_decode
+	*(void **)(&snd_midi_event_decode_dylibloader_wrapper_asound) = dlsym(handle, "snd_midi_event_decode");
+	if (verbose) {
+		error = dlerror();
+		if (error != NULL) {
+			fprintf(stderr, "%s\n", error);
+		}
+	}
+	return 0;
 }

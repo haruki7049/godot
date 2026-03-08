@@ -4,8 +4,8 @@ Copyright (c) 2003-2006 Erwin Coumans  http://continuousphysics.com/Bullet/
 
 This software is provided 'as-is', without any express or implied warranty.
 In no event will the authors be held liable for any damages arising from the use of this software.
-Permission is granted to anyone to use this software for any purpose, 
-including commercial applications, and to alter it and redistribute it freely, 
+Permission is granted to anyone to use this software for any purpose,
+including commercial applications, and to alter it and redistribute it freely,
 subject to the following restrictions:
 
 1. The origin of this software must not be misrepresented; you must not claim that you wrote the original software. If you use this software in a product, an acknowledgment in the product documentation would be appreciated but is not required.
@@ -17,25 +17,24 @@ subject to the following restrictions:
 #define BT_SOLVER_CONSTRAINT_H
 
 class btRigidBody;
-#include "LinearMath/btVector3.h"
-#include "LinearMath/btMatrix3x3.h"
-#include "btJacobianEntry.h"
 #include "LinearMath/btAlignedObjectArray.h"
+#include "LinearMath/btMatrix3x3.h"
+#include "LinearMath/btVector3.h"
+#include "btJacobianEntry.h"
 
-//#define NO_FRICTION_TANGENTIALS 1
+// #define NO_FRICTION_TANGENTIALS 1
 #include "btSolverBody.h"
 
-///1D constraint along a normal axis between bodyA and bodyB. It can be combined to solve contact and friction constraints.
+/// 1D constraint along a normal axis between bodyA and bodyB. It can be combined to solve contact and friction constraints.
 ATTRIBUTE_ALIGNED16(struct)
-btSolverConstraint
-{
+btSolverConstraint {
 	BT_DECLARE_ALIGNED_ALLOCATOR();
 
 	btVector3 m_relpos1CrossNormal;
 	btVector3 m_contactNormal1;
 
 	btVector3 m_relpos2CrossNormal;
-	btVector3 m_contactNormal2;  //usually m_contactNormal2 == -m_contactNormal1, but not always
+	btVector3 m_contactNormal2; // usually m_contactNormal2 == -m_contactNormal1, but not always
 
 	btVector3 m_angularComponentA;
 	btVector3 m_angularComponentB;
@@ -52,7 +51,7 @@ btSolverConstraint
 	btScalar m_upperLimit;
 	btScalar m_rhsPenetration;
 	union {
-		void* m_originalContactPoint;
+		void *m_originalContactPoint;
 		btScalar m_unusedPadding4;
 		int m_numRowsForNonContactConstraint;
 	};
@@ -62,8 +61,7 @@ btSolverConstraint
 	int m_solverBodyIdA;
 	int m_solverBodyIdB;
 
-	enum btSolverConstraintType
-	{
+	enum btSolverConstraintType {
 		BT_SOLVER_CONTACT_1D = 0,
 		BT_SOLVER_FRICTION_1D
 	};
@@ -71,4 +69,4 @@ btSolverConstraint
 
 typedef btAlignedObjectArray<btSolverConstraint> btConstraintArray;
 
-#endif  //BT_SOLVER_CONSTRAINT_H
+#endif // BT_SOLVER_CONSTRAINT_H

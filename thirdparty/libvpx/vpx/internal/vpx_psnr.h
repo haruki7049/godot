@@ -28,7 +28,7 @@ extern "C" {
 double vpx_sse_to_psnr(double samples, double peak, double sse);
 
 #ifdef __cplusplus
-}  // extern "C"
+} // extern "C"
 #endif
 
-#endif  // VPX_INTERNAL_VPX_PSNR_H_
+#endif // VPX_INTERNAL_VPX_PSNR_H_

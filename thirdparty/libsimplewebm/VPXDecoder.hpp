@@ -29,13 +29,12 @@
 
 struct vpx_codec_ctx;
 
-class VPXDecoder
-{
+class VPXDecoder {
 	VPXDecoder(const VPXDecoder &);
-	void operator =(const VPXDecoder &);
+	void operator=(const VPXDecoder &);
+
 public:
-	class Image
-	{
+	class Image {
 	public:
 // -- GODOT begin --
 #if 0
@@ -44,7 +43,7 @@ public:
 		int getHeight(int plane) const;
 // -- GODOT begin --
 #endif
-// -- GODOT end --
+		// -- GODOT end --
 
 		int w, h;
 		int cs;
@@ -53,8 +52,7 @@ public:
 		int linesize[3];
 	};
 
-	enum IMAGE_ERROR
-	{
+	enum IMAGE_ERROR {
 		UNSUPPORTED_FRAME = -1,
 		NO_ERROR,
 		NO_FRAME
@@ -63,18 +61,16 @@ public:
 	VPXDecoder(const WebMDemuxer &demuxer, unsigned threads = 1);
 	~VPXDecoder();
 
-	inline bool isOpen() const
-	{
+	inline bool isOpen() const {
 		return (bool)m_ctx;
 	}
 
-	inline int getFramesDelay() const
-	{
+	inline int getFramesDelay() const {
 		return m_delay;
 	}
 
 	bool decode(const WebMFrame &frame);
-	IMAGE_ERROR getImage(Image &image); //The data is NOT copied! Only 3-plane, 8-bit images are supported.
+	IMAGE_ERROR getImage(Image &image); // The data is NOT copied! Only 3-plane, 8-bit images are supported.
 
 private:
 	vpx_codec_ctx *m_ctx;

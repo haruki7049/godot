@@ -7,7 +7,7 @@
 /* Define to 1 if you have the <inttypes.h> header file. */
 #define HAVE_INTTYPES_H 1
 
-#if (!defined( _MSC_VER ) || ( _MSC_VER >= 1800 ))
+#if (!defined(_MSC_VER) || (_MSC_VER >= 1800))
 
 /* Define to 1 if you have the `lrint' function. */
 #define HAVE_LRINT 1
@@ -42,7 +42,7 @@
 #define HAVE_UNISTD_H 1
 
 /* Define to the sub-directory in which libtool stores uninstalled libraries.
-   */
+ */
 #define LT_OBJDIR ".libs/"
 
 #ifdef OPUS_ARM_OPT
@@ -96,17 +96,16 @@
 #define OPUS_BUILD /**/
 
 #ifndef WIN32
-	/* Use C99 variable-size arrays */
-	#define VAR_ARRAYS 1
+/* Use C99 variable-size arrays */
+#define VAR_ARRAYS 1
 #else
-	/* Fixes VS 2013 compile error */
-	#define USE_ALLOCA 1
+/* Fixes VS 2013 compile error */
+#define USE_ALLOCA 1
 #endif
 
 #ifndef OPUS_FIXED_POINT
 #define FLOAT_APPROX 1
 #endif
-
 
 /* Define to `__inline__' or `__inline' if that's what the C compiler
    calls it, or to nothing if 'inline' is not supported under any name.  */
@@ -117,7 +116,7 @@
 /* Define to the equivalent of the C99 'restrict' keyword, or to
    nothing if this is not supported.  Do not define if restrict is
    supported directly.  */
-#if (!defined( _MSC_VER ) || ( _MSC_VER >= 1800 ))
+#if (!defined(_MSC_VER) || (_MSC_VER >= 1800))
 #define restrict __restrict
 #else
 #undef restrict
@@ -128,6 +127,6 @@
    previous line.  Perhaps some future version of Sun C++ will work with
    restrict; if so, hopefully it defines __RESTRICT like Sun C does.  */
 #if defined __SUNPRO_CC && !defined __RESTRICT
-# define _Restrict
-# define __restrict__
+#define _Restrict
+#define __restrict__
 #endif

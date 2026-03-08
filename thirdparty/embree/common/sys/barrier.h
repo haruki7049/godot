@@ -3,110 +3,102 @@
 
 #pragma once
 
+#include "atomic.h"
 #include "intrinsics.h"
 #include "sysinfo.h"
-#include "atomic.h"
 
-namespace embree
-{
-  /*! system barrier using operating system */
-  class BarrierSys
-  {
-  public:
+namespace embree {
+/*! system barrier using operating system */
+class BarrierSys {
+public:
+	/*! construction / destruction */
+	BarrierSys(size_t N = 0);
+	~BarrierSys();
 
-    /*! construction / destruction */
-    BarrierSys (size_t N = 0);
-    ~BarrierSys ();
+private:
+	/*! class in non-copyable */
+	BarrierSys(const BarrierSys &other) DELETED; // do not implement
+	BarrierSys &operator=(const BarrierSys &other) DELETED; // do not implement
 
-  private:
-    /*! class in non-copyable */
-    BarrierSys (const BarrierSys& other) DELETED; // do not implement
-    BarrierSys& operator= (const BarrierSys& other) DELETED; // do not implement
+public:
+	/*! intializes the barrier with some number of threads */
+	void init(size_t count);
 
-  public:
-    /*! intializes the barrier with some number of threads */
-    void init(size_t count);
+	/*! lets calling thread wait in barrier */
+	void wait();
 
-    /*! lets calling thread wait in barrier */
-    void wait();
+private:
+	void *opaque;
+};
 
-  private:
-    void* opaque;
-  };
+/*! fast active barrier using atomitc counter */
+struct BarrierActive {
+public:
+	BarrierActive() : cntr(0) {}
 
-  /*! fast active barrier using atomitc counter */
-  struct BarrierActive 
-  {
-  public:
-    BarrierActive () 
-      : cntr(0) {}
-    
-    void reset() {
-      cntr.store(0);
-    }
+	void reset() {
+		cntr.store(0);
+	}
 
-    void wait (size_t numThreads) 
-    {
-      cntr++;
-      while (cntr.load() != numThreads) 
-        pause_cpu();
-    }
+	void wait(size_t numThreads) {
+		cntr++;
+		while (cntr.load() != numThreads)
+			pause_cpu();
+	}
 
-  private:
-    std::atomic<size_t> cntr;
-  };
+private:
+	std::atomic<size_t> cntr;
+};
 
-  /*! fast active barrier that does not require initialization to some number of threads */
-  struct BarrierActiveAutoReset
-  {
-  public:
-    BarrierActiveAutoReset () 
-      : cntr0(0), cntr1(0) {}
+/*! fast active barrier that does not require initialization to some number of threads */
+struct BarrierActiveAutoReset {
+public:
+	BarrierActiveAutoReset() : cntr0(0), cntr1(0) {}
 
-    void wait (size_t threadCount) 
-    {
-      cntr0.fetch_add(1);
-      while (cntr0 != threadCount) pause_cpu();
-      cntr1.fetch_add(1);
-      while (cntr1 != threadCount) pause_cpu();
-      cntr0.fetch_add(-1);
-      while (cntr0 != 0) pause_cpu();
-      cntr1.fetch_add(-1);
-      while (cntr1 != 0) pause_cpu();
-    }
+	void wait(size_t threadCount) {
+		cntr0.fetch_add(1);
+		while (cntr0 != threadCount)
+			pause_cpu();
+		cntr1.fetch_add(1);
+		while (cntr1 != threadCount)
+			pause_cpu();
+		cntr0.fetch_add(-1);
+		while (cntr0 != 0)
+			pause_cpu();
+		cntr1.fetch_add(-1);
+		while (cntr1 != 0)
+			pause_cpu();
+	}
 
-  private:
-    std::atomic<size_t> cntr0;
-    std::atomic<size_t> cntr1;
-  };
+private:
+	std::atomic<size_t> cntr0;
+	std::atomic<size_t> cntr1;
+};
 
-  class LinearBarrierActive
-  {
-  public:
+class LinearBarrierActive {
+public:
+	/*! construction and destruction */
+	LinearBarrierActive(size_t threadCount = 0);
+	~LinearBarrierActive();
 
-    /*! construction and destruction */
-    LinearBarrierActive (size_t threadCount = 0);
-    ~LinearBarrierActive();
-    
-  private:
-    /*! class in non-copyable */
-    LinearBarrierActive (const LinearBarrierActive& other) DELETED; // do not implement
-    LinearBarrierActive& operator= (const LinearBarrierActive& other) DELETED; // do not implement
+private:
+	/*! class in non-copyable */
+	LinearBarrierActive(const LinearBarrierActive &other) DELETED; // do not implement
+	LinearBarrierActive &operator=(const LinearBarrierActive &other) DELETED; // do not implement
 
-  public:
-    /*! intializes the barrier with some number of threads */
-    void init(size_t threadCount);
-    
-    /*! thread with threadIndex waits in the barrier */
-    void wait (const size_t threadIndex);
-    
-  private:
-    volatile unsigned char* count0;
-    volatile unsigned char* count1; 
-    volatile unsigned int mode;
-    volatile unsigned int flag0;
-    volatile unsigned int flag1;
-    volatile size_t threadCount;
-  };
-}
+public:
+	/*! intializes the barrier with some number of threads */
+	void init(size_t threadCount);
 
+	/*! thread with threadIndex waits in the barrier */
+	void wait(const size_t threadIndex);
+
+private:
+	volatile unsigned char *count0;
+	volatile unsigned char *count1;
+	volatile unsigned int mode;
+	volatile unsigned int flag0;
+	volatile unsigned int flag1;
+	volatile size_t threadCount;
+};
+} // namespace embree

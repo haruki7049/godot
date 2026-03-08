@@ -19,39 +19,39 @@
 /* #undef EMBREE_API_NAMESPACE */
 
 #if defined(EMBREE_API_NAMESPACE)
-#  define RTC_NAMESPACE
-#  define RTC_NAMESPACE_BEGIN namespace  {
-#  define RTC_NAMESPACE_END }
-#  define RTC_NAMESPACE_USE using namespace ;
-#  define RTC_API_EXTERN_C
-#  undef EMBREE_API_NAMESPACE
+#define RTC_NAMESPACE
+#define RTC_NAMESPACE_BEGIN namespace {
+#define RTC_NAMESPACE_END }
+#define RTC_NAMESPACE_USE using namespace;
+#define RTC_API_EXTERN_C
+#undef EMBREE_API_NAMESPACE
 #else
-#  define RTC_NAMESPACE_BEGIN
-#  define RTC_NAMESPACE_END
-#  define RTC_NAMESPACE_USE
-#  if defined(__cplusplus)
-#    define RTC_API_EXTERN_C extern "C"
-#  else
-#    define RTC_API_EXTERN_C
-#  endif
+#define RTC_NAMESPACE_BEGIN
+#define RTC_NAMESPACE_END
+#define RTC_NAMESPACE_USE
+#if defined(__cplusplus)
+#define RTC_API_EXTERN_C extern "C"
+#else
+#define RTC_API_EXTERN_C
+#endif
 #endif
 
 #if defined(ISPC)
-#  define RTC_API_IMPORT extern "C" unmasked
-#  define RTC_API_EXPORT extern "C" unmasked
+#define RTC_API_IMPORT extern "C" unmasked
+#define RTC_API_EXPORT extern "C" unmasked
 #elif defined(EMBREE_STATIC_LIB)
-#  define RTC_API_IMPORT RTC_API_EXTERN_C
-#  define RTC_API_EXPORT RTC_API_EXTERN_C
+#define RTC_API_IMPORT RTC_API_EXTERN_C
+#define RTC_API_EXPORT RTC_API_EXTERN_C
 #elif defined(_WIN32)
-#  define RTC_API_IMPORT RTC_API_EXTERN_C __declspec(dllimport)
-#  define RTC_API_EXPORT RTC_API_EXTERN_C __declspec(dllexport)
+#define RTC_API_IMPORT RTC_API_EXTERN_C __declspec(dllimport)
+#define RTC_API_EXPORT RTC_API_EXTERN_C __declspec(dllexport)
 #else
-#  define RTC_API_IMPORT RTC_API_EXTERN_C
-#  define RTC_API_EXPORT RTC_API_EXTERN_C __attribute__ ((visibility ("default")))
+#define RTC_API_IMPORT RTC_API_EXTERN_C
+#define RTC_API_EXPORT RTC_API_EXTERN_C __attribute__((visibility("default")))
 #endif
 
 #if defined(RTC_EXPORT_API)
-#  define RTC_API RTC_API_EXPORT
+#define RTC_API RTC_API_EXPORT
 #else
-#  define RTC_API RTC_API_IMPORT
+#define RTC_API RTC_API_IMPORT
 #endif

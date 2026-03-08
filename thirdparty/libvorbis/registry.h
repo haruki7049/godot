@@ -24,8 +24,8 @@
 #define VI_RESB 3
 #define VI_MAPB 1
 
-extern const vorbis_func_floor     *const _floor_P[];
-extern const vorbis_func_residue   *const _residue_P[];
-extern const vorbis_func_mapping   *const _mapping_P[];
+extern const vorbis_func_floor *const _floor_P[];
+extern const vorbis_func_residue *const _residue_P[];
+extern const vorbis_func_mapping *const _mapping_P[];
 
 #endif

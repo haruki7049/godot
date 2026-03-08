@@ -32,33 +32,31 @@
 
 //============================================================================
 
-namespace Javelin
-{
+namespace Javelin {
 //============================================================================
 
-	struct PvrTcPacket
-	{
-		unsigned int    modulationData;
-		unsigned        usePunchthroughAlpha : 1;
-		unsigned        colorA          	 : 14;
-		unsigned        colorAIsOpaque  	 : 1;
-		unsigned        colorB        		 : 15;
-		unsigned        colorBIsOpaque  	 : 1;
-		
-		ColorRgb<int> GetColorRgbA() const;
-		ColorRgb<int> GetColorRgbB() const;
-		ColorRgba<int> GetColorRgbaA() const;
-		ColorRgba<int> GetColorRgbaB() const;
-		
-		void SetColorA(const ColorRgb<unsigned char>& c);
-		void SetColorB(const ColorRgb<unsigned char>& c);
+struct PvrTcPacket {
+	unsigned int modulationData;
+	unsigned usePunchthroughAlpha : 1;
+	unsigned colorA : 14;
+	unsigned colorAIsOpaque : 1;
+	unsigned colorB : 15;
+	unsigned colorBIsOpaque : 1;
 
-		void SetColorA(const ColorRgba<unsigned char>& c);
-		void SetColorB(const ColorRgba<unsigned char>& c);
-		
-		static const unsigned char BILINEAR_FACTORS[16][4];
-		static const unsigned char WEIGHTS[8][4];
-	};
+	ColorRgb<int> GetColorRgbA() const;
+	ColorRgb<int> GetColorRgbB() const;
+	ColorRgba<int> GetColorRgbaA() const;
+	ColorRgba<int> GetColorRgbaB() const;
+
+	void SetColorA(const ColorRgb<unsigned char> &c);
+	void SetColorB(const ColorRgb<unsigned char> &c);
+
+	void SetColorA(const ColorRgba<unsigned char> &c);
+	void SetColorB(const ColorRgba<unsigned char> &c);
+
+	static const unsigned char BILINEAR_FACTORS[16][4];
+	static const unsigned char WEIGHTS[8][4];
+};
 
 //============================================================================
 } // namespace Javelin

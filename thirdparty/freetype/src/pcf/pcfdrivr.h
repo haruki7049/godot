@@ -1,6 +1,6 @@
 /*  pcfdrivr.h
 
-    FreeType font driver for pcf fonts
+	FreeType font driver for pcf fonts
 
   Copyright 2000-2001, 2002 by
   Francesco Zappa Nardelli
@@ -24,21 +24,18 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-
 #ifndef PCFDRIVR_H_
 #define PCFDRIVR_H_
 
 #include <freetype/internal/ftdrv.h>
 
-
 FT_BEGIN_HEADER
 
-  FT_EXPORT_VAR( const FT_Driver_ClassRec )  pcf_driver_class;
+FT_EXPORT_VAR(const FT_Driver_ClassRec)
+pcf_driver_class;
 
 FT_END_HEADER
 
-
 #endif /* PCFDRIVR_H_ */
-
 
 /* END */

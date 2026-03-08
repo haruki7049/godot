@@ -1,48 +1,39 @@
 #include "btPolarDecomposition.h"
 #include "btMinMax.h"
 
-namespace
-{
-btScalar abs_column_sum(const btMatrix3x3& a, int i)
-{
+namespace {
+btScalar abs_column_sum(const btMatrix3x3 &a, int i) {
 	return btFabs(a[0][i]) + btFabs(a[1][i]) + btFabs(a[2][i]);
 }
 
-btScalar abs_row_sum(const btMatrix3x3& a, int i)
-{
+btScalar abs_row_sum(const btMatrix3x3 &a, int i) {
 	return btFabs(a[i][0]) + btFabs(a[i][1]) + btFabs(a[i][2]);
 }
 
-btScalar p1_norm(const btMatrix3x3& a)
-{
+btScalar p1_norm(const btMatrix3x3 &a) {
 	const btScalar sum0 = abs_column_sum(a, 0);
 	const btScalar sum1 = abs_column_sum(a, 1);
 	const btScalar sum2 = abs_column_sum(a, 2);
 	return btMax(btMax(sum0, sum1), sum2);
 }
 
-btScalar pinf_norm(const btMatrix3x3& a)
-{
+btScalar pinf_norm(const btMatrix3x3 &a) {
 	const btScalar sum0 = abs_row_sum(a, 0);
 	const btScalar sum1 = abs_row_sum(a, 1);
 	const btScalar sum2 = abs_row_sum(a, 2);
 	return btMax(btMax(sum0, sum1), sum2);
 }
-}  // namespace
+} // namespace
 
-btPolarDecomposition::btPolarDecomposition(btScalar tolerance, unsigned int maxIterations)
-	: m_tolerance(tolerance), m_maxIterations(maxIterations)
-{
+btPolarDecomposition::btPolarDecomposition(btScalar tolerance, unsigned int maxIterations) : m_tolerance(tolerance), m_maxIterations(maxIterations) {
 }
 
-unsigned int btPolarDecomposition::decompose(const btMatrix3x3& a, btMatrix3x3& u, btMatrix3x3& h) const
-{
+unsigned int btPolarDecomposition::decompose(const btMatrix3x3 &a, btMatrix3x3 &u, btMatrix3x3 &h) const {
 	// Use the 'u' and 'h' matrices for intermediate calculations
 	u = a;
 	h = a.inverse();
 
-	for (unsigned int i = 0; i < m_maxIterations; ++i)
-	{
+	for (unsigned int i = 0; i < m_maxIterations; ++i) {
 		const btScalar h_1 = p1_norm(h);
 		const btScalar h_inf = pinf_norm(h);
 		const btScalar u_1 = p1_norm(u);
@@ -66,8 +57,7 @@ unsigned int btPolarDecomposition::decompose(const btMatrix3x3& a, btMatrix3x3& 
 		h = u.inverse();
 
 		// Check for convergence
-		if (p1_norm(delta) <= m_tolerance * u_1)
-		{
+		if (p1_norm(delta) <= m_tolerance * u_1) {
 			h = u.transpose() * a;
 			h = (h + h.transpose()) * 0.5;
 			return i;
@@ -82,13 +72,11 @@ unsigned int btPolarDecomposition::decompose(const btMatrix3x3& a, btMatrix3x3& 
 	return m_maxIterations;
 }
 
-unsigned int btPolarDecomposition::maxIterations() const
-{
+unsigned int btPolarDecomposition::maxIterations() const {
 	return m_maxIterations;
 }
 
-unsigned int polarDecompose(const btMatrix3x3& a, btMatrix3x3& u, btMatrix3x3& h)
-{
+unsigned int polarDecompose(const btMatrix3x3 &a, btMatrix3x3 &u, btMatrix3x3 &h) {
 	static btPolarDecomposition polar;
 	return polar.decompose(a, u, h);
 }

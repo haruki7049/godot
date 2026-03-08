@@ -4,11 +4,9 @@
 #include "IDConfig.hpp"
 #include "IDMath.hpp"
 
-namespace btInverseDynamics
-{
+namespace btInverseDynamics {
 /// Enumeration of supported joint types
-enum JointType
-{
+enum JointType {
 	/// no degree of freedom, moves with parent
 	FIXED = 0,
 	/// one rotational degree of freedom relative to parent
@@ -51,11 +49,10 @@ enum JointType
 ///	 - PRISMATIC: force  [N], along joint axis
 ///	 - FLOATING:  moment vector [Nm] and force vector [N], both in body-fixed frame
 ///				  (in that order)
-///  - SPHERICAL: moment vector [Nm] 
+///  - SPHERICAL: moment vector [Nm]
 /// TODO - force element interface (friction, springs, dampers, etc)
 ///	  - gears and motor inertia
-class MultiBodyTree
-{
+class MultiBodyTree {
 public:
 	ID_DECLARE_ALIGNED_ALLOCATOR();
 	/// The contructor.
@@ -107,9 +104,9 @@ public:
 	/// @param user_int pointer to user integer
 	/// @return 0 on success, -1 on error
 	int addBody(int body_index, int parent_index, JointType joint_type,
-				const vec3& parent_r_parent_body_ref, const mat33& body_T_parent_ref,
-				const vec3& body_axis_of_motion, idScalar mass, const vec3& body_r_body_com,
-				const mat33& body_I_body, const int user_int, void* user_ptr);
+			const vec3 &parent_r_parent_body_ref, const mat33 &body_T_parent_ref,
+			const vec3 &body_axis_of_motion, idScalar mass, const vec3 &body_r_body_com,
+			const mat33 &body_I_body, const int user_int, void *user_ptr);
 	/// set policy for invalid mass properties
 	/// @param flag if true, invalid mass properties are accepted,
 	///		the default is false
@@ -134,8 +131,8 @@ public:
 	/// @param joint_forces this is where the resulting joint forces will be
 	///		stored. dim(joint_forces) = dim(u)
 	/// @return 0 on success, -1 on error
-	int calculateInverseDynamics(const vecx& q, const vecx& u, const vecx& dot_u,
-								 vecx* joint_forces);
+	int calculateInverseDynamics(const vecx &q, const vecx &u, const vecx &dot_u,
+			vecx *joint_forces);
 	/// Calculate joint space mass matrix
 	/// @param q generalized coordinates
 	/// @param initialize_matrix if true, initialize mass matrix with zero.
@@ -146,9 +143,9 @@ public:
 	///		is also populated, otherwise not.
 	/// @param mass_matrix matrix for storing the output (should be dim(q)xdim(q))
 	/// @return -1 on error, 0 on success
-	int calculateMassMatrix(const vecx& q, const bool update_kinematics,
-							const bool initialize_matrix, const bool set_lower_triangular_matrix,
-							matxx* mass_matrix);
+	int calculateMassMatrix(const vecx &q, const bool update_kinematics,
+			const bool initialize_matrix, const bool set_lower_triangular_matrix,
+			matxx *mass_matrix);
 
 	/// Calculate joint space mass matrix.
 	/// This version will update kinematics, initialize all mass_matrix elements to zero and
@@ -156,36 +153,36 @@ public:
 	/// @param q generalized coordinates
 	/// @param mass_matrix matrix for storing the output (should be dim(q)xdim(q))
 	/// @return -1 on error, 0 on success
-	int calculateMassMatrix(const vecx& q, matxx* mass_matrix);
+	int calculateMassMatrix(const vecx &q, matxx *mass_matrix);
 
 	/// Calculates kinematics also calculated in calculateInverseDynamics,
 	/// but not dynamics.
 	/// This function ensures that correct accelerations are computed that do not
 	/// contain gravitational acceleration terms.
 	/// Does not calculate Jacobians, but only vector quantities (positions, velocities & accelerations)
-	int calculateKinematics(const vecx& q, const vecx& u, const vecx& dot_u);
+	int calculateKinematics(const vecx &q, const vecx &u, const vecx &dot_u);
 	/// Calculate position kinematics
-	int calculatePositionKinematics(const vecx& q);
+	int calculatePositionKinematics(const vecx &q);
 	/// Calculate position and velocity kinematics
-	int calculatePositionAndVelocityKinematics(const vecx& q, const vecx& u);
+	int calculatePositionAndVelocityKinematics(const vecx &q, const vecx &u);
 
 #if (defined BT_ID_HAVE_MAT3X) && (defined BT_ID_WITH_JACOBIANS)
 	/// Calculate Jacobians (dvel/du), as well as velocity-dependent accelearation components
 	/// d(Jacobian)/dt*u
 	/// This function assumes that calculateInverseDynamics was called, or calculateKinematics,
 	/// or calculatePositionAndVelocityKinematics
-	int calculateJacobians(const vecx& q, const vecx& u);
+	int calculateJacobians(const vecx &q, const vecx &u);
 	/// Calculate Jacobians (dvel/du)
 	/// This function assumes that calculateInverseDynamics was called, or
 	/// one of the calculateKineamtics functions
-	int calculateJacobians(const vecx& q);
-#endif  // BT_ID_HAVE_MAT3X
+	int calculateJacobians(const vecx &q);
+#endif // BT_ID_HAVE_MAT3X
 
 	/// set gravitational acceleration
 	/// the default is [0;0;-9.8] in the world frame
 	/// @param gravity the gravitational acceleration in world frame
 	/// @return 0 on success, -1 on error
-	int setGravityInWorldFrame(const vec3& gravity);
+	int setGravityInWorldFrame(const vec3 &gravity);
 	/// returns number of bodies in tree
 	int numBodies() const;
 	/// returns number of mechanical degrees of freedom (dimension of q-vector)
@@ -194,102 +191,102 @@ public:
 	/// @param body_index index for frame/body
 	/// @param world_origin pointer for return data
 	/// @return 0 on success, -1 on error
-	int getBodyOrigin(const int body_index, vec3* world_origin) const;
+	int getBodyOrigin(const int body_index, vec3 *world_origin) const;
 	/// get center of mass of a body, represented in world frame
 	/// @param body_index index for frame/body
 	/// @param world_com pointer for return data
 	/// @return 0 on success, -1 on error
-	int getBodyCoM(const int body_index, vec3* world_com) const;
+	int getBodyCoM(const int body_index, vec3 *world_com) const;
 	/// get transform from of a body-fixed frame to the world frame
 	/// @param body_index index for frame/body
 	/// @param world_T_body pointer for return data
 	/// @return 0 on success, -1 on error
-	int getBodyTransform(const int body_index, mat33* world_T_body) const;
+	int getBodyTransform(const int body_index, mat33 *world_T_body) const;
 	/// get absolute angular velocity for a body, represented in the world frame
 	/// @param body_index index for frame/body
 	/// @param world_omega pointer for return data
 	/// @return 0 on success, -1 on error
-	int getBodyAngularVelocity(const int body_index, vec3* world_omega) const;
+	int getBodyAngularVelocity(const int body_index, vec3 *world_omega) const;
 	/// get linear velocity of a body, represented in world frame
 	/// @param body_index index for frame/body
 	/// @param world_velocity pointer for return data
 	/// @return 0 on success, -1 on error
-	int getBodyLinearVelocity(const int body_index, vec3* world_velocity) const;
+	int getBodyLinearVelocity(const int body_index, vec3 *world_velocity) const;
 	/// get linear velocity of a body's CoM, represented in world frame
 	/// (not required for inverse dynamics, provided for convenience)
 	/// @param body_index index for frame/body
 	/// @param world_vel_com pointer for return data
 	/// @return 0 on success, -1 on error
-	int getBodyLinearVelocityCoM(const int body_index, vec3* world_velocity) const;
+	int getBodyLinearVelocityCoM(const int body_index, vec3 *world_velocity) const;
 	/// get origin of a body-fixed frame, represented in world frame
 	/// @param body_index index for frame/body
 	/// @param world_origin pointer for return data
 	/// @return 0 on success, -1 on error
-	int getBodyAngularAcceleration(const int body_index, vec3* world_dot_omega) const;
+	int getBodyAngularAcceleration(const int body_index, vec3 *world_dot_omega) const;
 	/// get origin of a body-fixed frame, represented in world frame
 	/// NOTE: this will include the gravitational acceleration, so the actual acceleration is
 	/// obtainened by setting gravitational acceleration to zero, or subtracting it.
 	/// @param body_index index for frame/body
 	/// @param world_origin pointer for return data
 	/// @return 0 on success, -1 on error
-	int getBodyLinearAcceleration(const int body_index, vec3* world_acceleration) const;
+	int getBodyLinearAcceleration(const int body_index, vec3 *world_acceleration) const;
 
 #if (defined BT_ID_HAVE_MAT3X) && (defined BT_ID_WITH_JACOBIANS)
 	// get translational jacobian, in world frame (dworld_velocity/du)
-	int getBodyJacobianTrans(const int body_index, mat3x* world_jac_trans) const;
+	int getBodyJacobianTrans(const int body_index, mat3x *world_jac_trans) const;
 	// get rotational jacobian, in world frame (dworld_omega/du)
-	int getBodyJacobianRot(const int body_index, mat3x* world_jac_rot) const;
+	int getBodyJacobianRot(const int body_index, mat3x *world_jac_rot) const;
 	// get product of translational jacobian derivative * generatlized velocities
-	int getBodyDotJacobianTransU(const int body_index, vec3* world_dot_jac_trans_u) const;
+	int getBodyDotJacobianTransU(const int body_index, vec3 *world_dot_jac_trans_u) const;
 	// get product of rotational jacobian derivative * generatlized velocities
-	int getBodyDotJacobianRotU(const int body_index, vec3* world_dot_jac_rot_u) const;
-#endif  // BT_ID_HAVE_MAT3X
+	int getBodyDotJacobianRotU(const int body_index, vec3 *world_dot_jac_rot_u) const;
+#endif // BT_ID_HAVE_MAT3X
 
 	/// returns the (internal) index of body
 	/// @param body_index is the index of a body
 	/// @param parent_index pointer to where parent index will be stored
 	/// @return 0 on success, -1 on error
-	int getParentIndex(const int body_index, int* parent_index) const;
+	int getParentIndex(const int body_index, int *parent_index) const;
 	/// get joint type
 	/// @param body_index index of the body
 	/// @param joint_type the corresponding joint type
 	/// @return 0 on success, -1 on failure
-	int getJointType(const int body_index, JointType* joint_type) const;
+	int getJointType(const int body_index, JointType *joint_type) const;
 	/// get joint type as string
 	/// @param body_index index of the body
 	/// @param joint_type string naming the corresponding joint type
 	/// @return 0 on success, -1 on failure
-	int getJointTypeStr(const int body_index, const char** joint_type) const;
+	int getJointTypeStr(const int body_index, const char **joint_type) const;
 	/// get offset translation to parent body (see addBody)
 	/// @param body_index index of the body
 	/// @param r the offset translation (see above)
 	/// @return 0 on success, -1 on failure
-	int getParentRParentBodyRef(const int body_index, vec3* r) const;
+	int getParentRParentBodyRef(const int body_index, vec3 *r) const;
 	/// get offset rotation to parent body (see addBody)
 	/// @param body_index index of the body
 	/// @param T the transform (see above)
 	/// @return 0 on success, -1 on failure
-	int getBodyTParentRef(const int body_index, mat33* T) const;
+	int getBodyTParentRef(const int body_index, mat33 *T) const;
 	/// get axis of motion (see addBody)
 	/// @param body_index index of the body
 	/// @param axis the axis (see above)
 	/// @return 0 on success, -1 on failure
-	int getBodyAxisOfMotion(const int body_index, vec3* axis) const;
+	int getBodyAxisOfMotion(const int body_index, vec3 *axis) const;
 	/// get offset for degrees of freedom of this body into the q-vector
 	/// @param body_index index of the body
 	/// @param q_offset offset the q vector
 	/// @return -1 on error, 0 on success
-	int getDoFOffset(const int body_index, int* q_offset) const;
+	int getDoFOffset(const int body_index, int *q_offset) const;
 	/// get user integer. not used by the library.
 	/// @param body_index index of the body
 	/// @param user_int   the user integer
 	/// @return 0 on success, -1 on error
-	int getUserInt(const int body_index, int* user_int) const;
+	int getUserInt(const int body_index, int *user_int) const;
 	/// get user pointer. not used by the library.
 	/// @param body_index index of the body
 	/// @param user_ptr   the user pointer
 	/// @return 0 on success, -1 on error
-	int getUserPtr(const int body_index, void** user_ptr) const;
+	int getUserPtr(const int body_index, void **user_ptr) const;
 	/// set user integer. not used by the library.
 	/// @param body_index index of the body
 	/// @param user_int   the user integer
@@ -299,7 +296,7 @@ public:
 	/// @param body_index index of the body
 	/// @param user_ptr   the user pointer
 	/// @return 0 on success, -1 on error
-	int setUserPtr(const int body_index, void* const user_ptr);
+	int setUserPtr(const int body_index, void *const user_ptr);
 	/// set mass for a body
 	/// @param body_index index of the body
 	/// @param mass the mass to set
@@ -310,30 +307,30 @@ public:
 	/// @param body_index index of the body
 	/// @param first_mass_moment the vector to set
 	/// @return 0 on success, -1 on failure
-	int setBodyFirstMassMoment(const int body_index, const vec3& first_mass_moment);
+	int setBodyFirstMassMoment(const int body_index, const vec3 &first_mass_moment);
 	/// set second moment of mass for a body
 	/// (moment of inertia, in body fixed frame, relative to joint)
 	/// @param body_index index of the body
 	/// @param second_mass_moment the inertia matrix
 	/// @return 0 on success, -1 on failure
-	int setBodySecondMassMoment(const int body_index, const mat33& second_mass_moment);
+	int setBodySecondMassMoment(const int body_index, const mat33 &second_mass_moment);
 	/// get mass for a body
 	/// @param body_index index of the body
 	/// @param mass the mass
 	/// @return 0 on success, -1 on failure
-	int getBodyMass(const int body_index, idScalar* mass) const;
+	int getBodyMass(const int body_index, idScalar *mass) const;
 	/// get first moment of mass for a body
 	/// (mass * center of mass, in body fixed frame, relative to joint)
 	/// @param body_index index of the body
 	/// @param first_moment the vector
 	/// @return 0 on success, -1 on failure
-	int getBodyFirstMassMoment(const int body_index, vec3* first_mass_moment) const;
+	int getBodyFirstMassMoment(const int body_index, vec3 *first_mass_moment) const;
 	/// get second moment of mass for a body
 	/// (moment of inertia, in body fixed frame, relative to joint)
 	/// @param body_index index of the body
 	/// @param second_mass_moment the inertia matrix
 	/// @return 0 on success, -1 on failure
-	int getBodySecondMassMoment(const int body_index, mat33* second_mass_moment) const;
+	int getBodySecondMassMoment(const int body_index, mat33 *second_mass_moment) const;
 	/// set all user forces and moments to zero
 	void clearAllUserForcesAndMoments();
 	/// Add an external force to a body, acting at the origin of the body-fixed frame.
@@ -341,13 +338,13 @@ public:
 	/// via clearAllUserForcesAndMoments()
 	/// @param body_force the force represented in the body-fixed frame of reference
 	/// @return 0 on success, -1 on error
-	int addUserForce(const int body_index, const vec3& body_force);
+	int addUserForce(const int body_index, const vec3 &body_force);
 	/// Add an external moment to a body.
 	/// Calls to addUserMoment are cumulative. Set the user force and moment to zero
 	/// via clearAllUserForcesAndMoments()
 	/// @param body_moment the moment represented in the body-fixed frame of reference
 	/// @return 0 on success, -1 on error
-	int addUserMoment(const int body_index, const vec3& body_moment);
+	int addUserMoment(const int body_index, const vec3 &body_moment);
 
 private:
 	// flag indicating if system has been initialized
@@ -358,10 +355,10 @@ private:
 	bool m_accept_invalid_mass_parameters;
 	// This struct implements the inverse dynamics calculations
 	class MultiBodyImpl;
-	MultiBodyImpl* m_impl;
+	MultiBodyImpl *m_impl;
 	// cache data structure for initialization
 	class InitCache;
-	InitCache* m_init_cache;
+	InitCache *m_init_cache;
 };
-}  // namespace btInverseDynamics
-#endif  // MULTIBODYTREE_HPP_
+} // namespace btInverseDynamics
+#endif // MULTIBODYTREE_HPP_

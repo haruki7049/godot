@@ -5,16 +5,15 @@
 
 typedef struct b3ContactConstraint4 b3ContactConstraint4_t;
 
-struct b3ContactConstraint4
-{
-	b3Float4 m_linear;  //normal?
+struct b3ContactConstraint4 {
+	b3Float4 m_linear; // normal?
 	b3Float4 m_worldPos[4];
-	b3Float4 m_center;  //	friction
+	b3Float4 m_center; //	friction
 	float m_jacCoeffInv[4];
 	float m_b[4];
 	float m_appliedRambdaDt[4];
-	float m_fJacCoeffInv[2];      //	friction
-	float m_fAppliedRambdaDt[2];  //	friction
+	float m_fJacCoeffInv[2]; //	friction
+	float m_fAppliedRambdaDt[2]; //	friction
 
 	unsigned int m_bodyA;
 	unsigned int m_bodyB;
@@ -22,10 +21,9 @@ struct b3ContactConstraint4
 	unsigned int m_paddings;
 };
 
-//inline	void setFrictionCoeff(float value) { m_linear[3] = value; }
-inline float b3GetFrictionCoeff(b3ContactConstraint4_t* constraint)
-{
+// inline	void setFrictionCoeff(float value) { m_linear[3] = value; }
+inline float b3GetFrictionCoeff(b3ContactConstraint4_t *constraint) {
 	return constraint->m_linear.w;
 }
 
-#endif  //B3_CONTACT_CONSTRAINT5_H
+#endif // B3_CONTACT_CONSTRAINT5_H

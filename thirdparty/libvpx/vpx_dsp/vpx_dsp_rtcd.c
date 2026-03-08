@@ -13,5 +13,5 @@
 #include "vpx_ports/vpx_once.h"
 
 void vpx_dsp_rtcd() {
-  once(setup_rtcd_internal);
+	once(setup_rtcd_internal);
 }

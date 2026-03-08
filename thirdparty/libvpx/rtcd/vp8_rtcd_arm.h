@@ -64,9 +64,9 @@ void vp8_dequant_idct_add_y_block_c(short *q, short *dq, unsigned char *dst, int
 void vp8_dequant_idct_add_y_block_neon(short *q, short *dq, unsigned char *dst, int stride, char *eobs);
 RTCD_EXTERN void (*vp8_dequant_idct_add_y_block)(short *q, short *dq, unsigned char *dst, int stride, char *eobs);
 
-void vp8_dequantize_b_c(struct blockd*, short *dqc);
-void vp8_dequantize_b_neon(struct blockd*, short *dqc);
-RTCD_EXTERN void (*vp8_dequantize_b)(struct blockd*, short *dqc);
+void vp8_dequantize_b_c(struct blockd *, short *dqc);
+void vp8_dequantize_b_neon(struct blockd *, short *dqc);
+RTCD_EXTERN void (*vp8_dequantize_b)(struct blockd *, short *dqc);
 
 void vp8_loop_filter_bh_c(unsigned char *y, unsigned char *u, unsigned char *v, int ystride, int uv_stride, struct loop_filter_info *lfi);
 void vp8_loop_filter_bh_neon(unsigned char *y, unsigned char *u, unsigned char *v, int ystride, int uv_stride, struct loop_filter_info *lfi);
@@ -130,111 +130,134 @@ void vp8_rtcd(void);
 
 #ifdef RTCD_C
 #include "vpx_ports/arm.h"
-static void setup_rtcd_internal(void)
-{
-    int flags = arm_cpu_caps();
+static void setup_rtcd_internal(void) {
+	int flags = arm_cpu_caps();
 
-    vp8_bilinear_predict16x16 = vp8_bilinear_predict16x16_c;
+	vp8_bilinear_predict16x16 = vp8_bilinear_predict16x16_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vp8_bilinear_predict16x16 = vp8_bilinear_predict16x16_neon;
+	if (flags & HAS_NEON)
+		vp8_bilinear_predict16x16 = vp8_bilinear_predict16x16_neon;
 #endif
-    vp8_bilinear_predict8x4 = vp8_bilinear_predict8x4_c;
+	vp8_bilinear_predict8x4 = vp8_bilinear_predict8x4_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vp8_bilinear_predict8x4 = vp8_bilinear_predict8x4_neon;
+	if (flags & HAS_NEON)
+		vp8_bilinear_predict8x4 = vp8_bilinear_predict8x4_neon;
 #endif
-    vp8_bilinear_predict8x8 = vp8_bilinear_predict8x8_c;
+	vp8_bilinear_predict8x8 = vp8_bilinear_predict8x8_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vp8_bilinear_predict8x8 = vp8_bilinear_predict8x8_neon;
+	if (flags & HAS_NEON)
+		vp8_bilinear_predict8x8 = vp8_bilinear_predict8x8_neon;
 #endif
-    vp8_copy_mem16x16 = vp8_copy_mem16x16_c;
+	vp8_copy_mem16x16 = vp8_copy_mem16x16_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vp8_copy_mem16x16 = vp8_copy_mem16x16_neon;
+	if (flags & HAS_NEON)
+		vp8_copy_mem16x16 = vp8_copy_mem16x16_neon;
 #endif
-    vp8_copy_mem8x4 = vp8_copy_mem8x4_c;
+	vp8_copy_mem8x4 = vp8_copy_mem8x4_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vp8_copy_mem8x4 = vp8_copy_mem8x4_neon;
+	if (flags & HAS_NEON)
+		vp8_copy_mem8x4 = vp8_copy_mem8x4_neon;
 #endif
-    vp8_copy_mem8x8 = vp8_copy_mem8x8_c;
+	vp8_copy_mem8x8 = vp8_copy_mem8x8_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vp8_copy_mem8x8 = vp8_copy_mem8x8_neon;
+	if (flags & HAS_NEON)
+		vp8_copy_mem8x8 = vp8_copy_mem8x8_neon;
 #endif
-    vp8_dc_only_idct_add = vp8_dc_only_idct_add_c;
+	vp8_dc_only_idct_add = vp8_dc_only_idct_add_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vp8_dc_only_idct_add = vp8_dc_only_idct_add_neon;
+	if (flags & HAS_NEON)
+		vp8_dc_only_idct_add = vp8_dc_only_idct_add_neon;
 #endif
-    vp8_dequant_idct_add = vp8_dequant_idct_add_c;
+	vp8_dequant_idct_add = vp8_dequant_idct_add_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vp8_dequant_idct_add = vp8_dequant_idct_add_neon;
+	if (flags & HAS_NEON)
+		vp8_dequant_idct_add = vp8_dequant_idct_add_neon;
 #endif
-    vp8_dequant_idct_add_uv_block = vp8_dequant_idct_add_uv_block_c;
+	vp8_dequant_idct_add_uv_block = vp8_dequant_idct_add_uv_block_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vp8_dequant_idct_add_uv_block = vp8_dequant_idct_add_uv_block_neon;
+	if (flags & HAS_NEON)
+		vp8_dequant_idct_add_uv_block = vp8_dequant_idct_add_uv_block_neon;
 #endif
-    vp8_dequant_idct_add_y_block = vp8_dequant_idct_add_y_block_c;
+	vp8_dequant_idct_add_y_block = vp8_dequant_idct_add_y_block_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vp8_dequant_idct_add_y_block = vp8_dequant_idct_add_y_block_neon;
+	if (flags & HAS_NEON)
+		vp8_dequant_idct_add_y_block = vp8_dequant_idct_add_y_block_neon;
 #endif
-    vp8_dequantize_b = vp8_dequantize_b_c;
+	vp8_dequantize_b = vp8_dequantize_b_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vp8_dequantize_b = vp8_dequantize_b_neon;
+	if (flags & HAS_NEON)
+		vp8_dequantize_b = vp8_dequantize_b_neon;
 #endif
-    vp8_loop_filter_bh = vp8_loop_filter_bh_c;
+	vp8_loop_filter_bh = vp8_loop_filter_bh_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vp8_loop_filter_bh = vp8_loop_filter_bh_neon;
+	if (flags & HAS_NEON)
+		vp8_loop_filter_bh = vp8_loop_filter_bh_neon;
 #endif
-    vp8_loop_filter_bv = vp8_loop_filter_bv_c;
+	vp8_loop_filter_bv = vp8_loop_filter_bv_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vp8_loop_filter_bv = vp8_loop_filter_bv_neon;
+	if (flags & HAS_NEON)
+		vp8_loop_filter_bv = vp8_loop_filter_bv_neon;
 #endif
-    vp8_loop_filter_mbh = vp8_loop_filter_mbh_c;
+	vp8_loop_filter_mbh = vp8_loop_filter_mbh_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vp8_loop_filter_mbh = vp8_loop_filter_mbh_neon;
+	if (flags & HAS_NEON)
+		vp8_loop_filter_mbh = vp8_loop_filter_mbh_neon;
 #endif
-    vp8_loop_filter_mbv = vp8_loop_filter_mbv_c;
+	vp8_loop_filter_mbv = vp8_loop_filter_mbv_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vp8_loop_filter_mbv = vp8_loop_filter_mbv_neon;
+	if (flags & HAS_NEON)
+		vp8_loop_filter_mbv = vp8_loop_filter_mbv_neon;
 #endif
-    vp8_loop_filter_simple_bh = vp8_loop_filter_bhs_c;
+	vp8_loop_filter_simple_bh = vp8_loop_filter_bhs_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vp8_loop_filter_simple_bh = vp8_loop_filter_bhs_neon;
+	if (flags & HAS_NEON)
+		vp8_loop_filter_simple_bh = vp8_loop_filter_bhs_neon;
 #endif
-    vp8_loop_filter_simple_bv = vp8_loop_filter_bvs_c;
+	vp8_loop_filter_simple_bv = vp8_loop_filter_bvs_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vp8_loop_filter_simple_bv = vp8_loop_filter_bvs_neon;
+	if (flags & HAS_NEON)
+		vp8_loop_filter_simple_bv = vp8_loop_filter_bvs_neon;
 #endif
-    vp8_loop_filter_simple_mbh = vp8_loop_filter_simple_horizontal_edge_c;
+	vp8_loop_filter_simple_mbh = vp8_loop_filter_simple_horizontal_edge_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vp8_loop_filter_simple_mbh = vp8_loop_filter_mbhs_neon;
+	if (flags & HAS_NEON)
+		vp8_loop_filter_simple_mbh = vp8_loop_filter_mbhs_neon;
 #endif
-    vp8_loop_filter_simple_mbv = vp8_loop_filter_simple_vertical_edge_c;
+	vp8_loop_filter_simple_mbv = vp8_loop_filter_simple_vertical_edge_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vp8_loop_filter_simple_mbv = vp8_loop_filter_mbvs_neon;
+	if (flags & HAS_NEON)
+		vp8_loop_filter_simple_mbv = vp8_loop_filter_mbvs_neon;
 #endif
-    vp8_short_idct4x4llm = vp8_short_idct4x4llm_c;
+	vp8_short_idct4x4llm = vp8_short_idct4x4llm_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vp8_short_idct4x4llm = vp8_short_idct4x4llm_neon;
+	if (flags & HAS_NEON)
+		vp8_short_idct4x4llm = vp8_short_idct4x4llm_neon;
 #endif
-    vp8_short_inv_walsh4x4 = vp8_short_inv_walsh4x4_c;
+	vp8_short_inv_walsh4x4 = vp8_short_inv_walsh4x4_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vp8_short_inv_walsh4x4 = vp8_short_inv_walsh4x4_neon;
+	if (flags & HAS_NEON)
+		vp8_short_inv_walsh4x4 = vp8_short_inv_walsh4x4_neon;
 #endif
-    vp8_sixtap_predict16x16 = vp8_sixtap_predict16x16_c;
+	vp8_sixtap_predict16x16 = vp8_sixtap_predict16x16_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vp8_sixtap_predict16x16 = vp8_sixtap_predict16x16_neon;
+	if (flags & HAS_NEON)
+		vp8_sixtap_predict16x16 = vp8_sixtap_predict16x16_neon;
 #endif
-    vp8_sixtap_predict8x4 = vp8_sixtap_predict8x4_c;
+	vp8_sixtap_predict8x4 = vp8_sixtap_predict8x4_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vp8_sixtap_predict8x4 = vp8_sixtap_predict8x4_neon;
+	if (flags & HAS_NEON)
+		vp8_sixtap_predict8x4 = vp8_sixtap_predict8x4_neon;
 #endif
-    vp8_sixtap_predict8x8 = vp8_sixtap_predict8x8_c;
+	vp8_sixtap_predict8x8 = vp8_sixtap_predict8x8_c;
 #if HAVE_NEON
-    if (flags & HAS_NEON) vp8_sixtap_predict8x8 = vp8_sixtap_predict8x8_neon;
+	if (flags & HAS_NEON)
+		vp8_sixtap_predict8x8 = vp8_sixtap_predict8x8_neon;
 #endif
 }
 #endif
 
 #ifdef __cplusplus
-}  // extern "C"
+} // extern "C"
 #endif
 
 #endif

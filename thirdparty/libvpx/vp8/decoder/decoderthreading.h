@@ -24,7 +24,7 @@ void vp8mt_de_alloc_temp_buffers(VP8D_COMP *pbi, int mb_rows);
 #endif
 
 #ifdef __cplusplus
-}  // extern "C"
+} // extern "C"
 #endif
 
-#endif  // VP8_DECODER_DECODERTHREADING_H_
+#endif // VP8_DECODER_DECODERTHREADING_H_

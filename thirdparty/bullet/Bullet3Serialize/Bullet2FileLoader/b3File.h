@@ -16,15 +16,13 @@ subject to the following restrictions:
 #ifndef __BFILE_H__
 #define __BFILE_H__
 
-#include "b3Common.h"
 #include "b3Chunk.h"
+#include "b3Common.h"
 #include <stdio.h>
 
-namespace bParse
-{
+namespace bParse {
 // ----------------------------------------------------- //
-enum bFileFlags
-{
+enum bFileFlags {
 	FD_INVALID = 0,
 	FD_OK = 1,
 	FD_VOID_IS_8 = 2,
@@ -36,16 +34,14 @@ enum bFileFlags
 	FD_BROKEN_DNA = 128
 };
 
-enum bFileVerboseMode
-{
+enum bFileVerboseMode {
 	FD_VERBOSE_EXPORT_XML = 1,
 	FD_VERBOSE_DUMP_DNA_TYPE_DEFINITIONS = 2,
 	FD_VERBOSE_DUMP_CHUNKS = 4,
 	FD_VERBOSE_DUMP_FILE_INFO = 8,
 };
 // ----------------------------------------------------- //
-class bFile
-{
+class bFile {
 protected:
 	char m_headerString[7];
 
@@ -86,7 +82,7 @@ protected:
 	void resolvePointersChunk(const bChunkInd &dataChunk, int verboseMode);
 
 	int resolvePointersStructRecursive(char *strcPtr, int old_dna, int verboseMode, int recursion);
-	//void swapPtr(char *dst, char *src);
+	// void swapPtr(char *dst, char *src);
 
 	void parseStruct(char *strcPtr, char *dtPtr, int old_dna, int new_dna, bool fixupPointers);
 	void getMatchingFileDNA(short *old, const char *lookupName, const char *lookupType, char *strcData, char *data, bool fixupPointers);
@@ -106,25 +102,22 @@ protected:
 public:
 	bFile(const char *filename, const char headerString[7]);
 
-	//todo: make memoryBuffer const char
-	//bFile( const char *memoryBuffer, int len);
+	// todo: make memoryBuffer const char
+	// bFile( const char *memoryBuffer, int len);
 	bFile(char *memoryBuffer, int len, const char headerString[7]);
 	virtual ~bFile();
 
-	bDNA *getFileDNA()
-	{
+	bDNA *getFileDNA() {
 		return mFileDNA;
 	}
 
 	virtual void addDataBlock(char *dataBlock) = 0;
 
-	int getFlags() const
-	{
+	int getFlags() const {
 		return mFlags;
 	}
 
-	bPtrMap &getLibPointers()
-	{
+	bPtrMap &getLibPointers() {
 		return mLibPointers;
 	}
 
@@ -145,14 +138,13 @@ public:
 
 	void dumpChunks(bDNA *dna);
 
-	int getVersion() const
-	{
+	int getVersion() const {
 		return mVersion;
 	}
-	//pre-swap the endianness, so that data loaded on a target with different endianness doesn't need to be swapped
+	// pre-swap the endianness, so that data loaded on a target with different endianness doesn't need to be swapped
 	void preSwap();
 	void writeFile(const char *fileName);
 };
-}  // namespace bParse
+} // namespace bParse
 
-#endif  //__BFILE_H__
+#endif //__BFILE_H__

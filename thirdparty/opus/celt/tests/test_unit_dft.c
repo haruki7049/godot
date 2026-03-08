@@ -39,27 +39,27 @@
 
 #define CELT_C
 #define TEST_UNIT_DFT_C
-#include "stack_alloc.h"
-#include "kiss_fft.h"
-#include "kiss_fft.c"
-#include "mathops.c"
 #include "entcode.c"
+#include "kiss_fft.c"
+#include "kiss_fft.h"
+#include "mathops.c"
+#include "stack_alloc.h"
 
 #if defined(OPUS_X86_MAY_HAVE_SSE2) || defined(OPUS_X86_MAY_HAVE_SSE4_1)
-# include "x86/x86cpu.c"
+#include "x86/x86cpu.c"
 #elif defined(OPUS_ARM_ASM) || defined(OPUS_ARM_MAY_HAVE_NEON_INTR)
-# include "arm/armcpu.c"
-# include "celt_lpc.c"
-# include "pitch.c"
-# if defined(OPUS_ARM_MAY_HAVE_NEON_INTR)
-#  include "arm/celt_neon_intr.c"
-#  if defined(HAVE_ARM_NE10)
-#   include "mdct.c"
-#   include "arm/celt_ne10_fft.c"
-#   include "arm/celt_ne10_mdct.c"
-#  endif
-# endif
-# include "arm/arm_celt_map.c"
+#include "arm/armcpu.c"
+#include "celt_lpc.c"
+#include "pitch.c"
+#if defined(OPUS_ARM_MAY_HAVE_NEON_INTR)
+#include "arm/celt_neon_intr.c"
+#if defined(HAVE_ARM_NE10)
+#include "arm/celt_ne10_fft.c"
+#include "arm/celt_ne10_mdct.c"
+#include "mdct.c"
+#endif
+#endif
+#include "arm/arm_celt_map.c"
 #endif
 
 #ifndef M_PI
@@ -68,122 +68,117 @@
 
 int ret = 0;
 
-void check(kiss_fft_cpx  * in,kiss_fft_cpx  * out,int nfft,int isinverse)
-{
-    int bin,k;
-    double errpow=0,sigpow=0, snr;
+void check(kiss_fft_cpx *in, kiss_fft_cpx *out, int nfft, int isinverse) {
+	int bin, k;
+	double errpow = 0, sigpow = 0, snr;
 
-    for (bin=0;bin<nfft;++bin) {
-        double ansr = 0;
-        double ansi = 0;
-        double difr;
-        double difi;
+	for (bin = 0; bin < nfft; ++bin) {
+		double ansr = 0;
+		double ansi = 0;
+		double difr;
+		double difi;
 
-        for (k=0;k<nfft;++k) {
-            double phase = -2*M_PI*bin*k/nfft;
-            double re = cos(phase);
-            double im = sin(phase);
-            if (isinverse)
-                im = -im;
+		for (k = 0; k < nfft; ++k) {
+			double phase = -2 * M_PI * bin * k / nfft;
+			double re = cos(phase);
+			double im = sin(phase);
+			if (isinverse)
+				im = -im;
 
-            if (!isinverse)
-            {
-               re /= nfft;
-               im /= nfft;
-            }
+			if (!isinverse) {
+				re /= nfft;
+				im /= nfft;
+			}
 
-            ansr += in[k].r * re - in[k].i * im;
-            ansi += in[k].r * im + in[k].i * re;
-        }
-        /*printf ("%d %d ", (int)ansr, (int)ansi);*/
-        difr = ansr - out[bin].r;
-        difi = ansi - out[bin].i;
-        errpow += difr*difr + difi*difi;
-        sigpow += ansr*ansr+ansi*ansi;
-    }
-    snr = 10*log10(sigpow/errpow);
-    printf("nfft=%d inverse=%d,snr = %f\n",nfft,isinverse,snr );
-    if (snr<60) {
-       printf( "** poor snr: %f ** \n", snr);
-       ret = 1;
-    }
+			ansr += in[k].r * re - in[k].i * im;
+			ansi += in[k].r * im + in[k].i * re;
+		}
+		/*printf ("%d %d ", (int)ansr, (int)ansi);*/
+		difr = ansr - out[bin].r;
+		difi = ansi - out[bin].i;
+		errpow += difr * difr + difi * difi;
+		sigpow += ansr * ansr + ansi * ansi;
+	}
+	snr = 10 * log10(sigpow / errpow);
+	printf("nfft=%d inverse=%d,snr = %f\n", nfft, isinverse, snr);
+	if (snr < 60) {
+		printf("** poor snr: %f ** \n", snr);
+		ret = 1;
+	}
 }
 
-void test1d(int nfft,int isinverse,int arch)
-{
-    size_t buflen = sizeof(kiss_fft_cpx)*nfft;
+void test1d(int nfft, int isinverse, int arch) {
+	size_t buflen = sizeof(kiss_fft_cpx) * nfft;
 
-    kiss_fft_cpx  * in = (kiss_fft_cpx*)malloc(buflen);
-    kiss_fft_cpx  * out= (kiss_fft_cpx*)malloc(buflen);
-    kiss_fft_state *cfg = opus_fft_alloc(nfft,0,0,arch);
-    int k;
+	kiss_fft_cpx *in = (kiss_fft_cpx *)malloc(buflen);
+	kiss_fft_cpx *out = (kiss_fft_cpx *)malloc(buflen);
+	kiss_fft_state *cfg = opus_fft_alloc(nfft, 0, 0, arch);
+	int k;
 
-    for (k=0;k<nfft;++k) {
-        in[k].r = (rand() % 32767) - 16384;
-        in[k].i = (rand() % 32767) - 16384;
-    }
+	for (k = 0; k < nfft; ++k) {
+		in[k].r = (rand() % 32767) - 16384;
+		in[k].i = (rand() % 32767) - 16384;
+	}
 
-    for (k=0;k<nfft;++k) {
-       in[k].r *= 32768;
-       in[k].i *= 32768;
-    }
+	for (k = 0; k < nfft; ++k) {
+		in[k].r *= 32768;
+		in[k].i *= 32768;
+	}
 
-    if (isinverse)
-    {
-       for (k=0;k<nfft;++k) {
-          in[k].r /= nfft;
-          in[k].i /= nfft;
-       }
-    }
+	if (isinverse) {
+		for (k = 0; k < nfft; ++k) {
+			in[k].r /= nfft;
+			in[k].i /= nfft;
+		}
+	}
 
-    /*for (k=0;k<nfft;++k) printf("%d %d ", in[k].r, in[k].i);printf("\n");*/
+	/*for (k=0;k<nfft;++k) printf("%d %d ", in[k].r, in[k].i);printf("\n");*/
 
-    if (isinverse)
-       opus_ifft(cfg,in,out, arch);
-    else
-       opus_fft(cfg,in,out, arch);
+	if (isinverse)
+		opus_ifft(cfg, in, out, arch);
+	else
+		opus_fft(cfg, in, out, arch);
 
-    /*for (k=0;k<nfft;++k) printf("%d %d ", out[k].r, out[k].i);printf("\n");*/
+	/*for (k=0;k<nfft;++k) printf("%d %d ", out[k].r, out[k].i);printf("\n");*/
 
-    check(in,out,nfft,isinverse);
+	check(in, out, nfft, isinverse);
 
-    free(in);
-    free(out);
-    opus_fft_free(cfg, arch);
+	free(in);
+	free(out);
+	opus_fft_free(cfg, arch);
 }
 
-int main(int argc,char ** argv)
-{
-    ALLOC_STACK;
-    int arch = opus_select_arch();
+int main(int argc, char **argv) {
+	ALLOC_STACK;
+	int arch = opus_select_arch();
 
-    if (argc>1) {
-        int k;
-        for (k=1;k<argc;++k) {
-            test1d(atoi(argv[k]),0,arch);
-            test1d(atoi(argv[k]),1,arch);
-        }
-    }else{
-        test1d(32,0,arch);
-        test1d(32,1,arch);
-        test1d(128,0,arch);
-        test1d(128,1,arch);
-        test1d(256,0,arch);
-        test1d(256,1,arch);
+	if (argc > 1) {
+		int k;
+		for (k = 1; k < argc; ++k) {
+			test1d(atoi(argv[k]), 0, arch);
+			test1d(atoi(argv[k]), 1, arch);
+		}
+	} else {
+		test1d(32, 0, arch);
+		test1d(32, 1, arch);
+		test1d(128, 0, arch);
+		test1d(128, 1, arch);
+		test1d(256, 0, arch);
+		test1d(256, 1, arch);
 #ifndef RADIX_TWO_ONLY
-        test1d(36,0,arch);
-        test1d(36,1,arch);
-        test1d(50,0,arch);
-        test1d(50,1,arch);
-        test1d(60,0,arch);
-        test1d(60,1,arch);
-        test1d(120,0,arch);
-        test1d(120,1,arch);
-        test1d(240,0,arch);
-        test1d(240,1,arch);
-        test1d(480,0,arch);
-        test1d(480,1,arch);
+		test1d(36, 0, arch);
+		test1d(36, 1, arch);
+		test1d(50, 0, arch);
+		test1d(50, 1, arch);
+		test1d(60, 0, arch);
+		test1d(60, 1, arch);
+		test1d(120, 0, arch);
+		test1d(120, 1, arch);
+		test1d(240, 0, arch);
+		test1d(240, 1, arch);
+		test1d(480, 0, arch);
+		test1d(480, 1, arch);
 #endif
-    }
-    return ret;
+	}
+	return ret;
 }

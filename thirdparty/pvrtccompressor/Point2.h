@@ -2,16 +2,14 @@
 
 namespace Javelin {
 
-template<typename T>
+template <typename T>
 class Point2 {
 public:
-    T x;
-    T y;
+	T x;
+	T y;
 
-    Point2(int a, int b)
-        : x(a)
-        , y(b) {
-    }
+	Point2(int a, int b) : x(a), y(b) {
+	}
 };
 
-}
+} // namespace Javelin

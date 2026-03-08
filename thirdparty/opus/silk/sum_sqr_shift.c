@@ -34,53 +34,51 @@ POSSIBILITY OF SUCH DAMAGE.
 /* Compute number of bits to right shift the sum of squares of a vector */
 /* of int16s to make it fit in an int32                                 */
 void silk_sum_sqr_shift(
-    opus_int32                  *energy,            /* O   Energy of x, after shifting to the right                     */
-    opus_int                    *shift,             /* O   Number of bits right shift applied to energy                 */
-    const opus_int16            *x,                 /* I   Input vector                                                 */
-    opus_int                    len                 /* I   Length of input vector                                       */
-)
-{
-    opus_int   i, shft;
-    opus_int32 nrg_tmp, nrg;
+		opus_int32 *energy, /* O   Energy of x, after shifting to the right                     */
+		opus_int *shift, /* O   Number of bits right shift applied to energy                 */
+		const opus_int16 *x, /* I   Input vector                                                 */
+		opus_int len /* I   Length of input vector                                       */
+) {
+	opus_int i, shft;
+	opus_int32 nrg_tmp, nrg;
 
-    nrg  = 0;
-    shft = 0;
-    len--;
-    for( i = 0; i < len; i += 2 ) {
-        nrg = silk_SMLABB_ovflw( nrg, x[ i ], x[ i ] );
-        nrg = silk_SMLABB_ovflw( nrg, x[ i + 1 ], x[ i + 1 ] );
-        if( nrg < 0 ) {
-            /* Scale down */
-            nrg = (opus_int32)silk_RSHIFT_uint( (opus_uint32)nrg, 2 );
-            shft = 2;
-            i+=2;
-            break;
-        }
-    }
-    for( ; i < len; i += 2 ) {
-        nrg_tmp = silk_SMULBB( x[ i ], x[ i ] );
-        nrg_tmp = silk_SMLABB_ovflw( nrg_tmp, x[ i + 1 ], x[ i + 1 ] );
-        nrg = (opus_int32)silk_ADD_RSHIFT_uint( nrg, (opus_uint32)nrg_tmp, shft );
-        if( nrg < 0 ) {
-            /* Scale down */
-            nrg = (opus_int32)silk_RSHIFT_uint( (opus_uint32)nrg, 2 );
-            shft += 2;
-        }
-    }
-    if( i == len ) {
-        /* One sample left to process */
-        nrg_tmp = silk_SMULBB( x[ i ], x[ i ] );
-        nrg = (opus_int32)silk_ADD_RSHIFT_uint( nrg, nrg_tmp, shft );
-    }
+	nrg = 0;
+	shft = 0;
+	len--;
+	for (i = 0; i < len; i += 2) {
+		nrg = silk_SMLABB_ovflw(nrg, x[i], x[i]);
+		nrg = silk_SMLABB_ovflw(nrg, x[i + 1], x[i + 1]);
+		if (nrg < 0) {
+			/* Scale down */
+			nrg = (opus_int32)silk_RSHIFT_uint((opus_uint32)nrg, 2);
+			shft = 2;
+			i += 2;
+			break;
+		}
+	}
+	for (; i < len; i += 2) {
+		nrg_tmp = silk_SMULBB(x[i], x[i]);
+		nrg_tmp = silk_SMLABB_ovflw(nrg_tmp, x[i + 1], x[i + 1]);
+		nrg = (opus_int32)silk_ADD_RSHIFT_uint(nrg, (opus_uint32)nrg_tmp, shft);
+		if (nrg < 0) {
+			/* Scale down */
+			nrg = (opus_int32)silk_RSHIFT_uint((opus_uint32)nrg, 2);
+			shft += 2;
+		}
+	}
+	if (i == len) {
+		/* One sample left to process */
+		nrg_tmp = silk_SMULBB(x[i], x[i]);
+		nrg = (opus_int32)silk_ADD_RSHIFT_uint(nrg, nrg_tmp, shft);
+	}
 
-    /* Make sure to have at least one extra leading zero (two leading zeros in total) */
-    if( nrg & 0xC0000000 ) {
-        nrg = silk_RSHIFT_uint( (opus_uint32)nrg, 2 );
-        shft += 2;
-    }
+	/* Make sure to have at least one extra leading zero (two leading zeros in total) */
+	if (nrg & 0xC0000000) {
+		nrg = silk_RSHIFT_uint((opus_uint32)nrg, 2);
+		shft += 2;
+	}
 
-    /* Output arguments */
-    *shift  = shft;
-    *energy = nrg;
+	/* Output arguments */
+	*shift = shft;
+	*energy = nrg;
 }
-

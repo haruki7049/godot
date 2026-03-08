@@ -38,28 +38,27 @@ extern "C" {
 #endif
 // -- GODOT end --
 struct ifaddrs {
-  struct ifaddrs* ifa_next;
-  char* ifa_name;
-  unsigned int ifa_flags;
-  struct sockaddr* ifa_addr;
-  struct sockaddr* ifa_netmask;
-  // Real ifaddrs has broadcast, point to point and data members.
-  // We don't need them (yet?).
-  // -- GODOT start --
-  // We never initialize the following members. We only define them to match the ifaddrs struct.
-  union
-  {
-    struct sockaddr *ifu_broadaddr;
-    struct sockaddr *ifu_dstaddr;
-  } ifa_ifu;
-  void *ifa_data;
-  // -- GODOT end --
+	struct ifaddrs *ifa_next;
+	char *ifa_name;
+	unsigned int ifa_flags;
+	struct sockaddr *ifa_addr;
+	struct sockaddr *ifa_netmask;
+	// Real ifaddrs has broadcast, point to point and data members.
+	// We don't need them (yet?).
+	// -- GODOT start --
+	// We never initialize the following members. We only define them to match the ifaddrs struct.
+	union {
+		struct sockaddr *ifu_broadaddr;
+		struct sockaddr *ifu_dstaddr;
+	} ifa_ifu;
+	void *ifa_data;
+	// -- GODOT end --
 };
 // -- GODOT start --
 #ifdef __cplusplus
 }
 #endif
 // -- GODOT end --
-int getifaddrs(struct ifaddrs** result);
-void freeifaddrs(struct ifaddrs* addrs);
-#endif  // TALK_BASE_IFADDRS_ANDROID_H_
+int getifaddrs(struct ifaddrs **result);
+void freeifaddrs(struct ifaddrs *addrs);
+#endif // TALK_BASE_IFADDRS_ANDROID_H_

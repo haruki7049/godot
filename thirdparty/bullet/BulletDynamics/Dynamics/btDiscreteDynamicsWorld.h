@@ -4,8 +4,8 @@ Copyright (c) 2003-2009 Erwin Coumans  http://bulletphysics.org
 
 This software is provided 'as-is', without any express or implied warranty.
 In no event will the authors be held liable for any damages arising from the use of this software.
-Permission is granted to anyone to use this software for any purpose, 
-including commercial applications, and to alter it and redistribute it freely, 
+Permission is granted to anyone to use this software for any purpose,
+including commercial applications, and to alter it and redistribute it freely,
 subject to the following restrictions:
 
 1. The origin of this software must not be misrepresented; you must not claim that you wrote the original software. If you use this software in a product, an acknowledgment in the product documentation would be appreciated but is not required.
@@ -31,52 +31,49 @@ struct InplaceSolverIslandCallback;
 #include "LinearMath/btAlignedObjectArray.h"
 #include "LinearMath/btThreads.h"
 
-///btDiscreteDynamicsWorld provides discrete rigid body simulation
-///those classes replace the obsolete CcdPhysicsEnvironment/CcdPhysicsController
+/// btDiscreteDynamicsWorld provides discrete rigid body simulation
+/// those classes replace the obsolete CcdPhysicsEnvironment/CcdPhysicsController
 ATTRIBUTE_ALIGNED16(class)
-btDiscreteDynamicsWorld : public btDynamicsWorld
-{
+btDiscreteDynamicsWorld : public btDynamicsWorld {
 protected:
-	btAlignedObjectArray<btTypedConstraint*> m_sortedConstraints;
-	InplaceSolverIslandCallback* m_solverIslandCallback;
+	btAlignedObjectArray<btTypedConstraint *> m_sortedConstraints;
+	InplaceSolverIslandCallback *m_solverIslandCallback;
 
-	btConstraintSolver* m_constraintSolver;
+	btConstraintSolver *m_constraintSolver;
 
-	btSimulationIslandManager* m_islandManager;
+	btSimulationIslandManager *m_islandManager;
 
-	btAlignedObjectArray<btTypedConstraint*> m_constraints;
+	btAlignedObjectArray<btTypedConstraint *> m_constraints;
 
-	btAlignedObjectArray<btRigidBody*> m_nonStaticRigidBodies;
+	btAlignedObjectArray<btRigidBody *> m_nonStaticRigidBodies;
 
 	btVector3 m_gravity;
 
-	//for variable timesteps
+	// for variable timesteps
 	btScalar m_localTime;
 	btScalar m_fixedTimeStep;
-	//for variable timesteps
+	// for variable timesteps
 
 	bool m_ownsIslandManager;
 	bool m_ownsConstraintSolver;
 	bool m_synchronizeAllMotionStates;
 	bool m_applySpeculativeContactRestitution;
 
-	btAlignedObjectArray<btActionInterface*> m_actions;
+	btAlignedObjectArray<btActionInterface *> m_actions;
 
 	int m_profileTimings;
 
 	bool m_latencyMotionStateInterpolation;
 
-	btAlignedObjectArray<btPersistentManifold*> m_predictiveManifolds;
-	btSpinMutex m_predictiveManifoldsMutex;  // used to synchronize threads creating predictive contacts
+	btAlignedObjectArray<btPersistentManifold *> m_predictiveManifolds;
+	btSpinMutex m_predictiveManifoldsMutex; // used to synchronize threads creating predictive contacts
 
 	virtual void predictUnconstraintMotion(btScalar timeStep);
 
-	void integrateTransformsInternal(btRigidBody * *bodies, int numBodies, btScalar timeStep);  // can be called in parallel
+	void integrateTransformsInternal(btRigidBody * *bodies, int numBodies, btScalar timeStep); // can be called in parallel
 	virtual void integrateTransforms(btScalar timeStep);
 
 	virtual void calculateSimulationIslands();
-
-	
 
 	virtual void updateActivationState(btScalar timeStep);
 
@@ -87,7 +84,7 @@ protected:
 	virtual void internalSingleStepSimulation(btScalar timeStep);
 
 	void releasePredictiveContacts();
-	void createPredictiveContactsInternal(btRigidBody * *bodies, int numBodies, btScalar timeStep);  // can be called in parallel
+	void createPredictiveContactsInternal(btRigidBody * *bodies, int numBodies, btScalar timeStep); // can be called in parallel
 	virtual void createPredictiveContacts(btScalar timeStep);
 
 	virtual void saveKinematicState(btScalar timeStep);
@@ -95,49 +92,46 @@ protected:
 	void serializeRigidBodies(btSerializer * serializer);
 
 	void serializeDynamicsWorldInfo(btSerializer * serializer);
-    
+
 public:
 	BT_DECLARE_ALIGNED_ALLOCATOR();
 
-	///this btDiscreteDynamicsWorld constructor gets created objects from the user, and will not delete those
+	/// this btDiscreteDynamicsWorld constructor gets created objects from the user, and will not delete those
 	btDiscreteDynamicsWorld(btDispatcher * dispatcher, btBroadphaseInterface * pairCache, btConstraintSolver * constraintSolver, btCollisionConfiguration * collisionConfiguration);
 
 	virtual ~btDiscreteDynamicsWorld();
 
-	///if maxSubSteps > 0, it will interpolate motion between fixedTimeStep's
+	/// if maxSubSteps > 0, it will interpolate motion between fixedTimeStep's
 	virtual int stepSimulation(btScalar timeStep, int maxSubSteps = 1, btScalar fixedTimeStep = btScalar(1.) / btScalar(60.));
 
-    virtual void solveConstraints(btContactSolverInfo & solverInfo);
-    
+	virtual void solveConstraints(btContactSolverInfo & solverInfo);
+
 	virtual void synchronizeMotionStates();
 
-	///this can be useful to synchronize a single rigid body -> graphics object
+	/// this can be useful to synchronize a single rigid body -> graphics object
 	void synchronizeSingleMotionState(btRigidBody * body);
 
 	virtual void addConstraint(btTypedConstraint * constraint, bool disableCollisionsBetweenLinkedBodies = false);
 
 	virtual void removeConstraint(btTypedConstraint * constraint);
 
-	virtual void addAction(btActionInterface*);
+	virtual void addAction(btActionInterface *);
 
-	virtual void removeAction(btActionInterface*);
+	virtual void removeAction(btActionInterface *);
 
-	btSimulationIslandManager* getSimulationIslandManager()
-	{
+	btSimulationIslandManager *getSimulationIslandManager() {
 		return m_islandManager;
 	}
 
-	const btSimulationIslandManager* getSimulationIslandManager() const
-	{
+	const btSimulationIslandManager *getSimulationIslandManager() const {
 		return m_islandManager;
 	}
 
-	btCollisionWorld* getCollisionWorld()
-	{
+	btCollisionWorld *getCollisionWorld() {
 		return this;
 	}
 
-	virtual void setGravity(const btVector3& gravity);
+	virtual void setGravity(const btVector3 &gravity);
 
 	virtual btVector3 getGravity() const;
 
@@ -149,7 +143,7 @@ public:
 
 	virtual void removeRigidBody(btRigidBody * body);
 
-	///removeCollisionObject will first check if it is a rigid body, if so call removeRigidBody otherwise call btCollisionWorld::removeCollisionObject
+	/// removeCollisionObject will first check if it is a rigid body, if so call removeRigidBody otherwise call btCollisionWorld::removeCollisionObject
 	virtual void removeCollisionObject(btCollisionObject * collisionObject);
 
 	virtual void debugDrawConstraint(btTypedConstraint * constraint);
@@ -158,87 +152,76 @@ public:
 
 	virtual void setConstraintSolver(btConstraintSolver * solver);
 
-	virtual btConstraintSolver* getConstraintSolver();
+	virtual btConstraintSolver *getConstraintSolver();
 
 	virtual int getNumConstraints() const;
 
-	virtual btTypedConstraint* getConstraint(int index);
+	virtual btTypedConstraint *getConstraint(int index);
 
-	virtual const btTypedConstraint* getConstraint(int index) const;
+	virtual const btTypedConstraint *getConstraint(int index) const;
 
-	virtual btDynamicsWorldType getWorldType() const
-	{
+	virtual btDynamicsWorldType getWorldType() const {
 		return BT_DISCRETE_DYNAMICS_WORLD;
 	}
 
-	///the forces on each rigidbody is accumulating together with gravity. clear this after each timestep.
+	/// the forces on each rigidbody is accumulating together with gravity. clear this after each timestep.
 	virtual void clearForces();
 
-	///apply gravity, call this once per timestep
+	/// apply gravity, call this once per timestep
 	virtual void applyGravity();
 
-	virtual void setNumTasks(int numTasks)
-	{
+	virtual void setNumTasks(int numTasks) {
 		(void)numTasks;
 	}
 
-	///obsolete, use updateActions instead
-	virtual void updateVehicles(btScalar timeStep)
-	{
+	/// obsolete, use updateActions instead
+	virtual void updateVehicles(btScalar timeStep) {
 		updateActions(timeStep);
 	}
 
-	///obsolete, use addAction instead
+	/// obsolete, use addAction instead
 	virtual void addVehicle(btActionInterface * vehicle);
-	///obsolete, use removeAction instead
+	/// obsolete, use removeAction instead
 	virtual void removeVehicle(btActionInterface * vehicle);
-	///obsolete, use addAction instead
+	/// obsolete, use addAction instead
 	virtual void addCharacter(btActionInterface * character);
-	///obsolete, use removeAction instead
+	/// obsolete, use removeAction instead
 	virtual void removeCharacter(btActionInterface * character);
 
-	void setSynchronizeAllMotionStates(bool synchronizeAll)
-	{
+	void setSynchronizeAllMotionStates(bool synchronizeAll) {
 		m_synchronizeAllMotionStates = synchronizeAll;
 	}
-	bool getSynchronizeAllMotionStates() const
-	{
+	bool getSynchronizeAllMotionStates() const {
 		return m_synchronizeAllMotionStates;
 	}
 
-	void setApplySpeculativeContactRestitution(bool enable)
-	{
+	void setApplySpeculativeContactRestitution(bool enable) {
 		m_applySpeculativeContactRestitution = enable;
 	}
 
-	bool getApplySpeculativeContactRestitution() const
-	{
+	bool getApplySpeculativeContactRestitution() const {
 		return m_applySpeculativeContactRestitution;
 	}
 
-	///Preliminary serialization test for Bullet 2.76. Loading those files requires a separate parser (see Bullet/Demos/SerializeDemo)
+	/// Preliminary serialization test for Bullet 2.76. Loading those files requires a separate parser (see Bullet/Demos/SerializeDemo)
 	virtual void serialize(btSerializer * serializer);
 
-	///Interpolate motion state between previous and current transform, instead of current and next transform.
-	///This can relieve discontinuities in the rendering, due to penetrations
-	void setLatencyMotionStateInterpolation(bool latencyInterpolation)
-	{
+	/// Interpolate motion state between previous and current transform, instead of current and next transform.
+	/// This can relieve discontinuities in the rendering, due to penetrations
+	void setLatencyMotionStateInterpolation(bool latencyInterpolation) {
 		m_latencyMotionStateInterpolation = latencyInterpolation;
 	}
-	bool getLatencyMotionStateInterpolation() const
-	{
+	bool getLatencyMotionStateInterpolation() const {
 		return m_latencyMotionStateInterpolation;
 	}
-    
-    btAlignedObjectArray<btRigidBody*>& getNonStaticRigidBodies()
-    {
-        return m_nonStaticRigidBodies;
-    }
-    
-    const btAlignedObjectArray<btRigidBody*>& getNonStaticRigidBodies() const
-    {
-        return m_nonStaticRigidBodies;
-    }
+
+	btAlignedObjectArray<btRigidBody *> &getNonStaticRigidBodies() {
+		return m_nonStaticRigidBodies;
+	}
+
+	const btAlignedObjectArray<btRigidBody *> &getNonStaticRigidBodies() const {
+		return m_nonStaticRigidBodies;
+	}
 };
 
-#endif  //BT_DISCRETE_DYNAMICS_WORLD_H
+#endif // BT_DISCRETE_DYNAMICS_WORLD_H

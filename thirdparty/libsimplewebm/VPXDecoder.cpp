@@ -24,18 +24,17 @@
 
 #include "VPXDecoder.hpp"
 
-#include <vpx/vpx_decoder.h>
 #include <vpx/vp8dx.h>
+#include <vpx/vpx_decoder.h>
 
 #include <stdlib.h>
 #include <string.h>
 
 VPXDecoder::VPXDecoder(const WebMDemuxer &demuxer, unsigned threads) :
-	m_ctx(NULL),
-	m_iter(NULL),
-	m_delay(0),
-	m_last_space(VPX_CS_UNKNOWN)
-{
+		m_ctx(NULL),
+		m_iter(NULL),
+		m_delay(0),
+		m_last_space(VPX_CS_UNKNOWN) {
 	if (threads > 8)
 		threads = 8;
 	else if (threads < 1)
@@ -48,8 +47,7 @@ VPXDecoder::VPXDecoder(const WebMDemuxer &demuxer, unsigned threads) :
 	};
 	vpx_codec_iface_t *codecIface = NULL;
 
-	switch (demuxer.getVideoCodec())
-	{
+	switch (demuxer.getVideoCodec()) {
 		case WebMDemuxer::VIDEO_VP8:
 			codecIface = vpx_codec_vp8_dx();
 			break;
@@ -62,42 +60,34 @@ VPXDecoder::VPXDecoder(const WebMDemuxer &demuxer, unsigned threads) :
 	}
 
 	m_ctx = new vpx_codec_ctx_t;
-	if (vpx_codec_dec_init(m_ctx, codecIface, &codecCfg, m_delay > 0 ? VPX_CODEC_USE_FRAME_THREADING : 0))
-	{
+	if (vpx_codec_dec_init(m_ctx, codecIface, &codecCfg, m_delay > 0 ? VPX_CODEC_USE_FRAME_THREADING : 0)) {
 		delete m_ctx;
 		m_ctx = NULL;
 	}
 }
-VPXDecoder::~VPXDecoder()
-{
-	if (m_ctx)
-	{
+VPXDecoder::~VPXDecoder() {
+	if (m_ctx) {
 		vpx_codec_destroy(m_ctx);
 		delete m_ctx;
 	}
 }
 
-bool VPXDecoder::decode(const WebMFrame &frame)
-{
+bool VPXDecoder::decode(const WebMFrame &frame) {
 	m_iter = NULL;
 	return !vpx_codec_decode(m_ctx, frame.buffer, frame.bufferSize, NULL, 0);
 }
-VPXDecoder::IMAGE_ERROR VPXDecoder::getImage(Image &image)
-{
+VPXDecoder::IMAGE_ERROR VPXDecoder::getImage(Image &image) {
 	IMAGE_ERROR err = NO_FRAME;
-	if (vpx_image_t *img = vpx_codec_get_frame(m_ctx, &m_iter))
-	{
+	if (vpx_image_t *img = vpx_codec_get_frame(m_ctx, &m_iter)) {
 		// It seems to be a common problem that UNKNOWN comes up a lot, yet FFMPEG is somehow getting accurate colour-space information.
 		// After checking FFMPEG code, *they're* getting colour-space information, so I'm assuming something like this is going on.
 		// It appears to work, at least.
 		if (img->cs != VPX_CS_UNKNOWN)
 			m_last_space = img->cs;
-		if ((img->fmt & VPX_IMG_FMT_PLANAR) && !(img->fmt & (VPX_IMG_FMT_HAS_ALPHA | VPX_IMG_FMT_HIGHBITDEPTH)))
-		{
-			if (img->stride[0] && img->stride[1] && img->stride[2])
-			{
+		if ((img->fmt & VPX_IMG_FMT_PLANAR) && !(img->fmt & (VPX_IMG_FMT_HAS_ALPHA | VPX_IMG_FMT_HIGHBITDEPTH))) {
+			if (img->stride[0] && img->stride[1] && img->stride[2]) {
 				const int uPlane = !!(img->fmt & VPX_IMG_FMT_UV_FLIP) + 1;
-				const int vPlane =  !(img->fmt & VPX_IMG_FMT_UV_FLIP) + 1;
+				const int vPlane = !(img->fmt & VPX_IMG_FMT_UV_FLIP) + 1;
 
 				image.w = img->d_w;
 				image.h = img->d_h;
@@ -115,9 +105,7 @@ VPXDecoder::IMAGE_ERROR VPXDecoder::getImage(Image &image)
 
 				err = NO_ERROR;
 			}
-		}
-		else
-		{
+		} else {
 			err = UNSUPPORTED_FRAME;
 		}
 	}
@@ -151,4 +139,3 @@ int VPXDecoder::Image::getHeight(int plane) const
 // -- GODOT begin --
 #endif
 // -- GODOT end --
-

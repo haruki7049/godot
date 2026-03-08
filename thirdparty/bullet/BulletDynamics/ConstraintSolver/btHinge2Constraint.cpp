@@ -1,11 +1,11 @@
 /*
 Bullet Continuous Collision Detection and Physics Library, http://bulletphysics.org
-Copyright (C) 2006, 2007 Sony Computer Entertainment Inc. 
+Copyright (C) 2006, 2007 Sony Computer Entertainment Inc.
 
 This software is provided 'as-is', without any express or implied warranty.
 In no event will the authors be held liable for any damages arising from the use of this software.
-Permission is granted to anyone to use this software for any purpose, 
-including commercial applications, and to alter it and redistribute it freely, 
+Permission is granted to anyone to use this software for any purpose,
+including commercial applications, and to alter it and redistribute it freely,
 subject to the following restrictions:
 
 1. The origin of this software must not be misrepresented; you must not claim that you wrote the original software. If you use this software in a product, an acknowledgment in the product documentation would be appreciated but is not required.
@@ -20,12 +20,10 @@ subject to the following restrictions:
 // constructor
 // anchor, axis1 and axis2 are in world coordinate system
 // axis1 must be orthogonal to axis2
-btHinge2Constraint::btHinge2Constraint(btRigidBody& rbA, btRigidBody& rbB, btVector3& anchor, btVector3& axis1, btVector3& axis2)
-	: btGeneric6DofSpring2Constraint(rbA, rbB, btTransform::getIdentity(), btTransform::getIdentity(), RO_XYZ),
-	  m_anchor(anchor),
-	  m_axis1(axis1),
-	  m_axis2(axis2)
-{
+btHinge2Constraint::btHinge2Constraint(btRigidBody &rbA, btRigidBody &rbB, btVector3 &anchor, btVector3 &axis1, btVector3 &axis2) : btGeneric6DofSpring2Constraint(rbA, rbB, btTransform::getIdentity(), btTransform::getIdentity(), RO_XYZ),
+																																	m_anchor(anchor),
+																																	m_axis1(axis1),
+																																	m_axis2(axis2) {
 	// build frame basis
 	// 6DOF constraint uses Euler angles and to define limits
 	// it is assumed that rotational order is :
@@ -37,12 +35,12 @@ btHinge2Constraint::btHinge2Constraint(btRigidBody& rbA, btRigidBody& rbB, btVec
 	// Build the frame in world coordinate system first
 	btVector3 zAxis = axis1.normalize();
 	btVector3 xAxis = axis2.normalize();
-	btVector3 yAxis = zAxis.cross(xAxis);  // we want right coordinate system
+	btVector3 yAxis = zAxis.cross(xAxis); // we want right coordinate system
 	btTransform frameInW;
 	frameInW.setIdentity();
 	frameInW.getBasis().setValue(xAxis[0], yAxis[0], zAxis[0],
-								 xAxis[1], yAxis[1], zAxis[1],
-								 xAxis[2], yAxis[2], zAxis[2]);
+			xAxis[1], yAxis[1], zAxis[1],
+			xAxis[2], yAxis[2], zAxis[2]);
 	frameInW.setOrigin(anchor);
 	// now get constraint frame in local coordinate systems
 	m_frameInA = rbA.getCenterOfMassTransform().inverse() * frameInW;

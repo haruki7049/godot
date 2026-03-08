@@ -4,8 +4,7 @@
 
 #include "b3OpenCLArray.h"
 
-struct b3SortData
-{
+struct b3SortData {
 	union {
 		unsigned int m_key;
 		unsigned int x;
@@ -18,16 +17,15 @@ struct b3SortData
 };
 #include "b3BufferInfoCL.h"
 
-class b3RadixSort32CL
-{
-	b3OpenCLArray<unsigned int>* m_workBuffer1;
-	b3OpenCLArray<unsigned int>* m_workBuffer2;
+class b3RadixSort32CL {
+	b3OpenCLArray<unsigned int> *m_workBuffer1;
+	b3OpenCLArray<unsigned int> *m_workBuffer2;
 
-	b3OpenCLArray<b3SortData>* m_workBuffer3;
-	b3OpenCLArray<b3SortData>* m_workBuffer4;
+	b3OpenCLArray<b3SortData> *m_workBuffer3;
+	b3OpenCLArray<b3SortData> *m_workBuffer4;
 
-	b3OpenCLArray<unsigned int>* m_workBuffer3a;
-	b3OpenCLArray<unsigned int>* m_workBuffer4a;
+	b3OpenCLArray<unsigned int> *m_workBuffer3a;
+	b3OpenCLArray<unsigned int> *m_workBuffer4a;
 
 	cl_command_queue m_commandQueue;
 
@@ -40,19 +38,17 @@ class b3RadixSort32CL
 
 	bool m_deviceCPU;
 
-	class b3PrefixScanCL* m_scan;
-	class b3FillCL* m_fill;
+	class b3PrefixScanCL *m_scan;
+	class b3FillCL *m_fill;
 
 public:
-	struct b3ConstData
-	{
+	struct b3ConstData {
 		int m_n;
 		int m_nWGs;
 		int m_startBit;
 		int m_nBlocksPerWG;
 	};
-	enum
-	{
+	enum {
 		DATA_ALIGNMENT = 256,
 		WG_SIZE = 64,
 		BLOCK_SIZE = 256,
@@ -60,9 +56,9 @@ public:
 		BITS_PER_PASS = 4,
 		NUM_BUCKET = (1 << BITS_PER_PASS),
 		//	if you change this, change nPerWI in kernel as well
-		NUM_WGS = 20 * 6,  //	cypress
-						   //			NUM_WGS = 24*6,	//	cayman
-						   //			NUM_WGS = 32*4,	//	nv
+		NUM_WGS = 20 * 6, //	cypress
+						  //			NUM_WGS = 24*6,	//	cayman
+						  //			NUM_WGS = 32*4,	//	nv
 	};
 
 private:
@@ -71,14 +67,14 @@ public:
 
 	virtual ~b3RadixSort32CL();
 
-	void execute(b3OpenCLArray<unsigned int>& keysIn, b3OpenCLArray<unsigned int>& keysOut, b3OpenCLArray<unsigned int>& valuesIn,
-				 b3OpenCLArray<unsigned int>& valuesOut, int n, int sortBits = 32);
+	void execute(b3OpenCLArray<unsigned int> &keysIn, b3OpenCLArray<unsigned int> &keysOut, b3OpenCLArray<unsigned int> &valuesIn,
+			b3OpenCLArray<unsigned int> &valuesOut, int n, int sortBits = 32);
 
-	///keys only
-	void execute(b3OpenCLArray<unsigned int>& keysInOut, int sortBits = 32);
+	/// keys only
+	void execute(b3OpenCLArray<unsigned int> &keysInOut, int sortBits = 32);
 
-	void execute(b3OpenCLArray<b3SortData>& keyValuesInOut, int sortBits = 32);
-	void executeHost(b3OpenCLArray<b3SortData>& keyValuesInOut, int sortBits = 32);
-	void executeHost(b3AlignedObjectArray<b3SortData>& keyValuesInOut, int sortBits = 32);
+	void execute(b3OpenCLArray<b3SortData> &keyValuesInOut, int sortBits = 32);
+	void executeHost(b3OpenCLArray<b3SortData> &keyValuesInOut, int sortBits = 32);
+	void executeHost(b3AlignedObjectArray<b3SortData> &keyValuesInOut, int sortBits = 32);
 };
-#endif  //B3_RADIXSORT32_H
+#endif // B3_RADIXSORT32_H

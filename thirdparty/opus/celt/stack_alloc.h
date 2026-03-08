@@ -32,23 +32,23 @@
 #ifndef STACK_ALLOC_H
 #define STACK_ALLOC_H
 
-#include "opus_types.h"
 #include "opus_defines.h"
+#include "opus_types.h"
 
-#if (!defined (VAR_ARRAYS) && !defined (USE_ALLOCA) && !defined (NONTHREADSAFE_PSEUDOSTACK))
+#if (!defined(VAR_ARRAYS) && !defined(USE_ALLOCA) && !defined(NONTHREADSAFE_PSEUDOSTACK))
 #error "Opus requires one of VAR_ARRAYS, USE_ALLOCA, or NONTHREADSAFE_PSEUDOSTACK be defined to select the temporary allocation mode."
 #endif
 
 #ifdef USE_ALLOCA
-# ifdef WIN32
-#  include <malloc.h>
-# else
-#  ifdef HAVE_ALLOCA_H
-#   include <alloca.h>
-#  else
-#   include <stdlib.h>
-#  endif
-# endif
+#ifdef WIN32
+#include <malloc.h>
+#else
+#ifdef HAVE_ALLOCA_H
+#include <alloca.h>
+#else
+#include <stdlib.h>
+#endif
+#endif
 #endif
 
 /**
@@ -102,11 +102,11 @@
 
 #define VARDECL(type, var) type *var
 
-# ifdef WIN32
-#  define ALLOC(var, size, type) var = ((type*)_alloca(sizeof(type)*(size)))
-# else
-#  define ALLOC(var, size, type) var = ((type*)alloca(sizeof(type)*(size)))
-# endif
+#ifdef WIN32
+#define ALLOC(var, size, type) var = ((type *)_alloca(sizeof(type) * (size)))
+#else
+#define ALLOC(var, size, type) var = ((type *)alloca(sizeof(type) * (size)))
+#endif
 
 #define SAVE_STACK
 #define RESTORE_STACK
@@ -116,8 +116,8 @@
 #else
 
 #ifdef CELT_C
-char *scratch_ptr=0;
-char *global_stack=0;
+char *scratch_ptr = 0;
+char *global_stack = 0;
 #else
 extern char *global_stack;
 extern char *scratch_ptr;
@@ -128,26 +128,32 @@ extern char *scratch_ptr;
 #include <valgrind/memcheck.h>
 
 #ifdef CELT_C
-char *global_stack_top=0;
+char *global_stack_top = 0;
 #else
 extern char *global_stack_top;
 #endif /* CELT_C */
 
 #define ALIGN(stack, size) ((stack) += ((size) - (long)(stack)) & ((size) - 1))
-#define PUSH(stack, size, type) (VALGRIND_MAKE_MEM_NOACCESS(stack, global_stack_top-stack),ALIGN((stack),sizeof(type)/sizeof(char)),VALGRIND_MAKE_MEM_UNDEFINED(stack, ((size)*sizeof(type)/sizeof(char))),(stack)+=(2*(size)*sizeof(type)/sizeof(char)),(type*)((stack)-(2*(size)*sizeof(type)/sizeof(char))))
-#define RESTORE_STACK ((global_stack = _saved_stack),VALGRIND_MAKE_MEM_NOACCESS(global_stack, global_stack_top-global_stack))
-#define ALLOC_STACK char *_saved_stack; ((global_stack = (global_stack==0) ? ((global_stack_top=opus_alloc_scratch(GLOBAL_STACK_SIZE*2)+(GLOBAL_STACK_SIZE*2))-(GLOBAL_STACK_SIZE*2)) : global_stack),VALGRIND_MAKE_MEM_NOACCESS(global_stack, global_stack_top-global_stack)); _saved_stack = global_stack;
+#define PUSH(stack, size, type) (VALGRIND_MAKE_MEM_NOACCESS(stack, global_stack_top - stack), ALIGN((stack), sizeof(type) / sizeof(char)), VALGRIND_MAKE_MEM_UNDEFINED(stack, ((size) * sizeof(type) / sizeof(char))), (stack) += (2 * (size) * sizeof(type) / sizeof(char)), (type *)((stack) - (2 * (size) * sizeof(type) / sizeof(char))))
+#define RESTORE_STACK ((global_stack = _saved_stack), VALGRIND_MAKE_MEM_NOACCESS(global_stack, global_stack_top - global_stack))
+#define ALLOC_STACK                                                                                                                                                                                                                                          \
+	char *_saved_stack;                                                                                                                                                                                                                                      \
+	((global_stack = (global_stack == 0) ? ((global_stack_top = opus_alloc_scratch(GLOBAL_STACK_SIZE * 2) + (GLOBAL_STACK_SIZE * 2)) - (GLOBAL_STACK_SIZE * 2)) : global_stack), VALGRIND_MAKE_MEM_NOACCESS(global_stack, global_stack_top - global_stack)); \
+	_saved_stack = global_stack;
 
 #else
 
 #define ALIGN(stack, size) ((stack) += ((size) - (long)(stack)) & ((size) - 1))
-#define PUSH(stack, size, type) (ALIGN((stack),sizeof(type)/sizeof(char)),(stack)+=(size)*(sizeof(type)/sizeof(char)),(type*)((stack)-(size)*(sizeof(type)/sizeof(char))))
+#define PUSH(stack, size, type) (ALIGN((stack), sizeof(type) / sizeof(char)), (stack) += (size) * (sizeof(type) / sizeof(char)), (type *)((stack) - (size) * (sizeof(type) / sizeof(char))))
 #if 0 /* Set this to 1 to instrument pseudostack usage */
-#define RESTORE_STACK (printf("%ld %s:%d\n", global_stack-scratch_ptr, __FILE__, __LINE__),global_stack = _saved_stack)
+#define RESTORE_STACK (printf("%ld %s:%d\n", global_stack - scratch_ptr, __FILE__, __LINE__), global_stack = _saved_stack)
 #else
 #define RESTORE_STACK (global_stack = _saved_stack)
 #endif
-#define ALLOC_STACK char *_saved_stack; (global_stack = (global_stack==0) ? (scratch_ptr=opus_alloc_scratch(GLOBAL_STACK_SIZE)) : global_stack); _saved_stack = global_stack;
+#define ALLOC_STACK                                                                                              \
+	char *_saved_stack;                                                                                          \
+	(global_stack = (global_stack == 0) ? (scratch_ptr = opus_alloc_scratch(GLOBAL_STACK_SIZE)) : global_stack); \
+	_saved_stack = global_stack;
 
 #endif /* ENABLE_VALGRIND */
 
@@ -159,26 +165,31 @@ extern char *global_stack_top;
 
 #endif /* VAR_ARRAYS */
 
-
 #ifdef ENABLE_VALGRIND
 
 #include <valgrind/memcheck.h>
-#define OPUS_CHECK_ARRAY(ptr, len) VALGRIND_CHECK_MEM_IS_DEFINED(ptr, len*sizeof(*ptr))
+#define OPUS_CHECK_ARRAY(ptr, len) VALGRIND_CHECK_MEM_IS_DEFINED(ptr, len * sizeof(*ptr))
 #define OPUS_CHECK_VALUE(value) VALGRIND_CHECK_VALUE_IS_DEFINED(value)
-#define OPUS_CHECK_ARRAY_COND(ptr, len) VALGRIND_CHECK_MEM_IS_DEFINED(ptr, len*sizeof(*ptr))
+#define OPUS_CHECK_ARRAY_COND(ptr, len) VALGRIND_CHECK_MEM_IS_DEFINED(ptr, len * sizeof(*ptr))
 #define OPUS_CHECK_VALUE_COND(value) VALGRIND_CHECK_VALUE_IS_DEFINED(value)
-#define OPUS_PRINT_INT(value) do {fprintf(stderr, #value " = %d at %s:%d\n", value, __FILE__, __LINE__);}while(0)
+#define OPUS_PRINT_INT(value)                                                  \
+	do {                                                                       \
+		fprintf(stderr, #value " = %d at %s:%d\n", value, __FILE__, __LINE__); \
+	} while (0)
 #define OPUS_FPRINTF fprintf
 
 #else
 
-static OPUS_INLINE int _opus_false(void) {return 0;}
+static OPUS_INLINE int _opus_false(void) {
+	return 0;
+}
 #define OPUS_CHECK_ARRAY(ptr, len) _opus_false()
 #define OPUS_CHECK_VALUE(value) _opus_false()
-#define OPUS_PRINT_INT(value) do{}while(0)
+#define OPUS_PRINT_INT(value) \
+	do {                      \
+	} while (0)
 #define OPUS_FPRINTF (void)
 
 #endif
-
 
 #endif /* STACK_ALLOC_H */

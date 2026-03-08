@@ -5,17 +5,16 @@
 
 #include "platform.h"
 
-namespace embree
-{
-  /*! type for shared library */
-  typedef struct opaque_lib_t* lib_t;
+namespace embree {
+/*! type for shared library */
+typedef struct opaque_lib_t *lib_t;
 
-  /*! loads a shared library */
-  lib_t openLibrary(const std::string& file);
+/*! loads a shared library */
+lib_t openLibrary(const std::string &file);
 
-  /*! returns address of a symbol from the library */
-  void* getSymbol(lib_t lib, const std::string& sym);
+/*! returns address of a symbol from the library */
+void *getSymbol(lib_t lib, const std::string &sym);
 
-  /*! unloads a shared library */
-  void closeLibrary(lib_t lib);
-}
+/*! unloads a shared library */
+void closeLibrary(lib_t lib);
+} // namespace embree

@@ -8,11 +8,10 @@
  *  be found in the AUTHORS file in the root of the source tree.
  */
 
-
 #ifndef VP9_COMMON_VP9_ALLOCCOMMON_H_
 #define VP9_COMMON_VP9_ALLOCCOMMON_H_
 
-#define INVALID_IDX -1  // Invalid buffer index.
+#define INVALID_IDX -1 // Invalid buffer index.
 
 #ifdef __cplusplus
 extern "C" {
@@ -39,7 +38,7 @@ void vp9_set_mb_mi(struct VP9Common *cm, int width, int height);
 void vp9_swap_current_and_last_seg_map(struct VP9Common *cm);
 
 #ifdef __cplusplus
-}  // extern "C"
+} // extern "C"
 #endif
 
-#endif  // VP9_COMMON_VP9_ALLOCCOMMON_H_
+#endif // VP9_COMMON_VP9_ALLOCCOMMON_H_
