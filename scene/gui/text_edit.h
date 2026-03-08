@@ -305,7 +305,7 @@ private:
 	void _clear_redo();
 	void _do_text_op(const TextOperation &p_op, bool p_reverse);
 
-	//syntax coloring
+	// syntax coloring
 	SyntaxHighlighter *syntax_highlighter;
 	HashMap<String, Color> keywords;
 	HashMap<String, Color> member_keywords;
@@ -489,7 +489,7 @@ private:
 	void _scroll_lines_up();
 	void _scroll_lines_down();
 
-	//void mouse_motion(const Point& p_pos, const Point& p_rel, int p_button_mask);
+	// void mouse_motion(const Point& p_pos, const Point& p_rel, int p_button_mask);
 	Size2 get_minimum_size() const;
 	int _get_control_height() const;
 
@@ -576,8 +576,8 @@ public:
 	void _get_mouse_pos(const Point2i &p_mouse, int &r_row, int &r_col) const;
 	void _get_minimap_mouse_row(const Point2i &p_mouse, int &r_row) const;
 
-	//void delete_char();
-	//void delete_line();
+	// void delete_char();
+	// void delete_line();
 
 	void begin_complex_operation();
 	void end_complex_operation();

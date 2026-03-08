@@ -762,7 +762,7 @@ InputDefault::InputDefault() {
 void InputDefault::joy_button(int p_device, int p_button, bool p_pressed) {
 	_THREAD_SAFE_METHOD_;
 	Joypad &joy = joy_names[p_device];
-	//printf("got button %i, mapping is %i\n", p_button, joy.mapping);
+	// printf("got button %i, mapping is %i\n", p_button, joy.mapping);
 	if (joy.last_buttons[p_button] == p_pressed) {
 		return;
 	}
@@ -775,7 +775,7 @@ void InputDefault::joy_button(int p_device, int p_button, bool p_pressed) {
 	JoyEvent map = _get_mapped_button_event(map_db[joy.mapping], p_button);
 
 	if (map.type == TYPE_BUTTON) {
-		//fake additional axis event for triggers
+		// fake additional axis event for triggers
 		if (map.index == JOY_L2 || map.index == JOY_R2) {
 			float value = p_pressed ? 1.0f : 0.0f;
 			int axis = map.index == JOY_L2 ? JOY_ANALOG_L2 : JOY_ANALOG_R2;
@@ -802,7 +802,7 @@ void InputDefault::joy_axis(int p_device, int p_axis, const JoyAxis &p_value) {
 		return;
 	}
 
-	//when changing direction quickly, insert fake event to release pending inputmap actions
+	// when changing direction quickly, insert fake event to release pending inputmap actions
 	float last = joy.last_axis[p_axis];
 	if (p_value.min == 0 && (last < 0.25 || last > 0.75) && (last - 0.5) * (p_value.value - 0.5) < 0) {
 		JoyAxis jx;
@@ -827,7 +827,7 @@ void InputDefault::joy_axis(int p_device, int p_axis, const JoyAxis &p_value) {
 	JoyEvent map = _get_mapped_axis_event(map_db[joy.mapping], p_axis, val);
 
 	if (map.type == TYPE_BUTTON) {
-		//send axis event for triggers
+		// send axis event for triggers
 		if (map.index == JOY_L2 || map.index == JOY_R2) {
 			float value = p_value.min == 0 ? p_value.value : 0.5f + p_value.value / 2.0f;
 			int axis = map.index == JOY_L2 ? JOY_ANALOG_L2 : JOY_ANALOG_R2;
@@ -874,7 +874,7 @@ void InputDefault::joy_axis(int p_device, int p_axis, const JoyAxis &p_value) {
 		_axis_event(p_device, map.index, val);
 		return;
 	}
-	//printf("invalid mapping\n");
+	// printf("invalid mapping\n");
 }
 
 void InputDefault::joy_hat(int p_device, int p_val) {
@@ -1255,7 +1255,7 @@ void InputDefault::set_fallback_mapping(String p_guid) {
 	}
 }
 
-//Defaults to simple implementation for platforms with a fixed gamepad layout, like consoles.
+// Defaults to simple implementation for platforms with a fixed gamepad layout, like consoles.
 bool InputDefault::is_joy_known(int p_device) {
 	return OS::get_singleton()->is_joy_known(p_device);
 }
@@ -1264,7 +1264,7 @@ String InputDefault::get_joy_guid(int p_device) const {
 	return OS::get_singleton()->get_joy_guid(p_device);
 }
 
-//platforms that use the remapping system can override and call to these ones
+// platforms that use the remapping system can override and call to these ones
 bool InputDefault::is_joy_mapped(int p_device) {
 	if (joy_names.has(p_device)) {
 		int mapping = joy_names[p_device].mapping;

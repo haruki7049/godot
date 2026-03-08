@@ -214,7 +214,7 @@ void OS_Windows::initialize_core() {
 	last_button_state = 0;
 	restore_mouse_trails = 0;
 
-	//RedirectIOToConsole();
+	// RedirectIOToConsole();
 	maximized = false;
 	minimized = false;
 	borderless = false;
@@ -262,9 +262,9 @@ bool OS_Windows::can_draw() const {
 #define SIGNATURE_MASK 0xFFFFFF00
 // Keeping the name suggested by Microsoft, but this macro really answers:
 // Is this mouse event emulated from touch or pen input?
-#define IsPenEvent(dw) (((dw)&SIGNATURE_MASK) == MI_WP_SIGNATURE)
+#define IsPenEvent(dw) (((dw) & SIGNATURE_MASK) == MI_WP_SIGNATURE)
 // This one tells whether the event comes from touchscreen (and not from pen)
-#define IsTouchEvent(dw) (IsPenEvent(dw) && ((dw)&0x80))
+#define IsTouchEvent(dw) (IsPenEvent(dw) && ((dw) & 0x80))
 
 void OS_Windows::_touch_event(bool p_pressed, float p_x, float p_y, int idx) {
 	// Defensive
@@ -407,7 +407,7 @@ LRESULT OS_Windows::WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam) 
 		{
 			if (main_loop)
 				main_loop->notification(MainLoop::NOTIFICATION_WM_QUIT_REQUEST);
-			//force_quit=true;
+			// force_quit=true;
 			return 0; // Jump Back
 		}
 		case WM_MOUSELEAVE: {
@@ -472,7 +472,7 @@ LRESULT OS_Windows::WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam) 
 							(double(raw->data.mouse.lLastX) - 65536.0 / (nScreenWidth)) * nScreenWidth / 65536.0 + nScreenLeft,
 							(double(raw->data.mouse.lLastY) - 65536.0 / (nScreenHeight)) * nScreenHeight / 65536.0 + nScreenTop);
 
-					POINT coords; //client coords
+					POINT coords; // client coords
 					coords.x = abs_pos.x;
 					coords.y = abs_pos.y;
 
@@ -640,7 +640,7 @@ LRESULT OS_Windows::WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam) 
 			}
 
 			if (outside) {
-				//mouse enter
+				// mouse enter
 
 				if (main_loop && mouse_mode != MOUSE_MODE_CAPTURED)
 					main_loop->notification(MainLoop::NOTIFICATION_WM_MOUSE_ENTER);
@@ -650,7 +650,7 @@ LRESULT OS_Windows::WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam) 
 				set_cursor_shape(c);
 				outside = false;
 
-				//Once-Off notification, must call again....
+				// Once-Off notification, must call again....
 				TRACKMOUSEEVENT tme;
 				tme.cbSize = sizeof(TRACKMOUSEEVENT);
 				tme.dwFlags = TME_LEAVE;
@@ -681,7 +681,7 @@ LRESULT OS_Windows::WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam) 
 
 			mm->set_button_mask(last_button_state);
 
-			POINT coords; //client coords
+			POINT coords; // client coords
 			coords.x = GET_X_LPARAM(lParam);
 			coords.y = GET_Y_LPARAM(lParam);
 
@@ -741,7 +741,7 @@ LRESULT OS_Windows::WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam) 
 			}
 
 			if (outside) {
-				//mouse enter
+				// mouse enter
 
 				if (main_loop && mouse_mode != MOUSE_MODE_CAPTURED)
 					main_loop->notification(MainLoop::NOTIFICATION_WM_MOUSE_ENTER);
@@ -751,7 +751,7 @@ LRESULT OS_Windows::WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam) 
 				set_cursor_shape(c);
 				outside = false;
 
-				//Once-Off notification, must call again....
+				// Once-Off notification, must call again....
 				TRACKMOUSEEVENT tme;
 				tme.cbSize = sizeof(TRACKMOUSEEVENT);
 				tme.dwFlags = TME_LEAVE;
@@ -946,7 +946,7 @@ LRESULT OS_Windows::WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam) 
 			mb->set_control((wParam & MK_CONTROL) != 0);
 			mb->set_shift((wParam & MK_SHIFT) != 0);
 			mb->set_alt(alt_mem);
-			//mb->get_alt()=(wParam&MK_MENU)!=0;
+			// mb->get_alt()=(wParam&MK_MENU)!=0;
 			if (mb->is_pressed())
 				last_button_state |= (1 << (mb->get_button_index() - 1));
 			else
@@ -987,7 +987,7 @@ LRESULT OS_Windows::WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam) 
 			if (main_loop) {
 				input->parse_input_event(mb);
 				if (mb->is_pressed() && mb->get_button_index() > 3 && mb->get_button_index() < 8) {
-					//send release for mouse wheel
+					// send release for mouse wheel
 					Ref<InputEventMouseButton> mbd = mb->duplicate();
 					last_button_state &= ~(1 << (mbd->get_button_index() - 1));
 					mbd->set_button_mask(last_button_state);
@@ -1029,7 +1029,7 @@ LRESULT OS_Windows::WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam) 
 				maximized = false;
 				minimized = false;
 			}
-			//return 0;								// Jump Back
+			// return 0;								// Jump Back
 		} break;
 
 		case WM_ENTERSIZEMOVE: {
@@ -1113,7 +1113,7 @@ LRESULT OS_Windows::WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam) 
 							TOUCH_COORD_TO_PIXEL(ti.y),
 						};
 						ScreenToClient(hWnd, &touch_pos);
-						//do something with each touch input entry
+						// do something with each touch input entry
 						if (ti.dwFlags & TOUCHEVENTF_MOVE) {
 							_drag_event(touch_pos.x, touch_pos.y, ti.dwID);
 						} else if (ti.dwFlags & (TOUCHEVENTF_UP | TOUCHEVENTF_DOWN)) {
@@ -1141,7 +1141,7 @@ LRESULT OS_Windows::WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam) 
 		case WM_SETCURSOR: {
 			if (LOWORD(lParam) == HTCLIENT) {
 				if (window_has_focus && (mouse_mode == MOUSE_MODE_HIDDEN || mouse_mode == MOUSE_MODE_CAPTURED)) {
-					//Hide the cursor
+					// Hide the cursor
 					if (hCursor == NULL) {
 						hCursor = SetCursor(NULL);
 					} else {
@@ -1226,7 +1226,7 @@ void OS_Windows::process_key_events() {
 					input->parse_input_event(k);
 				}
 
-				//do nothing
+				// do nothing
 			} break;
 			case WM_KEYUP:
 			case WM_KEYDOWN: {
@@ -1354,7 +1354,7 @@ Error OS_Windows::initialize(const VideoMode &p_desired, int p_video_driver, int
 	}
 
 	video_mode = p_desired;
-	//printf("**************** desired %s, mode %s\n", p_desired.fullscreen?"true":"false", video_mode.fullscreen?"true":"false");
+	// printf("**************** desired %s, mode %s\n", p_desired.fullscreen?"true":"false", video_mode.fullscreen?"true":"false");
 	RECT WindowRect;
 
 	WindowRect.left = 0;
@@ -1368,10 +1368,10 @@ Error OS_Windows::initialize(const VideoMode &p_desired, int p_video_driver, int
 	wc.lpfnWndProc = (WNDPROC)::WndProc;
 	wc.cbClsExtra = 0;
 	wc.cbWndExtra = 0;
-	//wc.hInstance = hInstance;
+	// wc.hInstance = hInstance;
 	wc.hInstance = godot_hinstance ? godot_hinstance : GetModuleHandle(NULL);
 	wc.hIcon = LoadIcon(NULL, IDI_WINLOGO);
-	wc.hCursor = NULL; //LoadCursor(NULL, IDC_ARROW);
+	wc.hCursor = NULL; // LoadCursor(NULL, IDC_ARROW);
 	wc.hbrBackground = NULL;
 	wc.lpszMenuName = NULL;
 	wc.lpszClassName = L"Engine";
@@ -1391,7 +1391,7 @@ Error OS_Windows::initialize(const VideoMode &p_desired, int p_video_driver, int
 	Rid[0].hwndTarget = 0;
 
 	if (RegisterRawInputDevices(Rid, 1, sizeof(Rid[0])) == FALSE) {
-		//registration failed.
+		// registration failed.
 		use_raw_input = false;
 	}
 
@@ -1659,7 +1659,7 @@ Error OS_Windows::initialize(const VideoMode &p_desired, int p_video_driver, int
 	set_ime_active(false);
 
 	if (!OS::get_singleton()->is_in_low_processor_usage_mode()) {
-		//SetPriorityClass(GetCurrentProcess(), ABOVE_NORMAL_PRIORITY_CLASS);
+		// SetPriorityClass(GetCurrentProcess(), ABOVE_NORMAL_PRIORITY_CLASS);
 		SetPriorityClass(GetCurrentProcess(), ABOVE_NORMAL_PRIORITY_CLASS);
 		DWORD index = 0;
 		HANDLE handle = AvSetMmThreadCharacteristics("Games", &index);
@@ -2255,7 +2255,7 @@ void OS_Windows::set_window_per_pixel_transparency_enabled(bool p_enabled) {
 		return;
 	if (layered_window != p_enabled) {
 		if (p_enabled) {
-			//enable per-pixel alpha
+			// enable per-pixel alpha
 
 			DWM_BLURBEHIND bb = { 0 };
 			HRGN hRgn = CreateRectRgn(0, 0, -1, -1);
@@ -2266,7 +2266,7 @@ void OS_Windows::set_window_per_pixel_transparency_enabled(bool p_enabled) {
 
 			layered_window = true;
 		} else {
-			//disable per-pixel alpha
+			// disable per-pixel alpha
 			layered_window = false;
 
 			DWM_BLURBEHIND bb = { 0 };
@@ -2322,7 +2322,7 @@ Error OS_Windows::open_dynamic_library(const String p_path, void *&p_library_han
 	String path = p_path.replace("/", "\\");
 
 	if (!FileAccess::exists(path)) {
-		//this code exists so gdnative can load .dll files from within the executable path
+		// this code exists so gdnative can load .dll files from within the executable path
 		path = get_executable_path().get_base_dir().plus_file(p_path.get_file());
 	}
 
@@ -2567,7 +2567,7 @@ void OS_Windows::set_cursor_shape(CursorShape p_shape) {
 	static const LPCTSTR win_cursors[CURSOR_MAX] = {
 		IDC_ARROW,
 		IDC_IBEAM,
-		IDC_HAND, //finger
+		IDC_HAND, // finger
 		IDC_CROSS,
 		IDC_WAIT,
 		IDC_APPSTARTING,
@@ -3648,7 +3648,7 @@ OS_Windows::OS_Windows(HINSTANCE _hInstance) {
 	window_focused = true;
 	console_visible = IsWindowVisible(GetConsoleWindow());
 
-	//Note: Wacom WinTab driver API for pen input, for devices incompatible with Windows Ink.
+	// Note: Wacom WinTab driver API for pen input, for devices incompatible with Windows Ink.
 	HMODULE wintab_lib = LoadLibraryW(L"wintab32.dll");
 	if (wintab_lib) {
 		wintab_WTOpen = (WTOpenPtr)GetProcAddress(wintab_lib, "WTOpenW");
@@ -3664,7 +3664,7 @@ OS_Windows::OS_Windows(HINSTANCE _hInstance) {
 		tablet_drivers.push_back("wintab");
 	}
 
-	//Note: Windows Ink API for pen input, available on Windows 8+ only.
+	// Note: Windows Ink API for pen input, available on Windows 8+ only.
 	HMODULE user32_lib = LoadLibraryW(L"user32.dll");
 	if (user32_lib) {
 		win8p_GetPointerType = (GetPointerTypePtr)GetProcAddress(user32_lib, "GetPointerType");

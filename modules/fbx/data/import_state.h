@@ -78,7 +78,7 @@ struct ImportState {
 	Map<uint64_t, Ref<FBXSkeleton>> skeleton_map = Map<uint64_t, Ref<FBXSkeleton>>();
 
 	// nodes on the same level get merged automatically.
-	//Map<uint64_t, Skeleton *> armature_map;
+	// Map<uint64_t, Skeleton *> armature_map;
 	AnimationPlayer *animation_player = nullptr;
 
 	// Generation 4 - Raw document accessing for bone/skin/joint/kLocators

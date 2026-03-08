@@ -71,16 +71,16 @@ private:
 			middle = (low + high) / 2;
 
 			if (p_val < a[middle].key) {
-				high = middle - 1; //search low end of array
+				high = middle - 1; // search low end of array
 			} else if (a[middle].key < p_val) {
-				low = middle + 1; //search high end of array
+				low = middle + 1; // search high end of array
 			} else {
 				r_exact = true;
 				return middle;
 			}
 		}
 
-		//return the position where this would be inserted
+		// return the position where this would be inserted
 		if (a[middle].key < p_val) {
 			middle++;
 		}
@@ -101,9 +101,9 @@ private:
 			middle = (low + high) / 2;
 
 			if (p_val < a[middle].key) {
-				high = middle - 1; //search low end of array
+				high = middle - 1; // search low end of array
 			} else if (a[middle].key < p_val) {
-				low = middle + 1; //search high end of array
+				low = middle + 1; // search high end of array
 			} else {
 				return middle;
 			}
@@ -189,7 +189,7 @@ public:
 		return _cowdata.get_m(pos).value;
 	}
 
-	_FORCE_INLINE_ VMap(){};
+	_FORCE_INLINE_ VMap() {};
 	_FORCE_INLINE_ VMap(const VMap &p_from) { _cowdata._ref(p_from._cowdata); }
 	inline VMap &operator=(const VMap &p_from) {
 		_cowdata._ref(p_from._cowdata);

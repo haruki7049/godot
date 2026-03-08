@@ -1297,7 +1297,7 @@ public:
 		int height;
 		GLuint fbo;
 		GLuint depth;
-		GLuint distance; //for older devices
+		GLuint distance; // for older devices
 	};
 
 	RID_Owner<CanvasLightShadow> canvas_light_shadow_owner;

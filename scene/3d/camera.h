@@ -76,13 +76,13 @@ private:
 	RID camera;
 	RID scenario_id;
 
-	//String camera_group;
+	// String camera_group;
 
 	uint32_t layers;
 
 	Ref<Environment> environment;
 
-	//void _camera_make_current(Node *p_camera);
+	// void _camera_make_current(Node *p_camera);
 	friend class Viewport;
 	void _update_audio_listener_state();
 

@@ -52,7 +52,7 @@ protected:
 
 public:
 	Array get_collision_exceptions();
-	void add_collision_exception_with(Node *p_node); //must be physicsbody
+	void add_collision_exception_with(Node *p_node); // must be physicsbody
 	void remove_collision_exception_with(Node *p_node);
 
 	PhysicsBody2D();
@@ -251,7 +251,7 @@ public:
 	void add_force(const Vector2 &p_offset, const Vector2 &p_force);
 	void add_torque(float p_torque);
 
-	Array get_colliding_bodies() const; //function for script
+	Array get_colliding_bodies() const; // function for script
 
 	virtual String get_configuration_warning() const;
 

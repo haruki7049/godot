@@ -53,17 +53,17 @@ int dom_code2godot_scancode(EM_UTF8 const p_code[32], EM_UTF8 const p_key[32], b
 	DOM2GODOT("NumpadBackspace", BACKSPACE);
 	DOM2GODOT("NumpadClear", CLEAR);
 	DOM2GODOT("NumpadClearEntry", CLEAR);
-	//DOM2GODOT("NumpadComma", UNKNOWN);
+	// DOM2GODOT("NumpadComma", UNKNOWN);
 	DOM2GODOT("NumpadDecimal", KP_PERIOD);
 	DOM2GODOT("NumpadDivide", KP_DIVIDE);
 	DOM2GODOT("NumpadEnter", KP_ENTER);
 	DOM2GODOT("NumpadEqual", EQUAL);
-	//DOM2GODOT("NumpadHash", UNKNOWN);
-	//DOM2GODOT("NumpadMemoryAdd", UNKNOWN);
-	//DOM2GODOT("NumpadMemoryClear", UNKNOWN);
-	//DOM2GODOT("NumpadMemoryRecall", UNKNOWN);
-	//DOM2GODOT("NumpadMemoryStore", UNKNOWN);
-	//DOM2GODOT("NumpadMemorySubtract", UNKNOWN);
+	// DOM2GODOT("NumpadHash", UNKNOWN);
+	// DOM2GODOT("NumpadMemoryAdd", UNKNOWN);
+	// DOM2GODOT("NumpadMemoryClear", UNKNOWN);
+	// DOM2GODOT("NumpadMemoryRecall", UNKNOWN);
+	// DOM2GODOT("NumpadMemoryStore", UNKNOWN);
+	// DOM2GODOT("NumpadMemorySubtract", UNKNOWN);
 	DOM2GODOT("NumpadMultiply", KP_MULTIPLY);
 	DOM2GODOT("NumpadParenLeft", PARENLEFT);
 	DOM2GODOT("NumpadParenRight", PARENRIGHT);
@@ -117,7 +117,7 @@ int dom_code2godot_scancode(EM_UTF8 const p_code[32], EM_UTF8 const p_key[32], b
 	DOM2GODOT("Digit9", 9);
 	DOM2GODOT("Equal", EQUAL);
 	DOM2GODOT("IntlBackslash", BACKSLASH);
-	//DOM2GODOT("IntlRo", UNKNOWN);
+	// DOM2GODOT("IntlRo", UNKNOWN);
 	DOM2GODOT("IntlYen", YEN);
 
 	DOM2GODOT("KeyA", A);
@@ -198,8 +198,8 @@ int dom_code2godot_scancode(EM_UTF8 const p_code[32], EM_UTF8 const p_key[32], b
 	DOM2GODOT("F10", F10);
 	DOM2GODOT("F11", F11);
 	DOM2GODOT("F12", F12);
-	//DOM2GODOT("Fn", UNKNOWN); // never actually fired, but included in the standard draft.
-	//DOM2GODOT("FnLock", UNKNOWN);
+	// DOM2GODOT("Fn", UNKNOWN); // never actually fired, but included in the standard draft.
+	// DOM2GODOT("FnLock", UNKNOWN);
 	DOM2GODOT("PrintScreen", PRINT);
 	DOM2GODOT("ScrollLock", SCROLLLOCK);
 	DOM2GODOT("Pause", PAUSE);
@@ -212,7 +212,7 @@ int dom_code2godot_scancode(EM_UTF8 const p_code[32], EM_UTF8 const p_key[32], b
 	DOM2GODOT("BrowserRefresh", REFRESH);
 	DOM2GODOT("BrowserSearch", SEARCH);
 	DOM2GODOT("BrowserStop", STOP);
-	//DOM2GODOT("Eject", UNKNOWN);
+	// DOM2GODOT("Eject", UNKNOWN);
 	DOM2GODOT("LaunchApp1", LAUNCH0);
 	DOM2GODOT("LaunchApp2", LAUNCH1);
 	DOM2GODOT("LaunchMail", LAUNCHMAIL);
@@ -221,12 +221,12 @@ int dom_code2godot_scancode(EM_UTF8 const p_code[32], EM_UTF8 const p_key[32], b
 	DOM2GODOT("MediaStop", MEDIASTOP);
 	DOM2GODOT("MediaTrackNext", MEDIANEXT);
 	DOM2GODOT("MediaTrackPrevious", MEDIAPREVIOUS);
-	//DOM2GODOT("Power", UNKNOWN);
-	//DOM2GODOT("Sleep", UNKNOWN);
+	// DOM2GODOT("Power", UNKNOWN);
+	// DOM2GODOT("Sleep", UNKNOWN);
 	DOM2GODOT("AudioVolumeDown", VOLUMEDOWN);
 	DOM2GODOT("AudioVolumeMute", VOLUMEMUTE);
 	DOM2GODOT("AudioVolumeUp", VOLUMEUP);
-	//DOM2GODOT("WakeUp", UNKNOWN);
+	// DOM2GODOT("WakeUp", UNKNOWN);
 	return KEY_UNKNOWN;
 #undef DOM2GODOT
 }

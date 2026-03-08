@@ -1551,7 +1551,7 @@ void TileMapEditor::forward_canvas_draw_over_viewport(Control *p_overlay) {
 		Rect2i si = aabb.grow(1.0);
 
 		if (node->get_half_offset() != TileMap::HALF_OFFSET_X && node->get_half_offset() != TileMap::HALF_OFFSET_NEGATIVE_X) {
-			int max_lines = 2000; //avoid crash if size too small
+			int max_lines = 2000; // avoid crash if size too small
 
 			for (int i = (si.position.x) - 1; i <= (si.position.x + si.size.x); i++) {
 				Vector2 from = xform.xform(node->map_to_world(Vector2(i, si.position.y)));
@@ -1564,7 +1564,7 @@ void TileMapEditor::forward_canvas_draw_over_viewport(Control *p_overlay) {
 				}
 			}
 		} else {
-			int max_lines = 10000; //avoid crash if size too small
+			int max_lines = 10000; // avoid crash if size too small
 
 			for (int i = (si.position.x) - 1; i <= (si.position.x + si.size.x); i++) {
 				for (int j = (si.position.y) - 1; j <= (si.position.y + si.size.y); j++) {
@@ -1589,7 +1589,7 @@ void TileMapEditor::forward_canvas_draw_over_viewport(Control *p_overlay) {
 			}
 		}
 
-		int max_lines = 10000; //avoid crash if size too small
+		int max_lines = 10000; // avoid crash if size too small
 
 		if (node->get_half_offset() != TileMap::HALF_OFFSET_Y && node->get_half_offset() != TileMap::HALF_OFFSET_NEGATIVE_Y) {
 			for (int i = (si.position.y) - 1; i <= (si.position.y + si.size.y); i++) {

@@ -119,7 +119,7 @@ void ViewportContainer::_notification(int p_what) {
 				c->set_update_mode(Viewport::UPDATE_DISABLED);
 			}
 
-			c->set_handle_input_locally(false); //do not handle input locally here
+			c->set_handle_input_locally(false); // do not handle input locally here
 		}
 	}
 

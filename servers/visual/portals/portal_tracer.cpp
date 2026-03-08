@@ -222,7 +222,7 @@ void PortalTracer::cull_statics(const VSRoom &p_room, const LocalVector<Plane> &
 			}
 
 			// bypass the bitfield for now and just show / hide
-			//stat.show(bShow);
+			// stat.show(bShow);
 
 			// set the visible bit if not set
 			if (_result->bf_visible_statics.check_and_set(static_id)) {

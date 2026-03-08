@@ -226,7 +226,7 @@ uint32_t split_leaf_complex(uint32_t p_node_id, const BVHABB_CLASS &p_added_item
 
 	// 2 groups, A and B, and assign children to each to split equally
 	int max_children = orig_leaf.num_items + 1; // plus 1 for the wildcard .. the item being added
-	//CRASH_COND(max_children > MAX_CHILDREN);
+	// CRASH_COND(max_children > MAX_CHILDREN);
 
 	uint16_t *group_a = (uint16_t *)alloca(sizeof(uint16_t) * max_children);
 	uint16_t *group_b = (uint16_t *)alloca(sizeof(uint16_t) * max_children);
@@ -260,7 +260,7 @@ uint32_t split_leaf_complex(uint32_t p_node_id, const BVHABB_CLASS &p_added_item
 		if (which != wildcard) {
 			const BVHABB_CLASS &source_item_aabb = orig_leaf.get_aabb(which);
 			uint32_t source_item_ref_id = orig_leaf.get_item_ref_id(which);
-			//const Item &source_item = orig_leaf.get_item(which);
+			// const Item &source_item = orig_leaf.get_item(which);
 			_node_add_item(tnode.children[0], source_item_ref_id, source_item_aabb);
 		} else {
 			wildcard_node = tnode.children[0];
@@ -272,7 +272,7 @@ uint32_t split_leaf_complex(uint32_t p_node_id, const BVHABB_CLASS &p_added_item
 		if (which != wildcard) {
 			const BVHABB_CLASS &source_item_aabb = orig_leaf.get_aabb(which);
 			uint32_t source_item_ref_id = orig_leaf.get_item_ref_id(which);
-			//const Item &source_item = orig_leaf.get_item(which);
+			// const Item &source_item = orig_leaf.get_item(which);
 			_node_add_item(tnode.children[1], source_item_ref_id, source_item_aabb);
 		} else {
 			wildcard_node = tnode.children[1];

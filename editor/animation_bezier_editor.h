@@ -54,7 +54,7 @@ class AnimationBezierTrackEdit : public Control {
 	AnimationTimelineEdit *timeline;
 	UndoRedo *undo_redo;
 	Node *root;
-	Control *play_position; //separate control used to draw so updates for only position changed are much faster
+	Control *play_position; // separate control used to draw so updates for only position changed are much faster
 	float play_position_pos;
 
 	Ref<Animation> animation;
@@ -80,7 +80,7 @@ class AnimationBezierTrackEdit : public Control {
 	void _gui_input(const Ref<InputEvent> &p_event);
 	void _menu_selected(int p_index);
 
-	bool *block_animation_update_ptr; //used to block all tracks re-gen (speed up)
+	bool *block_animation_update_ptr; // used to block all tracks re-gen (speed up)
 
 	void _play_position_draw();
 
@@ -99,7 +99,7 @@ class AnimationBezierTrackEdit : public Control {
 	Vector2 box_selection_from;
 	Vector2 box_selection_to;
 
-	int moving_handle; //0 no move -1 or +1 out
+	int moving_handle; // 0 no move -1 or +1 out
 	int moving_handle_key;
 	Vector2 moving_handle_left;
 	Vector2 moving_handle_right;

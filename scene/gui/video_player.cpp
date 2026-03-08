@@ -376,7 +376,7 @@ bool VideoPlayer::has_autoplay() const {
 };
 
 void VideoPlayer::set_bus(const StringName &p_bus) {
-	//if audio is active, must lock this
+	// if audio is active, must lock this
 	AudioServer::get_singleton()->lock();
 	bus = p_bus;
 	AudioServer::get_singleton()->unlock();
@@ -450,7 +450,7 @@ void VideoPlayer::_bind_methods() {
 
 	ADD_PROPERTY(PropertyInfo(Variant::INT, "audio_track", PROPERTY_HINT_RANGE, "0,128,1"), "set_audio_track", "get_audio_track");
 	ADD_PROPERTY(PropertyInfo(Variant::OBJECT, "stream", PROPERTY_HINT_RESOURCE_TYPE, "VideoStream"), "set_stream", "get_stream");
-	//ADD_PROPERTY( PropertyInfo(Variant::BOOL, "stream/loop"), "set_loop", "has_loop") ;
+	// ADD_PROPERTY( PropertyInfo(Variant::BOOL, "stream/loop"), "set_loop", "has_loop") ;
 	ADD_PROPERTY(PropertyInfo(Variant::REAL, "volume_db", PROPERTY_HINT_RANGE, "-80,24,0.01"), "set_volume_db", "get_volume_db");
 	ADD_PROPERTY(PropertyInfo(Variant::REAL, "volume", PROPERTY_HINT_EXP_RANGE, "0,15,0.01", 0), "set_volume", "get_volume");
 	ADD_PROPERTY(PropertyInfo(Variant::BOOL, "autoplay"), "set_autoplay", "has_autoplay");
@@ -485,5 +485,5 @@ VideoPlayer::VideoPlayer() {
 VideoPlayer::~VideoPlayer() {
 	//	if (stream_rid.is_valid())
 	//		AudioServer::get_singleton()->free(stream_rid);
-	resampler.clear(); //Not necessary here, but make in consistent with other "stream_player" classes
+	resampler.clear(); // Not necessary here, but make in consistent with other "stream_player" classes
 };

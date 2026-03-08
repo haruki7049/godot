@@ -37,7 +37,7 @@
 #include <stddef.h>
 
 #ifndef PAD_ALIGN
-#define PAD_ALIGN 16 //must always be greater than this at much
+#define PAD_ALIGN 16 // must always be greater than this at much
 #endif
 
 class Memory {
@@ -93,8 +93,8 @@ _ALWAYS_INLINE_ T *_post_initialize(T *p_obj) {
 #define memnew(m_class) _post_initialize(new ("") m_class)
 
 _ALWAYS_INLINE_ void *operator new(size_t p_size, void *p_pointer, size_t check, const char *p_description) {
-	//void *failptr=0;
-	//ERR_FAIL_COND_V( check < p_size , failptr); /** bug, or strange compiler, most likely */
+	// void *failptr=0;
+	// ERR_FAIL_COND_V( check < p_size , failptr); /** bug, or strange compiler, most likely */
 
 	return p_pointer;
 }
@@ -148,7 +148,7 @@ T *memnew_arr_template(size_t p_elements, const char *p_descr = "") {
 
 	size_t len = sizeof(T) * p_elements;
 	uint64_t *mem = (uint64_t *)Memory::alloc_static(len, true);
-	T *failptr = nullptr; //get rid of a warning
+	T *failptr = nullptr; // get rid of a warning
 	ERR_FAIL_COND_V(!mem, failptr);
 	*(mem - 1) = p_elements;
 

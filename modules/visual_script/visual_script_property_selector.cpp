@@ -263,7 +263,7 @@ void VisualScriptPropertySelector::_update_search() {
 		}
 
 		if (category && category->get_children() == nullptr) {
-			memdelete(category); //old category was unused
+			memdelete(category); // old category was unused
 		}
 	}
 	if (properties) {
@@ -708,7 +708,7 @@ void VisualScriptPropertySelector::_bind_methods() {
 VisualScriptPropertySelector::VisualScriptPropertySelector() {
 	VBoxContainer *vbc = memnew(VBoxContainer);
 	add_child(vbc);
-	//set_child_rect(vbc);
+	// set_child_rect(vbc);
 	search_box = memnew(LineEdit);
 	vbc->add_margin_child(TTR("Search:"), search_box);
 	search_box->connect("text_changed", this, "_text_changed");

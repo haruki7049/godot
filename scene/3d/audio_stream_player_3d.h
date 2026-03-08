@@ -77,7 +77,7 @@ private:
 		int bus_index;
 		int reverb_bus_index;
 		AudioFrame reverb_vol[4];
-		Viewport *viewport; //pointer only used for reference to previous mix
+		Viewport *viewport; // pointer only used for reference to previous mix
 
 		Output() {
 			filter_gain = 0;
@@ -91,7 +91,7 @@ private:
 	SafeNumeric<int> output_count;
 	SafeFlag output_ready;
 
-	//these are used by audio thread to have a reference of previous volumes (for ramping volume and avoiding clicks)
+	// these are used by audio thread to have a reference of previous volumes (for ramping volume and avoiding clicks)
 	Output prev_outputs[MAX_OUTPUTS];
 	int prev_output_count;
 

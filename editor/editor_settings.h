@@ -106,7 +106,7 @@ private:
 	Vector<String> recent_dirs;
 
 	bool save_changed_setting;
-	bool optimize_save; //do not save stuff that came from config but was not set from engine
+	bool optimize_save; // do not save stuff that came from config but was not set from engine
 
 	bool _set(const StringName &p_name, const Variant &p_value);
 	bool _set_only(const StringName &p_name, const Variant &p_value);
@@ -202,7 +202,7 @@ public:
 	~EditorSettings();
 };
 
-//not a macro any longer
+// not a macro any longer
 
 #define EDITOR_DEF(m_var, m_val) _EDITOR_DEF(m_var, Variant(m_val))
 #define EDITOR_DEF_RST(m_var, m_val) _EDITOR_DEF(m_var, Variant(m_val), true)

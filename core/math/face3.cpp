@@ -51,12 +51,12 @@ int Face3::split_by_plane(const Plane &p_plane, Face3 p_res[3], bool p_is_point_
 
 		} else {
 			if (p_plane.is_point_over(vertex[i])) {
-				//Point is over
+				// Point is over
 				ERR_FAIL_COND_V(above_count >= 4, 0);
 				above[above_count++] = vertex[i];
 
 			} else {
-				//Point is under
+				// Point is under
 				ERR_FAIL_COND_V(below_count >= 4, 0);
 				below[below_count++] = vertex[i];
 			}
@@ -78,7 +78,7 @@ int Face3::split_by_plane(const Plane &p_plane, Face3 p_res[3], bool p_is_point_
 
 	int polygons_created = 0;
 
-	ERR_FAIL_COND_V(above_count >= 4 && below_count >= 4, 0); //bug in the algo
+	ERR_FAIL_COND_V(above_count >= 4 && below_count >= 4, 0); // bug in the algo
 
 	if (above_count >= 3) {
 		p_res[polygons_created] = Face3(above[0], above[1], above[2]);
@@ -128,7 +128,7 @@ Face3::Side Face3::get_side_of(const Face3 &p_face, ClockDirection p_clock_dir) 
 	for (int i = 0; i < 3; i++) {
 		const Vector3 &v = p_face.vertex[i];
 
-		if (plane.has_point(v)) { //coplanar, don't bother
+		if (plane.has_point(v)) { // coplanar, don't bother
 			continue;
 		}
 
@@ -174,7 +174,7 @@ real_t Face3::get_area() const {
 
 ClockDirection Face3::get_clock_dir() const {
 	Vector3 normal = vec3_cross(vertex[0] - vertex[1], vertex[0] - vertex[2]);
-	//printf("normal is %g,%g,%g x %g,%g,%g- wtfu is %g\n",tofloat(normal.x),tofloat(normal.y),tofloat(normal.z),tofloat(vertex[0].x),tofloat(vertex[0].y),tofloat(vertex[0].z),tofloat( normal.dot( vertex[0] ) ) );
+	// printf("normal is %g,%g,%g x %g,%g,%g- wtfu is %g\n",tofloat(normal.x),tofloat(normal.y),tofloat(normal.z),tofloat(vertex[0].x),tofloat(vertex[0].y),tofloat(vertex[0].z),tofloat( normal.dot( vertex[0] ) ) );
 	return (normal.dot(vertex[0]) >= 0) ? CLOCKWISE : COUNTERCLOCKWISE;
 }
 

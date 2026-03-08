@@ -69,23 +69,23 @@ precision mediump int;
 varying vec2 uv_interp;
 /* clang-format on */
 
-uniform highp sampler2D source; //texunit:0
+uniform highp sampler2D source; // texunit:0
 
 #if defined(USE_GLOW_LEVEL1) || defined(USE_GLOW_LEVEL2) || defined(USE_GLOW_LEVEL3) || defined(USE_GLOW_LEVEL4) || defined(USE_GLOW_LEVEL5) || defined(USE_GLOW_LEVEL6) || defined(USE_GLOW_LEVEL7)
 #define USING_GLOW // only use glow when at least one glow level is selected
 
 #ifdef USE_MULTI_TEXTURE_GLOW
-uniform highp sampler2D source_glow1; //texunit:2
-uniform highp sampler2D source_glow2; //texunit:3
-uniform highp sampler2D source_glow3; //texunit:4
-uniform highp sampler2D source_glow4; //texunit:5
-uniform highp sampler2D source_glow5; //texunit:6
-uniform highp sampler2D source_glow6; //texunit:7
+uniform highp sampler2D source_glow1; // texunit:2
+uniform highp sampler2D source_glow2; // texunit:3
+uniform highp sampler2D source_glow3; // texunit:4
+uniform highp sampler2D source_glow4; // texunit:5
+uniform highp sampler2D source_glow5; // texunit:6
+uniform highp sampler2D source_glow6; // texunit:7
 #ifdef USE_GLOW_LEVEL7
-uniform highp sampler2D source_glow7; //texunit:8
+uniform highp sampler2D source_glow7; // texunit:8
 #endif
 #else
-uniform highp sampler2D source_glow; //texunit:2
+uniform highp sampler2D source_glow; // texunit:2
 #endif
 uniform highp float glow_intensity;
 #endif
@@ -103,7 +103,7 @@ uniform float sharpen_intensity;
 #endif
 
 #ifdef USE_COLOR_CORRECTION
-uniform sampler2D color_correction; //texunit:1
+uniform sampler2D color_correction; // texunit:1
 #endif
 
 #ifdef GL_EXT_gpu_shader4
@@ -172,13 +172,13 @@ vec4 texture2D_bicubic(sampler2D tex, vec2 uv, int p_lod) {
 }
 
 #define GLOW_TEXTURE_SAMPLE(m_tex, m_uv, m_lod) texture2D_bicubic(m_tex, m_uv, m_lod)
-#else //!USE_GLOW_FILTER_BICUBIC
+#else //! USE_GLOW_FILTER_BICUBIC
 #define GLOW_TEXTURE_SAMPLE(m_tex, m_uv, m_lod) texture2DLod(m_tex, m_uv, float(m_lod))
-#endif //USE_GLOW_FILTER_BICUBIC
+#endif // USE_GLOW_FILTER_BICUBIC
 
-#else //!GL_EXT_gpu_shader4
+#else //! GL_EXT_gpu_shader4
 #define GLOW_TEXTURE_SAMPLE(m_tex, m_uv, m_lod) texture2DLod(m_tex, m_uv, float(m_lod))
-#endif //GL_EXT_gpu_shader4
+#endif // GL_EXT_gpu_shader4
 
 vec3 apply_glow(vec3 color, vec3 glow) { // apply glow using the selected blending mode
 #ifdef USE_GLOW_REPLACE
@@ -328,7 +328,7 @@ void main() {
 #ifdef USE_GLOW_LEVEL7
 	glow += GLOW_TEXTURE_SAMPLE(source_glow, uv_interp, 7).rgb;
 #endif
-#endif //USE_MULTI_TEXTURE_GLOW
+#endif // USE_MULTI_TEXTURE_GLOW
 
 	glow *= glow_intensity;
 	color = apply_glow(color, glow);

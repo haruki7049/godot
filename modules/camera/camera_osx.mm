@@ -181,7 +181,7 @@
 			PoolVector<uint8_t>::Write w = img_data[1].write();
 			memcpy(w.ptr(), dataCbCr, 2 * new_width * new_height);
 
-			///TODO GLES2 doesn't support FORMAT_RG8, need to do some form of conversion
+			/// TODO GLES2 doesn't support FORMAT_RG8, need to do some form of conversion
 			img[1].instance();
 			img[1]->create(new_width, new_height, 0, Image::FORMAT_RG8, img_data[1]);
 		}

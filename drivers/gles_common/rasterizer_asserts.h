@@ -36,7 +36,7 @@
 #if defined(TOOLS_ENABLED) && defined(DEBUG_ENABLED)
 // only uncomment this define for error checking in development, not in the main repository
 // as these checks will slow things down in debug builds.
-//#define RASTERIZER_EXTRA_CHECKS
+// #define RASTERIZER_EXTRA_CHECKS
 #endif
 
 #ifdef RASTERIZER_EXTRA_CHECKS

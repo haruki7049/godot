@@ -145,14 +145,14 @@ uniform vec3 bcs;
 
 #ifdef USE_COLOR_CORRECTION
 
-uniform sampler2D color_correction; //texunit:1
+uniform sampler2D color_correction; // texunit:1
 
 #endif
 
 layout(location = 0) out vec4 frag_color;
 
 void main() {
-	//vec4 color = color_interp;
+	// vec4 color = color_interp;
 
 #ifdef USE_PANORAMA
 

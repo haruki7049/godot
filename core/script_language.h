@@ -117,7 +117,7 @@ protected:
 public:
 	virtual bool can_instance() const = 0;
 
-	virtual Ref<Script> get_base_script() const = 0; //for script inheritance
+	virtual Ref<Script> get_base_script() const = 0; // for script inheritance
 
 	virtual bool inherits_script(const Ref<Script> &p_script) const = 0;
 
@@ -144,7 +144,7 @@ public:
 
 	virtual bool get_property_default_value(const StringName &p_property, Variant &r_value) const = 0;
 
-	virtual void update_exports() {} //editor tool
+	virtual void update_exports() {} // editor tool
 	virtual void get_script_method_list(List<MethodInfo> *p_list) const = 0;
 	virtual void get_script_property_list(List<PropertyInfo> *p_list) const = 0;
 
@@ -183,12 +183,12 @@ public:
 		return String();
 	}
 
-	//this is used by script languages that keep a reference counter of their own
-	//you can make make Ref<> not die when it reaches zero, so deleting the reference
-	//depends entirely from the script
+	// this is used by script languages that keep a reference counter of their own
+	// you can make make Ref<> not die when it reaches zero, so deleting the reference
+	// depends entirely from the script
 
 	virtual void refcount_incremented() {}
-	virtual bool refcount_decremented() { return true; } //return true if it can die
+	virtual bool refcount_decremented() { return true; } // return true if it can die
 
 	virtual Ref<Script> get_script() const = 0;
 
@@ -312,7 +312,7 @@ public:
 
 	/* MULTITHREAD FUNCTIONS */
 
-	//some VMs need to be notified of thread creation/exiting to allocate a stack
+	// some VMs need to be notified of thread creation/exiting to allocate a stack
 	virtual void thread_enter() {}
 	virtual void thread_exit() {}
 
@@ -358,10 +358,10 @@ public:
 	virtual int profiling_get_accumulated_data(ProfilingInfo *p_info_arr, int p_info_max) = 0;
 	virtual int profiling_get_frame_data(ProfilingInfo *p_info_arr, int p_info_max) = 0;
 
-	virtual void *alloc_instance_binding_data(Object *p_object) { return nullptr; } //optional, not used by all languages
-	virtual void free_instance_binding_data(void *p_data) {} //optional, not used by all languages
-	virtual void refcount_incremented_instance_binding(Object *p_object) {} //optional, not used by all languages
-	virtual bool refcount_decremented_instance_binding(Object *p_object) { return true; } //return true if it can die //optional, not used by all languages
+	virtual void *alloc_instance_binding_data(Object *p_object) { return nullptr; } // optional, not used by all languages
+	virtual void free_instance_binding_data(void *p_data) {} // optional, not used by all languages
+	virtual void refcount_incremented_instance_binding(Object *p_object) {} // optional, not used by all languages
+	virtual bool refcount_decremented_instance_binding(Object *p_object) { return true; } // return true if it can die //optional, not used by all languages
 
 	virtual void frame();
 
@@ -394,8 +394,8 @@ public:
 		r_error.error = Variant::CallError::CALL_ERROR_INVALID_METHOD;
 		return Variant();
 	}
-	//virtual void call_multilevel(const StringName& p_method,VARIANT_ARG_LIST) { return Variant(); }
-	//virtual void call_multilevel(const StringName& p_method,const Variant** p_args,int p_argcount,Variant::CallError &r_error) { return Variant(); }
+	// virtual void call_multilevel(const StringName& p_method,VARIANT_ARG_LIST) { return Variant(); }
+	// virtual void call_multilevel(const StringName& p_method,const Variant** p_args,int p_argcount,Variant::CallError &r_error) { return Variant(); }
 	virtual void notification(int p_notification) {}
 
 	virtual Ref<Script> get_script() const { return script; }
@@ -404,7 +404,7 @@ public:
 
 	Object *get_owner() { return owner; }
 
-	void update(const List<PropertyInfo> &p_properties, const Map<StringName, Variant> &p_values); //likely changed in editor
+	void update(const List<PropertyInfo> &p_properties, const Map<StringName, Variant> &p_values); // likely changed in editor
 
 	virtual bool is_placeholder() const { return true; }
 

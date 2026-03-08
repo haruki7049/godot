@@ -617,7 +617,7 @@ void CanvasItemEditor::_get_canvas_items_at_pos(const Point2 &p_pos, Vector<_Sel
 
 	_find_canvas_items_at_pos(p_pos, scene, r_items);
 
-	//Remove invalid results
+	// Remove invalid results
 	for (int i = 0; i < r_items.size(); i++) {
 		Node *node = r_items[i].item;
 
@@ -647,7 +647,7 @@ void CanvasItemEditor::_get_canvas_items_at_pos(const Point2 &p_pos, Vector<_Sel
 			}
 		}
 
-		//Remove the item if invalid
+		// Remove the item if invalid
 		if (!canvas_item || duplicate || (canvas_item != scene && canvas_item->get_owner() != scene && !scene->is_editable_instance(canvas_item->get_owner())) || (!p_allow_locked && _is_node_locked(canvas_item))) {
 			r_items.remove(i);
 			i--;
@@ -703,7 +703,7 @@ bool CanvasItemEditor::_get_bone_shape(Vector<Vector2> *shape, Vector<Vector2> *
 		return false;
 	}
 	if (!from_node->is_inside_tree()) {
-		return false; //may have been removed
+		return false; // may have been removed
 	}
 
 	if (!to_node && bone->get().length == 0) {
@@ -894,7 +894,7 @@ void CanvasItemEditor::_save_canvas_item_ik_chain(const CanvasItem *p_canvas_ite
 			bone = Object::cast_to<Node2D>(bone->get_parent());
 		}
 
-		//Save the bone state and length if we have an IK chain
+		// Save the bone state and length if we have an IK chain
 		if (ik_found) {
 			bone = Object::cast_to<Node2D>(p_canvas_item);
 			Transform2D bone_xform = bone->get_global_transform();
@@ -1355,7 +1355,7 @@ bool CanvasItemEditor::_gui_input_zoom_or_pan(const Ref<InputEvent> &p_event, bo
 		if (is_pan_key && (EditorSettings::get_singleton()->get("editors/2d/simple_panning") || drag_type != DRAG_NONE)) {
 			if (!panning) {
 				if (k->is_pressed() && !k->is_echo()) {
-					//Pan the viewport
+					// Pan the viewport
 					panning = true;
 				}
 			} else {
@@ -1616,7 +1616,7 @@ bool CanvasItemEditor::_gui_input_rotate(const Ref<InputEvent> &p_event) {
 			for (List<CanvasItem *>::Element *E = drag_selection.front(); E; E = E->next()) {
 				CanvasItem *canvas_item = E->get();
 				drag_to = transform.affine_inverse().xform(m->get_position());
-				//Rotate the opposite way if the canvas item's compounded scale has an uneven number of negative elements
+				// Rotate the opposite way if the canvas item's compounded scale has an uneven number of negative elements
 				bool opposite = (canvas_item->get_global_transform().get_scale().sign().dot(canvas_item->get_transform().get_scale().sign()) == 0);
 				canvas_item->_edit_set_rotation(snap_angle(canvas_item->_edit_get_rotation() + (opposite ? -1 : 1) * (drag_from - drag_rotation_center).angle_to(drag_to - drag_rotation_center), canvas_item->_edit_get_rotation()));
 				viewport->update();
@@ -1889,7 +1889,7 @@ bool CanvasItemEditor::_gui_input_resize(const Ref<InputEvent> &p_event) {
 		if (m.is_valid()) {
 			CanvasItem *canvas_item = drag_selection[0];
 			CanvasItemEditorSelectedItem *se = editor_selection->get_node_editor_data<CanvasItemEditorSelectedItem>(canvas_item);
-			//Reset state
+			// Reset state
 			canvas_item->_edit_set_state(se->undo_state);
 
 			bool uniform = m->get_shift();
@@ -2160,7 +2160,7 @@ bool CanvasItemEditor::_gui_input_move(const Ref<InputEvent> &p_event) {
 	Ref<InputEventKey> k = p_event;
 
 	if (drag_type == DRAG_NONE) {
-		//Start moving the nodes
+		// Start moving the nodes
 		if (b.is_valid() && b->get_button_index() == BUTTON_LEFT && b->is_pressed()) {
 			if ((b->get_alt() && !b->get_control()) || tool == TOOL_MOVE) {
 				List<CanvasItem *> selection = _get_edited_canvas_items();
@@ -2263,7 +2263,7 @@ bool CanvasItemEditor::_gui_input_move(const Ref<InputEvent> &p_event) {
 				_insert_animation_keys(true, false, false, true);
 			}
 
-			//Make sure smart snapping lines disappear.
+			// Make sure smart snapping lines disappear.
 			snap_target[0] = SNAP_TARGET_NONE;
 			snap_target[1] = SNAP_TARGET_NONE;
 
@@ -2709,29 +2709,29 @@ void CanvasItemEditor::_gui_input_viewport(const Ref<InputEvent> &p_event) {
 
 	if (EditorSettings::get_singleton()->get("editors/2d/simple_panning") || !pan_pressed) {
 		if ((accepted = _gui_input_rulers_and_guides(p_event))) {
-			//printf("Rulers and guides\n");
+			// printf("Rulers and guides\n");
 		} else if ((accepted = editor->get_editor_plugins_over()->forward_gui_input(p_event))) {
-			//printf("Plugin\n");
+			// printf("Plugin\n");
 		} else if ((accepted = _gui_input_open_scene_on_double_click(p_event))) {
-			//printf("Open scene on double click\n");
+			// printf("Open scene on double click\n");
 		} else if ((accepted = _gui_input_scale(p_event))) {
-			//printf("Set scale\n");
+			// printf("Set scale\n");
 		} else if ((accepted = _gui_input_pivot(p_event))) {
-			//printf("Set pivot\n");
+			// printf("Set pivot\n");
 		} else if ((accepted = _gui_input_resize(p_event))) {
-			//printf("Resize\n");
+			// printf("Resize\n");
 		} else if ((accepted = _gui_input_rotate(p_event))) {
-			//printf("Rotate\n");
+			// printf("Rotate\n");
 		} else if ((accepted = _gui_input_move(p_event))) {
-			//printf("Move\n");
+			// printf("Move\n");
 		} else if ((accepted = _gui_input_anchors(p_event))) {
-			//printf("Anchors\n");
+			// printf("Anchors\n");
 		} else if ((accepted = _gui_input_select(p_event))) {
-			//printf("Selection\n");
+			// printf("Selection\n");
 		} else if ((accepted = _gui_input_ruler_tool(p_event))) {
-			//printf("Measure\n");
+			// printf("Measure\n");
 		} else {
-			//printf("Not accepted\n");
+			// printf("Not accepted\n");
 		}
 	}
 
@@ -3177,16 +3177,16 @@ void CanvasItemEditor::_draw_ruler_tool() {
 
 			float arc_1_start_angle =
 					end_to_begin.x < 0 ?
-							  (end_to_begin.y < 0 ? 3.0 * Math_PI / 2.0 - vertical_angle_rad : Math_PI / 2.0) :
-							  (end_to_begin.y < 0 ? 3.0 * Math_PI / 2.0 : Math_PI / 2.0 - vertical_angle_rad);
+							(end_to_begin.y < 0 ? 3.0 * Math_PI / 2.0 - vertical_angle_rad : Math_PI / 2.0) :
+							(end_to_begin.y < 0 ? 3.0 * Math_PI / 2.0 : Math_PI / 2.0 - vertical_angle_rad);
 			float arc_1_end_angle = arc_1_start_angle + vertical_angle_rad;
 			// Constrain arc to triangle height & max size
 			float arc_1_radius = MIN(MIN(arc_radius_max_length_percent * ruler_length, ABS(end_to_begin.y)), arc_max_radius);
 
 			float arc_2_start_angle =
 					end_to_begin.x < 0 ?
-							  (end_to_begin.y < 0 ? 0.0 : -horizontal_angle_rad) :
-							  (end_to_begin.y < 0 ? Math_PI - horizontal_angle_rad : Math_PI);
+							(end_to_begin.y < 0 ? 0.0 : -horizontal_angle_rad) :
+							(end_to_begin.y < 0 ? Math_PI - horizontal_angle_rad : Math_PI);
 			float arc_2_end_angle = arc_2_start_angle + horizontal_angle_rad;
 			// Constrain arc to triangle width & max size
 			float arc_2_radius = MIN(MIN(arc_radius_max_length_percent * ruler_length, ABS(end_to_begin.x)), arc_max_radius);
@@ -3406,7 +3406,7 @@ void CanvasItemEditor::_draw_control_helpers(Control *control) {
 		}
 
 		switch (drag_type) {
-			//Draw the ghost rect if the node if rotated/scaled
+			// Draw the ghost rect if the node if rotated/scaled
 			case DRAG_LEFT:
 			case DRAG_TOP_LEFT:
 			case DRAG_TOP:
@@ -3497,7 +3497,7 @@ void CanvasItemEditor::_draw_selection() {
 			viewport->draw_set_transform_matrix(viewport->get_transform());
 		}
 
-		if (single && !item_locked && (tool == TOOL_SELECT || tool == TOOL_MOVE || tool == TOOL_SCALE || tool == TOOL_ROTATE || tool == TOOL_EDIT_PIVOT)) { //kind of sucks
+		if (single && !item_locked && (tool == TOOL_SELECT || tool == TOOL_MOVE || tool == TOOL_SCALE || tool == TOOL_ROTATE || tool == TOOL_EDIT_PIVOT)) { // kind of sucks
 			// Draw the pivot
 			if (canvas_item->_edit_use_pivot()) {
 				// Draw the node's pivot
@@ -3629,7 +3629,7 @@ void CanvasItemEditor::_draw_straight_line(Point2 p_from, Point2 p_to, Color p_c
 		float y_for_viewport_x = ((to.y - from.y) * (viewport_size.x - from.x)) / (to.x - from.x) + from.y;
 		float x_for_viewport_y = ((to.x - from.x) * (viewport_size.y - from.y)) / (to.y - from.y) + from.x; // faux
 
-		//bool start_set = false;
+		// bool start_set = false;
 		if (y_for_zero_x >= 0 && y_for_zero_x <= viewport_size.y) {
 			points.push_back(Point2(0, y_for_zero_x));
 		}
@@ -3843,7 +3843,7 @@ void CanvasItemEditor::_draw_locks_and_groups(Node *p_node, const Transform2D &p
 		Ref<Texture> group = get_icon("GroupViewport", "EditorIcons");
 		if (canvas_item->has_meta("_edit_group_") && show_edit_locks) {
 			group->draw(viewport_canvas_item, (transform * canvas_xform * parent_xform).xform(Point2(0, 0)) + Point2(offset, 0));
-			//offset += group->get_size().x;
+			// offset += group->get_size().x;
 		}
 	}
 }
@@ -4729,7 +4729,7 @@ void CanvasItemEditor::_insert_animation_keys(bool p_location, bool p_rotation, 
 			}
 
 			if (n2d->has_meta("_edit_bone_") && n2d->get_parent_item()) {
-				//look for an IK chain
+				// look for an IK chain
 				List<Node2D *> ik_chain;
 
 				Node2D *n = Object::cast_to<Node2D>(n2d->get_parent_item());
@@ -5197,9 +5197,9 @@ void CanvasItemEditor::_popup_callback(int p_op) {
 						ctrl->set_position(Point2());
 					}
 					/*
-                                   if (key_scale)
+								   if (key_scale)
 				   AnimationPlayerEditor::singleton->get_track_editor()->insert_node_value_key(ctrl,"rect/size",ctrl->get_size());
-                                   */
+								   */
 				}
 			}
 
@@ -5360,7 +5360,7 @@ void CanvasItemEditor::_focus_selection(int p_op) {
 		}
 
 		// counting invisible items, for now
-		//if (!canvas_item->is_visible_in_tree()) continue;
+		// if (!canvas_item->is_visible_in_tree()) continue;
 		++count;
 
 		Rect2 item_rect;
@@ -6102,7 +6102,7 @@ CanvasItemEditor::CanvasItemEditor(EditorNode *p_editor) {
 	key_auto_insert_button->set_flat(true);
 	key_auto_insert_button->set_toggle_mode(true);
 	key_auto_insert_button->set_focus_mode(FOCUS_NONE);
-	//key_auto_insert_button->connect("pressed", this, "_popup_callback", varray(ANIM_INSERT_KEY));
+	// key_auto_insert_button->connect("pressed", this, "_popup_callback", varray(ANIM_INSERT_KEY));
 	key_auto_insert_button->set_tooltip(TTR("Auto insert keys when objects are translated, rotated or scaled (based on mask).\nKeys are only added to existing tracks, no new tracks will be created.\nKeys must be inserted manually for the first time."));
 	key_auto_insert_button->set_shortcut(ED_SHORTCUT("canvas_item_editor/anim_auto_insert_key", TTR("Auto Insert Key")));
 	animation_hb->add_child(key_auto_insert_button);

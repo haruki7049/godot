@@ -160,10 +160,10 @@ Null::~Null() {
 // ------------------------------------------------------------------------------------------------
 LimbNode::LimbNode(uint64_t id, const ElementPtr element, const Document &doc, const std::string &name) :
 		NodeAttribute(id, element, doc, name) {
-	//std::cout << "limb node: " << name << std::endl;
-	//const Scope &sc = GetRequiredScope(element);
+	// std::cout << "limb node: " << name << std::endl;
+	// const Scope &sc = GetRequiredScope(element);
 
-	//const ElementPtr const TypeFlag = sc["TypeFlags"];
+	// const ElementPtr const TypeFlag = sc["TypeFlags"];
 
 	// keep this it can dump new properties for you
 	// for( auto element : sc.Elements())

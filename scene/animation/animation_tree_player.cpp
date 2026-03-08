@@ -377,7 +377,7 @@ bool AnimationTreePlayer::_get(const StringName &p_name, Variant &r_ret) const {
 	}
 
 	data["nodes"] = nodes;
-	//connectiosn
+	// connectiosn
 
 	List<Connection> connections;
 	get_connection_list(&connections);
@@ -416,8 +416,8 @@ void AnimationTreePlayer::_notification(int p_what) {
 			WARN_DEPRECATED_MSG("AnimationTreePlayer has been deprecated. Use AnimationTree instead.");
 
 			if (!processing) {
-				//make sure that a previous process state was not saved
-				//only process if "processing" is set
+				// make sure that a previous process state was not saved
+				// only process if "processing" is set
 				set_physics_process_internal(false);
 				set_process_internal(false);
 			}
@@ -484,7 +484,7 @@ float AnimationTreePlayer::_process_node(const StringName &p_node, AnimationNode
 	ERR_FAIL_COND_V(!node_map.has(p_node), 0);
 	NodeBase *nb = node_map[p_node];
 
-	//transform to seconds...
+	// transform to seconds...
 
 	switch (nb->type) {
 		case NODE_OUTPUT: {
@@ -499,10 +499,10 @@ float AnimationTreePlayer::_process_node(const StringName &p_node, AnimationNode
 
 			float rem = 0;
 			if (!an->animation.is_null()) {
-				//float pos = an->time;
-				//float delta = p_time;
+				// float pos = an->time;
+				// float delta = p_time;
 
-				//const Animation *a = an->animation.operator->();
+				// const Animation *a = an->animation.operator->();
 
 				if (p_seek) {
 					an->time = p_time;
@@ -561,7 +561,7 @@ float AnimationTreePlayer::_process_node(const StringName &p_node, AnimationNode
 			OneShotNode *osn = static_cast<OneShotNode *>(nb);
 
 			if (!osn->active) {
-				//make it as if this node doesn't exist, pass input 0 by.
+				// make it as if this node doesn't exist, pass input 0 by.
 				return _process_node(osn->inputs[0].node, r_prev_anim, p_time, p_seek, p_fallback_weight, p_weights);
 			}
 
@@ -581,7 +581,7 @@ float AnimationTreePlayer::_process_node(const StringName &p_node, AnimationNode
 				if (osn->fade_in > 0) {
 					blend = osn->time / osn->fade_in;
 				} else {
-					blend = 0; //wtf
+					blend = 0; // wtf
 				}
 
 			} else if (!osn->start && osn->remaining < osn->fade_out) {
@@ -749,7 +749,7 @@ float AnimationTreePlayer::_process_node(const StringName &p_node, AnimationNode
 				_compute_weights(&p_fallback_weight, p_weights, 1.0 - blend);
 				_compute_weights(&prev_fallback_weight, &prev_weights, blend);
 
-				if (!p_seek && tn->switched) { //just switched, seek to start of current
+				if (!p_seek && tn->switched) { // just switched, seek to start of current
 
 					rem = _process_node(tn->inputs[tn->current].node, r_prev_anim, 0, true, p_fallback_weight, p_weights);
 				} else {
@@ -801,11 +801,11 @@ void AnimationTreePlayer::_process_animation(float p_delta) {
 	}
 
 	if (dirty_caches) {
-		//some animation changed.. ignore this pass
+		// some animation changed.. ignore this pass
 		return;
 	}
 
-	//update the tracks..
+	// update the tracks..
 
 	/* STEP 1 CLEAR TRACKS */
 
@@ -831,7 +831,7 @@ void AnimationTreePlayer::_process_animation(float p_delta) {
 
 	while (anim_list) {
 		if (!anim_list->animation.is_null() && !anim_list->skip) {
-			//check if animation is meaningful
+			// check if animation is meaningful
 			Animation *a = anim_list->animation.operator->();
 
 			for (List<AnimationNode::TrackRef>::Element *E = anim_list->tref.front(); E; E = E->next()) {
@@ -967,7 +967,7 @@ void AnimationTreePlayer::add_node(NodeType p_type, const StringName &p_node) {
 		}
 	}
 
-	//n->name+=" "+itos(p_node);
+	// n->name+=" "+itos(p_node);
 	node_map[p_node] = n;
 }
 
@@ -1361,11 +1361,11 @@ Error AnimationTreePlayer::connect_nodes(const StringName &p_src_node, const Str
 	ERR_FAIL_COND_V(!node_map.has(p_dst_node), ERR_INVALID_PARAMETER);
 	ERR_FAIL_COND_V(p_src_node == p_dst_node, ERR_INVALID_PARAMETER);
 
-	//NodeBase *src = node_map[p_src_node];
+	// NodeBase *src = node_map[p_src_node];
 	NodeBase *dst = node_map[p_dst_node];
 	ERR_FAIL_INDEX_V(p_dst_input, dst->inputs.size(), ERR_INVALID_PARAMETER);
 
-	//int oldval = dst->inputs[p_dst_input].node;
+	// int oldval = dst->inputs[p_dst_input].node;
 
 	for (Map<StringName, NodeBase *>::Element *E = node_map.front(); E; E = E->next()) {
 		NodeBase *nb = E->get();

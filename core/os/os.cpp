@@ -92,7 +92,7 @@ uint64_t OS::get_system_time_secs() const {
 uint64_t OS::get_system_time_msecs() const {
 	return 0;
 }
-void OS::debug_break(){
+void OS::debug_break() {
 
 	// something
 };
@@ -188,7 +188,7 @@ bool OS::is_stdout_debug_enabled() const {
 }
 
 void OS::dump_memory_to_file(const char *p_file) {
-	//Memory::dump_static_mem_to_file(p_file);
+	// Memory::dump_static_mem_to_file(p_file);
 }
 
 static FileAccess *_OSPRF = nullptr;
@@ -413,7 +413,7 @@ Error OS::set_cwd(const String &p_cwd) {
 }
 
 bool OS::has_touchscreen_ui_hint() const {
-	//return false;
+	// return false;
 	return Input::get_singleton() && Input::get_singleton()->is_emulating_touch_from_mouse();
 }
 
@@ -569,9 +569,9 @@ OS::SwitchVSyncCallbackInThread OS::switch_vsync_function = nullptr;
 
 void OS::set_use_vsync(bool p_enable) {
 	_use_vsync = p_enable;
-	if (switch_vsync_function) { //if a function was set, use function
+	if (switch_vsync_function) { // if a function was set, use function
 		switch_vsync_function(p_enable);
-	} else { //otherwise just call here
+	} else { // otherwise just call here
 		_set_use_vsync(p_enable);
 	}
 }

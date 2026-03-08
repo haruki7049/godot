@@ -306,7 +306,7 @@ void EditorExportPlatformAndroid::_check_for_changes_poll_thread(void *ud) {
 					}
 
 					if (d.description == "") {
-						//in the oven, request!
+						// in the oven, request!
 						args.clear();
 						args.push_back("-s");
 						args.push_back(d.id);
@@ -349,7 +349,7 @@ void EditorExportPlatformAndroid::_check_for_changes_poll_thread(void *ud) {
 								d.description += "Chipset: " + p.get_slice("=", 1).strip_edges() + "\n";
 							} else if (p.begins_with("ro.opengles.version=")) {
 								uint32_t opengl = p.get_slice("=", 1).to_int();
-								d.description += "OpenGL: " + itos(opengl >> 16) + "." + itos((opengl >> 8) & 0xFF) + "." + itos((opengl)&0xFF) + "\n";
+								d.description += "OpenGL: " + itos(opengl >> 16) + "." + itos((opengl >> 8) & 0xFF) + "." + itos((opengl) & 0xFF) + "\n";
 							}
 						}
 
@@ -383,7 +383,7 @@ void EditorExportPlatformAndroid::_check_for_changes_poll_thread(void *ud) {
 	if (EditorSettings::get_singleton()->get("export/android/shutdown_adb_on_exit")) {
 		String adb = get_adb_path();
 		if (!FileAccess::exists(adb)) {
-			return; //adb not configured
+			return; // adb not configured
 		}
 
 		List<String> args;
@@ -503,11 +503,11 @@ bool EditorExportPlatformAndroid::is_package_name_valid(const String &p_package,
 
 bool EditorExportPlatformAndroid::_should_compress_asset(const String &p_path, const Vector<uint8_t> &p_data) {
 	/*
-     *  By not compressing files with little or not benefit in doing so,
-     *  a performance gain is expected attime. Moreover, if the APK is
-     *  zip-aligned, assets stored as they are can be efficiently read by
-     *  Android by memory-mapping them.
-     */
+	 *  By not compressing files with little or not benefit in doing so,
+	 *  a performance gain is expected attime. Moreover, if the APK is
+	 *  zip-aligned, assets stored as they are can be efficiently read by
+	 *  Android by memory-mapping them.
+	 */
 
 	// -- Unconditional uncompress to mimic AAPT plus some other
 
@@ -815,11 +815,11 @@ void EditorExportPlatformAndroid::_fix_manifest(const Ref<EditorExportPreset> &p
 	uint32_t ofs = 8;
 
 	uint32_t string_count = 0;
-	//uint32_t styles_count = 0;
+	// uint32_t styles_count = 0;
 	uint32_t string_flags = 0;
 	uint32_t string_data_offset = 0;
 
-	//uint32_t styles_offset = 0;
+	// uint32_t styles_offset = 0;
 	uint32_t string_table_begins = 0;
 	uint32_t string_table_ends = 0;
 	Vector<uint8_t> stable_extra;
@@ -858,16 +858,16 @@ void EditorExportPlatformAndroid::_fix_manifest(const Ref<EditorExportPreset> &p
 				int iofs = ofs + 8;
 
 				string_count = decode_uint32(&p_manifest[iofs]);
-				//styles_count = decode_uint32(&p_manifest[iofs + 4]);
+				// styles_count = decode_uint32(&p_manifest[iofs + 4]);
 				string_flags = decode_uint32(&p_manifest[iofs + 8]);
 				string_data_offset = decode_uint32(&p_manifest[iofs + 12]);
-				//styles_offset = decode_uint32(&p_manifest[iofs + 16]);
+				// styles_offset = decode_uint32(&p_manifest[iofs + 16]);
 				/*
-                printf("string count: %i\n",string_count);
-                printf("flags: %i\n",string_flags);
-                printf("sdata ofs: %i\n",string_data_offset);
-                printf("styles ofs: %i\n",styles_offset);
-                */
+				printf("string count: %i\n",string_count);
+				printf("flags: %i\n",string_flags);
+				printf("sdata ofs: %i\n",string_data_offset);
+				printf("styles ofs: %i\n",styles_offset);
+				*/
 				uint32_t st_offset = iofs + 20;
 				string_table.resize(string_count);
 				uint32_t string_end = 0;
@@ -920,7 +920,7 @@ void EditorExportPlatformAndroid::_fix_manifest(const Ref<EditorExportPreset> &p
 					String attrname = string_table[attr_name];
 					const String nspace = (attr_nspace != 0xFFFFFFFF) ? string_table[attr_nspace] : "";
 
-					//replace project information
+					// replace project information
 					if (tname == "manifest" && attrname == "package") {
 						string_table.write[attr_value] = get_package_name(package_name);
 					}
@@ -1244,7 +1244,7 @@ void EditorExportPlatformAndroid::_fix_manifest(const Ref<EditorExportPreset> &p
 		ofs += size;
 	}
 
-	//create new andriodmanifest binary
+	// create new andriodmanifest binary
 
 	Vector<uint8_t> ret;
 	ret.resize(string_table_begins + string_table.size() * 4);
@@ -1278,7 +1278,7 @@ void EditorExportPlatformAndroid::_fix_manifest(const Ref<EditorExportPreset> &p
 		ret.push_back(stable_extra[i]);
 	}
 
-	//pad
+	// pad
 	while (ret.size() % 4) {
 		ret.push_back(0);
 	}
@@ -1294,11 +1294,11 @@ void EditorExportPlatformAndroid::_fix_manifest(const Ref<EditorExportPreset> &p
 	while (ret.size() % 4) {
 		ret.push_back(0);
 	}
-	encode_uint32(ret.size(), &ret.write[4]); //update new file size
+	encode_uint32(ret.size(), &ret.write[4]); // update new file size
 
-	encode_uint32(new_stable_end - 8, &ret.write[12]); //update new string table size
-	encode_uint32(string_table.size(), &ret.write[16]); //update new number of strings
-	encode_uint32(string_data_offset - 8, &ret.write[28]); //update new string data offset
+	encode_uint32(new_stable_end - 8, &ret.write[12]); // update new string table size
+	encode_uint32(string_table.size(), &ret.write[16]); // update new number of strings
+	encode_uint32(string_data_offset - 8, &ret.write[28]); // update new string data offset
 
 	p_manifest = ret;
 }
@@ -1376,7 +1376,7 @@ void EditorExportPlatformAndroid::_fix_resources(const Ref<EditorExportPreset> &
 
 		if (str.begins_with("godot-project-name")) {
 			if (str == "godot-project-name") {
-				//project name
+				// project name
 				str = get_project_name(package_name);
 
 			} else {
@@ -1393,7 +1393,7 @@ void EditorExportPlatformAndroid::_fix_resources(const Ref<EditorExportPreset> &
 		string_table.push_back(str);
 	}
 
-	//write a new string table, but use 16 bits
+	// write a new string table, but use 16 bits
 	Vector<uint8_t> ret;
 	ret.resize(string_table_begins + string_table.size() * 4);
 
@@ -1421,16 +1421,16 @@ void EditorExportPlatformAndroid::_fix_resources(const Ref<EditorExportPreset> &
 		chars += 2;
 	}
 
-	//pad
+	// pad
 	while (ret.size() % 4) {
 		ret.push_back(0);
 	}
 
-	//change flags to not use utf8
+	// change flags to not use utf8
 	encode_uint32(string_flags & ~0x100, &ret.write[28]);
-	//change length
+	// change length
 	encode_uint32(ret.size() - 12, &ret.write[16]);
-	//append the rest...
+	// append the rest...
 	int rest_from = 12 + string_block_len;
 	int rest_to = ret.size();
 	int rest_len = (r_manifest.size() - rest_from);
@@ -1438,11 +1438,11 @@ void EditorExportPlatformAndroid::_fix_resources(const Ref<EditorExportPreset> &
 	for (int i = 0; i < rest_len; i++) {
 		ret.write[rest_to + i] = r_manifest[rest_from + i];
 	}
-	//finally update the size
+	// finally update the size
 	encode_uint32(ret.size(), &ret.write[4]);
 
 	r_manifest = ret;
-	//printf("end\n");
+	// printf("end\n");
 }
 
 void EditorExportPlatformAndroid::_load_image_data(const Ref<Image> &p_splash_image, Vector<uint8_t> &p_data) {
@@ -2228,8 +2228,8 @@ void EditorExportPlatformAndroid::_update_custom_build_project() {
 	da->list_dir_begin();
 	String d = da->get_next();
 	while (d != String()) {
-		if (!d.begins_with(".") && d != "build" && da->current_is_dir()) { //a dir and not the build dir
-			//add directories found
+		if (!d.begins_with(".") && d != "build" && da->current_is_dir()) { // a dir and not the build dir
+			// add directories found
 			DirAccessRef ds = DirAccess::open(String("res://android").plus_file(d));
 			if (ds) {
 				ds->list_dir_begin();
@@ -2249,7 +2249,7 @@ void EditorExportPlatformAndroid::_update_custom_build_project() {
 				}
 				ds->list_dir_end();
 			}
-			//parse manifest
+			// parse manifest
 			{
 				FileAccessRef f = FileAccess::open(String("res://android").plus_file(d).plus_file("AndroidManifest.conf"), FileAccess::READ);
 				if (f) {
@@ -2271,7 +2271,7 @@ void EditorExportPlatformAndroid::_update_custom_build_project() {
 					f->close();
 				}
 			}
-			//parse gradle
+			// parse gradle
 			{
 				FileAccessRef f = FileAccess::open(String("res://android").plus_file(d).plus_file("gradle.conf"), FileAccess::READ);
 				if (f) {
@@ -2296,7 +2296,7 @@ void EditorExportPlatformAndroid::_update_custom_build_project() {
 	}
 	da->list_dir_end();
 
-	{ //fix gradle build
+	{ // fix gradle build
 
 		String new_file;
 		{
@@ -2311,7 +2311,7 @@ void EditorExportPlatformAndroid::_update_custom_build_project() {
 						int begin_pos = text.find("_BEGIN");
 						if (begin_pos != -1) {
 							text = text.substr(0, begin_pos);
-							text = text.to_upper(); //just in case
+							text = text.to_upper(); // just in case
 
 							String end_marker = "//CHUNK_" + text + "_END";
 							uint64_t pos = f->get_position();
@@ -2330,7 +2330,7 @@ void EditorExportPlatformAndroid::_update_custom_build_project() {
 								ERR_PRINT("No end marker found in build.gradle for chunk: " + text);
 								f->seek(pos);
 							} else {
-								//add chunk lines
+								// add chunk lines
 								if (gradle_sections.has(text)) {
 									for (List<String>::Element *E = gradle_sections[text].front(); E; E = E->next()) {
 										new_file += E->get() + "\n";
@@ -2350,7 +2350,7 @@ void EditorExportPlatformAndroid::_update_custom_build_project() {
 						int begin_pos = text.find("_BEGIN");
 						if (begin_pos != -1) {
 							text = text.substr(0, begin_pos);
-							text = text.to_upper(); //just in case
+							text = text.to_upper(); // just in case
 
 							String end_marker = "//DIR_" + text + "_END";
 							uint64_t pos = f->get_position();
@@ -2369,7 +2369,7 @@ void EditorExportPlatformAndroid::_update_custom_build_project() {
 								ERR_PRINT("No end marker found in build.gradle for dir: " + text);
 								f->seek(pos);
 							} else {
-								//add chunk lines
+								// add chunk lines
 								if (directory_paths.has(text)) {
 									for (List<String>::Element *E = directory_paths[text].front(); E; E = E->next()) {
 										new_file += ",'" + E->get().replace("'", "\'") + "'";
@@ -2405,7 +2405,7 @@ void EditorExportPlatformAndroid::_update_custom_build_project() {
 		f->close();
 	}
 
-	{ //fix manifest
+	{ // fix manifest
 
 		String new_file;
 		{
@@ -2420,7 +2420,7 @@ void EditorExportPlatformAndroid::_update_custom_build_project() {
 						int begin_pos = text.find("_BEGIN-->");
 						if (begin_pos != -1) {
 							text = text.substr(0, begin_pos);
-							text = text.to_upper(); //just in case
+							text = text.to_upper(); // just in case
 
 							String end_marker = "<!--CHUNK_" + text + "_END-->";
 							uint64_t pos = f->get_position();
@@ -2439,7 +2439,7 @@ void EditorExportPlatformAndroid::_update_custom_build_project() {
 								ERR_PRINT("No end marker found in AndroidManifest.xml for chunk: " + text);
 								f->seek(pos);
 							} else {
-								//add chunk lines
+								// add chunk lines
 								if (manifest_sections.has(text)) {
 									for (List<String>::Element *E = manifest_sections[text].front(); E; E = E->next()) {
 										new_file += E->get() + "\n";
@@ -2787,12 +2787,12 @@ Error EditorExportPlatformAndroid::export_project_helper(const Ref<EditorExportP
 	}
 	if (export_format > EXPORT_FORMAT_AAB || export_format < EXPORT_FORMAT_APK) {
 		EditorNode::add_io_error(TTR("Unsupported export format!\n"));
-		return ERR_UNCONFIGURED; //TODO: is this the right error?
+		return ERR_UNCONFIGURED; // TODO: is this the right error?
 	}
 
 	if (use_custom_build) {
 		print_verbose("Starting custom build..");
-		//test that installed build version is alright
+		// test that installed build version is alright
 		{
 			print_verbose("Checking build version..");
 			FileAccessRef f = FileAccess::open("res://android/.build_version", FileAccess::READ);
@@ -2815,7 +2815,7 @@ Error EditorExportPlatformAndroid::export_project_helper(const Ref<EditorExportP
 
 		// TODO: should we use "package/name" or "application/config/name"?
 		String project_name = get_project_name(p_preset->get("package/name"));
-		err = _create_project_name_strings_files(p_preset, project_name); //project name localization.
+		err = _create_project_name_strings_files(p_preset, project_name); // project name localization.
 		if (err != OK) {
 			EditorNode::add_io_error(TTR("Unable to overwrite res://android/build/res/*.xml files with project name"));
 		}
@@ -2824,7 +2824,7 @@ Error EditorExportPlatformAndroid::export_project_helper(const Ref<EditorExportP
 		// Write an AndroidManifest.xml file into the Gradle project directory.
 		_write_tmp_manifest(p_preset, p_give_internet, p_debug);
 		_update_custom_build_project();
-		//stores all the project files inside the Gradle project directory. Also includes all ABIs
+		// stores all the project files inside the Gradle project directory. Also includes all ABIs
 		_clear_assets_directory();
 		_remove_copied_libs();
 		if (!apk_expansion) {
@@ -2854,7 +2854,7 @@ Error EditorExportPlatformAndroid::export_project_helper(const Ref<EditorExportP
 		store_file_at_path(assets_directory + "/_cl_", command_line_flags);
 
 		print_verbose("Updating ANDROID_HOME environment to " + sdk_path);
-		OS::get_singleton()->set_environment("ANDROID_HOME", sdk_path); //set and overwrite if required
+		OS::get_singleton()->set_environment("ANDROID_HOME", sdk_path); // set and overwrite if required
 		String build_command;
 
 #ifdef WINDOWS_ENABLED
@@ -3045,7 +3045,7 @@ Error EditorExportPlatformAndroid::export_project_helper(const Ref<EditorExportP
 
 	Vector<String> invalid_abis(enabled_abis);
 	while (ret == UNZ_OK) {
-		//get filename
+		// get filename
 		unz_file_info info;
 		char fname[16384];
 		ret = unzGetCurrentFileInfo(pkg, &info, fname, 16384, nullptr, 0, nullptr, 0);
@@ -3057,12 +3057,12 @@ Error EditorExportPlatformAndroid::export_project_helper(const Ref<EditorExportP
 		Vector<uint8_t> data;
 		data.resize(info.uncompressed_size);
 
-		//read
+		// read
 		unzOpenCurrentFile(pkg);
 		unzReadCurrentFile(pkg, data.ptrw(), data.size());
 		unzCloseCurrentFile(pkg);
 
-		//write
+		// write
 		if (file == "AndroidManifest.xml") {
 			_fix_manifest(p_preset, data, p_give_internet);
 		}

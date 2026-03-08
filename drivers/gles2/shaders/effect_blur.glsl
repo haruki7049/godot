@@ -70,7 +70,7 @@ precision mediump int;
 
 varying vec2 uv_interp;
 /* clang-format on */
-uniform sampler2D source_color; //texunit:0
+uniform sampler2D source_color; // texunit:0
 
 uniform float lod;
 uniform vec2 pixel_size;
@@ -104,7 +104,7 @@ const float dof_kernel[21] = float[](0.028174, 0.032676, 0.037311, 0.041944, 0.0
 #endif
 #endif
 
-uniform sampler2D dof_source_depth; //texunit:1
+uniform sampler2D dof_source_depth; // texunit:1
 uniform float dof_begin;
 uniform float dof_end;
 uniform vec2 dof_dir;
@@ -128,7 +128,7 @@ uniform float camera_z_near;
 void main() {
 #ifdef GLOW_GAUSSIAN_HORIZONTAL
 	vec2 pix_size = pixel_size;
-	pix_size *= 0.5; //reading from larger buffer, so use more samples
+	pix_size *= 0.5; // reading from larger buffer, so use more samples
 	vec4 color = texture2DLod(source_color, uv_interp + vec2(0.0, 0.0) * pix_size, lod) * 0.174938;
 	color += texture2DLod(source_color, uv_interp + vec2(1.0, 0.0) * pix_size, lod) * 0.165569;
 	color += texture2DLod(source_color, uv_interp + vec2(2.0, 0.0) * pix_size, lod) * 0.140367;
@@ -208,7 +208,7 @@ void main() {
 	dof_kernel[20] = 0.028174;
 #endif
 #endif
-#endif //!USE_GLES_OVER_GL
+#endif //! USE_GLES_OVER_GL
 
 #ifdef DOF_FAR_BLUR
 
@@ -239,7 +239,7 @@ void main() {
 		tap_depth = 2.0 * camera_z_near * camera_z_far / (camera_z_far + camera_z_near - tap_depth * (camera_z_far - camera_z_near));
 #endif
 		float tap_amount = int_ofs == 0 ? 1.0 : smoothstep(dof_begin, dof_end, tap_depth);
-		tap_amount *= tap_amount * tap_amount; //prevent undesired glow effect
+		tap_amount *= tap_amount * tap_amount; // prevent undesired glow effect
 
 		vec4 tap_color = texture2DLod(source_color, tap_uv, 0.0) * tap_k;
 
@@ -251,7 +251,7 @@ void main() {
 		color_accum /= k_accum;
 	}
 
-	gl_FragColor = color_accum; ///k_accum;
+	gl_FragColor = color_accum; /// k_accum;
 
 #endif
 
@@ -278,7 +278,7 @@ void main() {
 		tap_depth = 2.0 * camera_z_near * camera_z_far / (camera_z_far + camera_z_near - tap_depth * (camera_z_far - camera_z_near));
 #endif
 		float tap_amount = 1.0 - smoothstep(dof_end, dof_begin, tap_depth);
-		tap_amount *= tap_amount * tap_amount; //prevent undesired glow effect
+		tap_amount *= tap_amount * tap_amount; // prevent undesired glow effect
 
 #ifdef DOF_NEAR_FIRST_TAP
 

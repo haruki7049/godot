@@ -289,7 +289,7 @@ Ref<Theme> create_editor_theme(const Ref<Theme> p_theme) {
 
 	const float default_contrast = 0.25;
 
-	//Theme settings
+	// Theme settings
 	Color accent_color = EDITOR_GET("interface/theme/accent_color");
 	Color base_color = EDITOR_GET("interface/theme/base_color");
 	float contrast = EDITOR_GET("interface/theme/contrast");
@@ -363,7 +363,7 @@ Ref<Theme> create_editor_theme(const Ref<Theme> p_theme) {
 	EditorSettings::get_singleton()->set_manually("interface/theme/base_color", base_color);
 	EditorSettings::get_singleton()->set_manually("interface/theme/contrast", contrast);
 
-	//Colors
+	// Colors
 	bool dark_theme = EditorSettings::get_singleton()->is_dark_theme();
 
 	const Color dark_color_1 = base_color.linear_interpolate(Color(0, 0, 0, 1), contrast);
@@ -440,7 +440,7 @@ Ref<Theme> create_editor_theme(const Ref<Theme> p_theme) {
 	theme->set_constant("thumb_size", "Editor", thumb_size);
 	theme->set_constant("dark_theme", "Editor", dark_theme);
 
-	//Register icons + font
+	// Register icons + font
 
 	// the resolution and the icon color (dark_theme bool) has not changed, so we do not regenerate the icons
 	if (p_theme != nullptr && fabs(p_theme->get_constant("scale", "Editor") - EDSCALE) < 0.00001 && (bool)p_theme->get_constant("dark_theme", "Editor") == dark_theme) {
@@ -583,7 +583,7 @@ Ref<Theme> create_editor_theme(const Ref<Theme> p_theme) {
 	// Play button group
 	theme->set_stylebox("PlayButtonPanel", "EditorStyles", style_empty);
 
-	//MenuButton
+	// MenuButton
 	Ref<StyleBoxFlat> style_menu_hover_border = style_widget->duplicate();
 	style_menu_hover_border->set_draw_center(false);
 	style_menu_hover_border->set_border_width_all(0);
@@ -1070,7 +1070,7 @@ Ref<Theme> create_editor_theme(const Ref<Theme> p_theme) {
 	theme->set_stylebox("grabber_area", "VSlider", make_flat_stylebox(contrast_color_1, default_margin_size / 2, 0, default_margin_size / 2, 0));
 	theme->set_stylebox("grabber_area_highlight", "VSlider", make_flat_stylebox(contrast_color_1, default_margin_size / 2, 0, default_margin_size / 2, 0));
 
-	//RichTextLabel
+	// RichTextLabel
 	theme->set_color("default_color", "RichTextLabel", font_color);
 	theme->set_color("font_color_shadow", "RichTextLabel", Color(0, 0, 0, 0));
 	theme->set_constant("shadow_offset_x", "RichTextLabel", 1 * EDSCALE);

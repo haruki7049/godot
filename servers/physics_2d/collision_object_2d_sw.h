@@ -56,7 +56,7 @@ private:
 		Transform2D xform;
 		Transform2D xform_inv;
 		BroadPhase2DSW::ID bpid;
-		Rect2 aabb_cache; //for rayqueries
+		Rect2 aabb_cache; // for rayqueries
 		Shape2DSW *shape;
 		Variant metadata;
 		bool disabled;

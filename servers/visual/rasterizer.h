@@ -94,7 +94,7 @@ public:
 		int depth_layer;
 		uint32_t layer_mask;
 
-		//RID sampled_light;
+		// RID sampled_light;
 
 		Vector<RID> materials;
 		Vector<RID> light_instances;
@@ -105,20 +105,20 @@ public:
 
 		VS::ShadowCastingSetting cast_shadows;
 
-		//fit in 32 bits
+		// fit in 32 bits
 		bool mirror : 8;
 		bool receive_shadows : 8;
 		bool visible : 8;
-		bool baked_light : 4; //this flag is only to know if it actually did use baked light
+		bool baked_light : 4; // this flag is only to know if it actually did use baked light
 		bool redraw_if_visible : 4;
 
-		float depth; //used for sorting
+		float depth; // used for sorting
 
 		SelfList<InstanceBase> dependency_item;
 
 		InstanceBase *lightmap_capture;
 		RID lightmap;
-		Vector<Color> lightmap_capture_data; //in a array (12 values) to avoid wasting space if unused. Alpha is unused, but needed to send to shader
+		Vector<Color> lightmap_capture_data; // in a array (12 values) to avoid wasting space if unused. Alpha is unused, but needed to send to shader
 		int lightmap_slice;
 		Rect2 lightmap_uv_rect;
 
@@ -497,7 +497,7 @@ public:
 			CHILD_EMPTY = 0xFFFFFFFF
 		};
 
-		uint16_t light[6][3]; //anisotropic light
+		uint16_t light[6][3]; // anisotropic light
 		float alpha;
 		uint32_t children[8];
 	};
@@ -652,7 +652,7 @@ public:
 		void *texture_cache; // implementation dependent
 		Rect2 rect_cache;
 		Transform2D xform_cache;
-		float radius_cache; //used for shadow far plane
+		float radius_cache; // used for shadow far plane
 		CameraMatrix shadow_matrix_cache;
 
 		Transform2D light_shader_xform;
@@ -854,7 +854,7 @@ public:
 		bool visible;
 		bool behind;
 		bool update_when_visible;
-		//VS::MaterialBlendMode blend_mode;
+		// VS::MaterialBlendMode blend_mode;
 		int light_mask;
 		Vector<Command *> commands;
 		mutable bool custom_rect;
@@ -888,7 +888,7 @@ public:
 				return rect;
 			}
 
-			//must update rect
+			// must update rect
 			int s = commands.size();
 			if (s == 0) {
 				rect = Rect2();
@@ -967,7 +967,7 @@ public:
 							Rect2 *bptr = bone_aabbs.ptrw();
 
 							for (int j = 0; j < bone_count; j++) {
-								bptr[j].size = Vector2(-1, -1); //negative means unused
+								bptr[j].size = Vector2(-1, -1); // negative means unused
 							}
 							if (l && polygon->bones.size() == l * 4 && polygon->weights.size() == polygon->bones.size()) {
 								for (int j = 0; j < l; j++) {
@@ -980,7 +980,7 @@ public:
 										}
 
 										if (bptr[idx].size.x < 0) {
-											//first
+											// first
 											bptr[idx] = Rect2(p, Vector2(0.00001, 0.00001));
 										} else {
 											bptr[idx].expand_to(p);

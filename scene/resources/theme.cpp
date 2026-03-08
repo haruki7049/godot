@@ -1080,7 +1080,7 @@ void Theme::_unfreeze_and_propagate_changes() {
 }
 
 void Theme::clear() {
-	//these need disconnecting
+	// these need disconnecting
 	{
 		const StringName *K = nullptr;
 		while ((K = icon_map.next(K))) {

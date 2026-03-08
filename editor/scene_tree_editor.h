@@ -165,8 +165,8 @@ class SceneTreeDialog : public ConfirmationDialog {
 	GDCLASS(SceneTreeDialog, ConfirmationDialog);
 
 	SceneTreeEditor *tree;
-	//Button *select;
-	//Button *cancel;
+	// Button *select;
+	// Button *cancel;
 	LineEdit *filter;
 
 	void update_tree();

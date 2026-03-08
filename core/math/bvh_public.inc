@@ -158,7 +158,7 @@ bool item_move(BVHHandle p_handle, const Bounds &p_aabb) {
 			// not sure we need to rebalance all the time, this can be done less often
 			refit_upward(add_node.parent_id);
 		}
-		//refit_upward_and_balance(add_node.parent_id);
+		// refit_upward_and_balance(add_node.parent_id);
 	}
 
 	return true;
@@ -198,7 +198,7 @@ void item_remove(BVHHandle p_handle) {
 	}
 
 	// don't think refit_all is necessary?
-	//refit_all(_tree_id);
+	// refit_all(_tree_id);
 
 #ifdef BVH_VERBOSE_TREE
 	_debug_recursive_print_tree(tree_id);
@@ -385,7 +385,7 @@ void update() {
 	incremental_optimize();
 
 	// keep the expansion values up to date with the world bound
-//#define BVH_ALLOW_AUTO_EXPANSION
+// #define BVH_ALLOW_AUTO_EXPANSION
 #ifdef BVH_ALLOW_AUTO_EXPANSION
 	if (_auto_node_expansion || _auto_pairing_expansion) {
 		BVHABB_CLASS world_bound;

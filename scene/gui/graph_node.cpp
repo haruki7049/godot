@@ -171,16 +171,16 @@ void GraphNode::_resort() {
 	int stretch_max = new_size.height - (children_count - 1) * sep;
 	int stretch_diff = stretch_max - stretch_min;
 	if (stretch_diff < 0) {
-		//avoid negative stretch space
+		// avoid negative stretch space
 		stretch_diff = 0;
 	}
 
-	stretch_avail += stretch_diff - sb->get_margin(MARGIN_BOTTOM) - sb->get_margin(MARGIN_TOP); //available stretch space.
+	stretch_avail += stretch_diff - sb->get_margin(MARGIN_BOTTOM) - sb->get_margin(MARGIN_TOP); // available stretch space.
 	/** Second, pass sucessively to discard elements that can't be stretched, this will run while stretchable
 		elements exist */
 
 	while (stretch_ratio_total > 0) { // first of all, don't even be here if no stretchable objects exist
-		bool refit_successful = true; //assume refit-test will go well
+		bool refit_successful = true; // assume refit-test will go well
 
 		for (int i = 0; i < get_child_count(); i++) {
 			Control *c = Object::cast_to<Control>(get_child(i));
@@ -194,13 +194,13 @@ void GraphNode::_resort() {
 			ERR_FAIL_COND(!min_size_cache.has(c));
 			_MinSizeCache &msc = min_size_cache[c];
 
-			if (msc.will_stretch) { //wants to stretch
-				//let's see if it can really stretch
+			if (msc.will_stretch) { // wants to stretch
+				// let's see if it can really stretch
 
 				int final_pixel_size = stretch_avail * c->get_stretch_ratio() / stretch_ratio_total;
 				if (final_pixel_size < msc.min_size) {
-					//if available stretching area is too small for widget,
-					//then remove it from stretching area
+					// if available stretching area is too small for widget,
+					// then remove it from stretching area
 					msc.will_stretch = false;
 					stretch_ratio_total -= c->get_stretch_ratio();
 					refit_successful = false;
@@ -213,7 +213,7 @@ void GraphNode::_resort() {
 			}
 		}
 
-		if (refit_successful) { //uf refit went well, break
+		if (refit_successful) { // uf refit went well, break
 			break;
 		}
 	}
@@ -248,8 +248,8 @@ void GraphNode::_resort() {
 		int to = ofs + msc.final_size;
 
 		if (msc.will_stretch && idx == children_count - 1) {
-			//adjust so the last one always fits perfect
-			//compensating for numerical imprecision
+			// adjust so the last one always fits perfect
+			// compensating for numerical imprecision
 
 			to = new_size.height - sb->get_margin(MARGIN_BOTTOM);
 		}
@@ -301,8 +301,8 @@ void GraphNode::_notification(int p_what) {
 				sb = get_stylebox(selected ? "selectedframe" : "frame");
 			}
 
-			//sb=sb->duplicate();
-			//sb->call("set_modulate",modulate);
+			// sb=sb->duplicate();
+			// sb->call("set_modulate",modulate);
 			Ref<Texture> port = get_icon("port");
 			Ref<Texture> close = get_icon("close");
 			Ref<Texture> resizer = get_icon("resizer");
@@ -356,7 +356,7 @@ void GraphNode::_notification(int p_what) {
 					continue;
 				}
 				const Slot &s = slot_info[E->key()];
-				//left
+				// left
 				if (s.enable_left) {
 					Ref<Texture> p = port;
 					if (s.custom_slot_left.is_valid()) {
@@ -599,7 +599,7 @@ void GraphNode::set_drag(bool p_drag) {
 	if (p_drag) {
 		drag_from = get_offset();
 	} else {
-		emit_signal("dragged", drag_from, get_offset()); //useful for undo/redo
+		emit_signal("dragged", drag_from, get_offset()); // useful for undo/redo
 	}
 }
 
@@ -748,7 +748,7 @@ void GraphNode::_gui_input(const Ref<InputEvent> &p_ev) {
 		if (mb->is_pressed() && mb->get_button_index() == BUTTON_LEFT) {
 			Vector2 mpos = Vector2(mb->get_position().x, mb->get_position().y);
 			if (close_rect.size != Size2() && close_rect.has_point(mpos)) {
-				//send focus to parent
+				// send focus to parent
 				get_parent_control()->grab_focus();
 				emit_signal("close_request");
 				accept_event();

@@ -526,14 +526,14 @@ signed char String::nocasecmp_to(const String &p_str) const {
 
 	while (true) {
 		if (*that_str == 0 && *this_str == 0) {
-			return 0; //we're equal
+			return 0; // we're equal
 		} else if (*this_str == 0) {
-			return -1; //if this is empty, and the other one is not, then we're less.. I think?
+			return -1; // if this is empty, and the other one is not, then we're less.. I think?
 		} else if (*that_str == 0) {
-			return 1; //otherwise the other one is smaller..
-		} else if (_find_upper(*this_str) < _find_upper(*that_str)) { //more than
+			return 1; // otherwise the other one is smaller..
+		} else if (_find_upper(*this_str) < _find_upper(*that_str)) { // more than
 			return -1;
-		} else if (_find_upper(*this_str) > _find_upper(*that_str)) { //less than
+		} else if (_find_upper(*this_str) > _find_upper(*that_str)) { // less than
 			return 1;
 		}
 
@@ -558,14 +558,14 @@ signed char String::casecmp_to(const String &p_str) const {
 
 	while (true) {
 		if (*that_str == 0 && *this_str == 0) {
-			return 0; //we're equal
+			return 0; // we're equal
 		} else if (*this_str == 0) {
-			return -1; //if this is empty, and the other one is not, then we're less.. I think?
+			return -1; // if this is empty, and the other one is not, then we're less.. I think?
 		} else if (*that_str == 0) {
-			return 1; //otherwise the other one is smaller..
-		} else if (*this_str < *that_str) { //more than
+			return 1; // otherwise the other one is smaller..
+		} else if (*this_str < *that_str) { // more than
 			return -1;
-		} else if (*this_str > *that_str) { //less than
+		} else if (*this_str > *that_str) { // less than
 			return 1;
 		}
 
@@ -641,9 +641,9 @@ signed char String::naturalnocasecmp_to(const String &p_str) const {
 			} else if (IS_DIGIT(*that_str)) {
 				return 1;
 			} else {
-				if (_find_upper(*this_str) < _find_upper(*that_str)) { //more than
+				if (_find_upper(*this_str) < _find_upper(*that_str)) { // more than
 					return -1;
-				} else if (_find_upper(*this_str) > _find_upper(*that_str)) { //less than
+				} else if (_find_upper(*this_str) > _find_upper(*that_str)) { // less than
 					return 1;
 				}
 
@@ -748,7 +748,7 @@ String String::get_slice(String p_splitter, int p_slice) const {
 
 	int pos = 0;
 	int prev_pos = 0;
-	//int slices=1;
+	// int slices=1;
 	if (p_slice < 0) {
 		return "";
 	}
@@ -760,17 +760,17 @@ String String::get_slice(String p_splitter, int p_slice) const {
 	while (true) {
 		pos = find(p_splitter, pos);
 		if (pos == -1) {
-			pos = length(); //reached end
+			pos = length(); // reached end
 		}
 
 		int from = prev_pos;
-		//int to=pos;
+		// int to=pos;
 
 		if (p_slice == i) {
 			return substr(from, pos - from);
 		}
 
-		if (pos == length()) { //reached end and no find
+		if (pos == length()) { // reached end and no find
 			break;
 		}
 		pos += p_splitter.length();
@@ -778,7 +778,7 @@ String String::get_slice(String p_splitter, int p_slice) const {
 		i++;
 	}
 
-	return ""; //no find!
+	return ""; // no find!
 }
 
 String String::get_slicec(CharType p_splitter, int p_slice) const {
@@ -1136,7 +1136,7 @@ String String::num(double p_num, int p_decimals) {
 #endif
 
 	buf[255] = 0;
-	//destroy trailing zeroes
+	// destroy trailing zeroes
 	{
 		bool period = false;
 		int z = 0;
@@ -1194,7 +1194,7 @@ String String::num(double p_num, int p_decimals) {
 			digit++;
 
 			if (p_decimals == -1) {
-				if (digit == MAX_DIGITS) //no point in going to infinite
+				if (digit == MAX_DIGITS) // no point in going to infinite
 					break;
 
 				if ((dec - (float)((int)dec)) < 1e-6)
@@ -1455,7 +1455,7 @@ bool String::parse_utf8(const char *p_utf8, int p_len) {
 	if (p_len < 0 || p_len >= 3) {
 		bool has_bom = uint8_t(p_utf8[0]) == 0xEF && uint8_t(p_utf8[1]) == 0xBB && uint8_t(p_utf8[2]) == 0xBF;
 		if (has_bom) {
-			//just skip it
+			// just skip it
 			if (p_len >= 0) {
 				p_len -= 3;
 			}
@@ -1486,13 +1486,13 @@ bool String::parse_utf8(const char *p_utf8, int p_len) {
 					skip = 5;
 				} else {
 					_UNICERROR("invalid skip");
-					return true; //invalid utf8
+					return true; // invalid utf8
 				}
 
 				if (skip == 1 && (c & 0x1E) == 0) {
-					//printf("overlong rejected\n");
+					// printf("overlong rejected\n");
 					_UNICERROR("overlong rejected");
-					return true; //reject overlong
+					return true; // reject overlong
 				}
 
 				str_size++;
@@ -1507,7 +1507,7 @@ bool String::parse_utf8(const char *p_utf8, int p_len) {
 
 		if (skip) {
 			_UNICERROR("no space left");
-			return true; //not enough spac
+			return true; // not enough spac
 		}
 	}
 
@@ -1539,18 +1539,18 @@ bool String::parse_utf8(const char *p_utf8, int p_len) {
 		} else {
 			_UNICERROR("invalid len");
 
-			return true; //invalid UTF8
+			return true; // invalid UTF8
 		}
 
 		if (len > cstr_size) {
 			_UNICERROR("no space left");
-			return true; //not enough space
+			return true; // not enough space
 		}
 
 		if (len == 2 && (*p_utf8 & 0x1E) == 0) {
-			//printf("overlong rejected\n");
+			// printf("overlong rejected\n");
 			_UNICERROR("no space left");
-			return true; //reject overlong
+			return true; // reject overlong
 		}
 
 		/* Convert the first character */
@@ -1565,19 +1565,19 @@ bool String::parse_utf8(const char *p_utf8, int p_len) {
 			for (int i = 1; i < len; i++) {
 				if ((p_utf8[i] & 0xC0) != 0x80) {
 					_UNICERROR("invalid utf8");
-					return true; //invalid utf8
+					return true; // invalid utf8
 				}
 				if (unichar == 0 && i == 2 && ((p_utf8[i] & 0x7F) >> (7 - len)) == 0) {
 					_UNICERROR("invalid utf8 overlong");
-					return true; //no overlong
+					return true; // no overlong
 				}
 				unichar = (unichar << 6) | (p_utf8[i] & 0x3F);
 			}
 		}
 
-		//printf("char %i, len %i\n",unichar,len);
+		// printf("char %i, len %i\n",unichar,len);
 		if (sizeof(wchar_t) == 2 && unichar > 0xFFFF) {
-			unichar = ' '; //too long for windows
+			unichar = ' '; // too long for windows
 		}
 
 		*(dst++) = unichar;
@@ -1662,7 +1662,7 @@ CharString String::utf8() const {
 		}
 	}
 #undef APPEND_CHAR
-	*cdst = 0; //trailing zero
+	*cdst = 0; // trailing zero
 
 	return utf8s;
 }
@@ -1930,24 +1930,24 @@ bool String::is_numeric() const {
 
 template <class C>
 static double built_in_strtod(const C *string, /* A decimal ASCII floating-point number,
-				 * optionally preceded by white space. Must
-				 * have form "-I.FE-X", where I is the integer
-				 * part of the mantissa, F is the fractional
-				 * part of the mantissa, and X is the
-				 * exponent. Either of the signs may be "+",
-				 * "-", or omitted. Either I or F may be
-				 * omitted, or both. The decimal point isn't
-				 * necessary unless F is present. The "E" may
-				 * actually be an "e". E and X may both be
-				 * omitted (but not just one). */
+												* optionally preceded by white space. Must
+												* have form "-I.FE-X", where I is the integer
+												* part of the mantissa, F is the fractional
+												* part of the mantissa, and X is the
+												* exponent. Either of the signs may be "+",
+												* "-", or omitted. Either I or F may be
+												* omitted, or both. The decimal point isn't
+												* necessary unless F is present. The "E" may
+												* actually be an "e". E and X may both be
+												* omitted (but not just one). */
 		C **endPtr = nullptr) /* If non-NULL, store terminating Cacter's
-				 * address here. */
+							   * address here. */
 {
 	static const int maxExponent = 511; /* Largest possible base 10 exponent.  Any
-					 * exponent larger than this will already
-					 * produce underflow or overflow, so there's
-					 * no need to worry about additional digits.
-					 */
+										 * exponent larger than this will already
+										 * produce underflow or overflow, so there's
+										 * no need to worry about additional digits.
+										 */
 	static const double powersOf10[] = { /* Table giving binary powers of 10.  Entry */
 		10., /* is 10^2^i.  Used to convert decimal */
 		100., /* exponents into floating-point numbers. */
@@ -1967,23 +1967,23 @@ static double built_in_strtod(const C *string, /* A decimal ASCII floating-point
 	int c;
 	int exp = 0; /* Exponent read from "EX" field. */
 	int fracExp = 0; /* Exponent that derives from the fractional
-				 * part. Under normal circumstances, it is
-				 * the negative of the number of digits in F.
-				 * However, if I is very long, the last digits
-				 * of I get dropped (otherwise a long I with a
-				 * large negative exponent could cause an
-				 * unnecessary overflow on I alone). In this
-				 * case, fracExp is incremented one for each
-				 * dropped digit. */
+					  * part. Under normal circumstances, it is
+					  * the negative of the number of digits in F.
+					  * However, if I is very long, the last digits
+					  * of I get dropped (otherwise a long I with a
+					  * large negative exponent could cause an
+					  * unnecessary overflow on I alone). In this
+					  * case, fracExp is incremented one for each
+					  * dropped digit. */
 	int mantSize; /* Number of digits in mantissa. */
 	int decPt; /* Number of mantissa digits BEFORE decimal
-				 * point. */
+				* point. */
 	const C *pExp; /* Temporarily holds location of exponent in
-				 * string. */
+					* string. */
 
 	/*
-     * Strip off leading blanks and check for a sign.
-     */
+	 * Strip off leading blanks and check for a sign.
+	 */
 
 	p = string;
 	while (*p == ' ' || *p == '\t' || *p == '\n') {
@@ -2000,9 +2000,9 @@ static double built_in_strtod(const C *string, /* A decimal ASCII floating-point
 	}
 
 	/*
-     * Count the number of digits in the mantissa (including the decimal
-     * point), and also locate the decimal point.
-     */
+	 * Count the number of digits in the mantissa (including the decimal
+	 * point), and also locate the decimal point.
+	 */
 
 	decPt = -1;
 	for (mantSize = 0;; mantSize += 1) {
@@ -2017,11 +2017,11 @@ static double built_in_strtod(const C *string, /* A decimal ASCII floating-point
 	}
 
 	/*
-     * Now suck up the digits in the mantissa. Use two integers to collect 9
-     * digits each (this is faster than using floating-point). If the mantissa
-     * has more than 18 digits, ignore the extras, since they can't affect the
-     * value anyway.
-     */
+	 * Now suck up the digits in the mantissa. Use two integers to collect 9
+	 * digits each (this is faster than using floating-point). If the mantissa
+	 * has more than 18 digits, ignore the extras, since they can't affect the
+	 * value anyway.
+	 */
 
 	pExp = p;
 	p -= mantSize;
@@ -2067,8 +2067,8 @@ static double built_in_strtod(const C *string, /* A decimal ASCII floating-point
 	}
 
 	/*
-     * Skim off the exponent.
-     */
+	 * Skim off the exponent.
+	 */
 
 	p = pExp;
 	if ((*p == 'E') || (*p == 'e')) {
@@ -2098,10 +2098,10 @@ static double built_in_strtod(const C *string, /* A decimal ASCII floating-point
 	}
 
 	/*
-     * Generate a floating-point number that represents the exponent. Do this
-     * by processing the exponent one bit at a time to combine many powers of
-     * 2 of 10. Then combine the exponent with the fraction.
-     */
+	 * Generate a floating-point number that represents the exponent. Do this
+	 * by processing the exponent one bit at a time to combine many powers of
+	 * 2 of 10. Then combine the exponent with the fraction.
+	 */
 
 	if (exp < 0) {
 		expSign = true;
@@ -2146,7 +2146,7 @@ done:
 double String::to_double(const char *p_str) {
 #ifndef NO_USE_STDLIB
 	return built_in_strtod<char>(p_str);
-//return atof(p_str); DOES NOT WORK ON ANDROID(??)
+// return atof(p_str); DOES NOT WORK ON ANDROID(??)
 #else
 	return built_in_strtod<char>(p_str);
 #endif
@@ -2221,7 +2221,7 @@ double String::to_double() const {
 	}
 #ifndef NO_USE_STDLIB
 	return built_in_strtod<CharType>(c_str());
-//return wcstod(c_str(),NULL); DOES NOT WORK ON ANDROID :(
+// return wcstod(c_str(),NULL); DOES NOT WORK ON ANDROID :(
 #else
 	return built_in_strtod<CharType>(c_str());
 #endif
@@ -2529,7 +2529,7 @@ int String::findmk(const Vector<String> &p_keys, int p_from, int *r_key) const {
 		return -1;
 	}
 
-	//int src_len=p_str.length();
+	// int src_len=p_str.length();
 	const String *keys = &p_keys[0];
 	int key_count = p_keys.size();
 	int len = length();
@@ -2953,7 +2953,7 @@ String String::format(const Variant &values, String placeholder) const {
 		for (int i = 0; i < values_arr.size(); i++) {
 			String i_as_str = String::num_int64(i);
 
-			if (values_arr[i].get_type() == Variant::ARRAY) { //Array in Array structure [["name","RobotGuy"],[0,"godot"],["strength",9000.91]]
+			if (values_arr[i].get_type() == Variant::ARRAY) { // Array in Array structure [["name","RobotGuy"],[0,"godot"],["strength",9000.91]]
 				Array value_arr = values_arr[i];
 
 				if (value_arr.size() == 2) {
@@ -2967,7 +2967,7 @@ String String::format(const Variant &values, String placeholder) const {
 				} else {
 					ERR_PRINT(String("STRING.format Inner Array size != 2 ").ascii().get_data());
 				}
-			} else { //Array structure ["RobotGuy","Logis","rookie"]
+			} else { // Array structure ["RobotGuy","Logis","rookie"]
 				Variant v_val = values_arr[i];
 				String val = v_val;
 
@@ -3370,7 +3370,7 @@ bool String::is_valid_identifier() const {
 	return true;
 }
 
-//kind of poor should be rewritten properly
+// kind of poor should be rewritten properly
 
 String String::word_wrap(int p_chars_per_line) const {
 	int from = 0;
@@ -3382,7 +3382,7 @@ String String::word_wrap(int p_chars_per_line) const {
 				ret += substr(from, i - from + 1) + "\n";
 			} else {
 				ret += substr(from, last_space - from) + "\n";
-				i = last_space; //rewind
+				i = last_space; // rewind
 			}
 			from = i + 1;
 			last_space = -1;
@@ -3848,14 +3848,14 @@ String String::path_to(const String &p_path) const {
 		dst = dst.replace("user://", "/");
 
 	} else if (src.begins_with("/") && dst.begins_with("/")) {
-		//nothing
+		// nothing
 	} else {
-		//dos style
+		// dos style
 		String src_begin = src.get_slicec('/', 0);
 		String dst_begin = dst.get_slicec('/', 0);
 
 		if (src_begin != dst_begin) {
-			return p_path; //impossible to do this
+			return p_path; // impossible to do this
 		}
 
 		base = src_begin;
@@ -3863,11 +3863,11 @@ String String::path_to(const String &p_path) const {
 		dst = dst.substr(dst_begin.length(), dst.length());
 	}
 
-	//remove leading and trailing slash and split
+	// remove leading and trailing slash and split
 	Vector<String> src_dirs = src.substr(1, src.length() - 2).split("/");
 	Vector<String> dst_dirs = dst.substr(1, dst.length() - 2).split("/");
 
-	//find common parent
+	// find common parent
 	int common_parent = 0;
 
 	while (true) {

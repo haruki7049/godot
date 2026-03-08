@@ -73,13 +73,13 @@ class GDScript : public Script {
 
 	Ref<GDScriptNativeClass> native;
 	Ref<GDScript> base;
-	GDScript *_base; //fast pointer access
-	GDScript *_owner; //for subclasses
+	GDScript *_base; // fast pointer access
+	GDScript *_owner; // for subclasses
 
-	Set<StringName> members; //members are just indices to the instanced script.
+	Set<StringName> members; // members are just indices to the instanced script.
 	Map<StringName, Variant> constants;
 	Map<StringName, GDScriptFunction *> member_functions;
-	Map<StringName, MemberInfo> member_indices; //members are just indices to the instanced script.
+	Map<StringName, MemberInfo> member_indices; // members are just indices to the instanced script.
 	Map<StringName, Ref<GDScript>> subclasses;
 	Map<StringName, Vector<StringName>> _signals;
 
@@ -100,11 +100,11 @@ class GDScript : public Script {
 #endif
 	Map<StringName, PropertyInfo> member_info;
 
-	GDScriptFunction *initializer; //direct pointer to _init , faster to locate
+	GDScriptFunction *initializer; // direct pointer to _init , faster to locate
 
 	int subclass_count;
 	Set<Object *> instances;
-	//exported members
+	// exported members
 	String source;
 	String path;
 	String name;
@@ -119,7 +119,7 @@ class GDScript : public Script {
 
 #ifdef TOOLS_ENABLED
 	Set<PlaceHolderScriptInstance *> placeholders;
-	//void _update_placeholder(PlaceHolderScriptInstance *p_placeholder);
+	// void _update_placeholder(PlaceHolderScriptInstance *p_placeholder);
 	virtual void _placeholder_erased(PlaceHolderScriptInstance *p_placeholder);
 #endif
 
@@ -139,7 +139,7 @@ protected:
 	void _get_property_list(List<PropertyInfo> *p_properties) const;
 
 	Variant call(const StringName &p_method, const Variant **p_args, int p_argcount, Variant::CallError &r_error);
-	//void call_multilevel(const StringName& p_method,const Variant** p_args,int p_argcount);
+	// void call_multilevel(const StringName& p_method,const Variant** p_args,int p_argcount);
 
 	static void _bind_methods();
 
@@ -166,7 +166,7 @@ public:
 	Ref<GDScript> get_base() const;
 
 	const Map<StringName, MemberInfo> &debug_get_member_indices() const { return member_indices; }
-	const Map<StringName, GDScriptFunction *> &debug_get_member_functions() const; //this is debug only
+	const Map<StringName, GDScriptFunction *> &debug_get_member_functions() const; // this is debug only
 	StringName debug_get_member_by_index(int p_idx) const;
 
 	Variant _new(const Variant **p_args, int p_argcount, Variant::CallError &r_error);
@@ -186,7 +186,7 @@ public:
 
 	virtual Error reload(bool p_keep_state = false);
 
-	void set_script_path(const String &p_path) { path = p_path; } //because subclasses need a path too...
+	void set_script_path(const String &p_path) { path = p_path; } // because subclasses need a path too...
 	Error load_source_code(const String &p_path);
 	Error load_byte_code(const String &p_path);
 
@@ -231,7 +231,7 @@ class GDScriptInstance : public ScriptInstance {
 	Object *owner;
 	Ref<GDScript> script;
 #ifdef DEBUG_ENABLED
-	Map<StringName, int> member_indices_cache; //used only for hot script reloading
+	Map<StringName, int> member_indices_cache; // used only for hot script reloading
 #endif
 	Vector<Variant> members;
 	bool base_ref;
@@ -370,7 +370,7 @@ public:
 
 	_FORCE_INLINE_ void enter_function(GDScriptInstance *p_instance, GDScriptFunction *p_function, Variant *p_stack, int *p_ip, int *p_line) {
 		if (Thread::get_main_id() != Thread::get_caller_id()) {
-			return; //no support for other threads than main for now
+			return; // no support for other threads than main for now
 		}
 
 		if (ScriptDebugger::get_singleton()->get_lines_left() > 0 && ScriptDebugger::get_singleton()->get_depth() >= 0) {
@@ -378,7 +378,7 @@ public:
 		}
 
 		if (_debug_call_stack_pos >= _debug_max_call_stack) {
-			//stack overflow
+			// stack overflow
 			_debug_error = "Stack Overflow (Stack Size: " + itos(_debug_max_call_stack) + ")";
 			ScriptDebugger::get_singleton()->debug(this);
 			return;
@@ -394,7 +394,7 @@ public:
 
 	_FORCE_INLINE_ void exit_function() {
 		if (Thread::get_main_id() != Thread::get_caller_id()) {
-			return; //no support for other threads than main for now
+			return; // no support for other threads than main for now
 		}
 
 		if (ScriptDebugger::get_singleton()->get_lines_left() > 0 && ScriptDebugger::get_singleton()->get_depth() >= 0) {

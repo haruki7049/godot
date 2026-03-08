@@ -528,7 +528,7 @@ private:
 
 					int idx = 0;
 					while (ret == UNZ_OK) {
-						//get filename
+						// get filename
 						unz_file_info info;
 						char fname[16384];
 						ret = unzGetCurrentFileInfo(pkg, &info, fname, 16384, nullptr, 0, nullptr, 0);
@@ -551,7 +551,7 @@ private:
 							data.resize(info.uncompressed_size);
 							String rel_path = path.substr(zip_root.length());
 
-							//read
+							// read
 							unzOpenCurrentFile(pkg);
 							unzReadCurrentFile(pkg, data.ptrw(), data.size());
 							unzCloseCurrentFile(pkg);
@@ -2373,7 +2373,7 @@ ProjectManager::ProjectManager() {
 		EditorSettings::create();
 	}
 
-	EditorSettings::get_singleton()->set_optimize_save(false); //just write settings as they came
+	EditorSettings::get_singleton()->set_optimize_save(false); // just write settings as they came
 
 	{
 		int display_scale = EditorSettings::get_singleton()->get("interface/editor/display_scale");

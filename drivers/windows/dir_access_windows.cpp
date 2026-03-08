@@ -53,9 +53,9 @@
 */
 
 struct DirAccessWindowsPrivate {
-	HANDLE h; //handle for findfirstfile
+	HANDLE h; // handle for findfirstfile
 	WIN32_FIND_DATA f;
-	WIN32_FIND_DATAW fu; //unicode version
+	WIN32_FIND_DATAW fu; // unicode version
 };
 
 // CreateFolderAsync
@@ -138,7 +138,7 @@ Error DirAccessWindows::change_dir(String p_dir) {
 		current_dir = real_current_dir_name; // TODO, utf8 parser
 		current_dir = current_dir.replace("\\", "/");
 
-	} //else {
+	} // else {
 
 	SetCurrentDirectoryW(prev_dir.c_str());
 	//}
@@ -158,7 +158,7 @@ Error DirAccessWindows::make_dir(String p_dir) {
 	bool success;
 	int err;
 
-	p_dir = "\\\\?\\" + p_dir; //done according to
+	p_dir = "\\\\?\\" + p_dir; // done according to
 	// https://msdn.microsoft.com/en-us/library/windows/desktop/aa363855(v=vs.85).aspx
 
 	success = CreateDirectoryW(p_dir.c_str(), NULL);
@@ -211,9 +211,9 @@ bool DirAccessWindows::file_exists(String p_file) {
 
 	p_file = fix_path(p_file);
 
-	//p_file.replace("/","\\");
+	// p_file.replace("/","\\");
 
-	//WIN32_FILE_ATTRIBUTE_DATA    fileInfo;
+	// WIN32_FILE_ATTRIBUTE_DATA    fileInfo;
 
 	DWORD fileAttr;
 
@@ -232,9 +232,9 @@ bool DirAccessWindows::dir_exists(String p_dir) {
 
 	p_dir = fix_path(p_dir);
 
-	//p_dir.replace("/","\\");
+	// p_dir.replace("/","\\");
 
-	//WIN32_FILE_ATTRIBUTE_DATA    fileInfo;
+	// WIN32_FILE_ATTRIBUTE_DATA    fileInfo;
 
 	DWORD fileAttr;
 
@@ -331,7 +331,7 @@ uint64_t DirAccessWindows::get_space_left() {
 	if (!GetDiskFreeSpaceEx(NULL, (PULARGE_INTEGER)&bytes, NULL, NULL))
 		return 0;
 
-	//this is either 0 or a value in bytes.
+	// this is either 0 or a value in bytes.
 	return bytes;
 }
 
@@ -378,7 +378,7 @@ DirAccessWindows::DirAccessWindows() {
 	DWORD mask = GetLogicalDrives();
 
 	for (int i = 0; i < MAX_DRIVES; i++) {
-		if (mask & (1 << i)) { //DRIVE EXISTS
+		if (mask & (1 << i)) { // DRIVE EXISTS
 
 			drives[drive_count] = 'A' + i;
 			drive_count++;
@@ -393,4 +393,4 @@ DirAccessWindows::~DirAccessWindows() {
 	memdelete(p);
 }
 
-#endif //windows DirAccess support
+#endif // windows DirAccess support

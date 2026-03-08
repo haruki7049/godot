@@ -57,7 +57,7 @@ void PhysicsBody2D::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("get_collision_exceptions"), &PhysicsBody2D::get_collision_exceptions);
 	ClassDB::bind_method(D_METHOD("add_collision_exception_with", "body"), &PhysicsBody2D::add_collision_exception_with);
 	ClassDB::bind_method(D_METHOD("remove_collision_exception_with", "body"), &PhysicsBody2D::remove_collision_exception_with);
-	ADD_PROPERTY(PropertyInfo(Variant::INT, "layers", PROPERTY_HINT_LAYERS_2D_PHYSICS, "", 0), "_set_layers", "_get_layers"); //for backwards compat
+	ADD_PROPERTY(PropertyInfo(Variant::INT, "layers", PROPERTY_HINT_LAYERS_2D_PHYSICS, "", 0), "_set_layers", "_get_layers"); // for backwards compat
 }
 
 PhysicsBody2D::PhysicsBody2D(Physics2DServer::BodyMode p_mode) :
@@ -289,7 +289,7 @@ void RigidBody2D::_body_inout(int p_status, const RID &p_body, ObjectID p_instan
 		if (!E) {
 			E = contact_monitor->body_map.insert(objid, BodyState());
 			E->get().rid = p_body;
-			//E->get().rc=0;
+			// E->get().rc=0;
 			E->get().in_scene = node && node->is_inside_tree();
 			if (node) {
 				node->connect(SceneStringNames::get_singleton()->tree_entered, this, SceneStringNames::get_singleton()->_body_enter_tree, make_binds(objid));
@@ -299,7 +299,7 @@ void RigidBody2D::_body_inout(int p_status, const RID &p_body, ObjectID p_instan
 				}
 			}
 
-			//E->get().rc++;
+			// E->get().rc++;
 		}
 
 		if (node) {
@@ -311,7 +311,7 @@ void RigidBody2D::_body_inout(int p_status, const RID &p_body, ObjectID p_instan
 		}
 
 	} else {
-		//E->get().rc--;
+		// E->get().rc--;
 
 		if (node) {
 			E->get().shapes.erase(ShapePair(p_body_shape, p_local_shape));
@@ -373,7 +373,7 @@ void RigidBody2D::_direct_state_changed(Object *p_state) {
 	if (contact_monitor) {
 		contact_monitor->locked = true;
 
-		//untag all
+		// untag all
 		int rc = 0;
 		for (Map<ObjectID, BodyState>::Element *E = contact_monitor->body_map.front(); E; E = E->next()) {
 			for (int i = 0; i < E->get().shapes.size(); i++) {
@@ -383,11 +383,11 @@ void RigidBody2D::_direct_state_changed(Object *p_state) {
 		}
 
 		_RigidBody2DInOut *toadd = (_RigidBody2DInOut *)alloca(state->get_contact_count() * sizeof(_RigidBody2DInOut));
-		int toadd_count = 0; //state->get_contact_count();
+		int toadd_count = 0; // state->get_contact_count();
 		RigidBody2D_RemoveAction *toremove = (RigidBody2D_RemoveAction *)alloca(rc * sizeof(RigidBody2D_RemoveAction));
 		int toremove_count = 0;
 
-		//put the ones to add
+		// put the ones to add
 
 		for (int i = 0; i < state->get_contact_count(); i++) {
 			RID rid = state->get_contact_collider(i);
@@ -395,7 +395,7 @@ void RigidBody2D::_direct_state_changed(Object *p_state) {
 			int local_shape = state->get_contact_local_shape(i);
 			int shape = state->get_contact_collider_shape(i);
 
-			//bool found=false;
+			// bool found=false;
 
 			Map<ObjectID, BodyState>::Element *E = contact_monitor->body_map.find(obj);
 			if (!E) {
@@ -421,7 +421,7 @@ void RigidBody2D::_direct_state_changed(Object *p_state) {
 			E->get().shapes[idx].tagged = true;
 		}
 
-		//put the ones to remove
+		// put the ones to remove
 
 		for (Map<ObjectID, BodyState>::Element *E = contact_monitor->body_map.front(); E; E = E->next()) {
 			for (int i = 0; i < E->get().shapes.size(); i++) {
@@ -434,13 +434,13 @@ void RigidBody2D::_direct_state_changed(Object *p_state) {
 			}
 		}
 
-		//process remotions
+		// process remotions
 
 		for (int i = 0; i < toremove_count; i++) {
 			_body_inout(0, toremove[i].rid, toremove[i].body_id, toremove[i].pair.body_shape, toremove[i].pair.local_shape);
 		}
 
-		//process aditions
+		// process aditions
 
 		for (int i = 0; i < toadd_count; i++) {
 			_body_inout(1, toadd[i].rid, toadd[i].id, toadd[i].shape, toadd[i].local_shape);
@@ -737,7 +737,7 @@ Array RigidBody2D::get_colliding_bodies() const {
 	for (const Map<ObjectID, BodyState>::Element *E = contact_monitor->body_map.front(); E; E = E->next()) {
 		Object *obj = ObjectDB::get_instance(E->key());
 		if (!obj) {
-			ret.resize(ret.size() - 1); //ops
+			ret.resize(ret.size() - 1); // ops
 		} else {
 			ret[idx++] = obj;
 		}
@@ -755,7 +755,7 @@ void RigidBody2D::set_contact_monitor(bool p_enabled) {
 		ERR_FAIL_COND_MSG(contact_monitor->locked, "Can't disable contact monitoring during in/out callback. Use call_deferred(\"set_contact_monitor\", false) instead.");
 
 		for (Map<ObjectID, BodyState>::Element *E = contact_monitor->body_map.front(); E; E = E->next()) {
-			//clean up mess
+			// clean up mess
 			Object *obj = ObjectDB::get_instance(E->key());
 			Node *node = Object::cast_to<Node>(obj);
 
@@ -781,7 +781,7 @@ void RigidBody2D::_notification(int p_what) {
 #ifdef TOOLS_ENABLED
 	if (p_what == NOTIFICATION_ENTER_TREE) {
 		if (Engine::get_singleton()->is_editor_hint()) {
-			set_notify_local_transform(true); //used for warnings and only in editor
+			set_notify_local_transform(true); // used for warnings and only in editor
 		}
 	}
 
@@ -996,7 +996,7 @@ Ref<KinematicCollision2D> KinematicBody2D::_move(const Vector2 &p_motion, bool p
 }
 
 bool KinematicBody2D::separate_raycast_shapes(bool p_infinite_inertia, Collision &r_collision) {
-	Physics2DServer::SeparationResult sep_res[8]; //max 8 rays
+	Physics2DServer::SeparationResult sep_res[8]; // max 8 rays
 
 	Transform2D gt = get_global_transform();
 
@@ -1100,7 +1100,7 @@ bool KinematicBody2D::move_and_collide(const Vector2 &p_motion, bool p_infinite_
 	return colliding;
 }
 
-//so, if you pass 45 as limit, avoid numerical precision errors when angle is 45.
+// so, if you pass 45 as limit, avoid numerical precision errors when angle is 45.
 #define FLOOR_ANGLE_THRESHOLD 0.01
 
 Vector2 KinematicBody2D::_move_and_slide_internal(const Vector2 &p_linear_velocity, const Vector2 &p_snap, const Vector2 &p_up_direction, bool p_stop_on_slope, int p_max_slides, float p_floor_max_angle, bool p_infinite_inertia) {
@@ -1114,7 +1114,7 @@ Vector2 KinematicBody2D::_move_and_slide_internal(const Vector2 &p_linear_veloci
 
 	Vector2 current_floor_velocity = floor_velocity;
 	if (on_floor && on_floor_body.is_valid()) {
-		//this approach makes sure there is less delay between the actual body velocity and the one we saved
+		// this approach makes sure there is less delay between the actual body velocity and the one we saved
 		Physics2DDirectBodyState *bs = Physics2DServer::get_singleton()->body_get_direct_state(on_floor_body);
 		if (bs) {
 			Transform2D gt = get_global_transform();
@@ -1152,15 +1152,15 @@ Vector2 KinematicBody2D::_move_and_slide_internal(const Vector2 &p_linear_veloci
 
 		for (int i = 0; i < 2; ++i) {
 			bool collided;
-			if (i == 0) { //collide
+			if (i == 0) { // collide
 				collided = move_and_collide(motion, p_infinite_inertia, collision, true, false, !sliding_enabled);
 				if (!collided) {
-					motion = Vector2(); //clear because no collision happened and motion completed
+					motion = Vector2(); // clear because no collision happened and motion completed
 				}
-			} else { //separate raycasts (if any)
+			} else { // separate raycasts (if any)
 				collided = separate_raycast_shapes(p_infinite_inertia, collision);
 				if (collided) {
-					collision.remainder = motion; //keep
+					collision.remainder = motion; // keep
 					collision.travel = Vector2();
 				}
 			}
@@ -1253,15 +1253,15 @@ Vector2 KinematicBody2D::move_and_slide_with_snap(const Vector2 &p_linear_veloci
 
 void KinematicBody2D::_set_collision_direction(const Collision &p_collision, const Vector2 &p_up_direction, float p_floor_max_angle) {
 	if (p_up_direction == Vector2()) {
-		//all is a wall
+		// all is a wall
 		on_wall = true;
 	} else {
-		if (Math::acos(p_collision.normal.dot(p_up_direction)) <= p_floor_max_angle + FLOOR_ANGLE_THRESHOLD) { //floor
+		if (Math::acos(p_collision.normal.dot(p_up_direction)) <= p_floor_max_angle + FLOOR_ANGLE_THRESHOLD) { // floor
 			on_floor = true;
 			floor_normal = p_collision.normal;
 			on_floor_body = p_collision.collider_rid;
 			floor_velocity = p_collision.collider_vel;
-		} else if (Math::acos(p_collision.normal.dot(-p_up_direction)) <= p_floor_max_angle + FLOOR_ANGLE_THRESHOLD) { //ceiling
+		} else if (Math::acos(p_collision.normal.dot(-p_up_direction)) <= p_floor_max_angle + FLOOR_ANGLE_THRESHOLD) { // ceiling
 			on_ceiling = true;
 		} else {
 			on_wall = true;
@@ -1391,10 +1391,10 @@ void KinematicBody2D::_notification(int p_what) {
 	}
 
 	if (p_what == NOTIFICATION_LOCAL_TRANSFORM_CHANGED) {
-		//used by sync to physics, send the new transform to the physics
+		// used by sync to physics, send the new transform to the physics
 		Transform2D new_transform = get_global_transform();
 		Physics2DServer::get_singleton()->body_set_state(get_rid(), Physics2DServer::BODY_STATE_TRANSFORM, new_transform);
-		//but then revert changes
+		// but then revert changes
 		set_notify_local_transform(false);
 		set_global_transform(last_valid_transform);
 		set_notify_local_transform(true);

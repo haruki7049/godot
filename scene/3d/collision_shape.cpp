@@ -142,7 +142,7 @@ String CollisionShape::get_configuration_warning() const {
 }
 
 void CollisionShape::_bind_methods() {
-	//not sure if this should do anything
+	// not sure if this should do anything
 	ClassDB::bind_method(D_METHOD("resource_changed", "resource"), &CollisionShape::resource_changed);
 	ClassDB::bind_method(D_METHOD("set_shape", "shape"), &CollisionShape::set_shape);
 	ClassDB::bind_method(D_METHOD("get_shape"), &CollisionShape::get_shape);
@@ -198,7 +198,7 @@ bool CollisionShape::is_disabled() const {
 }
 
 CollisionShape::CollisionShape() {
-	//indicator = VisualServer::get_singleton()->mesh_create();
+	// indicator = VisualServer::get_singleton()->mesh_create();
 	disabled = false;
 	parent = nullptr;
 	owner_id = 0;
@@ -209,5 +209,5 @@ CollisionShape::~CollisionShape() {
 	if (!shape.is_null()) {
 		shape->unregister_owner(this);
 	}
-	//VisualServer::get_singleton()->free(indicator);
+	// VisualServer::get_singleton()->free(indicator);
 }

@@ -488,7 +488,7 @@ Size2 AcceptDialog::get_minimum_size() const {
 	minsize.x = MAX(hminsize.x, minsize.x);
 	minsize.y += hminsize.y;
 	minsize.x += margin * 2;
-	minsize.y += margin * 3; //one as separation between hbc and child
+	minsize.y += margin * 3; // one as separation between hbc and child
 
 	Size2 wmsize = WindowDialog::get_minimum_size();
 	minsize.x = MAX(wmsize.x, minsize.x);

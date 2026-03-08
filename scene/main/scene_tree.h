@@ -93,7 +93,7 @@ public:
 private:
 	struct Group {
 		Vector<Node *> nodes;
-		//uint64_t last_tree_version;
+		// uint64_t last_tree_version;
 		bool changed;
 		Group() { changed = false; };
 	};
@@ -139,9 +139,9 @@ private:
 		bool operator<(const UGCall &p_with) const { return group == p_with.group ? call < p_with.call : group < p_with.group; }
 	};
 
-	//safety for when a node is deleted while a group is being called
+	// safety for when a node is deleted while a group is being called
 	int call_lock;
-	Set<Node *> call_skip; //skip erased nodes
+	Set<Node *> call_skip; // skip erased nodes
 
 	StretchMode stretch_mode;
 	StretchAspect stretch_aspect;
@@ -175,11 +175,11 @@ private:
 	int collision_debug_contacts;
 
 	void _change_scene(Node *p_to);
-	//void _call_group(uint32_t p_call_flags,const StringName& p_group,const StringName& p_function,const Variant& p_arg1,const Variant& p_arg2);
+	// void _call_group(uint32_t p_call_flags,const StringName& p_group,const StringName& p_function,const Variant& p_arg1,const Variant& p_arg2);
 
 	List<Ref<SceneTreeTimer>> timers;
 
-	///network///
+	/// network///
 
 	Ref<MultiplayerAPI> multiplayer;
 	bool multiplayer_poll;
@@ -209,7 +209,7 @@ private:
 	Variant _call_group(const Variant **p_args, int p_argcount, Variant::CallError &r_error);
 
 	void _flush_delete_queue();
-	//optimization
+	// optimization
 	friend class CanvasItem;
 	friend class Spatial;
 	friend class Viewport;
@@ -367,8 +367,8 @@ public:
 	void set_use_font_oversampling(bool p_oversampling);
 	bool is_using_font_oversampling() const;
 
-	//void change_scene(const String& p_path);
-	//Node *get_loaded_scene();
+	// void change_scene(const String& p_path);
+	// Node *get_loaded_scene();
 
 	void set_edited_scene_root(Node *p_node);
 	Node *get_edited_scene_root() const;
@@ -381,7 +381,7 @@ public:
 
 	Ref<SceneTreeTimer> create_timer(float p_delay_sec, bool p_process_pause = true);
 
-	//used by Main::start, don't use otherwise
+	// used by Main::start, don't use otherwise
 	void add_current_scene(Node *p_current);
 
 	static SceneTree *get_singleton() { return singleton; }
@@ -390,7 +390,7 @@ public:
 	void global_menu_action(const Variant &p_id, const Variant &p_meta);
 	void get_argument_options(const StringName &p_function, int p_idx, List<String> *r_options) const;
 
-	//network API
+	// network API
 
 	Ref<MultiplayerAPI> get_multiplayer() const;
 	void set_multiplayer_poll_enabled(bool p_enabled);

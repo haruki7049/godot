@@ -142,7 +142,7 @@ protected:
 	}
 
 	void _get_property_list(List<PropertyInfo> *p_list) const {
-		p_list->clear(); //sorry, no want category
+		p_list->clear(); // sorry, no want category
 		for (const List<PropertyInfo>::Element *E = prop_list.front(); E; E = E->next()) {
 			p_list->push_back(E->get());
 		}
@@ -399,7 +399,7 @@ void ScriptEditorDebugger::_scene_tree_property_value_edited(const String &p_pro
 	msg.push_back(p_prop);
 	msg.push_back(p_value);
 	ppeer->put_var(msg);
-	inspect_edited_object_timeout = 0.7; //avoid annoyance, don't request soon after editing
+	inspect_edited_object_timeout = 0.7; // avoid annoyance, don't request soon after editing
 }
 
 void ScriptEditorDebugger::_scene_tree_property_select_object(ObjectID p_object) {
@@ -659,7 +659,7 @@ void ScriptEditorDebugger::_parse_message(const String &p_msg, const Array &p_da
 				}
 			}
 
-			//always add the property, since props may have been added or removed
+			// always add the property, since props may have been added or removed
 			debugObj->prop_list.push_back(pinfo);
 
 			if (!debugObj->prop_values.has(pinfo.name)) {
@@ -677,12 +677,12 @@ void ScriptEditorDebugger::_parse_message(const String &p_msg, const Array &p_da
 			editor->push_item(debugObj, "");
 		} else {
 			if (old_prop_size == debugObj->prop_list.size() && new_props_added == 0) {
-				//only some may have changed, if so, then update those, if exist
+				// only some may have changed, if so, then update those, if exist
 				for (Set<String>::Element *E = changed.front(); E; E = E->next()) {
 					EditorNode::get_singleton()->get_inspector()->update_property(E->get());
 				}
 			} else {
-				//full update, because props were added or removed
+				// full update, because props were added or removed
 				debugObj->update();
 			}
 		}
@@ -696,10 +696,10 @@ void ScriptEditorDebugger::_parse_message(const String &p_msg, const Array &p_da
 			TreeItem *it = vmem_tree->create_item(root);
 			String type = p_data[i + 1];
 			int bytes = p_data[i + 3].operator int();
-			it->set_text(0, p_data[i + 0]); //path
-			it->set_text(1, type); //type
-			it->set_text(2, p_data[i + 2]); //type
-			it->set_text(3, String::humanize_size(bytes)); //type
+			it->set_text(0, p_data[i + 0]); // path
+			it->set_text(1, type); // type
+			it->set_text(2, p_data[i + 2]); // type
+			it->set_text(3, String::humanize_size(bytes)); // type
 			total += bytes;
 
 			if (has_icon(type, "EditorIcons")) {
@@ -797,7 +797,7 @@ void ScriptEditorDebugger::_parse_message(const String &p_msg, const Array &p_da
 		inspector->edit(variables);
 
 	} else if (p_msg == "output") {
-		//OUT
+		// OUT
 		for (int i = 0; i < p_data.size(); i++) {
 			Array output = p_data[i];
 			ERR_FAIL_COND_MSG(output.size() < 2, "Malformed output message from script debugger.");
@@ -819,7 +819,7 @@ void ScriptEditorDebugger::_parse_message(const String &p_msg, const Array &p_da
 				} break;
 			}
 
-			//LOG
+			// LOG
 
 			if (!EditorNode::get_log()->is_visible()) {
 				if (EditorNode::get_singleton()->are_bottom_panels_hidden()) {
@@ -995,7 +995,7 @@ void ScriptEditorDebugger::_parse_message(const String &p_msg, const Array &p_da
 		}
 
 	} else if (p_msg == "profile_sig") {
-		//cache a signature
+		// cache a signature
 		profiler_signature[p_data[1]] = p_data[0];
 
 	} else if (p_msg == "profile_frame" || p_msg == "profile_total") {
@@ -1068,7 +1068,7 @@ void ScriptEditorDebugger::_parse_message(const String &p_msg, const Array &p_da
 		}
 
 		EditorProfiler::Metric::Category funcs;
-		funcs.total_time = p_data[5]; //script time
+		funcs.total_time = p_data[5]; // script time
 		funcs.items.resize(frame_function_amount);
 		funcs.name = "Script Functions";
 		funcs.signature = "script_functions";
@@ -1088,7 +1088,7 @@ void ScriptEditorDebugger::_parse_message(const String &p_msg, const Array &p_da
 					item.name = strings[2];
 					item.script = strings[0];
 					item.line = strings[1].to_int();
-				} else if (strings.size() == 4) { //Built-in scripts have an :: in their name
+				} else if (strings.size() == 4) { // Built-in scripts have an :: in their name
 					item.name = strings[3];
 					item.script = strings[0] + "::" + strings[1];
 					item.line = strings[2].to_int();
@@ -1319,7 +1319,7 @@ void ScriptEditorDebugger::_notification(int p_what) {
 					if (inspected_object_id) {
 						if (ScriptEditorDebuggerInspectedObject *obj = Object::cast_to<ScriptEditorDebuggerInspectedObject>(ObjectDB::get_instance(editor->get_editor_history()->get_current()))) {
 							if (obj->remote_object_id == inspected_object_id) {
-								//take the chance and re-inspect selected object
+								// take the chance and re-inspect selected object
 								Array msg;
 								msg.push_back("inspect_object");
 								msg.push_back(inspected_object_id);
@@ -1406,8 +1406,8 @@ void ScriptEditorDebugger::_notification(int p_what) {
 
 					ppeer->set_stream_peer(connection);
 
-					//EditorNode::get_singleton()->make_bottom_panel_item_visible(this);
-					//emit_signal("show_debugger",true);
+					// EditorNode::get_singleton()->make_bottom_panel_item_visible(this);
+					// emit_signal("show_debugger",true);
 
 					dobreak->set_disabled(false);
 					tabs->set_current_tab(0);
@@ -1423,7 +1423,7 @@ void ScriptEditorDebugger::_notification(int p_what) {
 					error_count = 0;
 					warning_count = 0;
 					profiler_signature.clear();
-					//live_edit_root->set_text("/root");
+					// live_edit_root->set_text("/root");
 
 					EditorNode::get_singleton()->get_pause_button()->set_pressed(false);
 					EditorNode::get_singleton()->get_pause_button()->set_disabled(false);
@@ -1445,7 +1445,7 @@ void ScriptEditorDebugger::_notification(int p_what) {
 
 			if (!connection->is_connected_to_host()) {
 				stop();
-				editor->notify_child_process_exited(); //somehow, exited
+				editor->notify_child_process_exited(); // somehow, exited
 				break;
 			};
 
@@ -1720,8 +1720,8 @@ void ScriptEditorDebugger::_stack_dump_frame_selected() {
 }
 
 void ScriptEditorDebugger::_output_clear() {
-	//output->clear();
-	//output->push_color(Color(0,0,0));
+	// output->clear();
+	// output->push_color(Color(0,0,0));
 }
 
 void ScriptEditorDebugger::_export_csv() {
@@ -1786,7 +1786,7 @@ void ScriptEditorDebugger::_method_changed(Object *p_base, const StringName &p_n
 	VARIANT_ARGPTRS
 
 	for (int i = 0; i < VARIANT_ARG_MAX; i++) {
-		//no pointers, sorry
+		// no pointers, sorry
 		if (argptr[i] && (argptr[i]->get_type() == Variant::OBJECT || argptr[i]->get_type() == Variant::_RID)) {
 			return;
 		}
@@ -1801,7 +1801,7 @@ void ScriptEditorDebugger::_method_changed(Object *p_base, const StringName &p_n
 		msg.push_back(pathid);
 		msg.push_back(p_name);
 		for (int i = 0; i < VARIANT_ARG_MAX; i++) {
-			//no pointers, sorry
+			// no pointers, sorry
 			msg.push_back(*argptr[i]);
 		}
 		ppeer->put_var(msg);
@@ -1820,7 +1820,7 @@ void ScriptEditorDebugger::_method_changed(Object *p_base, const StringName &p_n
 		msg.push_back(pathid);
 		msg.push_back(p_name);
 		for (int i = 0; i < VARIANT_ARG_MAX; i++) {
-			//no pointers, sorry
+			// no pointers, sorry
 			msg.push_back(*argptr[i]);
 		}
 		ppeer->put_var(msg);
@@ -2381,7 +2381,7 @@ ScriptEditorDebugger::ScriptEditorDebugger(EditorNode *p_editor) {
 
 	add_child(tabs);
 
-	{ //debugger
+	{ // debugger
 		VBoxContainer *vbc = memnew(VBoxContainer);
 		vbc->set_name(TTR("Debugger"));
 		Control *dbg = vbc;
@@ -2481,7 +2481,7 @@ ScriptEditorDebugger::ScriptEditorDebugger(EditorNode *p_editor) {
 		tabs->add_child(dbg);
 	}
 
-	{ //errors
+	{ // errors
 		errors_tab = memnew(VBoxContainer);
 		errors_tab->set_name(TTR("Errors"));
 
@@ -2553,7 +2553,7 @@ ScriptEditorDebugger::ScriptEditorDebugger(EditorNode *p_editor) {
 		add_child(file_dialog);
 	}
 
-	{ //profiler
+	{ // profiler
 		profiler = memnew(EditorProfiler);
 		profiler->set_name(TTR("Profiler"));
 		tabs->add_child(profiler);
@@ -2561,14 +2561,14 @@ ScriptEditorDebugger::ScriptEditorDebugger(EditorNode *p_editor) {
 		profiler->connect("break_request", this, "_profiler_seeked");
 	}
 
-	{ //network profiler
+	{ // network profiler
 		network_profiler = memnew(EditorNetworkProfiler);
 		network_profiler->set_name(TTR("Network Profiler"));
 		tabs->add_child(network_profiler);
 		network_profiler->connect("enable_profiling", this, "_network_profiler_activate");
 	}
 
-	{ //monitors
+	{ // monitors
 
 		HSplitContainer *hsp = memnew(HSplitContainer);
 
@@ -2628,7 +2628,7 @@ ScriptEditorDebugger::ScriptEditorDebugger(EditorNode *p_editor) {
 		perf_draw->add_child(info_message);
 	}
 
-	{ //vmem inspect
+	{ // vmem inspect
 		VBoxContainer *vmem_vb = memnew(VBoxContainer);
 		HBoxContainer *vmem_hb = memnew(HBoxContainer);
 		Label *vmlb = memnew(Label(TTR("List of Video Memory Usage by Resource:") + " "));

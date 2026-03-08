@@ -127,7 +127,7 @@ void OS_UWP::set_keep_screen_on(bool p_enabled) {
 void OS_UWP::initialize_core() {
 	last_button_state = 0;
 
-	//RedirectIOToConsole();
+	// RedirectIOToConsole();
 
 	FileAccess::make_default<FileAccessWindows>(FileAccess::ACCESS_RESOURCES);
 	FileAccess::make_default<FileAccessWindows>(FileAccess::ACCESS_USERDATA);

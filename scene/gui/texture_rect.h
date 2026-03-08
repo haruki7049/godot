@@ -38,7 +38,7 @@ class TextureRect : public Control {
 
 public:
 	enum StretchMode {
-		STRETCH_SCALE_ON_EXPAND, //default, for backwards compatibility
+		STRETCH_SCALE_ON_EXPAND, // default, for backwards compatibility
 		STRETCH_SCALE,
 		STRETCH_TILE,
 		STRETCH_KEEP,

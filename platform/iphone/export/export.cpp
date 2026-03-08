@@ -1743,7 +1743,7 @@ Error EditorExportPlatformIOS::export_project(const Ref<EditorExportPreset> &p_p
 	err = _export_ios_plugins(p_preset, config_data, dest_dir + binary_name, assets, p_debug);
 	ERR_FAIL_COND_V(err, err);
 
-	//export rest of the files
+	// export rest of the files
 	int ret = unzGoToFirstFile(src_pkg_zip);
 	Vector<uint8_t> project_file_data;
 	while (ret == UNZ_OK) {
@@ -1751,7 +1751,7 @@ Error EditorExportPlatformIOS::export_project(const Ref<EditorExportPreset> &p_p
 		bool is_execute = false;
 #endif
 
-		//get filename
+		// get filename
 		unz_file_info info;
 		char fname[16384];
 		ret = unzGetCurrentFileInfo(src_pkg_zip, &info, fname, 16384, nullptr, 0, nullptr, 0);
@@ -1762,12 +1762,12 @@ Error EditorExportPlatformIOS::export_project(const Ref<EditorExportPreset> &p_p
 		Vector<uint8_t> data;
 		data.resize(info.uncompressed_size);
 
-		//read
+		// read
 		unzOpenCurrentFile(src_pkg_zip);
 		unzReadCurrentFile(src_pkg_zip, data.ptrw(), data.size());
 		unzCloseCurrentFile(src_pkg_zip);
 
-		//write
+		// write
 
 		file = file.replace_first("iphone/", "");
 
@@ -1776,7 +1776,7 @@ Error EditorExportPlatformIOS::export_project(const Ref<EditorExportPreset> &p_p
 		} else if (file.begins_with("libgodot.iphone")) {
 			if (!file.begins_with(library_to_use) || file.ends_with(String("/empty"))) {
 				ret = unzGoToNextFile(src_pkg_zip);
-				continue; //ignore!
+				continue; // ignore!
 			}
 			found_library = true;
 #if defined(OSX_ENABLED) || defined(X11_ENABLED)

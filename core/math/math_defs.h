@@ -50,11 +50,11 @@
 #define MATH_CHECKS
 #endif
 
-//this epsilon is for values related to a unit size (scalar or vector len)
+// this epsilon is for values related to a unit size (scalar or vector len)
 #ifdef PRECISE_MATH_CHECKS
 #define UNIT_EPSILON 0.00001
 #else
-//tolerate some more floating point error normally
+// tolerate some more floating point error normally
 #define UNIT_EPSILON 0.001
 #endif
 
@@ -102,10 +102,10 @@ enum Corner {
 };
 
 /**
-  * The "Real" type is an abstract type used for real numbers, such as 1.5,
-  * in contrast to integer numbers. Precision can be controlled with the
-  * presence or absence of the REAL_T_IS_DOUBLE define.
-  */
+ * The "Real" type is an abstract type used for real numbers, such as 1.5,
+ * in contrast to integer numbers. Precision can be controlled with the
+ * presence or absence of the REAL_T_IS_DOUBLE define.
+ */
 #ifdef REAL_T_IS_DOUBLE
 typedef double real_t;
 #else

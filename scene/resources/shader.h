@@ -58,15 +58,15 @@ private:
 	// shaders keep a list of ShaderMaterial -> VisualServer name translations, to make
 	// conversion fast and save memory.
 	mutable bool params_cache_dirty;
-	mutable Map<StringName, StringName> params_cache; //map a shader param to a material param..
+	mutable Map<StringName, StringName> params_cache; // map a shader param to a material param..
 	Map<StringName, Ref<Texture>> default_textures;
 
-	virtual void _update_shader() const; //used for visual shader
+	virtual void _update_shader() const; // used for visual shader
 protected:
 	static void _bind_methods();
 
 public:
-	//void set_mode(Mode p_mode);
+	// void set_mode(Mode p_mode);
 	virtual Mode get_mode() const;
 
 	void set_code(const String &p_code);

@@ -69,7 +69,7 @@ class BodyPair2DSW : public Constraint2DSW {
 		real_t bounce;
 	};
 
-	Vector2 offset_B; //use local A coordinates to avoid numerical issues on collision detection
+	Vector2 offset_B; // use local A coordinates to avoid numerical issues on collision detection
 
 	Vector2 sep_axis;
 	Contact contacts[MAX_CONTACTS];

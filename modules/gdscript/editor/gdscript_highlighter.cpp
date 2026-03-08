@@ -164,7 +164,7 @@ Map<int, TextEdit::HighlighterInfo> GDScriptSyntaxHighlighter::_get_line_syntax_
 				}
 			} else {
 				TextEdit::ColorRegion cr = text_editor->_get_color_region(cri.region);
-				if (in_region == cri.region && !cr.line_only) { //ignore otherwise
+				if (in_region == cri.region && !cr.line_only) { // ignore otherwise
 					if (cri.end || cr.eq) {
 						deregion = cr.eq ? cr.begin_key.length() : cr.end_key.length();
 					}

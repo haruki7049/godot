@@ -129,6 +129,6 @@ void MainLoop::global_menu_action(const Variant &p_id, const Variant &p_meta) {
 void MainLoop::finish() {
 	if (get_script_instance()) {
 		get_script_instance()->call("_finalize");
-		set_script(RefPtr()); //clear script
+		set_script(RefPtr()); // clear script
 	}
 }

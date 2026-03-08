@@ -34,7 +34,7 @@
 #include "collision_object_sw.h"
 #include "core/self_list.h"
 #include "servers/physics_server.h"
-//#include "servers/physics/query_sw.h"
+// #include "servers/physics/query_sw.h"
 
 class SpaceSW;
 class BodySW;
@@ -94,8 +94,8 @@ class AreaSW : public CollisionObjectSW {
 	Map<BodyKey, BodyState> monitored_bodies;
 	Map<BodyKey, BodyState> monitored_areas;
 
-	//virtual void shape_changed_notify(ShapeSW *p_shape);
-	//virtual void shape_deleted_notify(ShapeSW *p_shape);
+	// virtual void shape_changed_notify(ShapeSW *p_shape);
+	// virtual void shape_deleted_notify(ShapeSW *p_shape);
 
 	Set<ConstraintSW *> constraints;
 

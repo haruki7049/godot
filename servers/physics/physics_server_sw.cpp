@@ -217,7 +217,7 @@ void PhysicsServerSW::area_set_space(RID p_area, RID p_space) {
 	}
 
 	if (area->get_space() == space) {
-		return; //pointless
+		return; // pointless
 	}
 
 	area->clear_constraints();
@@ -452,7 +452,7 @@ void PhysicsServerSW::body_set_space(RID p_body, RID p_space) {
 	}
 
 	if (body->get_space() == space) {
-		return; //pointless
+		return; // pointless
 	}
 
 	body->clear_constraint_map();
@@ -1194,7 +1194,7 @@ bool PhysicsServerSW::generic_6dof_joint_get_flag(RID p_joint, Vector3::Axis p_a
 }
 
 void PhysicsServerSW::free(RID p_rid) {
-	_update_shapes(); //just in case
+	_update_shapes(); // just in case
 
 	if (shape_owner.owns(p_rid)) {
 		ShapeSW *shape = shape_owner.get(p_rid);
@@ -1397,7 +1397,7 @@ void PhysicsServerSW::_shape_col_cbk(const Vector3 &p_point_A, const Vector3 &p_
 	}
 
 	if (cbk->amount == cbk->max) {
-		//find least deep
+		// find least deep
 		real_t min_depth = 1e20;
 		int min_depth_idx = 0;
 		for (int i = 0; i < cbk->amount; i++) {
@@ -1442,6 +1442,6 @@ PhysicsServerSW::PhysicsServerSW() {
 	flushing_queries = false;
 };
 
-PhysicsServerSW::~PhysicsServerSW(){
+PhysicsServerSW::~PhysicsServerSW() {
 
 };

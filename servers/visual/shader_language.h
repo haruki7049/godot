@@ -258,7 +258,7 @@ public:
 		OP_INCREMENT,
 		OP_DECREMENT,
 		OP_SELECT_IF,
-		OP_SELECT_ELSE, //used only internally, then only IF appears with 3 arguments
+		OP_SELECT_ELSE, // used only internally, then only IF appears with 3 arguments
 		OP_POST_INCREMENT,
 		OP_POST_DECREMENT,
 		OP_CALL,
@@ -485,7 +485,7 @@ public:
 			DataType type;
 			StringName struct_name;
 			DataPrecision precision;
-			int line; //for completion
+			int line; // for completion
 			int array_size;
 			bool is_const;
 		};
@@ -822,7 +822,7 @@ private:
 		bool high_end;
 	};
 
-	struct BuiltinFuncOutArgs { //arguments used as out in built in functions
+	struct BuiltinFuncOutArgs { // arguments used as out in built in functions
 		const char *name;
 		int argument;
 	};
@@ -863,7 +863,7 @@ private:
 	Error _find_last_flow_op_in_op(ControlFlowNode *p_flow, FlowOperation p_op);
 
 public:
-	//static void get_keyword_list(ShaderType p_type,List<String> *p_keywords);
+	// static void get_keyword_list(ShaderType p_type,List<String> *p_keywords);
 
 	void clear();
 

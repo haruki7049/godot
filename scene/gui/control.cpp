@@ -426,7 +426,7 @@ void Control::_resize(const Size2 &p_size) {
 	_size_changed();
 }
 
-//moved theme configuration here, so controls can set up even if still not inside active scene
+// moved theme configuration here, so controls can set up even if still not inside active scene
 
 void Control::add_child_notify(Node *p_child) {
 	Control *child_c = Object::cast_to<Control>(p_child);
@@ -435,7 +435,7 @@ void Control::add_child_notify(Node *p_child) {
 	}
 
 	if (child_c->data.theme.is_null() && data.theme_owner) {
-		_propagate_theme_changed(child_c, data.theme_owner); //need to propagate here, since many controls may require setting up stuff
+		_propagate_theme_changed(child_c, data.theme_owner); // need to propagate here, since many controls may require setting up stuff
 	}
 }
 
@@ -487,7 +487,7 @@ void Control::_notification(int p_notification) {
 				}
 
 			} else {
-				Node *parent = this; //meh
+				Node *parent = this; // meh
 				Control *parent_control = nullptr;
 				bool subwindow = false;
 
@@ -515,16 +515,16 @@ void Control::_notification(int p_notification) {
 				}
 
 				if (parent_control) {
-					//do nothing, has a parent control
+					// do nothing, has a parent control
 					if (data.theme.is_null() && parent_control->data.theme_owner) {
 						data.theme_owner = parent_control->data.theme_owner;
 						notification(NOTIFICATION_THEME_CHANGED);
 					}
 				} else if (subwindow) {
-					//is a subwindow (process input before other controls for that canvas)
+					// is a subwindow (process input before other controls for that canvas)
 					data.SI = get_viewport()->_gui_add_subwindow_control(this);
 				} else {
-					//is a regular root control
+					// is a regular root control
 					data.RI = get_viewport()->_gui_add_root_control(this);
 				}
 
@@ -533,7 +533,7 @@ void Control::_notification(int p_notification) {
 				if (data.parent_canvas_item) {
 					data.parent_canvas_item->connect("item_rect_changed", this, "_size_changed");
 				} else {
-					//connect viewport
+					// connect viewport
 					get_viewport()->connect("size_changed", this, "_size_changed");
 				}
 			}
@@ -551,7 +551,7 @@ void Control::_notification(int p_notification) {
 				data.parent_canvas_item->disconnect("item_rect_changed", this, "_size_changed");
 				data.parent_canvas_item = nullptr;
 			} else if (!is_set_as_toplevel()) {
-				//disconnect viewport
+				// disconnect viewport
 				get_viewport()->disconnect("size_changed", this, "_size_changed");
 			}
 
@@ -603,7 +603,7 @@ void Control::_notification(int p_notification) {
 			_update_canvas_item_transform();
 			VisualServer::get_singleton()->canvas_item_set_custom_rect(get_canvas_item(), !data.disable_visibility_clip, Rect2(Point2(), get_size()));
 			VisualServer::get_singleton()->canvas_item_set_clip(get_canvas_item(), data.clip_contents);
-			//emit_signal(SceneStringNames::get_singleton()->draw);
+			// emit_signal(SceneStringNames::get_singleton()->draw);
 
 		} break;
 		case NOTIFICATION_MOUSE_ENTER: {
@@ -638,8 +638,8 @@ void Control::_notification(int p_notification) {
 					_modal_stack_remove();
 				}
 
-				//remove key focus
-				//remove modalness
+				// remove key focus
+				// remove modalness
 			} else {
 				data.minimum_size_valid = false;
 				_size_changed();
@@ -1370,7 +1370,7 @@ void Control::_size_changed() {
 		}
 
 		if (pos_changed && !size_changed) {
-			_update_canvas_item_transform(); //move because it won't be updated
+			_update_canvas_item_transform(); // move because it won't be updated
 		}
 	}
 }
@@ -1423,7 +1423,7 @@ void Control::set_anchor_and_margin(Margin p_margin, float p_anchor, float p_pos
 void Control::set_anchors_preset(LayoutPreset p_preset, bool p_keep_margins) {
 	ERR_FAIL_INDEX((int)p_preset, 16);
 
-	//Left
+	// Left
 	switch (p_preset) {
 		case PRESET_TOP_LEFT:
 		case PRESET_BOTTOM_LEFT:
@@ -1552,7 +1552,7 @@ void Control::set_margins_preset(LayoutPreset p_preset, LayoutPresetMode p_resiz
 
 	Rect2 parent_rect = get_parent_anchorable_rect();
 
-	//Left
+	// Left
 	switch (p_preset) {
 		case PRESET_TOP_LEFT:
 		case PRESET_BOTTOM_LEFT:
@@ -1934,7 +1934,7 @@ static Control *_next_control(Control *p_from) {
 		return c;
 	}
 
-	//no next in parent, try the same in parent
+	// no next in parent, try the same in parent
 	return _next_control(parent);
 }
 
@@ -1974,7 +1974,7 @@ Control *Control::find_next_valid_focus() const {
 
 		if (!next_child) {
 			next_child = _next_control(from);
-			if (!next_child) { //nothing else.. go up and find either window or subwindow
+			if (!next_child) { // nothing else.. go up and find either window or subwindow
 				next_child = const_cast<Control *>(this);
 				while (next_child && !next_child->is_set_as_toplevel()) {
 					next_child = cast_to<Control>(next_child->get_parent());
@@ -2024,7 +2024,7 @@ static Control *_prev_control(Control *p_from) {
 		return p_from;
 	}
 
-	//no prev in parent, try the same in parent
+	// no prev in parent, try the same in parent
 	return _prev_control(child);
 }
 
@@ -2053,7 +2053,7 @@ Control *Control::find_prev_valid_focus() const {
 		Control *prev_child = nullptr;
 
 		if (from->is_set_as_toplevel() || !Object::cast_to<Control>(from->get_parent())) {
-			//find last of the children
+			// find last of the children
 
 			prev_child = _prev_control(from);
 
@@ -2373,7 +2373,7 @@ Control *Control::_get_focus_neighbour(Margin p_margin, int p_count) {
 
 void Control::_window_find_focus_neighbour(const Vector2 &p_dir, Node *p_at, const Point2 *p_points, float p_min, float &r_closest_dist, Control **r_closest) {
 	if (Object::cast_to<Viewport>(p_at)) {
-		return; //bye
+		return; // bye
 	}
 
 	Control *c = Object::cast_to<Control>(p_at);
@@ -2408,7 +2408,7 @@ void Control::_window_find_focus_neighbour(const Vector2 &p_dir, Node *p_at, con
 
 					Vector2 pa, pb;
 					float d = Geometry::get_closest_points_between_segments(la, lb, fa, fb, pa, pb);
-					//float d = Geometry::get_closest_distance_between_segments(Vector3(la.x,la.y,0),Vector3(lb.x,lb.y,0),Vector3(fa.x,fa.y,0),Vector3(fb.x,fb.y,0));
+					// float d = Geometry::get_closest_distance_between_segments(Vector3(la.x,la.y,0),Vector3(lb.x,lb.y,0),Vector3(fa.x,fa.y,0),Vector3(fb.x,fb.y,0));
 					if (d < r_closest_dist) {
 						r_closest_dist = d;
 						*r_closest = c;
@@ -2422,7 +2422,7 @@ void Control::_window_find_focus_neighbour(const Vector2 &p_dir, Node *p_at, con
 		Node *child = p_at->get_child(i);
 		Control *childc = Object::cast_to<Control>(child);
 		if (childc && childc->data.SI) {
-			continue; //subwindow, ignore
+			continue; // subwindow, ignore
 		}
 		_window_find_focus_neighbour(p_dir, p_at->get_child(i), p_points, p_min, r_closest_dist, r_closest);
 	}
@@ -2473,7 +2473,7 @@ void Control::minimum_size_changed() {
 
 	Control *invalidate = this;
 
-	//invalidate cache upwards
+	// invalidate cache upwards
 	while (invalidate && invalidate->data.minimum_size_valid) {
 		invalidate->data.minimum_size_valid = false;
 		if (invalidate->is_set_as_toplevel()) {
@@ -2529,14 +2529,14 @@ void Control::warp_mouse(const Point2 &p_to_pos) {
 
 bool Control::is_text_field() const {
 	/*
-    if (get_script_instance()) {
-        Variant v=p_point;
-        const Variant *p[2]={&v,&p_data};
-        Variant::CallError ce;
-        Variant ret = get_script_instance()->call("is_text_field",p,2,ce);
-        if (ce.error==Variant::CallError::CALL_OK)
-            return ret;
-    }
+	if (get_script_instance()) {
+		Variant v=p_point;
+		const Variant *p[2]={&v,&p_data};
+		Variant::CallError ce;
+		Variant ret = get_script_instance()->call("is_text_field",p,2,ce);
+		if (ce.error==Variant::CallError::CALL_OK)
+			return ret;
+	}
   */
 	return false;
 }
@@ -2703,7 +2703,7 @@ Control::GrowDirection Control::get_v_grow_direction() const {
 }
 
 void Control::_bind_methods() {
-	//ClassDB::bind_method(D_METHOD("_window_resize_event"),&Control::_window_resize_event);
+	// ClassDB::bind_method(D_METHOD("_window_resize_event"),&Control::_window_resize_event);
 	ClassDB::bind_method(D_METHOD("_size_changed"), &Control::_size_changed);
 	ClassDB::bind_method(D_METHOD("_update_minimum_size"), &Control::_update_minimum_size);
 

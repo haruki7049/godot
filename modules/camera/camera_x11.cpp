@@ -29,8 +29,8 @@
 /*************************************************************************/
 
 #include "camera_x11.h"
-#include "servers/camera/camera_feed.h"
 #include "core/bind/core_bind.h"
+#include "servers/camera/camera_feed.h"
 
 #include <algorithm>
 #include <string>
@@ -344,7 +344,7 @@ bool V4l2_Device::request_buffers() {
 			buffers = (V4l2_Device::buffer *)calloc(4, sizeof(*buffers));
 
 			if (!buffers) {
-				//fprintf(stderr, "Out of memory\n");
+				// fprintf(stderr, "Out of memory\n");
 				return false;
 			}
 
@@ -570,10 +570,10 @@ void V4l2_Device::get_image(Ref<CameraFeed> feed, uint8_t *buffer) {
 				img_data.resize(width * height * 3);
 			}
 
-			//uint8_t *w = img_data.ptrw();
+			// uint8_t *w = img_data.ptrw();
 			PoolVector<uint8_t>::Write w = img_data.write();
 			// TODO: Buffer is 1024 Byte longer?
-			//memcpy(w, buffer, width * height * 3);
+			// memcpy(w, buffer, width * height * 3);
 			memcpy(w.ptr(), buffer, width * height * 3);
 
 			img->create(width, height, 0, Image::FORMAT_RGB8, img_data);

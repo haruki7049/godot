@@ -39,7 +39,7 @@ RES ResourceFormatDummyTexture::load(const String &p_path, const String &p_origi
 	unsigned int width = 8;
 	unsigned int height = 8;
 
-	//We just use some format
+	// We just use some format
 	Image::Format fmt = Image::FORMAT_RGB8;
 	int rowsize = 3 * width;
 
@@ -50,7 +50,7 @@ RES ResourceFormatDummyTexture::load(const String &p_path, const String &p_origi
 	uint8_t **row_p = memnew_arr(uint8_t *, height);
 
 	for (unsigned int i = 0; i < height; i++) {
-		row_p[i] = 0; //No colors any more, I want them to turn black
+		row_p[i] = 0; // No colors any more, I want them to turn black
 	}
 
 	memdelete_arr(row_p);

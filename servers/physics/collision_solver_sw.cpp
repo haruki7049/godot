@@ -34,7 +34,7 @@
 #include "gjk_epa.h"
 
 #define collision_solver sat_calculate_penetration
-//#define collision_solver gjk_epa_calculate_penetration
+// #define collision_solver gjk_epa_calculate_penetration
 
 bool CollisionSolverSW::solve_static_plane(const ShapeSW *p_shape_A, const Transform &p_transform_A, const ShapeSW *p_shape_B, const Transform &p_transform_B, CallbackResult p_result_callback, void *p_userdata, bool p_swap_result) {
 	const PlaneShapeSW *plane = static_cast<const PlaneShapeSW *>(p_shape_A);
@@ -174,7 +174,7 @@ bool CollisionSolverSW::solve_concave(const ShapeSW *p_shape_A, const Transform 
 	Transform rel_transform = p_transform_A;
 	rel_transform.origin -= p_transform_B.origin;
 
-	//quickly compute a local AABB
+	// quickly compute a local AABB
 
 	AABB local_aabb;
 	for (int i = 0; i < 3; i++) {
@@ -362,7 +362,7 @@ bool CollisionSolverSW::solve_distance(const ShapeSW *p_shape_A, const Transform
 		Transform rel_transform = p_transform_A;
 		rel_transform.origin -= p_transform_B.origin;
 
-		//quickly compute a local AABB
+		// quickly compute a local AABB
 
 		bool use_cc_hint = p_concave_hint != AABB();
 		AABB cc_hint_aabb;
@@ -400,6 +400,6 @@ bool CollisionSolverSW::solve_distance(const ShapeSW *p_shape_A, const Transform
 
 		return !cinfo.collided;
 	} else {
-		return gjk_epa_calculate_distance(p_shape_A, p_transform_A, p_shape_B, p_transform_B, r_point_A, r_point_B); //should pass sepaxis..
+		return gjk_epa_calculate_distance(p_shape_A, p_transform_A, p_shape_B, p_transform_B, r_point_A, r_point_B); // should pass sepaxis..
 	}
 }

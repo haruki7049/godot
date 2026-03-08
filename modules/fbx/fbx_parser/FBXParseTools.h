@@ -77,7 +77,7 @@ inline uint64_t strtoul10_64(const char *in, bool &errored, const char **out = n
 
 		// numeric overflow, we rely on you
 		if (new_value < value) {
-			//WARN_PRINT( "Converting the string \" " + in + " \" into a value resulted in overflow." );
+			// WARN_PRINT( "Converting the string \" " + in + " \" into a value resulted in overflow." );
 			return 0;
 		}
 

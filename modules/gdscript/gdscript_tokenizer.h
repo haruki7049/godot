@@ -80,8 +80,8 @@ public:
 		TK_OP_BIT_OR,
 		TK_OP_BIT_XOR,
 		TK_OP_BIT_INVERT,
-		//TK_OP_PLUS_PLUS,
-		//TK_OP_MINUS_MINUS,
+		// TK_OP_PLUS_PLUS,
+		// TK_OP_MINUS_MINUS,
 		TK_CF_IF,
 		TK_CF_ELIF,
 		TK_CF_ELSE,
@@ -141,7 +141,7 @@ public:
 		TK_CONST_NAN,
 		TK_ERROR,
 		TK_EOF,
-		TK_CURSOR, //used for code completion
+		TK_CURSOR, // used for code completion
 		TK_MAX
 	};
 
@@ -177,7 +177,7 @@ public:
 	virtual bool is_ignoring_warnings() const = 0;
 #endif // DEBUG_ENABLED
 
-	virtual ~GDScriptTokenizer(){};
+	virtual ~GDScriptTokenizer() {};
 };
 
 class GDScriptTokenizerText : public GDScriptTokenizer {
@@ -189,12 +189,12 @@ class GDScriptTokenizerText : public GDScriptTokenizer {
 
 	struct TokenData {
 		Token type;
-		StringName identifier; //for identifier types
-		Variant constant; //for constant types
+		StringName identifier; // for identifier types
+		Variant constant; // for constant types
 		union {
-			Variant::Type vtype; //for type types
-			GDScriptFunctions::Function func; //function for built in functions
-			int warning_code; //for warning skip
+			Variant::Type vtype; // for type types
+			GDScriptFunctions::Function func; // function for built in functions
+			int warning_code; // for warning skip
 		};
 		int line, col;
 		TokenData() {

@@ -70,7 +70,7 @@ protected:
 #endif
 
 public:
-	double get_time_since_last_mix(); //useful for video -> audio sync
+	double get_time_since_last_mix(); // useful for video -> audio sync
 	double get_time_to_next_mix();
 
 	enum SpeakerMode {
@@ -147,7 +147,7 @@ class AudioServer : public Object {
 	GDCLASS(AudioServer, Object);
 
 public:
-	//re-expose this here, as AudioDriver is not exposed to script
+	// re-expose this here, as AudioDriver is not exposed to script
 	enum SpeakerMode {
 		SPEAKER_MODE_STEREO,
 		SPEAKER_SURROUND_31,
@@ -188,7 +188,7 @@ private:
 
 		bool soloed;
 
-		//Each channel is a stereo pair.
+		// Each channel is a stereo pair.
 		struct Channel {
 			bool used;
 			bool active;
@@ -220,7 +220,7 @@ private:
 		int index_cache;
 	};
 
-	Vector<Vector<AudioFrame>> temp_buffer; //temp_buffer for each level
+	Vector<Vector<AudioFrame>> temp_buffer; // temp_buffer for each level
 	Vector<Bus *> buses;
 	Map<StringName, Bus *> bus_map;
 
@@ -273,7 +273,7 @@ public:
 		ERR_FAIL_V(1);
 	}
 
-	//do not use from outside audio thread
+	// do not use from outside audio thread
 	bool thread_has_channel_mix_buffer(int p_bus, int p_buffer) const;
 	AudioFrame *thread_get_channel_mix_buffer(int p_bus, int p_buffer);
 	int thread_get_mix_buffer_size() const;

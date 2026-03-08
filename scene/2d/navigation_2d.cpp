@@ -46,7 +46,7 @@ void Navigation2D::_navpoly_link(int p_id) {
 	PoolVector<Vector2>::Read r = vertices.read();
 
 	for (int i = 0; i < nm.navpoly->get_polygon_count(); i++) {
-		//build
+		// build
 
 		List<Polygon>::Element *P = nm.polygons.push_back(Polygon());
 		Polygon &p = P->get();
@@ -94,7 +94,7 @@ void Navigation2D::_navpoly_link(int p_id) {
 
 		p.center = center / plen;
 
-		//connect
+		// connect
 
 		for (int j = 0; j < plen; j++) {
 			int next = (j + 1) % plen;
@@ -123,7 +123,7 @@ void Navigation2D::_navpoly_link(int p_id) {
 				C->get().A->edges.write[C->get().A_edge].C_edge = j;
 				p.edges.write[j].C = C->get().A;
 				p.edges.write[j].C_edge = C->get().A_edge;
-				//connection successful.
+				// connection successful.
 			}
 		}
 	}
@@ -154,7 +154,7 @@ void Navigation2D::_navpoly_unlink(int p_id) {
 				edges[i].P = nullptr;
 
 			} else if (C->get().B) {
-				//disconnect
+				// disconnect
 
 				C->get().B->edges.write[C->get().B_edge].C = nullptr;
 				C->get().B->edges.write[C->get().B_edge].C_edge = -1;
@@ -169,7 +169,7 @@ void Navigation2D::_navpoly_unlink(int p_id) {
 				C->get().B_edge = -1;
 
 				if (C->get().pending.size()) {
-					//reconnect if something is pending
+					// reconnect if something is pending
 					ConnectionPending cp = C->get().pending.front()->get();
 					C->get().pending.pop_front();
 
@@ -184,7 +184,7 @@ void Navigation2D::_navpoly_unlink(int p_id) {
 
 			} else {
 				connections.erase(C);
-				//erase
+				// erase
 			}
 		}
 	}
@@ -214,7 +214,7 @@ void Navigation2D::navpoly_set_transform(int p_id, const Transform2D &p_xform) {
 	ERR_FAIL_COND(!navpoly_map.has(p_id));
 	NavMesh &nm = navpoly_map[p_id];
 	if (nm.xform == p_xform) {
-		return; //bleh
+		return; // bleh
 	}
 	_navpoly_unlink(p_id);
 	nm.xform = p_xform;
@@ -234,7 +234,7 @@ Vector<Vector2> Navigation2D::get_simple_path(const Vector2 &p_start, const Vect
 	float begin_d = 1e20;
 	float end_d = 1e20;
 
-	//look for point inside triangle
+	// look for point inside triangle
 
 	for (Map<int, NavMesh>::Element *E = navpoly_map.front(); E; E = E->next()) {
 		if (!E->get().linked) {
@@ -272,7 +272,7 @@ Vector<Vector2> Navigation2D::get_simple_path(const Vector2 &p_start, const Vect
 		}
 	}
 
-	//start or end not inside triangle.. look for closest segment :|
+	// start or end not inside triangle.. look for closest segment :|
 	if (begin_d || end_d) {
 		for (Map<int, NavMesh>::Element *E = navpoly_map.front(); E; E = E->next()) {
 			if (!E->get().linked) {
@@ -312,7 +312,7 @@ Vector<Vector2> Navigation2D::get_simple_path(const Vector2 &p_start, const Vect
 	}
 
 	if (!begin_poly || !end_poly) {
-		return Vector<Vector2>(); //no path
+		return Vector<Vector2>(); // no path
 	}
 
 	if (begin_poly == end_poly) {
@@ -356,12 +356,12 @@ Vector<Vector2> Navigation2D::get_simple_path(const Vector2 &p_start, const Vect
 		if (open_list.size() == 0) {
 			break;
 		}
-		//check open list
+		// check open list
 
 		List<Polygon *>::Element *least_cost_poly = nullptr;
 		float least_cost = 1e30;
 
-		//this could be faster (cache previous results)
+		// this could be faster (cache previous results)
 		for (List<Polygon *>::Element *E = open_list.front(); E; E = E->next()) {
 			Polygon *p = E->get();
 
@@ -402,7 +402,7 @@ Vector<Vector2> Navigation2D::get_simple_path(const Vector2 &p_start, const Vect
 		}
 
 		Polygon *p = least_cost_poly->get();
-		//open the neighbours for search
+		// open the neighbours for search
 		int es = p->edges.size();
 
 		for (int i = 0; i < es; i++) {
@@ -428,7 +428,7 @@ Vector<Vector2> Navigation2D::get_simple_path(const Vector2 &p_start, const Vect
 #endif
 
 			if (e.C->prev_edge != -1) {
-				//oh this was visited already, can we win the cost?
+				// oh this was visited already, can we win the cost?
 
 				if (e.C->distance > distance) {
 					e.C->prev_edge = e.C_edge;
@@ -438,7 +438,7 @@ Vector<Vector2> Navigation2D::get_simple_path(const Vector2 &p_start, const Vect
 #endif
 				}
 			} else {
-				//add to open neighbours
+				// add to open neighbours
 
 				e.C->prev_edge = e.C_edge;
 				e.C->distance = distance;
@@ -449,7 +449,7 @@ Vector<Vector2> Navigation2D::get_simple_path(const Vector2 &p_start, const Vect
 				open_list.push_back(e.C);
 
 				if (e.C == end_poly) {
-					//oh my reached end! stop algorithm
+					// oh my reached end! stop algorithm
 					found_route = true;
 					break;
 				}
@@ -467,7 +467,7 @@ Vector<Vector2> Navigation2D::get_simple_path(const Vector2 &p_start, const Vect
 		Vector<Vector2> path;
 
 		if (p_optimize) {
-			//string pulling
+			// string pulling
 
 			Vector2 apex_point = end_point;
 			Vector2 portal_left = apex_point;
@@ -480,7 +480,7 @@ Vector<Vector2> Navigation2D::get_simple_path(const Vector2 &p_start, const Vect
 				Vector2 left;
 				Vector2 right;
 
-//#define CLOCK_TANGENT(m_a,m_b,m_c) ( ((m_a)-(m_c)).cross((m_a)-(m_b)) )
+// #define CLOCK_TANGENT(m_a,m_b,m_c) ( ((m_a)-(m_c)).cross((m_a)-(m_b)) )
 #define CLOCK_TANGENT(m_a, m_b, m_c) ((((m_a).x - (m_c).x) * ((m_b).y - (m_c).y) - ((m_b).x - (m_c).x) * ((m_a).y - (m_c).y)))
 
 				if (p == begin_poly) {
@@ -519,7 +519,7 @@ Vector<Vector2> Navigation2D::get_simple_path(const Vector2 &p_start, const Vect
 				*/
 
 				if (CLOCK_TANGENT(apex_point, portal_left, left) >= 0) {
-					//process
+					// process
 					if (portal_left.is_equal_approx(apex_point) || CLOCK_TANGENT(apex_point, left, portal_right) > 0) {
 						left_poly = p;
 						portal_left = left;
@@ -537,7 +537,7 @@ Vector<Vector2> Navigation2D::get_simple_path(const Vector2 &p_start, const Vect
 				}
 
 				if (!skip && CLOCK_TANGENT(apex_point, portal_right, right) <= 0) {
-					//process
+					// process
 					if (portal_right.is_equal_approx(apex_point) || CLOCK_TANGENT(apex_point, right, portal_left) < 0) {
 						right_poly = p;
 						portal_right = right;
@@ -561,7 +561,7 @@ Vector<Vector2> Navigation2D::get_simple_path(const Vector2 &p_start, const Vect
 			}
 
 		} else {
-			//midpoints
+			// midpoints
 			Polygon *p = end_poly;
 
 			while (true) {
@@ -608,7 +608,7 @@ Vector2 Navigation2D::get_closest_point(const Vector2 &p_point) {
 			Polygon &p = F->get();
 			for (int i = 2; i < p.edges.size(); i++) {
 				if (Geometry::is_point_in_triangle(p_point, _get_vertex(p.edges[0].point), _get_vertex(p.edges[i - 1].point), _get_vertex(p.edges[i].point))) {
-					return p_point; //inside triangle, nothing else to discuss
+					return p_point; // inside triangle, nothing else to discuss
 				}
 			}
 		}

@@ -42,7 +42,7 @@ static _WinTranslatePair _vk_to_keycode[] = {
 	{ KEY_BACKSPACE, VK_BACK }, // (0x08) // backspace
 	{ KEY_TAB, VK_TAB }, //(0x09)
 
-	//VK_CLEAR (0x0C)
+	// VK_CLEAR (0x0C)
 
 	{ KEY_ENTER, VK_RETURN }, //(0x0D)
 
@@ -76,11 +76,11 @@ static _WinTranslatePair _vk_to_keycode[] = {
 
 	{ KEY_DOWN, VK_DOWN }, // (0x28)
 
-	//VK_SELECT (0x29)
+	// VK_SELECT (0x29)
 
 	{ KEY_PRINT, VK_PRINT }, // (0x2A)
 
-	//VK_EXECUTE (0x2B)
+	// VK_EXECUTE (0x2B)
 
 	{ KEY_PRINT, VK_SNAPSHOT }, // (0x2C)
 
@@ -143,7 +143,7 @@ static _WinTranslatePair _vk_to_keycode[] = {
 	{ KEY_KP_9, VK_NUMPAD9 }, //(0x69)
 	{ KEY_KP_MULTIPLY, VK_MULTIPLY }, // (0x6A)
 	{ KEY_KP_ADD, VK_ADD }, // (0x6B)
-	//VK_SEPARATOR (0x6C)
+	// VK_SEPARATOR (0x6C)
 	{ KEY_KP_SUBTRACT, VK_SUBTRACT }, // (0x6D)
 	{ KEY_KP_PERIOD, VK_DECIMAL }, // (0x6E)
 	{ KEY_KP_DIVIDE, VK_DIVIDE }, // (0x6F)
@@ -198,7 +198,7 @@ static _WinTranslatePair _vk_to_keycode[] = {
 
 	{ KEY_MEDIASTOP, VK_MEDIA_STOP }, // (0xB2)
 
-	//VK_MEDIA_PLAY_PAUSE (0xB3)
+	// VK_MEDIA_PLAY_PAUSE (0xB3)
 
 	{ KEY_LAUNCHMAIL, VK_LAUNCH_MAIL }, // (0xB4)
 
@@ -338,7 +338,7 @@ static _WinTranslatePair _scancode_to_keycode[] = {
 unsigned int KeyMappingWindows::get_keysym(unsigned int p_code) {
 	for (int i = 0; _vk_to_keycode[i].keysym != KEY_UNKNOWN; i++) {
 		if (_vk_to_keycode[i].keycode == p_code) {
-			//printf("outcode: %x\n",_vk_to_keycode[i].keysym);
+			// printf("outcode: %x\n",_vk_to_keycode[i].keysym);
 
 			return _vk_to_keycode[i].keysym;
 		}

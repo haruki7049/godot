@@ -328,7 +328,7 @@ Video::Video(uint64_t id, const ElementPtr element, const Document &doc, const s
 	}
 
 	if (Content && !Content->Tokens().empty()) {
-		//this field is omitted when the embedded texture is already loaded, let's ignore if it's not found
+		// this field is omitted when the embedded texture is already loaded, let's ignore if it's not found
 		try {
 			const Token *token = GetRequiredToken(Content, 0);
 			const char *data = token->begin();

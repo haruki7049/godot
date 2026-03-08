@@ -52,12 +52,12 @@
 
 // never do these checks in release
 #if defined(TOOLS_ENABLED) && defined(DEBUG_ENABLED)
-//#define BVH_VERBOSE
-//#define BVH_VERBOSE_TREE
+// #define BVH_VERBOSE
+// #define BVH_VERBOSE_TREE
 
-//#define BVH_VERBOSE_FRAME
-//#define BVH_CHECKS
-//#define BVH_INTEGRITY_CHECKS
+// #define BVH_VERBOSE_FRAME
+// #define BVH_CHECKS
+// #define BVH_INTEGRITY_CHECKS
 #endif
 
 // debug only assert
@@ -112,8 +112,8 @@ public:
 	int32_t depth = 1;
 	int32_t threshold = ALLOCA_STACK_SIZE - 2;
 	T *stack;
-	//only used in rare occasions when you run out of alloca memory
-	// because tree is too unbalanced.
+	// only used in rare occasions when you run out of alloca memory
+	//  because tree is too unbalanced.
 	LocalVector<T> aux_stack;
 	int32_t get_alloca_stacksize() const { return ALLOCA_STACK_SIZE * sizeof(T); }
 

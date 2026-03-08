@@ -153,7 +153,7 @@ public:
 
 protected:
 public:
-	typedef bool (*BakeStepFunc)(float, const String &, void *, bool); //progress, step description, userdata, force refresh
+	typedef bool (*BakeStepFunc)(float, const String &, void *, bool); // progress, step description, userdata, force refresh
 	typedef void (*BakeEndFunc)(uint32_t); // time_started
 
 	struct MeshData {
@@ -163,7 +163,7 @@ public:
 			Color add;
 		};
 
-		//triangle data
+		// triangle data
 		Vector<Vector3> points;
 		Vector<Vector2> uv;
 		Vector<Vector2> uv2;

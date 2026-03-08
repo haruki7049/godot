@@ -111,7 +111,7 @@ Model::~Model() {
 }
 
 ModelLimbNode::ModelLimbNode(uint64_t id, const ElementPtr element, const Document &doc, const std::string &name) :
-		Model(id, element, doc, name){
+		Model(id, element, doc, name) {
 
 		};
 
@@ -136,7 +136,7 @@ void Model::ResolveLinks(const ElementPtr element, const Document &doc) {
 
 		const Object *const ob = con->SourceObject();
 		if (!ob) {
-			//DOMWarning("failed to read source object for incoming Model link, ignoring",&element);
+			// DOMWarning("failed to read source object for incoming Model link, ignoring",&element);
 			continue;
 		}
 

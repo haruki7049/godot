@@ -132,7 +132,7 @@ public:
 };
 
 bool ResourceFormatLoader::exists(const String &p_path) const {
-	return FileAccess::exists(p_path); //by default just check file
+	return FileAccess::exists(p_path); // by default just check file
 }
 
 void ResourceFormatLoader::get_recognized_extensions(List<String> *p_extensions) const {
@@ -340,17 +340,17 @@ RES ResourceLoader::load(const String &p_path, const String &p_type_hint, bool p
 			ERR_FAIL_COND_V_MSG(!success, RES(), "Resource: '" + local_path + "' is already being loaded. Cyclic reference?");
 		}
 
-		//lock first if possible
+		// lock first if possible
 		ResourceCache::lock.read_lock();
 
-		//get ptr
+		// get ptr
 		Resource **rptr = ResourceCache::resources.getptr(local_path);
 
 		if (rptr) {
 			RES res(*rptr);
-			//it is possible this resource was just freed in a thread. If so, this referencing will not work and resource is considered not cached
+			// it is possible this resource was just freed in a thread. If so, this referencing will not work and resource is considered not cached
 			if (res.is_valid()) {
-				//referencing is fine
+				// referencing is fine
 				if (r_error) {
 					*r_error = OK;
 				}
@@ -394,7 +394,7 @@ RES ResourceLoader::load(const String &p_path, const String &p_type_hint, bool p
 	res->set_edited(false);
 	if (timestamp_on_load) {
 		uint64_t mt = FileAccess::get_modified_time(path);
-		//printf("mt %s: %lli\n",remapped_path.utf8().get_data(),mt);
+		// printf("mt %s: %lli\n",remapped_path.utf8().get_data(),mt);
 		res->set_last_modified_time(mt);
 	}
 #endif
@@ -593,7 +593,7 @@ String ResourceLoader::get_import_group_file(const String &p_path) {
 		return loader[i]->get_import_group_file(p_path);
 	}
 
-	return String(); //not found
+	return String(); // not found
 }
 
 bool ResourceLoader::is_import_valid(const String &p_path) {
@@ -618,7 +618,7 @@ bool ResourceLoader::is_import_valid(const String &p_path) {
 		return loader[i]->is_import_valid(p_path);
 	}
 
-	return false; //not found
+	return false; // not found
 }
 
 bool ResourceLoader::is_imported(const String &p_path) {
@@ -643,7 +643,7 @@ bool ResourceLoader::is_imported(const String &p_path) {
 		return loader[i]->is_imported(p_path);
 	}
 
-	return false; //not found
+	return false; // not found
 }
 
 void ResourceLoader::get_dependencies(const String &p_path, List<String> *p_dependencies, bool p_add_types) {
@@ -833,7 +833,7 @@ void ResourceLoader::reload_translation_remaps() {
 
 	ResourceCache::lock.read_unlock();
 
-	//now just make sure to not delete any of these resources while changing locale..
+	// now just make sure to not delete any of these resources while changing locale..
 	while (to_reload.front()) {
 		to_reload.front()->get()->reload_from_file();
 		to_reload.pop_front();
@@ -874,7 +874,7 @@ void ResourceLoader::load_path_remaps() {
 
 	PoolVector<String> remaps = ProjectSettings::get_singleton()->get("path_remap/remapped_paths");
 	int rc = remaps.size();
-	ERR_FAIL_COND(rc & 1); //must be even
+	ERR_FAIL_COND(rc & 1); // must be even
 	PoolVector<String>::Read r = remaps.read();
 
 	for (int i = 0; i < rc; i += 2) {

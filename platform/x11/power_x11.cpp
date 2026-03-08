@@ -45,11 +45,11 @@ Adapted from corresponding SDL 2.0 code.
   freely, subject to the following restrictions:
 
   1. The origin of this software must not be misrepresented; you must not
-     claim that you wrote the original software. If you use this software
-     in a product, an acknowledgment in the product documentation would be
-     appreciated but is not required.
+	 claim that you wrote the original software. If you use this software
+	 in a product, an acknowledgment in the product documentation would be
+	 appreciated but is not required.
   2. Altered source versions must be plainly marked as such, and must not be
-     misrepresented as being the original software.
+	 misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 */
 
@@ -200,7 +200,7 @@ void PowerX11::check_proc_acpi_battery(const char *node, bool *have_battery, boo
 	 *  (failing a report of minutes, we'll take the highest percent.)
 	 */
 	// -- GODOT start --
-	//if ((secs < 0) && (this->nsecs_left < 0)) {
+	// if ((secs < 0) && (this->nsecs_left < 0)) {
 	if (this->nsecs_left < 0) {
 		// -- GODOT end --
 		if ((pct < 0) && (this->percent_left < 0)) {
@@ -455,7 +455,7 @@ bool PowerX11::GetPowerInfo_Linux_sys_class_power_supply(/*PowerState *state, in
 
 		if ((name == ".") || (name == "..")) {
 			name = dirp->get_next();
-			continue; //skip these, of course.
+			continue; // skip these, of course.
 		} else {
 			if (!read_power_file(base, name.utf8().get_data(), "type", str, sizeof(str))) {
 				name = dirp->get_next();

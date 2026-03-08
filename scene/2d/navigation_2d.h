@@ -75,7 +75,7 @@ class Navigation2D : public Node2D {
 	struct Polygon {
 		struct Edge {
 			Point point;
-			Polygon *C; //connection
+			Polygon *C; // connection
 			int C_edge;
 			List<ConnectionPending>::Element *P;
 			Edge() {
@@ -150,7 +150,7 @@ protected:
 	static void _bind_methods();
 
 public:
-	//API should be as dynamic as possible
+	// API should be as dynamic as possible
 	int navpoly_add(const Ref<NavigationPolygon> &p_mesh, const Transform2D &p_xform, Object *p_owner = nullptr);
 	void navpoly_set_transform(int p_id, const Transform2D &p_xform);
 	void navpoly_remove(int p_id);

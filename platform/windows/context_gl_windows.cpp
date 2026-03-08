@@ -175,18 +175,18 @@ Error ContextGL_Windows::initialize() {
 
 	if (opengl_3_context) {
 		int attribs[] = {
-			WGL_CONTEXT_MAJOR_VERSION_ARB, 3, //we want a 3.3 context
+			WGL_CONTEXT_MAJOR_VERSION_ARB, 3, // we want a 3.3 context
 			WGL_CONTEXT_MINOR_VERSION_ARB, 3,
-			//and it shall be forward compatible so that we can only use up to date functionality
+			// and it shall be forward compatible so that we can only use up to date functionality
 			WGL_CONTEXT_PROFILE_MASK_ARB, WGL_CONTEXT_CORE_PROFILE_BIT_ARB,
 			WGL_CONTEXT_FLAGS_ARB, WGL_CONTEXT_FORWARD_COMPATIBLE_BIT_ARB /*| _WGL_CONTEXT_DEBUG_BIT_ARB*/,
 			0
-		}; //zero indicates the end of the array
+		}; // zero indicates the end of the array
 
-		PFNWGLCREATECONTEXTATTRIBSARBPROC wglCreateContextAttribsARB = NULL; //pointer to the method
+		PFNWGLCREATECONTEXTATTRIBSARBPROC wglCreateContextAttribsARB = NULL; // pointer to the method
 		wglCreateContextAttribsARB = (PFNWGLCREATECONTEXTATTRIBSARBPROC)wglGetProcAddress("wglCreateContextAttribsARB");
 
-		if (wglCreateContextAttribsARB == NULL) //OpenGL 3.0 is not supported
+		if (wglCreateContextAttribsARB == NULL) // OpenGL 3.0 is not supported
 		{
 			wglDeleteContext(hRC);
 			return ERR_CANT_CREATE;
@@ -209,7 +209,7 @@ Error ContextGL_Windows::initialize() {
 
 	wglSwapIntervalEXT = (PFNWGLSWAPINTERVALEXTPROC)wglGetProcAddress("wglSwapIntervalEXT");
 	wglGetSwapIntervalEXT = (PFNWGLGETSWAPINTERVALEXTPROC)wglGetProcAddress("wglGetSwapIntervalEXT");
-	//glWrapperInit(wrapper_get_proc_address);
+	// glWrapperInit(wrapper_get_proc_address);
 
 	return OK;
 }

@@ -285,14 +285,14 @@ Error GLTFDocument::_parse_glb(const String &p_path, Ref<GLTFState> state) {
 	}
 
 	uint32_t magic = f->get_32();
-	ERR_FAIL_COND_V(magic != 0x46546C67, ERR_FILE_UNRECOGNIZED); //glTF
+	ERR_FAIL_COND_V(magic != 0x46546C67, ERR_FILE_UNRECOGNIZED); // glTF
 	f->get_32(); // version
 	f->get_32(); // length
 
 	uint32_t chunk_length = f->get_32();
 	uint32_t chunk_type = f->get_32();
 
-	ERR_FAIL_COND_V(chunk_type != 0x4E4F534A, ERR_PARSE_ERROR); //JSON
+	ERR_FAIL_COND_V(chunk_type != 0x4E4F534A, ERR_PARSE_ERROR); // JSON
 	Vector<uint8_t> json_data;
 	json_data.resize(chunk_length);
 	uint32_t len = f->get_buffer(json_data.ptrw(), chunk_length);
@@ -312,16 +312,16 @@ Error GLTFDocument::_parse_glb(const String &p_path, Ref<GLTFState> state) {
 
 	state->json = v;
 
-	//data?
+	// data?
 
 	chunk_length = f->get_32();
 	chunk_type = f->get_32();
 
 	if (f->eof_reached()) {
-		return OK; //all good
+		return OK; // all good
 	}
 
-	ERR_FAIL_COND_V(chunk_type != 0x004E4942, ERR_PARSE_ERROR); //BIN
+	ERR_FAIL_COND_V(chunk_type != 0x004E4942, ERR_PARSE_ERROR); // BIN
 
 	state->glb_data.resize(chunk_length);
 	len = f->get_buffer(state->glb_data.ptrw(), chunk_length);
@@ -671,7 +671,7 @@ Error GLTFDocument::_parse_nodes(Ref<GLTFState> state) {
 			GLTFNodeIndex child_i = state->nodes[node_i]->children[j];
 
 			ERR_FAIL_INDEX_V(child_i, state->nodes.size(), ERR_FILE_CORRUPT);
-			ERR_CONTINUE(state->nodes[child_i]->parent != -1); //node already has a parent, wtf.
+			ERR_CONTINUE(state->nodes[child_i]->parent != -1); // node already has a parent, wtf.
 
 			state->nodes.write[child_i]->parent = node_i;
 		}
@@ -924,7 +924,7 @@ Error GLTFDocument::_encode_accessors(Ref<GLTFState> state) {
 			min[min_i] = accessor->min[min_i];
 		}
 		d["min"] = min;
-		d["bufferView"] = accessor->buffer_view; //optional because it may be sparse...
+		d["bufferView"] = accessor->buffer_view; // optional because it may be sparse...
 
 		// Dictionary s;
 		// s["count"] = accessor->sparse_count;
@@ -1039,7 +1039,7 @@ Error GLTFDocument::_parse_accessors(Ref<GLTFState> state) {
 		accessor->type = _get_type_from_str(d["type"]);
 
 		if (d.has("bufferView")) {
-			accessor->buffer_view = d["bufferView"]; //optional because it may be sparse...
+			accessor->buffer_view = d["bufferView"]; // optional because it may be sparse...
 		}
 
 		if (d.has("byteOffset")) {
@@ -1069,7 +1069,7 @@ Error GLTFDocument::_parse_accessors(Ref<GLTFState> state) {
 		}
 
 		if (d.has("sparse")) {
-			//eeh..
+			// eeh..
 
 			const Dictionary &s = d["sparse"];
 
@@ -1156,7 +1156,7 @@ Error GLTFDocument::_encode_buffer_view(Ref<GLTFState> state, const double *src,
 
 	int skip_every = 0;
 	int skip_bytes = 0;
-	//special case of alignments, as described in spec
+	// special case of alignments, as described in spec
 	switch (component_type) {
 		case COMPONENT_TYPE_BYTE:
 		case COMPONENT_TYPE_UNSIGNED_BYTE: {
@@ -1187,9 +1187,9 @@ Error GLTFDocument::_encode_buffer_view(Ref<GLTFState> state, const double *src,
 
 	int stride = _get_component_type_size(component_type);
 	if (for_vertex && stride % 4) {
-		stride += 4 - (stride % 4); //according to spec must be multiple of 4
+		stride += 4 - (stride % 4); // according to spec must be multiple of 4
 	}
-	//use to debug
+	// use to debug
 	print_verbose("glTF: encoding type " + _get_type_name(type) + " component type: " + _get_component_type_name(component_type) + " stride: " + itos(stride) + " amount " + itos(count));
 
 	print_verbose("glTF: encoding accessor offset " + itos(byte_offset) + " view offset: " + itos(bv->byte_offset) + " total buffer len: " + itos(gltf_buffer.size()) + " view len " + itos(bv->byte_length));
@@ -1350,16 +1350,16 @@ Error GLTFDocument::_decode_buffer_view(Ref<GLTFState> state, double *dst, const
 		stride = bv->byte_stride;
 	}
 	if (for_vertex && stride % 4) {
-		stride += 4 - (stride % 4); //according to spec must be multiple of 4
+		stride += 4 - (stride % 4); // according to spec must be multiple of 4
 	}
 
 	ERR_FAIL_INDEX_V(bv->buffer, state->buffers.size(), ERR_PARSE_ERROR);
 
 	const uint32_t offset = bv->byte_offset + byte_offset;
-	Vector<uint8_t> buffer = state->buffers[bv->buffer]; //copy on write, so no performance hit
+	Vector<uint8_t> buffer = state->buffers[bv->buffer]; // copy on write, so no performance hit
 	const uint8_t *bufptr = buffer.ptr();
 
-	//use to debug
+	// use to debug
 	print_verbose("glTF: type " + _get_type_name(type) + " component type: " + _get_component_type_name(component_type) + " stride: " + itos(stride) + " amount " + itos(count));
 	print_verbose("glTF: accessor offset " + itos(byte_offset) + " view offset: " + itos(bv->byte_offset) + " total buffer len: " + itos(buffer.size()) + " view len " + itos(bv->byte_length));
 
@@ -1368,7 +1368,7 @@ Error GLTFDocument::_decode_buffer_view(Ref<GLTFState> state, double *dst, const
 
 	ERR_FAIL_COND_V((int)(offset + buffer_end) > buffer.size(), ERR_PARSE_ERROR);
 
-	//fill everything as doubles
+	// fill everything as doubles
 
 	for (int i = 0; i < count; i++) {
 		const uint8_t *src = &bufptr[offset + i * stride];
@@ -1451,8 +1451,8 @@ int GLTFDocument::_get_component_type_size(const int component_type) {
 }
 
 Vector<double> GLTFDocument::_decode_accessor(Ref<GLTFState> state, const GLTFAccessorIndex p_accessor, const bool p_for_vertex) {
-	//spec, for reference:
-	//https://github.com/KhronosGroup/glTF/tree/master/specification/2.0#data-alignment
+	// spec, for reference:
+	// https://github.com/KhronosGroup/glTF/tree/master/specification/2.0#data-alignment
 
 	ERR_FAIL_INDEX_V(p_accessor, state->accessors.size(), Vector<double>());
 
@@ -1469,19 +1469,19 @@ Vector<double> GLTFDocument::_decode_accessor(Ref<GLTFState> state, const GLTFAc
 
 	int skip_every = 0;
 	int skip_bytes = 0;
-	//special case of alignments, as described in spec
+	// special case of alignments, as described in spec
 	switch (a->component_type) {
 		case COMPONENT_TYPE_BYTE:
 		case COMPONENT_TYPE_UNSIGNED_BYTE: {
 			if (a->type == TYPE_MAT2) {
 				skip_every = 2;
 				skip_bytes = 2;
-				element_size = 8; //override for this case
+				element_size = 8; // override for this case
 			}
 			if (a->type == TYPE_MAT3) {
 				skip_every = 3;
 				skip_bytes = 1;
-				element_size = 12; //override for this case
+				element_size = 12; // override for this case
 			}
 		} break;
 		case COMPONENT_TYPE_SHORT:
@@ -1489,7 +1489,7 @@ Vector<double> GLTFDocument::_decode_accessor(Ref<GLTFState> state, const GLTFAc
 			if (a->type == TYPE_MAT3) {
 				skip_every = 6;
 				skip_bytes = 4;
-				element_size = 16; //override for this case
+				element_size = 16; // override for this case
 			}
 		} break;
 		default: {
@@ -1508,7 +1508,7 @@ Vector<double> GLTFDocument::_decode_accessor(Ref<GLTFState> state, const GLTFAc
 			return Vector<double>();
 		}
 	} else {
-		//fill with zeros, as bufferview is not defined.
+		// fill with zeros, as bufferview is not defined.
 		for (int i = 0; i < (a->count * component_count); i++) {
 			dst_buffer.write[i] = 0;
 		}
@@ -2471,7 +2471,7 @@ Error GLTFDocument::_serialize_meshes(Ref<GLTFState> state) {
 				Vector<int32_t> mesh_indices = array[Mesh::ARRAY_INDEX];
 				if (mesh_indices.size()) {
 					if (primitive_type == Mesh::PRIMITIVE_TRIANGLES) {
-						//swap around indices, convert ccw to cw for front face
+						// swap around indices, convert ccw to cw for front face
 						const int is = mesh_indices.size();
 						for (int k = 0; k < is; k += 3) {
 							SWAP(mesh_indices.write[k + 0], mesh_indices.write[k + 2]);
@@ -2480,7 +2480,7 @@ Error GLTFDocument::_serialize_meshes(Ref<GLTFState> state) {
 					primitive["indices"] = _encode_accessor_as_ints(state, mesh_indices, true);
 				} else {
 					if (primitive_type == Mesh::PRIMITIVE_TRIANGLES) {
-						//generate indices because they need to be swapped for CW/CCW
+						// generate indices because they need to be swapped for CW/CCW
 						const Vector<Vector3> &vertices = array[Mesh::ARRAY_VERTEX];
 						Ref<SurfaceTool> st;
 						st.instance();
@@ -2503,7 +2503,7 @@ Error GLTFDocument::_serialize_meshes(Ref<GLTFState> state) {
 
 			primitive["attributes"] = attributes;
 
-			//blend shapes
+			// blend shapes
 			print_verbose("glTF: Mesh has targets");
 			if (import_mesh->get_blend_shape_count()) {
 				ArrayMesh::BlendShapeMode shape_mode = import_mesh->get_blend_shape_mode();
@@ -2640,11 +2640,11 @@ Error GLTFDocument::_parse_meshes(Ref<GLTFState> state) {
 				static const Mesh::PrimitiveType primitives2[7] = {
 					Mesh::PRIMITIVE_POINTS,
 					Mesh::PRIMITIVE_LINES,
-					Mesh::PRIMITIVE_LINES, //loop not supported, should ce converted
+					Mesh::PRIMITIVE_LINES, // loop not supported, should ce converted
 					Mesh::PRIMITIVE_LINES,
 					Mesh::PRIMITIVE_TRIANGLES,
 					Mesh::PRIMITIVE_TRIANGLE_STRIP,
-					Mesh::PRIMITIVE_TRIANGLES, //fan not supported, should be converted
+					Mesh::PRIMITIVE_TRIANGLES, // fan not supported, should be converted
 #ifndef _MSC_VER
 // #warning line loop and triangle fan are not supported and need to be converted to lines and triangles
 #endif
@@ -2680,7 +2680,7 @@ Error GLTFDocument::_parse_meshes(Ref<GLTFState> state) {
 			ERR_CONTINUE(a.has("JOINTS_0") && a.has("JOINTS_1"));
 			if (a.has("WEIGHTS_0") && !a.has("WEIGHTS_1")) {
 				Vector<float> weights = _decode_accessor_as_floats(state, a["WEIGHTS_0"], true);
-				{ //gltf does not seem to normalize the weights for some reason..
+				{ // gltf does not seem to normalize the weights for some reason..
 					int wc = weights.size();
 					float *w = weights.ptrw();
 
@@ -2706,7 +2706,7 @@ Error GLTFDocument::_parse_meshes(Ref<GLTFState> state) {
 				Vector<int> indices = _decode_accessor_as_ints(state, p["indices"], false);
 
 				if (primitive == Mesh::PRIMITIVE_TRIANGLES) {
-					//swap around indices, convert ccw to cw for front face
+					// swap around indices, convert ccw to cw for front face
 
 					const int is = indices.size();
 					int *w = indices.ptrw();
@@ -2717,7 +2717,7 @@ Error GLTFDocument::_parse_meshes(Ref<GLTFState> state) {
 				array[Mesh::ARRAY_INDEX] = indices;
 
 			} else if (primitive == Mesh::PRIMITIVE_TRIANGLES) {
-				//generate indices because they need to be swapped for CW/CCW
+				// generate indices because they need to be swapped for CW/CCW
 				const Vector<Vector3> &vertices = array[Mesh::ARRAY_VERTEX];
 				ERR_FAIL_COND_V(vertices.size() == 0, ERR_PARSE_ERROR);
 				Vector<int> indices;
@@ -2737,7 +2737,7 @@ Error GLTFDocument::_parse_meshes(Ref<GLTFState> state) {
 			bool generate_tangents = (primitive == Mesh::PRIMITIVE_TRIANGLES && !a.has("TANGENT") && a.has("TEXCOORD_0") && a.has("NORMAL"));
 
 			if (generate_tangents) {
-				//must generate mikktspace tangents.. ergh..
+				// must generate mikktspace tangents.. ergh..
 				Ref<SurfaceTool> st;
 				st.instance();
 				st->create_from_triangle_arrays(array);
@@ -2746,13 +2746,13 @@ Error GLTFDocument::_parse_meshes(Ref<GLTFState> state) {
 			}
 
 			Array morphs;
-			//blend shapes
+			// blend shapes
 			if (p.has("targets")) {
 				print_verbose("glTF: Mesh has targets");
 				const Array &targets = p["targets"];
 
-				//ideally BLEND_SHAPE_MODE_RELATIVE since gltf2 stores in displacement
-				//but it could require a larger refactor?
+				// ideally BLEND_SHAPE_MODE_RELATIVE since gltf2 stores in displacement
+				// but it could require a larger refactor?
 				import_mesh->set_blend_shape_mode(Mesh::BLEND_SHAPE_MODE_NORMALIZED);
 
 				if (j == 0) {
@@ -2846,7 +2846,7 @@ Error GLTFDocument::_parse_meshes(Ref<GLTFState> state) {
 									w4[l * 4 + 1] = r4[l * 4 + 1];
 									w4[l * 4 + 2] = r4[l * 4 + 2];
 								}
-								w4[l * 4 + 3] = r4[l * 4 + 3]; //copy flip value
+								w4[l * 4 + 3] = r4[l * 4 + 3]; // copy flip value
 							}
 						}
 
@@ -2866,7 +2866,7 @@ Error GLTFDocument::_parse_meshes(Ref<GLTFState> state) {
 				}
 			}
 
-			//just add it
+			// just add it
 
 			Ref<SpatialMaterial> mat;
 			if (p.has("material")) {
@@ -4887,18 +4887,18 @@ Error GLTFDocument::_parse_animations(Ref<GLTFState> state) {
 			if (path == "translation") {
 				const Vector<Vector3> translations = _decode_accessor_as_vec3(state, output, false);
 				track->translation_track.interpolation = interp;
-				track->translation_track.times = Variant(times); //convert via variant
-				track->translation_track.values = Variant(translations); //convert via variant
+				track->translation_track.times = Variant(times); // convert via variant
+				track->translation_track.values = Variant(translations); // convert via variant
 			} else if (path == "rotation") {
 				const Vector<Quat> rotations = _decode_accessor_as_quat(state, output, false);
 				track->rotation_track.interpolation = interp;
-				track->rotation_track.times = Variant(times); //convert via variant
+				track->rotation_track.times = Variant(times); // convert via variant
 				track->rotation_track.values = rotations;
 			} else if (path == "scale") {
 				const Vector<Vector3> scales = _decode_accessor_as_vec3(state, output, false);
 				track->scale_track.interpolation = interp;
-				track->scale_track.times = Variant(times); //convert via variant
-				track->scale_track.values = Variant(scales); //convert via variant
+				track->scale_track.times = Variant(times); // convert via variant
+				track->scale_track.values = Variant(scales); // convert via variant
 			} else if (path == "weights") {
 				const Vector<float> weights = _decode_accessor_as_floats(state, output, false);
 
@@ -4913,7 +4913,7 @@ Error GLTFDocument::_parse_animations(Ref<GLTFState> state) {
 				ERR_FAIL_COND_V_MSG(weights.size() != expected_value_count, ERR_PARSE_ERROR, "Invalid weight data, expected " + itos(expected_value_count) + " weight values, got " + itos(weights.size()) + " instead.");
 
 				const int wlen = weights.size() / wc;
-				for (int k = 0; k < wc; k++) { //separate tracks, having them together is not such a good idea
+				for (int k = 0; k < wc; k++) { // separate tracks, having them together is not such a good idea
 					GLTFAnimation::Channel<float> cf;
 					cf.interpolation = interp;
 					cf.times = Variant(times);
@@ -5669,7 +5669,7 @@ T GLTFDocument::_interpolate_track(const Vector<float> &p_times, const Vector<T>
 		ERR_PRINT_ONCE("The interpolated values are not corresponding to its times.");
 		return p_values[0];
 	}
-	//could use binary search, worth it?
+	// could use binary search, worth it?
 	int idx = -1;
 	for (int i = 0; i < p_times.size(); i++) {
 		if (p_times[i] > p_time) {
@@ -5754,9 +5754,9 @@ void GLTFDocument::_import_animation(Ref<GLTFState> state, AnimationPlayer *ap, 
 
 	for (Map<int, GLTFAnimation::Track>::Element *track_i = anim->get_tracks().front(); track_i; track_i = track_i->next()) {
 		const GLTFAnimation::Track &track = track_i->get();
-		//need to find the path: for skeletons, weight tracks will affect the mesh
+		// need to find the path: for skeletons, weight tracks will affect the mesh
 		NodePath node_path;
-		//for skeletons, transform tracks always affect bones
+		// for skeletons, transform tracks always affect bones
 		NodePath transform_node_path;
 
 		GLTFNodeIndex node_index = track_i->key();
@@ -5799,11 +5799,11 @@ void GLTFDocument::_import_animation(Ref<GLTFState> state, AnimationPlayer *ap, 
 		// Animated TRS properties will not affect a skinned mesh.
 		const bool transform_affects_skinned_mesh_instance = gltf_node->skeleton < 0 && gltf_node->skin >= 0;
 		if ((track.rotation_track.values.size() || track.translation_track.values.size() || track.scale_track.values.size()) && !transform_affects_skinned_mesh_instance) {
-			//make transform track
+			// make transform track
 			int track_idx = animation->get_track_count();
 			animation->add_track(Animation::TYPE_TRANSFORM);
 			animation->track_set_path(track_idx, transform_node_path);
-			//first determine animation length
+			// first determine animation length
 
 			const double increment = 1.0 / bake_fps;
 			double time = 0.0;
@@ -6452,7 +6452,7 @@ void GLTFDocument::_convert_animation(Ref<GLTFState> state, AnimationPlayer *ap,
 			}
 
 		} else if (String(orig_track_path).find(":") != -1) {
-			//Process skeleton
+			// Process skeleton
 			const Vector<String> node_suffix = String(orig_track_path).split(":");
 			const String node = node_suffix[0];
 			const NodePath node_path = node;
@@ -6516,14 +6516,14 @@ Error GLTFDocument::parse(Ref<GLTFState> state, String p_path, bool p_read_binar
 	}
 	uint32_t magic = f->get_32();
 	if (magic == 0x46546C67) {
-		//binary file
-		//text file
+		// binary file
+		// text file
 		err = _parse_glb(p_path, state);
 		if (err) {
 			return FAILED;
 		}
 	} else {
-		//text file
+		// text file
 		err = _parse_json(p_path, state);
 		if (err) {
 			return FAILED;
@@ -6723,13 +6723,13 @@ Error GLTFDocument::_serialize_file(Ref<GLTFState> state, const String p_path) {
 		CharString cs = json.utf8();
 		const uint32_t text_chunk_length = cs.length();
 
-		const uint32_t text_chunk_type = 0x4E4F534A; //JSON
+		const uint32_t text_chunk_type = 0x4E4F534A; // JSON
 		int32_t binary_data_length = 0;
 		if (state->buffers.size()) {
 			binary_data_length = state->buffers[0].size();
 		}
 		const int32_t binary_chunk_length = binary_data_length;
-		const int32_t binary_chunk_type = 0x004E4942; //BIN
+		const int32_t binary_chunk_type = 0x004E4942; // BIN
 
 		f->create(FileAccess::ACCESS_RESOURCES);
 		f->store_32(magic);

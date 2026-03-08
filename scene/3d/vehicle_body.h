@@ -45,8 +45,8 @@ class VehicleWheel : public Spatial {
 	bool engine_traction;
 	bool steers;
 
-	Vector3 m_chassisConnectionPointCS; //const
-	Vector3 m_wheelDirectionCS; //const
+	Vector3 m_chassisConnectionPointCS; // const
+	Vector3 m_wheelDirectionCS; // const
 	Vector3 m_wheelAxleCS; // const or modified by steering
 
 	real_t m_suspensionRestLength;
@@ -62,7 +62,7 @@ class VehicleWheel : public Spatial {
 
 	VehicleBody *body;
 
-	//btVector3	m_wheelAxleCS; // const or modified by steering ?
+	// btVector3	m_wheelAxleCS; // const or modified by steering ?
 
 	real_t m_steering;
 	real_t m_rotation;
@@ -74,20 +74,20 @@ class VehicleWheel : public Spatial {
 
 	real_t m_clippedInvContactDotSuspension;
 	real_t m_suspensionRelativeVelocity;
-	//calculated by suspension
+	// calculated by suspension
 	real_t m_wheelsSuspensionForce;
 	real_t m_skidInfo;
 
 	struct RaycastInfo {
-		//set by raycaster
-		Vector3 m_contactNormalWS; //contactnormal
-		Vector3 m_contactPointWS; //raycast hitpoint
+		// set by raycaster
+		Vector3 m_contactNormalWS; // contactnormal
+		Vector3 m_contactPointWS; // raycast hitpoint
 		real_t m_suspensionLength;
-		Vector3 m_hardPointWS; //raycast starting point
-		Vector3 m_wheelDirectionWS; //direction in worldspace
+		Vector3 m_hardPointWS; // raycast starting point
+		Vector3 m_wheelDirectionWS; // direction in worldspace
 		Vector3 m_wheelAxleWS; // axle in worldspace
 		bool m_isInContact;
-		PhysicsBody *m_groundObject; //could be general void* ptr
+		PhysicsBody *m_groundObject; // could be general void* ptr
 	} m_raycastInfo;
 
 	void _update(PhysicsDirectBodyState *s);

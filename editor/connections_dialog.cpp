@@ -508,7 +508,7 @@ Control *ConnectionsDockTree::make_custom_tooltip(const String &p_text) const {
 	String text = TTR("Signal:") + " [u][b]" + p_text.get_slice("::", 0) + "[/b][/u]";
 	text += p_text.get_slice("::", 1).strip_edges() + "\n";
 	text += p_text.get_slice("::", 2).strip_edges();
-	help_bit->call_deferred("set_text", text); //hack so it uses proper theme once inside scene
+	help_bit->call_deferred("set_text", text); // hack so it uses proper theme once inside scene
 	return help_bit;
 }
 
@@ -608,7 +608,7 @@ void ConnectionsDock::_connect(Connection cToMake) {
 	undo_redo->add_undo_method(source, "disconnect", cToMake.signal, target, cToMake.method);
 	undo_redo->add_do_method(this, "update_tree");
 	undo_redo->add_undo_method(this, "update_tree");
-	undo_redo->add_do_method(EditorNode::get_singleton()->get_scene_tree_dock()->get_tree_editor(), "update_tree"); //to force redraw of scene tree
+	undo_redo->add_do_method(EditorNode::get_singleton()->get_scene_tree_dock()->get_tree_editor(), "update_tree"); // to force redraw of scene tree
 	undo_redo->add_undo_method(EditorNode::get_singleton()->get_scene_tree_dock()->get_tree_editor(), "update_tree");
 
 	undo_redo->commit_action();
@@ -703,7 +703,7 @@ void ConnectionsDock::_open_connection_dialog(TreeItem &item) {
 	String signal = item.get_metadata(0).operator Dictionary()["name"];
 	const String &signalname = signal;
 	String midname = selectedNode->get_name();
-	for (int i = 0; i < midname.length(); i++) { //TODO: Regex filter may be cleaner.
+	for (int i = 0; i < midname.length(); i++) { // TODO: Regex filter may be cleaner.
 		CharType c = midname[i];
 		if (!((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9') || c == '_')) {
 			if (c == ' ') {
@@ -760,7 +760,7 @@ void ConnectionsDock::_go_to_script(TreeItem &item) {
 	}
 
 	Connection c = item.get_metadata(0);
-	ERR_FAIL_COND(c.source != selectedNode); //shouldn't happen but...bugcheck
+	ERR_FAIL_COND(c.source != selectedNode); // shouldn't happen but...bugcheck
 
 	if (!c.target) {
 		return;

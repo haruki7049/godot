@@ -85,7 +85,7 @@ class FbxPoseNode;
 FbxPose::FbxPose(uint64_t id, const ElementPtr element, const Document &doc, const std::string &name) :
 		Object(id, element, name) {
 	const ScopePtr sc = GetRequiredScope(element);
-	//const std::string &classname = ParseTokenAsString(GetRequiredToken(element, 2));
+	// const std::string &classname = ParseTokenAsString(GetRequiredToken(element, 2));
 
 	const ElementCollection &PoseNodes = sc->GetCollection("PoseNode");
 	for (ElementMap::const_iterator it = PoseNodes.first; it != PoseNodes.second; ++it) {

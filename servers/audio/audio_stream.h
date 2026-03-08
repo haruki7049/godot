@@ -44,7 +44,7 @@ public:
 	virtual void stop() = 0;
 	virtual bool is_playing() const = 0;
 
-	virtual int get_loop_count() const = 0; //times it looped
+	virtual int get_loop_count() const = 0; // times it looped
 
 	virtual float get_playback_position() const = 0;
 	virtual void seek(float p_time) = 0;
@@ -56,7 +56,7 @@ class AudioStreamPlaybackResampled : public AudioStreamPlayback {
 	GDCLASS(AudioStreamPlaybackResampled, AudioStreamPlayback);
 
 	enum {
-		FP_BITS = 16, //fixed point used for resampling
+		FP_BITS = 16, // fixed point used for resampling
 		FP_LEN = (1 << FP_BITS),
 		FP_MASK = FP_LEN - 1,
 		INTERNAL_BUFFER_LEN = 256,
@@ -88,7 +88,7 @@ public:
 	virtual Ref<AudioStreamPlayback> instance_playback() = 0;
 	virtual String get_stream_name() const = 0;
 
-	virtual float get_length() const = 0; //if supported, otherwise return 0
+	virtual float get_length() const = 0; // if supported, otherwise return 0
 };
 
 // Microphone
@@ -108,7 +108,7 @@ public:
 	virtual Ref<AudioStreamPlayback> instance_playback();
 	virtual String get_stream_name() const;
 
-	virtual float get_length() const; //if supported, otherwise return 0
+	virtual float get_length() const; // if supported, otherwise return 0
 
 	AudioStreamMicrophone();
 };
@@ -133,7 +133,7 @@ public:
 	virtual void stop();
 	virtual bool is_playing() const;
 
-	virtual int get_loop_count() const; //times it looped
+	virtual int get_loop_count() const; // times it looped
 
 	virtual float get_playback_position() const;
 	virtual void seek(float p_time);
@@ -167,7 +167,7 @@ public:
 	virtual Ref<AudioStreamPlayback> instance_playback();
 	virtual String get_stream_name() const;
 
-	virtual float get_length() const; //if supported, otherwise return 0
+	virtual float get_length() const; // if supported, otherwise return 0
 
 	AudioStreamRandomPitch();
 };
@@ -186,7 +186,7 @@ public:
 	virtual void stop();
 	virtual bool is_playing() const;
 
-	virtual int get_loop_count() const; //times it looped
+	virtual int get_loop_count() const; // times it looped
 
 	virtual float get_playback_position() const;
 	virtual void seek(float p_time);

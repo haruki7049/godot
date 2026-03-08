@@ -111,7 +111,7 @@ Node *InstancePlaceholder::create_instance(bool p_replace, const Ref<PackedScene
 }
 
 void InstancePlaceholder::replace_by_instance(const Ref<PackedScene> &p_custom_scene) {
-	//Deprecated by
+	// Deprecated by
 	create_instance(true, p_custom_scene);
 }
 

@@ -603,7 +603,7 @@ public:
 	};
 
 */
-//VARIANT_ENUM_CAST( Texture::CubeMapSide );
+// VARIANT_ENUM_CAST( Texture::CubeMapSide );
 
 class GradientTexture : public Texture {
 	GDCLASS(GradientTexture, Texture);
@@ -679,7 +679,7 @@ public:
 class AnimatedTexture : public Texture {
 	GDCLASS(AnimatedTexture, Texture);
 
-	//use readers writers lock for this, since its far more times read than written to
+	// use readers writers lock for this, since its far more times read than written to
 	RWLock rw_lock;
 
 public:

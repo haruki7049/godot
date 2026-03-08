@@ -50,7 +50,7 @@ class ResourceInteractiveLoaderBinary : public ResourceInteractiveLoader {
 	Vector<char> str_buf;
 	List<RES> resource_cache;
 
-	//Map<int,StringName> string_map;
+	// Map<int,StringName> string_map;
 	Vector<StringName> string_map;
 
 	StringName _get_string();
@@ -122,7 +122,7 @@ class ResourceFormatSaverBinaryInstance {
 	String magic;
 	Set<RES> resource_set;
 
-	struct NonPersistentKey { //for resource properties generated on the fly
+	struct NonPersistentKey { // for resource properties generated on the fly
 		RES base;
 		StringName property;
 		bool operator<(const NonPersistentKey &p_key) const { return base == p_key.base ? property < p_key.property : base < p_key.base; }

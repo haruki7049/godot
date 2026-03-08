@@ -91,7 +91,7 @@ class Viewport : public Node {
 public:
 	enum UpdateMode {
 		UPDATE_DISABLED,
-		UPDATE_ONCE, //then goes to disabled
+		UPDATE_ONCE, // then goes to disabled
 		UPDATE_WHEN_VISIBLE, // default
 		UPDATE_ALWAYS
 	};
@@ -316,7 +316,7 @@ private:
 		List<Control *> all_known_subwindows;
 		bool roots_order_dirty;
 		List<Control *> roots;
-		int canvas_sort_index; //for sorting items with canvas as root
+		int canvas_sort_index; // for sorting items with canvas as root
 		bool dragging;
 
 		GUI();
@@ -389,14 +389,14 @@ private:
 	friend class Listener;
 	void _listener_transform_changed_notify();
 	void _listener_set(Listener *p_listener);
-	bool _listener_add(Listener *p_listener); //true if first
+	bool _listener_add(Listener *p_listener); // true if first
 	void _listener_remove(Listener *p_listener);
 	void _listener_make_next_current(Listener *p_exclude);
 
 	friend class Camera;
 	void _camera_transform_changed_notify();
 	void _camera_set(Camera *p_camera);
-	bool _camera_add(Camera *p_camera); //true if first
+	bool _camera_add(Camera *p_camera); // true if first
 	void _camera_remove(Camera *p_camera);
 	void _camera_make_next_current(Camera *p_exclude);
 

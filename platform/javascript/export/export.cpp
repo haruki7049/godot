@@ -370,7 +370,7 @@ Error EditorExportPlatformJavaScript::_extract_template(const String &p_template
 	}
 
 	do {
-		//get filename
+		// get filename
 		unz_file_info info;
 		char fname[16384];
 		unzGetCurrentFileInfo(pkg, &info, fname, 16384, nullptr, 0, nullptr, 0);
@@ -384,12 +384,12 @@ Error EditorExportPlatformJavaScript::_extract_template(const String &p_template
 		Vector<uint8_t> data;
 		data.resize(info.uncompressed_size);
 
-		//read
+		// read
 		unzOpenCurrentFile(pkg);
 		unzReadCurrentFile(pkg, data.ptrw(), data.size());
 		unzCloseCurrentFile(pkg);
 
-		//write
+		// write
 		String dst = p_dir.plus_file(file.replace("godot", p_name));
 		FileAccess *f = FileAccess::open(dst, FileAccess::WRITE);
 		if (!f) {

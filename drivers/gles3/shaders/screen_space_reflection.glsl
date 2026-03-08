@@ -21,9 +21,9 @@ in vec2 uv_interp;
 /* clang-format on */
 in vec2 pos_interp;
 
-uniform sampler2D source_diffuse; //texunit:0
-uniform sampler2D source_normal_roughness; //texunit:1
-uniform sampler2D source_depth; //texunit:2
+uniform sampler2D source_diffuse; // texunit:0
+uniform sampler2D source_normal_roughness; // texunit:1
+uniform sampler2D source_depth; // texunit:2
 
 uniform float camera_z_near;
 uniform float camera_z_far;
@@ -74,8 +74,8 @@ void main() {
 		frag_color = vec4(0.0);
 		return;
 	}
-	//ray_dir = normalize(view_dir - normal * dot(normal,view_dir) * 2.0);
-	//ray_dir = normalize(vec3(1.0, 1.0, -1.0));
+	// ray_dir = normalize(view_dir - normal * dot(normal,view_dir) * 2.0);
+	// ray_dir = normalize(vec3(1.0, 1.0, -1.0));
 
 	////////////////
 
@@ -178,11 +178,11 @@ void main() {
 		}
 
 		{
-			//blend fading out towards inner margin
-			// 0.25 = midpoint of half-resolution reflection
+			// blend fading out towards inner margin
+			//  0.25 = midpoint of half-resolution reflection
 			vec2 margin_grad = mix(viewport_size * 0.5 - pos, pos, lessThan(pos, viewport_size * 0.25));
 			margin_blend = smoothstep(0.0, margin.x * margin.y, margin_grad.x * margin_grad.y);
-			//margin_blend = 1.0;
+			// margin_blend = 1.0;
 		}
 
 		vec2 final_pos;
@@ -233,7 +233,7 @@ void main() {
 				vec2 sample_pos = (line_begin + cone_dir * (cone_len - radius)) * pixel_size;
 				// radius is in pixels, so it's natural that log2(radius) maps to the right mipmap for the amount of pixels
 				float mipmap = clamp(log2(radius), 0.0, max_mipmap);
-				//mipmap = max(mipmap - 1.0, 0.0);
+				// mipmap = max(mipmap - 1.0, 0.0);
 
 				// do sampling
 

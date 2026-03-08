@@ -43,7 +43,7 @@
 #include <theora/theoradec.h>
 #include <vorbis/codec.h>
 
-//#define THEORA_USE_THREAD_STREAMING
+// #define THEORA_USE_THREAD_STREAMING
 
 class VideoStreamPlaybackTheora : public VideoStreamPlayback {
 	GDCLASS(VideoStreamPlaybackTheora, VideoStreamPlayback);
@@ -52,7 +52,7 @@ class VideoStreamPlaybackTheora : public VideoStreamPlayback {
 		MAX_FRAMES = 4,
 	};
 
-	//Image frames[MAX_FRAMES];
+	// Image frames[MAX_FRAMES];
 	Image::Format format;
 	PoolVector<uint8_t> frame_data;
 	int frames_pending;

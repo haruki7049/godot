@@ -47,7 +47,7 @@ void Navigation::_navmesh_link(int p_id) {
 	PoolVector<Vector3>::Read r = vertices.read();
 
 	for (int i = 0; i < nm.navmesh->get_polygon_count(); i++) {
-		//build
+		// build
 
 		List<Polygon>::Element *P = nm.polygons.push_back(Polygon());
 		Polygon &p = P->get();
@@ -95,7 +95,7 @@ void Navigation::_navmesh_link(int p_id) {
 			p.center /= plen;
 		}
 
-		//connect
+		// connect
 
 		for (int j = 0; j < plen; j++) {
 			int next = (j + 1) % plen;
@@ -124,7 +124,7 @@ void Navigation::_navmesh_link(int p_id) {
 				C->get().A->edges.write[C->get().A_edge].C_edge = j;
 				p.edges.write[j].C = C->get().A;
 				p.edges.write[j].C_edge = C->get().A_edge;
-				//connection successful.
+				// connection successful.
 			}
 		}
 	}
@@ -154,7 +154,7 @@ void Navigation::_navmesh_unlink(int p_id) {
 				C->get().pending.erase(edges[i].P);
 				edges[i].P = nullptr;
 			} else if (C->get().B) {
-				//disconnect
+				// disconnect
 
 				C->get().B->edges.write[C->get().B_edge].C = nullptr;
 				C->get().B->edges.write[C->get().B_edge].C_edge = -1;
@@ -169,7 +169,7 @@ void Navigation::_navmesh_unlink(int p_id) {
 				C->get().B_edge = -1;
 
 				if (C->get().pending.size()) {
-					//reconnect if something is pending
+					// reconnect if something is pending
 					ConnectionPending cp = C->get().pending.front()->get();
 					C->get().pending.pop_front();
 
@@ -184,7 +184,7 @@ void Navigation::_navmesh_unlink(int p_id) {
 
 			} else {
 				connections.erase(C);
-				//erase
+				// erase
 			}
 		}
 	}
@@ -212,7 +212,7 @@ void Navigation::navmesh_set_transform(int p_id, const Transform &p_xform) {
 	ERR_FAIL_COND(!navmesh_map.has(p_id));
 	NavMesh &nm = navmesh_map[p_id];
 	if (nm.xform == p_xform) {
-		return; //bleh
+		return; // bleh
 	}
 	_navmesh_unlink(p_id);
 	nm.xform = p_xform;
@@ -298,7 +298,7 @@ Vector<Vector3> Navigation::get_simple_path(const Vector3 &p_start, const Vector
 	}
 
 	if (!begin_poly || !end_poly) {
-		return Vector<Vector3>(); //no path
+		return Vector<Vector3>(); // no path
 	}
 
 	if (begin_poly == end_poly) {
@@ -338,12 +338,12 @@ Vector<Vector3> Navigation::get_simple_path(const Vector3 &p_start, const Vector
 		if (open_list.size() == 0) {
 			break;
 		}
-		//check open list
+		// check open list
 
 		List<Polygon *>::Element *least_cost_poly = nullptr;
 		float least_cost = 1e30;
 
-		//this could be faster (cache previous results)
+		// this could be faster (cache previous results)
 		for (List<Polygon *>::Element *E = open_list.front(); E; E = E->next()) {
 			Polygon *p = E->get();
 
@@ -360,10 +360,10 @@ Vector<Vector3> Navigation::get_simple_path(const Vector3 &p_start, const Vector
 		}
 
 		Polygon *p = least_cost_poly->get();
-		//open the neighbours for search
+		// open the neighbours for search
 
 		if (p == end_poly) {
-			//oh my reached end! stop algorithm
+			// oh my reached end! stop algorithm
 			found_route = true;
 			break;
 		}
@@ -390,7 +390,7 @@ Vector<Vector3> Navigation::get_simple_path(const Vector3 &p_start, const Vector
 #endif
 
 			if (e.C->prev_edge != -1) {
-				//oh this was visited already, can we win the cost?
+				// oh this was visited already, can we win the cost?
 
 				if (e.C->distance > distance) {
 					e.C->prev_edge = e.C_edge;
@@ -400,7 +400,7 @@ Vector<Vector3> Navigation::get_simple_path(const Vector3 &p_start, const Vector
 #endif
 				}
 			} else {
-				//add to open neighbours
+				// add to open neighbours
 
 				e.C->prev_edge = e.C_edge;
 				e.C->distance = distance;
@@ -418,7 +418,7 @@ Vector<Vector3> Navigation::get_simple_path(const Vector3 &p_start, const Vector
 		Vector<Vector3> path;
 
 		if (p_optimize) {
-			//string pulling
+			// string pulling
 
 			Polygon *apex_poly = end_poly;
 			Vector3 apex_point = end_point;
@@ -446,7 +446,7 @@ Vector<Vector3> Navigation::get_simple_path(const Vector3 &p_start, const Vector
 					left = _get_vertex(p->edges[prev].point);
 					right = _get_vertex(p->edges[prev_n].point);
 
-					//if (CLOCK_TANGENT(apex_point,left,(left+right)*0.5).dot(up) < 0){
+					// if (CLOCK_TANGENT(apex_point,left,(left+right)*0.5).dot(up) < 0){
 					if (p->clockwise) {
 						SWAP(left, right);
 					}
@@ -455,7 +455,7 @@ Vector<Vector3> Navigation::get_simple_path(const Vector3 &p_start, const Vector
 				bool skip = false;
 
 				if (CLOCK_TANGENT(apex_point, portal_left, left).dot(up) >= 0) {
-					//process
+					// process
 					if (portal_left == apex_point || CLOCK_TANGENT(apex_point, left, portal_right).dot(up) > 0) {
 						left_poly = p;
 						portal_left = left;
@@ -474,7 +474,7 @@ Vector<Vector3> Navigation::get_simple_path(const Vector3 &p_start, const Vector
 				}
 
 				if (!skip && CLOCK_TANGENT(apex_point, portal_right, right).dot(up) <= 0) {
-					//process
+					// process
 					if (portal_right == apex_point || CLOCK_TANGENT(apex_point, right, portal_left).dot(up) < 0) {
 						right_poly = p;
 						portal_right = right;
@@ -505,7 +505,7 @@ Vector<Vector3> Navigation::get_simple_path(const Vector3 &p_start, const Vector
 			path.invert();
 
 		} else {
-			//midpoints
+			// midpoints
 			Polygon *p = end_poly;
 
 			path.push_back(end_point);
@@ -689,7 +689,7 @@ void Navigation::_bind_methods() {
 
 Navigation::Navigation() {
 	ERR_FAIL_COND(sizeof(Point) != 8);
-	cell_size = 0.01; //one centimeter
+	cell_size = 0.01; // one centimeter
 	last_id = 1;
 	up = Vector3(0, 1, 0);
 }

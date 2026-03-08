@@ -121,7 +121,7 @@ struct Color {
 	_FORCE_INLINE_ uint32_t to_rgbe9995() const {
 		const float pow2to9 = 512.0f;
 		const float B = 15.0f;
-		//const float Emax = 31.0f;
+		// const float Emax = 31.0f;
 		const float N = 9.0f;
 
 		float sharedexp = 65408.000f; //(( pow2to9  - 1.0f)/ pow2to9)*powf( 2.0f, 31.0f - 15.0f);
@@ -188,7 +188,7 @@ struct Color {
 	Color from_hsv(float p_h, float p_s, float p_v, float p_a) const;
 	static Color from_rgbe9995(uint32_t p_rgbe);
 
-	_FORCE_INLINE_ bool operator<(const Color &p_color) const; //used in set keys
+	_FORCE_INLINE_ bool operator<(const Color &p_color) const; // used in set keys
 	operator String() const;
 
 	/**

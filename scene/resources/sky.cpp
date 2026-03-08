@@ -112,7 +112,7 @@ PanoramaSky::~PanoramaSky() {
 
 void ProceduralSky::_radiance_changed() {
 	if (update_queued) {
-		return; //do nothing yet
+		return; // do nothing yet
 	}
 
 	static const int size[RADIANCE_SIZE_MAX] = {
@@ -133,7 +133,7 @@ Ref<Image> ProceduralSky::_generate_sky() {
 	int w = size[texture_size];
 	int h = w / 2;
 
-	imgdata.resize(w * h * 4); //RGBE
+	imgdata.resize(w * h * 4); // RGBE
 
 	{
 		PoolVector<uint8_t>::Write dataw = imgdata.write();
@@ -178,7 +178,7 @@ Ref<Image> ProceduralSky::_generate_sky() {
 				Color color;
 
 				if (normal.y < 0) {
-					//ground
+					// ground
 
 					float c = (v_angle - (Math_PI * 0.5)) / (Math_PI * 0.5);
 					color = ground_horizon_linear.linear_interpolate(ground_bottom_linear, Math::ease(c, ground_curve));

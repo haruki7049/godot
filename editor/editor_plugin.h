@@ -92,7 +92,7 @@ public:
 	void inspect_object(Object *p_obj, const String &p_for_property = String(), bool p_inspector_only = false);
 
 	EditorSelection *get_selection();
-	//EditorImportExport *get_import_export();
+	// EditorImportExport *get_import_export();
 	Ref<EditorSettings> get_editor_settings();
 	EditorResourcePreview *get_resource_previewer();
 	EditorFileSystem *get_resource_file_system();
@@ -166,7 +166,7 @@ public:
 		DOCK_SLOT_MAX
 	};
 
-	//TODO: send a resource for editing to the editor node?
+	// TODO: send a resource for editing to the editor node?
 
 	void add_control_to_container(CustomControlContainer p_location, Control *p_control);
 	void remove_control_from_container(CustomControlContainer p_location, Control *p_control);
@@ -202,11 +202,11 @@ public:
 	virtual const Ref<Texture> get_icon() const;
 	virtual bool has_main_screen() const;
 	virtual void make_visible(bool p_visible);
-	virtual void selected_notify() {} //notify that it was raised by the user, not the editor
+	virtual void selected_notify() {} // notify that it was raised by the user, not the editor
 	virtual void edit(Object *p_object);
 	virtual bool handles(Object *p_object) const;
-	virtual Dictionary get_state() const; //save editor state so it can't be reloaded when reloading scene
-	virtual void set_state(const Dictionary &p_state); //restore editor state (likely was saved with the scene)
+	virtual Dictionary get_state() const; // save editor state so it can't be reloaded when reloading scene
+	virtual void set_state(const Dictionary &p_state); // restore editor state (likely was saved with the scene)
 	virtual void clear(); // clear any temporary data in the editor, reset it (likely new scene or load another scene)
 	virtual void save_external_data(); // if editor references external resources/scenes, save them
 	virtual void apply_changes(); // if changes are pending in editor, apply them

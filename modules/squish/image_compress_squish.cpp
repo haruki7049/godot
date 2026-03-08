@@ -75,7 +75,7 @@ void image_decompress_squish(Image *p_image) {
 
 void image_compress_squish(Image *p_image, float p_lossy_quality, Image::CompressSource p_source) {
 	if (p_image->get_format() >= Image::FORMAT_DXT1) {
-		return; //do not compress, already compressed
+		return; // do not compress, already compressed
 	}
 
 	int w = p_image->get_width();
@@ -95,7 +95,7 @@ void image_compress_squish(Image *p_image, float p_lossy_quality, Image::Compres
 		Image::DetectChannels dc = p_image->get_detected_channels();
 
 		if (p_source == Image::COMPRESS_SOURCE_LAYERED) {
-			//keep what comes in
+			// keep what comes in
 			switch (p_image->get_format()) {
 				case Image::FORMAT_L8: {
 					dc = Image::DETECTED_L;
@@ -122,15 +122,15 @@ void image_compress_squish(Image *p_image, float p_lossy_quality, Image::Compres
 			}
 		}
 
-		p_image->convert(Image::FORMAT_RGBA8); //still uses RGBA to convert
+		p_image->convert(Image::FORMAT_RGBA8); // still uses RGBA to convert
 
 		if (p_source == Image::COMPRESS_SOURCE_SRGB && (dc == Image::DETECTED_R || dc == Image::DETECTED_RG)) {
-			//R and RG do not support SRGB
+			// R and RG do not support SRGB
 			dc = Image::DETECTED_RGB;
 		}
 
 		if (p_source == Image::COMPRESS_SOURCE_NORMAL) {
-			//R and RG do not support SRGB
+			// R and RG do not support SRGB
 			dc = Image::DETECTED_RG;
 		}
 
@@ -156,7 +156,7 @@ void image_compress_squish(Image *p_image, float p_lossy_quality, Image::Compres
 				squish_comp |= squish::kDxt1;
 			} break;
 			case Image::DETECTED_RGBA: {
-				//TODO, should convert both, then measure which one does a better job
+				// TODO, should convert both, then measure which one does a better job
 				target_format = Image::FORMAT_DXT5;
 				squish_comp |= squish::kDxt5;
 

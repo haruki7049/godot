@@ -63,7 +63,7 @@ private:
 	Map<StringName, MultiplayerAPI::RPCMode> _methods_rpc_mode;
 
 	Set<Object *> _instances;
-	//exported members
+	// exported members
 	String _source;
 	String _path;
 	StringName _name;
@@ -78,13 +78,13 @@ protected:
 
 #ifdef TOOLS_ENABLED
 	Set<PlaceHolderScriptInstance *> placeholders;
-	//void _update_placeholder(PlaceHolderScriptInstance *p_placeholder);
+	// void _update_placeholder(PlaceHolderScriptInstance *p_placeholder);
 	virtual void _placeholder_erased(PlaceHolderScriptInstance *p_placeholder);
 #endif
 public:
 	virtual bool can_instance() const;
 
-	virtual Ref<Script> get_base_script() const; //for script inheritance
+	virtual Ref<Script> get_base_script() const; // for script inheritance
 
 	virtual StringName get_instance_base_type() const; // this may not work in all scripts, will return empty if so
 	virtual ScriptInstance *instance_create(Object *p_this);

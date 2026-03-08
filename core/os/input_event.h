@@ -275,7 +275,7 @@ class InputEventKey : public InputEventWithModifiers {
 
 	uint32_t scancode; ///< check keyboard.h , KeyCode enum, without modifier masks
 	uint32_t physical_scancode;
-	uint32_t unicode; ///unicode
+	uint32_t unicode; /// unicode
 
 	bool echo; /// true if this is an echo key
 
@@ -340,8 +340,8 @@ class InputEventMouseButton : public InputEventMouse {
 
 	float factor;
 	int button_index;
-	bool pressed; //otherwise released
-	bool doubleclick; //last even less than doubleclick time
+	bool pressed; // otherwise released
+	bool doubleclick; // last even less than doubleclick time
 
 protected:
 	static void _bind_methods();
@@ -432,7 +432,7 @@ class InputEventJoypadButton : public InputEvent {
 
 	int button_index;
 	bool pressed;
-	float pressure; //0 to 1
+	float pressure; // 0 to 1
 protected:
 	static void _bind_methods();
 

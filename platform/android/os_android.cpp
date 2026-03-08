@@ -185,7 +185,7 @@ Error OS_Android::initialize(const VideoMode &p_desired, int p_video_driver, int
 	input->set_use_input_buffering(true); // Needed because events will come directly from the UI thread
 	input->set_fallback_mapping(godot_java->get_input_fallback_mapping());
 
-	//power_manager = memnew(PowerAndroid);
+	// power_manager = memnew(PowerAndroid);
 
 	return OK;
 }
@@ -212,7 +212,7 @@ GodotIOJavaWrapper *OS_Android::get_godot_io_java() {
 }
 
 void OS_Android::alert(const String &p_alert, const String &p_title) {
-	//print("ALERT: %s\n", p_alert.utf8().get_data());
+	// print("ALERT: %s\n", p_alert.utf8().get_data());
 	godot_java->alert(p_alert, p_title);
 }
 
@@ -235,11 +235,11 @@ Error OS_Android::open_dynamic_library(const String p_path, void *&p_library_han
 }
 
 void OS_Android::set_mouse_show(bool p_show) {
-	//android has no mouse...
+	// android has no mouse...
 }
 
 void OS_Android::set_mouse_grab(bool p_grab) {
-	//it really has no mouse...!
+	// it really has no mouse...!
 }
 
 bool OS_Android::is_mouse_grab_enabled() const {
@@ -256,9 +256,9 @@ int OS_Android::get_mouse_button_state() const {
 }
 
 void OS_Android::set_window_title(const String &p_title) {
-	//This queries/updates the currently connected devices/joypads
-	//Set_window_title is called when initializing the main loop (main.cpp)
-	//therefore this place is found to be suitable (I found no better).
+	// This queries/updates the currently connected devices/joypads
+	// Set_window_title is called when initializing the main loop (main.cpp)
+	// therefore this place is found to be suitable (I found no better).
 	godot_java->init_input_devices();
 }
 
@@ -298,7 +298,7 @@ MainLoop *OS_Android::get_main_loop() const {
 }
 
 bool OS_Android::can_draw() const {
-	return true; //always?
+	return true; // always?
 }
 
 void OS_Android::main_loop_begin() {
@@ -393,7 +393,7 @@ Error OS_Android::shell_open(String p_uri) {
 }
 
 String OS_Android::get_resource_dir() const {
-	return "/"; //android has its own filesystem for resources inside the APK
+	return "/"; // android has its own filesystem for resources inside the APK
 }
 
 String OS_Android::get_locale() const {
@@ -482,8 +482,8 @@ String OS_Android::get_system_dir(SystemDir p_dir, bool p_shared_storage) const 
 }
 
 void OS_Android::set_context_is_16_bits(bool p_is_16) {
-	//use_16bits_fbo = p_is_16;
-	//if (rasterizer)
+	// use_16bits_fbo = p_is_16;
+	// if (rasterizer)
 	//	rasterizer->set_force_16_bits_fbo(p_is_16);
 }
 
@@ -501,7 +501,7 @@ void OS_Android::vibrate_handheld(int p_duration_ms) {
 
 bool OS_Android::_check_internal_feature_support(const String &p_feature) {
 	if (p_feature == "mobile") {
-		//TODO support etc2 only if GLES3 driver is selected
+		// TODO support etc2 only if GLES3 driver is selected
 		return true;
 	}
 #if defined(__aarch64__)
@@ -529,7 +529,7 @@ OS_Android::OS_Android(GodotJavaWrapper *p_godot_java, GodotIOJavaWrapper *p_god
 
 	main_loop = NULL;
 	gl_extensions = NULL;
-	//rasterizer = NULL;
+	// rasterizer = NULL;
 	use_gl2 = false;
 
 	godot_java = p_godot_java;

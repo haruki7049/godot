@@ -129,7 +129,7 @@ bool Physics2DDirectSpaceStateSW::intersect_ray(const Vector2 &p_from, const Vec
 
 	int amount = space->broadphase->cull_segment(begin, end, space->intersection_query_results, Space2DSW::INTERSECTION_QUERY_MAX, space->intersection_query_subindex_results);
 
-	//todo, create another array that references results, compute AABBs and check closest point to ray origin, sort, and stop evaluating results when beyond first collision
+	// todo, create another array that references results, compute AABBs and check closest point to ray origin, sort, and stop evaluating results when beyond first collision
 
 	bool collided = false;
 	Vector2 res_point, res_normal;
@@ -252,7 +252,7 @@ bool Physics2DDirectSpaceStateSW::cast_motion(const RID &p_shape, const Transfor
 	ERR_FAIL_COND_V(!shape, false);
 
 	Rect2 aabb = p_xform.xform(shape->get_aabb());
-	aabb = aabb.merge(Rect2(aabb.position + p_motion, aabb.size)); //motion
+	aabb = aabb.merge(Rect2(aabb.position + p_motion, aabb.size)); // motion
 	aabb = aabb.grow(p_margin);
 
 	int amount = space->broadphase->cull_aabb(aabb, space->intersection_query_results, Space2DSW::INTERSECTION_QUERY_MAX, space->intersection_query_subindex_results);
@@ -266,33 +266,33 @@ bool Physics2DDirectSpaceStateSW::cast_motion(const RID &p_shape, const Transfor
 		}
 
 		if (p_exclude.has(space->intersection_query_results[i]->get_self())) {
-			continue; //ignore excluded
+			continue; // ignore excluded
 		}
 
 		const CollisionObject2DSW *col_obj = space->intersection_query_results[i];
 		int shape_idx = space->intersection_query_subindex_results[i];
 
 		Transform2D col_obj_xform = col_obj->get_transform() * col_obj->get_shape_transform(shape_idx);
-		//test initial overlap, does it collide if going all the way?
+		// test initial overlap, does it collide if going all the way?
 		if (!CollisionSolver2DSW::solve(shape, p_xform, p_motion, col_obj->get_shape(shape_idx), col_obj_xform, Vector2(), nullptr, nullptr, nullptr, p_margin)) {
 			continue;
 		}
 
-		//test initial overlap, ignore objects it's inside of.
+		// test initial overlap, ignore objects it's inside of.
 		if (CollisionSolver2DSW::solve(shape, p_xform, Vector2(), col_obj->get_shape(shape_idx), col_obj_xform, Vector2(), nullptr, nullptr, nullptr, p_margin)) {
 			continue;
 		}
 
 		Vector2 mnormal = p_motion.normalized();
 
-		//just do kinematic solving
+		// just do kinematic solving
 		real_t low = 0.0;
 		real_t hi = 1.0;
 		real_t fraction_coeff = 0.5;
-		for (int j = 0; j < 8; j++) { //steps should be customizable..
+		for (int j = 0; j < 8; j++) { // steps should be customizable..
 			real_t fraction = low + (hi - low) * fraction_coeff;
 
-			Vector2 sep = mnormal; //important optimization for this to work fast enough
+			Vector2 sep = mnormal; // important optimization for this to work fast enough
 			bool collided = CollisionSolver2DSW::solve(shape, p_xform, p_motion * fraction, col_obj->get_shape(shape_idx), col_obj_xform, Vector2(), nullptr, nullptr, &sep, p_margin);
 
 			if (collided) {
@@ -339,7 +339,7 @@ bool Physics2DDirectSpaceStateSW::collide_shape(RID p_shape, const Transform2D &
 	ERR_FAIL_COND_V(!shape, 0);
 
 	Rect2 aabb = p_shape_xform.xform(shape->get_aabb());
-	aabb = aabb.merge(Rect2(aabb.position + p_motion, aabb.size)); //motion
+	aabb = aabb.merge(Rect2(aabb.position + p_motion, aabb.size)); // motion
 	aabb = aabb.grow(p_margin);
 
 	int amount = space->broadphase->cull_aabb(aabb, space->intersection_query_results, Space2DSW::INTERSECTION_QUERY_MAX, space->intersection_query_subindex_results);
@@ -435,7 +435,7 @@ bool Physics2DDirectSpaceStateSW::rest_info(RID p_shape, const Transform2D &p_sh
 	ERR_FAIL_COND_V(!shape, 0);
 
 	Rect2 aabb = p_shape_xform.xform(shape->get_aabb());
-	aabb = aabb.merge(Rect2(aabb.position + p_motion, aabb.size)); //motion
+	aabb = aabb.merge(Rect2(aabb.position + p_motion, aabb.size)); // motion
 	aabb = aabb.grow(p_margin);
 
 	int amount = space->broadphase->cull_aabb(aabb, space->intersection_query_results, Space2DSW::INTERSECTION_QUERY_MAX, space->intersection_query_subindex_results);
@@ -559,7 +559,7 @@ int Space2DSW::test_body_ray_separation(Body2DSW *p_body, const Transform2D &p_t
 	Transform2D body_transform = p_transform;
 
 	for (int i = 0; i < p_result_max; i++) {
-		//reset results
+		// reset results
 		r_results[i].collision_depth = 0;
 	}
 
@@ -641,7 +641,7 @@ int Space2DSW::test_body_ray_separation(Body2DSW *p_body, const Transform2D &p_t
 							collided = true;
 						}
 
-						int ray_index = -1; //reuse shape
+						int ray_index = -1; // reuse shape
 						for (int k = 0; k < rays_found; k++) {
 							if (r_results[ray_index].collision_local_shape == j) {
 								ray_index = k;
@@ -696,7 +696,7 @@ int Space2DSW::test_body_ray_separation(Body2DSW *p_body, const Transform2D &p_t
 		} while (recover_attempts);
 	}
 
-	//optimize results (remove non colliding)
+	// optimize results (remove non colliding)
 	for (int i = 0; i < rays_found; i++) {
 		if (r_results[i].collision_depth == 0) {
 			rays_found--;
@@ -709,12 +709,12 @@ int Space2DSW::test_body_ray_separation(Body2DSW *p_body, const Transform2D &p_t
 }
 
 bool Space2DSW::test_body_motion(Body2DSW *p_body, const Transform2D &p_from, const Vector2 &p_motion, bool p_infinite_inertia, real_t p_margin, Physics2DServer::MotionResult *r_result, bool p_exclude_raycast_shapes, const Set<RID> &p_exclude) {
-	//give me back regular physics engine logic
-	//this is madness
-	//and most people using this function will think
-	//what it does is simpler than using physics
-	//this took about a week to get right..
-	//but is it right? who knows at this point..
+	// give me back regular physics engine logic
+	// this is madness
+	// and most people using this function will think
+	// what it does is simpler than using physics
+	// this took about a week to get right..
+	// but is it right? who knows at this point..
 
 	if (r_result) {
 		r_result->collider_id = 0;
@@ -765,7 +765,7 @@ bool Space2DSW::test_body_motion(Body2DSW *p_body, const Transform2D &p_from, co
 	bool recovered = false;
 
 	{
-		//STEP 1, FREE BODY IF STUCK
+		// STEP 1, FREE BODY IF STUCK
 
 		const int max_results = 32;
 		int recover_attempts = 4;
@@ -778,7 +778,7 @@ bool Space2DSW::test_body_motion(Body2DSW *p_body, const Transform2D &p_from, co
 			cbk.passed = 0;
 			cbk.ptr = sr;
 			cbk.invalid_by_dir = 0;
-			excluded_shape_pair_count = 0; //last step is the one valid
+			excluded_shape_pair_count = 0; // last step is the one valid
 
 			Physics2DServerSW::CollCbkData *cbkptr = &cbk;
 			CollisionSolver2DSW::CallbackResult cbkres = Physics2DServerSW::_shape_col_cbk;
@@ -818,15 +818,15 @@ bool Space2DSW::test_body_motion(Body2DSW *p_body, const Transform2D &p_from, co
 						cbk.valid_dir = col_obj_shape_xform.get_axis(1).normalized();
 
 						float owc_margin = col_obj->get_shape_one_way_collision_margin(shape_idx);
-						cbk.valid_depth = MAX(owc_margin, p_margin); //user specified, but never less than actual margin or it won't work
+						cbk.valid_depth = MAX(owc_margin, p_margin); // user specified, but never less than actual margin or it won't work
 						cbk.invalid_by_dir = 0;
 
 						if (col_obj->get_type() == CollisionObject2DSW::TYPE_BODY) {
 							const Body2DSW *b = static_cast<const Body2DSW *>(col_obj);
 							if (b->get_mode() == Physics2DServer::BODY_MODE_KINEMATIC || b->get_mode() == Physics2DServer::BODY_MODE_RIGID) {
-								//fix for moving platforms (kinematic and dynamic), margin is increased by how much it moved in the given direction
+								// fix for moving platforms (kinematic and dynamic), margin is increased by how much it moved in the given direction
 								Vector2 lv = b->get_linear_velocity();
-								//compute displacement from linear velocity
+								// compute displacement from linear velocity
 								Vector2 motion = lv * Physics2DDirectBodyStateSW::singleton->step;
 								float motion_len = motion.length();
 								motion.normalize();
@@ -839,16 +839,16 @@ bool Space2DSW::test_body_motion(Body2DSW *p_body, const Transform2D &p_from, co
 						cbk.invalid_by_dir = 0;
 					}
 
-					int current_passed = cbk.passed; //save how many points passed collision
+					int current_passed = cbk.passed; // save how many points passed collision
 					bool did_collide = false;
 
 					Shape2DSW *against_shape = col_obj->get_shape(shape_idx);
 					if (CollisionSolver2DSW::solve(body_shape, body_shape_xform, Vector2(), against_shape, col_obj_shape_xform, Vector2(), cbkres, cbkptr, nullptr, p_margin)) {
-						did_collide = cbk.passed > current_passed; //more passed, so collision actually existed
+						did_collide = cbk.passed > current_passed; // more passed, so collision actually existed
 					}
 
 					if (!did_collide && cbk.invalid_by_dir > 0) {
-						//this shape must be excluded
+						// this shape must be excluded
 						if (excluded_shape_pair_count < max_excluded_shape_pairs) {
 							ExcludedShapeSW esp;
 							esp.local_shape = body_shape;
@@ -959,12 +959,12 @@ bool Space2DSW::test_body_motion(Body2DSW *p_body, const Transform2D &p_from, co
 				}
 
 				Transform2D col_obj_shape_xform = col_obj->get_transform() * col_obj->get_shape_transform(col_shape_idx);
-				//test initial overlap, does it collide if going all the way?
+				// test initial overlap, does it collide if going all the way?
 				if (!CollisionSolver2DSW::solve(body_shape, body_shape_xform, p_motion, against_shape, col_obj_shape_xform, Vector2(), nullptr, nullptr, nullptr, 0)) {
 					continue;
 				}
 
-				//test initial overlap
+				// test initial overlap
 				if (CollisionSolver2DSW::solve(body_shape, body_shape_xform, Vector2(), against_shape, col_obj_shape_xform, Vector2(), nullptr, nullptr, nullptr, 0)) {
 					if (col_obj->is_shape_set_as_one_way_collision(col_shape_idx)) {
 						Vector2 direction = col_obj_shape_xform.get_axis(1).normalized();
@@ -977,14 +977,14 @@ bool Space2DSW::test_body_motion(Body2DSW *p_body, const Transform2D &p_from, co
 					break;
 				}
 
-				//just do kinematic solving
+				// just do kinematic solving
 				real_t low = 0.0;
 				real_t hi = 1.0;
 				real_t fraction_coeff = 0.5;
-				for (int k = 0; k < 8; k++) { //steps should be customizable..
+				for (int k = 0; k < 8; k++) { // steps should be customizable..
 					real_t fraction = low + (hi - low) * fraction_coeff;
 
-					Vector2 sep = motion_normal; //important optimization for this to work fast enough
+					Vector2 sep = motion_normal; // important optimization for this to work fast enough
 					bool collided = CollisionSolver2DSW::solve(body_shape, body_shape_xform, p_motion * fraction, against_shape, col_obj_shape_xform, Vector2(), nullptr, nullptr, &sep, 0);
 
 					if (collided) {
@@ -1021,7 +1021,7 @@ bool Space2DSW::test_body_motion(Body2DSW *p_body, const Transform2D &p_from, co
 
 					cbk.valid_depth = 10e20;
 
-					Vector2 sep = motion_normal; //important optimization for this to work fast enough
+					Vector2 sep = motion_normal; // important optimization for this to work fast enough
 					bool collided = CollisionSolver2DSW::solve(body_shape, body_shape_xform, p_motion * (hi + contact_max_allowed_penetration), col_obj->get_shape(col_shape_idx), col_obj_shape_xform, Vector2(), Physics2DServerSW::_shape_col_cbk, &cbk, &sep, 0);
 					if (!collided || cbk.amount == 0) {
 						continue;
@@ -1037,7 +1037,7 @@ bool Space2DSW::test_body_motion(Body2DSW *p_body, const Transform2D &p_from, co
 			if (stuck) {
 				safe = 0;
 				unsafe = 0;
-				best_shape = body_shape_idx; //sadly it's the best
+				best_shape = body_shape_idx; // sadly it's the best
 				break;
 			}
 			if (best_safe == 1.0) {
@@ -1055,10 +1055,10 @@ bool Space2DSW::test_body_motion(Body2DSW *p_body, const Transform2D &p_from, co
 
 	if (recovered || (safe < 1)) {
 		if (safe >= 1) {
-			best_shape = -1; //no best shape with cast, reset to -1
+			best_shape = -1; // no best shape with cast, reset to -1
 		}
 
-		//it collided, let's get the rest info in unsafe advance
+		// it collided, let's get the rest info in unsafe advance
 		Transform2D ugt = body_transform;
 		ugt.elements[2] += p_motion * unsafe;
 
@@ -1122,14 +1122,14 @@ bool Space2DSW::test_body_motion(Body2DSW *p_body, const Transform2D &p_from, co
 					rcd.valid_dir = col_obj_shape_xform.get_axis(1).normalized();
 
 					float owc_margin = col_obj->get_shape_one_way_collision_margin(shape_idx);
-					rcd.valid_depth = MAX(owc_margin, p_margin); //user specified, but never less than actual margin or it won't work
+					rcd.valid_depth = MAX(owc_margin, p_margin); // user specified, but never less than actual margin or it won't work
 
 					if (col_obj->get_type() == CollisionObject2DSW::TYPE_BODY) {
 						const Body2DSW *b = static_cast<const Body2DSW *>(col_obj);
 						if (b->get_mode() == Physics2DServer::BODY_MODE_KINEMATIC || b->get_mode() == Physics2DServer::BODY_MODE_RIGID) {
-							//fix for moving platforms (kinematic and dynamic), margin is increased by how much it moved in the given direction
+							// fix for moving platforms (kinematic and dynamic), margin is increased by how much it moved in the given direction
 							Vector2 lv = b->get_linear_velocity();
-							//compute displacement from linear velocity
+							// compute displacement from linear velocity
 							Vector2 motion = lv * Physics2DDirectBodyStateSW::singleton->step;
 							float motion_len = motion.length();
 							motion.normalize();

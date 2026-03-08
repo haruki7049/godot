@@ -40,7 +40,7 @@ void Body2DSW::_update_inertia() {
 }
 
 void Body2DSW::update_inertias() {
-	//update shapes and motions
+	// update shapes and motions
 
 	switch (mode) {
 		case Physics2DServer::BODY_MODE_RIGID: {
@@ -48,7 +48,7 @@ void Body2DSW::update_inertias() {
 				_inv_inertia = inertia > 0 ? (1.0 / inertia) : 0;
 				break;
 			}
-			//update tensor for allshapes, not the best way but should be somehow OK. (inspired from bullet)
+			// update tensor for allshapes, not the best way but should be somehow OK. (inspired from bullet)
 			real_t total_area = 0;
 
 			for (int i = 0; i < get_shape_count(); i++) {
@@ -114,13 +114,13 @@ void Body2DSW::set_active(bool p_active) {
 		}
 	} else {
 		if (mode == Physics2DServer::BODY_MODE_STATIC) {
-			return; //static bodies can't become active
+			return; // static bodies can't become active
 		}
 		if (get_space()) {
 			get_space()->body_add_to_active_list(&active_list);
 		}
 
-		//still_time=0;
+		// still_time=0;
 	}
 	/*
 	if (!space)
@@ -208,7 +208,7 @@ void Body2DSW::set_mode(Physics2DServer::BodyMode p_mode) {
 	mode = p_mode;
 
 	switch (p_mode) {
-		//CLEAR UP EVERYTHING IN CASE IT NOT WORKS!
+		// CLEAR UP EVERYTHING IN CASE IT NOT WORKS!
 		case Physics2DServer::BODY_MODE_STATIC:
 		case Physics2DServer::BODY_MODE_KINEMATIC: {
 			_set_inv_transform(get_transform().affine_inverse());
@@ -259,7 +259,7 @@ void Body2DSW::set_state(Physics2DServer::BodyState p_state, const Variant &p_va
 		case Physics2DServer::BODY_STATE_TRANSFORM: {
 			if (mode == Physics2DServer::BODY_MODE_KINEMATIC) {
 				new_transform = p_variant;
-				//wakeup_neighbours();
+				// wakeup_neighbours();
 				set_active(true);
 				if (first_time_kinematic) {
 					_set_transform(p_variant);
@@ -273,7 +273,7 @@ void Body2DSW::set_state(Physics2DServer::BodyState p_state, const Variant &p_va
 			} else {
 				Transform2D t = p_variant;
 				t.orthonormalize();
-				new_transform = get_transform(); //used as old to compute motion
+				new_transform = get_transform(); // used as old to compute motion
 				if (t == new_transform) {
 					break;
 				}
@@ -309,9 +309,9 @@ void Body2DSW::set_state(Physics2DServer::BodyState p_state, const Variant &p_va
 			bool do_sleep = p_variant;
 			if (do_sleep) {
 				linear_velocity = Vector2();
-				//biased_linear_velocity=Vector3();
+				// biased_linear_velocity=Vector3();
 				angular_velocity = 0;
-				//biased_angular_velocity=Vector3();
+				// biased_angular_velocity=Vector3();
 				set_active(false);
 			} else {
 				if (mode != Physics2DServer::BODY_MODE_STATIC) {
@@ -465,7 +465,7 @@ void Body2DSW::integrate_forces(real_t p_step) {
 	bool do_motion = false;
 
 	if (mode == Physics2DServer::BODY_MODE_KINEMATIC) {
-		//compute motion, angular and etc. velocities from prev transform
+		// compute motion, angular and etc. velocities from prev transform
 		motion = new_transform.get_origin() - get_transform().get_origin();
 		linear_velocity = motion / p_step;
 
@@ -483,7 +483,7 @@ void Body2DSW::integrate_forces(real_t p_step) {
 
 	} else {
 		if (!omit_force_integration && !first_integration) {
-			//overridden by direct state query
+			// overridden by direct state query
 
 			Vector2 force = gravity * mass;
 			force += applied_force;
@@ -514,13 +514,13 @@ void Body2DSW::integrate_forces(real_t p_step) {
 		}
 	}
 
-	//motion=linear_velocity*p_step;
+	// motion=linear_velocity*p_step;
 
 	first_integration = false;
 	biased_angular_velocity = 0;
 	biased_linear_velocity = Vector2();
 
-	if (do_motion) { //shapes temporarily extend for raycast
+	if (do_motion) { // shapes temporarily extend for raycast
 		_update_shapes_with_motion(motion);
 	}
 
@@ -542,7 +542,7 @@ void Body2DSW::integrate_velocities(real_t p_step) {
 		_set_transform(new_transform, false);
 		_set_inv_transform(new_transform.affine_inverse());
 		if (contacts.size() == 0 && linear_velocity == Vector2() && angular_velocity == 0) {
-			set_active(false); //stopped moving, deactivate
+			set_active(false); // stopped moving, deactivate
 		}
 		return;
 	}
@@ -622,7 +622,7 @@ bool Body2DSW::sleep_test(real_t p_step) {
 
 		return still_time > get_space()->get_body_time_to_sleep();
 	} else {
-		still_time = 0; //maybe this should be set to 0 on set_active?
+		still_time = 0; // maybe this should be set to 0 on set_active?
 		return false;
 	}
 }

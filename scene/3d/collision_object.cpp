@@ -68,7 +68,7 @@ void CollisionObject::_notification(int p_what) {
 			}
 
 			_update_pickable();
-			//get space
+			// get space
 		} break;
 
 		case NOTIFICATION_TRANSFORM_CHANGED: {
@@ -535,7 +535,7 @@ uint32_t CollisionObject::shape_find_owner(int p_shape_index) const {
 		}
 	}
 
-	//in theory it should be unreachable
+	// in theory it should be unreachable
 	return 0;
 }
 
@@ -552,7 +552,7 @@ CollisionObject::CollisionObject(RID p_rid, bool p_area) {
 	} else {
 		PhysicsServer::get_singleton()->body_attach_object_instance_id(rid, get_instance_id());
 	}
-	//set_transform_notify(true);
+	// set_transform_notify(true);
 }
 
 void CollisionObject::set_capture_input_on_drag(bool p_capture) {
@@ -580,9 +580,9 @@ CollisionObject::CollisionObject() {
 	capture_input_on_drag = false;
 	ray_pickable = true;
 	set_notify_transform(true);
-	//owner=
+	// owner=
 
-	//set_transform_notify(true);
+	// set_transform_notify(true);
 }
 
 CollisionObject::~CollisionObject() {

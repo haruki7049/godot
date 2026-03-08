@@ -21,17 +21,17 @@ precision highp float;
 precision highp int;
 
 #ifdef USE_SOURCE_PANORAMA
-uniform sampler2D source_panorama; //texunit:0
+uniform sampler2D source_panorama; // texunit:0
 uniform float source_resolution;
 #endif
 
 #ifdef USE_SOURCE_DUAL_PARABOLOID_ARRAY
-uniform sampler2DArray source_dual_paraboloid_array; //texunit:0
+uniform sampler2DArray source_dual_paraboloid_array; // texunit:0
 uniform int source_array_index;
 #endif
 
 #ifdef USE_SOURCE_DUAL_PARABOLOID
-uniform sampler2D source_dual_paraboloid; //texunit:0
+uniform sampler2D source_dual_paraboloid; // texunit:0
 #endif
 
 #if defined(USE_SOURCE_DUAL_PARABOLOID) || defined(COMPUTE_IRRADIANCE)
@@ -39,7 +39,7 @@ uniform float source_mip_level;
 #endif
 
 #if !defined(USE_SOURCE_DUAL_PARABOLOID_ARRAY) && !defined(USE_SOURCE_PANORAMA) && !defined(USE_SOURCE_DUAL_PARABOLOID)
-uniform samplerCube source_cube; //texunit:0
+uniform samplerCube source_cube; // texunit:0
 #endif
 
 uniform int face_id;
@@ -245,7 +245,7 @@ void main() {
 	N = normalize(N);
 
 	if (z_flip) {
-		N.y = -N.y; //y is flipped to improve blending between both sides
+		N.y = -N.y; // y is flipped to improve blending between both sides
 		N.z = -N.z;
 	}
 
@@ -253,7 +253,7 @@ void main() {
 	vec2 uv = (uv_interp * 2.0) - 1.0;
 	vec3 N = texelCoordToVec(uv, face_id);
 #endif
-	//vec4 color = color_interp;
+	// vec4 color = color_interp;
 
 #ifdef USE_DIRECT_WRITE
 

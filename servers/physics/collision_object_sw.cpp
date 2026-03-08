@@ -37,7 +37,7 @@ void CollisionObjectSW::add_shape(ShapeSW *p_shape, const Transform &p_transform
 	s.shape = p_shape;
 	s.xform = p_transform;
 	s.xform_inv = s.xform.affine_inverse();
-	s.bpid = 0; //needs update
+	s.bpid = 0; // needs update
 	s.disabled = p_disabled;
 	shapes.push_back(s);
 	p_shape->add_owner(this);
@@ -95,7 +95,7 @@ void CollisionObjectSW::set_shape_disabled(int p_idx, bool p_disabled) {
 }
 
 void CollisionObjectSW::remove_shape(ShapeSW *p_shape) {
-	//remove a shape, all the times it appears
+	// remove a shape, all the times it appears
 	for (int i = 0; i < shapes.size(); i++) {
 		if (shapes[i].shape == p_shape) {
 			remove_shape(i);
@@ -105,13 +105,13 @@ void CollisionObjectSW::remove_shape(ShapeSW *p_shape) {
 }
 
 void CollisionObjectSW::remove_shape(int p_index) {
-	//remove anything from shape to be erased to end, so subindices don't change
+	// remove anything from shape to be erased to end, so subindices don't change
 	ERR_FAIL_INDEX(p_index, shapes.size());
 	for (int i = p_index; i < shapes.size(); i++) {
 		if (shapes[i].bpid == 0) {
 			continue;
 		}
-		//should never get here with a null owner
+		// should never get here with a null owner
 		space->get_broadphase()->remove(shapes[i].bpid);
 		shapes.write[i].bpid = 0;
 	}
@@ -161,7 +161,7 @@ void CollisionObjectSW::_update_shapes() {
 			continue;
 		}
 
-		//not quite correct, should compute the next matrix..
+		// not quite correct, should compute the next matrix..
 		AABB shape_aabb = s.shape->get_aabb();
 		Transform xform = transform * s.xform;
 		shape_aabb = xform.xform(shape_aabb);
@@ -191,11 +191,11 @@ void CollisionObjectSW::_update_shapes_with_motion(const Vector3 &p_motion) {
 			continue;
 		}
 
-		//not quite correct, should compute the next matrix..
+		// not quite correct, should compute the next matrix..
 		AABB shape_aabb = s.shape->get_aabb();
 		Transform xform = transform * s.xform;
 		shape_aabb = xform.xform(shape_aabb);
-		shape_aabb.merge_with(AABB(shape_aabb.position + p_motion, shape_aabb.size)); //use motion
+		shape_aabb.merge_with(AABB(shape_aabb.position + p_motion, shape_aabb.size)); // use motion
 		s.aabb_cache = shape_aabb;
 
 		if (s.bpid == 0) {

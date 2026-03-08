@@ -190,7 +190,7 @@ void main() {
 #else
 
 	gl_FragColor = vec4(textureCube(source_cube, N).rgb, 1.0);
-#endif //USE_SOURCE_PANORAMA
+#endif // USE_SOURCE_PANORAMA
 
 #else
 
@@ -212,7 +212,7 @@ void main() {
 #else
 			vec3 val = textureCubeLod(source_cube, L, 0.0).rgb;
 #endif
-			//mix using Linear, to approximate high end back-end
+			// mix using Linear, to approximate high end back-end
 			val = mix(pow((val + vec3(0.055)) * (1.0 / (1.0 + 0.055)), vec3(2.4)), val * (1.0 / 12.92), vec3(lessThan(val, vec3(0.04045))));
 
 			sum.rgb += val * NdotL;

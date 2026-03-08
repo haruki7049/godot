@@ -48,13 +48,13 @@ public:
 	};
 
 private:
-	//path sent caches
+	// path sent caches
 	struct PathSentCache {
 		Map<int, bool> confirmed_peers;
 		int id;
 	};
 
-	//path get caches
+	// path get caches
 	struct PathGetCache {
 		struct NodeInfo {
 			NodePath path;

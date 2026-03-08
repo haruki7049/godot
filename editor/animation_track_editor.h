@@ -66,7 +66,7 @@ class AnimationTimelineEdit : public Range {
 	TextureRect *time_icon;
 
 	MenuButton *add_track;
-	Control *play_position; //separate control used to draw so updates for only position changed are much faster
+	Control *play_position; // separate control used to draw so updates for only position changed are much faster
 	HScrollBar *hscroll;
 
 	void _zoom_changed(double);
@@ -145,7 +145,7 @@ class AnimationTrackEdit : public Control {
 	UndoRedo *undo_redo;
 	LineEdit *path;
 	Node *root;
-	Control *play_position; //separate control used to draw so updates for only position changed are much faster
+	Control *play_position; // separate control used to draw so updates for only position changed are much faster
 	float play_position_pos;
 	NodePath node_path;
 
@@ -210,7 +210,7 @@ public:
 	virtual void draw_bg(int p_clip_left, int p_clip_right);
 	virtual void draw_fg(int p_clip_left, int p_clip_right);
 
-	//helper
+	// helper
 	void draw_texture_clipped(const Ref<Texture> &p_texture, const Vector2 &p_pos);
 	void draw_texture_region_clipped(const Ref<Texture> &p_texture, const Rect2 &p_rect, const Rect2 &p_region);
 	void draw_rect_clipped(const Rect2 &p_rect, const Color &p_color, bool p_filled = true);
@@ -386,7 +386,7 @@ class AnimationTrackEditor : public VBoxContainer {
 	void _clear_selection_for_anim(const Ref<Animation> &p_anim);
 	void _select_at_anim(const Ref<Animation> &p_anim, int p_track, float p_pos);
 
-	//selection
+	// selection
 
 	struct SelectedKey {
 		int track;

@@ -346,7 +346,7 @@ static NSCursor *cursorFromSelector(SEL selector, SEL fallback = nil) {
 	}
 
 	if (newBackingScaleFactor != oldBackingScaleFactor) {
-		//Set new display scale and window size
+		// Set new display scale and window size
 		float newDisplayScale = OS_OSX::singleton->get_screen_max_scale();
 
 		const NSRect contentRect = [OS_OSX::singleton->window_view frame];
@@ -363,9 +363,9 @@ static NSCursor *cursorFromSelector(SEL selector, SEL fallback = nil) {
 			CGLEnable((CGLContextObj)[OS_OSX::singleton->context CGLContextObj], kCGLCESurfaceBackingSize);
 		}
 
-		//Update context
+		// Update context
 		if (OS_OSX::singleton->main_loop) {
-			//Force window resize event
+			// Force window resize event
 			[self windowDidResize:notification];
 		}
 	}
@@ -391,8 +391,8 @@ static NSCursor *cursorFromSelector(SEL selector, SEL fallback = nil) {
 
 	if (OS_OSX::singleton->main_loop) {
 		Main::force_redraw();
-		//Event retrieval blocks until resize is over. Call Main::iteration() directly.
-		if (!Main::is_iterating()) { //avoid cyclic loop
+		// Event retrieval blocks until resize is over. Call Main::iteration() directly.
+		if (!Main::is_iterating()) { // avoid cyclic loop
 			Main::iteration();
 		}
 	}
@@ -1590,7 +1590,7 @@ Error OS_OSX::initialize(const VideoMode &p_desired, int p_video_driver, int p_a
 
 	if (displayScale > 1.0) {
 		[window_view setWantsBestResolutionOpenGLSurface:YES];
-		//if (current_videomode.resizable)
+		// if (current_videomode.resizable)
 		[window_object setCollectionBehavior:NSWindowCollectionBehaviorFullScreenPrimary];
 	} else {
 		[window_view setWantsBestResolutionOpenGLSurface:NO];
@@ -1613,8 +1613,10 @@ Error OS_OSX::initialize(const VideoMode &p_desired, int p_video_driver, int p_a
 
 	// Fail if a robustness strategy was requested
 
-#define ADD_ATTR(x) \
-	{ attributes[attributeCount++] = x; }
+#define ADD_ATTR(x)                       \
+	{                                     \
+		attributes[attributeCount++] = x; \
+	}
 #define ADD_ATTR2(x, y) \
 	{                   \
 		ADD_ATTR(x);    \
@@ -1630,7 +1632,7 @@ Error OS_OSX::initialize(const VideoMode &p_desired, int p_video_driver, int p_a
 	if (p_video_driver == VIDEO_DRIVER_GLES2) {
 		ADD_ATTR2(NSOpenGLPFAOpenGLProfile, NSOpenGLProfileVersionLegacy);
 	} else {
-		//we now need OpenGL 3 or better, maybe even change this to 3_3Core ?
+		// we now need OpenGL 3 or better, maybe even change this to 3_3Core ?
 		ADD_ATTR2(NSOpenGLPFAOpenGLProfile, NSOpenGLProfileVersion3_2Core);
 	}
 
@@ -1794,7 +1796,7 @@ void OS_OSX::finalize() {
 	cursors_cache.clear();
 	visual_server->finish();
 	memdelete(visual_server);
-	//memdelete(rasterizer);
+	// memdelete(rasterizer);
 }
 
 void OS_OSX::set_main_loop(MainLoop *p_main_loop) {
@@ -1903,12 +1905,12 @@ Error OS_OSX::open_dynamic_library(const String p_path, void *&p_library_handle,
 	String path = p_path;
 
 	if (!FileAccess::exists(path)) {
-		//this code exists so gdnative can load .dylib files from within the executable path
+		// this code exists so gdnative can load .dylib files from within the executable path
 		path = get_executable_path().get_base_dir().plus_file(p_path.get_file());
 	}
 
 	if (!FileAccess::exists(path)) {
-		//this code exists so gdnative can load .dylib files from a standard macOS location
+		// this code exists so gdnative can load .dylib files from a standard macOS location
 		path = get_executable_path().get_base_dir().plus_file("../Frameworks").plus_file(p_path.get_file());
 	}
 
@@ -2076,7 +2078,7 @@ void OS_OSX::set_custom_mouse_cursor(const RES &p_cursor, CursorShape p_shape, c
 			uint8_t alpha = (color >> 24) & 0xFF;
 			pixels[i * 4 + 0] = ((color >> 16) & 0xFF) * alpha / 255;
 			pixels[i * 4 + 1] = ((color >> 8) & 0xFF) * alpha / 255;
-			pixels[i * 4 + 2] = ((color)&0xFF) * alpha / 255;
+			pixels[i * 4 + 2] = ((color) & 0xFF) * alpha / 255;
 			pixels[i * 4 + 3] = alpha;
 		}
 
@@ -2129,22 +2131,22 @@ bool OS_OSX::is_mouse_grab_enabled() const {
 }
 
 void OS_OSX::warp_mouse_position(const Point2 &p_to) {
-	//copied from windows impl with osx native calls
+	// copied from windows impl with osx native calls
 	if (mouse_mode == MOUSE_MODE_CAPTURED) {
 		mouse_x = p_to.x;
 		mouse_y = p_to.y;
-	} else { //set OS position
+	} else { // set OS position
 
-		//local point in window coords
+		// local point in window coords
 		const NSRect contentRect = [window_view frame];
 		float displayScale = get_screen_max_scale();
 		NSRect pointInWindowRect = NSMakeRect(p_to.x / displayScale, contentRect.size.height - (p_to.y / displayScale) - 1, 0, 0);
 		NSPoint pointOnScreen = [[window_view window] convertRectToScreen:pointInWindowRect].origin;
 
-		//point in scren coords
+		// point in scren coords
 		CGPoint lMouseWarpPos = { pointOnScreen.x, CGDisplayBounds(CGMainDisplayID()).size.height - pointOnScreen.y };
 
-		//do the warping
+		// do the warping
 		CGEventSourceRef lEventRef = CGEventSourceCreate(kCGEventSourceStateCombinedSessionState);
 		CGEventSourceSetLocalEventsSuppressionInterval(lEventRef, 0.0);
 		CGAssociateMouseAndMouseCursorPosition(false);
@@ -2983,7 +2985,7 @@ static NSString *createStringForKeys(const CGKeyCode *keyCode, int length) {
 		CFStringAppendCharacters(output, chars, 1);
 	}
 
-	//CFStringUppercase(output, NULL);
+	// CFStringUppercase(output, NULL);
 
 	return (NSString *)output;
 }
@@ -3242,10 +3244,10 @@ void OS_OSX::run() {
 		set_window_fullscreen(true);
 	}
 
-	//uint64_t last_ticks=get_ticks_usec();
+	// uint64_t last_ticks=get_ticks_usec();
 
-	//int frames=0;
-	//uint64_t frame=0;
+	// int frames=0;
+	// uint64_t frame=0;
 
 	bool quit = false;
 
@@ -3449,7 +3451,7 @@ OS_OSX::OS_OSX() {
 	loggers.push_back(memnew(OSXTerminalLogger));
 	_set_logger(memnew(CompositeLogger(loggers)));
 
-	//process application:openFile: event
+	// process application:openFile: event
 	while (true) {
 		NSEvent *event = [NSApp
 				nextEventMatchingMask:NSEventMaskAny

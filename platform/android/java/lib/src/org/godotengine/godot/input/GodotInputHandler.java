@@ -107,7 +107,7 @@ public class GodotInputHandler implements InputDeviceListener {
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
 			godotView.onBackPressed();
 			// press 'back' button should not terminate program
-			//normal handle 'back' event in game logic
+			// normal handle 'back' event in game logic
 			return true;
 		}
 
@@ -116,7 +116,7 @@ public class GodotInputHandler implements InputDeviceListener {
 		}
 
 		int source = event.getSource();
-		//Log.e(TAG, String.format("Key down! source %d, device %d, joystick %d, %d, %d", event.getDeviceId(), source, (source & InputDevice.SOURCE_JOYSTICK), (source & InputDevice.SOURCE_DPAD), (source & InputDevice.SOURCE_GAMEPAD)));
+		// Log.e(TAG, String.format("Key down! source %d, device %d, joystick %d, %d, %d", event.getDeviceId(), source, (source & InputDevice.SOURCE_JOYSTICK), (source & InputDevice.SOURCE_DPAD), (source & InputDevice.SOURCE_GAMEPAD)));
 
 		final int deviceId = event.getDeviceId();
 		// Check if source is a game device and that the device is a registered gamepad
@@ -257,7 +257,7 @@ public class GodotInputHandler implements InputDeviceListener {
 		}
 
 		InputDevice device = inputManager.getInputDevice(deviceId);
-		//device can be null if deviceId is not found
+		// device can be null if deviceId is not found
 		if (device == null) {
 			return;
 		}
@@ -277,14 +277,14 @@ public class GodotInputHandler implements InputDeviceListener {
 		joystick.device_id = deviceId;
 		joystick.name = device.getName();
 
-		//Helps with creating new joypad mappings.
+		// Helps with creating new joypad mappings.
 		Log.i(tag, "=== New Input Device: " + joystick.name);
 
 		Set<Integer> already = new HashSet<>();
 		for (InputDevice.MotionRange range : device.getMotionRanges()) {
 			boolean isJoystick = range.isFromSource(InputDevice.SOURCE_JOYSTICK);
 			boolean isGamepad = range.isFromSource(InputDevice.SOURCE_GAMEPAD);
-			//Log.i(tag, "axis: "+range.getAxis()+ ", isJoystick: "+isJoystick+", isGamepad: "+isGamepad);
+			// Log.i(tag, "axis: "+range.getAxis()+ ", isJoystick: "+isJoystick+", isGamepad: "+isGamepad);
 			if (!isJoystick && !isGamepad) {
 				continue;
 			}
@@ -302,7 +302,7 @@ public class GodotInputHandler implements InputDeviceListener {
 		}
 		Collections.sort(joystick.axes);
 		for (int idx = 0; idx < joystick.axes.size(); idx++) {
-			//Helps with creating new joypad mappings.
+			// Helps with creating new joypad mappings.
 			Log.i(tag, " - Mapping Android axis " + joystick.axes.get(idx) + " to Godot axis " + idx);
 		}
 		mJoysticksDevices.put(deviceId, joystick);

@@ -101,7 +101,7 @@ void TileMap::_notification(int p_what) {
 		} break;
 
 		case NOTIFICATION_TRANSFORM_CHANGED: {
-			//move stuff
+			// move stuff
 			_update_quadrant_transform();
 
 		} break;
@@ -381,7 +381,7 @@ void TileMap::update_dirty_quadrants() {
 		for (int i = 0; i < q.cells.size(); i++) {
 			Map<PosKey, Cell>::Element *E = tile_map.find(q.cells[i]);
 			Cell &c = E->get();
-			//moment of truth
+			// moment of truth
 			if (!tile_set->has_tile(c.id)) {
 				continue;
 			}
@@ -689,7 +689,7 @@ void TileMap::update_dirty_quadrants() {
 	pending_update = false;
 
 	if (quadrant_order_dirty) {
-		int index = -(int64_t)0x80000000; //always must be drawn below children
+		int index = -(int64_t)0x80000000; // always must be drawn below children
 		for (Map<PosKey, Quadrant>::Element *E = quadrant_map.front(); E; E = E->next()) {
 			Quadrant &q = E->get();
 			for (List<RID>::Element *F = q.canvas_items.front(); F; F = F->next()) {
@@ -734,7 +734,7 @@ void TileMap::_recompute_rect_cache() {
 
 Map<TileMap::PosKey, TileMap::Quadrant>::Element *TileMap::_create_quadrant(const PosKey &p_qk) {
 	Transform2D xform;
-	//xform.set_origin(Point2(p_qk.x,p_qk.y)*cell_size*quadrant_size);
+	// xform.set_origin(Point2(p_qk.x,p_qk.y)*cell_size*quadrant_size);
 	Quadrant q;
 	q.pos = _map_to_world(p_qk.x * _get_quadrant_size(), p_qk.y * _get_quadrant_size());
 	q.pos += get_cell_draw_offset();
@@ -745,7 +745,7 @@ Map<TileMap::PosKey, TileMap::Quadrant>::Element *TileMap::_create_quadrant(cons
 	}
 
 	xform.set_origin(q.pos);
-	//q.canvas_item = VisualServer::get_singleton()->canvas_item_create();
+	// q.canvas_item = VisualServer::get_singleton()->canvas_item_create();
 	if (!use_parent) {
 		q.body = Physics2DServer::get_singleton()->body_create();
 		Physics2DServer::get_singleton()->body_set_mode(q.body, use_kinematic ? Physics2DServer::BODY_MODE_KINEMATIC : Physics2DServer::BODY_MODE_STATIC);
@@ -842,12 +842,12 @@ void TileMap::set_cell(int p_x, int p_y, int p_tile, bool p_flip_x, bool p_flip_
 
 	Map<PosKey, Cell>::Element *E = tile_map.find(pk);
 	if (!E && p_tile == INVALID_CELL) {
-		return; //nothing to do
+		return; // nothing to do
 	}
 
 	PosKey qk = pk.to_quadrant(_get_quadrant_size());
 	if (p_tile == INVALID_CELL) {
-		//erase existing
+		// erase existing
 		tile_map.erase(pk);
 		Map<PosKey, Quadrant>::Element *Q = quadrant_map.find(qk);
 		ERR_FAIL_COND(!Q);
@@ -876,7 +876,7 @@ void TileMap::set_cell(int p_x, int p_y, int p_tile, bool p_flip_x, bool p_flip_
 		ERR_FAIL_COND(!Q); // quadrant should exist...
 
 		if (E->get().id == p_tile && E->get().flip_h == p_flip_x && E->get().flip_v == p_flip_y && E->get().transpose == p_transpose && E->get().autotile_coord_x == (uint16_t)p_autotile_coord.x && E->get().autotile_coord_y == (uint16_t)p_autotile_coord.y) {
-			return; //nothing changed
+			return; // nothing changed
 		}
 	}
 
@@ -1195,7 +1195,7 @@ void TileMap::_set_tile_data(const PoolVector<int> &p_data) {
 		SWAP(local[1], local[2]);
 		SWAP(local[4], local[7]);
 		SWAP(local[5], local[6]);
-		//TODO: ask someone to check this...
+		// TODO: ask someone to check this...
 		if (FORMAT == FORMAT_2) {
 			SWAP(local[8], local[11]);
 			SWAP(local[9], local[10]);
@@ -1450,8 +1450,8 @@ Transform2D TileMap::get_cell_transform() const {
 			return m;
 		} break;
 		case MODE_ISOMETRIC: {
-			//isometric only makes sense when y is positive in both x and y vectors, otherwise
-			//the drawing of tiles will overlap
+			// isometric only makes sense when y is positive in both x and y vectors, otherwise
+			// the drawing of tiles will overlap
 			Transform2D m;
 			m[0] = Vector2(cell_size.x * 0.5, cell_size.y * 0.5);
 			m[1] = Vector2(-cell_size.x * 0.5, cell_size.y * 0.5);

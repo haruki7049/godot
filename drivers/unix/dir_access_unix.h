@@ -89,5 +89,5 @@ public:
 	~DirAccessUnix();
 };
 
-#endif //UNIX ENABLED
+#endif // UNIX ENABLED
 #endif

@@ -33,8 +33,8 @@
 #include "../editor_settings.h"
 #include "core/io/marshalls.h"
 
-//#define DEBUG_PRINT(m_p) print_line(m_p)
-//#define DEBUG_TIME(m_what) printf("MS: %s - %lu\n", m_what, OS::get_singleton()->get_ticks_usec());
+// #define DEBUG_PRINT(m_p) print_line(m_p)
+// #define DEBUG_TIME(m_what) printf("MS: %s - %lu\n", m_what, OS::get_singleton()->get_ticks_usec());
 
 #define DEBUG_PRINT(m_what)
 #define DEBUG_TIME(m_what)
@@ -101,7 +101,7 @@ void EditorFileServer::_subthread_start(void *s) {
 	cd->connection->put_data(buf4, 4);
 
 	while (!cd->quit) {
-		//wait for ID
+		// wait for ID
 		err = cd->connection->get_data(buf4, 4);
 		DEBUG_TIME("get_data")
 
@@ -111,7 +111,7 @@ void EditorFileServer::_subthread_start(void *s) {
 		}
 		int id = decode_uint32(buf4);
 
-		//wait for command
+		// wait for command
 		err = cd->connection->get_data(buf4, 4);
 		if (err != OK) {
 			_close_client(cd);
@@ -182,7 +182,7 @@ void EditorFileServer::_subthread_start(void *s) {
 
 				FileAccess *fa = FileAccess::open(s2, FileAccess::READ);
 				if (!fa) {
-					//not found, continue
+					// not found, continue
 					encode_uint32(id, buf4);
 					cd->connection->put_data(buf4, 4);
 					encode_uint32(FileAccessNetwork::RESPONSE_OPEN, buf4);
@@ -233,7 +233,7 @@ void EditorFileServer::_subthread_start(void *s) {
 
 				print_verbose("GET BLOCK - offset: " + itos(offset) + ", blocklen: " + itos(blocklen));
 
-				//not found, continue
+				// not found, continue
 				encode_uint32(id, buf4);
 				cd->connection->put_data(buf4, 4);
 				encode_uint32(FileAccessNetwork::RESPONSE_DATA, buf4);

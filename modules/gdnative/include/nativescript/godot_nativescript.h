@@ -93,10 +93,10 @@ typedef enum {
 	GODOT_PROPERTY_USAGE_EDITOR = 2,
 	GODOT_PROPERTY_USAGE_NETWORK = 4,
 	GODOT_PROPERTY_USAGE_EDITOR_HELPER = 8,
-	GODOT_PROPERTY_USAGE_CHECKABLE = 16, //used for editing global variables
-	GODOT_PROPERTY_USAGE_CHECKED = 32, //used for editing global variables
-	GODOT_PROPERTY_USAGE_INTERNATIONALIZED = 64, //hint for internationalized strings
-	GODOT_PROPERTY_USAGE_GROUP = 128, //used for grouping props in the editor
+	GODOT_PROPERTY_USAGE_CHECKABLE = 16, // used for editing global variables
+	GODOT_PROPERTY_USAGE_CHECKED = 32, // used for editing global variables
+	GODOT_PROPERTY_USAGE_INTERNATIONALIZED = 64, // hint for internationalized strings
+	GODOT_PROPERTY_USAGE_GROUP = 128, // used for grouping props in the editor
 	GODOT_PROPERTY_USAGE_CATEGORY = 256,
 	GODOT_PROPERTY_USAGE_STORE_IF_NONZERO = 512, // FIXME: Obsolete: drop whenever we can break compat
 	GODOT_PROPERTY_USAGE_STORE_IF_NONONE = 1024, // FIXME: Obsolete: drop whenever we can break compat

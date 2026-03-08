@@ -78,17 +78,17 @@ private:
 			uint64_t current_element,
 			bool reverse_lookup = false) {
 		const std::vector<const FBXDocParser::Connection *> &conns = reverse_lookup ? doc->GetConnectionsByDestinationSequenced(current_element) : doc->GetConnectionsBySourceSequenced(current_element);
-		//print_verbose("[doc] looking for " + String(element_to_find));
-		// using the temp pattern here so we can debug before it returns
-		// in some cases we return too early, with 'deformer object base class' in wrong place
-		// in assimp this means we can accidentally return too early...
+		// print_verbose("[doc] looking for " + String(element_to_find));
+		//  using the temp pattern here so we can debug before it returns
+		//  in some cases we return too early, with 'deformer object base class' in wrong place
+		//  in assimp this means we can accidentally return too early...
 		const T *return_obj = nullptr;
 
 		for (const FBXDocParser::Connection *con : conns) {
 			const FBXDocParser::Object *source_object = con->SourceObject();
 			const FBXDocParser::Object *dest_object = con->DestinationObject();
 			if (source_object && dest_object != nullptr) {
-				//print_verbose("[doc] connection name: " + String(source_object->Name().c_str()) + ", dest: " + String(dest_object->Name().c_str()));
+				// print_verbose("[doc] connection name: " + String(source_object->Name().c_str()) + ", dest: " + String(dest_object->Name().c_str()));
 				const T *temp = dynamic_cast<const T *>(reverse_lookup ? source_object : dest_object);
 				if (temp) {
 					return_obj = temp;
@@ -97,8 +97,8 @@ private:
 		}
 
 		if (return_obj != nullptr) {
-			//print_verbose("[doc] returned valid element");
-			//print_verbose("Found object for bone");
+			// print_verbose("[doc] returned valid element");
+			// print_verbose("Found object for bone");
 			return return_obj;
 		}
 

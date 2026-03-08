@@ -111,10 +111,10 @@ bool ShaderMaterial::_set(const StringName &p_name, const Variant &p_value) {
 		StringName pr = shader->remap_param(p_name);
 		if (!pr) {
 			String n = p_name;
-			if (n.find("param/") == 0) { //backwards compatibility
+			if (n.find("param/") == 0) { // backwards compatibility
 				pr = n.substr(6, n.length());
 			}
-			if (n.find("shader_param/") == 0) { //backwards compatibility
+			if (n.find("shader_param/") == 0) { // backwards compatibility
 				pr = n.replace_first("shader_param/", "");
 			}
 		}
@@ -132,10 +132,10 @@ bool ShaderMaterial::_get(const StringName &p_name, Variant &r_ret) const {
 		StringName pr = shader->remap_param(p_name);
 		if (!pr) {
 			String n = p_name;
-			if (n.find("param/") == 0) { //backwards compatibility
+			if (n.find("param/") == 0) { // backwards compatibility
 				pr = n.substr(6, n.length());
 			}
-			if (n.find("shader_param/") == 0) { //backwards compatibility
+			if (n.find("shader_param/") == 0) { // backwards compatibility
 				pr = n.replace_first("shader_param/", "");
 			}
 		}
@@ -199,7 +199,7 @@ void ShaderMaterial::set_shader(const Ref<Shader> &p_shader) {
 	}
 
 	VS::get_singleton()->material_set_shader(_get_material(), rid);
-	_change_notify(); //properties for shader exposed
+	_change_notify(); // properties for shader exposed
 	emit_changed();
 }
 
@@ -216,7 +216,7 @@ Variant ShaderMaterial::get_shader_param(const StringName &p_param) const {
 }
 
 void ShaderMaterial::_shader_changed() {
-	_change_notify(); //update all properties
+	_change_notify(); // update all properties
 }
 
 void ShaderMaterial::_bind_methods() {
@@ -365,13 +365,13 @@ void SpatialMaterial::_update_shader() {
 
 	MaterialKey mk = _compute_key();
 	if (mk.key == current_key.key) {
-		return; //no update required in the end
+		return; // no update required in the end
 	}
 
 	if (shader_map.has(current_key)) {
 		shader_map[current_key].users--;
 		if (shader_map[current_key].users == 0) {
-			//deallocate shader, as it's no longer in use
+			// deallocate shader, as it's no longer in use
 			VS::get_singleton()->free(shader_map[current_key].shader);
 			shader_map.erase(current_key);
 		}
@@ -385,7 +385,7 @@ void SpatialMaterial::_update_shader() {
 		return;
 	}
 
-	//must create a shader!
+	// must create a shader!
 
 	// Add a comment to describe the shader origin (useful when converting to ShaderMaterial).
 	String code = "// NOTE: Shader automatically converted from " VERSION_NAME " " VERSION_FULL_CONFIG "'s SpatialMaterial.\n\n";
@@ -657,14 +657,14 @@ void SpatialMaterial::_update_shader() {
 			}
 		} break;
 		case BILLBOARD_PARTICLES: {
-			//make billboard
+			// make billboard
 			code += "\tmat4 mat_world = mat4(normalize(CAMERA_MATRIX[0])*length(WORLD_MATRIX[0]),normalize(CAMERA_MATRIX[1])*length(WORLD_MATRIX[0]),normalize(CAMERA_MATRIX[2])*length(WORLD_MATRIX[2]),WORLD_MATRIX[3]);\n";
-			//rotate by rotation
+			// rotate by rotation
 			code += "\tmat_world = mat_world * mat4( vec4(cos(INSTANCE_CUSTOM.x),-sin(INSTANCE_CUSTOM.x), 0.0, 0.0), vec4(sin(INSTANCE_CUSTOM.x), cos(INSTANCE_CUSTOM.x), 0.0, 0.0),vec4(0.0, 0.0, 1.0, 0.0),vec4(0.0, 0.0, 0.0, 1.0));\n";
-			//set modelview
+			// set modelview
 			code += "\tMODELVIEW_MATRIX = INV_CAMERA_MATRIX * mat_world;\n";
 
-			//handle animation
+			// handle animation
 			code += "\tfloat h_frames = float(particles_anim_h_frames);\n";
 			code += "\tfloat v_frames = float(particles_anim_v_frames);\n";
 			code += "\tfloat particle_total_frames = float(particles_anim_h_frames * particles_anim_v_frames);\n";
@@ -681,15 +681,15 @@ void SpatialMaterial::_update_shader() {
 
 	if (flags[FLAG_FIXED_SIZE]) {
 		code += "\tif (PROJECTION_MATRIX[3][3] != 0.0) {\n";
-		//orthogonal matrix, try to do about the same
-		//with viewport size
+		// orthogonal matrix, try to do about the same
+		// with viewport size
 		code += "\t\tfloat h = abs(1.0 / (2.0 * PROJECTION_MATRIX[1][1]));\n";
 		code += "\t\tfloat sc = (h * 2.0); //consistent with Y-fov\n";
 		code += "\t\tMODELVIEW_MATRIX[0]*=sc;\n";
 		code += "\t\tMODELVIEW_MATRIX[1]*=sc;\n";
 		code += "\t\tMODELVIEW_MATRIX[2]*=sc;\n";
 		code += "\t} else {\n";
-		//just scale by depth
+		// just scale by depth
 		code += "\t\tfloat sc = -(MODELVIEW_MATRIX)[3].z;\n";
 		code += "\t\tMODELVIEW_MATRIX[0]*=sc;\n";
 		code += "\t\tMODELVIEW_MATRIX[1]*=sc;\n";
@@ -701,7 +701,7 @@ void SpatialMaterial::_update_shader() {
 		code += "\tUV2=UV2*uv2_scale.xy+uv2_offset.xy;\n";
 	}
 	if (flags[FLAG_UV1_USE_TRIPLANAR] || flags[FLAG_UV2_USE_TRIPLANAR]) {
-		//generate tangent and binormal in world space
+		// generate tangent and binormal in world space
 		code += "\tTANGENT = vec3(0.0,0.0,-1.0) * abs(NORMAL.x);\n";
 		code += "\tTANGENT+= vec3(1.0,0.0,0.0) * abs(NORMAL.y);\n";
 		code += "\tTANGENT+= vec3(1.0,0.0,0.0) * abs(NORMAL.z);\n";
@@ -753,7 +753,7 @@ void SpatialMaterial::_update_shader() {
 		code += "\tvec2 base_uv2 = UV2;\n";
 	}
 
-	if (!VisualServer::get_singleton()->is_low_end() && features[FEATURE_DEPTH_MAPPING] && !flags[FLAG_UV1_USE_TRIPLANAR]) { //depthmap not supported with triplanar
+	if (!VisualServer::get_singleton()->is_low_end() && features[FEATURE_DEPTH_MAPPING] && !flags[FLAG_UV1_USE_TRIPLANAR]) { // depthmap not supported with triplanar
 		code += "\t{\n";
 		code += "\t\tvec3 view_dir = normalize(normalize(-VERTEX)*mat3(TANGENT*depth_flip.x,-BINORMAL*depth_flip.y,NORMAL));\n"; // binormal is negative due to mikktspace, flip 'unflips' it ;-)
 
@@ -2300,7 +2300,7 @@ SpatialMaterial::SpatialMaterial() :
 	depth_parallax_flip_binormal = false;
 	set_depth_deep_parallax_min_layers(8);
 	set_depth_deep_parallax_max_layers(32);
-	set_depth_deep_parallax_flip_tangent(false); //also sets binormal
+	set_depth_deep_parallax_flip_tangent(false); // also sets binormal
 
 	detail_uv = DETAIL_UV_1;
 	blend_mode = BLEND_MODE_MIX;
@@ -2332,7 +2332,7 @@ SpatialMaterial::~SpatialMaterial() {
 	if (shader_map.has(current_key)) {
 		shader_map[current_key].users--;
 		if (shader_map[current_key].users == 0) {
-			//deallocate shader, as it's no longer in use
+			// deallocate shader, as it's no longer in use
 			VS::get_singleton()->free(shader_map[current_key].shader);
 			shader_map.erase(current_key);
 		}

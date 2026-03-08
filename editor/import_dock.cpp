@@ -453,7 +453,7 @@ void ImportDock::_reimport_attempt() {
 
 void ImportDock::_reimport_and_restart() {
 	EditorNode::get_singleton()->save_all_scenes();
-	EditorResourcePreview::get_singleton()->stop(); //don't try to re-create previews after import
+	EditorResourcePreview::get_singleton()->stop(); // don't try to re-create previews after import
 	_reimport();
 	EditorNode::get_singleton()->restart_editor();
 }
@@ -469,14 +469,14 @@ void ImportDock::_reimport() {
 			String importer_name = params->importer->get_importer_name();
 
 			if (params->checking && config->get_value("remap", "importer") == params->importer->get_importer_name()) {
-				//update only what is edited (checkboxes) if the importer is the same
+				// update only what is edited (checkboxes) if the importer is the same
 				for (List<PropertyInfo>::Element *E = params->properties.front(); E; E = E->next()) {
 					if (params->checked.has(E->get().name)) {
 						config->set_value("params", E->get().name, params->values[E->get().name]);
 					}
 				}
 			} else {
-				//override entirely
+				// override entirely
 				config->set_value("remap", "importer", importer_name);
 				if (config->has_section("params")) {
 					config->erase_section("params");
@@ -487,21 +487,21 @@ void ImportDock::_reimport() {
 				}
 			}
 
-			//handle group file
+			// handle group file
 			Ref<ResourceImporter> importer = ResourceFormatImporter::get_singleton()->get_importer_by_name(importer_name);
 			ERR_CONTINUE(!importer.is_valid());
 			String group_file_property = importer->get_option_group_file();
 			if (group_file_property != String()) {
-				//can import from a group (as in, atlas)
+				// can import from a group (as in, atlas)
 				ERR_CONTINUE(!params->values.has(group_file_property));
 				String group_file = params->values[group_file_property];
 				config->set_value("remap", "group_file", group_file);
 			} else {
-				config->set_value("remap", "group_file", Variant()); //clear group file if unused
+				config->set_value("remap", "group_file", Variant()); // clear group file if unused
 			}
 
 		} else {
-			//set to no import
+			// set to no import
 			config->clear();
 			config->set_value("remap", "importer", "keep");
 		}
@@ -510,7 +510,7 @@ void ImportDock::_reimport() {
 	}
 
 	EditorFileSystem::get_singleton()->reimport_files(params->paths);
-	EditorFileSystem::get_singleton()->emit_signal("filesystem_changed"); //it changed, so force emitting the signal
+	EditorFileSystem::get_singleton()->emit_signal("filesystem_changed"); // it changed, so force emitting the signal
 }
 
 void ImportDock::_notification(int p_what) {

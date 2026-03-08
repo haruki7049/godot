@@ -65,7 +65,7 @@ void PHashTranslation::generate(const Ref<Translation> &p_from) {
 	int total_string_size = 0;
 
 	for (List<StringName>::Element *E = keys.front(); E; E = E->next()) {
-		//hash string
+		// hash string
 		CharString cs = E->get().operator String().utf8();
 		uint32_t h = hash(0, cs.get_data());
 		Pair<int, CharString> p;
@@ -73,7 +73,7 @@ void PHashTranslation::generate(const Ref<Translation> &p_from) {
 		p.second = cs;
 		buckets.write[h % size].push_back(p);
 
-		//compress string
+		// compress string
 		CharString src_s = p_from->get_message(E->get()).operator String().utf8();
 		_PHashTranslationCmp ps;
 		ps.orig_len = src_s.size();
@@ -84,12 +84,12 @@ void PHashTranslation::generate(const Ref<Translation> &p_from) {
 			dst_s.resize(src_s.size());
 			int ret = smaz_compress(src_s.get_data(), src_s.size(), dst_s.ptrw(), src_s.size());
 			if (ret >= src_s.size()) {
-				//if compressed is larger than original, just use original
+				// if compressed is larger than original, just use original
 				ps.orig_len = src_s.size();
 				ps.compressed = src_s;
 			} else {
 				dst_s.resize(ret);
-				//ps.orig_len=;
+				// ps.orig_len=;
 				ps.compressed = dst_s;
 			}
 		} else {
@@ -150,7 +150,7 @@ void PHashTranslation::generate(const Ref<Translation> &p_from) {
 	for (int i = 0; i < size; i++) {
 		const Map<uint32_t, int> &t = table[i];
 		if (t.size() == 0) {
-			htw[i] = 0xFFFFFFFF; //nothing
+			htw[i] = 0xFFFFFFFF; // nothing
 			continue;
 		} else if (t.size() > 1) {
 			collisions += t.size() - 1;
@@ -233,7 +233,7 @@ StringName PHashTranslation::get_message(const StringName &p_src_text) const {
 	uint32_t p = htptr[h % htsize];
 
 	if (p == 0xFFFFFFFF) {
-		return StringName(); //nothing
+		return StringName(); // nothing
 	}
 
 	const Bucket &bucket = *(const Bucket *)&btptr[p];

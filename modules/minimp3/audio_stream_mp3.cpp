@@ -55,12 +55,12 @@ void AudioStreamPlaybackMP3::_mix_internal(AudioFrame *p_buffer, int p_frames) {
 		}
 
 		else {
-			//EOF
+			// EOF
 			if (mp3_stream->loop) {
 				seek(mp3_stream->loop_offset);
 				loops++;
 			} else {
-				//fill remainder with silence
+				// fill remainder with silence
 				for (int i = p_frames - todo; i < p_frames; i++) {
 					p_buffer[i] = AudioFrame(0, 0);
 				}
@@ -144,7 +144,7 @@ Ref<AudioStreamPlayback> AudioStreamMP3::instance_playback() {
 }
 
 String AudioStreamMP3::get_stream_name() const {
-	return ""; //return stream_name;
+	return ""; // return stream_name;
 }
 
 void AudioStreamMP3::clear_data() {

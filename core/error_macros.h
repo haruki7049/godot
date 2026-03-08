@@ -95,7 +95,7 @@ void _err_print_index_error(const char *p_function, const char *p_file, int p_li
 /** An index has failed if m_index<0 or m_index >=m_size, the function exits */
 
 #ifdef __GNUC__
-//#define FUNCTION_STR __PRETTY_FUNCTION__ - too annoying
+// #define FUNCTION_STR __PRETTY_FUNCTION__ - too annoying
 #define FUNCTION_STR __FUNCTION__
 #else
 #define FUNCTION_STR __FUNCTION__

@@ -38,7 +38,7 @@ void AudioEffectRecordInstance::process(const AudioFrame *p_src_frames, AudioFra
 		return;
 	}
 
-	//Add incoming audio frames to the IO ring buffer
+	// Add incoming audio frames to the IO ring buffer
 	const AudioFrame *src = p_src_frames;
 	AudioFrame *rb_buf = ring_buffer.ptrw();
 	for (int i = 0; i < p_frame_count; i++) {
@@ -49,9 +49,9 @@ void AudioEffectRecordInstance::process(const AudioFrame *p_src_frames, AudioFra
 }
 
 void AudioEffectRecordInstance::_update_buffer() {
-	//Case: Frames are remaining in the buffer
+	// Case: Frames are remaining in the buffer
 	while (ring_buffer_read_pos < ring_buffer_pos) {
-		//Read from the buffer into recording_data
+		// Read from the buffer into recording_data
 		_io_store_buffer();
 	}
 }
@@ -69,7 +69,7 @@ void AudioEffectRecordInstance::_io_thread_process() {
 	thread_active = true;
 
 	while (is_recording) {
-		//Check: The current recording has been requested to stop
+		// Check: The current recording has been requested to stop
 		if (!base->recording_active) {
 			is_recording = false;
 		}
@@ -77,7 +77,7 @@ void AudioEffectRecordInstance::_io_thread_process() {
 		_update_buffer();
 
 		if (is_recording) {
-			//Wait to avoid too much busy-wait
+			// Wait to avoid too much busy-wait
 			OS::get_singleton()->delay_usec(500);
 		}
 	}
@@ -107,12 +107,12 @@ void AudioEffectRecordInstance::_thread_callback(void *_instance) {
 }
 
 void AudioEffectRecordInstance::init() {
-	//Reset recorder status
+	// Reset recorder status
 	ring_buffer_pos = 0;
 	ring_buffer_read_pos = 0;
 
-	//We start a new recording
-	recording_data.resize(0); //Clear data completely and reset length
+	// We start a new recording
+	recording_data.resize(0); // Clear data completely and reset length
 	is_recording = true;
 
 #ifdef NO_THREADS
@@ -142,9 +142,9 @@ Ref<AudioEffectInstance> AudioEffectRecord::instance() {
 	ins->base = Ref<AudioEffectRecord>(this);
 	ins->is_recording = false;
 
-	//Re-using the buffer size calculations from audio_effect_delay.cpp
+	// Re-using the buffer size calculations from audio_effect_delay.cpp
 	float ring_buffer_max_size = IO_BUFFER_SIZE_MS;
-	ring_buffer_max_size /= 1000.0; //convert to seconds
+	ring_buffer_max_size /= 1000.0; // convert to seconds
 	ring_buffer_max_size *= AudioServer::get_singleton()->get_mix_rate();
 
 	int ringbuff_size = ring_buffer_max_size;
@@ -210,7 +210,7 @@ AudioStreamSample::Format AudioEffectRecord::get_format() const {
 
 Ref<AudioStreamSample> AudioEffectRecord::get_recording() const {
 	AudioStreamSample::Format dst_format = format;
-	bool stereo = true; //forcing mono is not implemented
+	bool stereo = true; // forcing mono is not implemented
 
 	PoolVector<uint8_t> dst_data;
 
@@ -236,7 +236,7 @@ Ref<AudioStreamSample> AudioEffectRecord::get_recording() const {
 			encode_uint16(v, &w[i * 2]);
 		}
 	} else if (dst_format == AudioStreamSample::FORMAT_IMA_ADPCM) {
-		//byte interleave
+		// byte interleave
 		Vector<float> left;
 		Vector<float> right;
 

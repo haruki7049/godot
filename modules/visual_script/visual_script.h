@@ -80,7 +80,7 @@ public:
 	virtual String get_text() const;
 	virtual String get_category() const = 0;
 
-	//used by editor, this is not really saved
+	// used by editor, this is not really saved
 	void set_breakpoint(bool p_breakpoint);
 	bool is_breakpoint() const;
 
@@ -103,9 +103,9 @@ public:
 
 class VisualScriptNodeInstance {
 	friend class VisualScriptInstance;
-	friend class VisualScriptLanguage; //for debugger
+	friend class VisualScriptLanguage; // for debugger
 
-	enum { //input argument addressing
+	enum { // input argument addressing
 		INPUT_SHIFT = 1 << 24,
 		INPUT_MASK = INPUT_SHIFT - 1,
 		INPUT_DEFAULT_VALUE_BIT = INPUT_SHIFT, // from unassigned input port, using default value (edited by user)
@@ -135,13 +135,13 @@ public:
 	enum {
 		STEP_SHIFT = 1 << 24,
 		STEP_MASK = STEP_SHIFT - 1,
-		STEP_FLAG_PUSH_STACK_BIT = STEP_SHIFT, //push bit to stack
-		STEP_FLAG_GO_BACK_BIT = STEP_SHIFT << 1, //go back to previous node
-		STEP_NO_ADVANCE_BIT = STEP_SHIFT << 2, //do not advance past this node
-		STEP_EXIT_FUNCTION_BIT = STEP_SHIFT << 3, //return from function
-		STEP_YIELD_BIT = STEP_SHIFT << 4, //yield (will find VisualScriptFunctionState state in first working memory)
+		STEP_FLAG_PUSH_STACK_BIT = STEP_SHIFT, // push bit to stack
+		STEP_FLAG_GO_BACK_BIT = STEP_SHIFT << 1, // go back to previous node
+		STEP_NO_ADVANCE_BIT = STEP_SHIFT << 2, // do not advance past this node
+		STEP_EXIT_FUNCTION_BIT = STEP_SHIFT << 3, // return from function
+		STEP_YIELD_BIT = STEP_SHIFT << 4, // yield (will find VisualScriptFunctionState state in first working memory)
 
-		FLOW_STACK_PUSHED_BIT = 1 << 30, //in flow stack, means bit was pushed (must go back here if end of sequence)
+		FLOW_STACK_PUSHED_BIT = 1 << 30, // in flow stack, means bit was pushed (must go back here if end of sequence)
 		FLOW_STACK_MASK = FLOW_STACK_PUSHED_BIT - 1
 
 	};
@@ -154,7 +154,7 @@ public:
 
 	virtual int get_working_memory_size() const { return 0; }
 
-	virtual int step(const Variant **p_inputs, Variant **p_outputs, StartMode p_start_mode, Variant *p_working_mem, Variant::CallError &r_error, String &r_error_str) = 0; //do a step, return which sequence port to go out
+	virtual int step(const Variant **p_inputs, Variant **p_outputs, StartMode p_start_mode, Variant *p_working_mem, Variant::CallError &r_error, String &r_error_str) = 0; // do a step, return which sequence port to go out
 
 	Ref<VisualScriptNode> get_base_node() { return Ref<VisualScriptNode>(base); }
 
@@ -244,7 +244,7 @@ private:
 
 #ifdef TOOLS_ENABLED
 	Set<PlaceHolderScriptInstance *> placeholders;
-	//void _update_placeholder(PlaceHolderScriptInstance *p_placeholder);
+	// void _update_placeholder(PlaceHolderScriptInstance *p_placeholder);
 	virtual void _placeholder_erased(PlaceHolderScriptInstance *p_placeholder);
 	void _update_placeholders();
 #endif
@@ -368,7 +368,7 @@ class VisualScriptInstance : public ScriptInstance {
 	Object *owner;
 	Ref<VisualScript> script;
 
-	Map<StringName, Variant> variables; //using variable path, not script
+	Map<StringName, Variant> variables; // using variable path, not script
 	Map<int, VisualScriptNodeInstance *> instances;
 
 	struct Function {
@@ -391,9 +391,9 @@ class VisualScriptInstance : public ScriptInstance {
 	void _dependency_step(VisualScriptNodeInstance *node, int p_pass, int *pass_stack, const Variant **input_args, Variant **output_args, Variant *variant_stack, Variant::CallError &r_error, String &error_str, VisualScriptNodeInstance **r_error_node);
 	Variant _call_internal(const StringName &p_method, void *p_stack, int p_stack_size, VisualScriptNodeInstance *p_node, int p_flow_stack_pos, int p_pass, bool p_resuming_yield, Variant::CallError &r_error);
 
-	//Map<StringName,Function> functions;
-	friend class VisualScriptFunctionState; //for yield
-	friend class VisualScriptLanguage; //for debugger
+	// Map<StringName,Function> functions;
+	friend class VisualScriptFunctionState; // for yield
+	friend class VisualScriptLanguage; // for debugger
 public:
 	virtual bool set(const StringName &p_name, const Variant &p_value);
 	virtual bool get(const StringName &p_name, Variant &r_ret) const;
@@ -505,7 +505,7 @@ public:
 
 	_FORCE_INLINE_ void enter_function(VisualScriptInstance *p_instance, const StringName *p_function, Variant *p_stack, Variant **p_work_mem, int *current_id) {
 		if (Thread::get_main_id() != Thread::get_caller_id()) {
-			return; //no support for other threads than main for now
+			return; // no support for other threads than main for now
 		}
 
 		if (ScriptDebugger::get_singleton()->get_lines_left() > 0 && ScriptDebugger::get_singleton()->get_depth() >= 0) {
@@ -513,7 +513,7 @@ public:
 		}
 
 		if (_debug_call_stack_pos >= _debug_max_call_stack) {
-			//stack overflow
+			// stack overflow
 			_debug_error = "Stack Overflow (Stack Size: " + itos(_debug_max_call_stack) + ")";
 			ScriptDebugger::get_singleton()->debug(this);
 			return;
@@ -529,7 +529,7 @@ public:
 
 	_FORCE_INLINE_ void exit_function() {
 		if (Thread::get_main_id() != Thread::get_caller_id()) {
-			return; //no support for other threads than main for now
+			return; // no support for other threads than main for now
 		}
 
 		if (ScriptDebugger::get_singleton()->get_lines_left() > 0 && ScriptDebugger::get_singleton()->get_depth() >= 0) {
@@ -608,7 +608,7 @@ public:
 	~VisualScriptLanguage();
 };
 
-//aid for registering
+// aid for registering
 template <class T>
 static Ref<VisualScriptNode> create_node_generic(const String &p_name) {
 	Ref<T> node;

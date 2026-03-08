@@ -71,7 +71,7 @@ private:
 
 	Button *makedir;
 	Access access;
-	//Button *action;
+	// Button *action;
 	VBoxContainer *vbox;
 	Mode mode;
 	LineEdit *dir;
@@ -132,7 +132,7 @@ private:
 protected:
 	void _notification(int p_what);
 	static void _bind_methods();
-	//bind helpers
+	// bind helpers
 public:
 	void clear_filters();
 	void add_filter(const String &p_filter);

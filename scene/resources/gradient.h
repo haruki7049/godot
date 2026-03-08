@@ -88,7 +88,7 @@ public:
 
 		_update_sorting();
 
-		//binary search
+		// binary search
 		int low = 0;
 		int high = points.size() - 1;
 		int middle = 0;
@@ -102,15 +102,15 @@ public:
 			middle = (low + high) / 2;
 			const Point &point = points[middle];
 			if (point.offset > p_offset) {
-				high = middle - 1; //search low end of array
+				high = middle - 1; // search low end of array
 			} else if (point.offset < p_offset) {
-				low = middle + 1; //search high end of array
+				low = middle + 1; // search high end of array
 			} else {
 				return point.color;
 			}
 		}
 
-		//return interpolated value
+		// return interpolated value
 		if (points[middle].offset > p_offset) {
 			middle--;
 		}

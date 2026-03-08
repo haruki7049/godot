@@ -158,7 +158,7 @@ struct SpatialIndexer {
 			List<VisibilityNotifier *> removed;
 
 			for (int i = 0; i < culled; i++) {
-				//notifiers in frustum
+				// notifiers in frustum
 
 				Map<VisibilityNotifier *, uint64_t>::Element *H = E->get().notifiers.find(ptr[i]);
 				if (!H) {

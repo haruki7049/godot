@@ -2999,7 +2999,7 @@ Variant CSharpScript::_new(const Variant **p_args, int p_argcount, Variant::Call
 	CSharpInstance *instance = _create_instance(p_args, p_argcount, owner, r != NULL, r_error);
 	if (!instance) {
 		if (ref.is_null()) {
-			memdelete(owner); //no owner, sorry
+			memdelete(owner); // no owner, sorry
 		}
 		return Variant();
 	}
@@ -3295,9 +3295,9 @@ Error CSharpScript::load_source_code(const String &p_path) {
 
 	ERR_FAIL_COND_V_MSG(ferr != OK, ferr,
 			ferr == ERR_INVALID_DATA ?
-					  "Script '" + p_path + "' contains invalid unicode (UTF-8), so it was not loaded."
+					"Script '" + p_path + "' contains invalid unicode (UTF-8), so it was not loaded."
 										  " Please ensure that scripts are saved in valid UTF-8 unicode." :
-					  "Failed to read file: '" + p_path + "'.");
+					"Failed to read file: '" + p_path + "'.");
 
 #ifdef TOOLS_ENABLED
 	source_changed_cache = true;

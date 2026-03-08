@@ -158,7 +158,7 @@ void SpriteBase3D::_im_update() {
 
 	pending_update = false;
 
-	//texture->draw_rect_region(ci,dst_rect,src_rect,modulate);
+	// texture->draw_rect_region(ci,dst_rect,src_rect,modulate);
 }
 
 void SpriteBase3D::_queue_update() {
@@ -521,8 +521,8 @@ void Sprite3D::_draw() {
 		SWAP(x_axis, y_axis);
 
 		for (int i = 0; i < 4; i++) {
-			//uvs[i] = Vector2(1.0,1.0)-uvs[i];
-			//SWAP(vertices[i].x,vertices[i].y);
+			// uvs[i] = Vector2(1.0,1.0)-uvs[i];
+			// SWAP(vertices[i].x,vertices[i].y);
 			if (axis == Vector3::AXIS_Y) {
 				vertices[i].y = -vertices[i].y;
 			} else if (axis == Vector3::AXIS_X) {
@@ -592,7 +592,7 @@ void Sprite3D::set_texture(const Ref<Texture> &p_texture) {
 	}
 	texture = p_texture;
 	if (texture.is_valid()) {
-		texture->set_flags(texture->get_flags()); //remove repeat from texture, it looks bad in sprites
+		texture->set_flags(texture->get_flags()); // remove repeat from texture, it looks bad in sprites
 		texture->connect(CoreStringNames::get_singleton()->changed, this, SceneStringNames::get_singleton()->_queue_update);
 	}
 	_queue_update();
@@ -780,7 +780,7 @@ void AnimatedSprite3D::_draw() {
 	Ref<Texture> texture = frames->get_frame(animation, frame);
 	if (!texture.is_valid()) {
 		set_base(RID());
-		return; //no texuture no life
+		return; // no texuture no life
 	}
 	Vector2 tsize = texture->get_size();
 	if (tsize.x == 0 || tsize.y == 0) {
@@ -866,8 +866,8 @@ void AnimatedSprite3D::_draw() {
 		SWAP(x_axis, y_axis);
 
 		for (int i = 0; i < 4; i++) {
-			//uvs[i] = Vector2(1.0,1.0)-uvs[i];
-			//SWAP(vertices[i].x,vertices[i].y);
+			// uvs[i] = Vector2(1.0,1.0)-uvs[i];
+			// SWAP(vertices[i].x,vertices[i].y);
 			if (axis == Vector3::AXIS_Y) {
 				vertices[i].y = -vertices[i].y;
 			} else if (axis == Vector3::AXIS_X) {
@@ -984,7 +984,7 @@ void AnimatedSprite3D::_notification(int p_what) {
 
 			float speed = frames->get_animation_speed(animation);
 			if (speed == 0) {
-				return; //do nothing
+				return; // do nothing
 			}
 
 			float remaining = get_process_delta_time();

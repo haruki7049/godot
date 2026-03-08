@@ -88,7 +88,7 @@ void EditorAssetInstaller::_item_edited() {
 	String path = item->get_metadata(0);
 
 	updating = true;
-	if (path == String() || item == tree->get_root()) { //a dir or root
+	if (path == String() || item == tree->get_root()) { // a dir or root
 		_update_subitems(item, item->is_checked(0), true);
 	}
 
@@ -119,7 +119,7 @@ void EditorAssetInstaller::open(const String &p_path, int p_depth) {
 	int ret = unzGoToFirstFile(pkg);
 
 	while (ret == UNZ_OK) {
-		//get filename
+		// get filename
 		unz_file_info info;
 		char fname[16384];
 		unzGetCurrentFileInfo(pkg, &info, fname, 16384, nullptr, 0, nullptr, 0);
@@ -220,7 +220,7 @@ void EditorAssetInstaller::open(const String &p_path, int p_depth) {
 		bool isdir = false;
 
 		if (path.ends_with("/")) {
-			//a directory
+			// a directory
 			path = path.substr(0, path.length() - 1);
 			isdir = true;
 		}
@@ -299,7 +299,7 @@ void EditorAssetInstaller::ok_pressed() {
 
 	int idx = 0;
 	while (ret == UNZ_OK) {
-		//get filename
+		// get filename
 		unz_file_info info;
 		char fname[16384];
 		ret = unzGetCurrentFileInfo(pkg, &info, fname, 16384, nullptr, 0, nullptr, 0);
@@ -329,7 +329,7 @@ void EditorAssetInstaller::ok_pressed() {
 				Vector<uint8_t> data;
 				data.resize(info.uncompressed_size);
 
-				//read
+				// read
 				unzOpenCurrentFile(pkg);
 				unzReadCurrentFile(pkg, data.ptrw(), data.size());
 				unzCloseCurrentFile(pkg);

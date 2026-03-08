@@ -126,7 +126,7 @@ SceneTree::Group *SceneTree::add_to_group(const StringName &p_group, Node *p_nod
 
 	ERR_FAIL_COND_V_MSG(E->get().nodes.find(p_node) != -1, &E->get(), "Already in group: " + p_group + ".");
 	E->get().nodes.push_back(p_node);
-	//E->get().last_tree_version=0;
+	// E->get().last_tree_version=0;
 	E->get().changed = true;
 	return &E->get();
 }
@@ -404,7 +404,7 @@ void SceneTree::set_input_as_handled() {
 void SceneTree::input_text(const String &p_text) {
 	root_lock++;
 
-	call_group_flags(GROUP_CALL_REALTIME, "_viewports", "_vp_input_text", p_text); //special one for GUI, as controls use their own process check
+	call_group_flags(GROUP_CALL_REALTIME, "_viewports", "_vp_input_text", p_text); // special one for GUI, as controls use their own process check
 
 	root_lock--;
 }
@@ -415,7 +415,7 @@ bool SceneTree::is_input_handled() {
 
 void SceneTree::input_event(const Ref<InputEvent> &p_event) {
 	if (Engine::get_singleton()->is_editor_hint() && (Object::cast_to<InputEventJoypadButton>(p_event.ptr()) || Object::cast_to<InputEventJoypadMotion>(*p_event))) {
-		return; //avoid joy input on editor
+		return; // avoid joy input on editor
 	}
 
 	current_event++;
@@ -428,10 +428,10 @@ void SceneTree::input_event(const Ref<InputEvent> &p_event) {
 
 	MainLoop::input_event(ev);
 
-	call_group_flags(GROUP_CALL_REALTIME, "_viewports", "_vp_input", ev); //special one for GUI, as controls use their own process check
+	call_group_flags(GROUP_CALL_REALTIME, "_viewports", "_vp_input", ev); // special one for GUI, as controls use their own process check
 
 	if (ScriptDebugger::get_singleton() && ScriptDebugger::get_singleton()->is_remote()) {
-		//quit from game window using F8
+		// quit from game window using F8
 		Ref<InputEventKey> k = ev;
 		if (k.is_valid() && k->is_pressed() && !k->is_echo() && k->get_scancode() == KEY_F8) {
 			ScriptDebugger::get_singleton()->request_quit();
@@ -440,16 +440,16 @@ void SceneTree::input_event(const Ref<InputEvent> &p_event) {
 
 	_flush_ugc();
 	root_lock--;
-	//MessageQueue::get_singleton()->flush(); //flushing here causes UI and other places slowness
+	// MessageQueue::get_singleton()->flush(); //flushing here causes UI and other places slowness
 
 	root_lock++;
 
 	if (!input_handled) {
-		call_group_flags(GROUP_CALL_REALTIME, "_viewports", "_vp_unhandled_input", ev); //special one for GUI, as controls use their own process check
+		call_group_flags(GROUP_CALL_REALTIME, "_viewports", "_vp_unhandled_input", ev); // special one for GUI, as controls use their own process check
 		_flush_ugc();
 		//		input_handled = true; - no reason to set this as handled
 		root_lock--;
-		//MessageQueue::get_singleton()->flush(); //flushing here causes UI and other places slowness
+		// MessageQueue::get_singleton()->flush(); //flushing here causes UI and other places slowness
 	} else {
 		//		input_handled = true; - no reason to set this as handled
 		root_lock--;
@@ -483,7 +483,7 @@ bool SceneTree::iteration(float p_time) {
 	}
 	_notify_group_pause("physics_process", Node::NOTIFICATION_PHYSICS_PROCESS);
 	_flush_ugc();
-	MessageQueue::get_singleton()->flush(); //small little hack
+	MessageQueue::get_singleton()->flush(); // small little hack
 	flush_transform_notifications();
 	call_group_flags(GROUP_CALL_REALTIME, "_viewports", "update_worlds");
 	root_lock--;
@@ -504,9 +504,9 @@ void SceneTree::_update_font_oversampling(float p_ratio) {
 }
 
 bool SceneTree::idle(float p_time) {
-	//print_line("ram: "+itos(OS::get_singleton()->get_static_memory_usage())+" sram: "+itos(OS::get_singleton()->get_dynamic_memory_usage()));
-	//print_line("node count: "+itos(get_node_count()));
-	//print_line("TEXTURE RAM: "+itos(VS::get_singleton()->get_render_info(VS::INFO_TEXTURE_MEM_USED)));
+	// print_line("ram: "+itos(OS::get_singleton()->get_static_memory_usage())+" sram: "+itos(OS::get_singleton()->get_dynamic_memory_usage()));
+	// print_line("node count: "+itos(get_node_count()));
+	// print_line("TEXTURE RAM: "+itos(VS::get_singleton()->get_render_info(VS::INFO_TEXTURE_MEM_USED)));
 
 	root_lock++;
 
@@ -520,7 +520,7 @@ bool SceneTree::idle(float p_time) {
 
 	emit_signal("idle_frame");
 
-	MessageQueue::get_singleton()->flush(); //small little hack
+	MessageQueue::get_singleton()->flush(); // small little hack
 
 	flush_transform_notifications();
 
@@ -536,23 +536,23 @@ bool SceneTree::idle(float p_time) {
 	}
 
 	_flush_ugc();
-	MessageQueue::get_singleton()->flush(); //small little hack
-	flush_transform_notifications(); //transforms after world update, to avoid unnecessary enter/exit notifications
+	MessageQueue::get_singleton()->flush(); // small little hack
+	flush_transform_notifications(); // transforms after world update, to avoid unnecessary enter/exit notifications
 	call_group_flags(GROUP_CALL_REALTIME, "_viewports", "update_worlds");
 
 	root_lock--;
 
 	_flush_delete_queue();
 
-	//go through timers
+	// go through timers
 
-	List<Ref<SceneTreeTimer>>::Element *L = timers.back(); //last element
+	List<Ref<SceneTreeTimer>>::Element *L = timers.back(); // last element
 
 	for (List<Ref<SceneTreeTimer>>::Element *E = timers.front(); E;) {
 		List<Ref<SceneTreeTimer>>::Element *N = E->next();
 		if (pause && !E->get()->is_pause_mode_process()) {
 			if (E == L) {
-				break; //break on last, so if new timers were added during list traversal, ignore them.
+				break; // break on last, so if new timers were added during list traversal, ignore them.
 			}
 			E = N;
 			continue;
@@ -566,21 +566,21 @@ bool SceneTree::idle(float p_time) {
 			timers.erase(E);
 		}
 		if (E == L) {
-			break; //break on last, so if new timers were added during list traversal, ignore them.
+			break; // break on last, so if new timers were added during list traversal, ignore them.
 		}
 		E = N;
 	}
 
-	flush_transform_notifications(); //additional transforms after timers update
+	flush_transform_notifications(); // additional transforms after timers update
 
 	_call_idle_callbacks();
 
 #ifdef TOOLS_ENABLED
 
 	if (Engine::get_singleton()->is_editor_hint()) {
-		//simple hack to reload fallback environment if it changed from editor
+		// simple hack to reload fallback environment if it changed from editor
 		String env_path = ProjectSettings::get_singleton()->get("rendering/environment/default_environment");
-		env_path = env_path.strip_edges(); //user may have added a space or two
+		env_path = env_path.strip_edges(); // user may have added a space or two
 		String cpath;
 		Ref<Environment> fallback = get_root()->get_world()->get_fallback_environment();
 		if (fallback.is_valid()) {
@@ -590,7 +590,7 @@ bool SceneTree::idle(float p_time) {
 			if (env_path != String()) {
 				fallback = ResourceLoader::load(env_path);
 				if (fallback.is_null()) {
-					//could not load fallback, set as empty
+					// could not load fallback, set as empty
 					ProjectSettings::get_singleton()->set("rendering/environment/default_environment", "");
 				}
 			} else {
@@ -617,7 +617,7 @@ void SceneTree::finish() {
 	if (root) {
 		root->_set_tree(nullptr);
 		root->_propagate_after_exit_tree();
-		memdelete(root); //delete root
+		memdelete(root); // delete root
 		root = nullptr;
 	}
 
@@ -900,8 +900,8 @@ void SceneTree::_call_input_pause(const StringName &p_group, const StringName &p
 
 	_update_group_order(g);
 
-	//copy, so copy on write happens in case something is removed from process while being called
-	//performance is not lost because only if something is added/removed the vector is copied.
+	// copy, so copy on write happens in case something is removed from process while being called
+	// performance is not lost because only if something is added/removed the vector is copied.
 	Vector<Node *> nodes_copy = g.nodes;
 
 	int node_count = nodes_copy.size();
@@ -927,7 +927,7 @@ void SceneTree::_call_input_pause(const StringName &p_group, const StringName &p
 		}
 
 		n->call_multilevel(p_method, (const Variant **)v, 1);
-		//ERR_FAIL_COND(node_count != g.nodes.size());
+		// ERR_FAIL_COND(node_count != g.nodes.size());
 	}
 
 	call_lock--;
@@ -948,8 +948,8 @@ void SceneTree::_notify_group_pause(const StringName &p_group, int p_notificatio
 
 	_update_group_order(g, p_notification == Node::NOTIFICATION_PROCESS || p_notification == Node::NOTIFICATION_INTERNAL_PROCESS || p_notification == Node::NOTIFICATION_PHYSICS_PROCESS || p_notification == Node::NOTIFICATION_INTERNAL_PHYSICS_PROCESS);
 
-	//copy, so copy on write happens in case something is removed from process while being called
-	//performance is not lost because only if something is added/removed the vector is copied.
+	// copy, so copy on write happens in case something is removed from process while being called
+	// performance is not lost because only if something is added/removed the vector is copied.
 	Vector<Node *> nodes_copy = g.nodes;
 
 	int node_count = nodes_copy.size();
@@ -971,7 +971,7 @@ void SceneTree::_notify_group_pause(const StringName &p_group, int p_notificatio
 		}
 
 		n->notification(p_notification);
-		//ERR_FAIL_COND(node_count != g.nodes.size());
+		// ERR_FAIL_COND(node_count != g.nodes.size());
 	}
 
 	call_lock--;
@@ -1045,7 +1045,7 @@ Array SceneTree::_get_nodes_in_group(const StringName &p_group) {
 		return ret;
 	}
 
-	_update_group_order(E->get()); //update order just in case
+	_update_group_order(E->get()); // update order just in case
 	int nc = E->get().nodes.size();
 	if (nc == 0) {
 		return ret;
@@ -1070,7 +1070,7 @@ void SceneTree::get_nodes_in_group(const StringName &p_group, List<Node *> *p_li
 		return;
 	}
 
-	_update_group_order(E->get()); //update order just in case
+	_update_group_order(E->get()); // update order just in case
 	int nc = E->get().nodes.size();
 	if (nc == 0) {
 		return;
@@ -1112,10 +1112,10 @@ void SceneTree::_update_root_rect() {
 		root->set_size_override_stretch(false);
 		root->set_size_override(false, Size2());
 		root->update_canvas_items();
-		return; //user will take care
+		return; // user will take care
 	}
 
-	//actual screen video mode
+	// actual screen video mode
 	Size2 video_mode = Size2(OS::get_singleton()->get_window_size().width, OS::get_singleton()->get_window_size().height);
 	Size2 desired_res = stretch_min;
 
@@ -1130,34 +1130,34 @@ void SceneTree::_update_root_rect() {
 	}
 
 	if (stretch_aspect == STRETCH_ASPECT_IGNORE || Math::is_equal_approx(viewport_aspect, video_mode_aspect)) {
-		//same aspect or ignore aspect
+		// same aspect or ignore aspect
 		viewport_size = desired_res;
 		screen_size = video_mode;
 	} else if (viewport_aspect < video_mode_aspect) {
 		// screen ratio is smaller vertically
 
 		if (stretch_aspect == STRETCH_ASPECT_KEEP_HEIGHT || stretch_aspect == STRETCH_ASPECT_EXPAND) {
-			//will stretch horizontally
+			// will stretch horizontally
 			viewport_size.x = desired_res.y * video_mode_aspect;
 			viewport_size.y = desired_res.y;
 			screen_size = video_mode;
 
 		} else {
-			//will need black bars
+			// will need black bars
 			viewport_size = desired_res;
 			screen_size.x = video_mode.y * viewport_aspect;
 			screen_size.y = video_mode.y;
 		}
 	} else {
-		//screen ratio is smaller horizontally
+		// screen ratio is smaller horizontally
 		if (stretch_aspect == STRETCH_ASPECT_KEEP_WIDTH || stretch_aspect == STRETCH_ASPECT_EXPAND) {
-			//will stretch horizontally
+			// will stretch horizontally
 			viewport_size.x = desired_res.x;
 			viewport_size.y = desired_res.x / video_mode_aspect;
 			screen_size = video_mode;
 
 		} else {
-			//will need black bars
+			// will need black bars
 			viewport_size = desired_res;
 			screen_size.x = video_mode.x;
 			screen_size.y = video_mode.x / viewport_aspect;
@@ -1169,7 +1169,7 @@ void SceneTree::_update_root_rect() {
 
 	Size2 margin;
 	Size2 offset;
-	//black bars and margin
+	// black bars and margin
 	if (stretch_aspect != STRETCH_ASPECT_EXPAND && screen_size.x < video_mode.x) {
 		margin.x = Math::round((video_mode.x - screen_size.x) / 2.0);
 		VisualServer::get_singleton()->black_bars_set_margins(margin.x, 0, margin.x, 0);
@@ -1188,12 +1188,12 @@ void SceneTree::_update_root_rect() {
 			_update_font_oversampling(1.0);
 		} break;
 		case STRETCH_MODE_2D: {
-			_update_font_oversampling(screen_size.x / viewport_size.x); //screen / viewport radio drives oversampling
+			_update_font_oversampling(screen_size.x / viewport_size.x); // screen / viewport radio drives oversampling
 			root->set_size((screen_size / stretch_shrink).floor());
 			root->set_attach_to_screen_rect(Rect2(margin, screen_size));
 			root->set_size_override_stretch(true);
 			root->set_size_override(true, (viewport_size / stretch_shrink).floor());
-			root->update_canvas_items(); //force them to update just in case
+			root->update_canvas_items(); // force them to update just in case
 
 		} break;
 		case STRETCH_MODE_VIEWPORT: {
@@ -1202,7 +1202,7 @@ void SceneTree::_update_root_rect() {
 			root->set_attach_to_screen_rect(Rect2(margin, screen_size));
 			root->set_size_override_stretch(false);
 			root->set_size_override(false, Size2());
-			root->update_canvas_items(); //force them to update just in case
+			root->update_canvas_items(); // force them to update just in case
 
 			if (use_font_oversampling) {
 				WARN_PRINT("Font oversampling does not work in \"Viewport\" stretch mode, only \"2D\". To remove this warning, disable Rendering > Quality > Dynamic Fonts > Use Oversampling in the Project Settings.");
@@ -1333,7 +1333,7 @@ void SceneTree::_live_edit_node_set_func(int p_id, const StringName &p_prop, con
 
 	Map<String, Set<Node *>>::Element *E = live_scene_edit_cache.find(live_edit_scene);
 	if (!E) {
-		return; //scene not editable
+		return; // scene not editable
 	}
 
 	for (Set<Node *>::Element *F = E->get().front(); F; F = F->next()) {
@@ -1372,7 +1372,7 @@ void SceneTree::_live_edit_node_call_func(int p_id, const StringName &p_method, 
 
 	Map<String, Set<Node *>>::Element *E = live_scene_edit_cache.find(live_edit_scene);
 	if (!E) {
-		return; //scene not editable
+		return; // scene not editable
 	}
 
 	for (Set<Node *>::Element *F = E->get().front(); F; F = F->next()) {
@@ -1447,7 +1447,7 @@ void SceneTree::_live_edit_create_node_func(const NodePath &p_parent, const Stri
 
 	Map<String, Set<Node *>>::Element *E = live_scene_edit_cache.find(live_edit_scene);
 	if (!E) {
-		return; //scene not editable
+		return; // scene not editable
 	}
 
 	for (Set<Node *>::Element *F = E->get().front(); F; F = F->next()) {
@@ -1485,7 +1485,7 @@ void SceneTree::_live_edit_instance_node_func(const NodePath &p_parent, const St
 
 	Map<String, Set<Node *>>::Element *E = live_scene_edit_cache.find(live_edit_scene);
 	if (!E) {
-		return; //scene not editable
+		return; // scene not editable
 	}
 
 	for (Set<Node *>::Element *F = E->get().front(); F; F = F->next()) {
@@ -1517,7 +1517,7 @@ void SceneTree::_live_edit_remove_node_func(const NodePath &p_at) {
 
 	Map<String, Set<Node *>>::Element *E = live_scene_edit_cache.find(live_edit_scene);
 	if (!E) {
-		return; //scene not editable
+		return; // scene not editable
 	}
 
 	for (Set<Node *>::Element *F = E->get().front(); F;) {
@@ -1547,7 +1547,7 @@ void SceneTree::_live_edit_remove_and_keep_node_func(const NodePath &p_at, Objec
 
 	Map<String, Set<Node *>>::Element *E = live_scene_edit_cache.find(live_edit_scene);
 	if (!E) {
-		return; //scene not editable
+		return; // scene not editable
 	}
 
 	for (Set<Node *>::Element *F = E->get().front(); F;) {
@@ -1580,7 +1580,7 @@ void SceneTree::_live_edit_restore_node_func(ObjectID p_id, const NodePath &p_at
 
 	Map<String, Set<Node *>>::Element *E = live_scene_edit_cache.find(live_edit_scene);
 	if (!E) {
-		return; //scene not editable
+		return; // scene not editable
 	}
 
 	for (Set<Node *>::Element *F = E->get().front(); F;) {
@@ -1627,7 +1627,7 @@ void SceneTree::_live_edit_duplicate_node_func(const NodePath &p_at, const Strin
 
 	Map<String, Set<Node *>>::Element *E = live_scene_edit_cache.find(live_edit_scene);
 	if (!E) {
-		return; //scene not editable
+		return; // scene not editable
 	}
 
 	for (Set<Node *>::Element *F = E->get().front(); F; F = F->next()) {
@@ -1660,7 +1660,7 @@ void SceneTree::_live_edit_reparent_node_func(const NodePath &p_at, const NodePa
 
 	Map<String, Set<Node *>>::Element *E = live_scene_edit_cache.find(live_edit_scene);
 	if (!E) {
-		return; //scene not editable
+		return; // scene not editable
 	}
 
 	for (Set<Node *>::Element *F = E->get().front(); F; F = F->next()) {
@@ -2034,7 +2034,7 @@ SceneTree::SceneTree() {
 	root_lock = 0;
 	node_count = 0;
 
-	//create with mainloop
+	// create with mainloop
 
 	root = memnew(Viewport);
 	root->set_name("root");
@@ -2047,15 +2047,15 @@ SceneTree::SceneTree() {
 	multiplayer_poll = true;
 	set_multiplayer(Ref<MultiplayerAPI>(memnew(MultiplayerAPI)));
 
-	//root->set_world_2d( Ref<World2D>( memnew( World2D )));
+	// root->set_world_2d( Ref<World2D>( memnew( World2D )));
 	root->set_as_audio_listener(true);
 	root->set_as_audio_listener_2d(true);
 	current_scene = nullptr;
 
 	int ref_atlas_size = GLOBAL_DEF_RST("rendering/quality/reflections/atlas_size", 2048);
-	ProjectSettings::get_singleton()->set_custom_property_info("rendering/quality/reflections/atlas_size", PropertyInfo(Variant::INT, "rendering/quality/reflections/atlas_size", PROPERTY_HINT_RANGE, "0,8192,or_greater")); //next_power_of_2 will return a 0 as min value
+	ProjectSettings::get_singleton()->set_custom_property_info("rendering/quality/reflections/atlas_size", PropertyInfo(Variant::INT, "rendering/quality/reflections/atlas_size", PROPERTY_HINT_RANGE, "0,8192,or_greater")); // next_power_of_2 will return a 0 as min value
 	int ref_atlas_subdiv = GLOBAL_DEF_RST("rendering/quality/reflections/atlas_subdiv", 8);
-	ProjectSettings::get_singleton()->set_custom_property_info("rendering/quality/reflections/atlas_subdiv", PropertyInfo(Variant::INT, "rendering/quality/reflections/atlas_subdiv", PROPERTY_HINT_RANGE, "0,32,or_greater")); //next_power_of_2 will return a 0 as min value
+	ProjectSettings::get_singleton()->set_custom_property_info("rendering/quality/reflections/atlas_subdiv", PropertyInfo(Variant::INT, "rendering/quality/reflections/atlas_subdiv", PROPERTY_HINT_RANGE, "0,32,or_greater")); // next_power_of_2 will return a 0 as min value
 	int msaa_mode = GLOBAL_DEF("rendering/quality/filters/msaa", 0);
 	ProjectSettings::get_singleton()->set_custom_property_info("rendering/quality/filters/msaa", PropertyInfo(Variant::INT, "rendering/quality/filters/msaa", PROPERTY_HINT_ENUM, "Disabled,2x,4x,8x,16x,AndroidVR 2x,AndroidVR 4x"));
 	root->set_msaa(Viewport::MSAA(msaa_mode));
@@ -2077,8 +2077,8 @@ SceneTree::SceneTree() {
 
 	VS::get_singleton()->scenario_set_reflection_atlas_size(root->get_world()->get_scenario(), ref_atlas_size, ref_atlas_subdiv);
 
-	{ //load default fallback environment
-		//get possible extensions
+	{ // load default fallback environment
+		// get possible extensions
 		List<String> exts;
 		ResourceLoader::get_recognized_extensions_for_type("Environment", &exts);
 		String ext_hint;
@@ -2088,9 +2088,9 @@ SceneTree::SceneTree() {
 			}
 			ext_hint += "*." + E->get();
 		}
-		//get path
+		// get path
 		String env_path = GLOBAL_DEF("rendering/environment/default_environment", "");
-		//setup property
+		// setup property
 		ProjectSettings::get_singleton()->set_custom_property_info("rendering/environment/default_environment", PropertyInfo(Variant::STRING, "rendering/viewport/default_environment", PROPERTY_HINT_FILE, ext_hint));
 		env_path = env_path.strip_edges();
 		if (env_path != String()) {
@@ -2099,10 +2099,10 @@ SceneTree::SceneTree() {
 				root->get_world()->set_fallback_environment(env);
 			} else {
 				if (Engine::get_singleton()->is_editor_hint()) {
-					//file was erased, clear the field.
+					// file was erased, clear the field.
 					ProjectSettings::get_singleton()->set("rendering/environment/default_environment", "");
 				} else {
-					//file was erased, notify user.
+					// file was erased, notify user.
 					ERR_PRINT(RTR("Default Environment as specified in Project Settings (Rendering -> Environment -> Default Environment) could not be loaded."));
 				}
 			}

@@ -27,20 +27,20 @@ precision mediump float;
 
 in vec2 uv_interp;
 
-uniform highp sampler2D source; //texunit:0
+uniform highp sampler2D source; // texunit:0
 
 uniform float exposure;
 uniform float white;
 
 #ifdef USE_AUTO_EXPOSURE
-uniform highp sampler2D source_auto_exposure; //texunit:1
+uniform highp sampler2D source_auto_exposure; // texunit:1
 uniform highp float auto_exposure_grey;
 #endif
 
 #if defined(USE_GLOW_LEVEL1) || defined(USE_GLOW_LEVEL2) || defined(USE_GLOW_LEVEL3) || defined(USE_GLOW_LEVEL4) || defined(USE_GLOW_LEVEL5) || defined(USE_GLOW_LEVEL6) || defined(USE_GLOW_LEVEL7)
 #define USING_GLOW // only use glow when at least one glow level is selected
 
-uniform highp sampler2D source_glow; //texunit:2
+uniform highp sampler2D source_glow; // texunit:2
 uniform highp float glow_intensity;
 #endif
 
@@ -57,7 +57,7 @@ uniform float sharpen_intensity;
 #endif
 
 #ifdef USE_COLOR_CORRECTION
-uniform sampler2D color_correction; //texunit:3
+uniform sampler2D color_correction; // texunit:3
 #endif
 
 layout(location = 0) out vec4 frag_color;
@@ -270,13 +270,13 @@ vec3 apply_glow(vec3 color, vec3 glow) { // apply glow using the selected blendi
 #endif
 
 #ifdef USE_GLOW_SCREEN
-	//need color clamping
+	// need color clamping
 	color = clamp(color, vec3(0.0f), vec3(1.0f));
 	color = max((color + glow) - (color * glow), vec3(0.0));
 #endif
 
 #ifdef USE_GLOW_SOFTLIGHT
-	//need color clamping
+	// need color clamping
 	color = clamp(color, vec3(0.0f), vec3(1.0));
 	glow = glow * vec3(0.5f) + vec3(0.5f);
 
@@ -447,7 +447,7 @@ void main() {
 #ifdef KEEP_3D_LINEAR
 	// leave color as is (-> don't convert to SRGB)
 #else
-	//need color clamping
+	// need color clamping
 	color = clamp(color, vec3(0.0f), vec3(1.0f));
 	color = linear_to_srgb(color); // regular linear -> SRGB conversion (needs clamped values)
 #endif

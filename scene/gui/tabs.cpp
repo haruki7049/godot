@@ -79,7 +79,7 @@ Size2 Tabs::get_minimum_size() const {
 		}
 	}
 
-	ms.width = 0; //TODO: should make this optional
+	ms.width = 0; // TODO: should make this optional
 	return ms;
 }
 
@@ -138,7 +138,7 @@ void Tabs::_gui_input(const Ref<InputEvent> &p_event) {
 
 		if (rb_pressing && !mb->is_pressed() && mb->get_button_index() == BUTTON_LEFT) {
 			if (rb_hover != -1) {
-				//pressed
+				// pressed
 				emit_signal("right_button_pressed", rb_hover);
 			}
 
@@ -148,7 +148,7 @@ void Tabs::_gui_input(const Ref<InputEvent> &p_event) {
 
 		if (cb_pressing && !mb->is_pressed() && mb->get_button_index() == BUTTON_LEFT) {
 			if (cb_hover != -1) {
-				//pressed
+				// pressed
 				emit_signal("tab_close", cb_hover);
 			}
 

@@ -72,7 +72,7 @@ void thread_process_array(uint32_t p_elements, C *p_instance, M p_method, U p_us
 	data.userdata = p_userdata;
 	data.index.set(0);
 	data.elements = p_elements;
-	data.process(0); //process first, let threads increment for next
+	data.process(0); // process first, let threads increment for next
 
 	int thread_count = OS::get_singleton()->get_processor_count();
 	Thread *threads = memnew_arr(Thread, thread_count);

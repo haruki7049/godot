@@ -180,7 +180,7 @@ public:
 		RID rid;
 		ObjectID collider_id = 0;
 		int shape = 0;
-		Vector3 linear_velocity; //velocity at contact point
+		Vector3 linear_velocity; // velocity at contact point
 	};
 
 	virtual bool cast_motion(const RID &p_shape, const Transform &p_xform, const Vector3 &p_motion, float p_margin, float &p_closest_safe, float &p_closest_unsafe, const Set<RID> &p_exclude = Set<RID>(), uint32_t p_collision_mask = 0xFFFFFFFF, bool p_collide_with_bodies = true, bool p_collide_with_areas = false, ShapeRestInfo *r_info = nullptr) = 0;
@@ -263,11 +263,11 @@ public:
 	virtual Vector<Vector3> space_get_contacts(RID p_space) const = 0;
 	virtual int space_get_contact_count(RID p_space) const = 0;
 
-	//missing space parameters
+	// missing space parameters
 
 	/* AREA API */
 
-	//missing attenuation? missing better override?
+	// missing attenuation? missing better override?
 
 	enum AreaParameter {
 		AREA_PARAM_GRAVITY,
@@ -331,7 +331,7 @@ public:
 
 	/* BODY API */
 
-	//missing ccd?
+	// missing ccd?
 
 	enum BodyMode {
 		BODY_MODE_STATIC,
@@ -393,7 +393,7 @@ public:
 	virtual void body_set_kinematic_safe_margin(RID p_body, real_t p_margin) = 0;
 	virtual real_t body_get_kinematic_safe_margin(RID p_body) const = 0;
 
-	//state
+	// state
 	enum BodyState {
 		BODY_STATE_TRANSFORM,
 		BODY_STATE_LINEAR_VELOCITY,
@@ -405,7 +405,7 @@ public:
 	virtual void body_set_state(RID p_body, BodyState p_state, const Variant &p_variant) = 0;
 	virtual Variant body_get_state(RID p_body, BodyState p_state) const = 0;
 
-	//do something about it
+	// do something about it
 	virtual void body_set_applied_force(RID p_body, const Vector3 &p_force) = 0;
 	virtual Vector3 body_get_applied_force(RID p_body) const = 0;
 
@@ -433,7 +433,7 @@ public:
 	virtual void body_set_axis_lock(RID p_body, BodyAxis p_axis, bool p_lock) = 0;
 	virtual bool body_is_axis_locked(RID p_body, BodyAxis p_axis) const = 0;
 
-	//fix
+	// fix
 	virtual void body_add_collision_exception(RID p_body, RID p_body_b) = 0;
 	virtual void body_remove_collision_exception(RID p_body, RID p_body_b) = 0;
 	virtual void body_get_collision_exceptions(RID p_body, List<RID> *p_exceptions) = 0;
@@ -441,7 +441,7 @@ public:
 	virtual void body_set_max_contacts_reported(RID p_body, int p_contacts) = 0;
 	virtual int body_get_max_contacts_reported(RID p_body) const = 0;
 
-	//missing remove
+	// missing remove
 	virtual void body_set_contacts_reported_depth_threshold(RID p_body, float p_threshold) = 0;
 	virtual float body_get_contacts_reported_depth_threshold(RID p_body) const = 0;
 
@@ -648,7 +648,7 @@ public:
 
 	};
 
-	virtual RID joint_create_slider(RID p_body_A, const Transform &p_local_frame_A, RID p_body_B, const Transform &p_local_frame_B) = 0; //reference frame is A
+	virtual RID joint_create_slider(RID p_body_A, const Transform &p_local_frame_A, RID p_body_B, const Transform &p_local_frame_B) = 0; // reference frame is A
 
 	virtual void slider_joint_set_param(RID p_joint, SliderJointParam p_param, float p_value) = 0;
 	virtual float slider_joint_get_param(RID p_joint, SliderJointParam p_param) const = 0;
@@ -662,7 +662,7 @@ public:
 		CONE_TWIST_MAX
 	};
 
-	virtual RID joint_create_cone_twist(RID p_body_A, const Transform &p_local_frame_A, RID p_body_B, const Transform &p_local_frame_B) = 0; //reference frame is A
+	virtual RID joint_create_cone_twist(RID p_body_A, const Transform &p_local_frame_A, RID p_body_B, const Transform &p_local_frame_B) = 0; // reference frame is A
 
 	virtual void cone_twist_joint_set_param(RID p_joint, ConeTwistJointParam p_param, float p_value) = 0;
 	virtual float cone_twist_joint_get_param(RID p_joint, ConeTwistJointParam p_param) const = 0;
@@ -704,7 +704,7 @@ public:
 		G6DOF_JOINT_FLAG_MAX
 	};
 
-	virtual RID joint_create_generic_6dof(RID p_body_A, const Transform &p_local_frame_A, RID p_body_B, const Transform &p_local_frame_B) = 0; //reference frame is A
+	virtual RID joint_create_generic_6dof(RID p_body_A, const Transform &p_local_frame_A, RID p_body_B, const Transform &p_local_frame_B) = 0; // reference frame is A
 
 	virtual void generic_6dof_joint_set_param(RID p_joint, Vector3::Axis, G6DOFJointAxisParam p_param, float p_value) = 0;
 	virtual float generic_6dof_joint_get_param(RID p_joint, Vector3::Axis, G6DOFJointAxisParam p_param) = 0;
@@ -759,7 +759,7 @@ protected:
 public:
 	PhysicsServer::MotionResult *get_result_ptr() const { return const_cast<PhysicsServer::MotionResult *>(&result); }
 
-	//bool is_colliding() const;
+	// bool is_colliding() const;
 	Vector3 get_motion() const;
 	Vector3 get_motion_remainder() const;
 

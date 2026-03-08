@@ -61,7 +61,7 @@ void EditorSpinSlider::_gui_input(const Ref<InputEvent> &p_event) {
 		if (mb->get_button_index() == BUTTON_LEFT) {
 			if (mb->is_pressed()) {
 				if (updown_offset != -1 && mb->get_position().x > updown_offset) {
-					//there is an updown, so use it.
+					// there is an updown, so use it.
 					if (mb->get_position().y < get_size().height / 2) {
 						set_value(get_value() + get_step());
 					} else {
@@ -197,7 +197,7 @@ void EditorSpinSlider::_draw_spin_slider() {
 	}
 	Ref<Font> font = get_font("font", "LineEdit");
 	int sep_base = 4 * EDSCALE;
-	int sep = sep_base + sb->get_offset().x; //make it have the same margin on both sides, looks better
+	int sep = sep_base + sb->get_offset().x; // make it have the same margin on both sides, looks better
 
 	int string_width = font->get_string_size(label).width;
 	int number_width = get_size().width - sb->get_minimum_size().width - string_width - sep;
@@ -396,19 +396,19 @@ void EditorSpinSlider::_evaluate_input_text() {
 	set_value(v);
 }
 
-//text_entered signal
+// text_entered signal
 void EditorSpinSlider::_value_input_entered(const String &p_text) {
 	value_input_just_closed = true;
 	value_input->hide();
 }
 
-//modal_closed signal
+// modal_closed signal
 void EditorSpinSlider::_value_input_closed() {
 	_evaluate_input_text();
 	value_input_just_closed = true;
 }
 
-//focus_exited signal
+// focus_exited signal
 void EditorSpinSlider::_value_focus_exited() {
 	// discontinue because the focus_exit was caused by right-click context menu
 	if (value_input->get_menu()->is_visible()) {
@@ -421,11 +421,11 @@ void EditorSpinSlider::_value_focus_exited() {
 	// -> TAB was pressed
 	// -> modal_close was not called
 	// -> need to close/hide manually
-	if (!value_input_just_closed) { //value_input_just_closed should do the same
+	if (!value_input_just_closed) { // value_input_just_closed should do the same
 		value_input->hide();
-		//tab was pressed
+		// tab was pressed
 	} else {
-		//enter, click, esc
+		// enter, click, esc
 	}
 }
 

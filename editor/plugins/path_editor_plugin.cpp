@@ -227,7 +227,7 @@ void PathSpatialGizmo::redraw() {
 	}
 
 	PoolVector<Vector3> v3a = c->tessellate();
-	//PoolVector<Vector3> v3a=c->get_baked_points();
+	// PoolVector<Vector3> v3a=c->get_baked_points();
 
 	int v3s = v3a.size();
 	if (v3s == 0) {
@@ -240,8 +240,8 @@ void PathSpatialGizmo::redraw() {
 	for (int i = 0; i < v3s - 1; i++) {
 		v3p.push_back(r[i]);
 		v3p.push_back(r[i + 1]);
-		//v3p.push_back(r[i]);
-		//v3p.push_back(r[i]+Vector3(0,0.2,0));
+		// v3p.push_back(r[i]);
+		// v3p.push_back(r[i]+Vector3(0,0.2,0));
 	}
 
 	if (v3p.size() > 1) {
@@ -298,7 +298,7 @@ bool PathEditorPlugin::forward_spatial_gui_input(Camera *p_camera, const Ref<Inp
 	Transform gt = path->get_global_transform();
 	Transform it = gt.affine_inverse();
 
-	static const int click_dist = 10; //should make global
+	static const int click_dist = 10; // should make global
 
 	Ref<InputEventMouseButton> mb = p_event;
 
@@ -310,7 +310,7 @@ bool PathEditorPlugin::forward_spatial_gui_input(Camera *p_camera, const Ref<Inp
 		}
 
 		if (mb->is_pressed() && mb->get_button_index() == BUTTON_LEFT && (curve_create->is_pressed() || (curve_edit->is_pressed() && mb->get_control()))) {
-			//click into curve, break it down
+			// click into curve, break it down
 			PoolVector<Vector3> v3a = c->tessellate();
 			int idx = 0;
 			int rc = v3a.size();
@@ -322,14 +322,14 @@ bool PathEditorPlugin::forward_spatial_gui_input(Camera *p_camera, const Ref<Inp
 				PoolVector<Vector3>::Read r = v3a.read();
 
 				if (p_camera->unproject_position(gt.xform(c->get_point_position(0))).distance_to(mbpos) < click_dist) {
-					return false; //nope, existing
+					return false; // nope, existing
 				}
 
 				for (int i = 0; i < c->get_point_count() - 1; i++) {
-					//find the offset and point index of the place to break up
+					// find the offset and point index of the place to break up
 					int j = idx;
 					if (p_camera->unproject_position(gt.xform(c->get_point_position(i + 1))).distance_to(mbpos) < click_dist) {
-						return false; //nope, existing
+						return false; // nope, existing
 					}
 
 					while (j < rc && c->get_point_position(i + 1) != r[j]) {
@@ -360,9 +360,9 @@ bool PathEditorPlugin::forward_spatial_gui_input(Camera *p_camera, const Ref<Inp
 						j++;
 					}
 					if (idx == j) {
-						idx++; //force next
+						idx++; // force next
 					} else {
-						idx = j; //swap
+						idx = j; // swap
 					}
 
 					if (j == rc) {
@@ -373,7 +373,7 @@ bool PathEditorPlugin::forward_spatial_gui_input(Camera *p_camera, const Ref<Inp
 
 			UndoRedo *ur = editor->get_undo_redo();
 			if (closest_seg != -1) {
-				//subdivide
+				// subdivide
 
 				ur->create_action(TTR("Split Path"));
 				ur->add_do_method(c.ptr(), "add_point", closest_seg_point, Vector3(), Vector3(), closest_seg + 1);
@@ -401,7 +401,7 @@ bool PathEditorPlugin::forward_spatial_gui_input(Camera *p_camera, const Ref<Inp
 					return true;
 				}
 
-				//add new at pos
+				// add new at pos
 			}
 
 		} else if (mb->is_pressed() && ((mb->get_button_index() == BUTTON_LEFT && curve_del->is_pressed()) || (mb->get_button_index() == BUTTON_RIGHT && curve_edit->is_pressed()))) {
@@ -456,7 +456,7 @@ void PathEditorPlugin::edit(Object *p_object) {
 			pre->get_curve()->emit_signal("changed");
 		}
 	}
-	//collision_polygon_editor->edit(Object::cast_to<Node>(p_object));
+	// collision_polygon_editor->edit(Object::cast_to<Node>(p_object));
 }
 
 bool PathEditorPlugin::handles(Object *p_object) const {
@@ -600,14 +600,14 @@ PathEditorPlugin::PathEditorPlugin(EditorNode *p_node) {
 
 	curve_edit->set_pressed(true);
 	/*
-    collision_polygon_editor = memnew( PathEditor(p_node) );
-    editor->get_viewport()->add_child(collision_polygon_editor);
-    collision_polygon_editor->set_margin(MARGIN_LEFT,200);
-    collision_polygon_editor->set_margin(MARGIN_RIGHT,230);
-    collision_polygon_editor->set_margin(MARGIN_TOP,0);
-    collision_polygon_editor->set_margin(MARGIN_BOTTOM,10);
-    collision_polygon_editor->hide();
-    */
+	collision_polygon_editor = memnew( PathEditor(p_node) );
+	editor->get_viewport()->add_child(collision_polygon_editor);
+	collision_polygon_editor->set_margin(MARGIN_LEFT,200);
+	collision_polygon_editor->set_margin(MARGIN_RIGHT,230);
+	collision_polygon_editor->set_margin(MARGIN_TOP,0);
+	collision_polygon_editor->set_margin(MARGIN_BOTTOM,10);
+	collision_polygon_editor->hide();
+	*/
 }
 
 PathEditorPlugin::~PathEditorPlugin() {

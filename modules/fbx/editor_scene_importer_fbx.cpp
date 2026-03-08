@@ -153,7 +153,7 @@ Node *EditorSceneImporterFBX::import_scene(const String &p_path, uint32_t p_flag
 		// safety for version handling
 		if (doc.IsSafeToImport()) {
 			bool is_blender_fbx = false;
-			//const FBXDocParser::PropertyPtr app_vendor = p_document->GlobalSettingsPtr()->Props()
+			// const FBXDocParser::PropertyPtr app_vendor = p_document->GlobalSettingsPtr()->Props()
 			//	p_document->Creator()
 			const FBXDocParser::PropertyTable *import_props = doc.GetMetadataProperties();
 			const FBXDocParser::PropertyPtr app_name = import_props->Get("Original|ApplicationName");
@@ -233,7 +233,7 @@ struct EditorSceneImporterAssetImportInterpolate {
 	}
 };
 
-//thank you for existing, partial specialization
+// thank you for existing, partial specialization
 template <>
 struct EditorSceneImporterAssetImportInterpolate<Quat> {
 	Quat lerp(const Quat &a, const Quat &b, float c) const {
@@ -261,7 +261,7 @@ struct EditorSceneImporterAssetImportInterpolate<Quat> {
 template <class T>
 T EditorSceneImporterFBX::_interpolate_track(const Vector<float> &p_times, const Vector<T> &p_values, float p_time,
 		AssetImportAnimation::Interpolation p_interp) {
-	//could use binary search, worth it?
+	// could use binary search, worth it?
 	int idx = -1;
 	for (int i = 0; i < p_times.size(); i++) {
 		if (p_times[i] > p_time) {
@@ -494,7 +494,7 @@ Spatial *EditorSceneImporterFBX::_generate_scene(
 			mesh_vertex_data->armature_id = bone_element->armature_id;
 			mesh_vertex_data->valid_armature_id = true;
 
-			//print_verbose("storing mesh vertex data for mesh to use later");
+			// print_verbose("storing mesh vertex data for mesh to use later");
 			ERR_CONTINUE_MSG(indexes.size() != weights.size(), "[doc] error mismatch between weight info");
 
 			for (size_t idx = 0; idx < indexes.size(); idx++) {
@@ -590,7 +590,7 @@ Spatial *EditorSceneImporterFBX::_generate_scene(
 			print_verbose("populating skeleton with bone: " + bone->bone_name);
 
 			//// populate bone skeleton - since fbx has no DOM for the skeleton just a node.
-			//bone->bone_skeleton = fbx_skeleton_inst;
+			// bone->bone_skeleton = fbx_skeleton_inst;
 
 			// now populate bone on the armature node list
 			fbx_skeleton_inst->skeleton_bones.push_back(bone);
@@ -728,8 +728,8 @@ Spatial *EditorSceneImporterFBX::_generate_scene(
 		//
 		// Get Mesh Node Xform only
 		//
-		//ERR_CONTINUE_MSG(!state.fbx_target_map.has(mesh_id), "invalid xform for the skin pose: " + itos(mesh_id));
-		//Ref<FBXNode> mesh_node_xform_data = state.fbx_target_map[mesh_id];
+		// ERR_CONTINUE_MSG(!state.fbx_target_map.has(mesh_id), "invalid xform for the skin pose: " + itos(mesh_id));
+		// Ref<FBXNode> mesh_node_xform_data = state.fbx_target_map[mesh_id];
 
 		if (!mesh_skin) {
 			continue; // not a deformer.
@@ -911,13 +911,13 @@ Spatial *EditorSceneImporterFBX::_generate_scene(
 							if (object != nullptr) {
 								print_error("[doc] warning failed to find a target Model for curve: " + String(object->Name().c_str()));
 							} else {
-								//print_error("[doc] failed to resolve object");
+								// print_error("[doc] failed to resolve object");
 								continue;
 							}
 
 							continue;
 						} else {
-							//print_verbose("[doc] applied rotation order: " + itos(target->RotationOrder()));
+							// print_verbose("[doc] applied rotation order: " + itos(target->RotationOrder()));
 							quat_rotation_order = target->RotationOrder();
 						}
 
@@ -939,7 +939,7 @@ Spatial *EditorSceneImporterFBX::_generate_scene(
 						// We are not ordered here, we don't care about ordering, this happens automagically by godot when we insert with the
 						// key time :), so order is unimportant because the insertion will happen at a time index
 						// good to know: we do not need a list of these in another format :)
-						//Map<String, Vector<const Assimp::FBX::AnimationCurve *> > unordered_track;
+						// Map<String, Vector<const Assimp::FBX::AnimationCurve *> > unordered_track;
 
 						// T
 						// R
@@ -948,7 +948,7 @@ Spatial *EditorSceneImporterFBX::_generate_scene(
 
 						// So this is a reduction of the animation curve nodes
 						// We build this as a lookup, this is essentially our 'animation track'
-						//AnimCurveNodes.insert(curve_node_name, Map<uint64_t, Vector3>());
+						// AnimCurveNodes.insert(curve_node_name, Map<uint64_t, Vector3>());
 
 						// create the animation curve information with the target id
 						// so the point of this makes a track with the name "T" for example
@@ -959,8 +959,8 @@ Spatial *EditorSceneImporterFBX::_generate_scene(
 							Vector3 default_value = Vector3(offset_x, offset_y, offset_z);
 							keyframe_map.default_value = default_value;
 							keyframe_map.has_default = true;
-							//print_verbose("track name: " + curve_node_name);
-							//print_verbose("xyz default: " + default_value);
+							// print_verbose("track name: " + curve_node_name);
+							// print_verbose("xyz default: " + default_value);
 						}
 						// target id, [ track name, [time index, vector] ]
 						// Map<uint64_t, Map<StringName, Map<uint64_t, Vector3> > > AnimCurveNodes;
@@ -996,12 +996,12 @@ Spatial *EditorSceneImporterFBX::_generate_scene(
 									} else if (curve_element == "d|Z") {
 										keyframe_map.keyframes[keyframe.first].z = keyframe.second;
 									} else {
-										//print_error("FBX Unsupported element: " + curve_element);
+										// print_error("FBX Unsupported element: " + curve_element);
 									}
 
-									//print_verbose("[" + itos(target_id) + "] Keyframe added:  " + itos(keyframe_map.size()));
+									// print_verbose("[" + itos(target_id) + "] Keyframe added:  " + itos(keyframe_map.size()));
 
-									//print_verbose("Keyframe t:" + rtos(animation_track_time) + " v: " + rtos(keyframe.second));
+									// print_verbose("Keyframe t:" + rtos(animation_track_time) + " v: " + rtos(keyframe.second));
 								}
 							}
 						}
@@ -1011,7 +1011,7 @@ Spatial *EditorSceneImporterFBX::_generate_scene(
 					// add this animation track here
 
 					// target id, [ track name, [time index, vector] ]
-					//std::map<uint64_t, std::map<StringName, FBXTrack > > AnimCurveNodes;
+					// std::map<uint64_t, std::map<StringName, FBXTrack > > AnimCurveNodes;
 					for (Map<uint64_t, Map<StringName, FBXTrack>>::Element *track = AnimCurveNodes.front(); track; track = track->next()) {
 						// 5 tracks
 						// current track index
@@ -1037,12 +1037,12 @@ Spatial *EditorSceneImporterFBX::_generate_scene(
 						if (state.fbx_target_map.has(target_id)) {
 							Ref<FBXNode> node_ref = state.fbx_target_map[target_id];
 							target_transform = node_ref->pivot_transform->GlobalTransform;
-							//print_verbose("[doc] allocated animation node transform");
+							// print_verbose("[doc] allocated animation node transform");
 						}
 
-						//int size_targets = state.fbx_target_map.size();
-						//print_verbose("Target ID map: " + itos(size_targets));
-						//print_verbose("[doc] debug bone map size: " + itos(state.fbx_bone_map.size()));
+						// int size_targets = state.fbx_target_map.size();
+						// print_verbose("Target ID map: " + itos(size_targets));
+						// print_verbose("[doc] debug bone map size: " + itos(state.fbx_bone_map.size()));
 
 						// if this is a skeleton mapped track we can just set the path for the track.
 						// todo: implement node paths here at some
@@ -1056,13 +1056,13 @@ Spatial *EditorSceneImporterFBX::_generate_scene(
 								animation->track_set_path(track_idx, path);
 							}
 						} else if (state.fbx_target_map.has(target_id)) {
-							//print_verbose("[doc] we have a valid target for a node animation");
+							// print_verbose("[doc] we have a valid target for a node animation");
 							Ref<FBXNode> target_node = state.fbx_target_map[target_id];
 							if (target_node.is_valid() && target_node->godot_node != nullptr) {
 								String node_path = state.root->get_path_to(target_node->godot_node);
 								NodePath path = node_path;
 								animation->track_set_path(track_idx, path);
-								//print_verbose("[doc] node animation path: " + node_path);
+								// print_verbose("[doc] node animation path: " + node_path);
 							}
 						} else {
 							// note: this could actually be unsafe this means we should be careful about continuing here, if we see bizarre effects later we should disable this.
@@ -1109,7 +1109,7 @@ Spatial *EditorSceneImporterFBX::_generate_scene(
 								max_duration = animation_track_time;
 							}
 
-							//print_verbose("pos keyframe: t:" + rtos(animation_track_time) + " value " + position_key.second);
+							// print_verbose("pos keyframe: t:" + rtos(animation_track_time) + " value " + position_key.second);
 							pos_times.push_back(animation_track_time);
 						}
 
@@ -1120,7 +1120,7 @@ Spatial *EditorSceneImporterFBX::_generate_scene(
 							if (animation_track_time > max_duration) {
 								max_duration = animation_track_time;
 							}
-							//print_verbose("scale keyframe t:" + rtos(animation_track_time));
+							// print_verbose("scale keyframe t:" + rtos(animation_track_time));
 							scale_times.push_back(animation_track_time);
 						}
 
@@ -1151,7 +1151,7 @@ Spatial *EditorSceneImporterFBX::_generate_scene(
 						for (std::pair<int64_t, Vector3> rotation_key : rotation_keys.keyframes) {
 							double animation_track_time = CONVERT_FBX_TIME(rotation_key.first);
 
-							//print_verbose("euler rotation key: " + rotation_key.second);
+							// print_verbose("euler rotation key: " + rotation_key.second);
 							Quat rot_key_value = ImportUtils::EulerToQuaternion(quat_rotation_order, ImportUtils::deg2rad(rotation_key.second));
 
 							if (lastQuat != Quat() && rot_key_value.dot(lastQuat) < 0) {
@@ -1300,7 +1300,7 @@ void EditorSceneImporterFBX::BuildDocumentBones(Ref<FBXBone> p_parent_bone,
 	// The subdeformer will not necessarily have a deformer as joints do not have one
 	for (const FBXDocParser::Connection *con : conns) {
 		// goto: bone creation
-		//print_verbose("con: " + String(con->PropertyName().c_str()));
+		// print_verbose("con: " + String(con->PropertyName().c_str()));
 
 		// ignore object-property links we want the object to object links nothing else
 		if (con->PropertyName().length()) {

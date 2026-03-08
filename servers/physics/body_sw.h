@@ -123,7 +123,7 @@ class BodySW : public CollisionObjectSW {
 		Vector3 collider_velocity_at_pos;
 	};
 
-	Vector<Contact> contacts; //no contacts by default
+	Vector<Contact> contacts; // no contacts by default
 	int contact_count;
 
 	struct ForceIntegrationCallback {
@@ -320,7 +320,7 @@ public:
 		return p_axis.dot(_inv_inertia_tensor.xform_inv(p_axis));
 	}
 
-	//void simulate_motion(const Transform& p_xform,real_t p_step);
+	// void simulate_motion(const Transform& p_xform,real_t p_step);
 	void call_queries();
 	void wakeup_neighbours();
 
@@ -330,7 +330,7 @@ public:
 	~BodySW();
 };
 
-//add contact inline
+// add contact inline
 
 void BodySW::add_contact(const Vector3 &p_local_pos, const Vector3 &p_local_normal, real_t p_depth, int p_local_shape, const Vector3 &p_collider_pos, int p_collider_shape, ObjectID p_collider_instance_id, const RID &p_collider, const Vector3 &p_collider_velocity_at_pos) {
 	int c_max = contacts.size();
@@ -359,7 +359,7 @@ void BodySW::add_contact(const Vector3 &p_local_pos, const Vector3 &p_local_norm
 			idx = least_deep;
 		}
 		if (idx == -1) {
-			return; //none least deepe than this
+			return; // none least deepe than this
 		}
 	}
 

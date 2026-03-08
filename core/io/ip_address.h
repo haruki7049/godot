@@ -49,7 +49,7 @@ protected:
 	void _parse_ipv4(const String &p_string, int p_start, uint8_t *p_ret);
 
 public:
-	//operator Variant() const;
+	// operator Variant() const;
 	bool operator==(const IP_Address &p_ip) const {
 		if (p_ip.valid != valid) {
 			return false;

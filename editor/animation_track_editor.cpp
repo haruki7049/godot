@@ -540,7 +540,7 @@ public:
 					String hint_string;
 
 					if (v.get_type() == Variant::OBJECT) {
-						//could actually check the object property if exists..? yes i will!
+						// could actually check the object property if exists..? yes i will!
 						Ref<Resource> res = v;
 						if (res.is_valid()) {
 							hint = PROPERTY_HINT_RESOURCE_TYPE;
@@ -1187,7 +1187,7 @@ public:
 							String hint_string;
 
 							if (v.get_type() == Variant::OBJECT) {
-								//could actually check the object property if exists..? yes i will!
+								// could actually check the object property if exists..? yes i will!
 								Ref<Resource> res = v;
 								if (res.is_valid()) {
 									hint = PROPERTY_HINT_RESOURCE_TYPE;
@@ -1403,7 +1403,7 @@ void AnimationTimelineEdit::_notification(int p_what) {
 
 		float l = animation->get_length();
 		if (l <= 0) {
-			l = 0.001; //avoid crashor
+			l = 0.001; // avoid crashor
 		}
 
 		Ref<Texture> hsize_icon = get_icon("Hsize", "EditorIcons");
@@ -1437,7 +1437,7 @@ void AnimationTimelineEdit::_notification(int p_what) {
 
 			float extra = (zoomw / scale) * 0.5;
 
-			//if (time_min < -0.001)
+			// if (time_min < -0.001)
 			//	time_min -= extra;
 			time_max += extra;
 			set_min(time_min);
@@ -1869,7 +1869,7 @@ void AnimationTrackEdit::_notification(int p_what) {
 		{
 			Ref<Texture> check = animation->track_is_enabled(track) ? get_icon("checked", "CheckBox") : get_icon("unchecked", "CheckBox");
 
-			int ofs = in_group ? check->get_width() : 0; //not the best reference for margin but..
+			int ofs = in_group ? check->get_width() : 0; // not the best reference for margin but..
 
 			check_rect = Rect2(Point2(ofs, int(get_size().height - check->get_height()) / 2), check->get_size());
 			draw_texture(check, check_rect.position);
@@ -1987,7 +1987,7 @@ void AnimationTrackEdit::_notification(int p_what) {
 
 			ofs += hsep;
 			{
-				//callmode
+				// callmode
 
 				Animation::UpdateMode update_mode;
 
@@ -2006,7 +2006,7 @@ void AnimationTrackEdit::_notification(int p_what) {
 				if (animation->track_get_type(track) == Animation::TYPE_VALUE) {
 					draw_texture(update_icon, update_mode_rect.position);
 				}
-				//make it easier to click
+				// make it easier to click
 				update_mode_rect.position.y = 0;
 				update_mode_rect.size.y = get_size().height;
 
@@ -2035,7 +2035,7 @@ void AnimationTrackEdit::_notification(int p_what) {
 			}
 
 			{
-				//interp
+				// interp
 
 				Animation::InterpolationType interp_mode = animation->track_get_interpolation_type(track);
 
@@ -2048,7 +2048,7 @@ void AnimationTrackEdit::_notification(int p_what) {
 				if (animation->track_get_type(track) == Animation::TYPE_VALUE || animation->track_get_type(track) == Animation::TYPE_TRANSFORM) {
 					draw_texture(icon, interp_mode_rect.position);
 				}
-				//make it easier to click
+				// make it easier to click
 				interp_mode_rect.position.y = 0;
 				interp_mode_rect.size.y = get_size().height;
 
@@ -2068,7 +2068,7 @@ void AnimationTrackEdit::_notification(int p_what) {
 			}
 
 			{
-				//loop
+				// loop
 
 				bool loop_wrap = animation->track_get_interpolation_loop_wrap(track);
 
@@ -2101,7 +2101,7 @@ void AnimationTrackEdit::_notification(int p_what) {
 			}
 
 			{
-				//erase
+				// erase
 
 				Ref<Texture> icon = get_icon("Remove", "EditorIcons");
 
@@ -2147,7 +2147,7 @@ Rect2 AnimationTrackEdit::get_key_rect(int p_index, float p_pixels_sec) {
 	}
 	Rect2 rect = Rect2(-type_icon->get_width() / 2, 0, type_icon->get_width(), get_size().height);
 
-	//make it a big easier to click
+	// make it a big easier to click
 	rect.position.x -= rect.size.x * 0.5;
 	rect.size.x *= 2;
 	return rect;
@@ -2235,7 +2235,7 @@ void AnimationTrackEdit::draw_key(int p_index, float p_pixels_sec, int p_x, bool
 	draw_texture(icon_to_draw, ofs);
 }
 
-//helper
+// helper
 void AnimationTrackEdit::draw_rect_clipped(const Rect2 &p_rect, const Color &p_color, bool p_filled) {
 	int clip_left = timeline->get_name_limit();
 	int clip_right = get_size().width - timeline->get_buttons_width();
@@ -2264,7 +2264,7 @@ void AnimationTrackEdit::draw_texture_region_clipped(const Ref<Texture> &p_textu
 	int clip_left = timeline->get_name_limit();
 	int clip_right = get_size().width - timeline->get_buttons_width();
 
-	//clip left and right
+	// clip left and right
 	if (clip_left > p_rect.position.x + p_rect.size.x) {
 		return;
 	}
@@ -2470,7 +2470,7 @@ String AnimationTrackEdit::get_tooltip(const Point2 &p_pos) const {
 						key_distance = distance;
 					}
 				} else {
-					//first one does it
+					// first one does it
 					break;
 				}
 			}
@@ -3015,7 +3015,7 @@ AnimationTrackEdit::AnimationTrackEdit() {
 	play_position->set_anchors_and_margins_preset(PRESET_WIDE);
 	play_position->connect("draw", this, "_play_position_draw");
 	set_focus_mode(FOCUS_CLICK);
-	set_mouse_filter(MOUSE_FILTER_PASS); //scroll has to work too for selection
+	set_mouse_filter(MOUSE_FILTER_PASS); // scroll has to work too for selection
 }
 
 //////////////////////////////////////
@@ -3349,9 +3349,9 @@ static bool track_type_is_resettable(Animation::TrackType p_type) {
 
 void AnimationTrackEditor::_query_insert(const InsertData &p_id) {
 	if (insert_frame != Engine::get_singleton()->get_frames_drawn()) {
-		//clear insert list for the frame if frame changed
+		// clear insert list for the frame if frame changed
 		if (insert_confirm->is_visible_in_tree()) {
-			return; //do nothing
+			return; // do nothing
 		}
 		insert_data.clear();
 		insert_query = false;
@@ -3359,9 +3359,9 @@ void AnimationTrackEditor::_query_insert(const InsertData &p_id) {
 	insert_frame = Engine::get_singleton()->get_frames_drawn();
 
 	for (List<InsertData>::Element *E = insert_data.front(); E; E = E->next()) {
-		//prevent insertion of multiple tracks
+		// prevent insertion of multiple tracks
 		if (E->get().path == p_id.path) {
-			return; //already inserted a track for this on this frame
+			return; // already inserted a track for this on this frame
 		}
 	}
 
@@ -3386,7 +3386,7 @@ void AnimationTrackEditor::_query_insert(const InsertData &p_id) {
 	}
 
 	if (p_id.track_idx == -1) {
-		//potential new key, does not exist
+		// potential new key, does not exist
 		int num_tracks = 0;
 		bool all_bezier = true;
 		for (int i = 0; i < insert_data.size(); i++) {
@@ -3447,7 +3447,7 @@ void AnimationTrackEditor::_query_insert(const InsertData &p_id) {
 
 void AnimationTrackEditor::_insert_delay(bool p_create_reset, bool p_create_beziers) {
 	if (insert_query) {
-		//discard since it's entered into query mode
+		// discard since it's entered into query mode
 		insert_queue = false;
 		return;
 	}
@@ -3498,7 +3498,7 @@ void AnimationTrackEditor::insert_transform_key(Spatial *p_node, const String &p
 	}
 
 	ERR_FAIL_COND(!root);
-	//let's build a node path
+	// let's build a node path
 	String path = root->get_path_to(p_node);
 	if (p_sub != "") {
 		path += ":" + p_sub;
@@ -3531,7 +3531,7 @@ void AnimationTrackEditor::insert_transform_key(Spatial *p_node, const String &p
 	id.query = vformat(TTR("node '%s'"), p_node->get_name());
 	id.advance = false;
 
-	//dialog insert
+	// dialog insert
 
 	_query_insert(id);
 }
@@ -3539,12 +3539,12 @@ void AnimationTrackEditor::insert_transform_key(Spatial *p_node, const String &p
 void AnimationTrackEditor::_insert_animation_key(NodePath p_path, const Variant &p_value) {
 	String path = p_path;
 
-	//animation property is a special case, always creates an animation track
+	// animation property is a special case, always creates an animation track
 	for (int i = 0; i < animation->get_track_count(); i++) {
 		String np = animation->track_get_path(i);
 
 		if (path == np && animation->track_get_type(i) == Animation::TYPE_ANIMATION) {
-			//exists
+			// exists
 			InsertData id;
 			id.path = path;
 			id.track_idx = i;
@@ -3553,7 +3553,7 @@ void AnimationTrackEditor::_insert_animation_key(NodePath p_path, const Variant 
 			// TRANSLATORS: This describes the target of new animation track, will be inserted into another string.
 			id.query = TTR("animation");
 			id.advance = false;
-			//dialog insert
+			// dialog insert
 			_query_insert(id);
 			return;
 		}
@@ -3566,13 +3566,13 @@ void AnimationTrackEditor::_insert_animation_key(NodePath p_path, const Variant 
 	id.type = Animation::TYPE_ANIMATION;
 	id.query = TTR("animation");
 	id.advance = false;
-	//dialog insert
+	// dialog insert
 	_query_insert(id);
 }
 
 void AnimationTrackEditor::insert_node_value_key(Node *p_node, const String &p_property, const Variant &p_value, bool p_only_if_exists) {
 	ERR_FAIL_COND(!root);
-	//let's build a node path
+	// let's build a node path
 
 	Node *node = p_node;
 
@@ -3598,7 +3598,7 @@ void AnimationTrackEditor::insert_node_value_key(Node *p_node, const String &p_p
 
 	NodePath np = path;
 
-	//locate track
+	// locate track
 
 	bool inserted = false;
 
@@ -3616,14 +3616,14 @@ void AnimationTrackEditor::insert_node_value_key(Node *p_node, const String &p_p
 			// TRANSLATORS: This describes the target of new animation track, will be inserted into another string.
 			id.query = vformat(TTR("property '%s'"), p_property);
 			id.advance = false;
-			//dialog insert
+			// dialog insert
 			_query_insert(id);
 			inserted = true;
 		} else if (animation->track_get_type(i) == Animation::TYPE_BEZIER) {
 			Variant value;
 			String track_path = animation->track_get_path(i);
 			if (track_path == np) {
-				value = p_value; //all good
+				value = p_value; // all good
 			} else {
 				int sep = track_path.find_last(":");
 				if (sep != -1) {
@@ -3646,7 +3646,7 @@ void AnimationTrackEditor::insert_node_value_key(Node *p_node, const String &p_p
 			id.type = Animation::TYPE_BEZIER;
 			id.query = vformat(TTR("property '%s'"), p_property);
 			id.advance = false;
-			//dialog insert
+			// dialog insert
 			_query_insert(id);
 			inserted = true;
 		}
@@ -3662,7 +3662,7 @@ void AnimationTrackEditor::insert_node_value_key(Node *p_node, const String &p_p
 	id.type = Animation::TYPE_VALUE;
 	id.query = vformat(TTR("property '%s'"), p_property);
 	id.advance = false;
-	//dialog insert
+	// dialog insert
 	_query_insert(id);
 }
 
@@ -3670,7 +3670,7 @@ void AnimationTrackEditor::insert_value_key(const String &p_property, const Vari
 	EditorHistory *history = EditorNode::get_singleton()->get_editor_history();
 
 	ERR_FAIL_COND(!root);
-	//let's build a node path
+	// let's build a node path
 	ERR_FAIL_COND(history->get_path_size() == 0);
 	Object *obj = ObjectDB::get_instance(history->get_path_object(0));
 	ERR_FAIL_COND(!Object::cast_to<Node>(obj));
@@ -3698,7 +3698,7 @@ void AnimationTrackEditor::insert_value_key(const String &p_property, const Vari
 
 	NodePath np = path;
 
-	//locate track
+	// locate track
 
 	bool inserted = false;
 
@@ -3715,13 +3715,13 @@ void AnimationTrackEditor::insert_value_key(const String &p_property, const Vari
 			id.type = Animation::TYPE_VALUE;
 			id.query = vformat(TTR("property '%s'"), p_property);
 			id.advance = p_advance;
-			//dialog insert
+			// dialog insert
 			_query_insert(id);
 			inserted = true;
 		} else if (animation->track_get_type(i) == Animation::TYPE_BEZIER) {
 			Variant value;
 			if (animation->track_get_path(i) == np) {
-				value = p_value; //all good
+				value = p_value; // all good
 			} else {
 				String tpath = animation->track_get_path(i);
 				int index = tpath.find_last(":");
@@ -3740,7 +3740,7 @@ void AnimationTrackEditor::insert_value_key(const String &p_property, const Vari
 			id.type = Animation::TYPE_BEZIER;
 			id.query = vformat(TTR("property '%s'"), p_property);
 			id.advance = p_advance;
-			//dialog insert
+			// dialog insert
 			_query_insert(id);
 			inserted = true;
 		}
@@ -3754,7 +3754,7 @@ void AnimationTrackEditor::insert_value_key(const String &p_property, const Vari
 		id.type = Animation::TYPE_VALUE;
 		id.query = vformat(TTR("property '%s'"), p_property);
 		id.advance = p_advance;
-		//dialog insert
+		// dialog insert
 		_query_insert(id);
 	}
 }
@@ -3936,7 +3936,7 @@ AnimationTrackEditor::TrackIndices AnimationTrackEditor::_confirm_insert(InsertD
 				animation->add_track(p_id.type);
 				animation->track_set_path(animation->get_track_count() - 1, p_id.path);
 				PropertyInfo h = _find_hint_for_track(animation->get_track_count() - 1, np);
-				animation->remove_track(animation->get_track_count() - 1); //hack
+				animation->remove_track(animation->get_track_count() - 1); // hack
 
 				if (h.type == Variant::REAL ||
 						h.type == Variant::VECTOR2 ||
@@ -4085,7 +4085,7 @@ void AnimationTrackEditor::_update_tracks() {
 	for (int i = 0; i < animation->get_track_count(); i++) {
 		AnimationTrackEdit *track_edit = nullptr;
 
-		//find hint and info for plugin
+		// find hint and info for plugin
 
 		if (use_filter) {
 			NodePath path = animation->track_get_path(i);
@@ -4096,7 +4096,7 @@ void AnimationTrackEditor::_update_tracks() {
 					continue; // no node, no filter
 				}
 				if (!EditorNode::get_singleton()->get_editor_selection()->is_selected(node)) {
-					continue; //skip track due to not selected
+					continue; // skip track due to not selected
 				}
 			}
 		}
@@ -4158,7 +4158,7 @@ void AnimationTrackEditor::_update_tracks() {
 		}
 
 		if (track_edit == nullptr) {
-			//no valid plugin_found
+			// no valid plugin_found
 			track_edit = memnew(AnimationTrackEdit);
 		}
 
@@ -4233,11 +4233,11 @@ void AnimationTrackEditor::_update_tracks() {
 
 void AnimationTrackEditor::_animation_changed() {
 	if (animation_changing_awaiting_update) {
-		return; //all will be updated, don't bother with anything
+		return; // all will be updated, don't bother with anything
 	}
 
 	if (key_edit && key_edit->setting) {
-		//if editing a key, just update the edited track, makes refresh less costly
+		// if editing a key, just update the edited track, makes refresh less costly
 		if (key_edit->track < track_edits.size()) {
 			if (animation->track_get_type(key_edit->track) == Animation::TYPE_BEZIER) {
 				bezier_edit->update();
@@ -4290,7 +4290,7 @@ void AnimationTrackEditor::_animation_update() {
 	}
 
 	if (track_edits.size() == animation->get_track_count()) {
-		//check tracks are the same
+		// check tracks are the same
 
 		for (int i = 0; i < track_edits.size(); i++) {
 			if (track_edits[i]->get_path() != animation->track_get_path(i)) {
@@ -4486,12 +4486,12 @@ void AnimationTrackEditor::_new_track_property_selected(String p_name) {
 	if (adding_track_type == Animation::TYPE_VALUE) {
 		Animation::UpdateMode update_mode = Animation::UPDATE_DISCRETE;
 		{
-			//hack
+			// hack
 			NodePath np;
 			animation->add_track(Animation::TYPE_VALUE);
 			animation->track_set_path(animation->get_track_count() - 1, full_path);
 			PropertyInfo h = _find_hint_for_track(animation->get_track_count() - 1, np);
-			animation->remove_track(animation->get_track_count() - 1); //hack
+			animation->remove_track(animation->get_track_count() - 1); // hack
 			if (h.type == Variant::REAL ||
 					h.type == Variant::VECTOR2 ||
 					h.type == Variant::RECT2 ||
@@ -4519,12 +4519,12 @@ void AnimationTrackEditor::_new_track_property_selected(String p_name) {
 	} else {
 		Vector<String> subindices;
 		{
-			//hack
+			// hack
 			NodePath np;
 			animation->add_track(Animation::TYPE_VALUE);
 			animation->track_set_path(animation->get_track_count() - 1, full_path);
 			PropertyInfo h = _find_hint_for_track(animation->get_track_count() - 1, np);
-			animation->remove_track(animation->get_track_count() - 1); //hack
+			animation->remove_track(animation->get_track_count() - 1); // hack
 			bool valid;
 			subindices = _get_bezier_subindices_for_type(h.type, &valid);
 			if (!valid) {
@@ -4576,7 +4576,7 @@ void AnimationTrackEditor::_insert_key_from_track(float p_ofs, int p_track) {
 	if (snap->is_pressed() && step->get_value() != 0) {
 		p_ofs = snap_time(p_ofs);
 	}
-	while (animation->track_find_key(p_track, p_ofs, true) != -1) { //make sure insertion point is valid
+	while (animation->track_find_key(p_track, p_ofs, true) != -1) { // make sure insertion point is valid
 		p_ofs += 0.001;
 	}
 
@@ -4770,16 +4770,16 @@ struct _AnimMoveRestore {
 	Variant key;
 	float transition;
 };
-//used for undo/redo
+// used for undo/redo
 
 void AnimationTrackEditor::_clear_key_edit() {
 	if (key_edit) {
-		//if key edit is the object being inspected, remove it first
+		// if key edit is the object being inspected, remove it first
 		if (EditorNode::get_singleton()->get_inspector()->get_edited_object() == key_edit) {
 			EditorNode::get_singleton()->push_item(nullptr);
 		}
 
-		//then actually delete it
+		// then actually delete it
 		memdelete(key_edit);
 		key_edit = nullptr;
 	}
@@ -4908,7 +4908,7 @@ void AnimationTrackEditor::_move_selection_commit() {
 		sk.key = idx;
 		sk.track = E->key().track;
 		if (selection.has(sk)) {
-			continue; //already in selection, don't save
+			continue; // already in selection, don't save
 		}
 
 		undo_redo->add_do_method(animation.ptr(), "track_remove_key_at_position", E->key().track, newtime);
@@ -5016,18 +5016,18 @@ void AnimationTrackEditor::_scroll_input(const Ref<InputEvent> &p_event) {
 			box_select_rect = Rect2();
 		} else if (box_selecting) {
 			if (box_selection->is_visible_in_tree()) {
-				//only if moved
+				// only if moved
 				for (int i = 0; i < track_edits.size(); i++) {
 					Rect2 local_rect = box_select_rect;
 					local_rect.position -= track_edits[i]->get_global_position();
 					track_edits[i]->append_to_selection(local_rect, mb->get_command());
 				}
 
-				if (_get_track_selected() == -1 && track_edits.size() > 0) { //minimal hack to make shortcuts work
+				if (_get_track_selected() == -1 && track_edits.size() > 0) { // minimal hack to make shortcuts work
 					track_edits[track_edits.size() - 1]->grab_focus();
 				}
 			} else {
-				_clear_selection(); //clear it
+				_clear_selection(); // clear it
 			}
 
 			box_selection->hide();
@@ -5043,7 +5043,7 @@ void AnimationTrackEditor::_scroll_input(const Ref<InputEvent> &p_event) {
 
 	if (mm.is_valid() && box_selecting) {
 		if (!(mm->get_button_mask() & BUTTON_MASK_LEFT)) {
-			//no longer
+			// no longer
 			box_selection->hide();
 			box_selecting = false;
 			return;
@@ -5076,7 +5076,7 @@ void AnimationTrackEditor::_scroll_input(const Ref<InputEvent> &p_event) {
 		box_select_rect = rect;
 
 		if (get_local_mouse_position().y < 0) {
-			//avoid box selection from going up and lose focus to viewport
+			// avoid box selection from going up and lose focus to viewport
 			warp_mouse(Vector2(mm->get_position().x, 0));
 		}
 	}
@@ -5088,16 +5088,16 @@ void AnimationTrackEditor::_cancel_bezier_edit() {
 }
 
 void AnimationTrackEditor::_bezier_edit(int p_for_track) {
-	_clear_selection(); //bezier probably wants to use a separate selection mode
+	_clear_selection(); // bezier probably wants to use a separate selection mode
 	bezier_edit->set_root(root);
 	bezier_edit->set_animation_and_track(animation, p_for_track);
 	scroll->hide();
 	bezier_edit->show();
-	//search everything within the track and curve- edit it
+	// search everything within the track and curve- edit it
 }
 
 void AnimationTrackEditor::_anim_duplicate_keys(bool transpose) {
-	//duplicait!
+	// duplicait!
 	if (selection.size() && animation.is_valid() && (!transpose || (_get_track_selected() >= 0 && _get_track_selected() < animation->get_track_count()))) {
 		int top_track = 0x7FFFFFFF;
 		float top_time = 1e10;
@@ -5155,7 +5155,7 @@ void AnimationTrackEditor::_anim_duplicate_keys(bool transpose) {
 
 		undo_redo->commit_action();
 
-		//reselect duplicated
+		// reselect duplicated
 
 		Map<SelectedKey, KeyInfo> new_selection;
 		for (List<Pair<int, float>>::Element *E = new_selection_values.front(); E; E = E->next()) {
@@ -5267,7 +5267,7 @@ void AnimationTrackEditor::_edit_menu_pressed(int p_option) {
 						text += sn[j];
 					}
 
-					path = NodePath(node->get_path().get_names(), path.get_subnames(), true); //store full path instead for copying
+					path = NodePath(node->get_path().get_names(), path.get_subnames(), true); // store full path instead for copying
 				} else {
 					text = path;
 					int sep = text.find(":");
@@ -5436,7 +5436,7 @@ void AnimationTrackEditor::_edit_menu_pressed(int p_option) {
 				sk.key = idx;
 				sk.track = E->key().track;
 				if (selection.has(sk)) {
-					continue; //already in selection, don't save
+					continue; // already in selection, don't save
 				}
 
 				undo_redo->add_do_method(animation.ptr(), "track_remove_key_at_position", E->key().track, newtime);
@@ -5626,7 +5626,7 @@ bool AnimationTrackEditor::is_grouping_tracks() {
 
 void AnimationTrackEditor::_selection_changed() {
 	if (selected_filter->is_pressed()) {
-		_update_tracks(); //needs updatin
+		_update_tracks(); // needs updatin
 	} else {
 		for (int i = 0; i < track_edits.size(); i++) {
 			track_edits[i]->update();
@@ -5846,7 +5846,7 @@ AnimationTrackEditor::AnimationTrackEditor() {
 	scroll->set_v_size_flags(SIZE_EXPAND_FILL);
 	VScrollBar *sb = scroll->get_v_scrollbar();
 	scroll->remove_child(sb);
-	timeline_scroll->add_child(sb); //move here so timeline and tracks are always aligned
+	timeline_scroll->add_child(sb); // move here so timeline and tracks are always aligned
 	scroll->connect("gui_input", this, "_scroll_input");
 
 	bezier_edit = memnew(AnimationBezierTrackEdit);
@@ -5886,7 +5886,7 @@ AnimationTrackEditor::AnimationTrackEditor() {
 	bottom_hb->add_spacer();
 
 	selected_filter = memnew(ToolButton);
-	selected_filter->connect("pressed", this, "_view_group_toggle"); //same function works the same
+	selected_filter->connect("pressed", this, "_view_group_toggle"); // same function works the same
 	selected_filter->set_toggle_mode(true);
 	selected_filter->set_tooltip(TTR("Only show tracks from nodes selected in tree."));
 
@@ -5958,7 +5958,7 @@ AnimationTrackEditor::AnimationTrackEditor() {
 	edit->get_popup()->add_separator();
 	edit->get_popup()->add_shortcut(ED_SHORTCUT("animation_editor/delete_selection", TTR("Delete Selection"), KEY_DELETE), EDIT_DELETE_SELECTION);
 	edit->get_popup()->set_item_shortcut_disabled(edit->get_popup()->get_item_index(EDIT_DELETE_SELECTION), true);
-	//this shortcut will be checked from the track itself. so no need to enable it here (will conflict with scenetree dock)
+	// this shortcut will be checked from the track itself. so no need to enable it here (will conflict with scenetree dock)
 
 	edit->get_popup()->add_separator();
 	edit->get_popup()->add_shortcut(ED_SHORTCUT("animation_editor/goto_next_step", TTR("Go to Next Step"), KEY_MASK_CMD | KEY_RIGHT), EDIT_GOTO_NEXT_STEP);
@@ -6023,13 +6023,13 @@ AnimationTrackEditor::AnimationTrackEditor() {
 	box_selection->connect("draw", this, "_box_selection_draw");
 	box_selecting = false;
 
-	//default plugins
+	// default plugins
 
 	Ref<AnimationTrackEditDefaultPlugin> def_plugin;
 	def_plugin.instance();
 	add_track_edit_plugin(def_plugin);
 
-	//dialogs
+	// dialogs
 
 	optimize_dialog = memnew(ConfirmationDialog);
 	add_child(optimize_dialog);

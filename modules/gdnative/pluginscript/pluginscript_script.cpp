@@ -111,7 +111,7 @@ Variant PluginScript::_new(const Variant **p_args, int p_argcount, Variant::Call
 
 	if (!instance) {
 		if (ref.is_null()) {
-			memdelete(owner); //no owner, sorry
+			memdelete(owner); // no owner, sorry
 		}
 		return Variant();
 	}
@@ -176,7 +176,7 @@ void PluginScript::update_exports() {
 #ifdef TOOLS_ENABLED
 	ASSERT_SCRIPT_VALID();
 	if (placeholders.size()) {
-		//update placeholders if any
+		// update placeholders if any
 		Map<StringName, Variant> propdefvalues;
 		List<PropertyInfo> propinfos;
 
@@ -355,8 +355,8 @@ Error PluginScript::reload(bool p_keep_state) {
 #ifdef TOOLS_ENABLED
 /*for (Set<PlaceHolderScriptInstance*>::Element *E=placeholders.front();E;E=E->next()) {
 
-        _update_placeholder(E->get());
-    }*/
+		_update_placeholder(E->get());
+	}*/
 #endif
 
 	FREE_SCRIPT_MANIFEST(manifest);

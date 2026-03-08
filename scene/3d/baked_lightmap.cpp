@@ -361,7 +361,7 @@ void BakedLightmap::_find_meshes_and_lights(Node *p_at_node, Vector<MeshesFound>
 					mf.subindex = -1;
 					mf.mesh = mesh;
 
-					static const int lightmap_scale[4] = { 1, 2, 4, 8 }; //GeometryInstance3D::LIGHTMAP_SCALE_MAX = { 1, 2, 4, 8 };
+					static const int lightmap_scale[4] = { 1, 2, 4, 8 }; // GeometryInstance3D::LIGHTMAP_SCALE_MAX = { 1, 2, 4, 8 };
 					mf.lightmap_scale = lightmap_scale[mi->get_lightmap_scale()];
 
 					Ref<Material> all_override = mi->get_material_override();
@@ -442,7 +442,7 @@ void BakedLightmap::_find_meshes_and_lights(Node *p_at_node, Vector<MeshesFound>
 	for (int i = 0; i < p_at_node->get_child_count(); i++) {
 		Node *child = p_at_node->get_child(i);
 		if (!child->get_owner()) {
-			continue; //maybe a helper
+			continue; // maybe a helper
 		}
 
 		_find_meshes_and_lights(child, meshes, lights);
@@ -600,7 +600,7 @@ BakedLightmap::BakeError BakedLightmap::bake(Node *p_from_node, String p_data_sa
 	}
 
 	{
-		//check for valid save path
+		// check for valid save path
 		DirAccessRef d = DirAccess::open(p_data_save_path.get_base_dir());
 		if (!d) {
 			ERR_FAIL_V_MSG(BAKE_ERROR_NO_SAVE_PATH, "Invalid save path '" + p_data_save_path + "'.");
@@ -775,7 +775,7 @@ BakedLightmap::BakeError BakedLightmap::bake(Node *p_from_node, String p_data_sa
 
 		switch (environment_mode) {
 			case ENVIRONMENT_MODE_DISABLED: {
-				//nothing
+				// nothing
 			} break;
 			case ENVIRONMENT_MODE_SCENE: {
 				Ref<World> world = get_world();
@@ -847,7 +847,7 @@ BakedLightmap::BakeError BakedLightmap::bake(Node *p_from_node, String p_data_sa
 	Ref<BakedLightmapData> data;
 	if (get_light_data().is_valid()) {
 		data = get_light_data();
-		set_light_data(Ref<BakedLightmapData>()); //clear
+		set_light_data(Ref<BakedLightmapData>()); // clear
 		data->clear_data();
 	} else {
 		data.instance();
@@ -983,7 +983,7 @@ BakedLightmap::BakeError BakedLightmap::bake(Node *p_from_node, String p_data_sa
 			config->save(base_path + ".import");
 
 			ResourceLoader::import(base_path);
-			texture = ResourceLoader::load(base_path); //if already loaded, it will be updated on refocus?
+			texture = ResourceLoader::load(base_path); // if already loaded, it will be updated on refocus?
 		} else {
 			base_path += ".texarr";
 			Ref<TextureLayered> tex;
@@ -1054,7 +1054,7 @@ BakedLightmap::BakeError BakedLightmap::bake(Node *p_from_node, String p_data_sa
 				config->save(base_path + ".import");
 
 				ResourceLoader::import(base_path);
-				texture = ResourceLoader::load(base_path); //if already loaded, it will be updated on refocus?
+				texture = ResourceLoader::load(base_path); // if already loaded, it will be updated on refocus?
 			} else {
 				base_path += ".tex";
 				Ref<ImageTexture> tex;
@@ -1152,7 +1152,7 @@ void BakedLightmap::_notification(int p_what) {
 		if (light_data.is_valid()) {
 			_assign_lightmaps();
 		}
-		request_ready(); //will need ready again if re-enters tree
+		request_ready(); // will need ready again if re-enters tree
 	}
 
 	if (p_what == NOTIFICATION_EXIT_TREE) {

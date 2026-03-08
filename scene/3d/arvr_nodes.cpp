@@ -172,11 +172,11 @@ Vector<Plane> ARVRCamera::get_frustum() const {
 	return cm.get_projection_planes(get_camera_transform());
 };
 
-ARVRCamera::ARVRCamera(){
+ARVRCamera::ARVRCamera() {
 	// nothing to do here yet for now..
 };
 
-ARVRCamera::~ARVRCamera(){
+ARVRCamera::~ARVRCamera() {
 	// nothing to do here yet for now..
 };
 
@@ -399,7 +399,7 @@ ARVRController::ARVRController() {
 	button_states = 0;
 };
 
-ARVRController::~ARVRController(){
+ARVRController::~ARVRController() {
 	// nothing to do here yet for now..
 };
 
@@ -545,7 +545,7 @@ ARVRAnchor::ARVRAnchor() {
 	is_active = true;
 };
 
-ARVRAnchor::~ARVRAnchor(){
+ARVRAnchor::~ARVRAnchor() {
 	// nothing to do here yet for now..
 };
 
@@ -642,6 +642,6 @@ ARVROrigin::ARVROrigin() {
 	tracked_camera = nullptr;
 };
 
-ARVROrigin::~ARVROrigin(){
+ARVROrigin::~ARVROrigin() {
 	// nothing to do here yet for now..
 };

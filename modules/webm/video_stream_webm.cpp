@@ -157,7 +157,7 @@ void VideoStreamPlaybackWebm::stop() {
 		video = nullptr;
 		audio = nullptr;
 
-		open_file(file_name); //Should not fail here...
+		open_file(file_name); // Should not fail here...
 
 		video_frames_capacity = video_frames_pos = 0;
 		num_decoded_samples = 0;
@@ -188,7 +188,7 @@ bool VideoStreamPlaybackWebm::is_paused() const {
 }
 
 void VideoStreamPlaybackWebm::set_loop(bool p_enable) {
-	//Empty
+	// Empty
 }
 bool VideoStreamPlaybackWebm::has_loop() const {
 	return false;
@@ -230,7 +230,7 @@ void VideoStreamPlaybackWebm::update(float p_delta) {
 	bool audio_buffer_full = false;
 
 	if (samples_offset > -1) {
-		//Mix remaining samples
+		// Mix remaining samples
 		const int to_read = num_decoded_samples - samples_offset;
 		const int mixed = mix_callback(mix_udata, pcm + samples_offset * webm->getChannels(), to_read);
 		if (mixed != to_read) {
@@ -257,13 +257,13 @@ void VideoStreamPlaybackWebm::update(float p_delta) {
 		WebMFrame *video_frame;
 		if (video_frames_pos >= video_frames_capacity) {
 			WebMFrame **video_frames_new = (WebMFrame **)memrealloc(video_frames, ++video_frames_capacity * sizeof(void *));
-			ERR_FAIL_COND(!video_frames_new); //Out of memory
+			ERR_FAIL_COND(!video_frames_new); // Out of memory
 			(video_frames = video_frames_new)[video_frames_capacity - 1] = memnew(WebMFrame);
 		}
 		video_frame = video_frames[video_frames_pos];
 
-		if (!webm->readFrame(video_frame, audio_frame)) { //This will invalidate frames
-			break; //Can't demux, EOS?
+		if (!webm->readFrame(video_frame, audio_frame)) { // This will invalidate frames
+			break; // Can't demux, EOS?
 		}
 
 		if (video_frame->isValid()) {
@@ -305,24 +305,24 @@ void VideoStreamPlaybackWebm::update(float p_delta) {
 							converted = true;
 						} else if (image.chromaShiftW == 1 && image.chromaShiftH == 1) {
 							yuv420_2_rgb8888(w.ptr(), image.planes[0], image.planes[1], image.planes[2], image.w, image.h, image.linesize[0], image.linesize[1], image.w << 2);
-							//libyuv::I420ToARGB(image.planes[0], image.linesize[0], image.planes[2], image.linesize[2], image.planes[1], image.linesize[1], w.ptr(), image.w << 2, image.w, image.h);
+							// libyuv::I420ToARGB(image.planes[0], image.linesize[0], image.planes[2], image.linesize[2], image.planes[1], image.linesize[1], w.ptr(), image.w << 2, image.w, image.h);
 							converted = true;
 						} else if (image.chromaShiftW == 1 && image.chromaShiftH == 0) {
 							yuv422_2_rgb8888(w.ptr(), image.planes[0], image.planes[1], image.planes[2], image.w, image.h, image.linesize[0], image.linesize[1], image.w << 2);
-							//libyuv::I422ToARGB(image.planes[0], image.linesize[0], image.planes[2], image.linesize[2], image.planes[1], image.linesize[1], w.ptr(), image.w << 2, image.w, image.h);
+							// libyuv::I422ToARGB(image.planes[0], image.linesize[0], image.planes[2], image.linesize[2], image.planes[1], image.linesize[1], w.ptr(), image.w << 2, image.w, image.h);
 							converted = true;
 						} else if (image.chromaShiftW == 0 && image.chromaShiftH == 0) {
 							yuv444_2_rgb8888(w.ptr(), image.planes[0], image.planes[1], image.planes[2], image.w, image.h, image.linesize[0], image.linesize[1], image.w << 2);
-							//libyuv::I444ToARGB(image.planes[0], image.linesize[0], image.planes[2], image.linesize[2], image.planes[1], image.linesize[1], w.ptr(), image.w << 2, image.w, image.h);
+							// libyuv::I444ToARGB(image.planes[0], image.linesize[0], image.planes[2], image.linesize[2], image.planes[1], image.linesize[1], w.ptr(), image.w << 2, image.w, image.h);
 							converted = true;
 						} else if (image.chromaShiftW == 2 && image.chromaShiftH == 0) {
-							//libyuv::I411ToARGB(image.planes[0], image.linesize[0], image.planes[2], image.linesize[2] image.planes[1], image.linesize[1], w.ptr(), image.w << 2, image.w, image.h);
-							//converted = true;
+							// libyuv::I411ToARGB(image.planes[0], image.linesize[0], image.planes[2], image.linesize[2] image.planes[1], image.linesize[1], w.ptr(), image.w << 2, image.w, image.h);
+							// converted = true;
 						}
 
 						if (converted) {
 							Ref<Image> img = memnew(Image(image.w, image.h, 0, Image::FORMAT_RGBA8, frame_data));
-							texture->set_data(img); //Zero copy send to visual server
+							texture->set_data(img); // Zero copy send to visual server
 							video_frame_done = true;
 						}
 					}
@@ -362,7 +362,7 @@ inline bool VideoStreamPlaybackWebm::has_enough_video_frames() const {
 		// FIXME: AudioServer output latency was fixed in af9bb0e, previously it used to
 		// systematically return 0. Now that it gives a proper latency, it broke this
 		// code where the delay compensation likely never really worked.
-		//const double audio_delay = AudioServer::get_singleton()->get_output_latency();
+		// const double audio_delay = AudioServer::get_singleton()->get_output_latency();
 		const double video_time = video_frames[video_frames_pos - 1]->time;
 		return video_time >= time + /* audio_delay + */ delay_compensation;
 	}
@@ -373,7 +373,7 @@ bool VideoStreamPlaybackWebm::should_process(WebMFrame &video_frame) {
 	// FIXME: AudioServer output latency was fixed in af9bb0e, previously it used to
 	// systematically return 0. Now that it gives a proper latency, it broke this
 	// code where the delay compensation likely never really worked.
-	//const double audio_delay = AudioServer::get_singleton()->get_output_latency();
+	// const double audio_delay = AudioServer::get_singleton()->get_output_latency();
 	return video_frame.time >= time + /* audio_delay + */ delay_compensation;
 }
 

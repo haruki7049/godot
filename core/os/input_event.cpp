@@ -274,19 +274,19 @@ String InputEventKey::as_text() const {
 	}
 
 	if (get_metakey()) {
-		//kc = find_keycode_name(KEY_META) + ("+" + kc);
+		// kc = find_keycode_name(KEY_META) + ("+" + kc);
 		kc = find_keycode_name(KEY_META_L) + ("+" + kc);
 	}
 	if (get_alt()) {
-		//kc = find_keycode_name(KEY_ALT) + ("+" + kc);
+		// kc = find_keycode_name(KEY_ALT) + ("+" + kc);
 		kc = find_keycode_name(KEY_ALT_L) + ("+" + kc);
 	}
 	if (get_shift()) {
-		//kc = find_keycode_name(KEY_SHIFT) + ("+" + kc);
+		// kc = find_keycode_name(KEY_SHIFT) + ("+" + kc);
 		kc = find_keycode_name(KEY_SHIFT_L) + ("+" + kc);
 	}
 	if (get_control()) {
-		//kc = find_keycode_name(KEY_CONTROL) + ("+" + kc);
+		// kc = find_keycode_name(KEY_CONTROL) + ("+" + kc);
 		kc = find_keycode_name(KEY_CONTROL_L) + ("+" + kc);
 	}
 	return kc;
@@ -365,7 +365,7 @@ InputEventKey::InputEventKey() {
 	pressed = false;
 	scancode = 0;
 	physical_scancode = 0;
-	unicode = 0; ///unicode
+	unicode = 0; /// unicode
 	echo = false;
 }
 
@@ -922,7 +922,7 @@ void InputEventScreenTouch::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("get_position"), &InputEventScreenTouch::get_position);
 
 	ClassDB::bind_method(D_METHOD("set_pressed", "pressed"), &InputEventScreenTouch::set_pressed);
-	//ClassDB::bind_method(D_METHOD("is_pressed"),&InputEventScreenTouch::is_pressed);
+	// ClassDB::bind_method(D_METHOD("is_pressed"),&InputEventScreenTouch::is_pressed);
 
 	ADD_PROPERTY(PropertyInfo(Variant::INT, "index"), "set_index", "get_index");
 	ADD_PROPERTY(PropertyInfo(Variant::VECTOR2, "position"), "set_position", "get_position");
@@ -1090,7 +1090,7 @@ void InputEventAction::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("get_action"), &InputEventAction::get_action);
 
 	ClassDB::bind_method(D_METHOD("set_pressed", "pressed"), &InputEventAction::set_pressed);
-	//ClassDB::bind_method(D_METHOD("is_pressed"), &InputEventAction::is_pressed);
+	// ClassDB::bind_method(D_METHOD("is_pressed"), &InputEventAction::is_pressed);
 
 	ClassDB::bind_method(D_METHOD("set_strength", "strength"), &InputEventAction::set_strength);
 	ClassDB::bind_method(D_METHOD("get_strength"), &InputEventAction::get_strength);

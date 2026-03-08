@@ -154,7 +154,7 @@ private:
 		void update_cached_lists() {
 			if (!dirty) {
 #ifdef TOOLS_ENABLED
-//#define OCTREE_CACHED_LIST_ERROR_CHECKS
+// #define OCTREE_CACHED_LIST_ERROR_CHECKS
 #endif
 #ifdef OCTREE_CACHED_LIST_ERROR_CHECKS
 				// debug - this will slow down performance a lot,
@@ -354,7 +354,7 @@ private:
 			}
 
 			if (p_A == E->get().B) {
-				//may be reaching inverted
+				// may be reaching inverted
 				SWAP(p_A, p_B);
 			}
 
@@ -543,7 +543,7 @@ OCTREE_FUNC(void)::_insert_element(Element *p_element, Octant *p_octant) {
 		}
 
 		if (use_pairs && p_octant->children_count > 0) {
-			pass++; //elements below this only get ONE reference added
+			pass++; // elements below this only get ONE reference added
 
 			for (int i = 0; i < 8; i++) {
 				if (p_octant->children[i]) {
@@ -850,7 +850,7 @@ OCTREE_FUNC(void)::_remove_element(Element *p_element) {
 
 	if (use_pairs) {
 		int remaining = p_element->pair_list.size();
-		//p_element->pair_list.clear();
+		// p_element->pair_list.clear();
 		ERR_FAIL_COND(remaining);
 	}
 }
@@ -962,7 +962,7 @@ OCTREE_FUNC(void)::move(OctreeElementID p_id, const AABB &p_aabb) {
 	Octant *common_parent = e.common_parent;
 	ERR_FAIL_COND(!common_parent);
 
-	//src is now the place towards where insertion is going to happen
+	// src is now the place towards where insertion is going to happen
 	pass++;
 
 	while (common_parent && !common_parent->aabb.encloses(p_aabb)) {
@@ -971,7 +971,7 @@ OCTREE_FUNC(void)::move(OctreeElementID p_id, const AABB &p_aabb) {
 
 	ERR_FAIL_COND(!common_parent);
 
-	//prepare for reinsert
+	// prepare for reinsert
 	e.octant_owners.clear();
 	e.common_parent = nullptr;
 	e.aabb = p_aabb;
@@ -1007,7 +1007,7 @@ OCTREE_FUNC(void)::move(OctreeElementID p_id, const AABB &p_aabb) {
 	}
 
 	if (use_pairs) {
-		//unpair child elements in anything that survived
+		// unpair child elements in anything that survived
 		for (typename List<typename Element::OctantOwner, AL>::Element *F = owners.front(); F; F = F->next()) {
 			Octant *o = F->get().octant;
 
@@ -1070,7 +1070,7 @@ OCTREE_FUNC(void)::erase(OctreeElementID p_id) {
 
 OCTREE_FUNC(void)::_cull_convex(Octant *p_octant, _CullConvexData *p_cull) {
 	if (*p_cull->result_idx == p_cull->result_max) {
-		return; //pointless
+		return; // pointless
 	}
 
 	if (!p_octant->elements.empty()) {
@@ -1184,7 +1184,7 @@ OCTREE_FUNC(void)::_cull_convex(Octant *p_octant, _CullConvexData *p_cull) {
 
 OCTREE_FUNC(void)::_cull_aabb(Octant *p_octant, const AABB &p_aabb, T **p_result_array, int *p_result_idx, int p_result_max, int *p_subindex_array, uint32_t p_mask) {
 	if (*p_result_idx == p_result_max) {
-		return; //pointless
+		return; // pointless
 	}
 
 	if (!p_octant->elements.empty()) {
@@ -1307,7 +1307,7 @@ OCTREE_FUNC(void)::_cull_aabb(Octant *p_octant, const AABB &p_aabb, T **p_result
 
 OCTREE_FUNC(void)::_cull_segment(Octant *p_octant, const Vector3 &p_from, const Vector3 &p_to, T **p_result_array, int *p_result_idx, int p_result_max, int *p_subindex_array, uint32_t p_mask) {
 	if (*p_result_idx == p_result_max) {
-		return; //pointless
+		return; // pointless
 	}
 
 	if (!p_octant->elements.empty()) {
@@ -1436,7 +1436,7 @@ OCTREE_FUNC(void)::_cull_segment(Octant *p_octant, const Vector3 &p_from, const 
 
 OCTREE_FUNC(void)::_cull_point(Octant *p_octant, const Vector3 &p_point, T **p_result_array, int *p_result_idx, int p_result_max, int *p_subindex_array, uint32_t p_mask) {
 	if (*p_result_idx == p_result_max) {
-		return; //pointless
+		return; // pointless
 	}
 
 	if (!p_octant->elements.empty()) {
@@ -1556,7 +1556,7 @@ OCTREE_FUNC(void)::_cull_point(Octant *p_octant, const Vector3 &p_point, T **p_r
 	}
 
 	for (int i = 0; i < 8; i++) {
-		//could be optimized..
+		// could be optimized..
 		if (p_octant->children[i] && p_octant->children[i]->aabb.has_point(p_point)) {
 			_cull_point(p_octant->children[i], p_point, p_result_array, p_result_idx, p_result_max, p_subindex_array, p_mask);
 		}

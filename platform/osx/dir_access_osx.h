@@ -51,5 +51,5 @@ protected:
 	virtual bool is_hidden(const String &p_name);
 };
 
-#endif //UNIX ENABLED
+#endif // UNIX ENABLED
 #endif

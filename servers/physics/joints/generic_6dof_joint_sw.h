@@ -152,11 +152,11 @@ public:
 
 	//! Test limit
 	/*!
-    - free means upper < lower,
-    - locked means upper == lower
-    - limited means upper > lower
-    - limitIndex: first 3 are linear, next 3 are angular
-    */
+	- free means upper < lower,
+	- locked means upper == lower
+	- limited means upper > lower
+	- limitIndex: first 3 are linear, next 3 are angular
+	*/
 	inline bool isLimited(int limitIndex) {
 		return (m_upperLimit[limitIndex] >= m_lowerLimit[limitIndex]);
 	}
@@ -248,16 +248,16 @@ public:
 
 	//! Gets the global transform of the offset for body A
 	/*!
-    \sa Generic6DOFJointSW.getFrameOffsetA, Generic6DOFJointSW.getFrameOffsetB, Generic6DOFJointSW.calculateAngleInfo.
-    */
+	\sa Generic6DOFJointSW.getFrameOffsetA, Generic6DOFJointSW.getFrameOffsetB, Generic6DOFJointSW.calculateAngleInfo.
+	*/
 	const Transform &getCalculatedTransformA() const {
 		return m_calculatedTransformA;
 	}
 
 	//! Gets the global transform of the offset for body B
 	/*!
-    \sa Generic6DOFJointSW.getFrameOffsetA, Generic6DOFJointSW.getFrameOffsetB, Generic6DOFJointSW.calculateAngleInfo.
-    */
+	\sa Generic6DOFJointSW.getFrameOffsetA, Generic6DOFJointSW.getFrameOffsetB, Generic6DOFJointSW.calculateAngleInfo.
+	*/
 	const Transform &getCalculatedTransformB() const {
 		return m_calculatedTransformB;
 	}
@@ -331,7 +331,7 @@ public:
 		return &m_linearLimits;
 	}
 
-	//first 3 are linear, next 3 are angular
+	// first 3 are linear, next 3 are angular
 	void setLimit(int axis, real_t lo, real_t hi) {
 		if (axis < 3) {
 			m_linearLimits.m_lowerLimit[axis] = lo;
@@ -344,11 +344,11 @@ public:
 
 	//! Test limit
 	/*!
-    - free means upper < lower,
-    - locked means upper == lower
-    - limited means upper > lower
-    - limitIndex: first 3 are linear, next 3 are angular
-    */
+	- free means upper < lower,
+	- locked means upper == lower
+	- limited means upper > lower
+	- limitIndex: first 3 are linear, next 3 are angular
+	*/
 	bool isLimited(int limitIndex) {
 		if (limitIndex < 3) {
 			return m_linearLimits.isLimited(limitIndex);

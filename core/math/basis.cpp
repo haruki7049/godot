@@ -127,8 +127,8 @@ bool Basis::is_symmetric() const {
 }
 
 Basis Basis::diagonalize() {
-//NOTE: only implemented for symmetric matrices
-//with the Jacobi iterative method method
+// NOTE: only implemented for symmetric matrices
+// with the Jacobi iterative method method
 #ifdef MATH_CHECKS
 	ERR_FAIL_COND_V(!is_symmetric(), Basis());
 #endif
@@ -460,7 +460,7 @@ void Basis::set_euler_xyz(const Vector3 &p_euler) {
 	s = Math::sin(p_euler.z);
 	Basis zmat(c, -s, 0.0, s, c, 0.0, 0.0, 0.0, 1.0);
 
-	//optimizer will optimize away all this anyway
+	// optimizer will optimize away all this anyway
 	*this = xmat * (ymat * zmat);
 }
 
@@ -621,7 +621,7 @@ void Basis::set_euler_yxz(const Vector3 &p_euler) {
 	s = Math::sin(p_euler.z);
 	Basis zmat(c, -s, 0.0, s, c, 0.0, 0.0, 0.0, 1.0);
 
-	//optimizer will optimize away all this anyway
+	// optimizer will optimize away all this anyway
 	*this = ymat * xmat * zmat;
 }
 
@@ -785,8 +785,8 @@ Quat Basis::get_quat() const {
 		temp[2] = ((m.elements[1][0] - m.elements[0][1]) * s);
 	} else {
 		int i = m.elements[0][0] < m.elements[1][1] ?
-						  (m.elements[1][1] < m.elements[2][2] ? 2 : 1) :
-						  (m.elements[0][0] < m.elements[2][2] ? 2 : 0);
+						(m.elements[1][1] < m.elements[2][2] ? 2 : 1) :
+						(m.elements[0][0] < m.elements[2][2] ? 2 : 0);
 		int j = (i + 1) % 3;
 		int k = (i + 2) % 3;
 
@@ -830,7 +830,7 @@ static const Basis _ortho_bases[24] = {
 };
 
 int Basis::get_orthogonal_index() const {
-	//could be sped up if i come up with a way
+	// could be sped up if i come up with a way
 	Basis orth = *this;
 	for (int i = 0; i < 3; i++) {
 		for (int j = 0; j < 3; j++) {
@@ -857,7 +857,7 @@ int Basis::get_orthogonal_index() const {
 }
 
 void Basis::set_orthogonal_index(int p_index) {
-	//there only exist 24 orthogonal bases in r3
+	// there only exist 24 orthogonal bases in r3
 	ERR_FAIL_INDEX(p_index, 24);
 
 	*this = _ortho_bases[p_index];
@@ -1013,7 +1013,7 @@ void Basis::set_diagonal(const Vector3 &p_diag) {
 }
 
 Basis Basis::slerp(const Basis &p_to, const real_t &p_weight) const {
-	//consider scale
+	// consider scale
 	Quat from(*this);
 	Quat to(p_to);
 

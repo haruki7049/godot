@@ -325,12 +325,12 @@ const MeshGeometry::MappingData<Vector3> &MeshGeometry::get_normals() const {
 }
 
 const MeshGeometry::MappingData<Vector2> &MeshGeometry::get_uv_0() const {
-	//print_verbose("get uv_0 " + m_uv_0.debug_info() );
+	// print_verbose("get uv_0 " + m_uv_0.debug_info() );
 	return m_uv_0;
 }
 
 const MeshGeometry::MappingData<Vector2> &MeshGeometry::get_uv_1() const {
-	//print_verbose("get uv_1 " + m_uv_1.debug_info() );
+	// print_verbose("get uv_1 " + m_uv_1.debug_info() );
 	return m_uv_1;
 }
 

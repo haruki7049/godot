@@ -108,7 +108,7 @@ RES TranslationLoaderPO::load_translation(FileAccess *f, Error *r_error) {
 				skip_next = true;
 			}
 			line++;
-			continue; //nothing to read or comment
+			continue; // nothing to read or comment
 		}
 
 		if (!l.begins_with("\"") || status == STATUS_NONE) {
@@ -117,7 +117,7 @@ RES TranslationLoaderPO::load_translation(FileAccess *f, Error *r_error) {
 		}
 
 		l = l.substr(1, l.length());
-		//find final quote
+		// find final quote
 		int end_pos = -1;
 		for (int i = 0; i < l.length(); i++) {
 			if (l[i] == '"' && (i == 0 || l[i - 1] != '\\')) {

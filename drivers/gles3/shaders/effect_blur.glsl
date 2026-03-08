@@ -32,10 +32,10 @@ precision mediump float;
 /* clang-format on */
 
 in vec2 uv_interp;
-uniform sampler2D source_color; //texunit:0
+uniform sampler2D source_color; // texunit:0
 
 #ifdef SSAO_MERGE
-uniform sampler2D source_ssao; //texunit:1
+uniform sampler2D source_ssao; // texunit:1
 #endif
 
 uniform float lod;
@@ -76,7 +76,7 @@ const int dof_kernel_from = 10;
 const float dof_kernel[21] = float[](0.028174, 0.032676, 0.037311, 0.041944, 0.046421, 0.050582, 0.054261, 0.057307, 0.059587, 0.060998, 0.061476, 0.060998, 0.059587, 0.057307, 0.054261, 0.050582, 0.046421, 0.041944, 0.037311, 0.032676, 0.028174);
 #endif
 
-uniform sampler2D dof_source_depth; //texunit:1
+uniform sampler2D dof_source_depth; // texunit:1
 uniform float dof_begin;
 uniform float dof_end;
 uniform vec2 dof_dir;
@@ -84,7 +84,7 @@ uniform float dof_radius;
 
 #ifdef DOF_NEAR_BLUR_MERGE
 
-uniform sampler2D source_dof_original; //texunit:2
+uniform sampler2D source_dof_original; // texunit:2
 #endif
 
 #endif
@@ -97,7 +97,7 @@ uniform highp float luminance_cap;
 
 #ifdef GLOW_USE_AUTO_EXPOSURE
 
-uniform highp sampler2D source_auto_exposure; //texunit:1
+uniform highp sampler2D source_auto_exposure; // texunit:1
 uniform highp float auto_exposure_grey;
 
 #endif
@@ -114,7 +114,7 @@ uniform float camera_z_near;
 void main() {
 #ifdef GAUSSIAN_HORIZONTAL
 	vec2 pix_size = pixel_size;
-	pix_size *= 0.5; //reading from larger buffer, so use more samples
+	pix_size *= 0.5; // reading from larger buffer, so use more samples
 	// sigma 2
 	vec4 color = textureLod(source_color, uv_interp + vec2(0.0, 0.0) * pix_size, lod) * 0.214607;
 	color += textureLod(source_color, uv_interp + vec2(1.0, 0.0) * pix_size, lod) * 0.189879;
@@ -135,11 +135,11 @@ void main() {
 	frag_color = color;
 #endif
 
-	//glow uses larger sigma for a more rounded blur effect
+	// glow uses larger sigma for a more rounded blur effect
 
 #ifdef GLOW_GAUSSIAN_HORIZONTAL
 	vec2 pix_size = pixel_size;
-	pix_size *= 0.5; //reading from larger buffer, so use more samples
+	pix_size *= 0.5; // reading from larger buffer, so use more samples
 	vec4 color = textureLod(source_color, uv_interp + vec2(0.0, 0.0) * pix_size, lod) * 0.174938;
 	color += textureLod(source_color, uv_interp + vec2(1.0, 0.0) * pix_size, lod) * 0.165569;
 	color += textureLod(source_color, uv_interp + vec2(2.0, 0.0) * pix_size, lod) * 0.140367;
@@ -190,7 +190,7 @@ void main() {
 		tap_depth = 2.0 * camera_z_near * camera_z_far / (camera_z_far + camera_z_near - tap_depth * (camera_z_far - camera_z_near));
 #endif
 		float tap_amount = mix(smoothstep(dof_begin, dof_end, tap_depth), 1.0, int_ofs == 0);
-		tap_amount *= tap_amount * tap_amount; //prevent undesired glow effect
+		tap_amount *= tap_amount * tap_amount; // prevent undesired glow effect
 
 		vec4 tap_color = textureLod(source_color, tap_uv, 0.0) * tap_k;
 
@@ -202,7 +202,7 @@ void main() {
 		color_accum /= k_accum;
 	}
 
-	frag_color = color_accum; ///k_accum;
+	frag_color = color_accum; /// k_accum;
 
 #endif
 
@@ -229,7 +229,7 @@ void main() {
 		tap_depth = 2.0 * camera_z_near * camera_z_far / (camera_z_far + camera_z_near - tap_depth * (camera_z_far - camera_z_near));
 #endif
 		float tap_amount = 1.0 - smoothstep(dof_end, dof_begin, tap_depth);
-		tap_amount *= tap_amount * tap_amount; //prevent undesired glow effect
+		tap_amount *= tap_amount * tap_amount; // prevent undesired glow effect
 
 #ifdef DOF_NEAR_FIRST_TAP
 
@@ -252,7 +252,7 @@ void main() {
 #endif
 
 #ifndef DOF_NEAR_FIRST_TAP
-	//color_accum=vec4(vec3(color_accum.a),1.0);
+	// color_accum=vec4(vec3(color_accum.a),1.0);
 #endif
 	frag_color = color_accum;
 

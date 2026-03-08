@@ -62,7 +62,7 @@ class OS_Android : public OS_Unix {
 	GodotJavaWrapper *godot_java;
 	GodotIOJavaWrapper *godot_io_java;
 
-	//PowerAndroid *power_manager_func;
+	// PowerAndroid *power_manager_func;
 
 	int video_driver_index;
 

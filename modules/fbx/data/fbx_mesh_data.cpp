@@ -174,7 +174,7 @@ MeshInstance *FBXMeshData::create_fbx_mesh(const ImportState &state, const FBXDo
 	extract_morphs(mesh_geometry, morphs);
 
 	// TODO please add skinning.
-	//mesh_id = mesh_geometry->ID();
+	// mesh_id = mesh_geometry->ID();
 
 	sanitize_vertex_weights(state);
 
@@ -278,8 +278,8 @@ MeshInstance *FBXMeshData::create_fbx_mesh(const ImportState &state, const FBXDo
 		}
 	}
 
-	//print_verbose("[debug UV 1] UV1: " + itos(uvs_0.size()));
-	//print_verbose("[debug UV 2] UV2: " + itos(uvs_1.size()));
+	// print_verbose("[debug UV 1] UV1: " + itos(uvs_0.size()));
+	// print_verbose("[debug UV 2] UV2: " + itos(uvs_1.size()));
 
 	// Phase 4. Per each surface just insert the vertices and add the indices.
 	for (const SurfaceId *surface_id = surfaces.next(nullptr); surface_id != nullptr; surface_id = surfaces.next(surface_id)) {
@@ -776,14 +776,14 @@ void FBXMeshData::add_vertex(
 	}
 
 	if (p_uvs_0.has(p_vertex)) {
-		//print_verbose("uv1: [" + itos(p_vertex) + "] " + p_uvs_0[p_vertex]);
-		// Inverts Y UV.
+		// print_verbose("uv1: [" + itos(p_vertex) + "] " + p_uvs_0[p_vertex]);
+		//  Inverts Y UV.
 		p_surface_tool->add_uv(Vector2(p_uvs_0[p_vertex].x, 1 - p_uvs_0[p_vertex].y));
 	}
 
 	if (p_uvs_1.has(p_vertex)) {
-		//print_verbose("uv2: [" + itos(p_vertex) + "] " + p_uvs_1[p_vertex]);
-		// Inverts Y UV.
+		// print_verbose("uv2: [" + itos(p_vertex) + "] " + p_uvs_1[p_vertex]);
+		//  Inverts Y UV.
 		p_surface_tool->add_uv2(Vector2(p_uvs_1[p_vertex].x, 1 - p_uvs_1[p_vertex].y));
 	}
 

@@ -50,9 +50,9 @@ struct Mono_InterpMethodArguments {
 	double *fargs;
 	void **retval;
 	size_t is_float_ret;
-	//#ifdef TARGET_WASM
+	// #ifdef TARGET_WASM
 	void *sig;
-	//#endif
+	// #endif
 };
 } // extern "C"
 

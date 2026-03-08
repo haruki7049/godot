@@ -97,7 +97,7 @@ uniform sampler2D source; // texunit:0
 #endif
 
 #ifdef SEP_CBCR_TEXTURE
-uniform sampler2D CbCr; //texunit:1
+uniform sampler2D CbCr; // texunit:1
 #endif
 
 varying vec2 uv2_interp;

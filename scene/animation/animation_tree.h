@@ -87,7 +87,7 @@ public:
 	float _pre_process(const StringName &p_base_path, AnimationNode *p_parent, State *p_state, float p_time, bool p_seek, const Vector<StringName> &p_connections);
 	void _pre_update_animations(HashMap<NodePath, int> *track_map);
 
-	//all this is temporary
+	// all this is temporary
 	StringName base_path;
 	Vector<StringName> connections;
 	AnimationNode *parent;
@@ -151,7 +151,7 @@ public:
 
 VARIANT_ENUM_CAST(AnimationNode::FilterAction)
 
-//root node does not allow inputs
+// root node does not allow inputs
 class AnimationRootNode : public AnimationNode {
 	GDCLASS(AnimationRootNode, AnimationNode);
 

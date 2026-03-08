@@ -207,7 +207,7 @@ void _rgba8_to_packbits_encode(int p_ch, int p_size, PoolVector<uint8_t> &p_sour
 	int src_len = p_size * p_size;
 
 	Vector<uint8_t> result;
-	result.resize(src_len * 1.25); //temp vector for rle encoded data, make it 25% larger for worst case scenario
+	result.resize(src_len * 1.25); // temp vector for rle encoded data, make it 25% larger for worst case scenario
 	int res_size = 0;
 
 	uint8_t buf[128];
@@ -287,16 +287,16 @@ void EditorExportPlatformOSX::_make_icon(const Ref<Image> &p_icon, Vector<uint8_
 	};
 
 	static const MacOSIconInfo icon_infos[] = {
-		{ "ic10", "", true, 1024 }, //1024x1024 32-bit PNG and 512x512@2x 32-bit "retina" PNG
-		{ "ic09", "", true, 512 }, //512×512 32-bit PNG
-		{ "ic14", "", true, 512 }, //256x256@2x 32-bit "retina" PNG
-		{ "ic08", "", true, 256 }, //256×256 32-bit PNG
-		{ "ic13", "", true, 256 }, //128x128@2x 32-bit "retina" PNG
-		{ "ic07", "", true, 128 }, //128x128 32-bit PNG
-		{ "ic12", "", true, 64 }, //32x32@2x 32-bit "retina" PNG
-		{ "ic11", "", true, 32 }, //16x16@2x 32-bit "retina" PNG
-		{ "il32", "l8mk", false, 32 }, //32x32 24-bit RLE + 8-bit uncompressed mask
-		{ "is32", "s8mk", false, 16 } //16x16 24-bit RLE + 8-bit uncompressed mask
+		{ "ic10", "", true, 1024 }, // 1024x1024 32-bit PNG and 512x512@2x 32-bit "retina" PNG
+		{ "ic09", "", true, 512 }, // 512×512 32-bit PNG
+		{ "ic14", "", true, 512 }, // 256x256@2x 32-bit "retina" PNG
+		{ "ic08", "", true, 256 }, // 256×256 32-bit PNG
+		{ "ic13", "", true, 256 }, // 128x128@2x 32-bit "retina" PNG
+		{ "ic07", "", true, 128 }, // 128x128 32-bit PNG
+		{ "ic12", "", true, 64 }, // 32x32@2x 32-bit "retina" PNG
+		{ "ic11", "", true, 32 }, // 16x16@2x 32-bit "retina" PNG
+		{ "il32", "l8mk", false, 32 }, // 32x32 24-bit RLE + 8-bit uncompressed mask
+		{ "is32", "s8mk", false, 16 } // 16x16 24-bit RLE + 8-bit uncompressed mask
 	};
 
 	for (uint64_t i = 0; i < (sizeof(icon_infos) / sizeof(icon_infos[0])); ++i) {
@@ -333,7 +333,7 @@ void EditorExportPlatformOSX::_make_icon(const Ref<Image> &p_icon, Vector<uint8_
 		} else {
 			PoolVector<uint8_t> src_data = copy->get_data();
 
-			//encode 24bit RGB RLE icon
+			// encode 24bit RGB RLE icon
 			{
 				int ofs = data.size();
 				data.resize(data.size() + 8);
@@ -348,7 +348,7 @@ void EditorExportPlatformOSX::_make_icon(const Ref<Image> &p_icon, Vector<uint8_
 				encode_uint32(len, &data.write[ofs + 4]);
 			}
 
-			//encode 8bit mask uncompressed icon
+			// encode 8bit mask uncompressed icon
 			{
 				int ofs = data.size();
 				int len = copy->get_width() * copy->get_height();

@@ -112,7 +112,7 @@ String Resource::get_name() const {
 }
 
 bool Resource::editor_can_reload_from_file() {
-	return true; //by default yes
+	return true; // by default yes
 }
 
 void Resource::reload_from_file() {
@@ -135,7 +135,7 @@ void Resource::reload_from_file() {
 			continue;
 		}
 		if (E->get().name == "resource_path") {
-			continue; //do not change path
+			continue; // do not change path
 		}
 
 		set(E->get().name, s->get(E->get().name));
@@ -253,8 +253,8 @@ void Resource::unregister_owner(Object *p_owner) {
 void Resource::notify_change_to_owners() {
 	for (Set<ObjectID>::Element *E = owners.front(); E; E = E->next()) {
 		Object *obj = ObjectDB::get_instance(E->get());
-		ERR_CONTINUE_MSG(!obj, "Object was deleted, while still owning a resource."); //wtf
-		//TODO store string
+		ERR_CONTINUE_MSG(!obj, "Object was deleted, while still owning a resource."); // wtf
+		// TODO store string
 		obj->call("resource_changed", RES(this));
 	}
 }
@@ -330,7 +330,7 @@ bool Resource::is_translation_remapped() const {
 }
 
 #ifdef TOOLS_ENABLED
-//helps keep IDs same number when loading/saving scenes. -1 clears ID and it Returns -1 when no id stored
+// helps keep IDs same number when loading/saving scenes. -1 clears ID and it Returns -1 when no id stored
 void Resource::set_id_for_path(const String &p_path, int p_id) {
 	if (p_id == -1) {
 		ResourceCache::path_cache_lock.write_lock();

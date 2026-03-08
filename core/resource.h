@@ -38,11 +38,15 @@
 #include "core/safe_refcount.h"
 #include "core/self_list.h"
 
-#define RES_BASE_EXTENSION(m_ext)                                                                                   \
-public:                                                                                                             \
-	static void register_custom_data_to_otdb() { ClassDB::add_resource_base_extension(m_ext, get_class_static()); } \
-	virtual String get_base_extension() const { return m_ext; }                                                     \
-                                                                                                                    \
+#define RES_BASE_EXTENSION(m_ext)                                        \
+public:                                                                  \
+	static void register_custom_data_to_otdb() {                         \
+		ClassDB::add_resource_base_extension(m_ext, get_class_static()); \
+	}                                                                    \
+	virtual String get_base_extension() const {                          \
+		return m_ext;                                                    \
+	}                                                                    \
+                                                                         \
 private:
 
 class Resource : public Reference {
@@ -83,7 +87,7 @@ protected:
 	void _take_over_path(const String &p_path);
 
 public:
-	static Node *(*_get_local_scene_func)(); //used by editor
+	static Node *(*_get_local_scene_func)(); // used by editor
 
 	virtual bool editor_can_reload_from_file();
 	virtual void reload_from_file();
@@ -131,7 +135,7 @@ public:
 	virtual RID get_rid() const; // some resources may offer conversion to RID
 
 #ifdef TOOLS_ENABLED
-	//helps keep IDs same number when loading/saving scenes. -1 clears ID and it Returns -1 when no id stored
+	// helps keep IDs same number when loading/saving scenes. -1 clears ID and it Returns -1 when no id stored
 	void set_id_for_path(const String &p_path, int p_id);
 	int get_id_for_path(const String &p_path) const;
 #endif
@@ -144,7 +148,7 @@ typedef Ref<Resource> RES;
 
 class ResourceCache {
 	friend class Resource;
-	friend class ResourceLoader; //need the lock
+	friend class ResourceLoader; // need the lock
 	static RWLock lock;
 	static HashMap<String, Resource *> resources;
 #ifdef TOOLS_ENABLED

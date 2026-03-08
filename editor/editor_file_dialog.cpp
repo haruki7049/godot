@@ -1062,7 +1062,7 @@ void EditorFileDialog::_make_dir_confirm() {
 		update_filters();
 		update_dir();
 		_push_history();
-		EditorFileSystem::get_singleton()->scan_changes(); //we created a dir, so rescan changes
+		EditorFileSystem::get_singleton()->scan_changes(); // we created a dir, so rescan changes
 	} else {
 		mkdirerr->popup_centered_minsize(Size2(250, 50) * EDSCALE);
 	}

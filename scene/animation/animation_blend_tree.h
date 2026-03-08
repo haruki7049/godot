@@ -360,7 +360,7 @@ public:
 		CONNECTION_ERROR_NO_OUTPUT,
 		CONNECTION_ERROR_SAME_NODE,
 		CONNECTION_ERROR_CONNECTION_EXISTS,
-		//no need to check for cycles due to tree topology
+		// no need to check for cycles due to tree topology
 	};
 
 	void add_node(const StringName &p_name, Ref<AnimationNode> p_node, const Vector2 &p_position = Vector2());

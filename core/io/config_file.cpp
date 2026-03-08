@@ -62,7 +62,7 @@ PoolStringArray ConfigFile::_get_section_keys(const String &p_section) const {
 
 void ConfigFile::set_value(const String &p_section, const String &p_key, const Variant &p_value) {
 	if (p_value.get_type() == Variant::NIL) {
-		//erase
+		// erase
 		if (!values.has(p_section)) {
 			return; // ?
 		}

@@ -63,8 +63,8 @@ class HingeJointSW : public JointSW {
 		BodySW *_arr[2];
 	};
 
-	JacobianEntrySW m_jac[3]; //3 orthogonal linear constraints
-	JacobianEntrySW m_jacAng[3]; //2 orthogonal angular constraints+ 1 for limit/motor
+	JacobianEntrySW m_jac[3]; // 3 orthogonal linear constraints
+	JacobianEntrySW m_jacAng[3]; // 2 orthogonal angular constraints+ 1 for limit/motor
 
 	Transform m_rbAFrame; // constraint axii. Assumes z is hinge axis.
 	Transform m_rbBFrame;

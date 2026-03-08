@@ -61,10 +61,10 @@ typedef struct {
 	godot_method_rpc_mode (*get_rpc_mode)(godot_pluginscript_instance_data *p_data, const godot_string *p_method);
 	godot_method_rpc_mode (*get_rset_mode)(godot_pluginscript_instance_data *p_data, const godot_string *p_variable);
 
-	//this is used by script languages that keep a reference counter of their own
-	//you can make make Ref<> not die when it reaches zero, so deleting the reference
-	//depends entirely from the script.
-	// Note: You can set those function pointer to NULL if not needed.
+	// this is used by script languages that keep a reference counter of their own
+	// you can make make Ref<> not die when it reaches zero, so deleting the reference
+	// depends entirely from the script.
+	//  Note: You can set those function pointer to NULL if not needed.
 	void (*refcount_incremented)(godot_pluginscript_instance_data *p_data);
 	bool (*refcount_decremented)(godot_pluginscript_instance_data *p_data); // return true if it can die
 } godot_pluginscript_instance_desc;

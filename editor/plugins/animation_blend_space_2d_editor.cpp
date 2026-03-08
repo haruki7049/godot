@@ -135,8 +135,8 @@ void AnimationNodeBlendSpace2DEditor::_blend_space_gui_input(const Ref<InputEven
 	}
 
 	if (mb.is_valid() && mb->is_pressed() && tool_select->is_pressed() && mb->get_button_index() == BUTTON_LEFT) {
-		blend_space_draw->update(); //update anyway
-		//try to see if a point can be selected
+		blend_space_draw->update(); // update anyway
+		// try to see if a point can be selected
 		selected_point = -1;
 		selected_triangle = -1;
 		_update_tool_erase();
@@ -154,8 +154,8 @@ void AnimationNodeBlendSpace2DEditor::_blend_space_gui_input(const Ref<InputEven
 			}
 		}
 
-		//then try to see if a triangle can be selected
-		if (!blend_space->get_auto_triangles()) { //if autotriangles use, disable this
+		// then try to see if a triangle can be selected
+		if (!blend_space->get_auto_triangles()) { // if autotriangles use, disable this
 			for (int i = 0; i < blend_space->get_triangle_count(); i++) {
 				Vector<Vector2> triangle;
 
@@ -175,8 +175,8 @@ void AnimationNodeBlendSpace2DEditor::_blend_space_gui_input(const Ref<InputEven
 	}
 
 	if (mb.is_valid() && mb->is_pressed() && tool_triangle->is_pressed() && mb->get_button_index() == BUTTON_LEFT) {
-		blend_space_draw->update(); //update anyway
-		//try to see if a point can be selected
+		blend_space_draw->update(); // update anyway
+		// try to see if a point can be selected
 		selected_point = -1;
 
 		for (int i = 0; i < points.size(); i++) {
@@ -187,7 +187,7 @@ void AnimationNodeBlendSpace2DEditor::_blend_space_gui_input(const Ref<InputEven
 			if (points[i].distance_to(mb->get_position()) < 10 * EDSCALE) {
 				making_triangle.push_back(i);
 				if (making_triangle.size() == 3) {
-					//add triangle!
+					// add triangle!
 					if (blend_space->has_triangle(making_triangle[0], making_triangle[1], making_triangle[2])) {
 						making_triangle.clear();
 						EditorNode::get_singleton()->show_warning(TTR("Triangle already exists."));
@@ -211,7 +211,7 @@ void AnimationNodeBlendSpace2DEditor::_blend_space_gui_input(const Ref<InputEven
 
 	if (mb.is_valid() && !mb->is_pressed() && dragging_selected_attempt && mb->get_button_index() == BUTTON_LEFT) {
 		if (dragging_selected) {
-			//move
+			// move
 			Vector2 point = blend_space->get_blend_point_position(selected_point);
 			point += drag_ofs;
 			if (snap->is_pressed()) {
@@ -455,7 +455,7 @@ void AnimationNodeBlendSpace2DEditor::_blend_space_draw() {
 		}
 	}
 
-	//triangles first
+	// triangles first
 	for (int i = 0; i < blend_space->get_triangle_count(); i++) {
 		Vector<Vector2> points;
 		points.resize(3);
@@ -537,7 +537,7 @@ void AnimationNodeBlendSpace2DEditor::_blend_space_draw() {
 		blend_space_draw->draw_line(points[points.size() - 1], blend_space_draw->get_local_mouse_position(), linecolor, 2, true);
 	}
 
-	///draw cursor position
+	/// draw cursor position
 
 	{
 		Color color;
@@ -660,7 +660,7 @@ void AnimationNodeBlendSpace2DEditor::_erase_selected() {
 		undo_redo->add_do_method(blend_space.ptr(), "remove_blend_point", selected_point);
 		undo_redo->add_undo_method(blend_space.ptr(), "add_blend_point", blend_space->get_blend_point_node(selected_point), blend_space->get_blend_point_position(selected_point), selected_point);
 
-		//restore triangles using this point
+		// restore triangles using this point
 		for (int i = 0; i < blend_space->get_triangle_count(); i++) {
 			for (int j = 0; j < 3; j++) {
 				if (blend_space->get_triangle_point(i, j) == selected_point) {
@@ -977,7 +977,7 @@ AnimationNodeBlendSpace2DEditor::AnimationNodeBlendSpace2DEditor() {
 	blend_space_draw->set_focus_mode(FOCUS_ALL);
 
 	panel->add_child(blend_space_draw);
-	main_grid->add_child(memnew(Control)); //empty bottom left
+	main_grid->add_child(memnew(Control)); // empty bottom left
 
 	{
 		HBoxContainer *bottom_vbox = memnew(HBoxContainer);

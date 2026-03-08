@@ -112,7 +112,7 @@ class ScriptDebuggerRemote : public ScriptDebugger {
 
 	OS::ProcessID allow_focus_steal_pid;
 
-	bool locking; //hack to avoid a deadloop
+	bool locking; // hack to avoid a deadloop
 	static void _print_handler(void *p_this, const String &p_string, bool p_error);
 
 	PrintHandlerList phl;

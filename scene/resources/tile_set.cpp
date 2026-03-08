@@ -272,7 +272,7 @@ bool TileSet::_get(const StringName &p_name, Variant &r_ret) const {
 			Vector3 v;
 			for (Map<Vector2, int>::Element *E = tile_map[id].autotile_data.priority_map.front(); E; E = E->next()) {
 				if (E->value() > 1) {
-					//Don't save default value
+					// Don't save default value
 					v.x = E->key().x;
 					v.y = E->key().y;
 					v.z = E->value();
@@ -285,7 +285,7 @@ bool TileSet::_get(const StringName &p_name, Variant &r_ret) const {
 			Vector3 v;
 			for (Map<Vector2, int>::Element *E = tile_map[id].autotile_data.z_index_map.front(); E; E = E->next()) {
 				if (E->value() != 0) {
-					//Don't save default value
+					// Don't save default value
 					v.x = E->key().x;
 					v.y = E->key().y;
 					v.z = E->value();
@@ -519,7 +519,7 @@ int TileSet::autotile_get_subtile_priority(int p_id, const Vector2 &p_coord) {
 	if (tile_map[p_id].autotile_data.priority_map.has(p_coord)) {
 		return tile_map[p_id].autotile_data.priority_map[p_coord];
 	}
-	//When not custom priority set return the default value
+	// When not custom priority set return the default value
 	return 1;
 }
 
@@ -540,7 +540,7 @@ int TileSet::autotile_get_z_index(int p_id, const Vector2 &p_coord) {
 	if (tile_map[p_id].autotile_data.z_index_map.has(p_coord)) {
 		return tile_map[p_id].autotile_data.z_index_map[p_coord];
 	}
-	//When not custom z index set return the default value
+	// When not custom z index set return the default value
 	return 0;
 }
 
@@ -591,7 +591,7 @@ const Map<Vector2, uint32_t> &TileSet::autotile_get_bitmask_map(int p_id) {
 
 Vector2 TileSet::autotile_get_subtile_for_bitmask(int p_id, uint16_t p_bitmask, const Node *p_tilemap_node, const Vector2 &p_tile_location) {
 	ERR_FAIL_COND_V_MSG(!tile_map.has(p_id), Vector2(), vformat("The TileSet doesn't have a tile with ID '%d'.", p_id));
-	//First try to forward selection to script
+	// First try to forward selection to script
 	if (p_tilemap_node->get_class_name() == "TileMap") {
 		if (get_script_instance() != nullptr) {
 			if (get_script_instance()->has_method("_forward_subtile_selection")) {
@@ -652,7 +652,7 @@ Vector2 TileSet::autotile_get_subtile_for_bitmask(int p_id, uint16_t p_bitmask, 
 
 Vector2 TileSet::atlastile_get_subtile_by_priority(int p_id, const Node *p_tilemap_node, const Vector2 &p_tile_location) {
 	ERR_FAIL_COND_V_MSG(!tile_map.has(p_id), Vector2(), vformat("The TileSet doesn't have a tile with ID '%d'.", p_id));
-	//First try to forward selection to script
+	// First try to forward selection to script
 	if (get_script_instance() != nullptr) {
 		if (get_script_instance()->has_method("_forward_atlas_subtile_selection")) {
 			Variant ret = get_script_instance()->call("_forward_atlas_subtile_selection", p_id, p_tilemap_node, p_tile_location);

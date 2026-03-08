@@ -104,7 +104,7 @@ void BackgroundProgress::add_task(const String &p_task, const String &p_label, i
 	MessageQueue::get_singleton()->push_call(this, "_add_task", p_task, p_label, p_steps);
 }
 void BackgroundProgress::task_step(const String &p_task, int p_step) {
-	//this code is weird, but it prevents deadlock.
+	// this code is weird, but it prevents deadlock.
 	bool no_updates = true;
 	{
 		_THREAD_SAFE_METHOD_
@@ -195,7 +195,7 @@ bool ProgressDialog::task_step(const String &p_task, const String &p_state, int 
 	Task &t = tasks[p_task];
 	if (!p_force_redraw) {
 		uint64_t tus = OS::get_singleton()->get_ticks_usec();
-		if (tus - t.last_progress_tick < 200000) { //200ms
+		if (tus - t.last_progress_tick < 200000) { // 200ms
 			return cancelled;
 		}
 	}

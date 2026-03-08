@@ -31,7 +31,7 @@
 #ifndef LANG_TABLE_H
 #define LANG_TABLE_H
 
-//#include <windows.h>
+// #include <windows.h>
 
 struct _WinLocale {
 	const char *locale;
@@ -54,7 +54,7 @@ static const _WinLocale _win_locales[] = {
 	{ "ar_OM", LANG_ARABIC, SUBLANG_ARABIC_OMAN },
 	{ "ar_QA", LANG_ARABIC, SUBLANG_ARABIC_QATAR },
 	{ "ar_SA", LANG_ARABIC, SUBLANG_ARABIC_SAUDI_ARABIA },
-	//no sudan
+	// no sudan
 	{ "ar_SY", LANG_ARABIC, SUBLANG_ARABIC_SYRIA },
 	{ "ar_TN", LANG_ARABIC, SUBLANG_ARABIC_TUNISIA },
 	{ "ar_YE", LANG_ARABIC, SUBLANG_ARABIC_YEMEN },
@@ -82,7 +82,7 @@ static const _WinLocale _win_locales[] = {
 	{ "en_GB", LANG_ENGLISH, SUBLANG_ENGLISH_UK },
 	//{"en_IE", LANG_ENGLISH,SUBLANG_ENGLISH_IRELAND},
 	{ "en_IN", LANG_ENGLISH, SUBLANG_ENGLISH_INDIA },
-	//MT
+	// MT
 	{ "en_NZ", LANG_ENGLISH, SUBLANG_ENGLISH_NZ },
 	{ "en_PH", LANG_ENGLISH, SUBLANG_ENGLISH_PHILIPPINES },
 	{ "en_SG", LANG_ENGLISH, SUBLANG_ENGLISH_SINGAPORE },

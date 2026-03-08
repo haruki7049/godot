@@ -76,7 +76,7 @@ public:
 	virtual bool is_import_valid(const String &p_path) const { return true; }
 	virtual bool is_imported(const String &p_path) const { return false; }
 	virtual int get_import_order(const String &p_path) const { return 0; }
-	virtual String get_import_group_file(const String &p_path) const { return ""; } //no group
+	virtual String get_import_group_file(const String &p_path) const { return ""; } // no group
 
 	virtual ~ResourceFormatLoader() {}
 };
@@ -111,7 +111,7 @@ class ResourceLoader {
 
 	friend class ResourceFormatImporter;
 	friend class ResourceInteractiveLoader;
-	//internal load function
+	// internal load function
 	static RES _load(const String &p_path, const String &p_original_path, const String &p_type_hint, bool p_no_cache, Error *r_error);
 
 	static ResourceLoadedCallback _loaded_callback;
@@ -119,7 +119,7 @@ class ResourceLoader {
 	static Ref<ResourceFormatLoader> _find_custom_resource_format_loader(String path);
 	static Mutex loading_map_mutex;
 
-	//used to track paths being loaded in a thread, avoids cyclic recursion
+	// used to track paths being loaded in a thread, avoids cyclic recursion
 	struct LoadingMapKey {
 		String path;
 		Thread::ID thread;

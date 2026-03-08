@@ -556,7 +556,7 @@ public:
 	virtual String get_joy_guid(int p_device) const;
 
 	virtual void _set_use_vsync(bool p_enable);
-	//virtual bool is_vsync_enabled() const;
+	// virtual bool is_vsync_enabled() const;
 
 	virtual OS::PowerState get_power_state();
 	virtual int get_power_seconds_left();

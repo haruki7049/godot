@@ -79,7 +79,7 @@ public:
 
 	bool force_quit;
 	//  rasterizer seems to no longer be given to visual server, its using GLES3 directly?
-	//Rasterizer *rasterizer;
+	// Rasterizer *rasterizer;
 	VisualServer *visual_server;
 
 	List<String> args;
@@ -160,7 +160,7 @@ public:
 		Variant meta;
 
 		GlobalMenuItem() {
-			//NOP
+			// NOP
 		}
 
 		GlobalMenuItem(const String &p_label, const Variant &p_signal, const Variant &p_meta) {
@@ -308,7 +308,7 @@ public:
 	virtual bool _check_internal_feature_support(const String &p_feature);
 
 	virtual void _set_use_vsync(bool p_enable);
-	//virtual bool is_vsync_enabled() const;
+	// virtual bool is_vsync_enabled() const;
 
 	void run();
 

@@ -88,7 +88,7 @@ void VisualInstance::_notification(int p_what) {
 		case NOTIFICATION_EXIT_WORLD: {
 			VisualServer::get_singleton()->instance_set_scenario(instance, RID());
 			VisualServer::get_singleton()->instance_attach_skeleton(instance, RID());
-			//VS::get_singleton()->instance_geometry_set_baked_light_sampler(instance, RID() );
+			// VS::get_singleton()->instance_geometry_set_baked_light_sampler(instance, RID() );
 
 			// the vi visible flag is always set to invisible when outside the tree,
 			// so it can detect re-entering the tree and becoming visible, and send
@@ -322,7 +322,7 @@ void GeometryInstance::_bind_methods() {
 	ADD_PROPERTY(PropertyInfo(Variant::INT, "lod_max_distance", PROPERTY_HINT_RANGE, "0,32768,0.01"), "set_lod_max_distance", "get_lod_max_distance");
 	ADD_PROPERTY(PropertyInfo(Variant::INT, "lod_max_hysteresis", PROPERTY_HINT_RANGE, "0,32768,0.01"), "set_lod_max_hysteresis", "get_lod_max_hysteresis");
 
-	//ADD_SIGNAL( MethodInfo("visibility_changed"));
+	// ADD_SIGNAL( MethodInfo("visibility_changed"));
 
 	BIND_ENUM_CONSTANT(LIGHTMAP_SCALE_1X);
 	BIND_ENUM_CONSTANT(LIGHTMAP_SCALE_2X);
@@ -354,5 +354,5 @@ GeometryInstance::GeometryInstance() {
 	extra_cull_margin = 0;
 	generate_lightmap = true;
 	lightmap_scale = LightmapScale::LIGHTMAP_SCALE_1X;
-	//VS::get_singleton()->instance_geometry_set_baked_light_texture_index(get_instance(),0);
+	// VS::get_singleton()->instance_geometry_set_baked_light_texture_index(get_instance(),0);
 }

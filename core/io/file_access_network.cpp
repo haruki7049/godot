@@ -35,8 +35,8 @@
 #include "core/os/os.h"
 #include "core/project_settings.h"
 
-//#define DEBUG_PRINT(m_p) print_line(m_p)
-//#define DEBUG_TIME(m_what) printf("MS: %s - %lli\n",m_what,OS::get_singleton()->get_ticks_usec());
+// #define DEBUG_PRINT(m_p) print_line(m_p)
+// #define DEBUG_TIME(m_what) printf("MS: %s - %lli\n",m_what,OS::get_singleton()->get_ticks_usec());
 #define DEBUG_PRINT(m_p)
 #define DEBUG_TIME(m_what)
 
@@ -82,7 +82,7 @@ void FileAccessNetworkClient::_thread_func() {
 		DEBUG_PRINT("SEM WAIT - " + itos(sem->get()));
 		sem.wait();
 		DEBUG_TIME("sem_unlock");
-		//DEBUG_PRINT("semwait returned "+itos(werr));
+		// DEBUG_PRINT("semwait returned "+itos(werr));
 		DEBUG_PRINT("MUTEX LOCK " + itos(lockcount));
 		lock_mutex();
 		DEBUG_PRINT("MUTEX PASS");
@@ -140,7 +140,7 @@ void FileAccessNetworkClient::_thread_func() {
 				block.resize(len);
 				client->get_data(block.ptrw(), len);
 
-				if (fa) { //may have been queued
+				if (fa) { // may have been queued
 					fa->_set_block(offset, block);
 				}
 
@@ -182,7 +182,7 @@ Error FileAccessNetworkClient::connect(const String &p_host, int p_port, const S
 	Error err = client->connect_to_host(ip, p_port);
 	ERR_FAIL_COND_V_MSG(err != OK, err, "Cannot connect to host with IP: " + String(ip) + " and port: " + itos(p_port));
 	while (client->get_status() == StreamPeerTCP::STATUS_CONNECTING) {
-		//DEBUG_PRINT("trying to connect....");
+		// DEBUG_PRINT("trying to connect....");
 		OS::get_singleton()->delay_usec(1000);
 	}
 
@@ -277,11 +277,11 @@ Error FileAccessNetwork::_open(const String &p_path, int p_mode_flags) {
 	last_page = -1;
 	last_page_buff = nullptr;
 
-	//buffers.clear();
+	// buffers.clear();
 	nc->unlock_mutex();
 	DEBUG_PRINT("OPEN POST");
 	DEBUG_TIME("open_post");
-	nc->sem.post(); //awaiting answer
+	nc->sem.post(); // awaiting answer
 	DEBUG_PRINT("WAIT...");
 	sem.wait();
 	DEBUG_TIME("open_end");
@@ -468,7 +468,7 @@ Error FileAccessNetwork::_set_unix_permissions(const String &p_file, uint32_t p_
 
 void FileAccessNetwork::configure() {
 	GLOBAL_DEF("network/remote_fs/page_size", 65536);
-	ProjectSettings::get_singleton()->set_custom_property_info("network/remote_fs/page_size", PropertyInfo(Variant::INT, "network/remote_fs/page_size", PROPERTY_HINT_RANGE, "1,65536,1,or_greater")); //is used as denominator and can't be zero
+	ProjectSettings::get_singleton()->set_custom_property_info("network/remote_fs/page_size", PropertyInfo(Variant::INT, "network/remote_fs/page_size", PROPERTY_HINT_RANGE, "1,65536,1,or_greater")); // is used as denominator and can't be zero
 	GLOBAL_DEF("network/remote_fs/page_read_ahead", 4);
 	ProjectSettings::get_singleton()->set_custom_property_info("network/remote_fs/page_read_ahead", PropertyInfo(Variant::INT, "network/remote_fs/page_read_ahead", PROPERTY_HINT_RANGE, "0,8,1,or_greater"));
 }

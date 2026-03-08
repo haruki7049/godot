@@ -603,7 +603,7 @@ public:
 
 	virtual AABB particles_get_current_aabb(RID p_particles) = 0;
 
-	virtual void particles_set_emission_transform(RID p_particles, const Transform &p_transform) = 0; //this is only used for 2D, in 3D it's automatic
+	virtual void particles_set_emission_transform(RID p_particles, const Transform &p_transform) = 0; // this is only used for 2D, in 3D it's automatic
 
 	/* CAMERA API */
 
@@ -640,7 +640,7 @@ public:
 
 	enum ViewportUpdateMode {
 		VIEWPORT_UPDATE_DISABLED,
-		VIEWPORT_UPDATE_ONCE, //then goes to disabled, must be manually updated
+		VIEWPORT_UPDATE_ONCE, // then goes to disabled, must be manually updated
 		VIEWPORT_UPDATE_WHEN_VISIBLE, // default
 		VIEWPORT_UPDATE_ALWAYS
 	};
@@ -753,9 +753,9 @@ public:
 	virtual void environment_set_ambient_light(RID p_env, const Color &p_color, float p_energy = 1.0, float p_sky_contribution = 0.0) = 0;
 	virtual void environment_set_camera_feed_id(RID p_env, int p_camera_feed_id) = 0;
 
-	//set default SSAO options
-	//set default SSR options
-	//set default SSSSS options
+	// set default SSAO options
+	// set default SSR options
+	// set default SSSSS options
 
 	enum EnvironmentDOFBlurQuality {
 		ENV_DOF_BLUR_QUALITY_LOW,
@@ -1206,7 +1206,7 @@ VARIANT_ENUM_CAST(VisualServer::InstanceFlags);
 VARIANT_ENUM_CAST(VisualServer::ShadowCastingSetting);
 VARIANT_ENUM_CAST(VisualServer::TextureType);
 
-//typedef VisualServer VS; // makes it easier to use
+// typedef VisualServer VS; // makes it easier to use
 #define VS VisualServer
 
 #endif

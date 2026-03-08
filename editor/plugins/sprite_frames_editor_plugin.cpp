@@ -131,7 +131,7 @@ void SpriteFramesEditor::_sheet_preview_input(const Ref<InputEvent> &p_event) {
 
 		if (idx != -1) {
 			if (mb->get_shift() && last_frame_selected >= 0) {
-				//select multiple
+				// select multiple
 				int from = idx;
 				int to = last_frame_selected;
 				if (from > to) {
@@ -310,10 +310,10 @@ void SpriteFramesEditor::_prepare_sprite_sheet(const String &p_file) {
 	bool new_texture = texture != split_sheet_preview->get_texture();
 	split_sheet_preview->set_texture(texture);
 	if (new_texture) {
-		//different texture, reset to 4x4
+		// different texture, reset to 4x4
 		split_sheet_h->set_value(4);
 		split_sheet_v->set_value(4);
-		//reset zoom
+		// reset zoom
 		_sheet_zoom_reset();
 	}
 	split_sheet_dialog->popup_centered_ratio(0.65);
@@ -363,10 +363,10 @@ void SpriteFramesEditor::_file_load_request(const PoolVector<String> &p_path, in
 			dialog->set_text(TTR("ERROR: Couldn't load frame resource!"));
 			dialog->set_title(TTR("Error!"));
 
-			//dialog->get_cancel()->set_text("Close");
+			// dialog->get_cancel()->set_text("Close");
 			dialog->get_ok()->set_text(TTR("Close"));
 			dialog->popup_centered_minsize();
-			return; ///beh should show an error i guess
+			return; /// beh should show an error i guess
 		}
 
 		resources.push_back(resource);
@@ -415,10 +415,10 @@ void SpriteFramesEditor::_paste_pressed() {
 	if (!r.is_valid()) {
 		dialog->set_text(TTR("Resource clipboard is empty or not a texture!"));
 		dialog->set_title(TTR("Error!"));
-		//dialog->get_cancel()->set_text("Close");
+		// dialog->get_cancel()->set_text("Close");
 		dialog->get_ok()->set_text(TTR("Close"));
 		dialog->popup_centered_minsize();
-		return; ///beh should show an error i guess
+		return; /// beh should show an error i guess
 	}
 
 	undo_redo->create_action(TTR("Paste Frame"));
@@ -859,7 +859,7 @@ void SpriteFramesEditor::_update_library(bool p_skip_selector) {
 	anim_loop->set_pressed(frames->get_animation_loop(edited_anim));
 
 	updating = false;
-	//player->add_resource("default",resource);
+	// player->add_resource("default",resource);
 }
 
 void SpriteFramesEditor::edit(SpriteFrames *p_frames) {
@@ -979,7 +979,7 @@ void SpriteFramesEditor::drop_data_fw(const Point2 &p_point, const Variant &p_da
 				reorder = true;
 			}
 
-			if (reorder) { //drop is from reordering frames
+			if (reorder) { // drop is from reordering frames
 				int from_frame = -1;
 				if (d.has("frame")) {
 					from_frame = d["frame"];

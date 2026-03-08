@@ -225,7 +225,7 @@ class EditorAssetLibrary : public PanelContainer {
 	static const char *sort_text[SORT_MAX];
 	static const char *support_key[SUPPORT_MAX];
 
-	///MainListing
+	/// MainListing
 
 	enum ImageType {
 		IMAGE_QUEUE_ICON,
@@ -318,9 +318,9 @@ public:
 	virtual void edit(Object *p_object) {}
 	virtual bool handles(Object *p_object) const { return false; }
 	virtual void make_visible(bool p_visible);
-	//virtual bool get_remove_list(List<Node*> *p_list) { return canvas_item_editor->get_remove_list(p_list); }
-	//virtual Dictionary get_state() const;
-	//virtual void set_state(const Dictionary& p_state);
+	// virtual bool get_remove_list(List<Node*> *p_list) { return canvas_item_editor->get_remove_list(p_list); }
+	// virtual Dictionary get_state() const;
+	// virtual void set_state(const Dictionary& p_state);
 
 	AssetLibraryEditorPlugin(EditorNode *p_node);
 	~AssetLibraryEditorPlugin();

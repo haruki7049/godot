@@ -190,7 +190,7 @@ public:
 		BlockNode *initializer;
 		BlockNode *ready;
 		ClassNode *owner;
-		//Vector<Node*> initializers;
+		// Vector<Node*> initializers;
 		int end_line;
 
 		ClassNode() {
@@ -240,9 +240,9 @@ public:
 		bool can_break = false;
 		bool can_continue = false;
 
-		Node *if_condition; //tiny hack to improve code completion on if () blocks
+		Node *if_condition; // tiny hack to improve code completion on if () blocks
 
-		//the following is useful for code completion
+		// the following is useful for code completion
 		List<BlockNode *> sub_blocks;
 		int end_line;
 		BlockNode() {
@@ -338,21 +338,21 @@ public:
 
 	struct OperatorNode : public Node {
 		enum Operator {
-			//call/constructor operator
+			// call/constructor operator
 			OP_CALL,
 			OP_PARENT_CALL,
 			OP_YIELD,
 			OP_IS,
 			OP_IS_BUILTIN,
-			//indexing operator
+			// indexing operator
 			OP_INDEX,
 			OP_INDEX_NAMED,
-			//unary operators
+			// unary operators
 			OP_NEG,
 			OP_POS,
 			OP_NOT,
 			OP_BIT_INVERT,
-			//binary operators (in precedence order)
+			// binary operators (in precedence order)
 			OP_IN,
 			OP_EQUAL,
 			OP_NOT_EQUAL,
@@ -384,7 +384,7 @@ public:
 			OP_BIT_AND,
 			OP_BIT_OR,
 			OP_BIT_XOR,
-			//ternary operators
+			// ternary operators
 			OP_TERNARY_IF,
 			OP_TERNARY_ELSE,
 		};
@@ -451,7 +451,7 @@ public:
 
 		MatchNode *match;
 
-		ControlFlowNode *_else; //used for if
+		ControlFlowNode *_else; // used for if
 		ControlFlowNode() {
 			type = TYPE_CONTROL_FLOW;
 			cf_type = CF_IF;
@@ -667,7 +667,7 @@ public:
 	bool is_tool_script() const;
 	const Node *get_parse_tree() const;
 
-	//completion info
+	// completion info
 
 	CompletionType get_completion_type();
 	StringName get_completion_cursor();

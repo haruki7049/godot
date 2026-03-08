@@ -212,7 +212,7 @@ bool MainTimerSync::DeltaSmoother::fps_allows_smoothing(int64_t p_delta) {
 				double fps = 1000000.0 / time_passed;
 				double ratio = fps / (double)_estimated_fps;
 
-				//print_line("ratio : " + String(Variant(ratio)));
+				// print_line("ratio : " + String(Variant(ratio)));
 
 				if ((ratio > 0.95) && (ratio < 1.05)) {
 					_measurement_allows_smoothing = true;

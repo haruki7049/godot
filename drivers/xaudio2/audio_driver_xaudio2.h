@@ -53,7 +53,7 @@ class AudioDriverXAudio2 : public AudioDriver {
 			SetEvent(buffer_end_event);
 		}
 
-		//Unused methods are stubs
+		// Unused methods are stubs
 		void STDMETHODCALLTYPE OnStreamEnd() {}
 		void STDMETHODCALLTYPE OnVoiceProcessingPassEnd() {}
 		void STDMETHODCALLTYPE OnVoiceProcessingPassStart(UINT32 SamplesRequired) {}

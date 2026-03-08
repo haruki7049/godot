@@ -78,4 +78,4 @@ bool DirAccessOSX::is_hidden(const String &p_name) {
 	return [hidden boolValue];
 }
 
-#endif //posix_enabled
+#endif // posix_enabled

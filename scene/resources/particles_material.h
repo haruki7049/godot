@@ -240,7 +240,7 @@ private:
 
 	float lifetime_randomness;
 
-	//do not save emission points here
+	// do not save emission points here
 
 protected:
 	static void _bind_methods();

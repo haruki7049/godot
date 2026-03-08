@@ -351,7 +351,7 @@ void BaseButton::_unhandled_input(Ref<InputEvent> p_event) {
 
 	if (!is_disabled() && is_visible_in_tree() && !p_event->is_echo() && shortcut.is_valid() && shortcut->is_shortcut(p_event)) {
 		if (get_viewport()->get_modal_stack_top() && !get_viewport()->get_modal_stack_top()->is_a_parent_of(this)) {
-			return; //ignore because of modal window
+			return; // ignore because of modal window
 		}
 
 		on_action_event(p_event);
@@ -381,7 +381,7 @@ void BaseButton::set_button_group(const Ref<ButtonGroup> &p_group) {
 		button_group->buttons.insert(this);
 	}
 
-	update(); //checkbox changes to radio if set a buttongroup
+	update(); // checkbox changes to radio if set a buttongroup
 }
 
 Ref<ButtonGroup> BaseButton::get_button_group() const {

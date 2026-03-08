@@ -21,8 +21,8 @@ precision mediump float;
 
 in vec2 uv_interp;
 /* clang-format on */
-uniform sampler2D source_specular; //texunit:0
-uniform sampler2D source_ssr; //texunit:1
+uniform sampler2D source_specular; // texunit:0
+uniform sampler2D source_ssr; // texunit:1
 
 uniform vec2 pixel_size;
 

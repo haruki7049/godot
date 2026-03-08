@@ -46,7 +46,7 @@
  definition of invalidation: global is invalid
 
  1) If a node sets a LOCAL, it produces an invalidation of everything above
-    a) If above is invalid, don't keep invalidating upwards
+	a) If above is invalid, don't keep invalidating upwards
  2) If a node sets a GLOBAL, it is converted to LOCAL (and forces validation of everything pending below)
 
  drawback: setting/reading globals is useful and used very very often, and using affine inverses is slow
@@ -58,7 +58,7 @@
  definition of invalidation: NONE dirty, LOCAL dirty, GLOBAL dirty
 
  1) If a node sets a LOCAL, it must climb the tree and set it as GLOBAL dirty
-    a) marking GLOBALs as dirty up all the tree must be done always
+	a) marking GLOBALs as dirty up all the tree must be done always
  2) If a node sets a GLOBAL, it marks local as dirty, and that's all?
 
  //is clearing the dirty state correct in this case?
@@ -104,7 +104,7 @@ void Spatial::_propagate_transform_changed(Spatial *p_origin) {
 
 	for (List<Spatial *>::Element *E = data.children.front(); E; E = E->next()) {
 		if (E->get()->data.toplevel_active) {
-			continue; //don't propagate to a toplevel
+			continue; // don't propagate to a toplevel
 		}
 		E->get()->_propagate_transform_changed(p_origin);
 	}
@@ -158,12 +158,12 @@ void Spatial::_notification(int p_what) {
 			if (data.toplevel && !Engine::get_singleton()->is_editor_hint()) {
 				if (data.parent) {
 					data.local_transform = data.parent->get_global_transform() * get_transform();
-					data.dirty = DIRTY_VECTORS; //global is always dirty upon entering a scene
+					data.dirty = DIRTY_VECTORS; // global is always dirty upon entering a scene
 				}
 				data.toplevel_active = true;
 			}
 
-			data.dirty |= DIRTY_GLOBAL; //global is always dirty upon entering a scene
+			data.dirty |= DIRTY_GLOBAL; // global is always dirty upon entering a scene
 			_notify_dirty();
 
 			notification(NOTIFICATION_ENTER_WORLD);
@@ -197,7 +197,7 @@ void Spatial::_notification(int p_what) {
 			}
 #ifdef TOOLS_ENABLED
 			if (Engine::get_singleton()->is_editor_hint() && get_tree()->is_node_being_edited(this)) {
-				//get_scene()->call_group(SceneMainLoop::GROUP_CALL_REALTIME,SceneStringNames::get_singleton()->_spatial_editor_group,SceneStringNames::get_singleton()->_request_gizmo,this);
+				// get_scene()->call_group(SceneMainLoop::GROUP_CALL_REALTIME,SceneStringNames::get_singleton()->_spatial_editor_group,SceneStringNames::get_singleton()->_request_gizmo,this);
 				get_tree()->call_group_flags(0, SceneStringNames::get_singleton()->_spatial_editor_group, SceneStringNames::get_singleton()->_request_gizmo, this);
 				if (!data.gizmo_disabled) {
 					if (data.gizmo.is_valid()) {
@@ -707,7 +707,7 @@ bool Spatial::is_local_transform_notification_enabled() const {
 void Spatial::force_update_transform() {
 	ERR_FAIL_COND(!is_inside_tree());
 	if (!xform_change.in_list()) {
-		return; //nothing to update
+		return; // nothing to update
 	}
 	get_tree()->xform_change_list.remove(&xform_change);
 
@@ -782,7 +782,7 @@ void Spatial::_bind_methods() {
 	BIND_CONSTANT(NOTIFICATION_ENTER_GAMEPLAY);
 	BIND_CONSTANT(NOTIFICATION_EXIT_GAMEPLAY);
 
-	//ADD_PROPERTY( PropertyInfo(Variant::TRANSFORM,"transform/global",PROPERTY_HINT_NONE, "", PROPERTY_USAGE_EDITOR ), "set_global_transform", "get_global_transform") ;
+	// ADD_PROPERTY( PropertyInfo(Variant::TRANSFORM,"transform/global",PROPERTY_HINT_NONE, "", PROPERTY_USAGE_EDITOR ), "set_global_transform", "get_global_transform") ;
 	ADD_GROUP("Transform", "");
 	ADD_PROPERTY(PropertyInfo(Variant::TRANSFORM, "global_transform", PROPERTY_HINT_NONE, "", 0), "set_global_transform", "get_global_transform");
 	ADD_PROPERTY(PropertyInfo(Variant::VECTOR3, "translation", PROPERTY_HINT_NONE, "", PROPERTY_USAGE_EDITOR), "set_translation", "get_translation");

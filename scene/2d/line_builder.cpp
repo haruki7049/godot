@@ -147,8 +147,8 @@ void LineBuilder::build() {
 							 texture_mode == Line2D::LINE_TEXTURE_STRETCH;
 	if (distance_required) {
 		total_distance = calculate_total_distance(points);
-		//Adjust totalDistance.
-		// The line's outer length will be a little higher due to begin and end caps
+		// Adjust totalDistance.
+		//  The line's outer length will be a little higher due to begin and end caps
 		if (begin_cap_mode == Line2D::LINE_CAP_BOX || begin_cap_mode == Line2D::LINE_CAP_ROUND) {
 			if (retrieve_curve) {
 				total_distance += width * curve->interpolate_baked(0.f) * 0.5f;

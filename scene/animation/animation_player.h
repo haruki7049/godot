@@ -113,7 +113,7 @@ private:
 
 		struct PropertyAnim {
 			TrackNodeCache *owner;
-			SpecialProperty special; //small optimization
+			SpecialProperty special; // small optimization
 			Vector<StringName> subpath;
 			Object *object;
 			Variant value_accum;

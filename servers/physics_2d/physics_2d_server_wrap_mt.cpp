@@ -70,7 +70,7 @@ void Physics2DServerWrapMT::step(real_t p_step) {
 	if (create_thread) {
 		command_queue.push(this, &Physics2DServerWrapMT::thread_step, p_step);
 	} else {
-		command_queue.flush_all(); //flush all pending from other threads
+		command_queue.flush_all(); // flush all pending from other threads
 		physics_2d_server->step(p_step);
 	}
 }
@@ -80,7 +80,7 @@ void Physics2DServerWrapMT::sync() {
 		if (first_frame) {
 			first_frame = false;
 		} else {
-			step_sem.wait(); //must not wait if a step was not issued
+			step_sem.wait(); // must not wait if a step was not issued
 		}
 	}
 
@@ -97,7 +97,7 @@ void Physics2DServerWrapMT::end_sync() {
 
 void Physics2DServerWrapMT::init() {
 	if (create_thread) {
-		//OS::get_singleton()->release_rendering_thread();
+		// OS::get_singleton()->release_rendering_thread();
 		thread.start(_thread_callback, this);
 		while (!step_thread_up.is_set()) {
 			OS::get_singleton()->delay_usec(1000);
@@ -149,5 +149,5 @@ Physics2DServerWrapMT::Physics2DServerWrapMT(Physics2DServer *p_contained, bool 
 
 Physics2DServerWrapMT::~Physics2DServerWrapMT() {
 	memdelete(physics_2d_server);
-	//finish();
+	// finish();
 }

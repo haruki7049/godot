@@ -71,8 +71,8 @@ class VisualServerRaster : public VisualServer {
 	static void _changes_changed() {}
 
 public:
-	//if editor is redrawing when it shouldn't, enable this and put a breakpoint in _changes_changed()
-	//#define DEBUG_CHANGES
+	// if editor is redrawing when it shouldn't, enable this and put a breakpoint in _changes_changed()
+	// #define DEBUG_CHANGES
 
 #ifdef DEBUG_CHANGES
 	_FORCE_INLINE_ static void redraw_request() {
@@ -135,7 +135,7 @@ public:
 #define BIND13(m_name, m_type1, m_type2, m_type3, m_type4, m_type5, m_type6, m_type7, m_type8, m_type9, m_type10, m_type11, m_type12, m_type13) \
 	void m_name(m_type1 arg1, m_type2 arg2, m_type3 arg3, m_type4 arg4, m_type5 arg5, m_type6 arg6, m_type7 arg7, m_type8 arg8, m_type9 arg9, m_type10 arg10, m_type11 arg11, m_type12 arg12, m_type13 arg13) { DISPLAY_CHANGED BINDBASE->m_name(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13); }
 
-//from now on, calls forwarded to this singleton
+// from now on, calls forwarded to this singleton
 #define BINDBASE VSG::storage
 
 	/* TEXTURE API */
@@ -428,7 +428,7 @@ public:
 	BIND2(particles_set_emission_transform, RID, const Transform &)
 
 #undef BINDBASE
-//from now on, calls forwarded to this singleton
+// from now on, calls forwarded to this singleton
 #define BINDBASE VSG::scene
 
 	/* CAMERA API */
@@ -443,7 +443,7 @@ public:
 	BIND2(camera_set_use_vertical_aspect, RID, bool)
 
 #undef BINDBASE
-//from now on, calls forwarded to this singleton
+// from now on, calls forwarded to this singleton
 #define BINDBASE VSG::viewport
 
 	/* VIEWPORT TARGET API */
@@ -498,7 +498,7 @@ public:
 	/* ENVIRONMENT API */
 
 #undef BINDBASE
-//from now on, calls forwarded to this singleton
+// from now on, calls forwarded to this singleton
 #define BINDBASE VSG::scene_render
 
 	BIND0R(RID, environment_create)
@@ -621,7 +621,7 @@ public:
 	BIND2(instance_geometry_set_as_instance_lod, RID, RID)
 
 #undef BINDBASE
-//from now on, calls forwarded to this singleton
+// from now on, calls forwarded to this singleton
 #define BINDBASE VSG::canvas
 
 	/* CANVAS (2D) */

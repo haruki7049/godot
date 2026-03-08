@@ -55,7 +55,7 @@ Written by: Marcus Hennix
 #include "servers/physics/joints/jacobian_entry_sw.h"
 #include "servers/physics/joints_sw.h"
 
-///ConeTwistJointSW can be used to simulate ragdoll joints (upper arm, leg etc)
+/// ConeTwistJointSW can be used to simulate ragdoll joints (upper arm, leg etc)
 class ConeTwistJointSW : public JointSW {
 #ifdef IN_PARALLELL_SOLVER
 public:
@@ -70,7 +70,7 @@ public:
 		BodySW *_arr[2];
 	};
 
-	JacobianEntrySW m_jac[3]; //3 orthogonal linear constraints
+	JacobianEntrySW m_jac[3]; // 3 orthogonal linear constraints
 
 	real_t m_appliedImpulse;
 	Transform m_rbAFrame;

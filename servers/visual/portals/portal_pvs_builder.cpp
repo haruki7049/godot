@@ -94,7 +94,7 @@ void PVSBuilder::create_secondary_pvs(int p_room_id, const LocalVector<Neighbour
 		for (int n = 0; n < neigh.room_ids.size(); n++) {
 			int neigh_room_id = neigh.room_ids[n];
 
-			//log("\tconsidering neigh " + itos(neigh_room_id));
+			// log("\tconsidering neigh " + itos(neigh_room_id));
 
 			if (r_bitfield_rooms.check_and_set(neigh_room_id)) {
 				// add to the secondary pvs for this room
@@ -491,7 +491,7 @@ void PVSBuilder::trace_rooms_recursive(int p_depth, int p_source_room_id, int p_
 			const VSPortal &first_portal = _portal_renderer->get_portal(p_first_portal_id);
 			portal.add_pvs_planes(first_portal, p_first_portal_outgoing, planes, outgoing != 0);
 
-//#define GODOT_PVS_EXTRA_REJECT_TEST
+// #define GODOT_PVS_EXTRA_REJECT_TEST
 #ifdef GODOT_PVS_EXTRA_REJECT_TEST
 			// extra reject test for pvs - was the previous portal points outside the planes formed by the new portal?
 			// not fully tested and not yet found a situation where needed, but will leave in in case testers find

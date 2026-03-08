@@ -153,7 +153,7 @@ struct Rect2 {
 		new_rect.size.x = MAX(p_rect.position.x + p_rect.size.x, position.x + size.x);
 		new_rect.size.y = MAX(p_rect.position.y + p_rect.size.y, position.y + size.y);
 
-		new_rect.size = new_rect.size - new_rect.position; //make relative again
+		new_rect.size = new_rect.size - new_rect.position; // make relative again
 
 		return new_rect;
 	};
@@ -217,7 +217,7 @@ struct Rect2 {
 		return r;
 	}
 
-	inline void expand_to(const Vector2 &p_vector) { //in place function for speed
+	inline void expand_to(const Vector2 &p_vector) { // in place function for speed
 
 		Vector2 begin = position;
 		Vector2 end = position + size;
@@ -324,7 +324,7 @@ struct Rect2i {
 		new_rect.size.x = MAX(p_rect.position.x + p_rect.size.x, position.x + size.x);
 		new_rect.size.y = MAX(p_rect.position.y + p_rect.size.y, position.y + size.y);
 
-		new_rect.size = new_rect.size - new_rect.position; //make relative again
+		new_rect.size = new_rect.size - new_rect.position; // make relative again
 
 		return new_rect;
 	};

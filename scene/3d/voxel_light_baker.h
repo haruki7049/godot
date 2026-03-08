@@ -60,11 +60,11 @@ private:
 
 	struct Cell {
 		uint32_t children[8];
-		float albedo[3]; //albedo in RGB24
-		float emission[3]; //accumulated light in 16:16 fixed point (needs to be integer for moving lights fast)
+		float albedo[3]; // albedo in RGB24
+		float emission[3]; // accumulated light in 16:16 fixed point (needs to be integer for moving lights fast)
 		float normal[3];
 		uint32_t used_sides;
-		float alpha; //used for upsampling
+		float alpha; // used for upsampling
 		int level;
 
 		Cell() {
@@ -88,8 +88,8 @@ private:
 
 	struct Light {
 		int x, y, z;
-		float accum[6][3]; //rgb anisotropic
-		float direct_accum[6][3]; //for direct bake
+		float accum[6][3]; // rgb anisotropic
+		float direct_accum[6][3]; // for direct bake
 		int next_leaf;
 		Light() {
 			x = y = z = 0;
@@ -108,7 +108,7 @@ private:
 	Vector<Light> bake_light;
 
 	struct MaterialCache {
-		//128x128 textures
+		// 128x128 textures
 		Vector<Color> albedo;
 		Vector<Color> emission;
 	};

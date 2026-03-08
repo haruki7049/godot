@@ -68,4 +68,4 @@ public:
 	EditorNetworkProfiler();
 };
 
-#endif //EDITORNETWORKPROFILER_H
+#endif // EDITORNETWORKPROFILER_H

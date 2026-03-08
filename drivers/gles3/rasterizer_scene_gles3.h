@@ -113,7 +113,7 @@ public:
 		TonemapShaderGLES3 tonemap_shader;
 
 		struct SceneDataUBO {
-			//this is a std140 compatible struct. Please read the OpenGL 3.3 Specification spec before doing any changes
+			// this is a std140 compatible struct. Please read the OpenGL 3.3 Specification spec before doing any changes
 			float projection_matrix[16];
 			float inv_projection_matrix[16];
 			float camera_inverse_matrix[16];
@@ -242,7 +242,7 @@ public:
 			Vector<Shadow> shadows;
 
 			Quadrant() {
-				subdivision = 0; //not in use
+				subdivision = 0; // not in use
 			}
 
 		} quadrants[4];
@@ -341,10 +341,10 @@ public:
 		float box_extents[4];
 		float box_ofs[4];
 		float params[4]; // intensity, 0, 0, boxproject
-		float ambient[4]; //color, probe contrib
+		float ambient[4]; // color, probe contrib
 		float atlas_clamp[4];
-		float local_matrix[16]; //up to here for spot and omni, rest is for directional
-		//notes: for ambientblend, use distance to edge to blend between already existing global environment
+		float local_matrix[16]; // up to here for spot and omni, rest is for directional
+		// notes: for ambientblend, use distance to edge to blend between already existing global environment
 	};
 
 	mutable RID_Owner<ReflectionProbeInstance> reflection_probe_instance_owner;
@@ -569,12 +569,12 @@ public:
 		float light_pos_inv_radius[4];
 		float light_direction_attenuation[4];
 		float light_color_energy[4];
-		float light_params[4]; //spot attenuation, spot angle, specular, shadow enabled
+		float light_params[4]; // spot attenuation, spot angle, specular, shadow enabled
 		float light_clamp[4];
 		float light_shadow_color_contact[4];
 		union {
 			struct {
-				float matrix1[16]; //up to here for spot and omni, rest is for directional
+				float matrix1[16]; // up to here for spot and omni, rest is for directional
 				float matrix2[16];
 				float matrix3[16];
 				float matrix4[16];
@@ -617,7 +617,7 @@ public:
 
 		Rect2 directional_rect;
 
-		Set<RID> shadow_atlases; //shadow atlases where this light is registered
+		Set<RID> shadow_atlases; // shadow atlases where this light is registered
 
 		LightInstance() {}
 	};
@@ -666,10 +666,10 @@ public:
 
 			SORT_KEY_PRIORITY_SHIFT = 56,
 			SORT_KEY_PRIORITY_MASK = 0xFF,
-			//depth layer for opaque (56-52)
+			// depth layer for opaque (56-52)
 			SORT_KEY_OPAQUE_DEPTH_LAYER_SHIFT = 52,
 			SORT_KEY_OPAQUE_DEPTH_LAYER_MASK = 0xF,
-//64 bits unsupported in MSVC
+// 64 bits unsupported in MSVC
 #define SORT_KEY_UNSHADED_FLAG (uint64_t(1) << 50)
 #define SORT_KEY_NO_DIRECTIONAL_FLAG (uint64_t(1) << 49)
 #define SORT_KEY_LIGHTMAP_CAPTURE_FLAG (uint64_t(1) << 48)
@@ -679,13 +679,13 @@ public:
 #define SORT_KEY_VERTEX_LIT_FLAG (uint64_t(1) << 44)
 			SORT_KEY_SHADING_SHIFT = 44,
 			SORT_KEY_SHADING_MASK = 127,
-			//44-28 material index
+			// 44-28 material index
 			SORT_KEY_MATERIAL_INDEX_SHIFT = 28,
-			//28-8 geometry index
+			// 28-8 geometry index
 			SORT_KEY_GEOMETRY_INDEX_SHIFT = 8,
-			//bits 5-7 geometry type
+			// bits 5-7 geometry type
 			SORT_KEY_GEOMETRY_TYPE_SHIFT = 5,
-			//bits 0-5 for flags
+			// bits 0-5 for flags
 			SORT_KEY_OPAQUE_PRE_PASS = 8,
 			SORT_KEY_CULL_DISABLED_FLAG = 4,
 			SORT_KEY_SKELETON_FLAG = 2,
@@ -717,7 +717,7 @@ public:
 			alpha_element_count = 0;
 		}
 
-		//should eventually be replaced by radix
+		// should eventually be replaced by radix
 
 		struct SortByKey {
 			_FORCE_INLINE_ bool operator()(const Element *A, const Element *B) const {
@@ -740,7 +740,7 @@ public:
 			}
 		};
 
-		void sort_by_depth(bool p_alpha) { //used for shadows
+		void sort_by_depth(bool p_alpha) { // used for shadows
 
 			SortArray<Element *, SortByDepth> sorter;
 			if (p_alpha) {
@@ -762,7 +762,7 @@ public:
 			}
 		};
 
-		void sort_by_reverse_depth_and_priority(bool p_alpha) { //used for alpha
+		void sort_by_reverse_depth_and_priority(bool p_alpha) { // used for alpha
 
 			SortArray<Element *, SortByReverseDepthAndPriority> sorter;
 			if (p_alpha) {
@@ -839,7 +839,7 @@ public:
 	void _setup_reflections(RID *p_reflection_probe_cull_result, int p_reflection_probe_cull_count, const Transform &p_camera_inverse_transform, const CameraMatrix &p_camera_projection, RID p_reflection_atlas, Environment *p_env);
 
 	void _copy_screen(bool p_invalidate_color = false, bool p_invalidate_depth = false);
-	void _copy_texture_to_front_buffer(GLuint p_texture); //used for debug
+	void _copy_texture_to_front_buffer(GLuint p_texture); // used for debug
 
 	void _fill_render_list(InstanceBase **p_cull_result, int p_cull_count, bool p_depth_pass, bool p_shadow_pass);
 

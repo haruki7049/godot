@@ -94,7 +94,7 @@ private:
 		PoolVector<float>::Write tansw;
 	};
 
-	//mikktspace callbacks
+	// mikktspace callbacks
 	static int mikktGetNumFaces(const SMikkTSpaceContext *pContext);
 	static int mikktGetNumVerticesOfFace(const SMikkTSpaceContext *pContext, const int iFace);
 	static void mikktGetPosition(const SMikkTSpaceContext *pContext, float fvPosOut[], const int iFace, const int iVert);

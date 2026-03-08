@@ -100,17 +100,17 @@ void PivotTransform::ReadTransformChain() {
 
 	if (geometric_rotation != Quat()) {
 		print_error("geometric rotation is unsupported!");
-		//CRASH_COND(true);
+		// CRASH_COND(true);
 	}
 
 	if (!geometric_scaling.is_equal_approx(Vector3(1, 1, 1))) {
 		print_error("geometric scaling is unsupported!");
-		//CRASH_COND(true);
+		// CRASH_COND(true);
 	}
 
 	if (!geometric_translation.is_equal_approx(Vector3(0, 0, 0))) {
 		print_error("geometric translation is unsupported.");
-		//CRASH_COND(true);
+		// CRASH_COND(true);
 	}
 }
 
@@ -185,7 +185,7 @@ Transform PivotTransform::ComputeGlobalTransform(Vector3 p_translation, Quat p_r
 	parent_global_rotation_m.basis.set_quat(parent_global_rotation);
 	local_rotation_m = Rpre * R * Rpost;
 
-	//Basis parent_global_rotation = Basis(parent_global_xform.get_basis().get_rotation_quat().normalized());
+	// Basis parent_global_rotation = Basis(parent_global_xform.get_basis().get_rotation_quat().normalized());
 
 	Transform local_shear_scaling, parent_shear_scaling, parent_shear_rotation, parent_shear_translation;
 	Vector3 parent_translation = parent_global_xform.get_origin();
@@ -205,7 +205,7 @@ Transform PivotTransform::ComputeGlobalTransform(Vector3 p_translation, Quat p_r
 		global_rotation_scale = parent_global_rotation_m * local_rotation_m * parent_global_shear_m_noLocal * local_shear_scaling;
 	}
 	Transform local_transform = T * Roff * Rp * Rpre * R * Rpost.affine_inverse() * Rp.affine_inverse() * Soff * Sp * S * Sp.affine_inverse();
-	//Transform local_translation_pivoted = Transform(Basis(), LocalTransform.origin);
+	// Transform local_translation_pivoted = Transform(Basis(), LocalTransform.origin);
 
 	// manual hack to force SSC not to be compensated for - until we can handle it properly with tests
 	return parent_global_xform * local_transform;
@@ -250,7 +250,7 @@ void PivotTransform::ComputePivotTransform() {
 	parent_global_rotation_m.basis.set_quat(parent_global_rotation);
 	local_rotation_m = Rpre * R * Rpost;
 
-	//Basis parent_global_rotation = Basis(parent_global_xform.get_basis().get_rotation_quat().normalized());
+	// Basis parent_global_rotation = Basis(parent_global_xform.get_basis().get_rotation_quat().normalized());
 
 	Transform local_shear_scaling, parent_shear_scaling, parent_shear_rotation, parent_shear_translation;
 	Vector3 parent_translation = parent_global_xform.get_origin();
@@ -276,7 +276,7 @@ void PivotTransform::ComputePivotTransform() {
 
 	Transform local_translation_pivoted = Transform(Basis(), LocalTransform.origin);
 	GlobalTransform = Transform();
-	//GlobalTransform = parent_global_xform * LocalTransform;
+	// GlobalTransform = parent_global_xform * LocalTransform;
 	Transform global_origin = Transform(Basis(), parent_translation);
 	GlobalTransform = (global_origin * local_translation_pivoted) * global_rotation_scale;
 

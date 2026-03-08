@@ -88,7 +88,7 @@ private:
 		};
 		uint32_t key;
 
-		//using a more precise comparison so the regions can be sorted later
+		// using a more precise comparison so the regions can be sorted later
 		bool operator<(const PosKey &p_k) const { return (y == p_k.y) ? x < p_k.x : y < p_k.y; }
 
 		bool operator==(const PosKey &p_k) const { return (y == p_k.y && x == p_k.x); }

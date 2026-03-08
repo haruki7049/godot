@@ -442,7 +442,7 @@ private:
 
 	static const int MAX_MATERIALS_FOR_2D = 128;
 
-	static Ref<SpatialMaterial> materials_for_2d[MAX_MATERIALS_FOR_2D]; //used by Sprite3D and other stuff
+	static Ref<SpatialMaterial> materials_for_2d[MAX_MATERIALS_FOR_2D]; // used by Sprite3D and other stuff
 
 	void _validate_high_end(const String &text, PropertyInfo &property) const;
 

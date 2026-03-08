@@ -464,7 +464,7 @@ public:
 
 		hf = (((uint16_t)sign) << 15) | (uint16_t)(mantissa);
 		*/
-			hf = 0; //denormals do not work for 3D, convert to zero
+			hf = 0; // denormals do not work for 3D, convert to zero
 		} else {
 			hf = (((uint16_t)sign) << 15) |
 				 (uint16_t)((exp - 0x38000000) >> 13) |

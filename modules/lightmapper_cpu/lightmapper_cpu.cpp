@@ -852,8 +852,8 @@ void LightmapperCPU::_compute_indirect_light(uint32_t p_idx, void *r_lightmap) {
 			direction = normal_xform.xform(axis);
 
 			// We can skip multiplying throughput by cos(theta) because de sampling PDF is also cos(theta) and they cancel each other
-			//float pdf = normal.dot(direction);
-			//throughput *= normal.dot(direction)/pdf;
+			// float pdf = normal.dot(direction);
+			// throughput *= normal.dot(direction)/pdf;
 
 			LightmapRaycaster::Ray ray(position, direction, parameters.bias);
 			bool hit = raycaster->intersect(ray);
@@ -954,7 +954,7 @@ void LightmapperCPU::_post_process(uint32_t p_idx, void *r_output) {
 					}
 					int cell_idx = indices[y * size.x + x];
 					if (cell_idx < 0) {
-						continue; //also ensures that blitted stuff is not reused
+						continue; // also ensures that blitted stuff is not reused
 					}
 
 					float dist = Vector2(i - y, j - x).length_squared();
@@ -1184,7 +1184,7 @@ void LightmapperCPU::_dilate_lightmap(Vector3 *r_lightmap, const LocalVector<int
 		for (int j = 0; j < p_size.x; j++) {
 			int idx = p_indices[i * p_size.x + j];
 			if (idx >= 0) {
-				continue; //filled, skip
+				continue; // filled, skip
 			}
 
 			Vector2i closest;
@@ -1203,7 +1203,7 @@ void LightmapperCPU::_dilate_lightmap(Vector3 *r_lightmap, const LocalVector<int
 					}
 					int cell_idx = p_indices[y * p_size.x + x];
 					if (cell_idx < 0) {
-						continue; //also ensures that blitted stuff is not reused
+						continue; // also ensures that blitted stuff is not reused
 					}
 
 					float dist = Vector2(i - y, j - x).length_squared();

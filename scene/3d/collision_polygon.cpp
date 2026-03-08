@@ -50,8 +50,8 @@ void CollisionPolygon::_build_polygon() {
 		return;
 	}
 
-	//here comes the sun, lalalala
-	//decompose concave into multiple convex polygons and add them
+	// here comes the sun, lalalala
+	// decompose concave into multiple convex polygons and add them
 
 	for (int i = 0; i < decomp.size(); i++) {
 		Ref<ConvexPolygonShape> convex = memnew(ConvexPolygonShape);

@@ -63,7 +63,7 @@ layout(location = 4) in highp vec2 uv_attrib;
 
 uniform highp vec2 color_texpixel_size;
 
-layout(std140) uniform CanvasItemData { //ubo:0
+layout(std140) uniform CanvasItemData { // ubo:0
 
 	highp mat4 projection_matrix;
 	highp float time;
@@ -97,7 +97,7 @@ uniform highp mat4 skeleton_transform_inverse;
 
 #ifdef USE_LIGHTING
 
-layout(std140) uniform LightData { //ubo:1
+layout(std140) uniform LightData { // ubo:1
 
 	// light matrices
 	highp mat4 light_matrix;
@@ -178,14 +178,14 @@ void main() {
 #endif
 
 #ifdef USE_PARTICLES
-	//scale by texture size
+	// scale by texture size
 	outvec.xy /= color_texpixel_size;
 #endif
 
 #define extra_matrix extra_matrix_instance
 
 	float point_size = 1.0;
-	//for compatibility with the fragment shader we need to use uv here
+	// for compatibility with the fragment shader we need to use uv here
 	vec2 uv = uv_interp;
 	{
 		/* clang-format off */
@@ -242,8 +242,8 @@ VERTEX_SHADER_CODE
 
 #ifdef USE_SKELETON
 
-	if (bone_weights != vec4(0.0)) { //must be a valid bone
-		//skeleton transform
+	if (bone_weights != vec4(0.0)) { // must be a valid bone
+		// skeleton transform
 
 		ivec4 bone_indicesi = ivec4(bone_indices);
 
@@ -294,7 +294,7 @@ VERTEX_SHADER_CODE
 	inverse_light_matrix[0] = normalize(inverse_light_matrix[0]);
 	inverse_light_matrix[1] = normalize(inverse_light_matrix[1]);
 	inverse_light_matrix[2] = normalize(inverse_light_matrix[2]);
-	transformed_light_uv = (inverse_light_matrix * vec3(light_uv_interp.zw, 0.0)).xy; //for normal mapping
+	transformed_light_uv = (inverse_light_matrix * vec3(light_uv_interp.zw, 0.0)).xy; // for normal mapping
 
 #ifdef USE_SHADOWS
 	pos = outvec.xy;
@@ -430,7 +430,7 @@ void light_compute(
 #if defined(SCREEN_UV_USED)
 		vec2 screen_uv,
 #endif
-		vec4 color) {
+		vec4 color){
 
 #if defined(USE_LIGHT_SHADER_CODE)
 
@@ -438,7 +438,7 @@ void light_compute(
 
 LIGHT_SHADER_CODE
 
-	/* clang-format on */
+/* clang-format on */
 
 #endif
 }
@@ -475,23 +475,23 @@ float map_ninepatch_axis(float pixel, float draw_size, float tex_pixel_size, flo
 			draw_center--;
 		}
 
-		if (np_repeat == 0) { //stretch
-			//convert to ratio
+		if (np_repeat == 0) { // stretch
+			// convert to ratio
 			float ratio = (pixel - screen_margin_begin) / (draw_size - screen_margin_begin - screen_margin_end);
-			//scale to source texture
+			// scale to source texture
 			return (margin_begin + ratio * (tex_size - margin_begin - margin_end)) * tex_pixel_size;
-		} else if (np_repeat == 1) { //tile
-			//convert to ratio
+		} else if (np_repeat == 1) { // tile
+			// convert to ratio
 			float ofs = mod((pixel - screen_margin_begin), tex_size - margin_begin - margin_end);
-			//scale to source texture
+			// scale to source texture
 			return (margin_begin + ofs) * tex_pixel_size;
-		} else if (np_repeat == 2) { //tile fit
-			//convert to ratio
+		} else if (np_repeat == 2) { // tile fit
+			// convert to ratio
 			float src_area = draw_size - screen_margin_begin - screen_margin_end;
 			float dst_area = tex_size - margin_begin - margin_end;
 			float scale = max(1.0, floor(src_area / max(dst_area, 0.0000001) + 0.5));
 
-			//convert to ratio
+			// convert to ratio
 			float ratio = (pixel - screen_margin_begin) / src_area;
 			ratio = mod(ratio * scale, 1.0);
 			return (margin_begin + ratio * dst_area) * tex_pixel_size;
@@ -572,7 +572,7 @@ void main() {
 		color.a = 0.0;
 	}
 #endif
-	uv = uv * src_rect.zw + src_rect.xy; //apply region if needed
+	uv = uv * src_rect.zw + src_rect.xy; // apply region if needed
 #endif
 
 	if (clip_rect_uv) {
@@ -582,7 +582,7 @@ void main() {
 #endif
 
 #if !defined(COLOR_USED)
-	//default behavior, texture by color
+	// default behavior, texture by color
 
 #ifdef USE_DISTANCE_FIELD
 	const float smoothing = 1.0 / 32.0;
@@ -670,7 +670,7 @@ FRAGMENT_SHADER_CODE
 	vec4 light = texture(light_texture, light_uv);
 
 	if (any(lessThan(light_uv_interp.xy, vec2(0.0, 0.0))) || any(greaterThanEqual(light_uv_interp.xy, vec2(1.0, 1.0)))) {
-		color.a *= light_outside_alpha; //invisible
+		color.a *= light_outside_alpha; // invisible
 
 	} else {
 		float real_light_height = light_height;
@@ -678,7 +678,7 @@ FRAGMENT_SHADER_CODE
 		vec4 real_light_shadow_color = light_shadow_color;
 
 #if defined(USE_LIGHT_SHADER_CODE)
-		//light is written by the light shader
+		// light is written by the light shader
 		light_compute(
 				light,
 				light_vec,
@@ -742,7 +742,7 @@ FRAGMENT_SHADER_CODE
 		s.xyz /= s.w;
 		su = s.x * 0.5 + 0.5;
 		sz = s.z * 0.5 + 0.5;
-		//sz=lightlength(light_vec);
+		// sz=lightlength(light_vec);
 
 		highp float shadow_attenuation = 0.0;
 
@@ -847,13 +847,13 @@ FRAGMENT_SHADER_CODE
 
 #endif
 
-		//color *= shadow_attenuation;
+		// color *= shadow_attenuation;
 		color = mix(real_light_shadow_color, color, shadow_attenuation);
-//use shadows
+// use shadows
 #endif
 	}
 
-//use lighting
+// use lighting
 #endif
 
 #ifdef LINEAR_TO_SRGB
@@ -862,6 +862,6 @@ FRAGMENT_SHADER_CODE
 	color.rgb = mix((vec3(1.0) + a) * pow(color.rgb, vec3(1.0 / 2.4)) - a, 12.92 * color.rgb, lessThan(color.rgb, vec3(0.0031308)));
 #endif
 
-	//color.rgb *= color.a;
+	// color.rgb *= color.a;
 	frag_color = color;
 }

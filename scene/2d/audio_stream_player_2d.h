@@ -49,14 +49,14 @@ private:
 	struct Output {
 		AudioFrame vol;
 		int bus_index;
-		Viewport *viewport; //pointer only used for reference to previous mix
+		Viewport *viewport; // pointer only used for reference to previous mix
 	};
 
 	Output outputs[MAX_OUTPUTS];
 	SafeNumeric<int> output_count;
 	SafeFlag output_ready;
 
-	//these are used by audio thread to have a reference of previous volumes (for ramping volume and avoiding clicks)
+	// these are used by audio thread to have a reference of previous volumes (for ramping volume and avoiding clicks)
 	Output prev_outputs[MAX_OUTPUTS];
 	int prev_output_count;
 

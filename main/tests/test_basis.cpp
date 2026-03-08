@@ -290,7 +290,7 @@ void test_euler_conversion() {
 		int failed = 0;
 		for (int i = 0; i < vectors_to_test.size(); i += 1) {
 			if (test_rotation(vectors_to_test[i], rotorder_to_test[h])) {
-				//OS::get_singleton()->print("Success. \n\n");
+				// OS::get_singleton()->print("Success. \n\n");
 				passed += 1;
 			} else {
 				OS::get_singleton()->print("FAILED                   FAILED                        FAILED. \n\n");

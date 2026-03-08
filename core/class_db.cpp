@@ -352,7 +352,7 @@ uint64_t ClassDB::get_api_hash(APIType p_api) {
 	while ((k = classes.next(k))) {
 		names.push_back(*k);
 	}
-	//must be alphabetically sorted for hash to compute
+	// must be alphabetically sorted for hash to compute
 	names.sort_custom<StringName::AlphCompare>();
 
 	for (List<StringName>::Element *E = names.front(); E; E = E->next()) {
@@ -364,7 +364,7 @@ uint64_t ClassDB::get_api_hash(APIType p_api) {
 		hash = hash_djb2_one_64(t->name.hash(), hash);
 		hash = hash_djb2_one_64(t->inherits.hash(), hash);
 
-		{ //methods
+		{ // methods
 
 			List<StringName> snames;
 
@@ -388,7 +388,7 @@ uint64_t ClassDB::get_api_hash(APIType p_api) {
 				MethodBind *mb = t->method_map[F->get()];
 				hash = hash_djb2_one_64(mb->get_name().hash(), hash);
 				hash = hash_djb2_one_64(mb->get_argument_count(), hash);
-				hash = hash_djb2_one_64(mb->get_argument_type(-1), hash); //return
+				hash = hash_djb2_one_64(mb->get_argument_type(-1), hash); // return
 
 				for (int i = 0; i < mb->get_argument_count(); i++) {
 					const PropertyInfo info = mb->get_argument_info(i);
@@ -401,7 +401,7 @@ uint64_t ClassDB::get_api_hash(APIType p_api) {
 				hash = hash_djb2_one_64(mb->get_default_argument_count(), hash);
 
 				for (int i = 0; i < mb->get_default_argument_count(); i++) {
-					//hash should not change, i hope for tis
+					// hash should not change, i hope for tis
 					Variant da = mb->get_default_argument(i);
 					hash = hash_djb2_one_64(da.hash(), hash);
 				}
@@ -410,7 +410,7 @@ uint64_t ClassDB::get_api_hash(APIType p_api) {
 			}
 		}
 
-		{ //constants
+		{ // constants
 
 			List<StringName> snames;
 
@@ -428,7 +428,7 @@ uint64_t ClassDB::get_api_hash(APIType p_api) {
 			}
 		}
 
-		{ //signals
+		{ // signals
 
 			List<StringName> snames;
 
@@ -449,7 +449,7 @@ uint64_t ClassDB::get_api_hash(APIType p_api) {
 			}
 		}
 
-		{ //properties
+		{ // properties
 
 			List<StringName> snames;
 
@@ -471,7 +471,7 @@ uint64_t ClassDB::get_api_hash(APIType p_api) {
 			}
 		}
 
-		//property list
+		// property list
 		for (List<PropertyInfo>::Element *F = t->property_list.front(); F; F = F->next()) {
 			hash = hash_djb2_one_64(F->get().name.hash(), hash);
 			hash = hash_djb2_one_64(F->get().type, hash);
@@ -546,7 +546,7 @@ void ClassDB::_add_class2(const StringName &p_class, const StringName &p_inherit
 	ti.api = current_api;
 
 	if (ti.inherits) {
-		ERR_FAIL_COND(!classes.has(ti.inherits)); //it MUST be registered.
+		ERR_FAIL_COND(!classes.has(ti.inherits)); // it MUST be registered.
 		ti.inherits_ptr = &classes[ti.inherits];
 
 	} else {
@@ -586,7 +586,7 @@ void ClassDB::get_method_list(StringName p_class, List<MethodInfo> *p_methods, b
 			}
 
 			for (int i = 0; i < method->get_argument_count(); i++) {
-				//Variant::Type t=method->get_argument_type(i);
+				// Variant::Type t=method->get_argument_type(i);
 
 				minfo.arguments.push_back(method->get_argument_info(i));
 			}
@@ -986,7 +986,7 @@ bool ClassDB::set_property(Object *p_object, const StringName &p_property, const
 				if (r_valid) {
 					*r_valid = false;
 				}
-				return true; //return true but do nothing
+				return true; // return true but do nothing
 			}
 
 			Variant::CallError ce;
@@ -994,7 +994,7 @@ bool ClassDB::set_property(Object *p_object, const StringName &p_property, const
 			if (psg->index >= 0) {
 				Variant index = psg->index;
 				const Variant *arg[2] = { &index, &p_value };
-				//p_object->call(psg->setter,arg,2,ce);
+				// p_object->call(psg->setter,arg,2,ce);
 				if (psg->_setptr) {
 					psg->_setptr->call(p_object, arg, 2, ce);
 				} else {
@@ -1031,7 +1031,7 @@ bool ClassDB::get_property(Object *p_object, const StringName &p_property, Varia
 		const PropertySetGet *psg = check->property_setget.getptr(p_property);
 		if (psg) {
 			if (!psg->getter) {
-				return true; //return true but do nothing
+				return true; // return true but do nothing
 			}
 
 			if (psg->index >= 0) {
@@ -1405,7 +1405,7 @@ void ClassDB::cleanup_defaults() {
 }
 
 void ClassDB::cleanup() {
-	//OBJTYPE_LOCK; hah not here
+	// OBJTYPE_LOCK; hah not here
 
 	const StringName *k = nullptr;
 

@@ -208,7 +208,7 @@ public:
 		Transform bind_shape;
 
 		struct Source {
-			Vector<String> sarray; //maybe for names
+			Vector<String> sarray; // maybe for names
 			Vector<float> array;
 			int stride;
 			Source() {
@@ -246,7 +246,7 @@ public:
 
 		struct Source {
 			int stride;
-			Vector<String> sarray; //maybe for names
+			Vector<String> sarray; // maybe for names
 			Vector<float> array;
 			Source() { stride = 1; }
 		};
@@ -269,7 +269,7 @@ public:
 		struct Weight {
 			int bone_idx;
 			float weight;
-			bool operator<(const Weight w) const { return weight > w.weight; } //heaviest first
+			bool operator<(const Weight w) const { return weight > w.weight; } // heaviest first
 		};
 
 		Vector<Weight> weights;
@@ -277,7 +277,7 @@ public:
 		void fix_weights() {
 			weights.sort();
 			if (weights.size() > 4) {
-				//cap to 4 and make weights add up 1
+				// cap to 4 and make weights add up 1
 				weights.resize(4);
 				float total = 0;
 				for (int i = 0; i < 4; i++) {
@@ -343,7 +343,7 @@ public:
 
 			TYPE_NODE,
 			TYPE_JOINT,
-			TYPE_SKELETON, //this bone is not collada, it's added afterwards as optimization
+			TYPE_SKELETON, // this bone is not collada, it's added afterwards as optimization
 			TYPE_LIGHT,
 			TYPE_CAMERA,
 			TYPE_GEOMETRY
@@ -532,7 +532,7 @@ public:
 		Map<String, Node *> scene_map;
 		Set<String> idref_joints;
 		Map<String, String> sid_to_node_map;
-		//Map<String,NodeJoint*> bone_map;
+		// Map<String,NodeJoint*> bone_map;
 
 		Map<String, Transform> bone_rest_map;
 

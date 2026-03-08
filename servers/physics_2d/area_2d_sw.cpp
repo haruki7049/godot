@@ -277,7 +277,7 @@ Area2DSW::Area2DSW() :
 		CollisionObject2DSW(TYPE_AREA),
 		monitor_query_list(this),
 		moved_list(this) {
-	_set_static(true); //areas are not active by default
+	_set_static(true); // areas are not active by default
 	space_override_mode = Physics2DServer::AREA_SPACE_OVERRIDE_DISABLED;
 	gravity = 9.80665;
 	gravity_vector = Vector2(0, -1);

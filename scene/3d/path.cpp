@@ -84,7 +84,7 @@ void Path::_bind_methods() {
 }
 
 Path::Path() {
-	set_curve(Ref<Curve3D>(memnew(Curve3D))); //create one by default
+	set_curve(Ref<Curve3D>(memnew(Curve3D))); // create one by default
 }
 
 //////////////

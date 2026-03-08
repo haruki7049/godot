@@ -80,8 +80,8 @@ Ref<Animation> EditorSceneImporter::import_animation(const String &p_path, uint3
 	ERR_FAIL_V(nullptr);
 }
 
-//for documenters, these functions are useful when an importer calls an external conversion helper (like, fbx2gltf),
-//and you want to load the resulting file
+// for documenters, these functions are useful when an importer calls an external conversion helper (like, fbx2gltf),
+// and you want to load the resulting file
 
 Node *EditorSceneImporter::import_scene_from_other_importer(const String &p_path, uint32_t p_flags, int p_bake_fps) {
 	return ResourceImporterScene::get_singleton()->import_scene_from_other_importer(this, p_path, p_flags, p_bake_fps);
@@ -237,18 +237,18 @@ String ResourceImporterScene::get_preset_name(int p_idx) const {
 static bool _teststr(const String &p_what, const String &p_str) {
 	String what = p_what;
 
-	//remove trailing spaces and numbers, some apps like blender add ".number" to duplicates so also compensate for this
+	// remove trailing spaces and numbers, some apps like blender add ".number" to duplicates so also compensate for this
 	while (what.length() && ((what[what.length() - 1] >= '0' && what[what.length() - 1] <= '9') || what[what.length() - 1] <= 32 || what[what.length() - 1] == '.')) {
 		what = what.substr(0, what.length() - 1);
 	}
 
-	if (what.findn("$" + p_str) != -1) { //blender and other stuff
+	if (what.findn("$" + p_str) != -1) { // blender and other stuff
 		return true;
 	}
-	if (what.to_lower().ends_with("-" + p_str)) { //collada only supports "_" and "-" besides letters
+	if (what.to_lower().ends_with("-" + p_str)) { // collada only supports "_" and "-" besides letters
 		return true;
 	}
-	if (what.to_lower().ends_with("_" + p_str)) { //collada only supports "_" and "-" besides letters
+	if (what.to_lower().ends_with("_" + p_str)) { // collada only supports "_" and "-" besides letters
 		return true;
 	}
 	return false;
@@ -257,20 +257,20 @@ static bool _teststr(const String &p_what, const String &p_str) {
 static String _fixstr(const String &p_what, const String &p_str) {
 	String what = p_what;
 
-	//remove trailing spaces and numbers, some apps like blender add ".number" to duplicates so also compensate for this
+	// remove trailing spaces and numbers, some apps like blender add ".number" to duplicates so also compensate for this
 	while (what.length() && ((what[what.length() - 1] >= '0' && what[what.length() - 1] <= '9') || what[what.length() - 1] <= 32 || what[what.length() - 1] == '.')) {
 		what = what.substr(0, what.length() - 1);
 	}
 
 	String end = p_what.substr(what.length(), p_what.length() - what.length());
 
-	if (what.findn("$" + p_str) != -1) { //blender and other stuff
+	if (what.findn("$" + p_str) != -1) { // blender and other stuff
 		return what.replace("$" + p_str, "") + end;
 	}
-	if (what.to_lower().ends_with("-" + p_str)) { //collada only supports "_" and "-" besides letters
+	if (what.to_lower().ends_with("-" + p_str)) { // collada only supports "_" and "-" besides letters
 		return what.substr(0, what.length() - (p_str.length() + 1)) + end;
 	}
-	if (what.to_lower().ends_with("_" + p_str)) { //collada only supports "_" and "-" besides letters
+	if (what.to_lower().ends_with("_" + p_str)) { // collada only supports "_" and "-" besides letters
 		return what.substr(0, what.length() - (p_str.length() + 1)) + end;
 	}
 	return what;
@@ -295,7 +295,7 @@ Node *ResourceImporterScene::_fix_node(Node *p_node, Node *p_root, Map<Ref<Mesh>
 	for (int i = 0; i < p_node->get_child_count(); i++) {
 		Node *r = _fix_node(p_node->get_child(i), p_root, collision_map, p_light_bake_mode);
 		if (!r) {
-			i--; //was erased
+			i--; // was erased
 		}
 	}
 
@@ -338,7 +338,7 @@ Node *ResourceImporterScene::_fix_node(Node *p_node, Node *p_root, Map<Ref<Mesh>
 	}
 
 	if (Object::cast_to<AnimationPlayer>(p_node)) {
-		//remove animations referencing non-importable nodes
+		// remove animations referencing non-importable nodes
 		AnimationPlayer *ap = Object::cast_to<AnimationPlayer>(p_node);
 
 		List<StringName> anims;
@@ -565,7 +565,7 @@ Node *ResourceImporterScene::_fix_node(Node *p_node, Node *p_root, Map<Ref<Mesh>
 		p_node = bv;
 
 	} else if (Object::cast_to<MeshInstance>(p_node)) {
-		//last attempt, maybe collision inside the mesh data
+		// last attempt, maybe collision inside the mesh data
 
 		MeshInstance *mi = Object::cast_to<MeshInstance>(p_node);
 
@@ -632,7 +632,7 @@ void ResourceImporterScene::_create_clips(Node *scene, const Array &p_clips, boo
 			for (int k = 0; k < kc; k++) {
 				float kt = default_anim->track_get_key_time(j, k);
 				if (kt >= from && kt < to) {
-					//found a key within range, so create track
+					// found a key within range, so create track
 					if (dtrack == -1) {
 						new_anim->add_track(default_anim->track_get_type(j));
 						dtrack = new_anim->get_track_count() - 1;
@@ -708,7 +708,7 @@ void ResourceImporterScene::_create_clips(Node *scene, const Array &p_clips, boo
 		anim->add_animation(name, new_anim);
 	}
 
-	anim->remove_animation("default"); //remove default (no longer needed)
+	anim->remove_animation("default"); // remove default (no longer needed)
 }
 
 void ResourceImporterScene::_filter_anim_tracks(Ref<Animation> anim, Set<String> &keep) {
@@ -951,7 +951,7 @@ void ResourceImporterScene::_make_external_resources(Node *p_node, const String 
 					}
 
 					if (p_keep_materials && FileAccess::exists(ext_name)) {
-						//if exists, use it
+						// if exists, use it
 						p_materials[mat] = ResourceLoader::load(ext_name);
 					} else {
 						ResourceSaver::save(ext_name, mat, ResourceSaver::FLAG_CHANGE_PATH);
@@ -970,7 +970,7 @@ void ResourceImporterScene::_make_external_resources(Node *p_node, const String 
 
 					if (p_make_meshes) {
 						if (!p_meshes.has(mesh)) {
-							//meshes are always overwritten, keeping them is not practical
+							// meshes are always overwritten, keeping them is not practical
 							String ext_name;
 
 							if (p_meshes_as_text) {
@@ -1008,7 +1008,7 @@ void ResourceImporterScene::_make_external_resources(Node *p_node, const String 
 									}
 
 									if (p_keep_materials && FileAccess::exists(ext_name)) {
-										//if exists, use it
+										// if exists, use it
 										p_materials[mat] = ResourceLoader::load(ext_name);
 									} else {
 										ResourceSaver::save(ext_name, mat, ResourceSaver::FLAG_CHANGE_PATH);
@@ -1019,7 +1019,7 @@ void ResourceImporterScene::_make_external_resources(Node *p_node, const String 
 								if (p_materials[mat] != mat) {
 									mesh->surface_set_material(i, p_materials[mat]);
 
-									//re-save the mesh since a material is now assigned
+									// re-save the mesh since a material is now assigned
 									if (p_make_meshes) {
 										String ext_name;
 
@@ -1036,7 +1036,7 @@ void ResourceImporterScene::_make_external_resources(Node *p_node, const String 
 							}
 
 							if (!p_make_meshes) {
-								p_meshes[mesh] = Ref<ArrayMesh>(); //save it anyway, so it won't be checked again
+								p_meshes[mesh] = Ref<ArrayMesh>(); // save it anyway, so it won't be checked again
 							}
 						}
 					}
@@ -1384,7 +1384,7 @@ Error ResourceImporterScene::import(const String &p_source_file, const String &p
 		for (Map<Ref<ArrayMesh>, Transform>::Element *E = meshes.front(); E; E = E->next()) {
 			Ref<ArrayMesh> mesh = E->key();
 			String name = mesh->get_name();
-			if (name == "") { //should not happen but..
+			if (name == "") { // should not happen but..
 				name = "Mesh " + itos(step);
 			}
 
@@ -1510,11 +1510,11 @@ Error ResourceImporterScene::import(const String &p_source_file, const String &p
 	progress.step(TTR("Saving..."), 104);
 
 	if (external_scenes) {
-		//save sub-scenes as instances!
+		// save sub-scenes as instances!
 		for (int i = 0; i < scene->get_child_count(); i++) {
 			Node *child = scene->get_child(i);
 			if (child->get_owner() != scene) {
-				continue; //not a real child probably created by scene type (ig, a scrollbar)
+				continue; // not a real child probably created by scene type (ig, a scrollbar)
 			}
 			_replace_owner(child, scene, child);
 
@@ -1527,7 +1527,7 @@ Error ResourceImporterScene::import(const String &p_source_file, const String &p
 
 			Ref<PackedScene> packer = memnew(PackedScene);
 			packer->pack(child);
-			err = ResourceSaver::save(path, packer); //do not take over, let the changed files reload themselves
+			err = ResourceSaver::save(path, packer); // do not take over, let the changed files reload themselves
 			ERR_FAIL_COND_V_MSG(err != OK, err, "Cannot save scene to file '" + path + "'.");
 		}
 	}
@@ -1535,13 +1535,13 @@ Error ResourceImporterScene::import(const String &p_source_file, const String &p
 	Ref<PackedScene> packer = memnew(PackedScene);
 	packer->pack(scene);
 	print_verbose("Saving scene to: " + p_save_path + ".scn");
-	err = ResourceSaver::save(p_save_path + ".scn", packer); //do not take over, let the changed files reload themselves
+	err = ResourceSaver::save(p_save_path + ".scn", packer); // do not take over, let the changed files reload themselves
 	ERR_FAIL_COND_V_MSG(err != OK, err, "Cannot save scene to file '" + p_save_path + ".scn'.");
 
 	memdelete(scene);
 
-	//this is not the time to reimport, wait until import process is done, import file is saved, etc.
-	//EditorNode::get_singleton()->reload_scene(p_source_file);
+	// this is not the time to reimport, wait until import process is done, import file is saved, etc.
+	// EditorNode::get_singleton()->reload_scene(p_source_file);
 
 	return OK;
 }

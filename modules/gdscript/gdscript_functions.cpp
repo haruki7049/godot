@@ -172,7 +172,7 @@ void GDScriptFunctions::call(Function p_func, const Variant **p_args, int p_arg_
 #define VALIDATE_ARG_NUM(m_arg)
 #endif
 
-	//using a switch, so the compiler generates a jumptable
+	// using a switch, so the compiler generates a jumptable
 
 	switch (p_func) {
 		case MATH_SIN: {
@@ -975,7 +975,7 @@ void GDScriptFunctions::call(Function p_func, const Variant **p_args, int p_arg_
 						return;
 					}
 
-					//calculate how many
+					// calculate how many
 					int count = 0;
 					if (incr > 0) {
 						count = ((to - from - 1) / incr) + 1;
@@ -1393,8 +1393,8 @@ void GDScriptFunctions::call(Function p_func, const Variant **p_args, int p_arg_
 }
 
 bool GDScriptFunctions::is_deterministic(Function p_func) {
-	//man i couldn't have chosen a worse function name,
-	//way too controversial..
+	// man i couldn't have chosen a worse function name,
+	// way too controversial..
 
 	switch (p_func) {
 		case MATH_SIN:
@@ -1462,7 +1462,7 @@ bool GDScriptFunctions::is_deterministic(Function p_func) {
 
 MethodInfo GDScriptFunctions::get_info(Function p_func) {
 #ifdef DEBUG_ENABLED
-	//using a switch, so the compiler generates a jumptable
+	// using a switch, so the compiler generates a jumptable
 
 	switch (p_func) {
 		case MATH_SIN: {

@@ -51,12 +51,12 @@ const int ROTATIONS[] = int[](
 		19, 27, 21, 25, 39, 29, 17, 21, 27);
 /* clang-format on */
 
-//#define NUM_SPIRAL_TURNS (7)
+// #define NUM_SPIRAL_TURNS (7)
 const int NUM_SPIRAL_TURNS = ROTATIONS[NUM_SAMPLES - 1];
 
-uniform sampler2D source_depth; //texunit:0
-uniform highp usampler2D source_depth_mipmaps; //texunit:1
-uniform sampler2D source_normal; //texunit:2
+uniform sampler2D source_depth; // texunit:0
+uniform highp usampler2D source_depth_mipmaps; // texunit:1
+uniform sampler2D source_normal; // texunit:2
 
 uniform ivec2 screen_size;
 uniform float camera_z_far;
@@ -133,7 +133,7 @@ vec3 getOffsetPosition(ivec2 ssC, vec2 unitOffset, float ssR) {
 	ivec2 mipP = clamp(ssP >> mipLevel, ivec2(0), (screen_size >> mipLevel) - ivec2(1));
 
 	if (mipLevel < 1) {
-		//read from depth buffer
+		// read from depth buffer
 		P.z = texelFetch(source_depth, mipP, 0).r;
 		P.z = P.z * 2.0 - 1.0;
 #ifdef USE_ORTHOGONAL_PROJECTION
@@ -144,7 +144,7 @@ vec3 getOffsetPosition(ivec2 ssC, vec2 unitOffset, float ssR) {
 		P.z = -P.z;
 
 	} else {
-		//read from mipmaps
+		// read from mipmaps
 		uint d = texelFetch(source_depth_mipmaps, mipP, mipLevel - 1).r;
 		P.z = -(float(d) / 65535.0) * camera_z_far;
 	}
@@ -183,7 +183,7 @@ float sampleAO(in ivec2 ssC, in vec3 C, in vec3 n_C, in float ssDiskRadius, in f
 
 	// A: From the HPG12 paper
 	// Note large epsilon to avoid overdarkening within cracks
-	//return float(vv < radius2) * max((vn - bias) / (epsilon + vv), 0.0) * radius2 * 0.6;
+	// return float(vv < radius2) * max((vn - bias) / (epsilon + vv), 0.0) * radius2 * 0.6;
 
 	// B: Smoother transition to zero (lowers contrast, smoothing out corners). [Recommended]
 	float f = max(radius2 - vv, 0.0);
@@ -213,8 +213,8 @@ void main() {
 	}
 	*/
 
-	//visibility = -C.z / camera_z_far;
-	//return;
+	// visibility = -C.z / camera_z_far;
+	// return;
 #if 0
 	vec3 n_C = texelFetch(source_normal, ssC, 0).rgb * 2.0 - 1.0;
 #else
@@ -245,7 +245,7 @@ void main() {
 
 #ifdef ENABLE_RADIUS2
 
-	//go again for radius2
+	// go again for radius2
 	randomPatternRotationAngle = mod(float((5 * ssC.x ^ ssC.y + ssC.x * ssC.y) * 11), TWO_PI);
 
 	// Reconstruct normals from positions. These will lead to 1-pixel black lines

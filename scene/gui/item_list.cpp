@@ -56,7 +56,7 @@ void ItemList::add_icon_item(const Ref<Texture> &p_item, bool p_selectable) {
 	item.icon_transposed = false;
 	item.icon_region = Rect2i();
 	item.icon_modulate = Color(1, 1, 1, 1);
-	//item.text=p_item;
+	// item.text=p_item;
 	item.selectable = p_selectable;
 	item.selected = false;
 	item.disabled = false;
@@ -444,7 +444,7 @@ void ItemList::_gui_input(const Ref<InputEvent> &p_event) {
 	}
 
 	if (mb.is_valid() && (mb->get_button_index() == BUTTON_LEFT || (allow_rmb_select && mb->get_button_index() == BUTTON_RIGHT)) && mb->is_pressed()) {
-		search_string = ""; //any mousepress cancels
+		search_string = ""; // any mousepress cancels
 		Vector2 pos = mb->get_position();
 		Ref<StyleBox> bg = get_stylebox("bg");
 		pos -= bg->get_offset();
@@ -455,7 +455,7 @@ void ItemList::_gui_input(const Ref<InputEvent> &p_event) {
 		for (int i = 0; i < items.size(); i++) {
 			Rect2 rc = items[i].rect_cache;
 			if (i % current_columns == current_columns - 1) {
-				rc.size.width = get_size().width; //not right but works
+				rc.size.width = get_size().width; // not right but works
 			}
 
 			if (rc.has_point(pos)) {
@@ -596,7 +596,7 @@ void ItemList::_gui_input(const Ref<InputEvent> &p_event) {
 				accept_event();
 			}
 		} else if (p_event->is_action("ui_page_up")) {
-			search_string = ""; //any mousepress cancels
+			search_string = ""; // any mousepress cancels
 
 			for (int i = 4; i > 0; i--) {
 				if (current - current_columns * i >= 0) {
@@ -610,7 +610,7 @@ void ItemList::_gui_input(const Ref<InputEvent> &p_event) {
 				}
 			}
 		} else if (p_event->is_action("ui_page_down")) {
-			search_string = ""; //any mousepress cancels
+			search_string = ""; // any mousepress cancels
 
 			for (int i = 4; i > 0; i--) {
 				if (current + current_columns * i < items.size()) {
@@ -625,7 +625,7 @@ void ItemList::_gui_input(const Ref<InputEvent> &p_event) {
 				}
 			}
 		} else if (p_event->is_action("ui_left")) {
-			search_string = ""; //any mousepress cancels
+			search_string = ""; // any mousepress cancels
 
 			if (current % current_columns != 0) {
 				set_current(current - 1);
@@ -636,7 +636,7 @@ void ItemList::_gui_input(const Ref<InputEvent> &p_event) {
 				accept_event();
 			}
 		} else if (p_event->is_action("ui_right")) {
-			search_string = ""; //any mousepress cancels
+			search_string = ""; // any mousepress cancels
 
 			if (current % current_columns != (current_columns - 1) && current + 1 < items.size()) {
 				set_current(current + 1);
@@ -659,7 +659,7 @@ void ItemList::_gui_input(const Ref<InputEvent> &p_event) {
 				}
 			}
 		} else if (p_event->is_action("ui_accept")) {
-			search_string = ""; //any mousepress cance
+			search_string = ""; // any mousepress cance
 
 			if (current >= 0 && current < items.size()) {
 				emit_signal("item_activated", current);
@@ -713,7 +713,7 @@ void ItemList::_gui_input(const Ref<InputEvent> &p_event) {
 	}
 
 	if (scroll_bar->get_value() != prev_scroll) {
-		accept_event(); //accept event if scroll changed
+		accept_event(); // accept event if scroll changed
 	}
 }
 
@@ -792,7 +792,7 @@ void ItemList::_notification(int p_what) {
 		if (shape_changed) {
 			float max_column_width = 0;
 
-			//1- compute item minimum sizes
+			// 1- compute item minimum sizes
 			for (int i = 0; i < items.size(); i++) {
 				Size2 minsize;
 				if (items[i].icon.is_valid()) {
@@ -813,7 +813,7 @@ void ItemList::_notification(int p_what) {
 
 				if (items[i].text != "") {
 					Size2 s = font->get_string_size(items[i].text);
-					//s.width=MIN(s.width,fixed_column_width);
+					// s.width=MIN(s.width,fixed_column_width);
 
 					if (icon_mode == ICON_MODE_TOP) {
 						minsize.x = MAX(minsize.x, s.width);
@@ -843,14 +843,14 @@ void ItemList::_notification(int p_what) {
 
 			int fit_size = size.x - bg->get_minimum_size().width - mw;
 
-			//2-attempt best fit
+			// 2-attempt best fit
 			current_columns = 0x7FFFFFFF;
 			if (max_columns > 0) {
 				current_columns = max_columns;
 			}
 
 			while (true) {
-				//repeat until all fits
+				// repeat until all fits
 				bool all_fit = true;
 				Vector2 ofs;
 				int col = 0;
@@ -858,7 +858,7 @@ void ItemList::_notification(int p_what) {
 				separators.clear();
 				for (int i = 0; i < items.size(); i++) {
 					if (current_columns > 1 && items[i].rect_cache.size.width + ofs.x > fit_size) {
-						//went past
+						// went past
 						current_columns = MAX(col, 1);
 						all_fit = false;
 						break;
@@ -917,7 +917,7 @@ void ItemList::_notification(int p_what) {
 			shape_changed = false;
 		}
 
-		//ensure_selected_visible needs to be checked before we draw the list.
+		// ensure_selected_visible needs to be checked before we draw the list.
 		if (ensure_selected_visible && current >= 0 && current < items.size()) {
 			Rect2 r = items[current].rect_cache;
 			int from = scroll_bar->get_value();
@@ -1107,7 +1107,7 @@ void ItemList::_notification(int p_what) {
 						ofs += drawer.draw_char(get_canvas_item(), text_ofs + Vector2(ofs + (max_len - line_size_cache[line]) / 2, line * (font_height + line_separation)).floor(), items[i].text[j], items[i].text[j + 1], modulate);
 					}
 
-					//special multiline mode
+					// special multiline mode
 				} else {
 					if (fixed_column_width > 0) {
 						size2.x = MIN(size2.x, fixed_column_width);
@@ -1182,7 +1182,7 @@ int ItemList::get_item_at_position(const Point2 &p_pos, bool p_exact) const {
 	for (int i = 0; i < items.size(); i++) {
 		Rect2 rc = items[i].rect_cache;
 		if (i % current_columns == current_columns - 1) {
-			rc.size.width = get_size().width - rc.position.x; //make sure you can still select the last item when clicking past the column
+			rc.size.width = get_size().width - rc.position.x; // make sure you can still select the last item when clicking past the column
 		}
 
 		if (rc.has_point(pos)) {

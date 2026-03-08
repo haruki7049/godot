@@ -1209,18 +1209,18 @@ void _OS::set_current_tablet_driver(const String &p_driver) {
 _OS *_OS::singleton = nullptr;
 
 void _OS::_bind_methods() {
-	//ClassDB::bind_method(D_METHOD("get_mouse_position"),&_OS::get_mouse_position);
-	//ClassDB::bind_method(D_METHOD("is_mouse_grab_enabled"),&_OS::is_mouse_grab_enabled);
+	// ClassDB::bind_method(D_METHOD("get_mouse_position"),&_OS::get_mouse_position);
+	// ClassDB::bind_method(D_METHOD("is_mouse_grab_enabled"),&_OS::is_mouse_grab_enabled);
 
 	ClassDB::bind_method(D_METHOD("set_clipboard", "clipboard"), &_OS::set_clipboard);
 	ClassDB::bind_method(D_METHOD("get_clipboard"), &_OS::get_clipboard);
 
-	//will not delete for now, just unexpose
-	//ClassDB::bind_method(D_METHOD("set_video_mode","size","fullscreen","resizable","screen"),&_OS::set_video_mode,DEFVAL(0));
-	//ClassDB::bind_method(D_METHOD("get_video_mode_size","screen"),&_OS::get_video_mode,DEFVAL(0));
-	//ClassDB::bind_method(D_METHOD("is_video_mode_fullscreen","screen"),&_OS::is_video_mode_fullscreen,DEFVAL(0));
-	//ClassDB::bind_method(D_METHOD("is_video_mode_resizable","screen"),&_OS::is_video_mode_resizable,DEFVAL(0));
-	//ClassDB::bind_method(D_METHOD("get_fullscreen_mode_list","screen"),&_OS::get_fullscreen_mode_list,DEFVAL(0));
+	// will not delete for now, just unexpose
+	// ClassDB::bind_method(D_METHOD("set_video_mode","size","fullscreen","resizable","screen"),&_OS::set_video_mode,DEFVAL(0));
+	// ClassDB::bind_method(D_METHOD("get_video_mode_size","screen"),&_OS::get_video_mode,DEFVAL(0));
+	// ClassDB::bind_method(D_METHOD("is_video_mode_fullscreen","screen"),&_OS::is_video_mode_fullscreen,DEFVAL(0));
+	// ClassDB::bind_method(D_METHOD("is_video_mode_resizable","screen"),&_OS::is_video_mode_resizable,DEFVAL(0));
+	// ClassDB::bind_method(D_METHOD("get_fullscreen_mode_list","screen"),&_OS::get_fullscreen_mode_list,DEFVAL(0));
 
 	ClassDB::bind_method(D_METHOD("global_menu_add_item", "menu", "label", "id", "meta"), &_OS::global_menu_add_item);
 	ClassDB::bind_method(D_METHOD("global_menu_add_separator", "menu"), &_OS::global_menu_add_separator);
@@ -1355,7 +1355,7 @@ void _OS::_bind_methods() {
 
 	ClassDB::bind_method(D_METHOD("is_debug_build"), &_OS::is_debug_build);
 
-	//ClassDB::bind_method(D_METHOD("get_mouse_button_state"),&_OS::get_mouse_button_state);
+	// ClassDB::bind_method(D_METHOD("get_mouse_button_state"),&_OS::get_mouse_button_state);
 
 	ClassDB::bind_method(D_METHOD("dump_memory_to_file", "file"), &_OS::dump_memory_to_file);
 	ClassDB::bind_method(D_METHOD("dump_resources_to_file", "file"), &_OS::dump_resources_to_file);
@@ -2457,7 +2457,7 @@ void _Directory::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("make_dir_recursive", "path"), &_Directory::make_dir_recursive);
 	ClassDB::bind_method(D_METHOD("file_exists", "path"), &_Directory::file_exists);
 	ClassDB::bind_method(D_METHOD("dir_exists", "path"), &_Directory::dir_exists);
-	//ClassDB::bind_method(D_METHOD("get_modified_time","file"),&_Directory::get_modified_time);
+	// ClassDB::bind_method(D_METHOD("get_modified_time","file"),&_Directory::get_modified_time);
 	ClassDB::bind_method(D_METHOD("get_space_left"), &_Directory::get_space_left);
 	ClassDB::bind_method(D_METHOD("copy", "from", "to"), &_Directory::copy);
 	ClassDB::bind_method(D_METHOD("rename", "from", "to"), &_Directory::rename);
@@ -3024,7 +3024,7 @@ int _Engine::get_frames_drawn() {
 }
 
 MainLoop *_Engine::get_main_loop() const {
-	//needs to remain in OS, since it's actually OS that interacts with it, but it's better exposed here
+	// needs to remain in OS, since it's actually OS that interacts with it, but it's better exposed here
 	return OS::get_singleton()->get_main_loop();
 }
 

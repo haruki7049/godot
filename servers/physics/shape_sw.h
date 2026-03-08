@@ -454,9 +454,9 @@ public:
 	HeightMapShapeSW();
 };
 
-//used internally
+// used internally
 struct FaceShapeSW : public ShapeSW {
-	Vector3 normal; //cache
+	Vector3 normal; // cache
 	Vector3 vertex[3];
 
 	virtual PhysicsServer::ShapeType get_type() const { return PhysicsServer::SHAPE_CONCAVE_POLYGON; }

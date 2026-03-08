@@ -49,7 +49,7 @@ private:
 
 	struct BVH {
 		AABB aabb;
-		Vector3 center; //used for sorting
+		Vector3 center; // used for sorting
 		int left;
 		int right;
 

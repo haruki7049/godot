@@ -224,7 +224,7 @@ class EditorInspectorSection : public Container {
 	String section;
 	Object *object;
 	VBoxContainer *vbox;
-	bool vbox_added; //optimization
+	bool vbox_added; // optimization
 	Color bg_color;
 	bool foldable;
 
@@ -261,7 +261,7 @@ class EditorInspector : public ScrollContainer {
 
 	VBoxContainer *main_vbox;
 
-	//map use to cache the instanced editors
+	// map use to cache the instanced editors
 	Map<StringName, List<EditorProperty *>> editor_property_map;
 	List<EditorInspectorSection *> sections;
 	Set<StringName> pending;
@@ -298,7 +298,7 @@ class EditorInspector : public ScrollContainer {
 
 	Map<ObjectID, int> scroll_cache;
 
-	String property_prefix; //used for sectioned inspector
+	String property_prefix; // used for sectioned inspector
 	String object_class;
 
 	void _edit_set(const String &p_name, const Variant &p_value, bool p_refresh_all, const String &p_changed_field);

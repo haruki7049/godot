@@ -42,7 +42,7 @@ class InputDefault : public Input {
 	Set<int> keys_pressed;
 	Set<int> joy_buttons_pressed;
 	Map<int, float> _joy_axis;
-	//Map<StringName,int> custom_action_press;
+	// Map<StringName,int> custom_action_press;
 	Vector3 gravity;
 	Vector3 accelerometer;
 	Vector3 magnetometer;
@@ -83,7 +83,7 @@ class InputDefault : public Input {
 		StringName name;
 		StringName uid;
 		bool connected;
-		bool last_buttons[JOY_BUTTON_MAX + 12]; //apparently SDL specifies 35 possible buttons on android
+		bool last_buttons[JOY_BUTTON_MAX + 12]; // apparently SDL specifies 35 possible buttons on android
 		float last_axis[JOY_AXIS_MAX];
 		int last_hat;
 		int mapping;

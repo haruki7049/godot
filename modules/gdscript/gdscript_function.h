@@ -177,7 +177,7 @@ public:
 		OPCODE_CAST_TO_BUILTIN,
 		OPCODE_CAST_TO_NATIVE,
 		OPCODE_CAST_TO_SCRIPT,
-		OPCODE_CONSTRUCT, //only for basic types!!
+		OPCODE_CONSTRUCT, // only for basic types!!
 		OPCODE_CONSTRUCT_ARRAY,
 		OPCODE_CONSTRUCT_DICTIONARY,
 		OPCODE_CALL,
@@ -313,7 +313,7 @@ public:
 
 	_FORCE_INLINE_ bool is_static() const { return _static; }
 
-	const int *get_code() const; //used for debug
+	const int *get_code() const; // used for debug
 	int get_code_size() const;
 	Variant get_constant(int p_idx) const;
 	StringName get_global_name(int p_idx) const;

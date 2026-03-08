@@ -207,8 +207,8 @@ String ScriptCreateDialog::_validate_path(const String &p_path, bool p_file_must
 	int index = 0;
 	for (List<String>::Element *E = extensions.front(); E; E = E->next()) {
 		if (E->get().nocasecmp_to(extension) == 0) {
-			//FIXME (?) - changing language this way doesn't update controls, needs rework
-			//language_menu->select(index); // change Language option by extension
+			// FIXME (?) - changing language this way doesn't update controls, needs rework
+			// language_menu->select(index); // change Language option by extension
 			found = true;
 			if (E->get() == ScriptServer::get_language(language_menu->get_selected())->get_extension()) {
 				match = true;
@@ -265,7 +265,7 @@ void ScriptCreateDialog::_template_changed(int p_template) {
 	String selected_template = p_template == 0 ? "" : template_menu->get_item_text(p_template);
 	EditorSettings::get_singleton()->set_project_metadata("script_setup", "last_selected_template", selected_template);
 	if (p_template == 0) {
-		//default
+		// default
 		script_template = "";
 		return;
 	}

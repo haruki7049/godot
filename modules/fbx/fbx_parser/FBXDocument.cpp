@@ -116,7 +116,7 @@ ObjectPtr LazyObject::LoadObject() {
 	const TokenList &tokens = element->Tokens();
 
 	if (tokens.size() < 3) {
-		//DOMError("expected at least 3 tokens: id, name and class tag",&element);
+		// DOMError("expected at least 3 tokens: id, name and class tag",&element);
 		return nullptr;
 	}
 
@@ -368,7 +368,7 @@ void Document::ReadGlobalSettings() {
 
 	const PropertyTable *props = GetPropertyTable(*this, "", ehead, ehead->Compound(), true);
 
-	//double v = PropertyGet<float>( *props, std::string("UnitScaleFactor"), 1.0 );
+	// double v = PropertyGet<float>( *props, std::string("UnitScaleFactor"), 1.0 );
 
 	if (!props) {
 		DOMError("GlobalSettings dictionary contains no property table");
@@ -436,7 +436,7 @@ void Document::ReadObjects() {
 			}
 
 			if (class_tag == "Skin") {
-				//print_verbose("registered skin:" + itos(id));
+				// print_verbose("registered skin:" + itos(id));
 				skins.push_back(id);
 			}
 		}
@@ -621,7 +621,7 @@ std::vector<const Connection *> Document::GetConnectionsSequenced(uint64_t id, b
 		const char *obtype = key->begin();
 
 		for (size_t i = 0; i < c; ++i) {
-			//ai_assert(classnames[i]);
+			// ai_assert(classnames[i]);
 			if (static_cast<size_t>(std::distance(key->begin(), key->end())) == lengths[i] && !strncmp(classnames[i], obtype, lengths[i])) {
 				obtype = nullptr;
 				break;
@@ -700,14 +700,14 @@ LazyObject *Connection::LazyDestinationObject() const {
 // ------------------------------------------------------------------------------------------------
 Object *Connection::SourceObject() const {
 	LazyObject *lazy = doc.GetObject(src);
-	//ai_assert(lazy);
+	// ai_assert(lazy);
 	return lazy->LoadObject();
 }
 
 // ------------------------------------------------------------------------------------------------
 Object *Connection::DestinationObject() const {
 	LazyObject *lazy = doc.GetObject(dest);
-	//ai_assert(lazy);
+	// ai_assert(lazy);
 	return lazy->LoadObject();
 }
 

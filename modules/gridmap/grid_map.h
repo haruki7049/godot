@@ -36,8 +36,8 @@
 #include "scene/resources/mesh_library.h"
 #include "scene/resources/multimesh.h"
 
-//heh heh, godotsphir!! this shares no code and the design is completely different with previous projects i've done..
-//should scale better with hardware that supports instancing
+// heh heh, godotsphir!! this shares no code and the design is completely different with previous projects i've done..
+// should scale better with hardware that supports instancing
 
 class GridMap : public Spatial {
 	GDCLASS(GridMap, Spatial);
@@ -99,7 +99,7 @@ class GridMap : public Spatial {
 				IndexKey key;
 			};
 
-			Vector<Item> items; //tools only, for changing visibility
+			Vector<Item> items; // tools only, for changing visibility
 		};
 
 		Vector<MultimeshInstance> multimesh_instances;
@@ -126,7 +126,7 @@ class GridMap : public Spatial {
 			return key < p_key.key;
 		}
 
-		//OctantKey(const IndexKey& p_k, int p_item) { indexkey=p_k.key; item=p_item; }
+		// OctantKey(const IndexKey& p_k, int p_item) { indexkey=p_k.key; item=p_item; }
 		OctantKey() { key = 0; }
 	};
 

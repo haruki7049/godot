@@ -870,7 +870,7 @@ PREAMBLE(void)::_prefill_default_batch(FillState &r_fill_state, int p_command_nu
 
 			// the original mode should always be hardware transform ..
 			// test this assumption
-			//CRASH_COND(r_fill_state.orig_transform_mode != TM_NONE);
+			// CRASH_COND(r_fill_state.orig_transform_mode != TM_NONE);
 			r_fill_state.transform_mode = r_fill_state.orig_transform_mode;
 
 			// do we need to restore anything else?
@@ -1371,7 +1371,7 @@ PREAMBLE(bool)::_prefill_line(RasterizerCanvas::Item::CommandLine *p_line, FillS
 		r_fill_state.curr_batch->batch_texture_id = (uint16_t)-1;
 		r_fill_state.curr_batch->first_command = command_num;
 		r_fill_state.curr_batch->num_commands = 1;
-		//r_fill_state.curr_batch->first_quad = bdata.total_quads;
+		// r_fill_state.curr_batch->first_quad = bdata.total_quads;
 		r_fill_state.curr_batch->first_vert = bdata.total_verts;
 	} else {
 		// we could alternatively do the count when closing a batch .. perhaps more efficient
@@ -1399,7 +1399,7 @@ PREAMBLE(bool)::_prefill_line(RasterizerCanvas::Item::CommandLine *p_line, FillS
 	return false;
 }
 
-//unsigned int _ninepatch_apply_tiling_modes(RasterizerCanvas::Item::CommandNinePatch *p_np, Rect2 &r_source) {
+// unsigned int _ninepatch_apply_tiling_modes(RasterizerCanvas::Item::CommandNinePatch *p_np, Rect2 &r_source) {
 //	unsigned int rect_flags = 0;
 
 //	switch (p_np->axis_x) {
@@ -1490,7 +1490,7 @@ bool C_PREAMBLE::_prefill_ninepatch(RasterizerCanvas::Item::CommandNinePatch *p_
 	trect.modulate = p_np->color;
 	trect.flags = RasterizerCanvas::CANVAS_RECT_REGION;
 
-	//Size2 texpixel_size(1.0f / tex->width, 1.0f / tex->height);
+	// Size2 texpixel_size(1.0f / tex->width, 1.0f / tex->height);
 
 	Rect2 source = p_np->source;
 	if (source.size.x == 0 && source.size.y == 0) {
@@ -2006,7 +2006,7 @@ bool C_PREAMBLE::_prefill_rect(RasterizerCanvas::Item::CommandRect *rect, FillSt
 	int old_batch_tex_id = r_fill_state.batch_tex_id;
 	r_fill_state.batch_tex_id = _batch_find_or_create_tex(rect->texture, rect->normal_map, rect->flags & RasterizerCanvas::CANVAS_RECT_TILE, old_batch_tex_id);
 
-	//r_fill_state.use_light_angles = send_light_angles;
+	// r_fill_state.use_light_angles = send_light_angles;
 	if (SEND_LIGHT_ANGLES) {
 		bdata.use_light_angles = true;
 	}
@@ -2033,7 +2033,7 @@ bool C_PREAMBLE::_prefill_rect(RasterizerCanvas::Item::CommandRect *rect, FillSt
 		}
 
 		// need to preserve texpixel_size between items
-		//r_fill_state.texpixel_size = r_fill_state.texpixel_size;
+		// r_fill_state.texpixel_size = r_fill_state.texpixel_size;
 
 		// open new batch (this should never fail, it dynamically grows)
 		r_fill_state.curr_batch = _batch_request_new(false);
@@ -2043,7 +2043,7 @@ bool C_PREAMBLE::_prefill_rect(RasterizerCanvas::Item::CommandRect *rect, FillSt
 		r_fill_state.curr_batch->batch_texture_id = r_fill_state.batch_tex_id;
 		r_fill_state.curr_batch->first_command = command_num;
 		r_fill_state.curr_batch->num_commands = 1;
-		//r_fill_state.curr_batch->first_quad = bdata.total_quads;
+		// r_fill_state.curr_batch->first_quad = bdata.total_quads;
 		r_fill_state.curr_batch->first_vert = bdata.total_verts;
 	} else {
 		// we could alternatively do the count when closing a batch .. perhaps more efficient
@@ -2275,7 +2275,7 @@ PREAMBLE(bool)::prefill_joined_item(FillState &r_fill_state, int &r_command_star
 		r_fill_state.curr_batch->type = RasterizerStorageCommon::BT_DUMMY;
 
 		// this is assumed to be the case
-		//CRASH_COND (r_fill_state.transform_extra_command_number_p1);
+		// CRASH_COND (r_fill_state.transform_extra_command_number_p1);
 	}
 
 	// we need to return which command we got up to, so
@@ -3175,7 +3175,7 @@ PREAMBLE(bool)::_detect_item_batch_break(RenderItemState &r_ris, RasterizerCanva
 
 			switch (command->type) {
 				default: {
-					//r_batch_break = true;
+					// r_batch_break = true;
 					return true;
 				} break;
 				case RasterizerCanvas::Item::Command::TYPE_LINE: {
@@ -3183,7 +3183,7 @@ PREAMBLE(bool)::_detect_item_batch_break(RenderItemState &r_ris, RasterizerCanva
 					RasterizerCanvas::Item::CommandLine *line = static_cast<RasterizerCanvas::Item::CommandLine *>(command);
 
 					if (line->width > 1) {
-						//r_batch_break = true;
+						// r_batch_break = true;
 						return true;
 					}
 
@@ -3212,7 +3212,7 @@ PREAMBLE(bool)::_detect_item_batch_break(RenderItemState &r_ris, RasterizerCanva
 					}
 
 					if (_disallow_item_join_if_batch_types_too_different(r_ris, RasterizerStorageCommon::BTF_POLY)) {
-						//r_batch_break = true;
+						// r_batch_break = true;
 						return true;
 					}
 				} break;

@@ -97,7 +97,7 @@ Dictionary Script::_get_script_constant_map() {
 
 void Script::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("can_instance"), &Script::can_instance);
-	//ClassDB::bind_method(D_METHOD("instance_create","base_object"),&Script::instance_create);
+	// ClassDB::bind_method(D_METHOD("instance_create","base_object"),&Script::instance_create);
 	ClassDB::bind_method(D_METHOD("instance_has", "base_object"), &Script::instance_has);
 	ClassDB::bind_method(D_METHOD("has_source_code"), &Script::has_source_code);
 	ClassDB::bind_method(D_METHOD("get_source_code"), &Script::get_source_code);
@@ -151,7 +151,7 @@ void ScriptServer::unregister_language(ScriptLanguage *p_language) {
 }
 
 void ScriptServer::init_languages() {
-	{ //load global classes
+	{ // load global classes
 		global_classes_clear();
 		if (ProjectSettings::get_singleton()->has_setting("_global_script_classes")) {
 			Array script_classes = ProjectSettings::get_singleton()->get("_global_script_classes");
@@ -561,7 +561,7 @@ void PlaceHolderScriptInstance::update(const List<PropertyInfo> &p_properties, c
 
 		Variant defval;
 		if (script->get_property_default_value(E->key(), defval)) {
-			//remove because it's the same as the default value
+			// remove because it's the same as the default value
 			if (defval == E->get()) {
 				to_remove.push_back(E->key());
 			}
@@ -576,7 +576,7 @@ void PlaceHolderScriptInstance::update(const List<PropertyInfo> &p_properties, c
 	if (owner && owner->get_script_instance() == this) {
 		owner->_change_notify();
 	}
-	//change notify
+	// change notify
 
 	constants.clear();
 	script->get_constants(&constants);

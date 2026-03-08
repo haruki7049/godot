@@ -42,7 +42,7 @@ class VideoPlayer : public Control {
 	struct Output {
 		AudioFrame vol;
 		int bus_index;
-		Viewport *viewport; //pointer only used for reference to previous mix
+		Viewport *viewport; // pointer only used for reference to previous mix
 	};
 	Ref<VideoStreamPlayback> playback;
 	Ref<VideoStream> stream;

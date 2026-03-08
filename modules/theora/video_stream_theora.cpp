@@ -91,7 +91,7 @@ void VideoStreamPlaybackTheora::video_write() {
 		PoolVector<uint8_t>::Write w = frame_data.write();
 		char *dst = (char *)w.ptr();
 
-		//uv_offset=(ti.pic_x/2)+(yuv[1].stride)*(ti.pic_y/2);
+		// uv_offset=(ti.pic_x/2)+(yuv[1].stride)*(ti.pic_y/2);
 
 		if (px_fmt == TH_PF_444) {
 			yuv444_2_rgb8888((uint8_t *)dst, (uint8_t *)yuv[0].data, (uint8_t *)yuv[1].data, (uint8_t *)yuv[2].data, size.x, size.y, yuv[0].stride, yuv[1].stride, size.x << 2);
@@ -106,9 +106,9 @@ void VideoStreamPlaybackTheora::video_write() {
 		format = Image::FORMAT_RGBA8;
 	}
 
-	Ref<Image> img = memnew(Image(size.x, size.y, 0, Image::FORMAT_RGBA8, frame_data)); //zero copy image creation
+	Ref<Image> img = memnew(Image(size.x, size.y, 0, Image::FORMAT_RGBA8, frame_data)); // zero copy image creation
 
-	texture->set_data(img); //zero copy send to visual server
+	texture->set_data(img); // zero copy send to visual server
 
 	frames_pending = 1;
 }
@@ -139,7 +139,7 @@ void VideoStreamPlaybackTheora::clear() {
 
 #ifdef THEORA_USE_THREAD_STREAMING
 	thread_exit = true;
-	thread_sem.post(); //just in case
+	thread_sem.post(); // just in case
 	thread.wait_to_finish();
 	ring_buffer.clear();
 #endif
@@ -174,7 +174,7 @@ void VideoStreamPlaybackTheora::set_file(const String &p_file) {
 #ifdef THEORA_USE_THREAD_STREAMING
 	thread_exit = false;
 	thread_eof = false;
-	//pre-fill buffer
+	// pre-fill buffer
 	int to_read = ring_buffer.space_left();
 	uint64_t read = file->get_buffer(read_buffer.ptr(), to_read);
 	ring_buffer.write(read_buffer.ptr(), read);
@@ -308,13 +308,13 @@ void VideoStreamPlaybackTheora::set_file(const String &p_file) {
 		px_fmt = ti.pixel_fmt;
 		switch (ti.pixel_fmt) {
 			case TH_PF_420:
-				//printf(" 4:2:0 video\n");
+				// printf(" 4:2:0 video\n");
 				break;
 			case TH_PF_422:
-				//printf(" 4:2:2 video\n");
+				// printf(" 4:2:2 video\n");
 				break;
 			case TH_PF_444:
-				//printf(" 4:4:4 video\n");
+				// printf(" 4:4:4 video\n");
 				break;
 			case TH_PF_RSVD:
 			default:
@@ -377,7 +377,7 @@ void VideoStreamPlaybackTheora::update(float p_delta) {
 	}
 
 	if (!playing || paused) {
-		//printf("not playing\n");
+		// printf("not playing\n");
 		return;
 	};
 
@@ -388,14 +388,14 @@ void VideoStreamPlaybackTheora::update(float p_delta) {
 	time += p_delta;
 
 	if (videobuf_time > get_time()) {
-		return; //no new frames need to be produced
+		return; // no new frames need to be produced
 	}
 
 	bool frame_done = false;
 	bool audio_done = !vorbis_p;
 
 	while (!frame_done || (!audio_done && !vorbis_eos)) {
-		//a frame needs to be produced
+		// a frame needs to be produced
 
 		ogg_packet op;
 		bool no_theora = false;
@@ -426,12 +426,12 @@ void VideoStreamPlaybackTheora::update(float p_delta) {
 					if (mix_callback) {
 						int mixed = mix_callback(mix_udata, aux_buffer, m);
 						to_read -= mixed;
-						if (mixed != m) { //could mix no more
+						if (mixed != m) { // could mix no more
 							buffer_full = true;
 							break;
 						}
 					} else {
-						to_read -= m; //just pretend we sent the audio
+						to_read -= m; // just pretend we sent the audio
 					}
 				}
 
@@ -480,7 +480,7 @@ void VideoStreamPlaybackTheora::update(float p_delta) {
 				if (th_decode_packetin(td, &op, &videobuf_granulepos) == 0) {
 					videobuf_time = th_granule_time(td, videobuf_granulepos);
 
-					//printf("frame time %f, play time %f, ready %i\n", (float)videobuf_time, get_time(), videobuf_ready);
+					// printf("frame time %f, play time %f, ready %i\n", (float)videobuf_time, get_time(), videobuf_ready);
 
 					/* is it already too old to be useful? This is only actually
 					 useful cosmetically after a SIGSTOP. Note that we have to
@@ -507,13 +507,13 @@ void VideoStreamPlaybackTheora::update(float p_delta) {
 #else
 		if (file && /*!videobuf_ready && */ no_theora && theora_eos) {
 #endif
-			//printf("video done, stopping\n");
+			// printf("video done, stopping\n");
 			stop();
 			return;
 		};
 
 		if (!frame_done || !audio_done) {
-			//what's the point of waiting for audio to grab a page?
+			// what's the point of waiting for audio to grab a page?
 
 			buffer_data();
 			while (ogg_sync_pageout(&oy, &og) > 0) {
@@ -522,14 +522,14 @@ void VideoStreamPlaybackTheora::update(float p_delta) {
 		}
 
 		/* If playback has begun, top audio buffer off immediately. */
-		//if(stateflag) audio_write_nonblocking();
+		// if(stateflag) audio_write_nonblocking();
 
 		/* are we at or past time for this video frame? */
 		if (videobuf_ready && videobuf_time <= get_time()) {
-			//video_write();
-			//videobuf_ready=0;
+			// video_write();
+			// videobuf_ready=0;
 		} else {
-			//printf("frame at %f not ready (time %f), ready %i\n", (float)videobuf_time, get_time(), videobuf_ready);
+			// printf("frame at %f not ready (time %f), ready %i\n", (float)videobuf_time, get_time(), videobuf_ready);
 		}
 
 		float tdiff = videobuf_time - get_time();
@@ -559,7 +559,7 @@ void VideoStreamPlaybackTheora::play() {
 void VideoStreamPlaybackTheora::stop() {
 	if (playing) {
 		clear();
-		set_file(file_name); //reset
+		set_file(file_name); // reset
 	}
 	playing = false;
 	time = 0;
@@ -577,7 +577,7 @@ bool VideoStreamPlaybackTheora::is_paused() const {
 	return paused;
 };
 
-void VideoStreamPlaybackTheora::set_loop(bool p_enable){
+void VideoStreamPlaybackTheora::set_loop(bool p_enable) {
 
 };
 
@@ -628,7 +628,7 @@ void VideoStreamPlaybackTheora::_streaming_thread(void *ud) {
 	VideoStreamPlaybackTheora *vs = (VideoStreamPlaybackTheora *)ud;
 
 	while (!vs->thread_exit) {
-		//just fill back the buffer
+		// just fill back the buffer
 		if (!vs->thread_eof) {
 			int to_read = vs->ring_buffer.space_left();
 			if (to_read > 0) {

@@ -71,9 +71,9 @@ Error AudioDriverALSA::init_device() {
 		ERR_FAIL_COND_V(m_cond, ERR_CANT_OPEN);                  \
 	}
 
-	//todo, add
-	//6 chans - "plug:surround51"
-	//4 chans - "plug:surround40";
+	// todo, add
+	// 6 chans - "plug:surround51"
+	// 4 chans - "plug:surround40";
 
 	if (device_name == "Default") {
 		status = snd_pcm_open(&pcm_handle, "default", SND_PCM_STREAM_PLAYBACK, SND_PCM_NONBLOCK);
@@ -96,11 +96,11 @@ Error AudioDriverALSA::init_device() {
 	status = snd_pcm_hw_params_set_access(pcm_handle, hwparams, SND_PCM_ACCESS_RW_INTERLEAVED);
 	CHECK_FAIL(status < 0);
 
-	//not interested in anything else
+	// not interested in anything else
 	status = snd_pcm_hw_params_set_format(pcm_handle, hwparams, SND_PCM_FORMAT_S16_LE);
 	CHECK_FAIL(status < 0);
 
-	//todo: support 4 and 6
+	// todo: support 4 and 6
 	status = snd_pcm_hw_params_set_channels(pcm_handle, hwparams, 2);
 	CHECK_FAIL(status < 0);
 
@@ -130,7 +130,7 @@ Error AudioDriverALSA::init_device() {
 	status = snd_pcm_hw_params(pcm_handle, hwparams);
 	CHECK_FAIL(status < 0);
 
-	//snd_pcm_hw_params_free(&hwparams);
+	// snd_pcm_hw_params_free(&hwparams);
 
 	snd_pcm_sw_params_alloca(&swparams);
 

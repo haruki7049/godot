@@ -122,8 +122,8 @@ public:
 	bool with_value;
 
 	virtual int get_working_memory_size() const { return 1; }
-	//virtual bool is_output_port_unsequenced(int p_idx) const { return false; }
-	//virtual bool get_output_port_unsequenced(int p_idx,Variant* r_value,Variant* p_working_mem,String &r_error) const { return true; }
+	// virtual bool is_output_port_unsequenced(int p_idx) const { return false; }
+	// virtual bool get_output_port_unsequenced(int p_idx,Variant* r_value,Variant* p_working_mem,String &r_error) const { return true; }
 
 	virtual int step(const Variant **p_inputs, Variant **p_outputs, StartMode p_start_mode, Variant *p_working_mem, Variant::CallError &r_error, String &r_error_str) {
 		if (with_value) {
@@ -212,9 +212,9 @@ public:
 	VisualScriptCondition *node;
 	VisualScriptInstance *instance;
 
-	//virtual int get_working_memory_size() const { return 1; }
-	//virtual bool is_output_port_unsequenced(int p_idx) const { return false; }
-	//virtual bool get_output_port_unsequenced(int p_idx,Variant* r_value,Variant* p_working_mem,String &r_error) const { return true; }
+	// virtual int get_working_memory_size() const { return 1; }
+	// virtual bool is_output_port_unsequenced(int p_idx) const { return false; }
+	// virtual bool get_output_port_unsequenced(int p_idx,Variant* r_value,Variant* p_working_mem,String &r_error) const { return true; }
 
 	virtual int step(const Variant **p_inputs, Variant **p_outputs, StartMode p_start_mode, Variant *p_working_mem, Variant::CallError &r_error, String &r_error_str) {
 		if (p_start_mode == START_MODE_CONTINUE_SEQUENCE) {
@@ -290,9 +290,9 @@ public:
 	VisualScriptWhile *node;
 	VisualScriptInstance *instance;
 
-	//virtual int get_working_memory_size() const { return 1; }
-	//virtual bool is_output_port_unsequenced(int p_idx) const { return false; }
-	//virtual bool get_output_port_unsequenced(int p_idx,Variant* r_value,Variant* p_working_mem,String &r_error) const { return true; }
+	// virtual int get_working_memory_size() const { return 1; }
+	// virtual bool is_output_port_unsequenced(int p_idx) const { return false; }
+	// virtual bool get_output_port_unsequenced(int p_idx,Variant* r_value,Variant* p_working_mem,String &r_error) const { return true; }
 
 	virtual int step(const Variant **p_inputs, Variant **p_outputs, StartMode p_start_mode, Variant *p_working_mem, Variant::CallError &r_error, String &r_error_str) {
 		bool keep_going = p_inputs[0]->operator bool();
@@ -370,8 +370,8 @@ public:
 	VisualScriptInstance *instance;
 
 	virtual int get_working_memory_size() const { return 2; }
-	//virtual bool is_output_port_unsequenced(int p_idx) const { return false; }
-	//virtual bool get_output_port_unsequenced(int p_idx,Variant* r_value,Variant* p_working_mem,String &r_error) const { return true; }
+	// virtual bool is_output_port_unsequenced(int p_idx) const { return false; }
+	// virtual bool get_output_port_unsequenced(int p_idx,Variant* r_value,Variant* p_working_mem,String &r_error) const { return true; }
 
 	virtual int step(const Variant **p_inputs, Variant **p_outputs, StartMode p_start_mode, Variant *p_working_mem, Variant::CallError &r_error, String &r_error_str) {
 		if (p_start_mode == START_MODE_BEGIN_SEQUENCE) {
@@ -386,7 +386,7 @@ public:
 			}
 
 			if (!can_iter) {
-				return 1; //nothing to iterate
+				return 1; // nothing to iterate
 			}
 
 			*p_outputs[0] = p_working_mem[0].iter_get(p_working_mem[1], valid);
@@ -397,7 +397,7 @@ public:
 				return 0;
 			}
 
-		} else { //continue sequence
+		} else { // continue sequence
 
 			bool valid;
 			bool can_iter = p_working_mem[0].iter_next(p_working_mem[1], valid);
@@ -409,7 +409,7 @@ public:
 			}
 
 			if (!can_iter) {
-				return 1; //nothing to iterate
+				return 1; // nothing to iterate
 			}
 
 			*p_outputs[0] = p_working_mem[0].iter_get(p_working_mem[1], valid);
@@ -421,7 +421,7 @@ public:
 			}
 		}
 
-		return 0 | STEP_FLAG_PUSH_STACK_BIT; //go around
+		return 0 | STEP_FLAG_PUSH_STACK_BIT; // go around
 	}
 };
 
@@ -500,8 +500,8 @@ public:
 	int steps;
 
 	virtual int get_working_memory_size() const { return 1; }
-	//virtual bool is_output_port_unsequenced(int p_idx) const { return false; }
-	//virtual bool get_output_port_unsequenced(int p_idx,Variant* r_value,Variant* p_working_mem,String &r_error) const { return true; }
+	// virtual bool is_output_port_unsequenced(int p_idx) const { return false; }
+	// virtual bool get_output_port_unsequenced(int p_idx,Variant* r_value,Variant* p_working_mem,String &r_error) const { return true; }
 
 	virtual int step(const Variant **p_inputs, Variant **p_outputs, StartMode p_start_mode, Variant *p_working_mem, Variant::CallError &r_error, String &r_error_str) {
 		if (p_start_mode == START_MODE_BEGIN_SEQUENCE) {
@@ -584,13 +584,13 @@ public:
 	VisualScriptInstance *instance;
 	int case_count;
 
-	//virtual int get_working_memory_size() const { return 0; }
-	//virtual bool is_output_port_unsequenced(int p_idx) const { return false; }
-	//virtual bool get_output_port_unsequenced(int p_idx,Variant* r_value,Variant* p_working_mem,String &r_error) const { return false; }
+	// virtual int get_working_memory_size() const { return 0; }
+	// virtual bool is_output_port_unsequenced(int p_idx) const { return false; }
+	// virtual bool get_output_port_unsequenced(int p_idx,Variant* r_value,Variant* p_working_mem,String &r_error) const { return false; }
 
 	virtual int step(const Variant **p_inputs, Variant **p_outputs, StartMode p_start_mode, Variant *p_working_mem, Variant::CallError &r_error, String &r_error_str) {
 		if (p_start_mode == START_MODE_CONTINUE_SEQUENCE) {
-			return case_count; //exit
+			return case_count; // exit
 		}
 
 		for (int i = 0; i < case_count; i++) {
@@ -743,9 +743,9 @@ VisualScriptTypeCast::TypeGuess VisualScriptTypeCast::guess_output_type(TypeGues
 	if (script != String()) {
 		tg.script = ResourceLoader::load(script);
 	}
-	//if (!tg.script.is_valid()) {
+	// if (!tg.script.is_valid()) {
 	//	tg.gdclass = base_type;
-	//}
+	// }
 
 	return tg;
 }
@@ -756,9 +756,9 @@ public:
 	StringName base_type;
 	String script;
 
-	//virtual int get_working_memory_size() const { return 0; }
-	//virtual bool is_output_port_unsequenced(int p_idx) const { return false; }
-	//virtual bool get_output_port_unsequenced(int p_idx,Variant* r_value,Variant* p_working_mem,String &r_error) const { return false; }
+	// virtual int get_working_memory_size() const { return 0; }
+	// virtual bool is_output_port_unsequenced(int p_idx) const { return false; }
+	// virtual bool get_output_port_unsequenced(int p_idx,Variant* r_value,Variant* p_working_mem,String &r_error) const { return false; }
 
 	virtual int step(const Variant **p_inputs, Variant **p_outputs, StartMode p_start_mode, Variant *p_working_mem, Variant::CallError &r_error, String &r_error_str) {
 		Object *obj = *p_inputs[0];
@@ -774,11 +774,11 @@ public:
 		if (script != String()) {
 			Ref<Script> obj_script = obj->get_script();
 			if (!obj_script.is_valid()) {
-				return 1; //well, definitely not the script because object we got has no script.
+				return 1; // well, definitely not the script because object we got has no script.
 			}
 
 			if (!ResourceCache::has(script)) {
-				//if the script is not in use by anyone, we can safely assume whathever we got is not casting to it.
+				// if the script is not in use by anyone, we can safely assume whathever we got is not casting to it.
 				return 1;
 			}
 			Ref<Script> cast_script = Ref<Resource>(ResourceCache::get(script));
@@ -790,18 +790,18 @@ public:
 
 			while (obj_script.is_valid()) {
 				if (cast_script == obj_script) {
-					*p_outputs[0] = *p_inputs[0]; //copy
+					*p_outputs[0] = *p_inputs[0]; // copy
 					return 0; // it is the script, yey
 				}
 
 				obj_script = obj_script->get_base_script();
 			}
 
-			return 1; //not found sorry
+			return 1; // not found sorry
 		}
 
 		if (ClassDB::is_parent_class(obj->get_class_name(), base_type)) {
-			*p_outputs[0] = *p_inputs[0]; //copy
+			*p_outputs[0] = *p_inputs[0]; // copy
 			return 0;
 		} else {
 			return 1;
@@ -853,6 +853,6 @@ void register_visual_script_flow_control_nodes() {
 	VisualScriptLanguage::singleton->add_register_func("flow_control/iterator", create_node_generic<VisualScriptIterator>);
 	VisualScriptLanguage::singleton->add_register_func("flow_control/sequence", create_node_generic<VisualScriptSequence>);
 	VisualScriptLanguage::singleton->add_register_func("flow_control/switch", create_node_generic<VisualScriptSwitch>);
-	//VisualScriptLanguage::singleton->add_register_func("flow_control/input_filter", create_node_generic<VisualScriptInputFilter>);
+	// VisualScriptLanguage::singleton->add_register_func("flow_control/input_filter", create_node_generic<VisualScriptInputFilter>);
 	VisualScriptLanguage::singleton->add_register_func("flow_control/type_cast", create_node_generic<VisualScriptTypeCast>);
 }

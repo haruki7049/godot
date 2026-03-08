@@ -161,7 +161,7 @@ void Physics2DServerSW::_shape_col_cbk(const Vector2 &p_point_A, const Vector2 &
 	}
 
 	if (cbk->amount == cbk->max) {
-		//find least deep
+		// find least deep
 		real_t min_depth = 1e20;
 		int min_depth_idx = 0;
 		for (int i = 0; i < cbk->amount; i++) {
@@ -296,7 +296,7 @@ void Physics2DServerSW::area_set_space(RID p_area, RID p_space) {
 	}
 
 	if (area->get_space() == space) {
-		return; //pointless
+		return; // pointless
 	}
 
 	area->clear_constraints();
@@ -535,7 +535,7 @@ void Physics2DServerSW::body_set_space(RID p_body, RID p_space) {
 	}
 
 	if (body->get_space() == space) {
-		return; //pointless
+		return; // pointless
 	}
 
 	body->clear_constraint_map();
@@ -1342,6 +1342,6 @@ Physics2DServerSW::Physics2DServerSW() {
 	flushing_queries = false;
 };
 
-Physics2DServerSW::~Physics2DServerSW(){
+Physics2DServerSW::~Physics2DServerSW() {
 
 };

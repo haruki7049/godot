@@ -213,10 +213,10 @@ void light_compute(
 		vec3 light_color,
 		vec3 attenuation,
 		float roughness) {
-//this makes lights behave closer to linear, but then addition of lights looks bad
-//better left disabled
+// this makes lights behave closer to linear, but then addition of lights looks bad
+// better left disabled
 
-//#define SRGB_APPROX(m_var) m_var = pow(m_var,0.4545454545);
+// #define SRGB_APPROX(m_var) m_var = pow(m_var,0.4545454545);
 /*
 #define SRGB_APPROX(m_var) {\
 	float S1 = sqrt(m_var);\
@@ -271,7 +271,7 @@ void light_compute(
 		float specular_brdf_NL = 0.0;
 
 #if !defined(SPECULAR_DISABLED)
-		//normalized blinn always unless disabled
+		// normalized blinn always unless disabled
 		vec3 H = normalize(V + L);
 		float cNdotH = max(dot(N, H), 0.0);
 		float shininess = exp2(15.0 * (1.0 - roughness) + 1.0) * 0.25;
@@ -299,7 +299,7 @@ uniform highp vec3 refprobe1_box_extents;
 varying mediump vec3 refprobe1_ambient_normal;
 #endif
 
-#endif //reflection probe1
+#endif // reflection probe1
 
 #ifdef USE_REFLECTION_PROBE2
 
@@ -311,9 +311,9 @@ uniform highp vec3 refprobe2_box_extents;
 varying mediump vec3 refprobe2_ambient_normal;
 #endif
 
-#endif //reflection probe2
+#endif // reflection probe2
 
-#endif //vertex lighting for refprobes
+#endif // vertex lighting for refprobes
 
 #if defined(FOG_DEPTH_ENABLED) || defined(FOG_HEIGHT_ENABLED)
 
@@ -339,7 +339,7 @@ uniform highp float fog_height_max;
 uniform mediump float fog_height_curve;
 #endif
 
-#endif //fog
+#endif // fog
 
 void main() {
 	highp vec4 vertex = vertex_attrib;
@@ -511,9 +511,9 @@ VERTEX_SHADER_CODE
 	vertex_interp.z *= shadow_dual_paraboloid_render_side;
 	normal_interp.z *= shadow_dual_paraboloid_render_side;
 
-	dp_clip = vertex_interp.z; //this attempts to avoid noise caused by objects sent to the other parabolloid side due to bias
+	dp_clip = vertex_interp.z; // this attempts to avoid noise caused by objects sent to the other parabolloid side due to bias
 
-	//for dual paraboloid shadow mapping, this is the fastest but least correct way, as it curves straight edges
+	// for dual paraboloid shadow mapping, this is the fastest but least correct way, as it curves straight edges
 
 	highp vec3 vtx = vertex_interp + normalize(vertex_interp) * light_bias;
 	highp float distance = length(vtx);
@@ -529,13 +529,13 @@ VERTEX_SHADER_CODE
 	z_ofs += (1.0 - abs(normal_interp.z)) * light_normal_bias;
 
 	vertex_interp.z -= z_ofs;
-#endif //dual parabolloid
+#endif // dual parabolloid
 
-#endif //depth
+#endif // depth
 
-//vertex lighting
+// vertex lighting
 #if defined(USE_VERTEX_LIGHTING) && defined(USE_LIGHTING)
-	//vertex shaded version of lighting (more limited)
+	// vertex shaded version of lighting (more limited)
 	vec3 L;
 	vec3 light_att;
 
@@ -592,7 +592,7 @@ VERTEX_SHADER_CODE
 
 #ifdef LIGHT_MODE_DIRECTIONAL
 	vec3 light_vec = -light_direction;
-	light_att = vec3(1.0); //no base attenuation
+	light_att = vec3(1.0); // no base attenuation
 	L = normalize(light_vec);
 #endif
 
@@ -602,7 +602,7 @@ VERTEX_SHADER_CODE
 
 #endif
 
-//shadows (for both vertex and fragment)
+// shadows (for both vertex and fragment)
 #if defined(USE_SHADOW) && defined(USE_LIGHTING)
 
 	vec4 vi4 = vec4(vertex_interp, 1.0);
@@ -618,7 +618,7 @@ VERTEX_SHADER_CODE
 
 #endif
 
-#endif //use shadow and use lighting
+#endif // use shadow and use lighting
 
 #ifdef USE_VERTEX_LIGHTING
 
@@ -640,7 +640,7 @@ VERTEX_SHADER_CODE
 #endif
 	}
 
-#endif //USE_REFLECTION_PROBE1
+#endif // USE_REFLECTION_PROBE1
 
 #ifdef USE_REFLECTION_PROBE2
 	{
@@ -660,7 +660,7 @@ VERTEX_SHADER_CODE
 #endif
 	}
 
-#endif //USE_REFLECTION_PROBE2
+#endif // USE_REFLECTION_PROBE2
 
 #if defined(FOG_DEPTH_ENABLED) || defined(FOG_HEIGHT_ENABLED)
 
@@ -690,9 +690,9 @@ VERTEX_SHADER_CODE
 #endif
 	fog_interp = vec4(fog_color, fog_amount);
 
-#endif //fog
+#endif // fog
 
-#endif //use vertex lighting
+#endif // use vertex lighting
 
 #if defined(OVERRIDE_POSITION)
 	gl_Position = position;
@@ -769,10 +769,10 @@ uniform vec2 screen_pixel_size;
 #endif
 
 #if defined(SCREEN_TEXTURE_USED)
-uniform highp sampler2D screen_texture; //texunit:-4
+uniform highp sampler2D screen_texture; // texunit:-4
 #endif
 #if defined(DEPTH_TEXTURE_USED)
-uniform highp sampler2D depth_texture; //texunit:-4
+uniform highp sampler2D depth_texture; // texunit:-4
 #endif
 
 #ifdef USE_REFLECTION_PROBE1
@@ -791,16 +791,16 @@ uniform highp vec3 refprobe1_box_extents;
 uniform vec3 refprobe1_box_offset;
 uniform highp mat4 refprobe1_local_matrix;
 
-#endif //use vertex lighting
+#endif // use vertex lighting
 
 uniform bool refprobe1_exterior;
 
-uniform highp samplerCube reflection_probe1; //texunit:-5
+uniform highp samplerCube reflection_probe1; // texunit:-5
 
 uniform float refprobe1_intensity;
 uniform vec4 refprobe1_ambient;
 
-#endif //USE_REFLECTION_PROBE1
+#endif // USE_REFLECTION_PROBE1
 
 #ifdef USE_REFLECTION_PROBE2
 
@@ -818,16 +818,16 @@ uniform highp vec3 refprobe2_box_extents;
 uniform vec3 refprobe2_box_offset;
 uniform highp mat4 refprobe2_local_matrix;
 
-#endif //use vertex lighting
+#endif // use vertex lighting
 
 uniform bool refprobe2_exterior;
 
-uniform highp samplerCube reflection_probe2; //texunit:-6
+uniform highp samplerCube reflection_probe2; // texunit:-6
 
 uniform float refprobe2_intensity;
 uniform vec4 refprobe2_ambient;
 
-#endif //USE_REFLECTION_PROBE2
+#endif // USE_REFLECTION_PROBE2
 
 #define RADIANCE_MAX_LOD 6.0
 
@@ -841,11 +841,11 @@ void reflection_process(samplerCube reflection_map,
 #endif
 		float ref_blend,
 
-#else //no vertex lighting
+#else // no vertex lighting
 		vec3 normal, vec3 vertex,
 		mat4 local_matrix,
 		bool use_box_project, vec3 box_extents, vec3 box_offset,
-#endif //vertex lighting
+#endif // vertex lighting
 		bool exterior, float intensity, vec4 ref_ambient, float roughness, vec3 ambient, vec3 skybox, inout highp vec4 reflection_accum, inout highp vec4 ambient_accum) {
 
 	vec4 reflection;
@@ -854,15 +854,15 @@ void reflection_process(samplerCube reflection_map,
 
 	reflection.rgb = textureCubeLod(reflection_map, ref_normal, roughness * RADIANCE_MAX_LOD).rgb;
 
-	float blend = ref_blend; //crappier blend formula for vertex
+	float blend = ref_blend; // crappier blend formula for vertex
 	blend *= blend;
 	blend = max(0.0, 1.0 - blend);
 
-#else //fragment lighting
+#else // fragment lighting
 
 	vec3 local_pos = (local_matrix * vec4(vertex, 1.0)).xyz;
 
-	if (any(greaterThan(abs(local_pos), box_extents))) { //out of the reflection box
+	if (any(greaterThan(abs(local_pos), box_extents))) { // out of the reflection box
 		return;
 	}
 
@@ -872,11 +872,11 @@ void reflection_process(samplerCube reflection_map,
 	blend *= blend;
 	blend = max(0.0, 1.0 - blend);
 
-	//reflect and make local
+	// reflect and make local
 	vec3 ref_normal = normalize(reflect(vertex, normal));
 	ref_normal = (local_matrix * vec4(ref_normal, 0.0)).xyz;
 
-	if (use_box_project) { //box project
+	if (use_box_project) { // box project
 
 		vec3 nrdir = normalize(ref_normal);
 		vec3 rbmax = (box_extents - local_pos) / nrdir;
@@ -922,10 +922,10 @@ void reflection_process(samplerCube reflection_map,
 #endif
 }
 
-#endif //use refprobe 1 or 2
+#endif // use refprobe 1 or 2
 
 #ifdef USE_LIGHTMAP
-uniform mediump sampler2D lightmap; //texunit:-4
+uniform mediump sampler2D lightmap; // texunit:-4
 uniform mediump float lightmap_energy;
 
 #if defined(USE_LIGHTMAP_FILTER_BICUBIC)
@@ -989,7 +989,7 @@ vec4 texture2D_bicubic(sampler2D tex, vec2 uv) {
 	return (g0(fuv.y) * (g0x * texture2D(tex, p0) + g1x * texture2D(tex, p1))) +
 		   (g1(fuv.y) * (g0x * texture2D(tex, p2) + g1x * texture2D(tex, p3)));
 }
-#endif //USE_LIGHTMAP_FILTER_BICUBIC
+#endif // USE_LIGHTMAP_FILTER_BICUBIC
 #endif
 
 #ifdef USE_LIGHTMAP_CAPTURE
@@ -1017,15 +1017,15 @@ uniform highp vec4 shadow_color;
 
 #ifdef USE_VERTEX_LIGHTING
 
-//get from vertex
+// get from vertex
 varying highp vec3 diffuse_interp;
 varying highp vec3 specular_interp;
 
-uniform highp vec3 light_direction; //may be used by fog, so leave here
+uniform highp vec3 light_direction; // may be used by fog, so leave here
 
 #else
-//done in fragment
-// general for all lights
+// done in fragment
+//  general for all lights
 uniform highp vec4 light_color;
 
 uniform highp float light_specular;
@@ -1043,7 +1043,7 @@ uniform highp float light_spot_range;
 uniform highp float light_spot_angle;
 #endif
 
-//this is needed outside above if because dual paraboloid wants it
+// this is needed outside above if because dual paraboloid wants it
 uniform highp float light_range;
 
 #ifdef USE_SHADOW
@@ -1051,7 +1051,7 @@ uniform highp float light_range;
 uniform highp vec2 shadow_pixel_size;
 
 #if defined(LIGHT_MODE_OMNI) || defined(LIGHT_MODE_SPOT)
-uniform highp sampler2D light_shadow_atlas; //texunit:-3
+uniform highp sampler2D light_shadow_atlas; // texunit:-3
 #endif
 
 #ifdef LIGHT_MODE_DIRECTIONAL
@@ -1244,10 +1244,10 @@ void light_compute(
 		inout vec3 diffuse_light,
 		inout vec3 specular_light,
 		inout float alpha) {
-//this makes lights behave closer to linear, but then addition of lights looks bad
-//better left disabled
+// this makes lights behave closer to linear, but then addition of lights looks bad
+// better left disabled
 
-//#define SRGB_APPROX(m_var) m_var = pow(m_var,0.4545454545);
+// #define SRGB_APPROX(m_var) m_var = pow(m_var,0.4545454545);
 /*
 #define SRGB_APPROX(m_var) {\
 	float S1 = sqrt(m_var);\
@@ -1373,7 +1373,7 @@ LIGHT_SHADER_CODE
 
 #if defined(SPECULAR_BLINN)
 
-		//normalized blinn
+		// normalized blinn
 		float shininess = exp2(15.0 * (1.0 - roughness) + 1.0) * 0.25;
 		float blinn = pow(cNdotH, shininess);
 		blinn *= (shininess + 2.0) * (1.0 / (8.0 * M_PI));
@@ -1411,13 +1411,13 @@ LIGHT_SHADER_CODE
 		float XdotH = dot(T, H);
 		float YdotH = dot(B, H);
 		float D = D_GGX_anisotropic(cNdotH, ax, ay, XdotH, YdotH, cNdotH);
-		//float G = G_GGX_anisotropic_2cos(cNdotL, ax, ay, XdotH, YdotH) * G_GGX_anisotropic_2cos(cNdotV, ax, ay, XdotH, YdotH);
+		// float G = G_GGX_anisotropic_2cos(cNdotL, ax, ay, XdotH, YdotH) * G_GGX_anisotropic_2cos(cNdotV, ax, ay, XdotH, YdotH);
 		float G = V_GGX_anisotropic(ax, ay, dot(T, V), dot(T, L), dot(B, V), dot(B, L), cNdotV, cNdotL);
 
 #else
 		float alpha_ggx = roughness * roughness;
 		float D = D_GGX(cNdotH, alpha_ggx);
-		//float G = G_GGX_2cos(cNdotL, alpha_ggx) * G_GGX_2cos(cNdotV, alpha_ggx);
+		// float G = G_GGX_2cos(cNdotL, alpha_ggx) * G_GGX_2cos(cNdotV, alpha_ggx);
 		float G = V_GGX(cNdotL, cNdotV, alpha_ggx);
 #endif
 		// F
@@ -1439,7 +1439,7 @@ LIGHT_SHADER_CODE
 #endif
 		float Dr = GTR1(cNdotH, mix(.1, .001, clearcoat_gloss));
 		float Fr = mix(.04, 1.0, cLdotH5);
-		//float Gr = G_GGX_2cos(cNdotL, .25) * G_GGX_2cos(cNdotV, .25);
+		// float Gr = G_GGX_2cos(cNdotL, .25) * G_GGX_2cos(cNdotV, .25);
 		float Gr = V_GGX(cNdotL, cNdotV, 0.25);
 
 		float clearcoat_specular_brdf_NL = 0.25 * clearcoat * Gr * Fr * Dr * cNdotL;
@@ -1452,7 +1452,7 @@ LIGHT_SHADER_CODE
 	alpha = min(alpha, clamp(1.0 - length(attenuation), 0.0, 1.0));
 #endif
 
-#endif //defined(USE_LIGHT_SHADER_CODE)
+#endif // defined(USE_LIGHT_SHADER_CODE)
 }
 
 #endif
@@ -1569,8 +1569,8 @@ uniform highp float fog_height_max;
 uniform mediump float fog_height_curve;
 #endif
 
-#endif //vertex lit
-#endif //fog
+#endif // vertex lit
+#endif // fog
 
 void main() {
 #ifdef RENDER_DEPTH_DUAL_PARABOLOID
@@ -1592,7 +1592,7 @@ void main() {
 	float clearcoat_gloss = 0.0;
 	float anisotropy = 0.0;
 	vec2 anisotropy_flow = vec2(1.0, 0.0);
-	float sss_strength = 0.0; //unused
+	float sss_strength = 0.0; // unused
 	// gl_FragDepth is not available in GLES2, so writing to DEPTH is not converted to gl_FragDepth by Godot compiler resulting in a
 	// compile error because DEPTH is not a variable.
 	float m_DEPTH = 0.0;
@@ -1645,7 +1645,7 @@ FRAGMENT_SHADER_CODE
 	normalmap.z = sqrt(max(0.0, 1.0 - dot(normalmap.xy, normalmap.xy)));
 
 	normal = normalize(mix(normal_interp, tangent * normalmap.x + binormal * normalmap.y + normal * normalmap.z, normaldepth)) * side;
-	//normal = normalmap;
+	// normal = normalmap;
 #endif
 
 	normal = normalize(normal);
@@ -1770,13 +1770,13 @@ FRAGMENT_SHADER_CODE
 	// environment BRDF approximation
 	{
 #if defined(DIFFUSE_TOON)
-		//simplify for toon, as
+		// simplify for toon, as
 		specular_light *= specular * metallic * albedo * 2.0;
 #else
 
 		// scales the specular reflections, needs to be be computed before lighting happens,
 		// but after environment and reflection probes are added
-		//TODO: this curve is not really designed for gammaspace, should be adjusted
+		// TODO: this curve is not really designed for gammaspace, should be adjusted
 		const vec4 c0 = vec4(-1.0, -0.0275, -0.572, 0.022);
 		const vec4 c1 = vec4(1.0, 0.0425, 1.04, -0.04);
 		vec4 r = roughness * c0 + c1;
@@ -1788,7 +1788,7 @@ FRAGMENT_SHADER_CODE
 	}
 
 #ifdef USE_LIGHTMAP
-//ambient light will come entirely from lightmap is lightmap is used
+// ambient light will come entirely from lightmap is lightmap is used
 #if defined(USE_LIGHTMAP_FILTER_BICUBIC)
 	ambient_light = texture2D_bicubic(lightmap, uv2_interp).rgb * lightmap_energy;
 #else
@@ -1816,7 +1816,7 @@ FRAGMENT_SHADER_CODE
 		vec4 captured = vec4(0.0);
 		float sum = 0.0;
 		for (int i = 0; i < 12; i++) {
-			float amount = max(0.0, dot(local_normal, cone_dirs[i])); //not correct, but creates a nice wrap around effect
+			float amount = max(0.0, dot(local_normal, cone_dirs[i])); // not correct, but creates a nice wrap around effect
 			captured += lightmap_captures[i] * amount;
 			sum += amount;
 		}
@@ -1832,7 +1832,7 @@ FRAGMENT_SHADER_CODE
 	}
 #endif
 
-#endif //BASE PASS
+#endif // BASE PASS
 
 //
 // Lighting
@@ -1894,9 +1894,9 @@ FRAGMENT_SHADER_CODE
 	}
 #endif
 
-#endif //SHADOWS_DISABLED
+#endif // SHADOWS_DISABLED
 
-#endif //type omni
+#endif // type omni
 
 #ifdef LIGHT_MODE_DIRECTIONAL
 
@@ -1911,10 +1911,10 @@ FRAGMENT_SHADER_CODE
 #ifdef USE_SHADOW
 
 #ifdef USE_VERTEX_LIGHTING
-	//compute shadows in a mobile friendly way
+	// compute shadows in a mobile friendly way
 
 #ifdef LIGHT_USE_PSSM4
-	//take advantage of prefetch
+	// take advantage of prefetch
 	float shadow1 = sample_shadow(light_directional_shadow, shadow_coord);
 	float shadow2 = sample_shadow(light_directional_shadow, shadow_coord2);
 	float shadow3 = sample_shadow(light_directional_shadow, shadow_coord3);
@@ -1972,11 +1972,11 @@ FRAGMENT_SHADER_CODE
 		light_att *= mix(shadow_color.rgb, vec3(1.0), shadow_att);
 	}
 
-#endif //LIGHT_USE_PSSM4
+#endif // LIGHT_USE_PSSM4
 
 #ifdef LIGHT_USE_PSSM2
 
-	//take advantage of prefetch
+	// take advantage of prefetch
 	float shadow1 = sample_shadow(light_directional_shadow, shadow_coord);
 	float shadow2 = sample_shadow(light_directional_shadow, shadow_coord2);
 
@@ -2012,14 +2012,14 @@ FRAGMENT_SHADER_CODE
 		light_att *= mix(shadow_color.rgb, vec3(1.0), shadow_att);
 	}
 
-#endif //LIGHT_USE_PSSM2
+#endif // LIGHT_USE_PSSM2
 
 #if !defined(LIGHT_USE_PSSM4) && !defined(LIGHT_USE_PSSM2)
 
 	light_att *= mix(shadow_color.rgb, vec3(1.0), sample_shadow(light_directional_shadow, shadow_coord));
-#endif //orthogonal
+#endif // orthogonal
 
-#else //fragment version of pssm
+#else // fragment version of pssm
 
 	{
 #ifdef LIGHT_USE_PSSM4
@@ -2028,7 +2028,7 @@ FRAGMENT_SHADER_CODE
 		if (depth_z < light_split_offsets.y) {
 #else
 		if (depth_z < light_split_offsets.x) {
-#endif //pssm2
+#endif // pssm2
 
 			highp vec4 pssm_coord;
 			float pssm_fade = 0.0;
@@ -2115,9 +2115,9 @@ FRAGMENT_SHADER_CODE
 			light_att *= mix(shadow_color.rgb, vec3(1.0), shadow);
 		}
 	}
-#endif //use vertex lighting
+#endif // use vertex lighting
 
-#endif //use shadow
+#endif // use shadow
 
 #endif // SHADOWS_DISABLED
 
@@ -2173,12 +2173,12 @@ FRAGMENT_SHADER_CODE
 #endif // LIGHT_MODE_SPOT
 
 #ifdef USE_VERTEX_LIGHTING
-	//vertex lighting
+	// vertex lighting
 	specular_light += specular_interp * albedo * specular * specular_blob_intensity * light_att;
 	diffuse_light += diffuse_interp * albedo * light_att;
 
 #else
-	//fragment lighting
+	// fragment lighting
 	light_compute(
 			normal,
 			L,
@@ -2202,10 +2202,10 @@ FRAGMENT_SHADER_CODE
 			specular_light,
 			alpha);
 
-#endif //vertex lighting
+#endif // vertex lighting
 
-#endif //USE_LIGHTING
-	//compute and merge
+#endif // USE_LIGHTING
+	// compute and merge
 
 #ifdef USE_SHADOW_TO_OPACITY
 
@@ -2246,13 +2246,13 @@ FRAGMENT_SHADER_CODE
 
 	gl_FragColor = vec4(ambient_light + diffuse_light + specular_light, alpha);
 
-	//add emission if in base pass
+	// add emission if in base pass
 #ifdef BASE_PASS
 	gl_FragColor.rgb += emission;
 #endif
 	// gl_FragColor = vec4(normal, 1.0);
 
-//apply fog
+// apply fog
 #if defined(FOG_DEPTH_ENABLED) || defined(FOG_HEIGHT_ENABLED)
 
 #if defined(USE_VERTEX_LIGHTING)
@@ -2263,7 +2263,7 @@ FRAGMENT_SHADER_CODE
 	gl_FragColor.rgb *= (1.0 - fog_interp.a);
 #endif // BASE_PASS
 
-#else //pixel based fog
+#else // pixel based fog
 	float fog_amount = 0.0;
 
 #ifdef LIGHT_MODE_DIRECTIONAL
@@ -2301,11 +2301,11 @@ FRAGMENT_SHADER_CODE
 	gl_FragColor.rgb *= (1.0 - fog_amount);
 #endif // BASE_PASS
 
-#endif //use vertex lit
+#endif // use vertex lit
 
 #endif // defined(FOG_DEPTH_ENABLED) || defined(FOG_HEIGHT_ENABLED)
 
-#endif //unshaded
+#endif // unshaded
 
 #ifdef OUTPUT_LINEAR
 	// sRGB -> linear
@@ -2313,7 +2313,7 @@ FRAGMENT_SHADER_CODE
 #endif
 
 #else // not RENDER_DEPTH
-//depth render
+// depth render
 #ifdef USE_RGBA_SHADOWS
 
 	highp float depth = ((position_interp.z / position_interp.w) + 1.0) * 0.5 + 0.0; // bias

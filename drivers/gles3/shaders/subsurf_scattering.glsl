@@ -47,7 +47,7 @@ QUALIFIER vec2 kernel[25] = vec2[](
 		vec2(0.00500364, 2.08333),
 		vec2(0.00333804, 2.52083),
 		vec2(0.000973794, 3.0));
-#endif //USE_25_SAMPLES
+#endif // USE_25_SAMPLES
 
 #ifdef USE_17_SAMPLES
 const int kernel_size = 17;
@@ -69,7 +69,7 @@ QUALIFIER vec2 kernel[17] = vec2[](
 		vec2(0.0144609, 1.125),
 		vec2(0.0100386, 1.53125),
 		vec2(0.00317394, 2.0));
-#endif //USE_17_SAMPLES
+#endif // USE_17_SAMPLES
 
 #ifdef USE_11_SAMPLES
 const int kernel_size = 11;
@@ -85,7 +85,7 @@ QUALIFIER vec2 kernel[11] = vec2[](
 		vec2(0.03639, 0.72),
 		vec2(0.0192831, 1.28),
 		vec2(0.00471691, 2.0));
-#endif //USE_11_SAMPLES
+#endif // USE_11_SAMPLES
 
 uniform float max_radius;
 uniform float camera_z_far;
@@ -94,15 +94,15 @@ uniform float unit_size;
 uniform vec2 dir;
 in vec2 uv_interp;
 
-uniform sampler2D source_diffuse; //texunit:0
-uniform sampler2D source_sss; //texunit:1
-uniform sampler2D source_depth; //texunit:2
+uniform sampler2D source_diffuse; // texunit:0
+uniform sampler2D source_sss; // texunit:1
+uniform sampler2D source_depth; // texunit:2
 
 layout(location = 0) out vec4 frag_color;
 
 void main() {
 	float strength = texture(source_sss, uv_interp).r;
-	strength *= strength; //stored as sqrt
+	strength *= strength; // stored as sqrt
 
 	// Fetch color of current pixel:
 	vec4 base_color = texture(source_diffuse, uv_interp);
@@ -112,10 +112,10 @@ void main() {
 		float depth = texture(source_depth, uv_interp).r * 2.0 - 1.0;
 #ifdef USE_ORTHOGONAL_PROJECTION
 		depth = ((depth + (camera_z_far + camera_z_near) / (camera_z_far - camera_z_near)) * (camera_z_far - camera_z_near)) / 2.0;
-		float scale = unit_size; //remember depth is negative by default in OpenGL
+		float scale = unit_size; // remember depth is negative by default in OpenGL
 #else
 		depth = 2.0 * camera_z_near * camera_z_far / (camera_z_far + camera_z_near - depth * (camera_z_far - camera_z_near));
-		float scale = unit_size / depth; //remember depth is negative by default in OpenGL
+		float scale = unit_size / depth; // remember depth is negative by default in OpenGL
 #endif
 
 		// Calculate the final step to fetch the surrounding pixels:
@@ -164,7 +164,7 @@ void main() {
 #ifdef ENABLE_STRENGTH_WEIGHTING
 		color_accum /= color_weight;
 #endif
-		frag_color = vec4(color_accum, base_color.a); //keep alpha (used for SSAO)
+		frag_color = vec4(color_accum, base_color.a); // keep alpha (used for SSAO)
 	} else {
 		frag_color = base_color;
 	}

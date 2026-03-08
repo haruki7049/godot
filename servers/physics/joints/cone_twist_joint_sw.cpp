@@ -115,7 +115,7 @@ bool ConeTwistJointSW::setup(real_t p_timestep) {
 
 	m_appliedImpulse = real_t(0.);
 
-	//set bias, sign, clear accumulator
+	// set bias, sign, clear accumulator
 	m_swingCorrection = real_t(0.);
 	m_twistLimitSign = real_t(0.);
 	m_solveTwistLimit = false;
@@ -166,7 +166,7 @@ bool ConeTwistJointSW::setup(real_t p_timestep) {
 	// Get Frame into world space
 	if (m_swingSpan1 >= real_t(0.05f)) {
 		b1Axis2 = A->get_transform().basis.xform(this->m_rbAFrame.basis.get_axis(1));
-		//swing1  = btAtan2Fast( b2Axis1.dot(b1Axis2),b2Axis1.dot(b1Axis1) );
+		// swing1  = btAtan2Fast( b2Axis1.dot(b1Axis2),b2Axis1.dot(b1Axis1) );
 		swx = b2Axis1.dot(b1Axis1);
 		swy = b2Axis1.dot(b1Axis2);
 		swing1 = atan2fast(swy, swx);
@@ -177,7 +177,7 @@ bool ConeTwistJointSW::setup(real_t p_timestep) {
 
 	if (m_swingSpan2 >= real_t(0.05f)) {
 		b1Axis3 = A->get_transform().basis.xform(this->m_rbAFrame.basis.get_axis(2));
-		//swing2 = btAtan2Fast( b2Axis1.dot(b1Axis3),b2Axis1.dot(b1Axis1) );
+		// swing2 = btAtan2Fast( b2Axis1.dot(b1Axis3),b2Axis1.dot(b1Axis1) );
 		swx = b2Axis1.dot(b1Axis1);
 		swy = b2Axis1.dot(b1Axis3);
 		swing2 = atan2fast(swy, swx);
@@ -245,7 +245,7 @@ void ConeTwistJointSW::solve(real_t p_timestep) {
 
 	real_t tau = real_t(0.3);
 
-	//linear part
+	// linear part
 	if (!m_angularOnly) {
 		Vector3 rel_pos1 = pivotAInW - A->get_transform().origin;
 		Vector3 rel_pos2 = pivotBInW - B->get_transform().origin;
@@ -260,8 +260,8 @@ void ConeTwistJointSW::solve(real_t p_timestep) {
 
 			real_t rel_vel;
 			rel_vel = normal.dot(vel);
-			//positional error (zeroth order error)
-			real_t depth = -(pivotAInW - pivotBInW).dot(normal); //this is the error projected on the normal
+			// positional error (zeroth order error)
+			real_t depth = -(pivotAInW - pivotBInW).dot(normal); // this is the error projected on the normal
 			real_t impulse = depth * tau / p_timestep * jacDiagABInv - rel_vel * jacDiagABInv;
 			m_appliedImpulse += impulse;
 			Vector3 impulse_vector = normal * impulse;
@@ -271,7 +271,7 @@ void ConeTwistJointSW::solve(real_t p_timestep) {
 	}
 
 	{
-		///solve angular part
+		/// solve angular part
 		const Vector3 &angVelA = A->get_angular_velocity();
 		const Vector3 &angVelB = B->get_angular_velocity();
 

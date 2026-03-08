@@ -37,12 +37,12 @@ uniform float lifetime;
 uniform mat4 emission_transform;
 uniform uint random_seed;
 
-out highp vec4 out_color; //tfb:
-out highp vec4 out_velocity_active; //tfb:
-out highp vec4 out_custom; //tfb:
-out highp vec4 out_xform_1; //tfb:
-out highp vec4 out_xform_2; //tfb:
-out highp vec4 out_xform_3; //tfb:
+out highp vec4 out_color; // tfb:
+out highp vec4 out_velocity_active; // tfb:
+out highp vec4 out_custom; // tfb:
+out highp vec4 out_xform_1; // tfb:
+out highp vec4 out_xform_2; // tfb:
+out highp vec4 out_xform_3; // tfb:
 
 #if defined(USE_MATERIAL)
 
@@ -167,7 +167,7 @@ void main() {
 	}
 
 	if (shader_active) {
-		//execute shader
+		// execute shader
 
 		{
 			/* clang-format off */
@@ -195,7 +195,7 @@ VERTEX_SHADER_CODE
 				float attenuation = pow(dist / attractors[i].radius, attractors[i].attenuation);
 
 				if (attractors[i].dir == vec3(0.0)) {
-					//towards center
+					// towards center
 					force += attractors[i].strength * rel_vec * attenuation * mass;
 				} else {
 					force += attractors[i].strength * attractors[i].dir * attenuation * mass;
@@ -224,7 +224,7 @@ VERTEX_SHADER_CODE
 	out_xform_2 = xform[1];
 	out_xform_3 = xform[2];
 
-#endif //PARTICLES_COPY
+#endif // PARTICLES_COPY
 }
 
 /* clang-format off */

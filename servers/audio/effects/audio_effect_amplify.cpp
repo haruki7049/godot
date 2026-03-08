@@ -31,7 +31,7 @@
 #include "audio_effect_amplify.h"
 
 void AudioEffectAmplifyInstance::process(const AudioFrame *p_src_frames, AudioFrame *p_dst_frames, int p_frame_count) {
-	//multiply volume interpolating to avoid clicks if this changes
+	// multiply volume interpolating to avoid clicks if this changes
 	float volume_db = base->volume_db;
 	float vol = Math::db2linear(mix_volume_db);
 	float vol_inc = (Math::db2linear(volume_db) - vol) / float(p_frame_count);
@@ -40,7 +40,7 @@ void AudioEffectAmplifyInstance::process(const AudioFrame *p_src_frames, AudioFr
 		p_dst_frames[i] = p_src_frames[i] * vol;
 		vol += vol_inc;
 	}
-	//set volume for next mix
+	// set volume for next mix
 	mix_volume_db = volume_db;
 }
 

@@ -228,7 +228,7 @@ void TouchScreenButton::_input(const Ref<InputEvent> &p_event) {
 			if (st->is_pressed()) {
 				const bool can_press = finger_pressed == -1;
 				if (!can_press) {
-					return; //already fingering
+					return; // already fingering
 				}
 
 				if (_is_point_inside(st->get_position())) {

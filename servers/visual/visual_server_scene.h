@@ -223,7 +223,7 @@ public:
 
 	struct Instance : RasterizerScene::InstanceBase {
 		RID self;
-		//scenario stuff
+		// scenario stuff
 		SpatialPartitionID spatial_partition_id;
 
 		// rooms & portals
@@ -233,7 +233,7 @@ public:
 		Scenario *scenario;
 		SelfList<Instance> scenario_item;
 
-		//aabb stuff
+		// aabb stuff
 		bool update_aabb;
 		bool update_materials;
 
@@ -336,7 +336,7 @@ public:
 		Instance *owner;
 
 		struct PairInfo {
-			List<Instance *>::Element *L; //reflection iterator in geometry
+			List<Instance *>::Element *L; // reflection iterator in geometry
 			Instance *geometry;
 		};
 		List<PairInfo> geometries;
@@ -360,7 +360,7 @@ public:
 
 	struct InstanceLightData : public InstanceBaseData {
 		struct PairInfo {
-			List<Instance *>::Element *L; //light iterator in geometry
+			List<Instance *>::Element *L; // light iterator in geometry
 			Instance *geometry;
 		};
 
@@ -388,7 +388,7 @@ public:
 		Instance *owner;
 
 		struct PairInfo {
-			List<Instance *>::Element *L; //gi probe iterator in geometry
+			List<Instance *>::Element *L; // gi probe iterator in geometry
 			Instance *geometry;
 		};
 
@@ -436,14 +436,14 @@ public:
 
 		struct LocalData {
 			uint16_t pos[3];
-			uint16_t energy[3]; //using 0..1024 for float range 0..1. integer is needed for deterministic add/remove of lights
+			uint16_t energy[3]; // using 0..1024 for float range 0..1. integer is needed for deterministic add/remove of lights
 		};
 
 		struct CompBlockS3TC {
-			uint32_t offset; //offset in mipmap
-			uint32_t source_count; //sources
-			uint32_t sources[16]; //id for each source
-			uint8_t alpha[8]; //alpha block is pre-computed
+			uint32_t offset; // offset in mipmap
+			uint32_t source_count; // sources
+			uint32_t sources[16]; // id for each source
+			uint8_t alpha[8]; // alpha block is pre-computed
 		};
 
 		struct Dynamic {
@@ -458,7 +458,7 @@ public:
 			RasterizerStorage::GIProbeCompression compression;
 
 			Vector<PoolVector<uint8_t>> mipmaps_3d;
-			Vector<PoolVector<CompBlockS3TC>> mipmaps_s3tc; //for s3tc
+			Vector<PoolVector<CompBlockS3TC>> mipmaps_s3tc; // for s3tc
 
 			int updating_stage;
 			float propagate;
@@ -488,7 +488,7 @@ public:
 
 	struct InstanceLightmapCaptureData : public InstanceBaseData {
 		struct PairInfo {
-			List<Instance *>::Element *L; //iterator in geometry
+			List<Instance *>::Element *L; // iterator in geometry
 			Instance *geometry;
 		};
 		List<PairInfo> geometries;
@@ -501,7 +501,7 @@ public:
 
 	int instance_cull_count;
 	Instance *instance_cull_result[MAX_INSTANCE_CULL];
-	Instance *instance_shadow_cull_result[MAX_INSTANCE_CULL]; //used for generating shadowmaps
+	Instance *instance_shadow_cull_result[MAX_INSTANCE_CULL]; // used for generating shadowmaps
 	Instance *light_cull_result[MAX_LIGHTS_CULLED];
 	RID light_instance_cull_result[MAX_LIGHTS_CULLED];
 	int light_cull_count;
@@ -709,7 +709,7 @@ public:
 	void render_camera(Ref<ARVRInterface> &p_interface, ARVRInterface::Eyes p_eye, RID p_camera, RID p_scenario, Size2 p_viewport_size, RID p_shadow_atlas);
 	void update_dirty_instances();
 
-	//probes
+	// probes
 	struct GIProbeDataHeader {
 		uint32_t version;
 		uint32_t cell_subdiv;

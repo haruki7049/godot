@@ -187,7 +187,7 @@ Error JSON::_get_token(const CharType *p_str, int &index, int p_len, Token &r_to
 						index++;
 						break;
 					} else if (p_str[index] == '\\') {
-						//escaped characters...
+						// escaped characters...
 						index++;
 						CharType next = p_str[index];
 						if (next == 0) {
@@ -213,7 +213,7 @@ Error JSON::_get_token(const CharType *p_str, int &index, int p_len, Token &r_to
 								res = 13;
 								break;
 							case 'u': {
-								//hexnumbarh - oct is deprecated
+								// hexnumbarh - oct is deprecated
 
 								for (int j = 0; j < 4; j++) {
 									CharType c = p_str[index + j + 1];
@@ -242,16 +242,16 @@ Error JSON::_get_token(const CharType *p_str, int &index, int p_len, Token &r_to
 									res <<= 4;
 									res |= v;
 								}
-								index += 4; //will add at the end anyway
+								index += 4; // will add at the end anyway
 
 							} break;
-							//case '\"': res='\"'; break;
-							//case '\\': res='\\'; break;
-							//case '/': res='/'; break;
+							// case '\"': res='\"'; break;
+							// case '\\': res='\\'; break;
+							// case '/': res='/'; break;
 							default: {
 								res = next;
-								//r_err_str="Invalid escape sequence";
-								//return ERR_PARSE_ERROR;
+								// r_err_str="Invalid escape sequence";
+								// return ERR_PARSE_ERROR;
 							} break;
 						}
 
@@ -278,7 +278,7 @@ Error JSON::_get_token(const CharType *p_str, int &index, int p_len, Token &r_to
 				}
 
 				if (p_str[index] == '-' || (p_str[index] >= '0' && p_str[index] <= '9')) {
-					//a number
+					// a number
 					const CharType *rptr;
 					double number = String::to_double(&p_str[index], &rptr);
 					index += (rptr - &p_str[index]);

@@ -81,7 +81,7 @@ private:
 
 		bool enabled;
 		int parent;
-		int sort_index; //used for re-sorting process order
+		int sort_index; // used for re-sorting process order
 
 		bool disable_rest;
 		Transform rest;

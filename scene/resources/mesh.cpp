@@ -253,7 +253,7 @@ Ref<Mesh> Mesh::create_outline(float p_margin) const {
 			int vcount = 0;
 			for (int j = 0; j < arrays.size(); j++) {
 				if (arrays[j].get_type() == Variant::NIL || a[j].get_type() == Variant::NIL) {
-					//mismatch, do not use
+					// mismatch, do not use
 					arrays[j] = Variant();
 					continue;
 				}
@@ -353,7 +353,7 @@ Ref<Mesh> Mesh::create_outline(float p_margin) const {
 
 		Map<Vector3, Vector3> normal_accum;
 
-		//fill normals with triangle normals
+		// fill normals with triangle normals
 		for (int i = 0; i < vc; i += 3) {
 			Vector3 t[3];
 
@@ -378,18 +378,18 @@ Ref<Mesh> Mesh::create_outline(float p_margin) const {
 					if (d < 1.0) {
 						E->get() += n * (1.0 - d);
 					}
-					//E->get()+=n;
+					// E->get()+=n;
 				}
 			}
 		}
 
-		//normalize
+		// normalize
 
 		for (Map<Vector3, Vector3>::Element *E = normal_accum.front(); E; E = E->next()) {
 			E->get().normalize();
 		}
 
-		//displace normals
+		// displace normals
 		int vc2 = vertices.size();
 
 		for (int i = 0; i < vc2; i++) {
@@ -591,12 +591,12 @@ bool ArrayMesh::_set(const StringName &p_name, const Variant &p_value) {
 	String what = sname.get_slicec('/', 2);
 
 	if (idx == surfaces.size()) {
-		//create
+		// create
 		Dictionary d = p_value;
 		ERR_FAIL_COND_V(!d.has("primitive"), false);
 
 		if (d.has("arrays")) {
-			//old format
+			// old format
 			ERR_FAIL_COND_V(!d.has("morph_arrays"), false);
 			add_surface_from_arrays(PrimitiveType(int(d["primitive"])), d["arrays"], d["morph_arrays"]);
 
@@ -1043,7 +1043,7 @@ void ArrayMesh::regen_normalmaps() {
 	}
 }
 
-//dirty hack
+// dirty hack
 bool (*array_mesh_lightmap_unwrap_callback)(float p_texel_size, const float *p_vertices, const float *p_normals, int p_vertex_count, const int *p_indices, const int *p_face_materials, int p_index_count, float **r_uv, int **r_vertex, int *r_vertex_count, int **r_index, int *r_index_count, int *r_size_hint_x, int *r_size_hint_y) = nullptr;
 
 struct ArrayMeshLightmapSurface {
@@ -1178,7 +1178,7 @@ Error ArrayMesh::lightmap_unwrap_cached(int *&r_cache_data, unsigned int &r_cach
 	unsigned int cache_idx = 0;
 
 	if (r_used_cache && r_cache_data) {
-		//Check if hash is in cache data
+		// Check if hash is in cache data
 
 		int *cache_data = r_cache_data;
 		int n_entries = cache_data[0];
@@ -1204,7 +1204,7 @@ Error ArrayMesh::lightmap_unwrap_cached(int *&r_cache_data, unsigned int &r_cach
 		}
 	}
 
-	//unwrap
+	// unwrap
 
 	float *gen_uvs;
 	int *gen_vertices;
@@ -1296,12 +1296,12 @@ Error ArrayMesh::lightmap_unwrap_cached(int *&r_cache_data, unsigned int &r_cach
 		}
 	}
 
-	//remove surfaces
+	// remove surfaces
 	while (get_surface_count()) {
 		surface_remove(0);
 	}
 
-	//create surfacetools for each surface..
+	// create surfacetools for each surface..
 	LocalVector<Ref<SurfaceTool>> surfaces_tools;
 
 	for (int i = 0; i < lightmap_surfaces.size(); i++) {
@@ -1309,11 +1309,11 @@ Error ArrayMesh::lightmap_unwrap_cached(int *&r_cache_data, unsigned int &r_cach
 		st.instance();
 		st->begin(Mesh::PRIMITIVE_TRIANGLES);
 		st->set_material(lightmap_surfaces[i].material);
-		surfaces_tools.push_back(st); //stay there
+		surfaces_tools.push_back(st); // stay there
 	}
 
 	print_verbose("Mesh: Gen indices: " + itos(gen_index_count));
-	//go through all indices
+	// go through all indices
 	for (int i = 0; i < gen_index_count; i += 3) {
 		ERR_FAIL_INDEX_V(gen_vertices[gen_indices[i + 0]], (int)uv_indices.size(), ERR_BUG);
 		ERR_FAIL_INDEX_V(gen_vertices[gen_indices[i + 1]], (int)uv_indices.size(), ERR_BUG);
@@ -1355,7 +1355,7 @@ Error ArrayMesh::lightmap_unwrap_cached(int *&r_cache_data, unsigned int &r_cach
 		}
 	}
 
-	//generate surfaces
+	// generate surfaces
 	for (unsigned int i = 0; i < surfaces_tools.size(); i++) {
 		surfaces_tools[i]->index();
 		surfaces_tools[i]->commit(Ref<ArrayMesh>((ArrayMesh *)this), lightmap_surfaces[i].format);
@@ -1364,7 +1364,7 @@ Error ArrayMesh::lightmap_unwrap_cached(int *&r_cache_data, unsigned int &r_cach
 	set_lightmap_size_hint(Size2(size_x, size_y));
 
 	if (!cached) {
-		//free stuff
+		// free stuff
 		::free(gen_vertices);
 		::free(gen_indices);
 		::free(gen_uvs);

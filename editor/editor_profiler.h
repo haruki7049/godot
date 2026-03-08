@@ -56,7 +56,7 @@ public:
 		struct Category {
 			StringName signature;
 			String name;
-			float total_time; //total for category
+			float total_time; // total for category
 
 			struct Item {
 				StringName signature;
@@ -117,7 +117,7 @@ private:
 
 	bool updating_frame;
 
-	//int cursor_metric;
+	// int cursor_metric;
 	int hover_metric;
 
 	float graph_height;

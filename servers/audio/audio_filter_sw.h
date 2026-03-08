@@ -39,7 +39,7 @@ public:
 		float a1, a2;
 		float b0, b1, b2;
 
-		//bool operator==(const Coeffs &p_rv) { return (FLOATS_EQ(a1,p_rv.a1) && FLOATS_EQ(a2,p_rv.a2) && FLOATS_EQ(b1,p_rv.b1) && FLOATS_EQ(b2,p_rv.b2) && FLOATS_EQ(b0,p_rv.b0) ); }
+		// bool operator==(const Coeffs &p_rv) { return (FLOATS_EQ(a1,p_rv.a1) && FLOATS_EQ(a2,p_rv.a2) && FLOATS_EQ(b1,p_rv.b1) && FLOATS_EQ(b2,p_rv.b2) && FLOATS_EQ(b0,p_rv.b0) ); }
 		Coeffs() { a1 = a2 = b0 = b1 = b2 = 0.0; }
 	};
 
@@ -59,7 +59,7 @@ public:
 
 		AudioFilterSW *filter;
 		Coeffs coeffs;
-		float ha1, ha2, hb1, hb2; //history
+		float ha1, ha2, hb1, hb2; // history
 		Coeffs incr_coeffs;
 
 	public:
@@ -88,7 +88,7 @@ public:
 	void set_resonance(float p_resonance);
 	void set_gain(float p_gain);
 	void set_sampling_rate(float p_srate);
-	void set_stages(int p_stages); //adjust for multiple stages
+	void set_stages(int p_stages); // adjust for multiple stages
 
 	void prepare_coefficients(Coeffs *p_coeffs);
 

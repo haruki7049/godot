@@ -163,7 +163,7 @@ void Node::_notification(int p_notification) {
 
 			// kill children as cleanly as possible
 			while (data.children.size()) {
-				Node *child = data.children[data.children.size() - 1]; //begin from the end because its faster and more consistent with creation
+				Node *child = data.children[data.children.size() - 1]; // begin from the end because its faster and more consistent with creation
 				remove_child(child);
 				memdelete(child);
 			}
@@ -221,7 +221,7 @@ void Node::_propagate_enter_tree() {
 	data.tree->node_added(this);
 
 	data.blocked++;
-	//block while adding children
+	// block while adding children
 
 	for (int i = 0; i < data.children.size(); i++) {
 		if (!data.children[i]->is_inside_tree()) { // could have been added in enter_tree
@@ -234,7 +234,7 @@ void Node::_propagate_enter_tree() {
 #ifdef DEBUG_ENABLED
 
 	if (ScriptDebugger::get_singleton() && data.filename != String()) {
-		//used for live edit
+		// used for live edit
 		data.tree->live_scene_edit_cache[data.filename].insert(this);
 	}
 #endif
@@ -251,12 +251,12 @@ void Node::_propagate_after_exit_tree() {
 }
 
 void Node::_propagate_exit_tree() {
-	//block while removing children
+	// block while removing children
 
 #ifdef DEBUG_ENABLED
 
 	if (ScriptDebugger::get_singleton() && data.filename != String()) {
-		//used for live edit
+		// used for live edit
 		Map<String, Set<Node *>>::Element *E = data.tree->live_scene_edit_cache.find(data.filename);
 		if (E) {
 			E->get().erase(this);
@@ -324,7 +324,7 @@ void Node::move_child(Node *p_child, int p_pos) {
 	}
 
 	if (p_child->data.pos == p_pos) {
-		return; //do nothing
+		return; // do nothing
 	}
 
 	int motion_from = MIN(p_pos, p_child->data.pos);
@@ -338,7 +338,7 @@ void Node::move_child(Node *p_child, int p_pos) {
 	}
 
 	data.blocked++;
-	//new pos first
+	// new pos first
 	for (int i = motion_from; i <= motion_to; i++) {
 		data.children[i]->data.pos = i;
 	}
@@ -424,10 +424,10 @@ void Node::set_pause_mode(PauseMode p_mode) {
 	bool prev_inherits = data.pause_mode == PAUSE_MODE_INHERIT;
 	data.pause_mode = p_mode;
 	if (!is_inside_tree()) {
-		return; //pointless
+		return; // pointless
 	}
 	if ((data.pause_mode == PAUSE_MODE_INHERIT) == prev_inherits) {
-		return; ///nothing changed
+		return; /// nothing changed
 	}
 
 	Node *owner = nullptr;
@@ -738,7 +738,7 @@ bool Node::can_process() const {
 		}
 		if (data.pause_mode == PAUSE_MODE_INHERIT) {
 			if (!data.pause_owner) {
-				return false; //clearly no pause owner by default
+				return false; // clearly no pause owner by default
 			}
 
 			if (data.pause_owner->data.pause_mode == PAUSE_MODE_PROCESS) {
@@ -950,24 +950,24 @@ void Node::_validate_child_name(Node *p_child, bool p_force_human_readable) {
 	/* Make sure the name is unique */
 
 	if (node_hrcr || p_force_human_readable) {
-		//this approach to autoset node names is human readable but very slow
-		//it's turned on while running in the editor
+		// this approach to autoset node names is human readable but very slow
+		// it's turned on while running in the editor
 
 		StringName name = p_child->data.name;
 		_generate_serial_child_name(p_child, name);
 		p_child->data.name = name;
 
 	} else {
-		//this approach to autoset node names is fast but not as readable
-		//it's the default and reserves the '@' character for unique names.
+		// this approach to autoset node names is fast but not as readable
+		// it's the default and reserves the '@' character for unique names.
 
 		bool unique = true;
 
 		if (p_child->data.name == StringName()) {
-			//new unique name must be assigned
+			// new unique name must be assigned
 			unique = false;
 		} else {
-			//check if exists
+			// check if exists
 			Node **children = data.children.ptrw();
 			int cc = data.children.size();
 
@@ -1017,7 +1017,7 @@ String increase_numeric_string(const String &s) {
 
 void Node::_generate_serial_child_name(const Node *p_child, StringName &name) const {
 	if (name == StringName()) {
-		//no name and a new nade is needed, create one.
+		// no name and a new nade is needed, create one.
 
 		name = p_child->get_class();
 		// Adjust casing according to project setting. The current type name is expected to be in PascalCase.
@@ -1035,15 +1035,15 @@ void Node::_generate_serial_child_name(const Node *p_child, StringName &name) co
 		}
 	}
 
-	//quickly test if proposed name exists
-	int cc = data.children.size(); //children count
+	// quickly test if proposed name exists
+	int cc = data.children.size(); // children count
 	const Node *const *children_ptr = data.children.ptr();
 
 	{
 		bool exists = false;
 
 		for (int i = 0; i < cc; i++) {
-			if (children_ptr[i] == p_child) { //exclude self in renaming if its already a child
+			if (children_ptr[i] == p_child) { // exclude self in renaming if its already a child
 				continue;
 			}
 			if (children_ptr[i]->data.name == name) {
@@ -1052,7 +1052,7 @@ void Node::_generate_serial_child_name(const Node *p_child, StringName &name) co
 		}
 
 		if (!exists) {
-			return; //if it does not exist, it does not need validation
+			return; // if it does not exist, it does not need validation
 		}
 	}
 
@@ -1107,7 +1107,7 @@ void Node::_generate_serial_child_name(const Node *p_child, StringName &name) co
 }
 
 void Node::_add_child_nocheck(Node *p_child, const StringName &p_name) {
-	//add a child node quickly, without name validation
+	// add a child node quickly, without name validation
 
 	p_child->data.name = p_name;
 	p_child->data.pos = data.children.size();
@@ -1120,7 +1120,7 @@ void Node::_add_child_nocheck(Node *p_child, const StringName &p_name) {
 	}
 
 	/* Notify */
-	//recognize children created in this node constructor
+	// recognize children created in this node constructor
 	p_child->data.parent_owned = data.in_constructor;
 	add_child_notify(p_child);
 }
@@ -1128,7 +1128,7 @@ void Node::_add_child_nocheck(Node *p_child, const StringName &p_name) {
 void Node::add_child(Node *p_child, bool p_legible_unique_name) {
 	ERR_FAIL_NULL(p_child);
 	ERR_FAIL_COND_MSG(p_child == this, vformat("Can't add child '%s' to itself.", p_child->get_name())); // adding to itself!
-	ERR_FAIL_COND_MSG(p_child->data.parent, vformat("Can't add child '%s' to '%s', already has a parent '%s'.", p_child->get_name(), get_name(), p_child->data.parent->get_name())); //Fail if node has a parent
+	ERR_FAIL_COND_MSG(p_child->data.parent, vformat("Can't add child '%s' to '%s', already has a parent '%s'.", p_child->get_name(), get_name(), p_child->data.parent->get_name())); // Fail if node has a parent
 #ifdef DEBUG_ENABLED
 	ERR_FAIL_COND_MSG(p_child->is_a_parent_of(this), vformat("Can't add child '%s' to '%s' as it would result in a cyclic dependency since '%s' is already a parent of '%s'.", p_child->get_name(), get_name(), p_child->get_name(), get_name()));
 #endif
@@ -1192,7 +1192,7 @@ void Node::remove_child(Node *p_child) {
 		}
 	}
 
-	if (idx == -1) { //maybe removed while unparenting or something and index was not updated, so just in case the above fails, try this.
+	if (idx == -1) { // maybe removed while unparenting or something and index was not updated, so just in case the above fails, try this.
 		for (int i = 0; i < child_count; i++) {
 			if (children[i] == p_child) {
 				idx = i;
@@ -1202,9 +1202,9 @@ void Node::remove_child(Node *p_child) {
 	}
 
 	ERR_FAIL_COND_MSG(idx == -1, vformat("Cannot remove child node '%s' as it is not a child of this node.", p_child->get_name()));
-	//ERR_FAIL_COND( p_child->data.blocked > 0 );
+	// ERR_FAIL_COND( p_child->data.blocked > 0 );
 
-	//if (data.scene) { does not matter
+	// if (data.scene) { does not matter
 
 	p_child->_set_tree(nullptr);
 	//}
@@ -1214,7 +1214,7 @@ void Node::remove_child(Node *p_child) {
 
 	data.children.remove(idx);
 
-	//update pointer and size
+	// update pointer and size
 	child_count = data.children.size();
 	children = data.children.ptrw();
 
@@ -1267,11 +1267,11 @@ Node *Node::get_node_or_null(const NodePath &p_path) const {
 	Node *root = nullptr;
 
 	if (!p_path.is_absolute()) {
-		current = const_cast<Node *>(this); //start from this
+		current = const_cast<Node *>(this); // start from this
 	} else {
 		root = const_cast<Node *>(this);
 		while (root->data.parent) {
-			root = root->data.parent; //start from root
+			root = root->data.parent; // start from root
 		}
 	}
 
@@ -1557,7 +1557,7 @@ NodePath Node::get_path_to(const Node *p_node) const {
 		common_parent = common_parent->data.parent;
 	}
 
-	ERR_FAIL_COND_V(!common_parent, NodePath()); //nodes not in the same tree
+	ERR_FAIL_COND_V(!common_parent, NodePath()); // nodes not in the same tree
 
 	visited.clear();
 
@@ -1842,7 +1842,7 @@ void Node::set_editable_instance(Node *p_node, bool p_editable) {
 
 bool Node::is_editable_instance(const Node *p_node) const {
 	if (!p_node) {
-		return false; //easier, null is never editable :)
+		return false; // easier, null is never editable :)
 	}
 	ERR_FAIL_COND_V(!is_a_parent_of(p_node), false);
 	return p_node->data.editable_instance;
@@ -1941,7 +1941,7 @@ Node *Node::_duplicate(int p_flags, Map<const Node *, Node *> *r_duplimap) const
 		ERR_FAIL_COND_V(!node, nullptr);
 	}
 
-	if (get_filename() != "") { //an instance
+	if (get_filename() != "") { // an instance
 		node->set_filename(get_filename());
 		node->data.editable_instance = data.editable_instance;
 	}
@@ -2047,7 +2047,7 @@ Node *Node::_duplicate(int p_flags, Map<const Node *, Node *> *r_duplimap) const
 			continue;
 		}
 		if (instanced && get_child(i)->data.owner == this) {
-			continue; //part of instance
+			continue; // part of instance
 		}
 
 		Node *dup = get_child(i)->_duplicate(p_flags, r_duplimap);
@@ -2253,7 +2253,7 @@ void Node::_duplicate_signals(const Node *p_original, Node *p_copy) const {
 
 		for (List<Connection>::Element *E = conns.front(); E; E = E->next()) {
 			if (E->get().flags & CONNECT_PERSIST) {
-				//user connected
+				// user connected
 				NodePath p = p_original->get_path_to(n);
 				Node *copy = p_copy->get_node(p);
 
@@ -2541,7 +2541,7 @@ void Node::_set_tree(SceneTree *p_tree) {
 	SceneTree *tree_changed_a = nullptr;
 	SceneTree *tree_changed_b = nullptr;
 
-	//ERR_FAIL_COND(p_scene && data.parent && !data.parent->data.scene); //nobug if both are null
+	// ERR_FAIL_COND(p_scene && data.parent && !data.parent->data.scene); //nobug if both are null
 
 	if (data.tree) {
 		_propagate_exit_tree();
@@ -2554,7 +2554,7 @@ void Node::_set_tree(SceneTree *p_tree) {
 	if (data.tree) {
 		_propagate_enter_tree();
 		if (!data.parent || data.parent->data.ready_notified) { // No parent (root) or parent ready
-			_propagate_ready(); //reverse_notification(NOTIFICATION_READY);
+			_propagate_ready(); // reverse_notification(NOTIFICATION_READY);
 		}
 
 		tree_changed_b = data.tree;
@@ -2887,7 +2887,7 @@ void Node::_bind_methods() {
 	ADD_PROPERTY(PropertyInfo(Variant::INT, "pause_mode", PROPERTY_HINT_ENUM, "Inherit,Stop,Process"), "set_pause_mode", "get_pause_mode");
 
 #ifdef ENABLE_DEPRECATED
-	//no longer exists, but remains for compatibility (keep previous scenes folded
+	// no longer exists, but remains for compatibility (keep previous scenes folded
 	ADD_PROPERTY(PropertyInfo(Variant::BOOL, "editor/display_folded", PROPERTY_HINT_NONE, "", 0), "set_display_folded", "is_displayed_folded");
 #endif
 
@@ -2944,7 +2944,7 @@ Node::Node() {
 	data.unhandled_key_input = false;
 	data.pause_mode = PAUSE_MODE_INHERIT;
 	data.pause_owner = nullptr;
-	data.network_master = 1; //server by default
+	data.network_master = 1; // server by default
 	data.path_cache = nullptr;
 	data.parent_owned = false;
 	data.in_constructor = true;

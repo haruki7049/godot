@@ -1164,7 +1164,7 @@ void ProjectSettingsEditor::_copy_to_platform(int p_which) {
 	undo_redo->create_action(TTR("Override for Feature"));
 
 	Variant value = ProjectSettings::get_singleton()->get(property);
-	if (property.find(".") != -1) { //overwriting overwrite, keep overwrite
+	if (property.find(".") != -1) { // overwriting overwrite, keep overwrite
 		undo_redo->add_do_method(ProjectSettings::get_singleton(), "clear", property);
 		undo_redo->add_undo_method(ProjectSettings::get_singleton(), "set", property, value);
 	}
@@ -1504,7 +1504,7 @@ void ProjectSettingsEditor::_translation_filter_mode_changed(int p_mode) {
 }
 
 void ProjectSettingsEditor::_update_translations() {
-	//update translations
+	// update translations
 
 	if (updating_translations) {
 		return;
@@ -1530,7 +1530,7 @@ void ProjectSettingsEditor::_update_translations() {
 	Vector<String> langs = TranslationServer::get_all_locales();
 	Vector<String> names = TranslationServer::get_all_locale_names();
 
-	//update filter tab
+	// update filter tab
 	Array l_filter_all;
 
 	bool is_arr_empty = true;
@@ -1585,7 +1585,7 @@ void ProjectSettingsEditor::_update_translations() {
 		}
 	}
 
-	//update translation remaps
+	// update translation remaps
 
 	String remap_selected;
 	if (translation_remap->get_selected()) {
@@ -2012,12 +2012,12 @@ ProjectSettingsEditor::ProjectSettingsEditor(EditorData *p_data) {
 
 	setting = false;
 
-	//translations
+	// translations
 	TabContainer *translations = memnew(TabContainer);
 	translations->set_tab_align(TabContainer::ALIGN_LEFT);
 	translations->set_name(TTR("Localization"));
 	tab_container->add_child(translations);
-	//remap for properly select language in popup
+	// remap for properly select language in popup
 	translation_locales_idxs_remap = Vector<int>();
 	translation_locales_list_created = false;
 

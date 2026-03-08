@@ -163,7 +163,7 @@ bool Variant::can_convert(Variant::Type p_type_from, Variant::Type p_type_to) {
 	if (p_type_from == p_type_to) {
 		return true;
 	}
-	if (p_type_to == NIL && p_type_from != NIL) { //nil can convert to anything
+	if (p_type_to == NIL && p_type_from != NIL) { // nil can convert to anything
 		return true;
 	}
 
@@ -390,7 +390,7 @@ bool Variant::can_convert_strict(Variant::Type p_type_from, Variant::Type p_type
 	if (p_type_from == p_type_to) {
 		return true;
 	}
-	if (p_type_to == NIL && p_type_from != NIL) { //nil can convert to anything
+	if (p_type_to == NIL && p_type_from != NIL) { // nil can convert to anything
 		return true;
 	}
 
@@ -405,7 +405,7 @@ bool Variant::can_convert_strict(Variant::Type p_type_from, Variant::Type p_type
 			static const Type valid[] = {
 				INT,
 				REAL,
-				//STRING,
+				// STRING,
 				NIL,
 			};
 
@@ -415,7 +415,7 @@ bool Variant::can_convert_strict(Variant::Type p_type_from, Variant::Type p_type
 			static const Type valid[] = {
 				BOOL,
 				REAL,
-				//STRING,
+				// STRING,
 				NIL,
 			};
 
@@ -426,7 +426,7 @@ bool Variant::can_convert_strict(Variant::Type p_type_from, Variant::Type p_type
 			static const Type valid[] = {
 				BOOL,
 				INT,
-				//STRING,
+				// STRING,
 				NIL,
 			};
 
@@ -602,7 +602,7 @@ bool Variant::can_convert_strict(Variant::Type p_type_from, Variant::Type p_type
 }
 
 bool Variant::operator==(const Variant &p_variant) const {
-	if (type != p_variant.type) { //evaluation of operator== needs to be more strict
+	if (type != p_variant.type) { // evaluation of operator== needs to be more strict
 		return false;
 	}
 	bool v;
@@ -612,7 +612,7 @@ bool Variant::operator==(const Variant &p_variant) const {
 }
 
 bool Variant::operator!=(const Variant &p_variant) const {
-	if (type != p_variant.type) { //evaluation of operator== needs to be more strict
+	if (type != p_variant.type) { // evaluation of operator== needs to be more strict
 		return true;
 	}
 	bool v;
@@ -622,7 +622,7 @@ bool Variant::operator!=(const Variant &p_variant) const {
 }
 
 bool Variant::operator<(const Variant &p_variant) const {
-	if (type != p_variant.type) { //if types differ, then order by type first
+	if (type != p_variant.type) { // if types differ, then order by type first
 		return type < p_variant.type;
 	}
 	bool v;
@@ -1347,7 +1347,7 @@ String Variant::stringify(List<const void *> &stack) const {
 			return "(" + operator Vector3() + ")";
 		case PLANE:
 			return operator Plane();
-		//case QUAT:
+		// case QUAT:
 		case AABB:
 			return operator ::AABB();
 		case QUAT:
@@ -1390,7 +1390,7 @@ String Variant::stringify(List<const void *> &stack) const {
 
 			stack.push_back(d.id());
 
-			//const String *K=NULL;
+			// const String *K=NULL;
 			String str("{");
 			List<Variant> keys;
 			d.get_key_list(&keys);

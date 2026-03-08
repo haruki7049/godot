@@ -53,7 +53,7 @@ VisualServer *VisualServer::create() {
 RID VisualServer::texture_create_from_image(const Ref<Image> &p_image, uint32_t p_flags) {
 	ERR_FAIL_COND_V(!p_image.is_valid(), RID());
 	RID texture = texture_create();
-	texture_allocate(texture, p_image->get_width(), p_image->get_height(), 0, p_image->get_format(), VS::TEXTURE_TYPE_2D, p_flags); //if it has mipmaps, use, else generate
+	texture_allocate(texture, p_image->get_width(), p_image->get_height(), 0, p_image->get_format(), VS::TEXTURE_TYPE_2D, p_flags); // if it has mipmaps, use, else generate
 	ERR_FAIL_COND_V(!texture.is_valid(), texture);
 
 	texture_set_data(texture, p_image);
@@ -208,11 +208,11 @@ RID VisualServer::_make_test_cube() {
 			normal_points[j][i % 3] = (i >= 3 ? -1 : 1);
 		}
 
-		//tri 1
+		// tri 1
 		ADD_VTX(0);
 		ADD_VTX(1);
 		ADD_VTX(2);
-		//tri 2
+		// tri 2
 		ADD_VTX(2);
 		ADD_VTX(3);
 		ADD_VTX(0);
@@ -424,7 +424,7 @@ Error VisualServer::_surface_set_data(Array p_arrays, uint32_t p_format, uint32_
 							memcpy(&vw[p_offsets[ai] + i * p_stride[ai]], vector, sizeof(uint16_t) * 2);
 
 							if (i == 0) {
-								aabb = Rect2(src[i], SMALL_VEC2); //must have a bit of size
+								aabb = Rect2(src[i], SMALL_VEC2); // must have a bit of size
 							} else {
 								aabb.expand_to(src[i]);
 							}
@@ -437,7 +437,7 @@ Error VisualServer::_surface_set_data(Array p_arrays, uint32_t p_format, uint32_
 							memcpy(&vw[p_offsets[ai] + i * p_stride[ai]], vector, sizeof(float) * 2);
 
 							if (i == 0) {
-								aabb = Rect2(src[i], SMALL_VEC2); //must have a bit of size
+								aabb = Rect2(src[i], SMALL_VEC2); // must have a bit of size
 							} else {
 								aabb.expand_to(src[i]);
 							}
@@ -787,7 +787,7 @@ Error VisualServer::_surface_set_data(Array p_arrays, uint32_t p_format, uint32_
 	}
 
 	if (p_format & VS::ARRAY_FORMAT_BONES) {
-		//create AABBs for each detected bone
+		// create AABBs for each detected bone
 		int total_bones = max_bone + 1;
 
 		bool first = r_bone_aabb.size() == 0;
@@ -796,7 +796,7 @@ Error VisualServer::_surface_set_data(Array p_arrays, uint32_t p_format, uint32_
 
 		if (first) {
 			for (int i = 0; i < total_bones; i++) {
-				r_bone_aabb.write[i].size = Vector3(-1, -1, -1); //negative means unused
+				r_bone_aabb.write[i].size = Vector3(-1, -1, -1); // negative means unused
 			}
 		}
 
@@ -820,12 +820,12 @@ Error VisualServer::_surface_set_data(Array p_arrays, uint32_t p_format, uint32_
 					int idx = rb[i * 4 + j];
 					float w = rw[i * 4 + j];
 					if (w == 0) {
-						continue; //break;
+						continue; // break;
 					}
 					ERR_FAIL_INDEX_V(idx, total_bones, ERR_INVALID_DATA);
 
 					if (bptr[idx].size.x < 0) {
-						//first
+						// first
 						bptr[idx] = AABB(v, SMALL_VEC3);
 						any_valid = true;
 					} else {
@@ -864,7 +864,7 @@ void VisualServer::mesh_surface_make_offsets_from_format(uint32_t p_format, int 
 	int positions_stride = 0;
 
 	for (int i = 0; i < VS::ARRAY_MAX; i++) {
-		r_offsets[i] = 0; //reset
+		r_offsets[i] = 0; // reset
 
 		if (!(p_format & (1 << i))) { // no array
 			continue;
@@ -1066,7 +1066,7 @@ void VisualServer::mesh_add_surface_from_arrays(RID p_mesh, PrimitiveType p_prim
 	ERR_FAIL_COND((format & VS::ARRAY_FORMAT_VERTEX) == 0); // mandatory
 
 	if (p_blend_shapes.size()) {
-		//validate format for morphs
+		// validate format for morphs
 		for (int i = 0; i < p_blend_shapes.size(); i++) {
 			uint32_t bsformat = 0;
 			Array arr = p_blend_shapes[i];
@@ -1088,7 +1088,7 @@ void VisualServer::mesh_add_surface_from_arrays(RID p_mesh, PrimitiveType p_prim
 	int positions_stride = 0;
 
 	for (int i = 0; i < VS::ARRAY_MAX; i++) {
-		offsets[i] = 0; //reset
+		offsets[i] = 0; // reset
 
 		if (!(format & (1 << i))) { // no array
 			continue;
@@ -1116,7 +1116,7 @@ void VisualServer::mesh_add_surface_from_arrays(RID p_mesh, PrimitiveType p_prim
 				}
 
 				if (elem_size == 6) {
-					//had to pad
+					// had to pad
 					elem_size = 8;
 				}
 
@@ -1266,7 +1266,7 @@ void VisualServer::mesh_add_surface_from_arrays(RID p_mesh, PrimitiveType p_prim
 	}
 
 	uint32_t mask = (1 << ARRAY_MAX) - 1;
-	format |= (~mask) & p_compress_format; //make the full format
+	format |= (~mask) & p_compress_format; // make the full format
 
 	int array_size = (positions_stride + attributes_stride) * array_len;
 
@@ -1313,7 +1313,7 @@ Array VisualServer::_get_array_from_surface(uint32_t p_format, PoolVector<uint8_
 	int positions_stride = 0;
 
 	for (int i = 0; i < VS::ARRAY_MAX; i++) {
-		offsets[i] = 0; //reset
+		offsets[i] = 0; // reset
 
 		if (!(p_format & (1 << i))) { // no array
 			continue;
@@ -2521,7 +2521,7 @@ void VisualServer::_bind_methods() {
 
 void VisualServer::_canvas_item_add_style_box(RID p_item, const Rect2 &p_rect, const Rect2 &p_source, RID p_texture, const Vector<float> &p_margins, const Color &p_modulate) {
 	ERR_FAIL_COND(p_margins.size() != 4);
-	//canvas_item_add_style_box(p_item,p_rect,p_source,p_texture,Vector2(p_margins[0],p_margins[1]),Vector2(p_margins[2],p_margins[3]),true,p_modulate);
+	// canvas_item_add_style_box(p_item,p_rect,p_source,p_texture,Vector2(p_margins[0],p_margins[1]),Vector2(p_margins[2],p_margins[3]),true,p_modulate);
 }
 
 void VisualServer::_camera_set_orthogonal(RID p_camera, float p_size, float p_z_near, float p_z_far) {
@@ -2583,7 +2583,7 @@ void VisualServer::set_render_loop_enabled(bool p_enabled) {
 }
 
 VisualServer::VisualServer() {
-	//ERR_FAIL_COND(singleton);
+	// ERR_FAIL_COND(singleton);
 	singleton = this;
 
 	GLOBAL_DEF_RST("rendering/vram_compression/import_bptc", false);

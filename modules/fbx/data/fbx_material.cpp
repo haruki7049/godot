@@ -285,7 +285,7 @@ Ref<SpatialMaterial> FBXMaterial::import_material(ImportState &state) {
 		}
 
 		if (desc == PROPERTY_DESC_IGNORE) {
-			//WARN_PRINT("[Ignored] The FBX material parameter: `" + String(name.c_str()) + "` is ignored.");
+			// WARN_PRINT("[Ignored] The FBX material parameter: `" + String(name.c_str()) + "` is ignored.");
 			continue;
 		} else {
 			print_verbose("FBX Material parameter: " + String(name.c_str()));
@@ -318,7 +318,7 @@ Ref<SpatialMaterial> FBXMaterial::import_material(ImportState &state) {
 		const FBXDocParser::TypedProperty<Vector3> *vector_value = dynamic_cast<const FBXDocParser::TypedProperty<Vector3> *>(prop);
 
 		if (!real_value && !vector_value) {
-			//WARN_PRINT("unsupported datatype in property: " + String(name.c_str()));
+			// WARN_PRINT("unsupported datatype in property: " + String(name.c_str()));
 			continue;
 		}
 

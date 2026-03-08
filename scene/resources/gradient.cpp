@@ -32,14 +32,14 @@
 
 #include "core/core_string_names.h"
 
-//setter and getter names for property serialization
+// setter and getter names for property serialization
 #define COLOR_RAMP_GET_OFFSETS "get_offsets"
 #define COLOR_RAMP_GET_COLORS "get_colors"
 #define COLOR_RAMP_SET_OFFSETS "set_offsets"
 #define COLOR_RAMP_SET_COLORS "set_colors"
 
 Gradient::Gradient() {
-	//Set initial color ramp transition from black to white
+	// Set initial color ramp transition from black to white
 	points.resize(2);
 	points.write[0].color = Color(0, 0, 0, 1);
 	points.write[0].offset = 0;

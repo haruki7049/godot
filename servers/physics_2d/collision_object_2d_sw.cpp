@@ -37,7 +37,7 @@ void CollisionObject2DSW::add_shape(Shape2DSW *p_shape, const Transform2D &p_tra
 	s.shape = p_shape;
 	s.xform = p_transform;
 	s.xform_inv = s.xform.affine_inverse();
-	s.bpid = 0; //needs update
+	s.bpid = 0; // needs update
 	s.disabled = p_disabled;
 	s.one_way_collision = false;
 	s.one_way_collision_margin = 0;
@@ -105,7 +105,7 @@ void CollisionObject2DSW::set_shape_disabled(int p_idx, bool p_disabled) {
 }
 
 void CollisionObject2DSW::remove_shape(Shape2DSW *p_shape) {
-	//remove a shape, all the times it appears
+	// remove a shape, all the times it appears
 	for (int i = 0; i < shapes.size(); i++) {
 		if (shapes[i].shape == p_shape) {
 			remove_shape(i);
@@ -115,13 +115,13 @@ void CollisionObject2DSW::remove_shape(Shape2DSW *p_shape) {
 }
 
 void CollisionObject2DSW::remove_shape(int p_index) {
-	//remove anything from shape to be erased to end, so subindices don't change
+	// remove anything from shape to be erased to end, so subindices don't change
 	ERR_FAIL_INDEX(p_index, shapes.size());
 	for (int i = p_index; i < shapes.size(); i++) {
 		if (shapes[i].bpid == 0) {
 			continue;
 		}
-		//should never get here with a null owner
+		// should never get here with a null owner
 		space->get_broadphase()->remove(shapes[i].bpid);
 		shapes.write[i].bpid = 0;
 	}
@@ -171,7 +171,7 @@ void CollisionObject2DSW::_update_shapes() {
 			continue;
 		}
 
-		//not quite correct, should compute the next matrix..
+		// not quite correct, should compute the next matrix..
 		Rect2 shape_aabb = s.shape->get_aabb();
 		Transform2D xform = transform * s.xform;
 		shape_aabb = xform.xform(shape_aabb);
@@ -198,11 +198,11 @@ void CollisionObject2DSW::_update_shapes_with_motion(const Vector2 &p_motion) {
 			continue;
 		}
 
-		//not quite correct, should compute the next matrix..
+		// not quite correct, should compute the next matrix..
 		Rect2 shape_aabb = s.shape->get_aabb();
 		Transform2D xform = transform * s.xform;
 		shape_aabb = xform.xform(shape_aabb);
-		shape_aabb = shape_aabb.merge(Rect2(shape_aabb.position + p_motion, shape_aabb.size)); //use motion
+		shape_aabb = shape_aabb.merge(Rect2(shape_aabb.position + p_motion, shape_aabb.size)); // use motion
 		s.aabb_cache = shape_aabb;
 
 		if (s.bpid == 0) {

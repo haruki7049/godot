@@ -41,7 +41,7 @@
 class Mesh : public Resource {
 	GDCLASS(Mesh, Resource);
 
-	mutable Ref<TriangleMesh> triangle_mesh; //cached
+	mutable Ref<TriangleMesh> triangle_mesh; // cached
 	mutable Vector<Vector3> debug_lines;
 	Size2 lightmap_size_hint;
 
@@ -208,7 +208,7 @@ public:
 	void surface_remove(int p_idx);
 	void clear_surfaces();
 
-	void surface_set_custom_aabb(int p_idx, const AABB &p_aabb); //only recognized by driver
+	void surface_set_custom_aabb(int p_idx, const AABB &p_aabb); // only recognized by driver
 
 	int surface_get_array_len(int p_idx) const;
 	int surface_get_array_index_len(int p_idx) const;

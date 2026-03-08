@@ -86,7 +86,7 @@ private:
 	}
 
 	_FORCE_INLINE_ size_t _get_alloc_size(size_t p_elements) const {
-		//return nearest_power_of_2_templated(p_elements*sizeof(T)+sizeof(SafeRefCount)+sizeof(int));
+		// return nearest_power_of_2_templated(p_elements*sizeof(T)+sizeof(SafeRefCount)+sizeof(int));
 		return next_power_of_2(p_elements * sizeof(T));
 	}
 
@@ -100,7 +100,7 @@ private:
 		}
 		*out = next_power_of_2(o);
 		if (_add_overflow(o, static_cast<size_t>(32), &p)) {
-			return false; //no longer allocated here
+			return false; // no longer allocated here
 		}
 		return true;
 #else
@@ -231,8 +231,8 @@ uint32_t CowData<T>::_copy_on_write() {
 
 		uint32_t *mem_new = (uint32_t *)Memory::alloc_static(_get_alloc_size(current_size), true);
 
-		new (mem_new - 2, sizeof(uint32_t), "") SafeNumeric<uint32_t>(1); //refcount
-		*(mem_new - 1) = current_size; //size
+		new (mem_new - 2, sizeof(uint32_t), "") SafeNumeric<uint32_t>(1); // refcount
+		*(mem_new - 1) = current_size; // size
 
 		T *_data = (T *)(mem_new);
 
@@ -284,15 +284,15 @@ Error CowData<T>::resize(int p_size) {
 				// alloc from scratch
 				uint32_t *ptr = (uint32_t *)Memory::alloc_static(alloc_size, true);
 				ERR_FAIL_COND_V(!ptr, ERR_OUT_OF_MEMORY);
-				*(ptr - 1) = 0; //size, currently none
-				new (ptr - 2, sizeof(uint32_t), "") SafeNumeric<uint32_t>(1); //refcount
+				*(ptr - 1) = 0; // size, currently none
+				new (ptr - 2, sizeof(uint32_t), "") SafeNumeric<uint32_t>(1); // refcount
 
 				_ptr = (T *)ptr;
 
 			} else {
 				uint32_t *_ptrnew = (uint32_t *)Memory::realloc_static(_ptr, alloc_size, true);
 				ERR_FAIL_COND_V(!_ptrnew, ERR_OUT_OF_MEMORY);
-				new (_ptrnew - 2, sizeof(uint32_t), "") SafeNumeric<uint32_t>(rc); //refcount
+				new (_ptrnew - 2, sizeof(uint32_t), "") SafeNumeric<uint32_t>(rc); // refcount
 
 				_ptr = (T *)(_ptrnew);
 			}
@@ -322,7 +322,7 @@ Error CowData<T>::resize(int p_size) {
 		if (alloc_size != current_alloc_size) {
 			uint32_t *_ptrnew = (uint32_t *)Memory::realloc_static(_ptr, alloc_size, true);
 			ERR_FAIL_COND_V(!_ptrnew, ERR_OUT_OF_MEMORY);
-			new (_ptrnew - 2, sizeof(uint32_t), "") SafeNumeric<uint32_t>(rc); //refcount
+			new (_ptrnew - 2, sizeof(uint32_t), "") SafeNumeric<uint32_t>(rc); // refcount
 
 			_ptr = (T *)(_ptrnew);
 		}
@@ -366,7 +366,7 @@ void CowData<T>::_ref(const CowData &p_from) {
 	_ptr = nullptr;
 
 	if (!p_from._ptr) {
-		return; //nothing to do
+		return; // nothing to do
 	}
 
 	if (p_from._get_refcount()->conditional_increment() > 0) { // could reference

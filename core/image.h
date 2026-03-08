@@ -42,7 +42,7 @@
  * Image storage class. This is used to store an image in user memory, as well as
  * providing some basic methods for image manipulation.
  * Images can be loaded from a file, or registered into the Render object as textures.
-*/
+ */
 
 class Image;
 
@@ -67,38 +67,38 @@ public:
 
 	enum Format {
 
-		FORMAT_L8, //luminance
-		FORMAT_LA8, //luminance-alpha
+		FORMAT_L8, // luminance
+		FORMAT_LA8, // luminance-alpha
 		FORMAT_R8,
 		FORMAT_RG8,
 		FORMAT_RGB8,
 		FORMAT_RGBA8,
 		FORMAT_RGBA4444,
 		FORMAT_RGBA5551,
-		FORMAT_RF, //float
+		FORMAT_RF, // float
 		FORMAT_RGF,
 		FORMAT_RGBF,
 		FORMAT_RGBAF,
-		FORMAT_RH, //half float
+		FORMAT_RH, // half float
 		FORMAT_RGH,
 		FORMAT_RGBH,
 		FORMAT_RGBAH,
 		FORMAT_RGBE9995,
-		FORMAT_DXT1, //s3tc bc1
-		FORMAT_DXT3, //bc2
-		FORMAT_DXT5, //bc3
+		FORMAT_DXT1, // s3tc bc1
+		FORMAT_DXT3, // bc2
+		FORMAT_DXT5, // bc3
 		FORMAT_RGTC_R,
 		FORMAT_RGTC_RG,
-		FORMAT_BPTC_RGBA, //btpc bc7
-		FORMAT_BPTC_RGBF, //float bc6h
-		FORMAT_BPTC_RGBFU, //unsigned float bc6hu
-		FORMAT_PVRTC2, //pvrtc
+		FORMAT_BPTC_RGBA, // btpc bc7
+		FORMAT_BPTC_RGBF, // float bc6h
+		FORMAT_BPTC_RGBFU, // unsigned float bc6hu
+		FORMAT_PVRTC2, // pvrtc
 		FORMAT_PVRTC2A,
 		FORMAT_PVRTC4,
 		FORMAT_PVRTC4A,
-		FORMAT_ETC, //etc1
-		FORMAT_ETC2_R11, //etc2
-		FORMAT_ETC2_R11S, //signed, NOT srgb.
+		FORMAT_ETC, // etc1
+		FORMAT_ETC2_R11, // etc2
+		FORMAT_ETC2_R11S, // signed, NOT srgb.
 		FORMAT_ETC2_RG11,
 		FORMAT_ETC2_RG11S,
 		FORMAT_ETC2_RGB8,
@@ -127,7 +127,7 @@ public:
 		COMPRESS_SOURCE_MAX,
 	};
 
-	//some functions provided by something else
+	// some functions provided by something else
 
 	static ImageMemLoadFunc _png_mem_loader_func;
 	static ImageMemLoadFunc _jpg_mem_loader_func;
@@ -181,7 +181,7 @@ private:
 		data = p_image.data;
 	}
 
-	_FORCE_INLINE_ void _get_mipmap_offset_and_size(int p_mipmap, int &r_offset, int &r_width, int &r_height) const; //get where the mipmap begins in data
+	_FORCE_INLINE_ void _get_mipmap_offset_and_size(int p_mipmap, int &r_offset, int &r_width, int &r_height) const; // get where the mipmap begins in data
 
 	static int _get_dst_image_size(int p_width, int p_height, Format p_format, int &r_mipmaps, int p_mipmaps = -1);
 	bool _can_modify(Format p_format) const;
@@ -220,9 +220,9 @@ public:
 	 */
 	Format get_format() const;
 
-	int get_mipmap_offset(int p_mipmap) const; //get where the mipmap begins in data
-	void get_mipmap_offset_and_size(int p_mipmap, int &r_ofs, int &r_size) const; //get where the mipmap begins in data
-	void get_mipmap_offset_size_and_dimensions(int p_mipmap, int &r_ofs, int &r_size, int &w, int &h) const; //get where the mipmap begins in data
+	int get_mipmap_offset(int p_mipmap) const; // get where the mipmap begins in data
+	void get_mipmap_offset_and_size(int p_mipmap, int &r_ofs, int &r_size) const; // get where the mipmap begins in data
+	void get_mipmap_offset_size_and_dimensions(int p_mipmap, int &r_ofs, int &r_size, int &w, int &h) const; // get where the mipmap begins in data
 
 	/**
 	 * Resize the image, using the preferred interpolation method.
@@ -247,7 +247,7 @@ public:
 	Error generate_mipmaps(bool p_renormalize = false);
 
 	void clear_mipmaps();
-	void normalize(); //for normal maps
+	void normalize(); // for normal maps
 
 	/**
 	 * Create a new image of a given size and format. Current image will be lost
@@ -347,7 +347,7 @@ public:
 	void lock();
 	void unlock();
 
-	//this is used for compression
+	// this is used for compression
 	enum DetectChannels {
 		DETECTED_L,
 		DETECTED_LA,

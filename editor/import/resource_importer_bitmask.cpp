@@ -93,7 +93,7 @@ Error ResourceImporterBitMap::import(const String &p_source_file, const String &
 		for (int j = 0; j < w; j++) {
 			bool bit;
 			Color c = image->get_pixel(j, i);
-			if (create_from == 0) { //b&W
+			if (create_from == 0) { // b&W
 				bit = c.get_v() > threshold;
 			} else {
 				bit = c.a > threshold;

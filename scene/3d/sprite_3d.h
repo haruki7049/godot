@@ -37,7 +37,7 @@
 class SpriteBase3D : public GeometryInstance {
 	GDCLASS(SpriteBase3D, GeometryInstance);
 
-	mutable Ref<TriangleMesh> triangle_mesh; //cached
+	mutable Ref<TriangleMesh> triangle_mesh; // cached
 
 public:
 	enum DrawFlags {

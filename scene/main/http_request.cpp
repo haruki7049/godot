@@ -610,7 +610,7 @@ void HTTPRequest::_bind_methods() {
 	ADD_SIGNAL(MethodInfo("request_completed", PropertyInfo(Variant::INT, "result"), PropertyInfo(Variant::INT, "response_code"), PropertyInfo(Variant::POOL_STRING_ARRAY, "headers"), PropertyInfo(Variant::POOL_BYTE_ARRAY, "body")));
 
 	BIND_ENUM_CONSTANT(RESULT_SUCCESS);
-	//BIND_ENUM_CONSTANT( RESULT_NO_BODY );
+	// BIND_ENUM_CONSTANT( RESULT_NO_BODY );
 	BIND_ENUM_CONSTANT(RESULT_CHUNKED_BODY_SIZE_MISMATCH);
 	BIND_ENUM_CONSTANT(RESULT_CANT_CONNECT);
 	BIND_ENUM_CONSTANT(RESULT_CANT_RESOLVE);

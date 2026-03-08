@@ -59,7 +59,7 @@ void EditorLog::_error_handler(void *p_self, const char *p_func, const char *p_f
 
 void EditorLog::_notification(int p_what) {
 	if (p_what == NOTIFICATION_ENTER_TREE) {
-		//button->set_icon(get_icon("Console","EditorIcons"));
+		// button->set_icon(get_icon("Console","EditorIcons"));
 		log->add_font_override("normal_font", get_font("output_source", "EditorFonts"));
 		log->add_color_override("selection_color", get_color("accent_color", "Editor") * Color(1, 1, 1, 0.4));
 	} else if (p_what == NOTIFICATION_THEME_CHANGED) {

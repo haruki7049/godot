@@ -121,7 +121,7 @@ void MultiMeshEditor::_populate() {
 		return;
 	}
 
-	//make all faces local
+	// make all faces local
 
 	int gc = geometry.size();
 	PoolVector<Face3>::Write w = geometry.write();
@@ -187,7 +187,7 @@ void MultiMeshEditor::_populate() {
 
 		// ok FINALLY get face
 		Face3 face = r[index];
-		//now compute some position inside the face...
+		// now compute some position inside the face...
 
 		Vector3 pos = face.get_random_point_inside();
 		Vector3 normal = face.get_plane().normal;
@@ -205,7 +205,7 @@ void MultiMeshEditor::_populate() {
 		post_xform.rotate(xform.basis.get_axis(0), -Math::random(-_tilt_random, _tilt_random) * Math_PI);
 
 		xform.basis = post_xform * xform.basis;
-		//xform.basis.orthonormalize();
+		// xform.basis.orthonormalize();
 
 		xform.basis.scale(Vector3(1, 1, 1) * (_scale + Math::random(-_scale_random, _scale_random)));
 
@@ -285,7 +285,7 @@ MultiMeshEditor::MultiMeshEditor() {
 
 	VBoxContainer *vbc = memnew(VBoxContainer);
 	populate_dialog->add_child(vbc);
-	//populate_dialog->set_child_rect(vbc);
+	// populate_dialog->set_child_rect(vbc);
 
 	HBoxContainer *hbc = memnew(HBoxContainer);
 

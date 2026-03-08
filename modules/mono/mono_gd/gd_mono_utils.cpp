@@ -531,11 +531,14 @@ namespace Marshal {
 	}
 #else
 #define NO_GLUE_RET(m_ret) \
-	{}
+	{                      \
+	}
 #endif
 #else
 #define NO_GLUE_RET(m_ret) \
-	{ return m_ret; }
+	{                      \
+		return m_ret;      \
+	}
 #endif
 
 bool type_is_generic_array(MonoReflectionType *p_reftype) {

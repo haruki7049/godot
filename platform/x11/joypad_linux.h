@@ -28,7 +28,7 @@
 /* SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                */
 /*************************************************************************/
 
-//author: Andreas Haas <hondres,  liugam3@gmail.com>
+// author: Andreas Haas <hondres,  liugam3@gmail.com>
 #ifndef JOYPAD_LINUX_H
 #define JOYPAD_LINUX_H
 

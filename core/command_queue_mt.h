@@ -284,8 +284,8 @@ class CommandQueueMT {
 
 	struct CommandBase {
 		virtual void call() = 0;
-		virtual void post(){};
-		virtual ~CommandBase(){};
+		virtual void post() {};
+		virtual ~CommandBase() {};
 	};
 
 	struct SyncCommand : public CommandBase {
@@ -422,7 +422,7 @@ class CommandQueueMT {
 
 		if (size == 0) {
 			*(uint32_t *)&command_mem[read_ptr] = 0; // clear in-use bit.
-			//end of ringbuffer, wrap
+			// end of ringbuffer, wrap
 			read_ptr_and_epoch = 0 | (1 & ~read_ptr_and_epoch); // Invert epoch.
 			goto tryagain;
 		}
@@ -479,7 +479,7 @@ public:
 	}
 
 	void flush_all() {
-		//ERR_FAIL_COND(sync);
+		// ERR_FAIL_COND(sync);
 		lock();
 		while (flush_one(false)) {
 			;

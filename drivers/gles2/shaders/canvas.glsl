@@ -55,13 +55,13 @@ attribute highp vec4 bone_weights; // attrib:7
 
 #ifdef USE_INSTANCING
 
-attribute highp vec4 instance_xform0; //attrib:8
-attribute highp vec4 instance_xform1; //attrib:9
-attribute highp vec4 instance_xform2; //attrib:10
-attribute highp vec4 instance_color; //attrib:11
+attribute highp vec4 instance_xform0; // attrib:8
+attribute highp vec4 instance_xform1; // attrib:9
+attribute highp vec4 instance_xform2; // attrib:10
+attribute highp vec4 instance_color; // attrib:11
 
 #ifdef USE_INSTANCE_CUSTOM
-attribute highp vec4 instance_custom_data; //attrib:12
+attribute highp vec4 instance_custom_data; // attrib:12
 #endif
 
 #endif
@@ -265,7 +265,7 @@ VERTEX_SHADER_CODE
 	light_uv_interp.xy = (light_matrix * outvec).xy;
 	light_uv_interp.zw = (light_local_matrix * outvec).xy;
 
-	transformed_light_uv = (mat3(light_matrix_inverse) * vec3(light_uv_interp.zw, 0.0)).xy; //for normal mapping
+	transformed_light_uv = (mat3(light_matrix_inverse) * vec3(light_uv_interp.zw, 0.0)).xy; // for normal mapping
 
 #ifdef USE_SHADOWS
 	pos = outvec.xy;
@@ -439,12 +439,12 @@ void main() {
 	vec4 color = color_interp;
 	vec2 uv = uv_interp;
 #ifdef USE_FORCE_REPEAT
-	//needs to use this to workaround GLES2/WebGL1 forcing tiling that textures that don't support it
+	// needs to use this to workaround GLES2/WebGL1 forcing tiling that textures that don't support it
 	uv = mod(uv, vec2(1.0, 1.0));
 #endif
 
 #if !defined(COLOR_USED)
-	//default behavior, texture by color
+	// default behavior, texture by color
 	color *= texture2D(color_texture, uv);
 #endif
 
@@ -519,7 +519,7 @@ FRAGMENT_SHADER_CODE
 	vec4 light = texture2D(light_texture, light_uv);
 
 	if (any(lessThan(light_uv_interp.xy, vec2(0.0, 0.0))) || any(greaterThanEqual(light_uv_interp.xy, vec2(1.0, 1.0)))) {
-		color.a *= light_outside_alpha; //invisible
+		color.a *= light_outside_alpha; // invisible
 
 	} else {
 		float real_light_height = light_height;
@@ -527,7 +527,7 @@ FRAGMENT_SHADER_CODE
 		vec4 real_light_shadow_color = light_shadow_color;
 
 #if defined(USE_LIGHT_SHADER_CODE)
-		//light is written by the light shader
+		// light is written by the light shader
 		light_compute(
 				light,
 				light_vec,
@@ -593,7 +593,7 @@ FRAGMENT_SHADER_CODE
 		s.xyz /= s.w;
 		su = s.x * 0.5 + 0.5;
 		sz = s.z * 0.5 + 0.5;
-		//sz=lightlength(light_vec);
+		// sz=lightlength(light_vec);
 
 		highp float shadow_attenuation = 0.0;
 
@@ -692,13 +692,13 @@ FRAGMENT_SHADER_CODE
 
 #endif
 
-		//color *= shadow_attenuation;
+		// color *= shadow_attenuation;
 		color = mix(real_light_shadow_color, color, shadow_attenuation);
-//use shadows
+// use shadows
 #endif
 	}
 
-//use lighting
+// use lighting
 #endif
 
 #ifdef LINEAR_TO_SRGB

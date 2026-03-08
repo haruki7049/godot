@@ -94,19 +94,19 @@ void ResourceImporterLayeredTexture::_save_tex(const Vector<Ref<Image>> &p_image
 	} else {
 		f->store_8('A');
 	}
-	f->store_8('T'); //godot streamable texture
+	f->store_8('T'); // godot streamable texture
 
 	f->store_32(p_images[0]->get_width());
 	f->store_32(p_images[0]->get_height());
-	f->store_32(p_images.size()); //depth
+	f->store_32(p_images.size()); // depth
 	f->store_32(p_texture_flags);
 
 	if ((p_compress_mode == COMPRESS_LOSSLESS) && p_images[0]->get_format() > Image::FORMAT_RGBA8) {
-		p_compress_mode = COMPRESS_UNCOMPRESSED; //these can't go as lossy
+		p_compress_mode = COMPRESS_UNCOMPRESSED; // these can't go as lossy
 	}
 
 	if (p_compress_mode != COMPRESS_VIDEO_RAM) {
-		//vram needs to do a first compression to tell what the format is, for the rest its ok
+		// vram needs to do a first compression to tell what the format is, for the rest its ok
 		f->store_32(p_images[0]->get_format());
 		f->store_32(p_compress_mode); // 0 - lossless (PNG), 1 - vram, 2 - uncompressed
 	}
@@ -148,7 +148,7 @@ void ResourceImporterLayeredTexture::_save_tex(const Vector<Ref<Image>> &p_image
 				image->compress(p_vram_compression, csource, 0.7);
 
 				if (i == 0) {
-					//hack so we can properly tell the format
+					// hack so we can properly tell the format
 					f->store_32(image->get_format());
 					f->store_32(p_compress_mode); // 0 - lossless (PNG), 1 - vram, 2 - uncompressed
 				}
@@ -225,11 +225,11 @@ Error ResourceImporterLayeredTexture::import(const String &p_source_file, const 
 	int slice_w = image->get_width() / hslices;
 	int slice_h = image->get_height() / vslices;
 
-	//optimize
+	// optimize
 	if (compress_mode == COMPRESS_VIDEO_RAM) {
-		//if using video ram, optimize
+		// if using video ram, optimize
 		if (srgb) {
-			//remove alpha if not needed, so compression is more efficient
+			// remove alpha if not needed, so compression is more efficient
 			if (image->get_format() == Image::FORMAT_RGBA8 && !image->detect_alpha()) {
 				image->convert(Image::FORMAT_RGB8);
 			}
@@ -255,8 +255,8 @@ Error ResourceImporterLayeredTexture::import(const String &p_source_file, const 
 	Array formats_imported;
 
 	if (compress_mode == COMPRESS_VIDEO_RAM) {
-		//must import in all formats, in order of priority (so platform choses the best supported one. IE, etc2 over etc).
-		//Android, GLES 2.x
+		// must import in all formats, in order of priority (so platform choses the best supported one. IE, etc2 over etc).
+		// Android, GLES 2.x
 
 		bool ok_on_pc = false;
 		bool encode_bptc = false;
@@ -309,7 +309,7 @@ Error ResourceImporterLayeredTexture::import(const String &p_source_file, const 
 			EditorNode::add_io_error("Warning, no suitable PC VRAM compression enabled in Project Settings. This texture will not display correctly on PC.");
 		}
 	} else {
-		//import normally
+		// import normally
 		_save_tex(slices, p_save_path + "." + extension, compress_mode, Image::COMPRESS_S3TC /*this is ignored */, mipmaps, tex_flags);
 	}
 
@@ -350,7 +350,7 @@ String ResourceImporterLayeredTexture::get_import_settings_string() const {
 }
 
 bool ResourceImporterLayeredTexture::are_import_settings_valid(const String &p_path) const {
-	//will become invalid if formats are missing to import
+	// will become invalid if formats are missing to import
 	Dictionary metadata = ResourceFormatImporter::get_singleton()->get_resource_metadata(p_path);
 
 	if (!metadata.has("vram_texture")) {
@@ -359,7 +359,7 @@ bool ResourceImporterLayeredTexture::are_import_settings_valid(const String &p_p
 
 	bool vram = metadata["vram_texture"];
 	if (!vram) {
-		return true; //do not care about non vram
+		return true; // do not care about non vram
 	}
 
 	Vector<String> formats_imported;

@@ -149,7 +149,7 @@ void ColorPicker::_set_pick_color(const Color &p_color, bool p_update_sliders) {
 }
 
 void ColorPicker::set_pick_color(const Color &p_color) {
-	_set_pick_color(p_color, true); //because setters can't have more arguments
+	_set_pick_color(p_color, true); // because setters can't have more arguments
 }
 
 void ColorPicker::set_edit_alpha(bool p_show) {

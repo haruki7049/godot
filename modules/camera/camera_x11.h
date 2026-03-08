@@ -66,7 +66,7 @@ private:
 	struct buffer {
 		void *start;
 		size_t length;
-	} * buffers;
+	} *buffers;
 	unsigned int n_buffers;
 	struct v4l2_buffer buf;
 	struct v4l2_capability cap;

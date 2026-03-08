@@ -113,9 +113,9 @@ void AndroidInputHandler::process_key_event(int p_keycode, int p_scancode, int p
 
 void AndroidInputHandler::process_touch(int p_event, int p_pointer, const Vector<TouchPos> &p_points) {
 	switch (p_event) {
-		case AMOTION_EVENT_ACTION_DOWN: { //gesture begin
+		case AMOTION_EVENT_ACTION_DOWN: { // gesture begin
 			if (touch.size()) {
-				//end all if exist
+				// end all if exist
 				for (int i = 0; i < touch.size(); i++) {
 					Ref<InputEventScreenTouch> ev;
 					ev.instance();
@@ -132,7 +132,7 @@ void AndroidInputHandler::process_touch(int p_event, int p_pointer, const Vector
 				touch.write[i].pos = p_points[i].pos;
 			}
 
-			//send touch
+			// send touch
 			for (int i = 0; i < touch.size(); i++) {
 				Ref<InputEventScreenTouch> ev;
 				ev.instance();
@@ -143,7 +143,7 @@ void AndroidInputHandler::process_touch(int p_event, int p_pointer, const Vector
 			}
 
 		} break;
-		case AMOTION_EVENT_ACTION_MOVE: { //motion
+		case AMOTION_EVENT_ACTION_MOVE: { // motion
 			ERR_FAIL_COND(touch.size() != p_points.size());
 
 			for (int i = 0; i < touch.size(); i++) {
@@ -158,7 +158,7 @@ void AndroidInputHandler::process_touch(int p_event, int p_pointer, const Vector
 				ERR_CONTINUE(idx == -1);
 
 				if (touch[i].pos == p_points[idx].pos)
-					continue; //no move unncesearily
+					continue; // no move unncesearily
 
 				Ref<InputEventScreenDrag> ev;
 				ev.instance();
@@ -171,9 +171,9 @@ void AndroidInputHandler::process_touch(int p_event, int p_pointer, const Vector
 
 		} break;
 		case AMOTION_EVENT_ACTION_CANCEL:
-		case AMOTION_EVENT_ACTION_UP: { //release
+		case AMOTION_EVENT_ACTION_UP: { // release
 			if (touch.size()) {
-				//end all if exist
+				// end all if exist
 				for (int i = 0; i < touch.size(); i++) {
 					Ref<InputEventScreenTouch> ev;
 					ev.instance();

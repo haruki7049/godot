@@ -51,7 +51,7 @@ class Skeleton2DEditor : public Control {
 
 	void _menu_option(int p_option);
 
-	//void _create_uv_lines();
+	// void _create_uv_lines();
 	friend class Skeleton2DEditorPlugin;
 
 protected:

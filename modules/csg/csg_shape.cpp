@@ -50,7 +50,7 @@ void CSGShape::set_use_collision(bool p_enable) {
 		PhysicsServer::get_singleton()->body_attach_object_instance_id(root_collision_instance, get_instance_id());
 		set_collision_layer(collision_layer);
 		set_collision_mask(collision_mask);
-		_make_dirty(); //force update
+		_make_dirty(); // force update
 	} else {
 		PhysicsServer::get_singleton()->free(root_collision_instance);
 		root_collision_instance = RID();
@@ -278,7 +278,7 @@ void CSGShape::_update_shape() {
 	}
 
 	set_base(RID());
-	root_mesh.unref(); //byebye root mesh
+	root_mesh.unref(); // byebye root mesh
 
 	CSGBrush *n = _get_brush();
 	ERR_FAIL_COND_MSG(!n, "Cannot get CSGBrush.");
@@ -316,7 +316,7 @@ void CSGShape::_update_shape() {
 
 	surfaces.resize(face_count.size());
 
-	//create arrays
+	// create arrays
 	for (int i = 0; i < surfaces.size(); i++) {
 		surfaces.write[i].vertices.resize(face_count[i] * 3);
 		surfaces.write[i].normals.resize(face_count[i] * 3);
@@ -359,7 +359,7 @@ void CSGShape::_update_shape() {
 		root_collision_shape->set_faces(physics_faces);
 	}
 
-	//fill arrays
+	// fill arrays
 	{
 		for (int i = 0; i < n->faces.size(); i++) {
 			int order[3] = { 0, 1, 2 };
@@ -409,7 +409,7 @@ void CSGShape::_update_shape() {
 	}
 
 	root_mesh.instance();
-	//create surfaces
+	// create surfaces
 
 	for (int i = 0; i < surfaces.size(); i++) {
 		// calculate tangents for this surface
@@ -568,7 +568,7 @@ bool CSGShape::is_calculating_tangents() const {
 void CSGShape::_validate_property(PropertyInfo &property) const {
 	bool is_collision_prefixed = property.name.begins_with("collision_");
 	if ((is_collision_prefixed || property.name.begins_with("use_collision")) && is_inside_tree() && !is_root_shape()) {
-		//hide collision if not root
+		// hide collision if not root
 		property.usage = PROPERTY_USAGE_NOEDITOR;
 	} else if (is_collision_prefixed && !bool(get("use_collision"))) {
 		property.usage = PROPERTY_USAGE_NOEDITOR | PROPERTY_USAGE_INTERNAL;
@@ -663,7 +663,7 @@ CSGShape::~CSGShape() {
 //////////////////////////////////
 
 CSGBrush *CSGCombiner::_build_brush() {
-	return memnew(CSGBrush); //does not build anything
+	return memnew(CSGBrush); // does not build anything
 }
 
 CSGCombiner::CSGCombiner() {
@@ -1124,7 +1124,7 @@ CSGBrush *CSGBox::_build_brush() {
 
 	CSGBrush *brush = memnew(CSGBrush);
 
-	int face_count = 12; //it's a cube..
+	int face_count = 12; // it's a cube..
 
 	bool invert_val = is_inverting_faces();
 	Ref<Material> material = get_material();
@@ -1178,7 +1178,7 @@ CSGBrush *CSGBox::_build_brush() {
 					u[j] = Vector2(uv_points[j * 2 + 0], uv_points[j * 2 + 1]);
 				}
 
-				//face 1
+				// face 1
 				facesw[face * 3 + 0] = face_points[0] * vertex_mul;
 				facesw[face * 3 + 1] = face_points[1] * vertex_mul;
 				facesw[face * 3 + 2] = face_points[2] * vertex_mul;
@@ -1192,7 +1192,7 @@ CSGBrush *CSGBox::_build_brush() {
 				materialsw[face] = material;
 
 				face++;
-				//face 1
+				// face 1
 				facesw[face * 3 + 0] = face_points[2] * vertex_mul;
 				facesw[face * 3 + 1] = face_points[3] * vertex_mul;
 				facesw[face * 3 + 2] = face_points[0] * vertex_mul;
@@ -1349,7 +1349,7 @@ CSGBrush *CSGCylinder::_build_brush() {
 					Vector2(inc, 1),
 				};
 
-				//side face 1
+				// side face 1
 				facesw[face * 3 + 0] = face_points[0] * vertex_mul;
 				facesw[face * 3 + 1] = face_points[1] * vertex_mul;
 				facesw[face * 3 + 2] = face_points[2] * vertex_mul;
@@ -1365,7 +1365,7 @@ CSGBrush *CSGCylinder::_build_brush() {
 				face++;
 
 				if (!cone) {
-					//side face 2
+					// side face 2
 					facesw[face * 3 + 0] = face_points[2] * vertex_mul;
 					facesw[face * 3 + 1] = face_points[3] * vertex_mul;
 					facesw[face * 3 + 2] = face_points[0] * vertex_mul;
@@ -1380,7 +1380,7 @@ CSGBrush *CSGCylinder::_build_brush() {
 					face++;
 				}
 
-				//bottom face 1
+				// bottom face 1
 				facesw[face * 3 + 0] = face_points[1] * vertex_mul;
 				facesw[face * 3 + 1] = face_points[0] * vertex_mul;
 				facesw[face * 3 + 2] = Vector3(0, -1, 0) * vertex_mul;
@@ -1395,7 +1395,7 @@ CSGBrush *CSGCylinder::_build_brush() {
 				face++;
 
 				if (!cone) {
-					//top face 1
+					// top face 1
 					facesw[face * 3 + 0] = face_points[3] * vertex_mul;
 					facesw[face * 3 + 1] = face_points[2] * vertex_mul;
 					facesw[face * 3 + 2] = Vector3(0, 1, 0) * vertex_mul;
@@ -1528,7 +1528,7 @@ CSGBrush *CSGTorus::_build_brush() {
 	float max_radius = outer_radius;
 
 	if (min_radius == max_radius) {
-		return memnew(CSGBrush); //sorry, can't
+		return memnew(CSGBrush); // sorry, can't
 	}
 
 	if (min_radius > max_radius) {
@@ -1616,7 +1616,7 @@ CSGBrush *CSGTorus::_build_brush() {
 
 					face++;
 
-					//face 2
+					// face 2
 					facesw[face * 3 + 0] = face_points[3];
 					facesw[face * 3 + 1] = face_points[2];
 					facesw[face * 3 + 2] = face_points[0];

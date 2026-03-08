@@ -24,7 +24,7 @@ uniform float camera_z_near;
 
 #endif
 
-uniform SDEPTH_TYPE source_depth; //texunit:0
+uniform SDEPTH_TYPE source_depth; // texunit:0
 
 uniform ivec2 from_size;
 uniform int source_mipmap;

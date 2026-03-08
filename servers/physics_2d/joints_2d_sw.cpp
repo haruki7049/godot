@@ -32,7 +32,7 @@
 
 #include "space_2d_sw.h"
 
-//based on chipmunk joint constraints
+// based on chipmunk joint constraints
 
 /* Copyright (c) 2007 Scott Lembcke
  *
@@ -290,7 +290,7 @@ bool GrooveJoint2DSW::setup(real_t p_step) {
 		rA = tb - A->get_transform().get_origin();
 	} else {
 		clamp = 0.0f;
-		//joint->r1 = cpvsub(cpvadd(cpvmult(cpvperp(n), -td), cpvmult(n, d)), a->p);
+		// joint->r1 = cpvsub(cpvadd(cpvmult(cpvperp(n), -td), cpvmult(n, d)), a->p);
 		rA = ((-n.tangent() * -td) + n * d) - A->get_transform().get_origin();
 	}
 
@@ -301,8 +301,8 @@ bool GrooveJoint2DSW::setup(real_t p_step) {
 	jn_max = get_max_force() * p_step;
 
 	// calculate bias velocity
-	//cpVect delta = cpvsub(cpvadd(b->p, joint->r2), cpvadd(a->p, joint->r1));
-	//joint->bias = cpvclamp(cpvmult(delta, -joint->constraint.biasCoef*dt_inv), joint->constraint.maxBias);
+	// cpVect delta = cpvsub(cpvadd(b->p, joint->r2), cpvadd(a->p, joint->r1));
+	// joint->bias = cpvclamp(cpvmult(delta, -joint->constraint.biasCoef*dt_inv), joint->constraint.maxBias);
 
 	Vector2 delta = (B->get_transform().get_origin() + rB) - (A->get_transform().get_origin() + rA);
 

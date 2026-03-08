@@ -101,10 +101,10 @@ private:
 		StringName name;
 		SceneTree *tree;
 		bool inside_tree;
-		bool ready_notified; //this is a small hack, so if a node is added during _ready() to the tree, it correctly gets the _ready() notification
+		bool ready_notified; // this is a small hack, so if a node is added during _ready() to the tree, it correctly gets the _ready() notification
 		bool ready_first;
 #ifdef TOOLS_ENABLED
-		NodePath import_path; //path used when imported, used by scene editors to keep tracking
+		NodePath import_path; // path used when imported, used by scene editors to keep tracking
 #endif
 
 		Viewport *viewport;
@@ -121,7 +121,7 @@ private:
 		Map<StringName, MultiplayerAPI::RPCMode> rpc_properties;
 
 		// variables used to properly sort the node when processing, ignored otherwise
-		//should move all the stuff below to bits
+		// should move all the stuff below to bits
 		bool physics_process;
 		bool idle_process;
 		int process_priority;
@@ -222,11 +222,11 @@ public:
 		NOTIFICATION_DRAG_BEGIN = 21,
 		NOTIFICATION_DRAG_END = 22,
 		NOTIFICATION_PATH_CHANGED = 23,
-		//NOTIFICATION_TRANSLATION_CHANGED = 24, moved below
+		// NOTIFICATION_TRANSLATION_CHANGED = 24, moved below
 		NOTIFICATION_INTERNAL_PROCESS = 25,
 		NOTIFICATION_INTERNAL_PHYSICS_PROCESS = 26,
 		NOTIFICATION_POST_ENTER_TREE = 27,
-		//keep these linked to node
+		// keep these linked to node
 		NOTIFICATION_WM_MOUSE_ENTER = MainLoop::NOTIFICATION_WM_MOUSE_ENTER,
 		NOTIFICATION_WM_MOUSE_EXIT = MainLoop::NOTIFICATION_WM_MOUSE_EXIT,
 		NOTIFICATION_WM_FOCUS_IN = MainLoop::NOTIFICATION_WM_FOCUS_IN,
@@ -389,13 +389,13 @@ public:
 
 	void queue_delete();
 
-	//hacks for speed
+	// hacks for speed
 	static void set_human_readable_collision_renaming(bool p_enabled);
 	static void init_node_hrcr();
 
-	void force_parent_owned() { data.parent_owned = true; } //hack to avoid duplicate nodes
+	void force_parent_owned() { data.parent_owned = true; } // hack to avoid duplicate nodes
 
-	void set_import_path(const NodePath &p_import_path); //path used when imported, used by scene editors to keep tracking
+	void set_import_path(const NodePath &p_import_path); // path used when imported, used by scene editors to keep tracking
 	NodePath get_import_path() const;
 
 	bool is_owned_by_parent() const;
@@ -421,15 +421,15 @@ public:
 	void rpc_config(const StringName &p_method, MultiplayerAPI::RPCMode p_mode); // config a local method for RPC
 	void rset_config(const StringName &p_property, MultiplayerAPI::RPCMode p_mode); // config a local property for RPC
 
-	void rpc(const StringName &p_method, VARIANT_ARG_LIST); //rpc call, honors RPCMode
-	void rpc_unreliable(const StringName &p_method, VARIANT_ARG_LIST); //rpc call, honors RPCMode
-	void rpc_id(int p_peer_id, const StringName &p_method, VARIANT_ARG_LIST); //rpc call, honors RPCMode
-	void rpc_unreliable_id(int p_peer_id, const StringName &p_method, VARIANT_ARG_LIST); //rpc call, honors RPCMode
+	void rpc(const StringName &p_method, VARIANT_ARG_LIST); // rpc call, honors RPCMode
+	void rpc_unreliable(const StringName &p_method, VARIANT_ARG_LIST); // rpc call, honors RPCMode
+	void rpc_id(int p_peer_id, const StringName &p_method, VARIANT_ARG_LIST); // rpc call, honors RPCMode
+	void rpc_unreliable_id(int p_peer_id, const StringName &p_method, VARIANT_ARG_LIST); // rpc call, honors RPCMode
 
-	void rset(const StringName &p_property, const Variant &p_value); //remote set call, honors RPCMode
-	void rset_unreliable(const StringName &p_property, const Variant &p_value); //remote set call, honors RPCMode
-	void rset_id(int p_peer_id, const StringName &p_property, const Variant &p_value); //remote set call, honors RPCMode
-	void rset_unreliable_id(int p_peer_id, const StringName &p_property, const Variant &p_value); //remote set call, honors RPCMode
+	void rset(const StringName &p_property, const Variant &p_value); // remote set call, honors RPCMode
+	void rset_unreliable(const StringName &p_property, const Variant &p_value); // remote set call, honors RPCMode
+	void rset_id(int p_peer_id, const StringName &p_property, const Variant &p_value); // remote set call, honors RPCMode
+	void rset_unreliable_id(int p_peer_id, const StringName &p_property, const Variant &p_value); // remote set call, honors RPCMode
 
 	void rpcp(int p_peer_id, bool p_unreliable, const StringName &p_method, const Variant **p_arg, int p_argcount);
 	void rsetp(int p_peer_id, bool p_unreliable, const StringName &p_property, const Variant &p_value);

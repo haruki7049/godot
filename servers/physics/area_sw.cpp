@@ -277,7 +277,7 @@ AreaSW::AreaSW() :
 		CollisionObjectSW(TYPE_AREA),
 		monitor_query_list(this),
 		moved_list(this) {
-	_set_static(true); //areas are never active
+	_set_static(true); // areas are never active
 	space_override_mode = PhysicsServer::AREA_SPACE_OVERRIDE_DISABLED;
 	gravity = 9.80665;
 	gravity_vector = Vector3(0, -1, 0);

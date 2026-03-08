@@ -102,10 +102,10 @@ bool AudioStreamGeneratorPlayback::push_buffer(const PoolVector2Array &p_frames)
 
 	PoolVector2Array::Read r = p_frames.read();
 	if (sizeof(real_t) == 4) {
-		//write directly
+		// write directly
 		buffer.write((const AudioFrame *)r.ptr(), to_write);
 	} else {
-		//convert from double
+		// convert from double
 		AudioFrame buf[2048];
 		int ofs = 0;
 		while (to_write) {
@@ -144,7 +144,7 @@ void AudioStreamGeneratorPlayback::_mix_internal(AudioFrame *p_buffer, int p_fra
 	buffer.read(p_buffer, read_amount);
 
 	if (read_amount < p_frames) {
-		//skipped, not ideal
+		// skipped, not ideal
 		for (int i = read_amount; i < p_frames; i++) {
 			p_buffer[i] = AudioFrame(0, 0);
 		}
@@ -171,7 +171,7 @@ void AudioStreamGeneratorPlayback::stop() {
 	active = false;
 }
 bool AudioStreamGeneratorPlayback::is_playing() const {
-	return active; //always playing, can't be stopped
+	return active; // always playing, can't be stopped
 }
 
 int AudioStreamGeneratorPlayback::get_loop_count() const {
@@ -182,7 +182,7 @@ float AudioStreamGeneratorPlayback::get_playback_position() const {
 	return mixed;
 }
 void AudioStreamGeneratorPlayback::seek(float p_time) {
-	//no seek possible
+	// no seek possible
 }
 
 void AudioStreamGeneratorPlayback::_bind_methods() {

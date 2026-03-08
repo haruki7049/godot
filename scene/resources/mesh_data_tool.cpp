@@ -55,7 +55,7 @@ Error MeshDataTool::create_from_surface(const Ref<ArrayMesh> &p_mesh, int p_surf
 	if (arrays[Mesh::ARRAY_INDEX].get_type() != Variant::NIL) {
 		indices = arrays[Mesh::ARRAY_INDEX];
 	} else {
-		//make code simpler
+		// make code simpler
 		indices.resize(vcount);
 		PoolVector<int>::Write iw = indices.write();
 		for (int i = 0; i < vcount; i++) {

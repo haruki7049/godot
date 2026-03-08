@@ -141,8 +141,8 @@ private:
 
 	TreeItem *parent; // parent item
 	TreeItem *next; // next in list
-	TreeItem *children; //child items
-	Tree *tree; //tree (for reference)
+	TreeItem *children; // child items
+	Tree *tree; // tree (for reference)
 
 	TreeItem(Tree *p_tree);
 
@@ -153,7 +153,7 @@ private:
 
 protected:
 	static void _bind_methods();
-	//bind helpers
+	// bind helpers
 	Dictionary _get_range_config(int p_column) {
 		Dictionary d;
 		double min = 0.0, max = 0.0, step = 0.0;
@@ -329,8 +329,8 @@ private:
 
 	bool propagate_mouse_activated;
 
-	//TreeItem *cursor_item;
-	//int cursor_column;
+	// TreeItem *cursor_item;
+	// int cursor_column;
 
 	Rect2 custom_popup_rect;
 	int edited_col;
@@ -369,7 +369,7 @@ private:
 
 	int compute_item_height(TreeItem *p_item) const;
 	int get_item_height(TreeItem *p_item) const;
-	//void draw_item_text(String p_text,const Ref<Texture>& p_icon,int p_icon_max_w,bool p_tool,Rect2i p_rect,const Color& p_color);
+	// void draw_item_text(String p_text,const Ref<Texture>& p_icon,int p_icon_max_w,bool p_tool,Rect2i p_rect,const Color& p_color);
 	void draw_item_rect(const TreeItem::Cell &p_cell, const Rect2i &p_rect, const Color &p_color, const Color &p_icon_color);
 	int draw_item(const Point2i &p_pos, const Point2 &p_draw_ofs, const Size2 &p_draw_size, TreeItem *p_item);
 	void select_single_item(TreeItem *p_selected, TreeItem *p_current, int p_col, TreeItem *p_prev = nullptr, bool *r_in_range = nullptr, bool p_force_deselect = false);
@@ -468,7 +468,7 @@ private:
 	void update_scrollbars();
 
 	Rect2 search_item_rect(TreeItem *p_from, TreeItem *p_item);
-	//Rect2 get_item_rect(TreeItem *p_item);
+	// Rect2 get_item_rect(TreeItem *p_item);
 	uint64_t last_keypress;
 	String incr_search;
 	bool cursor_can_exit_tree;
@@ -510,7 +510,7 @@ private:
 protected:
 	static void _bind_methods();
 
-	//bind helpers
+	// bind helpers
 	TreeItem *_create_item(Object *p_parent, int p_idx = -1) {
 		return create_item(Object::cast_to<TreeItem>(p_parent), p_idx);
 	}

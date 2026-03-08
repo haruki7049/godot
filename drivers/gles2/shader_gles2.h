@@ -137,7 +137,7 @@ private:
 		static _FORCE_INLINE_ uint32_t hash(const VersionKey &p_key) { return hash_djb2_buffer(p_key.key, sizeof(p_key.key)); }
 	};
 
-	//this should use a way more cachefriendly version..
+	// this should use a way more cachefriendly version..
 	HashMap<VersionKey, Version, VersionKeyHash> version_map;
 
 	HashMap<uint32_t, CustomCode> custom_code_map;

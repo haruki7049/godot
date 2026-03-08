@@ -41,7 +41,7 @@ void EditorPropertyRootMotion::_confirmed() {
 	NodePath path = ti->get_metadata(0);
 	emit_changed(get_edited_property(), path);
 	update_property();
-	filter_dialog->hide(); //may come from activated
+	filter_dialog->hide(); // may come from activated
 }
 
 void EditorPropertyRootMotion::_node_assign() {
@@ -119,7 +119,7 @@ void EditorPropertyRootMotion::_node_assign() {
 			node = base->get_node(accum);
 		}
 		if (!node) {
-			continue; //no node, can't edit
+			continue; // no node, can't edit
 		}
 
 		if (path.get_subname_count()) {
@@ -127,7 +127,7 @@ void EditorPropertyRootMotion::_node_assign() {
 
 			Skeleton *skeleton = Object::cast_to<Skeleton>(node);
 			if (skeleton && skeleton->find_bone(concat) != -1) {
-				//path in skeleton
+				// path in skeleton
 				const String &bone = concat;
 				int idx = skeleton->find_bone(bone);
 				List<String> bone_path;
@@ -165,7 +165,7 @@ void EditorPropertyRootMotion::_node_assign() {
 				}
 
 			} else {
-				//just a property
+				// just a property
 				ti = filters->create_item(ti);
 				ti->set_text(0, concat);
 				ti->set_selectable(0, true);
@@ -176,7 +176,7 @@ void EditorPropertyRootMotion::_node_assign() {
 			}
 		} else {
 			if (ti) {
-				//just a node, likely call or animation track
+				// just a node, likely call or animation track
 				ti->set_selectable(0, true);
 				ti->set_metadata(0, path);
 				if (path == current) {
@@ -271,16 +271,16 @@ EditorPropertyRootMotion::EditorPropertyRootMotion() {
 	filters->set_v_size_flags(SIZE_EXPAND_FILL);
 	filters->set_hide_root(true);
 	filters->connect("item_activated", this, "_confirmed");
-	//filters->connect("item_edited", this, "_filter_edited");
+	// filters->connect("item_edited", this, "_filter_edited");
 }
 //////////////////////////
 
 bool EditorInspectorRootMotionPlugin::can_handle(Object *p_object) {
-	return true; //can handle everything
+	return true; // can handle everything
 }
 
 void EditorInspectorRootMotionPlugin::parse_begin(Object *p_object) {
-	//do none
+	// do none
 }
 
 bool EditorInspectorRootMotionPlugin::parse_property(Object *p_object, Variant::Type p_type, const String &p_path, PropertyHint p_hint, const String &p_hint_text, int p_usage) {
@@ -293,9 +293,9 @@ bool EditorInspectorRootMotionPlugin::parse_property(Object *p_object, Variant::
 		return true;
 	}
 
-	return false; //can be overridden, although it will most likely be last anyway
+	return false; // can be overridden, although it will most likely be last anyway
 }
 
 void EditorInspectorRootMotionPlugin::parse_end() {
-	//do none
+	// do none
 }

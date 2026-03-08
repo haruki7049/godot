@@ -589,8 +589,8 @@ private:
 	bool origin_enabled;
 	RID grid[3];
 	RID grid_instance[3];
-	bool grid_visible[3]; //currently visible
-	bool grid_enable[3]; //should be always visible if true
+	bool grid_visible[3]; // currently visible
+	bool grid_enable[3]; // should be always visible if true
 	bool grid_enabled;
 
 	Ref<ArrayMesh> move_gizmo[3], move_plane_gizmo[3], rotate_gizmo[4], scale_gizmo[3], scale_plane_gizmo[3];
@@ -744,7 +744,7 @@ private:
 
 protected:
 	void _notification(int p_what);
-	//void _gui_input(InputEvent p_event);
+	// void _gui_input(InputEvent p_event);
 	void _unhandled_key_input(Ref<InputEvent> p_event);
 
 	static void _bind_methods();

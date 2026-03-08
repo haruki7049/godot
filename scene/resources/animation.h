@@ -134,8 +134,8 @@ private:
 	/* BEZIER TRACK */
 
 	struct BezierKey {
-		Vector2 in_handle; //relative (x always <0)
-		Vector2 out_handle; //relative (x always >0)
+		Vector2 in_handle; // relative (x always <0)
+		Vector2 out_handle; // relative (x always >0)
 		float value;
 	};
 
@@ -151,8 +151,8 @@ private:
 
 	struct AudioKey {
 		RES stream;
-		float start_offset; //offset from start
-		float end_offset; //offset from end, if 0 then full length or infinite
+		float start_offset; // offset from start
+		float end_offset; // offset from end, if 0 then full length or infinite
 		AudioKey() {
 			start_offset = 0;
 			end_offset = 0;

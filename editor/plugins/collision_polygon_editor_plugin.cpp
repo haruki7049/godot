@@ -129,13 +129,13 @@ bool Polygon3DEditor::forward_spatial_gui_input(Camera *p_camera, const Ref<Inpu
 
 		Vector2 cpoint(spoint.x, spoint.y);
 
-		//DO NOT snap here, it's confusing in 3D for adding points.
-		//Let the snap happen when the point is being moved, instead.
-		//cpoint = CanvasItemEditor::get_singleton()->snap_point(cpoint);
+		// DO NOT snap here, it's confusing in 3D for adding points.
+		// Let the snap happen when the point is being moved, instead.
+		// cpoint = CanvasItemEditor::get_singleton()->snap_point(cpoint);
 
 		Vector<Vector2> poly = node->call("get_polygon");
 
-		//first check if a point is to be added (segment split)
+		// first check if a point is to be added (segment split)
 		real_t grab_threshold = EDITOR_GET("editors/poly_editor/point_grab_radius");
 
 		switch (mode) {
@@ -152,7 +152,7 @@ bool Polygon3DEditor::forward_spatial_gui_input(Camera *p_camera, const Ref<Inpu
 						return true;
 					} else {
 						if (wip.size() > 1 && p_camera->unproject_position(gt.xform(Vector3(wip[0].x, wip[0].y, depth))).distance_to(gpoint) < grab_threshold) {
-							//wip closed
+							// wip closed
 							_wip_close();
 
 							return true;
@@ -185,7 +185,7 @@ bool Polygon3DEditor::forward_spatial_gui_input(Camera *p_camera, const Ref<Inpu
 								return true;
 							}
 
-							//search edges
+							// search edges
 							int closest_idx = -1;
 							Vector2 closest_pos;
 							real_t closest_dist = 1e10;
@@ -197,7 +197,7 @@ bool Polygon3DEditor::forward_spatial_gui_input(Camera *p_camera, const Ref<Inpu
 
 								Vector2 cp = Geometry::get_closest_point_to_segment_2d(gpoint, points);
 								if (cp.distance_squared_to(points[0]) < CMP_EPSILON2 || cp.distance_squared_to(points[1]) < CMP_EPSILON2) {
-									continue; //not valid to reuse point
+									continue; // not valid to reuse point
 								}
 
 								real_t d = cp.distance_to(gpoint);
@@ -220,7 +220,7 @@ bool Polygon3DEditor::forward_spatial_gui_input(Camera *p_camera, const Ref<Inpu
 								return true;
 							}
 						} else {
-							//look for points to move
+							// look for points to move
 
 							int closest_idx = -1;
 							Vector2 closest_pos;
@@ -249,7 +249,7 @@ bool Polygon3DEditor::forward_spatial_gui_input(Camera *p_camera, const Ref<Inpu
 						snap_ignore = false;
 
 						if (edited_point != -1) {
-							//apply
+							// apply
 
 							ERR_FAIL_INDEX_V(edited_point, poly.size(), false);
 							poly.write[edited_point] = edited_point_pos;
@@ -385,9 +385,9 @@ void Polygon3DEditor::_polygon_draw() {
 		imgeom->set_color(Color(1, 0.3, 0.1, 0.8));
 		imgeom->add_vertex(next_point);
 
-		//Color col=Color(1,0.3,0.1,0.8);
-		//vpc->draw_line(point,next_point,col,2);
-		//vpc->draw_texture(handle,point-handle->get_size()*0.5);
+		// Color col=Color(1,0.3,0.1,0.8);
+		// vpc->draw_line(point,next_point,col,2);
+		// vpc->draw_texture(handle,point-handle->get_size()*0.5);
 	}
 
 	rect = rect.grow(1);
@@ -468,7 +468,7 @@ void Polygon3DEditor::_polygon_draw() {
 void Polygon3DEditor::edit(Node *p_collision_polygon) {
 	if (p_collision_polygon) {
 		node = Object::cast_to<Spatial>(p_collision_polygon);
-		//Enable the pencil tool if the polygon is empty
+		// Enable the pencil tool if the polygon is empty
 		if (Vector<Vector2>(node->call("get_polygon")).size() == 0) {
 			_menu_option(MODE_CREATE);
 		}

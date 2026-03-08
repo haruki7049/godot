@@ -63,12 +63,12 @@ class PinJointSW : public JointSW {
 		BodySW *_arr[2];
 	};
 
-	real_t m_tau; //bias
+	real_t m_tau; // bias
 	real_t m_damping;
 	real_t m_impulseClamp;
 	real_t m_appliedImpulse;
 
-	JacobianEntrySW m_jac[3]; //3 orthogonal linear constraints
+	JacobianEntrySW m_jac[3]; // 3 orthogonal linear constraints
 
 	Vector3 m_pivotInA;
 	Vector3 m_pivotInB;

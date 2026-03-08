@@ -83,11 +83,11 @@ int BSP_Tree::_get_points_inside(int p_node, const Vector3 *p_points, int *p_ind
 	real_t dist_min = p.distance_to(min);
 	real_t dist_max = p.distance_to(max);
 
-	if ((dist_min * dist_max) < CMP_EPSILON) { //intersection, test point by point
+	if ((dist_min * dist_max) < CMP_EPSILON) { // intersection, test point by point
 
 		int under_count = 0;
 
-		//sort points, so the are under first, over last
+		// sort points, so the are under first, over last
 		for (int i = 0; i < p_indices_count; i++) {
 			int index = p_indices[i];
 
@@ -118,7 +118,7 @@ int BSP_Tree::_get_points_inside(int p_node, const Vector3 *p_points, int *p_ind
 
 		if (under_count != p_indices_count) {
 			if (node->over == OVER_LEAF) {
-				//total+=0 //if they are over an OVER_LEAF, they are outside the model
+				// total+=0 //if they are over an OVER_LEAF, they are outside the model
 			} else {
 				total += _get_points_inside(node->over, p_points, &p_indices[under_count], p_center, p_half_extents, p_indices_count - under_count);
 			}
@@ -126,14 +126,14 @@ int BSP_Tree::_get_points_inside(int p_node, const Vector3 *p_points, int *p_ind
 
 		return total;
 
-	} else if (dist_min > 0) { //all points over plane
+	} else if (dist_min > 0) { // all points over plane
 
 		if (node->over == OVER_LEAF) {
 			return 0; // all these points are not visible
 		}
 
 		return _get_points_inside(node->over, p_points, p_indices, p_center, p_half_extents, p_indices_count);
-	} else { //all points behind plane
+	} else { // all points behind plane
 
 		if (node->under == UNDER_LEAF) {
 			return p_indices_count; // all these points are visible
@@ -148,7 +148,7 @@ int BSP_Tree::get_points_inside(const Vector3 *p_points, int p_point_count) cons
 	}
 
 #if 1
-	//this version is easier to debug, and and MUCH faster in real world cases
+	// this version is easier to debug, and and MUCH faster in real world cases
 
 	int pass_count = 0;
 	const Node *nodesptr = &nodes[0];
@@ -200,7 +200,7 @@ int BSP_Tree::get_points_inside(const Vector3 *p_points, int p_point_count) cons
 	return pass_count;
 
 #else
-	//this version scales better but it's slower for real world cases
+	// this version scales better but it's slower for real world cases
 
 	int *indices = (int *)alloca(p_point_count * sizeof(int));
 	AABB bounds;
@@ -302,7 +302,7 @@ static int _bsp_find_best_half_plane(const Face3 *p_faces, const Vector<int> &p_
 			}
 		}
 
-		//real_t split_cost = num_spanning / (real_t) face_count;
+		// real_t split_cost = num_spanning / (real_t) face_count;
 		real_t relation = Math::abs(num_over - num_under) / (real_t)ic;
 
 		// being honest, i never found a way to add split cost to the mix in a meaninguful way
@@ -310,7 +310,7 @@ static int _bsp_find_best_half_plane(const Face3 *p_faces, const Vector<int> &p_
 
 		real_t plane_cost = /*split_cost +*/ relation;
 
-		//printf("plane %i, %i over, %i under, %i spanning, cost is %g\n",i,num_over,num_under,num_spanning,plane_cost);
+		// printf("plane %i, %i over, %i under, %i spanning, cost is %g\n",i,num_over,num_under,num_spanning,plane_cost);
 		if (plane_cost < best_plane_cost) {
 			best_plane = i;
 			best_plane_cost = plane_cost;
@@ -375,7 +375,7 @@ static int _bsp_create_node(const Face3 *p_faces, const Vector<int> &p_indices, 
 
 	uint16_t over_idx = BSP_Tree::OVER_LEAF, under_idx = BSP_Tree::UNDER_LEAF;
 
-	if (faces_over.size() > 0) { //have facess above?
+	if (faces_over.size() > 0) { // have facess above?
 
 		int idx = _bsp_create_node(p_faces, faces_over, p_planes, p_nodes, p_tolerance);
 		if (idx >= 0) {
@@ -383,7 +383,7 @@ static int _bsp_create_node(const Face3 *p_faces, const Vector<int> &p_indices, 
 		}
 	}
 
-	if (faces_under.size() > 0) { //have facess above?
+	if (faces_under.size() > 0) { // have facess above?
 
 		int idx = _bsp_create_node(p_faces, faces_under, p_planes, p_nodes, p_tolerance);
 		if (idx >= 0) {
@@ -486,7 +486,7 @@ BSP_Tree::BSP_Tree(const Variant &p_variant) {
 	error_radius = d["error"];
 	aabb = d["aabb"];
 
-	//int node_count = src_nodes.size();
+	// int node_count = src_nodes.size();
 	nodes.resize(src_nodes.size() / 3);
 
 	PoolVector<int>::Read r = src_nodes.read();

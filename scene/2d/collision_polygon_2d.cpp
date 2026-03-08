@@ -47,8 +47,8 @@ void CollisionPolygon2D::_build_polygon() {
 			return;
 		}
 
-		//here comes the sun, lalalala
-		//decompose concave into multiple convex polygons and add them
+		// here comes the sun, lalalala
+		// decompose concave into multiple convex polygons and add them
 		Vector<Vector<Vector2>> decomp = _decompose_in_convex();
 		for (int i = 0; i < decomp.size(); i++) {
 			Ref<ConvexPolygonShape2D> convex = memnew(ConvexPolygonShape2D);
@@ -161,7 +161,7 @@ void CollisionPolygon2D::_notification(int p_what) {
 			}
 
 			if (one_way_collision) {
-				Color dcol = get_tree()->get_debug_collisions_color(); //0.9,0.2,0.2,0.4);
+				Color dcol = get_tree()->get_debug_collisions_color(); // 0.9,0.2,0.2,0.4);
 				dcol.a = 1.0;
 				Vector2 line_to(0, 20);
 				draw_line(Vector2(), line_to, dcol, 3);
@@ -175,7 +175,7 @@ void CollisionPolygon2D::_notification(int p_what) {
 					cols.push_back(dcol);
 				}
 
-				draw_primitive(pts, cols, Vector<Vector2>()); //small arrow
+				draw_primitive(pts, cols, Vector<Vector2>()); // small arrow
 			}
 		} break;
 	}

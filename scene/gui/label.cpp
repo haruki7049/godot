@@ -67,7 +67,7 @@ void Label::_notification(int p_what) {
 	if (p_what == NOTIFICATION_TRANSLATION_CHANGED) {
 		String new_text = tr(text);
 		if (new_text == xl_text) {
-			return; //nothing new
+			return; // nothing new
 		}
 		xl_text = new_text;
 
@@ -125,7 +125,7 @@ void Label::_notification(int p_what) {
 		if (lines_visible > 0) {
 			switch (valign) {
 				case VALIGN_TOP: {
-					//nothing
+					// nothing
 				} break;
 				case VALIGN_CENTER: {
 					vbegin = (size.y - (total_h - line_spacing)) / 2;
@@ -176,7 +176,7 @@ void Label::_notification(int p_what) {
 			/* handle lines normally */
 
 			if (wc->char_pos < 0) {
-				//empty line
+				// empty line
 				wc = wc->next;
 				line++;
 				continue;
@@ -232,7 +232,7 @@ void Label::_notification(int p_what) {
 				}
 
 				if (font_color_shadow.a > 0) {
-					int chars_total_shadow = chars_total; //save chars drawn
+					int chars_total_shadow = chars_total; // save chars drawn
 					float x_ofs_shadow = x_ofs;
 					for (int i = 0; i < from->word_len; i++) {
 						if (visible_chars < 0 || chars_total_shadow < visible_chars) {
@@ -391,7 +391,7 @@ void Label::regenerate_word_cache() {
 	WordCache *last = nullptr;
 
 	for (int i = 0; i <= xl_text.length(); i++) {
-		CharType current = i < xl_text.length() ? xl_text[i] : L' '; //always a space at the end, so the algo works
+		CharType current = i < xl_text.length() ? xl_text[i] : L' '; // always a space at the end, so the algo works
 
 		if (uppercase) {
 			current = String::char_uppercase(current);
@@ -428,7 +428,7 @@ void Label::regenerate_word_cache() {
 				current_word_size = 0;
 				space_count = 0;
 			} else if ((i == xl_text.length() || current == '\n') && last != nullptr && space_count != 0) {
-				//in case there are trailing white spaces we add a placeholder word cache with just the spaces
+				// in case there are trailing white spaces we add a placeholder word cache with just the spaces
 				WordCache *wc = memnew(WordCache);
 				if (word_cache) {
 					last->next = wc;
@@ -524,7 +524,7 @@ void Label::regenerate_word_cache() {
 	}
 
 	if (!autowrap || !clip) {
-		//helps speed up some labels that may change a lot, as no resizing is requested. Do not change.
+		// helps speed up some labels that may change a lot, as no resizing is requested. Do not change.
 		minimum_size_changed();
 	}
 	word_cache_dirty = false;

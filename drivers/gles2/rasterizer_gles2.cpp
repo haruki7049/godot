@@ -91,7 +91,7 @@ static void GLAPIENTRY _gl_debug_print(GLenum source, GLenum type, GLuint id, GL
 	}
 
 	if (type == _EXT_DEBUG_TYPE_PERFORMANCE_ARB) {
-		return; //these are ultimately annoying, so removing for now
+		return; // these are ultimately annoying, so removing for now
 	}
 
 	char debSource[256], debType[256], debSev[256];
@@ -177,9 +177,9 @@ Error RasterizerGLES2::is_viable() {
 	}
 
 #ifdef GLES_OVER_GL
-	//Test GL_ARB_framebuffer_object extension
+	// Test GL_ARB_framebuffer_object extension
 	if (!GLAD_GL_ARB_framebuffer_object) {
-		//Try older GL_EXT_framebuffer_object extension
+		// Try older GL_EXT_framebuffer_object extension
 		if (GLAD_GL_EXT_framebuffer_object) {
 			glIsRenderbuffer = glIsRenderbufferEXT;
 			glBindRenderbuffer = glBindRenderbufferEXT;
@@ -271,7 +271,7 @@ void RasterizerGLES2::begin_frame(double frame_step) {
 	time_total += frame_step * time_scale;
 
 	if (frame_step == 0) {
-		//to avoid hiccups
+		// to avoid hiccups
 		frame_step = 0.001;
 	}
 
@@ -362,13 +362,13 @@ void RasterizerGLES2::set_boot_image(const Ref<Image> &p_image, const Color &p_c
 	Rect2 screenrect;
 	if (p_scale) {
 		if (window_w > window_h) {
-			//scale horizontally
+			// scale horizontally
 			screenrect.size.y = window_h;
 			screenrect.size.x = imgrect.size.x * window_h / imgrect.size.y;
 			screenrect.position.x = (window_w - screenrect.size.x) / 2;
 
 		} else {
-			//scale vertically
+			// scale vertically
 			screenrect.size.x = window_w;
 			screenrect.size.y = imgrect.size.y * window_w / imgrect.size.x;
 			screenrect.position.y = (window_h - screenrect.size.y) / 2;
@@ -449,7 +449,7 @@ void RasterizerGLES2::output_lens_distorted_to_screen(RID p_render_target, const
 void RasterizerGLES2::end_frame(bool p_swap_buffers) {
 	if (OS::get_singleton()->is_layered_allowed()) {
 		if (!OS::get_singleton()->get_window_per_pixel_transparency_enabled()) {
-			//clear alpha
+			// clear alpha
 			glColorMask(false, false, false, true);
 			glClearColor(0, 0, 0, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
@@ -501,10 +501,10 @@ bool RasterizerGLES2::gl_check_errors() {
 				ERR_PRINT("GL_OUT_OF_MEMORY: There is not enough memory left to execute the command. The state of the GL is undefined.");
 			} break;
 			// GL_STACK_UNDERFLOW and GL_STACK_OVERFLOW are undefined in GLES2/gl2.h, which is used when not using GLAD.
-			//case GL_STACK_UNDERFLOW: {
+			// case GL_STACK_UNDERFLOW: {
 			//	ERR_PRINT("GL_STACK_UNDERFLOW: An attempt has been made to perform an operation that would cause an internal stack to underflow.");
 			//} break;
-			//case GL_STACK_OVERFLOW: {
+			// case GL_STACK_OVERFLOW: {
 			//	ERR_PRINT("GL_STACK_OVERFLOW: An attempt has been made to perform an operation that would cause an internal stack to overflow.");
 			//} break;
 			default: {

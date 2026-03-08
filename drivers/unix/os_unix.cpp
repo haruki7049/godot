@@ -132,13 +132,11 @@ void OS_Unix::initialize_core() {
 
 	_setup_clock();
 
-
-  //Simula XWayland:
-  sigset_t mask;
-  sigemptyset(&mask);
-  sigaddset(&mask, SIGUSR1);
-  sigprocmask(SIG_BLOCK, &mask, NULL);
-
+	// Simula XWayland:
+	sigset_t mask;
+	sigemptyset(&mask);
+	sigaddset(&mask, SIGUSR1);
+	sigprocmask(SIG_BLOCK, &mask, NULL);
 }
 
 void OS_Unix::finalize_core() {
@@ -285,7 +283,7 @@ Error OS_Unix::execute(const String &p_path, const List<String> &p_arguments, bo
 		if (read_stderr) {
 			argss += " 2>&1"; // Read stderr too
 		} else {
-			argss += " 2>/dev/null"; //silence stderr
+			argss += " 2>/dev/null"; // silence stderr
 		}
 		FILE *f = popen(argss.utf8().get_data(), "r");
 
@@ -360,7 +358,7 @@ Error OS_Unix::execute(const String &p_path, const List<String> &p_arguments, bo
 Error OS_Unix::kill(const ProcessID &p_pid) {
 	int ret = ::kill(p_pid, SIGKILL);
 	if (!ret) {
-		//avoid zombie process
+		// avoid zombie process
 		int st;
 		::waitpid(p_pid, &st, 0);
 	}
@@ -398,12 +396,12 @@ Error OS_Unix::open_dynamic_library(const String p_path, void *&p_library_handle
 	}
 
 	if (!FileAccess::exists(path)) {
-		//this code exists so gdnative can load .so files from within the executable path
+		// this code exists so gdnative can load .so files from within the executable path
 		path = get_executable_path().get_base_dir().plus_file(p_path.get_file());
 	}
 
 	if (!FileAccess::exists(path)) {
-		//this code exists so gdnative can load .so files from a standard unix location
+		// this code exists so gdnative can load .so files from a standard unix location
 		path = get_executable_path().get_base_dir().plus_file("../lib").plus_file(p_path.get_file());
 	}
 
@@ -477,7 +475,7 @@ String OS_Unix::get_user_data_dir() const {
 
 String OS_Unix::get_executable_path() const {
 #ifdef __linux__
-	//fix for running from a symlink
+	// fix for running from a symlink
 	char buf[256];
 	memset(buf, 0, 256);
 	ssize_t len = readlink("/proc/self/exe", buf, sizeof(buf));

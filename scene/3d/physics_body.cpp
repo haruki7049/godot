@@ -300,7 +300,7 @@ void RigidBody::_body_inout(int p_status, const RID &p_body, ObjectID p_instance
 		if (!E) {
 			E = contact_monitor->body_map.insert(objid, BodyState());
 			E->get().rid = p_body;
-			//E->get().rc=0;
+			// E->get().rc=0;
 			E->get().in_tree = node && node->is_inside_tree();
 			if (node) {
 				node->connect(SceneStringNames::get_singleton()->tree_entered, this, SceneStringNames::get_singleton()->_body_enter_tree, make_binds(objid));
@@ -310,7 +310,7 @@ void RigidBody::_body_inout(int p_status, const RID &p_body, ObjectID p_instance
 				}
 			}
 		}
-		//E->get().rc++;
+		// E->get().rc++;
 		if (node) {
 			E->get().shapes.insert(ShapePair(p_body_shape, p_local_shape));
 		}
@@ -320,7 +320,7 @@ void RigidBody::_body_inout(int p_status, const RID &p_body, ObjectID p_instance
 		}
 
 	} else {
-		//E->get().rc--;
+		// E->get().rc--;
 
 		if (node) {
 			E->get().shapes.erase(ShapePair(p_body_shape, p_local_shape));
@@ -374,7 +374,7 @@ void RigidBody::_direct_state_changed(Object *p_state) {
 	if (contact_monitor) {
 		contact_monitor->locked = true;
 
-		//untag all
+		// untag all
 		int rc = 0;
 		for (Map<ObjectID, BodyState>::Element *E = contact_monitor->body_map.front(); E; E = E->next()) {
 			for (int i = 0; i < E->get().shapes.size(); i++) {
@@ -384,11 +384,11 @@ void RigidBody::_direct_state_changed(Object *p_state) {
 		}
 
 		_RigidBodyInOut *toadd = (_RigidBodyInOut *)alloca(state->get_contact_count() * sizeof(_RigidBodyInOut));
-		int toadd_count = 0; //state->get_contact_count();
+		int toadd_count = 0; // state->get_contact_count();
 		RigidBody_RemoveAction *toremove = (RigidBody_RemoveAction *)alloca(rc * sizeof(RigidBody_RemoveAction));
 		int toremove_count = 0;
 
-		//put the ones to add
+		// put the ones to add
 
 		for (int i = 0; i < state->get_contact_count(); i++) {
 			RID rid = state->get_contact_collider(i);
@@ -396,7 +396,7 @@ void RigidBody::_direct_state_changed(Object *p_state) {
 			int local_shape = state->get_contact_local_shape(i);
 			int shape = state->get_contact_collider_shape(i);
 
-			//bool found=false;
+			// bool found=false;
 
 			Map<ObjectID, BodyState>::Element *E = contact_monitor->body_map.find(obj);
 			if (!E) {
@@ -422,7 +422,7 @@ void RigidBody::_direct_state_changed(Object *p_state) {
 			E->get().shapes[idx].tagged = true;
 		}
 
-		//put the ones to remove
+		// put the ones to remove
 
 		for (Map<ObjectID, BodyState>::Element *E = contact_monitor->body_map.front(); E; E = E->next()) {
 			for (int i = 0; i < E->get().shapes.size(); i++) {
@@ -435,13 +435,13 @@ void RigidBody::_direct_state_changed(Object *p_state) {
 			}
 		}
 
-		//process remotions
+		// process remotions
 
 		for (int i = 0; i < toremove_count; i++) {
 			_body_inout(0, toremove[i].rid, toremove[i].body_id, toremove[i].pair.body_shape, toremove[i].pair.local_shape);
 		}
 
-		//process aditions
+		// process aditions
 
 		for (int i = 0; i < toadd_count; i++) {
 			_body_inout(1, toadd[i].rid, toadd[i].id, toadd[i].shape, toadd[i].local_shape);
@@ -457,7 +457,7 @@ void RigidBody::_notification(int p_what) {
 #ifdef TOOLS_ENABLED
 	if (p_what == NOTIFICATION_ENTER_TREE) {
 		if (Engine::get_singleton()->is_editor_hint()) {
-			set_notify_local_transform(true); //used for warnings and only in editor
+			set_notify_local_transform(true); // used for warnings and only in editor
 		}
 	}
 
@@ -732,7 +732,7 @@ void RigidBody::set_contact_monitor(bool p_enabled) {
 		ERR_FAIL_COND_MSG(contact_monitor->locked, "Can't disable contact monitoring during in/out callback. Use call_deferred(\"set_contact_monitor\", false) instead.");
 
 		for (Map<ObjectID, BodyState>::Element *E = contact_monitor->body_map.front(); E; E = E->next()) {
-			//clean up mess
+			// clean up mess
 			Object *obj = ObjectDB::get_instance(E->key());
 			Node *node = Object::cast_to<Node>(obj);
 
@@ -771,7 +771,7 @@ Array RigidBody::get_colliding_bodies() const {
 	for (const Map<ObjectID, BodyState>::Element *E = contact_monitor->body_map.front(); E; E = E->next()) {
 		Object *obj = ObjectDB::get_instance(E->key());
 		if (!obj) {
-			ret.resize(ret.size() - 1); //ops
+			ret.resize(ret.size() - 1); // ops
 		} else {
 			ret[idx++] = obj;
 		}
@@ -927,7 +927,7 @@ RigidBody::RigidBody() :
 	linear_damp = -1;
 	angular_damp = -1;
 
-	//angular_velocity=0;
+	// angular_velocity=0;
 	sleeping = false;
 	ccd = false;
 
@@ -1048,7 +1048,7 @@ bool KinematicBody::move_and_collide(const Vector3 &p_motion, bool p_infinite_in
 	return colliding;
 }
 
-//so, if you pass 45 as limit, avoid numerical precision errors when angle is 45.
+// so, if you pass 45 as limit, avoid numerical precision errors when angle is 45.
 #define FLOOR_ANGLE_THRESHOLD 0.01
 
 Vector3 KinematicBody::_move_and_slide_internal(const Vector3 &p_linear_velocity, const Vector3 &p_snap, const Vector3 &p_up_direction, bool p_stop_on_slope, int p_max_slides, float p_floor_max_angle, bool p_infinite_inertia) {
@@ -1106,15 +1106,15 @@ Vector3 KinematicBody::_move_and_slide_internal(const Vector3 &p_linear_velocity
 
 		for (int i = 0; i < 2; ++i) {
 			bool collided;
-			if (i == 0) { //collide
+			if (i == 0) { // collide
 				collided = move_and_collide(motion, p_infinite_inertia, collision, true, false, !sliding_enabled);
 				if (!collided) {
-					motion = Vector3(); //clear because no collision happened and motion completed
+					motion = Vector3(); // clear because no collision happened and motion completed
 				}
-			} else { //separate raycasts (if any)
+			} else { // separate raycasts (if any)
 				collided = separate_raycast_shapes(p_infinite_inertia, collision);
 				if (collided) {
-					collision.remainder = motion; //keep
+					collision.remainder = motion; // keep
 					collision.travel = Vector3();
 				}
 			}
@@ -1184,7 +1184,7 @@ Vector3 KinematicBody::_move_and_slide_internal(const Vector3 &p_linear_velocity
 						}
 					}
 				} else {
-					apply = false; //snapped with floor direction, but did not snap to a floor, do not snap.
+					apply = false; // snapped with floor direction, but did not snap to a floor, do not snap.
 				}
 			}
 			if (apply) {
@@ -1212,15 +1212,15 @@ Vector3 KinematicBody::move_and_slide_with_snap(const Vector3 &p_linear_velocity
 
 void KinematicBody::_set_collision_direction(const Collision &p_collision, const Vector3 &p_up_direction, float p_floor_max_angle) {
 	if (p_up_direction == Vector3()) {
-		//all is a wall
+		// all is a wall
 		on_wall = true;
 	} else {
-		if (Math::acos(p_collision.normal.dot(p_up_direction)) <= p_floor_max_angle + FLOOR_ANGLE_THRESHOLD) { //floor
+		if (Math::acos(p_collision.normal.dot(p_up_direction)) <= p_floor_max_angle + FLOOR_ANGLE_THRESHOLD) { // floor
 			on_floor = true;
 			floor_normal = p_collision.normal;
 			on_floor_body = p_collision.collider_rid;
 			floor_velocity = p_collision.collider_vel;
-		} else if (Math::acos(p_collision.normal.dot(-p_up_direction)) <= p_floor_max_angle + FLOOR_ANGLE_THRESHOLD) { //ceiling
+		} else if (Math::acos(p_collision.normal.dot(-p_up_direction)) <= p_floor_max_angle + FLOOR_ANGLE_THRESHOLD) { // ceiling
 			on_ceiling = true;
 		} else {
 			on_wall = true;
@@ -1259,7 +1259,7 @@ bool KinematicBody::test_move(const Transform &p_from, const Vector3 &p_motion, 
 }
 
 bool KinematicBody::separate_raycast_shapes(bool p_infinite_inertia, Collision &r_collision) {
-	PhysicsServer::SeparationResult sep_res[8]; //max 8 rays
+	PhysicsServer::SeparationResult sep_res[8]; // max 8 rays
 
 	Transform gt = get_global_transform();
 
@@ -1402,10 +1402,10 @@ void KinematicBody::_notification(int p_what) {
 	}
 
 	if (p_what == NOTIFICATION_LOCAL_TRANSFORM_CHANGED) {
-		//used by sync to physics, send the new transform to the physics
+		// used by sync to physics, send the new transform to the physics
 		Transform new_transform = get_global_transform();
 		PhysicsServer::get_singleton()->body_set_state(get_rid(), PhysicsServer::BODY_STATE_TRANSFORM, new_transform);
-		//but then revert changes
+		// but then revert changes
 		set_notify_local_transform(false);
 		set_global_transform(last_valid_transform);
 		set_notify_local_transform(true);

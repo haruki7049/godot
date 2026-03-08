@@ -69,7 +69,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-//stupid linux.h
+// stupid linux.h
 #ifdef KEY_TAB
 #undef KEY_TAB
 #endif
@@ -638,7 +638,7 @@ Error OS_X11::initialize(const VideoMode &p_desired, int p_video_driver, int p_a
 	}
 	set_cursor_shape(CURSOR_BUSY);
 
-	//Set Xdnd (drag & drop) support
+	// Set Xdnd (drag & drop) support
 	Atom XdndAware = XInternAtom(x11_display, "XdndAware", False);
 	Atom version = 5;
 	if (XdndAware != None) {
@@ -897,7 +897,7 @@ void OS_X11::finalize() {
 	cursors_cache.clear();
 	visual_server->finish();
 	memdelete(visual_server);
-	//memdelete(rasterizer);
+	// memdelete(rasterizer);
 
 	memdelete(power_manager);
 
@@ -965,7 +965,7 @@ void OS_X11::set_mouse_mode(MouseMode p_mode) {
 	mouse_mode = p_mode;
 
 	if (mouse_mode == MOUSE_MODE_CAPTURED || mouse_mode == MOUSE_MODE_CONFINED) {
-		//flush pending motion events
+		// flush pending motion events
 		flush_mouse_motion();
 
 		if (XGrabPointer(
@@ -1314,10 +1314,10 @@ int OS_X11::get_screen_dpi(int p_screen) const {
 		p_screen = get_current_screen();
 	}
 
-	//invalid screen?
+	// invalid screen?
 	ERR_FAIL_INDEX_V(p_screen, get_screen_count(), 0);
 
-	//Get physical monitor Dimensions through XRandR and calculate dpi
+	// Get physical monitor Dimensions through XRandR and calculate dpi
 	Size2 sc = get_screen_size(p_screen);
 	if (xrandr_ext_ok) {
 		int count = 0;
@@ -1348,7 +1348,7 @@ int OS_X11::get_screen_dpi(int p_screen) const {
 		return (xdpi + ydpi) / (xdpi && ydpi ? 2 : 1);
 	}
 
-	//could not get dpi
+	// could not get dpi
 	return 96;
 }
 
@@ -1363,7 +1363,7 @@ void OS_X11::set_window_position(const Point2 &p_position) {
 	int x = 0;
 	int y = 0;
 	if (!get_borderless_window()) {
-		//exclude window decorations
+		// exclude window decorations
 		XSync(x11_display, False);
 		Atom prop = XInternAtom(x11_display, "_NET_FRAME_EXTENTS", True);
 		if (prop != None) {
@@ -1893,7 +1893,7 @@ void *OS_X11::get_native_handle(int p_handle_type) {
 void OS_X11::get_key_modifier_state(unsigned int p_x11_state, Ref<InputEventWithModifiers> state) {
 	state->set_shift((p_x11_state & ShiftMask));
 	state->set_control((p_x11_state & ControlMask));
-	state->set_alt((p_x11_state & Mod1Mask /*|| p_x11_state&Mod5Mask*/)); //altgr should not count as alt
+	state->set_alt((p_x11_state & Mod1Mask /*|| p_x11_state&Mod5Mask*/)); // altgr should not count as alt
 	state->set_metakey((p_x11_state & Mod4Mask));
 }
 
@@ -1999,7 +1999,7 @@ void OS_X11::_handle_key_event(XKeyEvent *p_event, LocalVector<XEvent> &p_events
 				k->set_echo(false);
 
 				if (k->get_scancode() == KEY_BACKTAB) {
-					//make it consistent across platforms.
+					// make it consistent across platforms.
 					k->set_scancode(KEY_TAB);
 					k->set_physical_scancode(KEY_TAB);
 					k->set_shift(true);
@@ -2064,7 +2064,7 @@ void OS_X11::_handle_key_event(XKeyEvent *p_event, LocalVector<XEvent> &p_events
 	// know Mod1 was ALT and Mod4 was META (applekey/winkey)
 	// just tried Mods until i found them.
 
-	//print_verbose("mod1: "+itos(xkeyevent->state&Mod1Mask)+" mod 5: "+itos(xkeyevent->state&Mod5Mask));
+	// print_verbose("mod1: "+itos(xkeyevent->state&Mod1Mask)+" mod 5: "+itos(xkeyevent->state&Mod5Mask));
 
 	Ref<InputEventKey> k;
 	k.instance();
@@ -2100,7 +2100,7 @@ void OS_X11::_handle_key_event(XKeyEvent *p_event, LocalVector<XEvent> &p_events
 					// Consume to next event.
 					++p_event_index;
 					_handle_key_event((XKeyEvent *)&peek_event, p_events, p_event_index, true);
-					return; //ignore current, echo next
+					return; // ignore current, echo next
 				}
 			}
 
@@ -2124,14 +2124,14 @@ void OS_X11::_handle_key_event(XKeyEvent *p_event, LocalVector<XEvent> &p_events
 	k->set_echo(p_echo);
 
 	if (k->get_scancode() == KEY_BACKTAB) {
-		//make it consistent across platforms.
+		// make it consistent across platforms.
 		k->set_scancode(KEY_TAB);
 		k->set_physical_scancode(KEY_TAB);
 		k->set_shift(true);
 	}
 
-	//don't set mod state if modifier keys are released by themselves
-	//else event.is_action() will not work correctly here
+	// don't set mod state if modifier keys are released by themselves
+	// else event.is_action() will not work correctly here
 	if (!k->is_pressed()) {
 		if (k->get_scancode() == KEY_SHIFT) {
 			k->set_shift(false);
@@ -2151,7 +2151,7 @@ void OS_X11::_handle_key_event(XKeyEvent *p_event, LocalVector<XEvent> &p_events
 		}
 	}
 
-	//printf("key: %x\n",k->get_scancode());
+	// printf("key: %x\n",k->get_scancode());
 	input->parse_input_event(k);
 }
 
@@ -2283,8 +2283,8 @@ static Property read_property(Display *p_display, Window p_window, Atom p_proper
 
 	int read_bytes = 1024;
 
-	//Keep trying to read the property until there are no
-	//bytes unread.
+	// Keep trying to read the property until there are no
+	// bytes unread.
 	if (p_property != None) {
 		do {
 			if (ret != nullptr) {
@@ -2420,7 +2420,7 @@ void OS_X11::_poll_events() {
 }
 
 void OS_X11::process_xevents() {
-	//printf("checking events %i\n", XPending(x11_display));
+	// printf("checking events %i\n", XPending(x11_display));
 
 	do_mouse_warp = false;
 
@@ -2546,8 +2546,8 @@ void OS_X11::process_xevents() {
 					} break;
 #ifdef TOUCH_ENABLED
 					case XI_TouchBegin: // Fall-through
-							// Disabled hand-in-hand with the grabbing
-							//XIAllowTouchEvents(x11_display, event_data->deviceid, event_data->detail, x11_window, XIAcceptTouch);
+										// Disabled hand-in-hand with the grabbing
+										// XIAllowTouchEvents(x11_display, event_data->deviceid, event_data->detail, x11_window, XIAcceptTouch);
 
 					case XI_TouchEnd: {
 						bool is_begin = event_data->evtype == XI_TouchBegin;
@@ -2665,7 +2665,7 @@ void OS_X11::process_xevents() {
 				window_focused = false;
 
 				if (mouse_mode_grab) {
-					//dear X11, I try, I really try, but you never work, you do whathever you want.
+					// dear X11, I try, I really try, but you never work, you do whathever you want.
 					if (mouse_mode == MOUSE_MODE_CAPTURED) {
 						// Show the cursor if we're in captured mode so it doesn't look weird.
 						XUndefineCursor(x11_display, x11_window);
@@ -2755,7 +2755,7 @@ void OS_X11::process_xevents() {
 
 				while (true) {
 					if (mouse_mode == MOUSE_MODE_CAPTURED && event.xmotion.x == current_videomode.width / 2 && event.xmotion.y == current_videomode.height / 2) {
-						//this is likely the warp event since it was warped here
+						// this is likely the warp event since it was warped here
 						center = Vector2(event.xmotion.x, event.xmotion.y);
 						break;
 					}
@@ -2884,7 +2884,7 @@ void OS_X11::process_xevents() {
 					}
 					main_loop->drop_files(files);
 
-					//Reply that all is well.
+					// Reply that all is well.
 					XClientMessageEvent m;
 					memset(&m, 0, sizeof(m));
 					m.type = ClientMessage;
@@ -2894,7 +2894,7 @@ void OS_X11::process_xevents() {
 					m.format = 32;
 					m.data.l[0] = x11_window;
 					m.data.l[1] = 1;
-					m.data.l[2] = xdnd_action_copy; //We only ever copy.
+					m.data.l[2] = xdnd_action_copy; // We only ever copy.
 
 					XSendEvent(x11_display, xdnd_source_window, False, NoEventMask, (XEvent *)&m);
 				}
@@ -2906,7 +2906,7 @@ void OS_X11::process_xevents() {
 					main_loop->notification(MainLoop::NOTIFICATION_WM_QUIT_REQUEST);
 
 				} else if ((unsigned int)event.xclient.message_type == (unsigned int)xdnd_enter) {
-					//File(s) have been dragged over the window, check for supported target (text/uri-list)
+					// File(s) have been dragged over the window, check for supported target (text/uri-list)
 					xdnd_version = (event.xclient.data.l[1] >> 24);
 					Window source = event.xclient.data.l[0];
 					bool more_than_3 = event.xclient.data.l[1] & 1;
@@ -2917,8 +2917,8 @@ void OS_X11::process_xevents() {
 						requested = pick_target_from_atoms(x11_display, event.xclient.data.l[2], event.xclient.data.l[3], event.xclient.data.l[4]);
 					}
 				} else if ((unsigned int)event.xclient.message_type == (unsigned int)xdnd_position) {
-					//xdnd position event, reply with an XDND status message
-					//just depending on type of data for now
+					// xdnd position event, reply with an XDND status message
+					// just depending on type of data for now
 					XClientMessageEvent m;
 					memset(&m, 0, sizeof(m));
 					m.type = ClientMessage;
@@ -2928,7 +2928,7 @@ void OS_X11::process_xevents() {
 					m.format = 32;
 					m.data.l[0] = x11_window;
 					m.data.l[1] = (requested != None);
-					m.data.l[2] = 0; //empty rectangle
+					m.data.l[2] = 0; // empty rectangle
 					m.data.l[3] = 0;
 					m.data.l[4] = xdnd_action_copy;
 
@@ -2943,7 +2943,7 @@ void OS_X11::process_xevents() {
 							XConvertSelection(x11_display, xdnd_selection, requested, XInternAtom(x11_display, "PRIMARY", 0), x11_window, CurrentTime);
 						}
 					} else {
-						//Reply that we're not interested.
+						// Reply that we're not interested.
 						XClientMessageEvent m;
 						memset(&m, 0, sizeof(m));
 						m.type = ClientMessage;
@@ -2953,7 +2953,7 @@ void OS_X11::process_xevents() {
 						m.format = 32;
 						m.data.l[0] = x11_window;
 						m.data.l[1] = 0;
-						m.data.l[2] = None; //Failed.
+						m.data.l[2] = None; // Failed.
 						XSendEvent(x11_display, event.xclient.data.l[0], False, NoEventMask, (XEvent *)&m);
 					}
 				}
@@ -3725,10 +3725,10 @@ void OS_X11::run() {
 
 	main_loop->init();
 
-	//uint64_t last_ticks=get_ticks_usec();
+	// uint64_t last_ticks=get_ticks_usec();
 
-	//int frames=0;
-	//uint64_t frame=0;
+	// int frames=0;
+	// uint64_t frame=0;
 
 	while (!force_quit) {
 		process_xevents(); // get rid of pending events
@@ -3758,7 +3758,7 @@ void OS_X11::_set_use_vsync(bool p_enable) {
 		context_egl->set_use_vsync(p_enable);
 	} else
 #endif
-	if (context_gl) {
+			if (context_gl) {
 		context_gl->set_use_vsync(p_enable);
 	}
 #endif

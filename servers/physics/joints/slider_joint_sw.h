@@ -153,8 +153,8 @@ protected:
 public:
 	// constructors
 	SliderJointSW(BodySW *rbA, BodySW *rbB, const Transform &frameInA, const Transform &frameInB);
-	//SliderJointSW();
-	// overrides
+	// SliderJointSW();
+	//  overrides
 
 	// access
 	const BodySW *getRigidBodyA() const { return A; }

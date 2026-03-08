@@ -214,7 +214,7 @@ void ResourceImporterTexture::_save_stex(const Ref<Image> &p_image, const String
 	f->store_8('G');
 	f->store_8('D');
 	f->store_8('S');
-	f->store_8('T'); //godot streamable texture
+	f->store_8('T'); // godot streamable texture
 
 	bool resize_to_po2 = false;
 
@@ -238,7 +238,7 @@ void ResourceImporterTexture::_save_stex(const Ref<Image> &p_image, const String
 		format |= StreamTexture::FORMAT_BIT_STREAM;
 	}
 	if (p_mipmaps) {
-		format |= StreamTexture::FORMAT_BIT_HAS_MIPMAPS; //mipmaps bit
+		format |= StreamTexture::FORMAT_BIT_HAS_MIPMAPS; // mipmaps bit
 	}
 	if (p_detect_3d) {
 		format |= StreamTexture::FORMAT_BIT_DETECT_3D;
@@ -251,7 +251,7 @@ void ResourceImporterTexture::_save_stex(const Ref<Image> &p_image, const String
 	}
 
 	if ((p_compress_mode == COMPRESS_LOSSLESS || p_compress_mode == COMPRESS_LOSSY) && p_image->get_format() > Image::FORMAT_RGBA8) {
-		p_compress_mode = COMPRESS_UNCOMPRESSED; //these can't go as lossy
+		p_compress_mode = COMPRESS_UNCOMPRESSED; // these can't go as lossy
 	}
 
 	switch (p_compress_mode) {
@@ -440,7 +440,7 @@ Error ResourceImporterTexture::import(const String &p_source_file, const String 
 	}
 
 	if (size_limit > 0 && (image->get_width() > size_limit || image->get_height() > size_limit)) {
-		//limit size
+		// limit size
 		if (image->get_width() >= image->get_height()) {
 			int new_width = size_limit;
 			int new_height = image->get_height() * new_width / image->get_width();
@@ -503,8 +503,8 @@ Error ResourceImporterTexture::import(const String &p_source_file, const String 
 	bool force_normal = normal == 1;
 
 	if (compress_mode == COMPRESS_VIDEO_RAM) {
-		//must import in all formats, in order of priority (so platform choses the best supported one. IE, etc2 over etc).
-		//Android, GLES 2.x
+		// must import in all formats, in order of priority (so platform choses the best supported one. IE, etc2 over etc).
+		// Android, GLES 2.x
 
 		bool ok_on_pc = false;
 		bool is_hdr = (image->get_format() >= Image::FORMAT_RF && image->get_format() <= Image::FORMAT_RGBE9995);
@@ -519,7 +519,7 @@ Error ResourceImporterTexture::import(const String &p_source_file, const String 
 					can_bptc = false;
 				}
 			} else if (is_ldr) {
-				//handle "RGBA Only" setting
+				// handle "RGBA Only" setting
 				if (bptc_ldr == 1 && channels != Image::DETECTED_LA && channels != Image::DETECTED_RGBA) {
 					can_bptc = false;
 				}
@@ -529,7 +529,7 @@ Error ResourceImporterTexture::import(const String &p_source_file, const String 
 		}
 
 		if (!can_bptc && is_hdr && !force_rgbe) {
-			//convert to ldr if this can't be stored hdr
+			// convert to ldr if this can't be stored hdr
 			image->convert(Image::FORMAT_RGBA8);
 		}
 
@@ -562,7 +562,7 @@ Error ResourceImporterTexture::import(const String &p_source_file, const String 
 			EditorNode::add_io_error("Warning, no suitable PC VRAM compression enabled in Project Settings. This texture will not display correctly on PC.");
 		}
 	} else {
-		//import normally
+		// import normally
 		_save_stex(image, p_save_path + ".stex", compress_mode, lossy, Image::COMPRESS_S3TC /*this is ignored */, mipmaps, tex_flags, stream, detect_3d, detect_srgb, force_rgbe, detect_normal, force_normal, false);
 	}
 
@@ -602,7 +602,7 @@ String ResourceImporterTexture::get_import_settings_string() const {
 }
 
 bool ResourceImporterTexture::are_import_settings_valid(const String &p_path) const {
-	//will become invalid if formats are missing to import
+	// will become invalid if formats are missing to import
 	Dictionary metadata = ResourceFormatImporter::get_singleton()->get_resource_metadata(p_path);
 
 	if (!metadata.has("vram_texture")) {
@@ -611,7 +611,7 @@ bool ResourceImporterTexture::are_import_settings_valid(const String &p_path) co
 
 	bool vram = metadata["vram_texture"];
 	if (!vram) {
-		return true; //do not care about non vram
+		return true; // do not care about non vram
 	}
 
 	Vector<String> formats_imported;

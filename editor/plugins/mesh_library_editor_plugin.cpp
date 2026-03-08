@@ -136,9 +136,9 @@ void MeshLibraryEditor::_import_scene(Node *p_scene, Ref<MeshLibrary> p_library,
 					continue;
 				}
 
-				//Transform shape_transform = sb->shape_owner_get_transform(E->get());
+				// Transform shape_transform = sb->shape_owner_get_transform(E->get());
 
-				//shape_transform.set_origin(shape_transform.get_origin() - phys_offset);
+				// shape_transform.set_origin(shape_transform.get_origin() - phys_offset);
 
 				for (int k = 0; k < sb->shape_owner_get_shape_count(E->get()); k++) {
 					Ref<Shape> collision = sb->shape_owner_get_shape(E->get(), k);
@@ -175,7 +175,7 @@ void MeshLibraryEditor::_import_scene(Node *p_scene, Ref<MeshLibrary> p_library,
 		}
 	}
 
-	//generate previews!
+	// generate previews!
 
 	if (true) {
 		Vector<Ref<Mesh>> meshes;
@@ -258,7 +258,7 @@ void MeshLibraryEditor::_bind_methods() {
 MeshLibraryEditor::MeshLibraryEditor(EditorNode *p_editor) {
 	file = memnew(EditorFileDialog);
 	file->set_mode(EditorFileDialog::MODE_OPEN_FILE);
-	//not for now?
+	// not for now?
 	List<String> extensions;
 	ResourceLoader::get_recognized_extensions_for_type("PackedScene", &extensions);
 	file->clear_filters();

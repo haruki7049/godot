@@ -58,7 +58,7 @@ class ResourceInteractiveLoaderText : public ResourceInteractiveLoader {
 
 	bool ignore_resource_parsing;
 
-	//Map<String,String> remaps;
+	// Map<String,String> remaps;
 
 	Map<int, ExtResource> ext_resources;
 	Map<int, RES> int_resources;
@@ -72,7 +72,7 @@ class ResourceInteractiveLoaderText : public ResourceInteractiveLoader {
 	mutable int lines;
 
 	Map<String, String> remaps;
-	//void _printerr();
+	// void _printerr();
 
 	static Error _parse_sub_resources(void *p_self, VariantParser::Stream *p_stream, Ref<Resource> &r_res, int &line, String &r_err_str) { return reinterpret_cast<ResourceInteractiveLoaderText *>(p_self)->_parse_sub_resource(p_stream, r_res, line, r_err_str); }
 	static Error _parse_ext_resources(void *p_self, VariantParser::Stream *p_stream, Ref<Resource> &r_res, int &line, String &r_err_str) { return reinterpret_cast<ResourceInteractiveLoaderText *>(p_self)->_parse_ext_resource(p_stream, r_res, line, r_err_str); }
@@ -153,7 +153,7 @@ class ResourceFormatSaverTextInstance {
 	bool skip_editor;
 	FileAccess *f;
 
-	struct NonPersistentKey { //for resource properties generated on the fly
+	struct NonPersistentKey { // for resource properties generated on the fly
 		RES base;
 		StringName property;
 		bool operator<(const NonPersistentKey &p_key) const { return base == p_key.base ? property < p_key.property : base < p_key.base; }

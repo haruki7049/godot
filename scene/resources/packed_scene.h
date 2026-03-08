@@ -140,7 +140,7 @@ public:
 	bool can_instance() const;
 	Node *instance(GenEditState p_edit_state) const;
 
-	//unbuild API
+	// unbuild API
 
 	int get_node_count() const;
 	StringName get_node_type(int p_idx) const;
@@ -169,7 +169,7 @@ public:
 
 	Vector<NodePath> get_editable_instances() const;
 
-	//build API
+	// build API
 
 	int add_name(const StringName &p_name);
 	int find_name(const StringName &p_name) const;

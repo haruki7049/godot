@@ -676,7 +676,7 @@ void Curve2D::_bake() const {
 	Vector2 pos = points[0].pos;
 	List<Vector2> pointlist;
 
-	pointlist.push_back(pos); //start always from origin
+	pointlist.push_back(pos); // start always from origin
 
 	for (int i = 0; i < points.size() - 1; i++) {
 		float step = 0.1; // at least 10 substeps ought to be enough?
@@ -694,7 +694,7 @@ void Curve2D::_bake() const {
 			if (d > bake_interval) {
 				// OK! between P and NP there _has_ to be Something, let's go searching!
 
-				int iterations = 10; //lots of detail!
+				int iterations = 10; // lots of detail!
 
 				float low = p;
 				float hi = np;
@@ -749,7 +749,7 @@ Vector2 Curve2D::interpolate_baked(float p_offset, bool p_cubic) const {
 		_bake();
 	}
 
-	//validate//
+	// validate//
 	int pc = baked_point_cache.size();
 	ERR_FAIL_COND_V_MSG(pc == 0, Vector2(), "No points in Curve2D.");
 
@@ -814,7 +814,7 @@ Vector2 Curve2D::get_closest_point(const Vector2 &p_to_point) const {
 		_bake();
 	}
 
-	//validate//
+	// validate//
 	int pc = baked_point_cache.size();
 	ERR_FAIL_COND_V_MSG(pc == 0, Vector2(), "No points in Curve2D.");
 
@@ -852,7 +852,7 @@ float Curve2D::get_closest_offset(const Vector2 &p_to_point) const {
 		_bake();
 	}
 
-	//validate//
+	// validate//
 	int pc = baked_point_cache.size();
 	ERR_FAIL_COND_V_MSG(pc == 0, 0.0f, "No points in Curve2D.");
 
@@ -973,7 +973,7 @@ void Curve2D::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("clear_points"), &Curve2D::clear_points);
 	ClassDB::bind_method(D_METHOD("interpolate", "idx", "t"), &Curve2D::interpolate);
 	ClassDB::bind_method(D_METHOD("interpolatef", "fofs"), &Curve2D::interpolatef);
-	//ClassDB::bind_method(D_METHOD("bake","subdivs"),&Curve2D::bake,DEFVAL(10));
+	// ClassDB::bind_method(D_METHOD("bake","subdivs"),&Curve2D::bake,DEFVAL(10));
 	ClassDB::bind_method(D_METHOD("set_bake_interval", "distance"), &Curve2D::set_bake_interval);
 	ClassDB::bind_method(D_METHOD("get_bake_interval"), &Curve2D::get_bake_interval);
 
@@ -1186,7 +1186,7 @@ void Curve3D::_bake() const {
 			if (d > bake_interval) {
 				// OK! between P and NP there _has_ to be Something, let's go searching!
 
-				int iterations = 10; //lots of detail!
+				int iterations = 10; // lots of detail!
 
 				float low = p;
 				float hi = np;
@@ -1291,7 +1291,7 @@ Vector3 Curve3D::interpolate_baked(float p_offset, bool p_cubic) const {
 		_bake();
 	}
 
-	//validate//
+	// validate//
 	int pc = baked_point_cache.size();
 	ERR_FAIL_COND_V_MSG(pc == 0, Vector3(), "No points in Curve3D.");
 
@@ -1336,7 +1336,7 @@ float Curve3D::interpolate_baked_tilt(float p_offset) const {
 		_bake();
 	}
 
-	//validate//
+	// validate//
 	int pc = baked_tilt_cache.size();
 	ERR_FAIL_COND_V_MSG(pc == 0, 0, "No tilts in Curve3D.");
 
@@ -1375,8 +1375,8 @@ Vector3 Curve3D::interpolate_baked_up_vector(float p_offset, bool p_apply_tilt) 
 		_bake();
 	}
 
-	//validate//
-	// curve may not have baked up vectors
+	// validate//
+	//  curve may not have baked up vectors
 	int count = baked_up_vector_cache.size();
 	ERR_FAIL_COND_V_MSG(count == 0, Vector3(0, 1, 0), "No up vectors in Curve3D.");
 
@@ -1448,7 +1448,7 @@ Vector3 Curve3D::get_closest_point(const Vector3 &p_to_point) const {
 		_bake();
 	}
 
-	//validate//
+	// validate//
 	int pc = baked_point_cache.size();
 	ERR_FAIL_COND_V_MSG(pc == 0, Vector3(), "No points in Curve3D.");
 
@@ -1486,7 +1486,7 @@ float Curve3D::get_closest_offset(const Vector3 &p_to_point) const {
 		_bake();
 	}
 
-	//validate//
+	// validate//
 	int pc = baked_point_cache.size();
 	ERR_FAIL_COND_V_MSG(pc == 0, 0.0f, "No points in Curve3D.");
 
@@ -1639,7 +1639,7 @@ void Curve3D::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("clear_points"), &Curve3D::clear_points);
 	ClassDB::bind_method(D_METHOD("interpolate", "idx", "t"), &Curve3D::interpolate);
 	ClassDB::bind_method(D_METHOD("interpolatef", "fofs"), &Curve3D::interpolatef);
-	//ClassDB::bind_method(D_METHOD("bake","subdivs"),&Curve3D::bake,DEFVAL(10));
+	// ClassDB::bind_method(D_METHOD("bake","subdivs"),&Curve3D::bake,DEFVAL(10));
 	ClassDB::bind_method(D_METHOD("set_bake_interval", "distance"), &Curve3D::set_bake_interval);
 	ClassDB::bind_method(D_METHOD("get_bake_interval"), &Curve3D::get_bake_interval);
 	ClassDB::bind_method(D_METHOD("set_up_vector_enabled", "enable"), &Curve3D::set_up_vector_enabled);

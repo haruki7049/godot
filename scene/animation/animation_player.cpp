@@ -191,8 +191,8 @@ void AnimationPlayer::_notification(int p_what) {
 	switch (p_what) {
 		case NOTIFICATION_ENTER_TREE: {
 			if (!processing) {
-				//make sure that a previous process state was not saved
-				//only process if "processing" is set
+				// make sure that a previous process state was not saved
+				// only process if "processing" is set
 				set_physics_process_internal(false);
 				set_process_internal(false);
 			}
@@ -376,7 +376,7 @@ void AnimationPlayer::_animation_process_animation(AnimationData *p_anim, float 
 				Vector3 scale;
 
 				Error err = a->transform_track_interpolate(i, p_time, &loc, &rot, &scale);
-				//ERR_CONTINUE(err!=OK); //used for testing, should be removed
+				// ERR_CONTINUE(err!=OK); //used for testing, should be removed
 
 				if (err != OK) {
 					continue;
@@ -402,10 +402,10 @@ void AnimationPlayer::_animation_process_animation(AnimationData *p_anim, float 
 					continue;
 				}
 
-				//StringName property=a->track_get_path(i).get_property();
+				// StringName property=a->track_get_path(i).get_property();
 
 				Map<StringName, TrackNodeCache::PropertyAnim>::Element *E = nc->property_anim.find(a->track_get_path(i).get_concatenated_subnames());
-				ERR_CONTINUE(!E); //should it continue, or create a new one?
+				ERR_CONTINUE(!E); // should it continue, or create a new one?
 
 				TrackNodeCache::PropertyAnim *pa = &E->get();
 
@@ -418,7 +418,7 @@ void AnimationPlayer::_animation_process_animation(AnimationData *p_anim, float 
 
 					int key_count = a->track_get_key_count(i);
 					if (key_count == 0) {
-						continue; //eeh not worth it
+						continue; // eeh not worth it
 					}
 
 					float first_key_time = a->track_get_key_time(i, 0);
@@ -426,9 +426,9 @@ void AnimationPlayer::_animation_process_animation(AnimationData *p_anim, float 
 					int first_key = 0;
 
 					if (first_key_time == 0.0) {
-						//ignore, use for transition
+						// ignore, use for transition
 						if (key_count == 1) {
-							continue; //with one key we can't do anything
+							continue; // with one key we can't do anything
 						}
 						transition = a->track_get_key_transition(i, 0);
 						first_key_time = a->track_get_key_time(i, 1);
@@ -450,11 +450,11 @@ void AnimationPlayer::_animation_process_animation(AnimationData *p_anim, float 
 							Variant::interpolate(pa->value_accum, interp_value, p_interp, pa->value_accum);
 						}
 
-						continue; //handled
+						continue; // handled
 					}
 				}
 
-				if (update_mode == Animation::UPDATE_CONTINUOUS || update_mode == Animation::UPDATE_CAPTURE || (p_delta == 0 && update_mode == Animation::UPDATE_DISCRETE)) { //delta == 0 means seek
+				if (update_mode == Animation::UPDATE_CONTINUOUS || update_mode == Animation::UPDATE_CAPTURE || (p_delta == 0 && update_mode == Animation::UPDATE_DISCRETE)) { // delta == 0 means seek
 
 					Variant value = a->value_track_interpolate(i, p_time);
 
@@ -462,7 +462,7 @@ void AnimationPlayer::_animation_process_animation(AnimationData *p_anim, float 
 						continue;
 					}
 
-					//thanks to trigger mode, this should be solved now..
+					// thanks to trigger mode, this should be solved now..
 					/*
 					if (p_delta==0 && value.get_type()==Variant::STRING)
 						continue; // doing this with strings is messy, should find another way
@@ -485,7 +485,7 @@ void AnimationPlayer::_animation_process_animation(AnimationData *p_anim, float 
 						switch (pa->special) {
 							case SP_NONE: {
 								bool valid;
-								pa->object->set_indexed(pa->subpath, value, &valid); //you are not speshul
+								pa->object->set_indexed(pa->subpath, value, &valid); // you are not speshul
 #ifdef DEBUG_ENABLED
 								if (!valid) {
 									ERR_PRINT("Failed setting track value '" + String(pa->owner->path) + "'. Check if property exists or the type of key is valid. Animation '" + a->get_name() + "' at node '" + get_path() + "'.");
@@ -581,7 +581,7 @@ void AnimationPlayer::_animation_process_animation(AnimationData *p_anim, float 
 				}
 
 				Map<StringName, TrackNodeCache::BezierAnim>::Element *E = nc->bezier_anim.find(a->track_get_path(i).get_concatenated_subnames());
-				ERR_CONTINUE(!E); //should it continue, or create a new one?
+				ERR_CONTINUE(!E); // should it continue, or create a new one?
 
 				TrackNodeCache::BezierAnim *ba = &E->get();
 
@@ -605,7 +605,7 @@ void AnimationPlayer::_animation_process_animation(AnimationData *p_anim, float 
 				}
 
 				if (p_seeked) {
-					//find whathever should be playing
+					// find whathever should be playing
 					int idx = a->track_find_key(i, p_time);
 					if (idx < 0) {
 						continue;
@@ -634,7 +634,7 @@ void AnimationPlayer::_animation_process_animation(AnimationData *p_anim, float 
 
 						nc->audio_playing = true;
 						playing_caches.insert(nc);
-						if (len && end_ofs > 0) { //force a end at a time
+						if (len && end_ofs > 0) { // force a end at a time
 							nc->audio_len = len - start_ofs - end_ofs;
 						} else {
 							nc->audio_len = 0;
@@ -644,7 +644,7 @@ void AnimationPlayer::_animation_process_animation(AnimationData *p_anim, float 
 					}
 
 				} else {
-					//find stuff to play
+					// find stuff to play
 					List<int> to_play;
 					a->track_get_key_indices_in_range(i, p_time, p_delta, &to_play);
 					if (to_play.size()) {
@@ -665,7 +665,7 @@ void AnimationPlayer::_animation_process_animation(AnimationData *p_anim, float 
 
 							nc->audio_playing = true;
 							playing_caches.insert(nc);
-							if (len && end_ofs > 0) { //force a end at a time
+							if (len && end_ofs > 0) { // force a end at a time
 								nc->audio_len = len - start_ofs - end_ofs;
 							} else {
 								nc->audio_len = 0;
@@ -689,7 +689,7 @@ void AnimationPlayer::_animation_process_animation(AnimationData *p_anim, float 
 						}
 
 						if (stop) {
-							//time to stop
+							// time to stop
 							nc->node->call("stop");
 							nc->audio_playing = false;
 							playing_caches.erase(nc);
@@ -705,7 +705,7 @@ void AnimationPlayer::_animation_process_animation(AnimationData *p_anim, float 
 				}
 
 				if (p_delta == 0 || p_seeked) {
-					//seek
+					// seek
 					int idx = a->track_find_key(i, p_time);
 					if (idx < 0) {
 						continue;
@@ -723,9 +723,9 @@ void AnimationPlayer::_animation_process_animation(AnimationData *p_anim, float 
 					float at_anim_pos;
 
 					if (anim->has_loop()) {
-						at_anim_pos = Math::fposmod(p_time - pos, anim->get_length()); //seek to loop
+						at_anim_pos = Math::fposmod(p_time - pos, anim->get_length()); // seek to loop
 					} else {
-						at_anim_pos = MIN(anim->get_length(), p_time - pos); //seek to end
+						at_anim_pos = MIN(anim->get_length(), p_time - pos); // seek to end
 					}
 
 					if (player->is_playing() || p_seeked) {
@@ -738,7 +738,7 @@ void AnimationPlayer::_animation_process_animation(AnimationData *p_anim, float 
 						player->seek(at_anim_pos, true);
 					}
 				} else {
-					//find stuff to play
+					// find stuff to play
 					List<int> to_play;
 					a->track_get_key_indices_in_range(i, p_time, p_delta, &to_play);
 					if (to_play.size()) {
@@ -784,13 +784,13 @@ void AnimationPlayer::_animation_process_data(PlaybackData &cd, float p_delta, f
 
 		if (&cd == &playback.current) {
 			if (!backwards && cd.pos <= len && next_pos == len /*&& playback.blend.empty()*/) {
-				//playback finished
+				// playback finished
 				end_reached = true;
 				end_notify = cd.pos < len; // Notify only if not already at the end
 			}
 
 			if (backwards && cd.pos >= 0 && next_pos == 0 /*&& playback.blend.empty()*/) {
-				//playback finished
+				// playback finished
 				end_reached = true;
 				end_notify = cd.pos > 0; // Notify only if not already at the beginning
 			}
@@ -865,7 +865,7 @@ void AnimationPlayer::_animation_update_transforms() {
 		switch (pa->special) {
 			case SP_NONE: {
 				bool valid;
-				pa->object->set_indexed(pa->subpath, pa->value_accum, &valid); //you are not speshul
+				pa->object->set_indexed(pa->subpath, pa->value_accum, &valid); // you are not speshul
 #ifdef DEBUG_ENABLED
 				if (!valid) {
 					ERR_PRINT("Failed setting key at time " + rtos(playback.current.pos) + " in Animation '" + get_current_animation() + "' at Node '" + get_path() + "', Track '" + String(pa->owner->path) + "'. Check if property exists or the type of key is right for the property");
@@ -935,7 +935,7 @@ void AnimationPlayer::_animation_process(float p_delta) {
 					emit_signal(SceneStringNames::get_singleton()->animation_changed, old, new_name);
 				}
 			} else {
-				//stop();
+				// stop();
 				playing = false;
 				_set_process(false);
 				if (end_notify) {
@@ -1309,7 +1309,7 @@ void AnimationPlayer::seek_delta(float p_time, float p_delta) {
 		p_delta /= speed_scale;
 	}
 	_animation_process(p_delta);
-	//playback.current.pos=p_time;
+	// playback.current.pos=p_time;
 }
 
 bool AnimationPlayer::is_valid() const {
@@ -1330,7 +1330,7 @@ void AnimationPlayer::_animation_changed() {
 	clear_caches();
 	emit_signal("caches_cleared");
 	if (is_playing()) {
-		playback.seeked = true; //need to restart stuff, like audio
+		playback.seeked = true; // need to restart stuff, like audio
 	}
 }
 

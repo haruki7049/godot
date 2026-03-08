@@ -205,7 +205,7 @@ void finalize_physics() {
 	memdelete(physics_2d_server);
 }
 
-//#define DEBUG_INIT
+// #define DEBUG_INIT
 #ifdef DEBUG_INIT
 #define MAIN_PRINT(m_txt) print_line(m_txt)
 #else
@@ -374,7 +374,7 @@ Error Main::setup(const char *execpath, int argc, char *argv[], bool p_second_ph
 	globals = memnew(ProjectSettings);
 	input_map = memnew(InputMap);
 
-	register_core_settings(); //here globals is present
+	register_core_settings(); // here globals is present
 
 	translation_server = memnew(TranslationServer);
 	performance = memnew(Performance);
@@ -435,9 +435,9 @@ Error Main::setup(const char *execpath, int argc, char *argv[], bool p_second_ph
 
 #ifdef MINIZIP_ENABLED
 
-	//XXX: always get_singleton() == 0x0
+	// XXX: always get_singleton() == 0x0
 	zip_packed_data = ZipArchive::get_singleton();
-	//TODO: remove this temporary fix
+	// TODO: remove this temporary fix
 	if (!zip_packed_data) {
 		zip_packed_data = memnew(ZipArchive);
 	}
@@ -728,9 +728,9 @@ Error Main::setup(const char *execpath, int argc, char *argv[], bool p_second_ph
 			if (I->next()) {
 				String p = I->next()->get();
 				if (OS::get_singleton()->set_cwd(p) == OK) {
-					//nothing
+					// nothing
 				} else {
-					project_path = I->next()->get(); //use project_path instead
+					project_path = I->next()->get(); // use project_path instead
 				}
 				N = I->next()->next();
 			} else {
@@ -933,7 +933,7 @@ Error Main::setup(const char *execpath, int argc, char *argv[], bool p_second_ph
 		OS::get_singleton()->initialize_debugging();
 	}
 	if (script_debugger) {
-		//there is a debugger, parse breakpoints
+		// there is a debugger, parse breakpoints
 
 		for (int i = 0; i < breakpoints.size(); i++) {
 			String bp = breakpoints[i];
@@ -981,7 +981,7 @@ Error Main::setup(const char *execpath, int argc, char *argv[], bool p_second_ph
 	GLOBAL_DEF("logging/file_logging/enable_file_logging.pc", true);
 	GLOBAL_DEF("logging/file_logging/log_path", "user://logs/godot.log");
 	GLOBAL_DEF("logging/file_logging/max_log_files", 5);
-	ProjectSettings::get_singleton()->set_custom_property_info("logging/file_logging/max_log_files", PropertyInfo(Variant::INT, "logging/file_logging/max_log_files", PROPERTY_HINT_RANGE, "0,20,1,or_greater")); //no negative numbers
+	ProjectSettings::get_singleton()->set_custom_property_info("logging/file_logging/max_log_files", PropertyInfo(Variant::INT, "logging/file_logging/max_log_files", PROPERTY_HINT_RANGE, "0,20,1,or_greater")); // no negative numbers
 	if (!project_manager && !editor && FileAccess::get_create_func(FileAccess::ACCESS_USERDATA) && GLOBAL_GET("logging/file_logging/enable_file_logging")) {
 		// Don't create logs for the project manager as they would be written to
 		// the current working directory, which is inconvenient.
@@ -1006,9 +1006,9 @@ Error Main::setup(const char *execpath, int argc, char *argv[], bool p_second_ph
 	if (editor || project_manager) {
 		Engine::get_singleton()->set_editor_hint(true);
 		use_custom_res = false;
-		input_map->load_default(); //keys for editor
+		input_map->load_default(); // keys for editor
 	} else {
-		input_map->load_from_globals(); //keys for game
+		input_map->load_from_globals(); // keys for game
 	}
 
 	if (bool(ProjectSettings::get_singleton()->get("application/run/disable_stdout"))) {
@@ -1301,7 +1301,7 @@ Error Main::setup2(Thread::ID p_main_tid_override) {
 		return err;
 	}
 
-	print_line(" "); //add a blank line for readability
+	print_line(" "); // add a blank line for readability
 
 	if (init_use_custom_pos) {
 		OS::get_singleton()->set_window_position(init_custom_pos);
@@ -1332,7 +1332,7 @@ Error Main::setup2(Thread::ID p_main_tid_override) {
 		OS::get_singleton()->set_current_screen(init_screen);
 	}
 	if (init_windowed) {
-		//do none..
+		// do none..
 	} else if (init_maximized) {
 		OS::get_singleton()->set_window_maximized(true);
 	} else if (init_fullscreen) {
@@ -1349,7 +1349,7 @@ Error Main::setup2(Thread::ID p_main_tid_override) {
 	Color clear = GLOBAL_DEF("rendering/environment/default_clear_color", Color(0.3, 0.3, 0.3));
 	VisualServer::get_singleton()->set_default_clear_color(clear);
 
-	if (show_logo) { //boot logo!
+	if (show_logo) { // boot logo!
 		String boot_logo_path = GLOBAL_DEF("application/boot_splash/image", String());
 		bool boot_logo_scale = GLOBAL_DEF("application/boot_splash/fullsize", true);
 		bool boot_logo_filter = GLOBAL_DEF("application/boot_splash/use_filter", true);
@@ -1419,7 +1419,7 @@ Error Main::setup2(Thread::ID p_main_tid_override) {
 
 		if (bool(GLOBAL_DEF("input_devices/pointing/emulate_touch_from_mouse", false)) && !(editor || project_manager)) {
 			if (!OS::get_singleton()->has_touchscreen_ui_hint()) {
-				//only if no touchscreen ui hint, set emulation
+				// only if no touchscreen ui hint, set emulation
 				id->set_emulate_touch_from_mouse(true);
 			}
 		}
@@ -1429,12 +1429,12 @@ Error Main::setup2(Thread::ID p_main_tid_override) {
 
 	MAIN_PRINT("Main: Load Translations and Remaps");
 
-	translation_server->setup(); //register translations, load them, etc.
+	translation_server->setup(); // register translations, load them, etc.
 	if (locale != "") {
 		translation_server->set_locale(locale);
 	}
 	translation_server->load_translations();
-	ResourceLoader::load_translation_remaps(); //load remaps for resources
+	ResourceLoader::load_translation_remaps(); // load remaps for resources
 
 	ResourceLoader::load_path_remaps();
 
@@ -1490,7 +1490,7 @@ Error Main::setup2(Thread::ID p_main_tid_override) {
 	_start_success = true;
 	locale = String();
 
-	ClassDB::set_current_api(ClassDB::API_NONE); //no more api is registered at this point
+	ClassDB::set_current_api(ClassDB::API_NONE); // no more api is registered at this point
 
 	print_verbose("CORE API HASH: " + uitos(ClassDB::get_api_hash(ClassDB::API_CORE)));
 	print_verbose("EDITOR API HASH: " + uitos(ClassDB::get_api_hash(ClassDB::API_EDITOR)));
@@ -1524,7 +1524,7 @@ bool Main::start() {
 
 	List<String> args = OS::get_singleton()->get_cmdline_args();
 	for (int i = 0; i < args.size(); i++) {
-		//parameters that do not have an argument to the right
+		// parameters that do not have an argument to the right
 		if (args[i] == "--check-only") {
 			check_only = true;
 #ifdef TOOLS_ENABLED
@@ -1552,7 +1552,7 @@ bool Main::start() {
 				game_path = args[i];
 			}
 		}
-		//parameters that have an argument to the right
+		// parameters that have an argument to the right
 		else if (i < (args.size() - 1)) {
 			bool parsed_pair = true;
 			if (args[i] == "-s" || args[i] == "--script") {
@@ -1568,10 +1568,10 @@ bool Main::start() {
 					parsed_pair = false;
 				}
 			} else if (args[i] == "--export") {
-				editor = true; //needs editor
+				editor = true; // needs editor
 				_export_preset = args[i + 1];
 			} else if (args[i] == "--export-debug") {
-				editor = true; //needs editor
+				editor = true; // needs editor
 				_export_preset = args[i + 1];
 				export_debug = true;
 			} else if (args[i] == "--export-pack") {
@@ -1763,11 +1763,11 @@ bool Main::start() {
 					remote_debugger->set_scene_tree(sml);
 				}
 
-				//autoload
+				// autoload
 				List<PropertyInfo> props;
 				ProjectSettings::get_singleton()->get_property_list(&props);
 
-				//first pass, add the constants so they exist before any script is loaded
+				// first pass, add the constants so they exist before any script is loaded
 				for (List<PropertyInfo>::Element *E = props.front(); E; E = E->next()) {
 					String s = E->get().name;
 					if (!s.begins_with("autoload/")) {
@@ -1787,7 +1787,7 @@ bool Main::start() {
 					}
 				}
 
-				//second pass, load into global constants
+				// second pass, load into global constants
 				List<Node *> to_add;
 				for (List<PropertyInfo>::Element *E = props.front(); E; E = E->next()) {
 					String s = E->get().name;
@@ -1825,7 +1825,7 @@ bool Main::start() {
 					ERR_CONTINUE_MSG(!n, "Path in autoload not a node or script: " + path);
 					n->set_name(name);
 
-					//defer so references are all valid on _ready()
+					// defer so references are all valid on _ready()
 					to_add.push_back(n);
 
 					if (global_var) {
@@ -1855,7 +1855,7 @@ bool Main::start() {
 #endif
 
 		if (!editor && !project_manager) {
-			//standard helpers that can be changed from main config
+			// standard helpers that can be changed from main config
 
 			String stretch_mode = GLOBAL_DEF("display/window/stretch/mode", "disabled");
 			String stretch_aspect = GLOBAL_DEF("display/window/stretch/aspect", "ignore");
@@ -2083,8 +2083,8 @@ static uint64_t frame_delta_sync_time = 0;
 #endif
 
 bool Main::iteration() {
-	//for now do not error on this
-	//ERR_FAIL_COND_V(iterating, false);
+	// for now do not error on this
+	// ERR_FAIL_COND_V(iterating, false);
 
 	iterating++;
 
@@ -2186,7 +2186,7 @@ bool Main::iteration() {
 	visual_server_callbacks->flush();
 	message_queue->flush();
 
-	VisualServer::get_singleton()->sync(); //sync if still drawing from previous frames.
+	VisualServer::get_singleton()->sync(); // sync if still drawing from previous frames.
 
 	if (OS::get_singleton()->can_draw() && VisualServer::get_singleton()->is_render_loop_enabled()) {
 		if ((!force_redraw_requested) && OS::get_singleton()->is_in_low_processor_usage_mode()) {
@@ -2377,12 +2377,12 @@ void Main::cleanup(bool p_force) {
 	}
 
 	if (OS::get_singleton()->is_restart_on_exit_set()) {
-		//attempt to restart with arguments
+		// attempt to restart with arguments
 		String exec = OS::get_singleton()->get_executable_path();
 		List<String> args = OS::get_singleton()->get_restart_on_exit_arguments();
 		OS::ProcessID pid = 0;
 		OS::get_singleton()->execute(exec, args, false, &pid);
-		OS::get_singleton()->set_restart_on_exit(false, List<String>()); //clear list (uses memory)
+		OS::get_singleton()->set_restart_on_exit(false, List<String>()); // clear list (uses memory)
 	}
 
 	// Now should be safe to delete MessageQueue (famous last words).

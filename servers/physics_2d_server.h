@@ -94,7 +94,7 @@ public:
 	Physics2DDirectBodyState();
 };
 
-//used for script
+// used for script
 class Physics2DShapeQueryParameters : public Reference {
 	GDCLASS(Physics2DShapeQueryParameters, Reference);
 	friend class Physics2DDirectSpaceState;
@@ -191,7 +191,7 @@ public:
 		RID rid;
 		ObjectID collider_id = 0;
 		int shape = 0;
-		Vector2 linear_velocity; //velocity at contact point
+		Vector2 linear_velocity; // velocity at contact point
 		Variant metadata;
 	};
 
@@ -243,7 +243,7 @@ public:
 	virtual Variant shape_get_data(RID p_shape) const = 0;
 	virtual real_t shape_get_custom_solver_bias(RID p_shape) const = 0;
 
-	//these work well, but should be used from the main thread only
+	// these work well, but should be used from the main thread only
 	virtual bool shape_collide(RID p_shape_A, const Transform2D &p_xform_A, const Vector2 &p_motion_A, RID p_shape_B, const Transform2D &p_xform_B, const Vector2 &p_motion_B, Vector2 *r_results, int p_result_max, int &r_result_count) = 0;
 
 	/* SPACE API */
@@ -274,11 +274,11 @@ public:
 	virtual Vector<Vector2> space_get_contacts(RID p_space) const = 0;
 	virtual int space_get_contact_count(RID p_space) const = 0;
 
-	//missing space parameters
+	// missing space parameters
 
 	/* AREA API */
 
-	//missing attenuation? missing better override?
+	// missing attenuation? missing better override?
 
 	enum AreaParameter {
 		AREA_PARAM_GRAVITY,
@@ -343,7 +343,7 @@ public:
 
 	/* BODY API */
 
-	//missing ccd?
+	// missing ccd?
 
 	enum BodyMode {
 		BODY_MODE_STATIC,
@@ -412,7 +412,7 @@ public:
 	virtual void body_set_param(RID p_body, BodyParameter p_param, float p_value) = 0;
 	virtual float body_get_param(RID p_body, BodyParameter p_param) const = 0;
 
-	//state
+	// state
 	enum BodyState {
 		BODY_STATE_TRANSFORM,
 		BODY_STATE_LINEAR_VELOCITY,
@@ -424,7 +424,7 @@ public:
 	virtual void body_set_state(RID p_body, BodyState p_state, const Variant &p_variant) = 0;
 	virtual Variant body_get_state(RID p_body, BodyState p_state) const = 0;
 
-	//do something about it
+	// do something about it
 	virtual void body_set_applied_force(RID p_body, const Vector2 &p_force) = 0;
 	virtual Vector2 body_get_applied_force(RID p_body) const = 0;
 
@@ -440,7 +440,7 @@ public:
 	virtual void body_apply_impulse(RID p_body, const Vector2 &p_offset, const Vector2 &p_impulse) = 0;
 	virtual void body_set_axis_velocity(RID p_body, const Vector2 &p_axis_velocity) = 0;
 
-	//fix
+	// fix
 	virtual void body_add_collision_exception(RID p_body, RID p_body_b) = 0;
 	virtual void body_remove_collision_exception(RID p_body, RID p_body_b) = 0;
 	virtual void body_get_collision_exceptions(RID p_body, List<RID> *p_exceptions) = 0;
@@ -448,7 +448,7 @@ public:
 	virtual void body_set_max_contacts_reported(RID p_body, int p_contacts) = 0;
 	virtual int body_get_max_contacts_reported(RID p_body) const = 0;
 
-	//missing remove
+	// missing remove
 	virtual void body_set_contacts_reported_depth_threshold(RID p_body, float p_threshold) = 0;
 	virtual float body_get_contacts_reported_depth_threshold(RID p_body) const = 0;
 
@@ -588,7 +588,7 @@ protected:
 public:
 	Physics2DServer::MotionResult *get_result_ptr() const { return const_cast<Physics2DServer::MotionResult *>(&result); }
 
-	//bool is_colliding() const;
+	// bool is_colliding() const;
 	Vector2 get_motion() const;
 	Vector2 get_motion_remainder() const;
 
@@ -661,7 +661,7 @@ VARIANT_ENUM_CAST(Physics2DServer::CCDMode);
 VARIANT_ENUM_CAST(Physics2DServer::JointParam);
 VARIANT_ENUM_CAST(Physics2DServer::JointType);
 VARIANT_ENUM_CAST(Physics2DServer::DampedStringParam);
-//VARIANT_ENUM_CAST( Physics2DServer::ObjectType );
+// VARIANT_ENUM_CAST( Physics2DServer::ObjectType );
 VARIANT_ENUM_CAST(Physics2DServer::AreaBodyStatus);
 VARIANT_ENUM_CAST(Physics2DServer::ProcessInfo);
 

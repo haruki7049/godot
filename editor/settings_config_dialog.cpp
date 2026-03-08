@@ -278,9 +278,9 @@ void EditorSettingsDialog::_shortcut_button_pressed(Object *p_item, int p_column
 		press_a_key->get_cancel()->set_focus_mode(FOCUS_NONE);
 		shortcut_configured = item;
 
-	} else if (p_idx == 1) { //erase
+	} else if (p_idx == 1) { // erase
 		if (!sc.is_valid()) {
-			return; //pointless, there is nothing
+			return; // pointless, there is nothing
 		}
 
 		undo_redo->create_action(TTR("Erase Shortcut"));
@@ -291,9 +291,9 @@ void EditorSettingsDialog::_shortcut_button_pressed(Object *p_item, int p_column
 		undo_redo->add_do_method(this, "_settings_changed");
 		undo_redo->add_undo_method(this, "_settings_changed");
 		undo_redo->commit_action();
-	} else if (p_idx == 2) { //revert to original
+	} else if (p_idx == 2) { // revert to original
 		if (!sc.is_valid()) {
-			return; //pointless, there is nothing
+			return; // pointless, there is nothing
 		}
 
 		Ref<InputEvent> original = sc->get_meta("original");

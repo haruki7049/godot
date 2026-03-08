@@ -170,7 +170,7 @@ public:
 	bool is_monitorable() const;
 
 	Array get_overlapping_bodies() const;
-	Array get_overlapping_areas() const; //function for script
+	Array get_overlapping_areas() const; // function for script
 
 	bool overlaps_area(Node *p_area) const;
 	bool overlaps_body(Node *p_body) const;

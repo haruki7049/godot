@@ -103,7 +103,7 @@ void BodyPair2DSW::_contact_added_callback(const Vector2 &p_point_A, const Vecto
 
 		ERR_FAIL_COND(least_deep == -1);
 
-		if (least_deep < contact_count) { //replace the last deep contact by the new one
+		if (least_deep < contact_count) { // replace the last deep contact by the new one
 
 			contacts[least_deep] = contact;
 		}
@@ -119,7 +119,7 @@ void BodyPair2DSW::_contact_added_callback(const Vector2 &p_point_A, const Vecto
 }
 
 void BodyPair2DSW::_validate_contacts() {
-	//make sure to erase contacts that are no longer valid
+	// make sure to erase contacts that are no longer valid
 
 	real_t max_separation = space->get_contact_max_separation();
 	real_t max_separation2 = max_separation * max_separation;
@@ -129,7 +129,7 @@ void BodyPair2DSW::_validate_contacts() {
 
 		bool erase = false;
 		if (!c.reused) {
-			//was left behind in previous frame
+			// was left behind in previous frame
 			erase = true;
 		} else {
 			c.reused = false;
@@ -169,14 +169,14 @@ bool BodyPair2DSW::_test_ccd(real_t p_step, Body2DSW *p_A, int p_shape_A, const 
 
 	real_t min, max;
 	p_A->get_shape(p_shape_A)->project_rangev(mnormal, p_xform_A, min, max);
-	bool fast_object = mlen > (max - min) * 0.3; //going too fast in that direction
+	bool fast_object = mlen > (max - min) * 0.3; // going too fast in that direction
 
-	if (!fast_object) { //did it move enough in this direction to even attempt raycast? let's say it should move more than 1/3 the size of the object in that axis
+	if (!fast_object) { // did it move enough in this direction to even attempt raycast? let's say it should move more than 1/3 the size of the object in that axis
 		return false;
 	}
 
-	//cast a segment from support in motion normal, in the same direction of motion by motion length
-	//support is the worst case collision point, so real collision happened before
+	// cast a segment from support in motion normal, in the same direction of motion by motion length
+	// support is the worst case collision point, so real collision happened before
 	int a;
 	Vector2 s[2];
 	p_A->get_shape(p_shape_A)->get_supports(p_xform_A.basis_xform(mnormal).normalized(), s, a);
@@ -185,7 +185,7 @@ bool BodyPair2DSW::_test_ccd(real_t p_step, Body2DSW *p_A, int p_shape_A, const 
 
 	Transform2D from_inv = p_xform_B.affine_inverse();
 
-	Vector2 local_from = from_inv.xform(from - mnormal * mlen * 0.1); //start from a little inside the bounding box
+	Vector2 local_from = from_inv.xform(from - mnormal * mlen * 0.1); // start from a little inside the bounding box
 	Vector2 local_to = from_inv.xform(to);
 
 	Vector2 rpos, rnorm;
@@ -193,14 +193,14 @@ bool BodyPair2DSW::_test_ccd(real_t p_step, Body2DSW *p_A, int p_shape_A, const 
 		return false;
 	}
 
-	//ray hit something
+	// ray hit something
 
 	Vector2 hitpos = p_xform_B.xform(rpos);
 
 	Vector2 contact_A = to;
 	Vector2 contact_B = hitpos;
 
-	//create a contact
+	// create a contact
 
 	if (p_swap_result) {
 		_contact_added_callback(contact_B, contact_A);
@@ -220,7 +220,7 @@ real_t combine_friction(Body2DSW *A, Body2DSW *B) {
 }
 
 bool BodyPair2DSW::setup(real_t p_step) {
-	//cannot collide
+	// cannot collide
 	if (!A->test_collision_mask(B) || A->has_exception(B->get_self()) || B->has_exception(A->get_self())) {
 		collided = false;
 		return false;
@@ -236,7 +236,7 @@ bool BodyPair2DSW::setup(real_t p_step) {
 		}
 	}
 
-	//use local A coordinates to avoid numerical issues on collision detection
+	// use local A coordinates to avoid numerical issues on collision detection
 	offset_B = B->get_transform().get_origin() - A->get_transform().get_origin();
 
 	_validate_contacts();
@@ -265,7 +265,7 @@ bool BodyPair2DSW::setup(real_t p_step) {
 
 	collided = CollisionSolver2DSW::solve(shape_A_ptr, xform_A, motion_A, shape_B_ptr, xform_B, motion_B, _add_contact, this, &sep_axis);
 	if (!collided) {
-		//test ccd (currently just a raycast)
+		// test ccd (currently just a raycast)
 
 		if (A->get_continuous_collision_detection_mode() == Physics2DServer::CCD_MODE_CAST_RAY && A->get_mode() > Physics2DServer::BODY_MODE_KINEMATIC) {
 			if (_test_ccd(p_step, A, shape_A, xform_A, B, shape_B, xform_B)) {
@@ -298,7 +298,7 @@ bool BodyPair2DSW::setup(real_t p_step) {
 				if (!c.reused) {
 					continue;
 				}
-				if (c.normal.dot(direction) > -CMP_EPSILON) { //greater (normal inverted)
+				if (c.normal.dot(direction) > -CMP_EPSILON) { // greater (normal inverted)
 					continue;
 				}
 				valid = true;
@@ -319,7 +319,7 @@ bool BodyPair2DSW::setup(real_t p_step) {
 				if (!c.reused) {
 					continue;
 				}
-				if (c.normal.dot(direction) < CMP_EPSILON) { //less (normal ok)
+				if (c.normal.dot(direction) < CMP_EPSILON) { // less (normal ok)
 					continue;
 				}
 				valid = true;
@@ -408,7 +408,7 @@ bool BodyPair2DSW::setup(real_t p_step) {
 
 		c.bias = -bias * inv_dt * MIN(0.0f, -depth + max_penetration);
 		c.depth = depth;
-		//c.acc_bias_impulse=0;
+		// c.acc_bias_impulse=0;
 
 #ifdef ACCUMULATE_IMPULSES
 		{

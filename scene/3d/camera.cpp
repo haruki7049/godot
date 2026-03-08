@@ -123,7 +123,7 @@ void Camera::_notification(int p_what) {
 			if (!get_tree()->is_node_being_edited(this)) {
 				if (is_current()) {
 					clear_current();
-					current = true; //keep it true
+					current = true; // keep it true
 
 				} else {
 					current = false;
@@ -224,7 +224,7 @@ void Camera::make_current() {
 
 	get_viewport()->_camera_set(this);
 
-	//get_scene()->call_group(SceneMainLoop::GROUP_CALL_REALTIME,camera_group,"_camera_make_current",this);
+	// get_scene()->call_group(SceneMainLoop::GROUP_CALL_REALTIME,camera_group,"_camera_make_current",this);
 }
 
 void Camera::clear_current(bool p_enable_next) {
@@ -500,7 +500,7 @@ void Camera::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("set_cull_mask_bit", "layer", "enable"), &Camera::set_cull_mask_bit);
 	ClassDB::bind_method(D_METHOD("get_cull_mask_bit", "layer"), &Camera::get_cull_mask_bit);
 
-	//ClassDB::bind_method(D_METHOD("_camera_make_current"),&Camera::_camera_make_current );
+	// ClassDB::bind_method(D_METHOD("_camera_make_current"),&Camera::_camera_make_current );
 
 	ADD_PROPERTY(PropertyInfo(Variant::INT, "keep_aspect", PROPERTY_HINT_ENUM, "Keep Width,Keep Height"), "set_keep_aspect_mode", "get_keep_aspect_mode");
 	ADD_PROPERTY(PropertyInfo(Variant::INT, "cull_mask", PROPERTY_HINT_LAYERS_3D_RENDER), "set_cull_mask", "get_cull_mask");
@@ -661,7 +661,7 @@ Camera::Camera() {
 	v_offset = 0;
 	h_offset = 0;
 	VisualServer::get_singleton()->camera_set_cull_mask(camera, layers);
-	//active=false;
+	// active=false;
 	velocity_tracker.instance();
 	doppler_tracking = DOPPLER_TRACKING_DISABLED;
 	set_notify_transform(true);
@@ -715,15 +715,15 @@ void ClippedCamera::_notification(int p_what) {
 		Plane parent_plane(parent_pos, cam_fw);
 
 		if (parent_plane.is_point_over(cam_pos)) {
-			//cam is beyond parent plane
+			// cam is beyond parent plane
 			return;
 		}
 
 		Vector3 ray_from = parent_plane.project(cam_pos);
 
-		clip_offset = 0; //reset by defau;t
+		clip_offset = 0; // reset by defau;t
 
-		{ //check if points changed
+		{ // check if points changed
 			Vector<Vector3> local_points = get_near_plane_points();
 
 			bool all_equal = true;

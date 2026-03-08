@@ -62,7 +62,7 @@ class RasterizerStorageGLES3 : public RasterizerStorage {
 public:
 	RasterizerCanvasGLES3 *canvas;
 	RasterizerSceneGLES3 *scene;
-	static GLuint system_fbo; //on some devices, such as apple, screen is rendered to yet another fbo.
+	static GLuint system_fbo; // on some devices, such as apple, screen is rendered to yet another fbo.
 
 	enum RenderArchitecture {
 		RENDER_ARCH_MOBILE,
@@ -258,7 +258,7 @@ public:
 		GLenum gl_format_cache;
 		GLenum gl_internal_format_cache;
 		GLenum gl_type_cache;
-		int data_size; //original data size, useful for retrieving back
+		int data_size; // original data size, useful for retrieving back
 		bool compressed;
 		bool srgb;
 		int total_data_size;
@@ -657,7 +657,7 @@ public:
 		Vector<AABB> skeleton_bone_aabb;
 		Vector<bool> skeleton_bone_used;
 
-		//bool packed;
+		// bool packed;
 
 		struct BlendShape {
 			GLuint vertex_id;
@@ -907,7 +907,7 @@ public:
 		Vector<float> skel_texture;
 		GLuint texture;
 		SelfList<Skeleton> update_list;
-		Set<RasterizerScene::InstanceBase *> instances; //instances using skeleton
+		Set<RasterizerScene::InstanceBase *> instances; // instances using skeleton
 		Transform2D base_transform_2d;
 
 		Skeleton() :
@@ -1335,8 +1335,8 @@ public:
 				}
 			};
 
-			MipMaps mip_maps[2]; //first mipmap chain starts from full-screen
-			//GLuint depth2; //depth for the second mipmap chain, in case of desiring upsampling
+			MipMaps mip_maps[2]; // first mipmap chain starts from full-screen
+			// GLuint depth2; //depth for the second mipmap chain, in case of desiring upsampling
 
 			struct SSAO {
 				GLuint blur_fbo[2]; // blur fbo
@@ -1344,7 +1344,7 @@ public:
 
 				GLuint linear_depth;
 
-				Vector<GLuint> depth_mipmap_fbos; //fbos for depth mipmapsla ver
+				Vector<GLuint> depth_mipmap_fbos; // fbos for depth mipmapsla ver
 
 				SSAO() :
 						linear_depth(0) {
@@ -1443,7 +1443,7 @@ public:
 		int height;
 		GLuint fbo;
 		GLuint depth;
-		GLuint distance; //for older devices
+		GLuint distance; // for older devices
 	};
 
 	RID_Owner<CanvasLightShadow> canvas_light_shadow_owner;

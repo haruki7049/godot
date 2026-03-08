@@ -41,7 +41,7 @@
 
 #define DEFVAL(m_defval) (m_defval)
 
-//#define SIMPLE_METHODDEF
+// #define SIMPLE_METHODDEF
 
 #ifdef DEBUG_METHODS_ENABLED
 
@@ -72,7 +72,7 @@ MethodDefinition D_METHOD(const char *p_name, const char *p_arg1, const char *p_
 
 #else
 
-//#define NO_VARIADIC_MACROS
+// #define NO_VARIADIC_MACROS
 
 #ifdef NO_VARIADIC_MACROS
 
@@ -190,7 +190,7 @@ public:
 		ERR_FAIL_COND(!t);
 		t->exposed = true;
 		t->class_ptr = T::get_class_ptr_static();
-		//nothing
+		// nothing
 	}
 
 	template <class T>
@@ -227,7 +227,7 @@ public:
 	static MethodBind *bind_method(N p_method_name, M p_method) {
 		MethodBind *bind = create_method_bind(p_method);
 
-		return bind_methodfi(METHOD_FLAGS_DEFAULT, bind, p_method_name, nullptr, 0); //use static function, much smaller binary usage
+		return bind_methodfi(METHOD_FLAGS_DEFAULT, bind, p_method_name, nullptr, 0); // use static function, much smaller binary usage
 	}
 
 	template <class N, class M>
@@ -320,7 +320,7 @@ public:
 		type->method_map[p_name] = bind;
 #ifdef DEBUG_METHODS_ENABLED
 		// FIXME: <reduz> set_return_type is no longer in MethodBind, so I guess it should be moved to vararg method bind
-		//bind->set_return_type("Variant");
+		// bind->set_return_type("Variant");
 		type->method_order.push_back(p_name);
 #endif
 

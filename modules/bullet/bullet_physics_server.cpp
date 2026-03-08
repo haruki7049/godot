@@ -75,7 +75,7 @@
 // <--------------- Joint creation asserts
 
 void BulletPhysicsServer::_bind_methods() {
-	//ClassDB::bind_method(D_METHOD("DoTest"), &BulletPhysicsServer::DoTest);
+	// ClassDB::bind_method(D_METHOD("DoTest"), &BulletPhysicsServer::DoTest);
 }
 
 BulletPhysicsServer::BulletPhysicsServer() :
@@ -132,7 +132,7 @@ void BulletPhysicsServer::shape_set_data(RID p_shape, const Variant &p_data) {
 }
 
 void BulletPhysicsServer::shape_set_custom_solver_bias(RID p_shape, real_t p_bias) {
-	//WARN_PRINT("Bias not supported by Bullet physics engine");
+	// WARN_PRINT("Bias not supported by Bullet physics engine");
 }
 
 PhysicsServer::ShapeType BulletPhysicsServer::shape_get_type(RID p_shape) const {
@@ -160,7 +160,7 @@ real_t BulletPhysicsServer::shape_get_margin(RID p_shape) const {
 }
 
 real_t BulletPhysicsServer::shape_get_custom_solver_bias(RID p_shape) const {
-	//WARN_PRINT("Bias not supported by Bullet physics engine");
+	// WARN_PRINT("Bias not supported by Bullet physics engine");
 	return 0.;
 }
 
@@ -463,7 +463,7 @@ void BulletPhysicsServer::body_set_space(RID p_body, RID p_space) {
 	}
 
 	if (body->get_space() == space) {
-		return; //pointles
+		return; // pointles
 	}
 
 	body->set_space(space);
@@ -900,7 +900,7 @@ void BulletPhysicsServer::soft_body_set_space(RID p_body, RID p_space) {
 	}
 
 	if (body->get_space() == space) {
-		return; //pointles
+		return; // pointles
 	}
 
 	body->set_space(space);

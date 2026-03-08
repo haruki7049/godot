@@ -166,7 +166,7 @@ void AnimationPlayerEditor::_autoplay_pressed() {
 
 	String current = animation->get_item_text(animation->get_selected());
 	if (player->get_autoplay() == current) {
-		//unset
+		// unset
 		undo_redo->create_action(TTR("Toggle Autoplay"));
 		undo_redo->add_do_method(player, "set_autoplay", "");
 		undo_redo->add_undo_method(player, "set_autoplay", player->get_autoplay());
@@ -175,7 +175,7 @@ void AnimationPlayerEditor::_autoplay_pressed() {
 		undo_redo->commit_action();
 
 	} else {
-		//set
+		// set
 		undo_redo->create_action(TTR("Toggle Autoplay"));
 		undo_redo->add_do_method(player, "set_autoplay", current);
 		undo_redo->add_undo_method(player, "set_autoplay", player->get_autoplay());
@@ -193,12 +193,12 @@ void AnimationPlayerEditor::_play_pressed() {
 
 	if (current != "") {
 		if (current == player->get_assigned_animation()) {
-			player->stop(); //so it won't blend with itself
+			player->stop(); // so it won't blend with itself
 		}
 		player->play(current);
 	}
 
-	//unstop
+	// unstop
 	stop->set_pressed(false);
 }
 
@@ -212,14 +212,14 @@ void AnimationPlayerEditor::_play_from_pressed() {
 		float time = player->get_current_animation_position();
 
 		if (current == player->get_assigned_animation() && player->is_playing()) {
-			player->stop(); //so it won't blend with itself
+			player->stop(); // so it won't blend with itself
 		}
 
 		player->play(current);
 		player->seek(time);
 	}
 
-	//unstop
+	// unstop
 	stop->set_pressed(false);
 }
 
@@ -231,12 +231,12 @@ void AnimationPlayerEditor::_play_bw_pressed() {
 
 	if (current != "") {
 		if (current == player->get_assigned_animation()) {
-			player->stop(); //so it won't blend with itself
+			player->stop(); // so it won't blend with itself
 		}
 		player->play(current, -1, -1, true);
 	}
 
-	//unstop
+	// unstop
 	stop->set_pressed(false);
 }
 
@@ -249,14 +249,14 @@ void AnimationPlayerEditor::_play_bw_from_pressed() {
 	if (current != "") {
 		float time = player->get_current_animation_position();
 		if (current == player->get_assigned_animation()) {
-			player->stop(); //so it won't blend with itself
+			player->stop(); // so it won't blend with itself
 		}
 
 		player->play(current, -1, -1, true);
 		player->seek(time);
 	}
 
-	//unstop
+	// unstop
 	stop->set_pressed(false);
 }
 void AnimationPlayerEditor::_stop_pressed() {
@@ -396,7 +396,7 @@ void AnimationPlayerEditor::_animation_save_as(const Ref<Resource> &p_resource) 
 	}
 
 	String path;
-	//file->set_current_path(current_path);
+	// file->set_current_path(current_path);
 	if (p_resource->get_path() != "") {
 		path = p_resource->get_path();
 		if (extensions.size()) {

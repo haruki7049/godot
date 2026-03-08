@@ -680,6 +680,6 @@ AudioDriverCoreAudio::AudioDriverCoreAudio() :
 	samples_in.clear();
 }
 
-AudioDriverCoreAudio::~AudioDriverCoreAudio(){};
+AudioDriverCoreAudio::~AudioDriverCoreAudio() {};
 
 #endif

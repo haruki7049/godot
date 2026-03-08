@@ -67,7 +67,7 @@ Ref<ArrayMesh> Shape::get_debug_mesh() {
 	debug_mesh_cache = Ref<ArrayMesh>(memnew(ArrayMesh));
 
 	if (!lines.empty()) {
-		//make mesh
+		// make mesh
 		PoolVector<Vector3> array;
 		array.resize(lines.size());
 		{

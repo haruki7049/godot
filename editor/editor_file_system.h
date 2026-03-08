@@ -46,7 +46,7 @@ class EditorFileSystemDirectory : public Object {
 
 	String name;
 	uint64_t modified_time;
-	bool verified; //used for checking changes
+	bool verified; // used for checking changes
 
 	EditorFileSystemDirectory *parent;
 	Vector<EditorFileSystemDirectory *> subdirs;
@@ -59,7 +59,7 @@ class EditorFileSystemDirectory : public Object {
 		bool import_valid;
 		String import_group_file;
 		Vector<String> deps;
-		bool verified; //used for checking changes
+		bool verified; // used for checking changes
 		String script_class_name;
 		String script_class_extends;
 		String script_class_icon_path;
@@ -92,9 +92,9 @@ public:
 	Vector<String> get_file_deps(int p_idx) const;
 	bool get_file_import_is_valid(int p_idx) const;
 	uint64_t get_file_modified_time(int p_idx) const;
-	String get_file_script_class_name(int p_idx) const; //used for scripts
-	String get_file_script_class_extends(int p_idx) const; //used for scripts
-	String get_file_script_class_icon_path(int p_idx) const; //used for scripts
+	String get_file_script_class_name(int p_idx) const; // used for scripts
+	String get_file_script_class_extends(int p_idx) const; // used for scripts
+	String get_file_script_class_icon_path(int p_idx) const; // used for scripts
 
 	EditorFileSystemDirectory *get_parent();
 
@@ -154,7 +154,7 @@ class EditorFileSystem : public Node {
 
 	void _scan_filesystem();
 
-	Set<String> late_added_files; //keep track of files that were added, these will be re-scanned
+	Set<String> late_added_files; // keep track of files that were added, these will be re-scanned
 	Set<String> late_update_files;
 
 	void _save_late_updated_files();

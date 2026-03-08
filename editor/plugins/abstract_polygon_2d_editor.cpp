@@ -327,7 +327,7 @@ bool AbstractPolygon2DEditor::forward_gui_input(const Ref<InputEvent> &p_event) 
 							return true;
 						}
 					} else {
-						//look for points to move
+						// look for points to move
 						const PosVertex closest = closest_point(gpoint);
 
 						if (closest.valid()) {
@@ -343,7 +343,7 @@ bool AbstractPolygon2DEditor::forward_gui_input(const Ref<InputEvent> &p_event) 
 					}
 				} else {
 					if (edited_point.valid()) {
-						//apply
+						// apply
 
 						Vector<Vector2> vertices = _get_polygon(edited_point.polygon);
 						ERR_FAIL_INDEX_V(edited_point.vertex, vertices.size(), false);
@@ -401,12 +401,12 @@ bool AbstractPolygon2DEditor::forward_gui_input(const Ref<InputEvent> &p_event) 
 					const real_t grab_threshold = EDITOR_GET("editors/poly_editor/point_grab_radius");
 
 					if (!_is_line() && wip.size() > 1 && xform.xform(wip[0]).distance_to(xform.xform(cpoint)) < grab_threshold) {
-						//wip closed
+						// wip closed
 						_wip_close();
 
 						return true;
 					} else {
-						//add wip point
+						// add wip point
 						wip.push_back(cpoint);
 						_wip_changed();
 						edited_point = PosVertex(-1, wip.size(), cpoint);
@@ -429,7 +429,7 @@ bool AbstractPolygon2DEditor::forward_gui_input(const Ref<InputEvent> &p_event) 
 		if (edited_point.valid() && (wip_active || (mm->get_button_mask() & BUTTON_MASK_LEFT))) {
 			Vector2 cpoint = _get_node()->get_global_transform().affine_inverse().xform(canvas_item_editor->snap_point(canvas_item_editor->get_canvas_transform().affine_inverse().xform(gpoint)));
 
-			//Move the point in a single axis. Should only work when editing a polygon and while holding shift.
+			// Move the point in a single axis. Should only work when editing a polygon and while holding shift.
 			if (mode == MODE_EDIT && mm->get_shift()) {
 				Vector2 old_point = pre_move_edit.get(selected_point.vertex);
 				if (ABS(cpoint.x - old_point.x) > ABS(cpoint.y - old_point.y)) {
@@ -709,7 +709,7 @@ AbstractPolygon2DEditor::PosVertex AbstractPolygon2DEditor::closest_edge_point(c
 			Vector2 cp = Geometry::get_closest_point_to_segment_2d(p_pos, segment);
 
 			if (cp.distance_squared_to(segment[0]) < eps2 || cp.distance_squared_to(segment[1]) < eps2) {
-				continue; //not valid to reuse point
+				continue; // not valid to reuse point
 			}
 
 			real_t d = cp.distance_to(p_pos);

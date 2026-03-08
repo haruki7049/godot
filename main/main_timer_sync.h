@@ -34,7 +34,7 @@
 #include "core/engine.h"
 
 // define these to get more debugging logs for the delta smoothing
-//#define GODOT_DEBUG_DELTA_SMOOTHER
+// #define GODOT_DEBUG_DELTA_SMOOTHER
 
 struct MainFrameTime {
 	float idle_step; // time to advance idles for (argument to process())
@@ -155,7 +155,7 @@ public:
 	void init(uint64_t p_cpu_ticks_usec);
 	// set measured wall clock time
 	void set_cpu_ticks_usec(uint64_t p_cpu_ticks_usec);
-	//set fixed fps
+	// set fixed fps
 	void set_fixed_fps(int p_fixed_fps);
 
 	// advance one frame, return timesteps to take

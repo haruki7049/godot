@@ -112,8 +112,8 @@ public:
 		triangles.push_back(Triangle(p_points.size() + 0, p_points.size() + 1, p_points.size() + 2));
 
 		for (int i = 0; i < p_points.size(); i++) {
-			//std::cout << "Traitement du point " << *p << std::endl;
-			//std::cout << "_triangles contains " << _triangles.size() << " elements" << std::endl;
+			// std::cout << "Traitement du point " << *p << std::endl;
+			// std::cout << "_triangles contains " << _triangles.size() << " elements" << std::endl;
 
 			Vector<Edge> polygon;
 

@@ -38,7 +38,7 @@
 
 #ifdef TOOLS_ENABLED
 // use this for checking for instance lifetime errors, disable normally
-//#define PORTAL_RENDERER_STORE_MOVING_RIDS
+// #define PORTAL_RENDERER_STORE_MOVING_RIDS
 #endif
 
 class PortalRenderer;

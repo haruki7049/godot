@@ -97,7 +97,7 @@ T SafeParse(const char *data, const char *end) {
 	// Actual size validation happens during Tokenization so
 	// this is valid as an assertion.
 	(void)(end);
-	//ai_assert(static_cast<size_t>(end - data) >= sizeof(T));
+	// ai_assert(static_cast<size_t>(end - data) >= sizeof(T));
 	T result = static_cast<T>(0);
 	::memcpy(&result, data, sizeof(T));
 	return result;
@@ -199,7 +199,7 @@ Scope::Scope(Parser &parser, bool topLevel) {
 				return;
 			}
 
-			//print_error("unexpected end of file" + String(parser.LastToken()->StringContents().c_str()));
+			// print_error("unexpected end of file" + String(parser.LastToken()->StringContents().c_str()));
 		}
 	}
 }
@@ -273,7 +273,7 @@ uint64_t ParseTokenAsID(const TokenPtr t, const char *&err_out) {
 
 	// XXX: should use size_t here
 	unsigned int length = static_cast<unsigned int>(t->end() - t->begin());
-	//ai_assert(length > 0);
+	// ai_assert(length > 0);
 
 	const char *out = nullptr;
 	bool errored = false;
@@ -443,7 +443,7 @@ int64_t ParseTokenAsInt64(const TokenPtr t, const char *&err_out) {
 
 	// XXX: should use size_t here
 	unsigned int length = static_cast<unsigned int>(t->end() - t->begin());
-	//ai_assert(length > 0);
+	// ai_assert(length > 0);
 
 	char *out = nullptr;
 	const int64_t id = strtol(t->begin(), &out, length);
@@ -475,7 +475,7 @@ std::string ParseTokenAsString(const TokenPtr t, const char *&err_out) {
 		int32_t len = SafeParse<int32_t>(data + 1, t->end());
 		AI_SWAP4(len);
 
-		//ai_assert(t.end() - data == 5 + len);
+		// ai_assert(t.end() - data == 5 + len);
 		return std::string(data + 5, len);
 	}
 
@@ -530,7 +530,7 @@ void ReadBinaryDataArray(char type, uint32_t count, const char *&data, const cha
 	AI_SWAP4(comp_len);
 	data += 4;
 
-	//ai_assert(data + comp_len == end);
+	// ai_assert(data + comp_len == end);
 
 	// determine the length of the uncompressed data by looking at the type signature
 	uint32_t stride = 0;
@@ -550,7 +550,7 @@ void ReadBinaryDataArray(char type, uint32_t count, const char *&data, const cha
 	buff.resize(full_length);
 
 	if (encmode == 0) {
-		//ai_assert(full_length == comp_len);
+		// ai_assert(full_length == comp_len);
 
 		// plain data, no compression
 		std::copy(data, end, buff.begin());
@@ -586,12 +586,12 @@ void ReadBinaryDataArray(char type, uint32_t count, const char *&data, const cha
 #ifdef ASSIMP_BUILD_DEBUG
 	else {
 		// runtime check for this happens at tokenization stage
-		//ai_assert(false);
+		// ai_assert(false);
 	}
 #endif
 
 	data += comp_len;
-	//ai_assert(data == end);
+	// ai_assert(data == end);
 }
 
 } // namespace
@@ -629,8 +629,8 @@ void ParseVectorDataArray(std::vector<Vector3> &out, const ElementPtr el) {
 		std::vector<char> buff;
 		ReadBinaryDataArray(type, count, data, end, buff, el);
 
-		//ai_assert(data == end);
-		//ai_assert(buff.size() == count * (type == 'd' ? 8 : 4));
+		// ai_assert(data == end);
+		// ai_assert(buff.size() == count * (type == 'd' ? 8 : 4));
 
 		const uint32_t count3 = count / 3;
 		out.reserve(count3);
@@ -644,11 +644,11 @@ void ParseVectorDataArray(std::vector<Vector3> &out, const ElementPtr el) {
 			}
 			// for debugging
 			/*for ( size_t i = 0; i < out.size(); i++ ) {
-                aiVector3D vec3( out[ i ] );
-                std::stringstream stream;
-                stream << " vec3.x = " << vec3.x << " vec3.y = " << vec3.y << " vec3.z = " << vec3.z << std::endl;
-                DefaultLogger::get()->info( stream.str() );
-            }*/
+				aiVector3D vec3( out[ i ] );
+				std::stringstream stream;
+				stream << " vec3.x = " << vec3.x << " vec3.y = " << vec3.y << " vec3.z = " << vec3.z << std::endl;
+				DefaultLogger::get()->info( stream.str() );
+			}*/
 		} else if (type == 'f') {
 			const float *f = reinterpret_cast<const float *>(&buff[0]);
 			for (unsigned int i = 0; i < count3; ++i, f += 3) {
@@ -716,8 +716,8 @@ void ParseVectorDataArray(std::vector<Color> &out, const ElementPtr el) {
 		std::vector<char> buff;
 		ReadBinaryDataArray(type, count, data, end, buff, el);
 
-		//ai_assert(data == end);
-		//ai_assert(buff.size() == count * (type == 'd' ? 8 : 4));
+		// ai_assert(data == end);
+		// ai_assert(buff.size() == count * (type == 'd' ? 8 : 4));
 
 		const uint32_t count4 = count / 4;
 		out.reserve(count4);
@@ -793,8 +793,8 @@ void ParseVectorDataArray(std::vector<Vector2> &out, const ElementPtr el) {
 		std::vector<char> buff;
 		ReadBinaryDataArray(type, count, data, end, buff, el);
 
-		//ai_assert(data == end);
-		//ai_assert(buff.size() == count * (type == 'd' ? 8 : 4));
+		// ai_assert(data == end);
+		// ai_assert(buff.size() == count * (type == 'd' ? 8 : 4));
 
 		const uint32_t count2 = count / 2;
 		out.reserve(count2);
@@ -862,8 +862,8 @@ void ParseVectorDataArray(std::vector<int> &out, const ElementPtr el) {
 		std::vector<char> buff;
 		ReadBinaryDataArray(type, count, data, end, buff, el);
 
-		//ai_assert(data == end);
-		//ai_assert(buff.size() == count * 4);
+		// ai_assert(data == end);
+		// ai_assert(buff.size() == count * 4);
 
 		out.reserve(count);
 
@@ -919,8 +919,8 @@ void ParseVectorDataArray(std::vector<float> &out, const ElementPtr el) {
 		std::vector<char> buff;
 		ReadBinaryDataArray(type, count, data, end, buff, el);
 
-		//ai_assert(data == end);
-		//ai_assert(buff.size() == count * (type == 'd' ? 8 : 4));
+		// ai_assert(data == end);
+		// ai_assert(buff.size() == count * (type == 'd' ? 8 : 4));
 
 		if (type == 'd') {
 			const double *d = reinterpret_cast<const double *>(&buff[0]);
@@ -982,8 +982,8 @@ void ParseVectorDataArray(std::vector<unsigned int> &out, const ElementPtr el) {
 		std::vector<char> buff;
 		ReadBinaryDataArray(type, count, data, end, buff, el);
 
-		//ai_assert(data == end);
-		//ai_assert(buff.size() == count * 4);
+		// ai_assert(data == end);
+		// ai_assert(buff.size() == count * 4);
 
 		out.reserve(count);
 
@@ -1048,8 +1048,8 @@ void ParseVectorDataArray(std::vector<uint64_t> &out, const ElementPtr el) {
 		std::vector<char> buff;
 		ReadBinaryDataArray(type, count, data, end, buff, el);
 
-		//ai_assert(data == end);
-		//ai_assert(buff.size() == count * 8);
+		// ai_assert(data == end);
+		// ai_assert(buff.size() == count * 8);
 
 		out.reserve(count);
 
@@ -1107,8 +1107,8 @@ void ParseVectorDataArray(std::vector<int64_t> &out, const ElementPtr el) {
 		std::vector<char> buff;
 		ReadBinaryDataArray(type, count, data, end, buff, el);
 
-		//ai_assert(data == end);
-		//ai_assert(buff.size() == count * 8);
+		// ai_assert(data == end);
+		// ai_assert(buff.size() == count * 8);
 
 		out.reserve(count);
 
@@ -1165,7 +1165,7 @@ Transform ReadMatrix(const ElementPtr element) {
 	// determine if we need to think about this with dynamic rotation order?
 	// for example:
 	// xform.basis = z_axis * y_axis * x_axis;
-	//xform.basis.transpose();
+	// xform.basis.transpose();
 
 	print_verbose("xform verbose basis: " + (xform.basis.get_euler() * (180 / Math_PI)) + " xform origin:" + xform.origin);
 

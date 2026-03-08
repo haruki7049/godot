@@ -48,7 +48,7 @@ static _VisualScriptEditor *vs_editor_singleton = nullptr;
 
 void register_visual_script_types() {
 	visual_script_language = memnew(VisualScriptLanguage);
-	//script_language_gd->init();
+	// script_language_gd->init();
 	ScriptServer::register_language(visual_script_language);
 
 	ClassDB::register_class<VisualScript>();
@@ -86,7 +86,7 @@ void register_visual_script_types() {
 	ClassDB::register_class<VisualScriptFunctionCall>();
 	ClassDB::register_class<VisualScriptPropertySet>();
 	ClassDB::register_class<VisualScriptPropertyGet>();
-	//ClassDB::register_type<VisualScriptScriptCall>();
+	// ClassDB::register_type<VisualScriptScriptCall>();
 	ClassDB::register_class<VisualScriptEmitSignal>();
 
 	ClassDB::register_class<VisualScriptReturn>();
@@ -94,7 +94,7 @@ void register_visual_script_types() {
 	ClassDB::register_class<VisualScriptWhile>();
 	ClassDB::register_class<VisualScriptIterator>();
 	ClassDB::register_class<VisualScriptSequence>();
-	//ClassDB::register_class<VisualScriptInputFilter>();
+	// ClassDB::register_class<VisualScriptInputFilter>();
 	ClassDB::register_class<VisualScriptSwitch>();
 	ClassDB::register_class<VisualScriptSelect>();
 

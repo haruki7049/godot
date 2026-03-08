@@ -54,8 +54,8 @@ subject to the following restrictions:
 
 class JacobianEntrySW {
 public:
-	JacobianEntrySW(){};
-	//constraint between two different rigidbodies
+	JacobianEntrySW() {};
+	// constraint between two different rigidbodies
 	JacobianEntrySW(
 			const Basis &world2A,
 			const Basis &world2B,
@@ -75,7 +75,7 @@ public:
 		ERR_FAIL_COND(m_Adiag <= real_t(0.0));
 	}
 
-	//angular constraint between two different rigidbodies
+	// angular constraint between two different rigidbodies
 	JacobianEntrySW(const Vector3 &jointAxis,
 			const Basis &world2A,
 			const Basis &world2B,
@@ -91,7 +91,7 @@ public:
 		ERR_FAIL_COND(m_Adiag <= real_t(0.0));
 	}
 
-	//angular constraint between two different rigidbodies
+	// angular constraint between two different rigidbodies
 	JacobianEntrySW(const Vector3 &axisInA,
 			const Vector3 &axisInB,
 			const Vector3 &inertiaInvA,
@@ -106,7 +106,7 @@ public:
 		ERR_FAIL_COND(m_Adiag <= real_t(0.0));
 	}
 
-	//constraint on one rigidbody
+	// constraint on one rigidbody
 	JacobianEntrySW(
 			const Basis &world2A,
 			const Vector3 &rel_pos1, const Vector3 &rel_pos2,
@@ -155,14 +155,14 @@ public:
 		real_t rel_vel2 = angvela[0] + angvela[1] + angvela[2];
 		return rel_vel2 + CMP_EPSILON;
 	}
-	//private:
+	// private:
 
 	Vector3 m_linearJointAxis;
 	Vector3 m_aJ;
 	Vector3 m_bJ;
 	Vector3 m_0MinvJt;
 	Vector3 m_1MinvJt;
-	//Optimization: can be stored in the w/last component of one of the vectors
+	// Optimization: can be stored in the w/last component of one of the vectors
 	real_t m_Adiag;
 };
 

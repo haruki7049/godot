@@ -132,7 +132,7 @@ Cluster::Cluster(uint64_t id, const ElementPtr element, const Document &doc, con
 
 	const ElementPtr TransformAssociateModel = sc->GetElement("TransformAssociateModel");
 	if (TransformAssociateModel != nullptr) {
-		//Transform t = ReadMatrix(*TransformAssociateModel);
+		// Transform t = ReadMatrix(*TransformAssociateModel);
 		link_mode = SkinLinkMode_Additive;
 		valid_transformAssociateModel = true;
 	} else {
@@ -144,7 +144,7 @@ Cluster::Cluster(uint64_t id, const ElementPtr element, const Document &doc, con
 	const ElementPtr TransformLink = GetRequiredElement(sc, "TransformLink", element);
 
 	// todo: check if we need this
-	//const Element& TransformAssociateModel = GetRequiredElement(sc, "TransformAssociateModel", &element);
+	// const Element& TransformAssociateModel = GetRequiredElement(sc, "TransformAssociateModel", &element);
 
 	transform = ReadMatrix(Transform);
 	transformLink = ReadMatrix(TransformLink);

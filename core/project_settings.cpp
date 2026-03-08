@@ -261,7 +261,7 @@ bool ProjectSettings::_load_resource_pack(const String &p_pack, bool p_replace_f
 		return false;
 	}
 
-	//if data.pck is found, all directory access will be from here
+	// if data.pck is found, all directory access will be from here
 	DirAccess::make_default<DirAccessPack>(DirAccess::ACCESS_RESOURCES);
 	using_datapack = true;
 
@@ -655,7 +655,7 @@ Error ProjectSettings::_save_settings_binary(const String &p_file, const Map<Str
 
 	if (p_custom_features != String()) {
 		file->store_32(count + 1);
-		//store how many properties are saved, add one for custom featuers, which must always go first
+		// store how many properties are saved, add one for custom featuers, which must always go first
 		String key = CoreStringNames::get_singleton()->_custom_features;
 		file->store_pascal_string(key);
 
@@ -678,7 +678,7 @@ Error ProjectSettings::_save_settings_binary(const String &p_file, const Map<Str
 		file->store_buffer(buff.ptr(), buff.size());
 
 	} else {
-		file->store_32(count); //store how many properties are saved
+		file->store_32(count); // store how many properties are saved
 	}
 
 	for (Map<String, List<String>>::Element *E = props.front(); E; E = E->next()) {

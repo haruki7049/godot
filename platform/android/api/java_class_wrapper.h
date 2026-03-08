@@ -46,7 +46,7 @@ class JavaClass : public Reference {
 	GDCLASS(JavaClass, Reference);
 
 #ifdef ANDROID_ENABLED
-	enum ArgumentType{
+	enum ArgumentType {
 
 		ARG_TYPE_VOID,
 		ARG_TYPE_BOOLEAN,
@@ -57,7 +57,7 @@ class JavaClass : public Reference {
 		ARG_TYPE_LONG,
 		ARG_TYPE_FLOAT,
 		ARG_TYPE_DOUBLE,
-		ARG_TYPE_STRING, //special case
+		ARG_TYPE_STRING, // special case
 		ARG_TYPE_CLASS,
 		ARG_ARRAY_BIT = 1 << 16,
 		ARG_NUMBER_CLASS_BIT = 1 << 17,

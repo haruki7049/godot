@@ -62,7 +62,7 @@ private:
 		Transform xform;
 		Transform xform_inv;
 		BroadPhaseSW::ID bpid;
-		AABB aabb_cache; //for rayqueries
+		AABB aabb_cache; // for rayqueries
 		real_t area_cache;
 		ShapeSW *shape;
 		bool disabled;

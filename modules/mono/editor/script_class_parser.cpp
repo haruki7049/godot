@@ -106,7 +106,7 @@ ScriptClassParser::Token ScriptClassParser::get_token() {
 				return TK_PERIOD;
 			};
 			case '#': {
-				//compiler directive
+				// compiler directive
 				while (code[idx] != '\n' && code[idx] != 0) {
 					idx++;
 				}
@@ -168,7 +168,7 @@ ScriptClassParser::Token ScriptClassParser::get_token() {
 						idx += 1;
 						break;
 					} else if (code[idx] == '\\' && !verbatim) {
-						//escaped characters...
+						// escaped characters...
 						idx++;
 						CharType next = code[idx];
 						if (next == 0) {
@@ -232,7 +232,7 @@ ScriptClassParser::Token ScriptClassParser::get_token() {
 				}
 
 				if (code[idx] == '-' || (code[idx] >= '0' && code[idx] <= '9')) {
-					//a number
+					// a number
 					const CharType *rptr;
 					double number = String::to_double(&code[idx], &rptr);
 					idx += (rptr - &code[idx]);
@@ -718,9 +718,9 @@ Error ScriptClassParser::parse_file(const String &p_filepath) {
 
 	ERR_FAIL_COND_V_MSG(ferr != OK, ferr,
 			ferr == ERR_INVALID_DATA ?
-					  "File '" + p_filepath + "' contains invalid unicode (UTF-8), so it was not loaded."
+					"File '" + p_filepath + "' contains invalid unicode (UTF-8), so it was not loaded."
 											" Please ensure that scripts are saved in valid UTF-8 unicode." :
-					  "Failed to read file: '" + p_filepath + "'.");
+					"Failed to read file: '" + p_filepath + "'.");
 
 	run_dummy_preprocessor(source, p_filepath);
 

@@ -82,8 +82,8 @@ void PinJointSW::solve(real_t p_step) {
 
 	Vector3 normal(0, 0, 0);
 
-	//Vector3 angvelA = A->get_transform().origin.getBasis().transpose() * A->getAngularVelocity();
-	//Vector3 angvelB = B->get_transform().origin.getBasis().transpose() * B->getAngularVelocity();
+	// Vector3 angvelA = A->get_transform().origin.getBasis().transpose() * A->getAngularVelocity();
+	// Vector3 angvelB = B->get_transform().origin.getBasis().transpose() * B->getAngularVelocity();
 
 	for (int i = 0; i < 3; i++) {
 		normal[i] = 1;
@@ -91,7 +91,7 @@ void PinJointSW::solve(real_t p_step) {
 
 		Vector3 rel_pos1 = pivotAInW - A->get_transform().origin;
 		Vector3 rel_pos2 = pivotBInW - B->get_transform().origin;
-		//this jacobian entry could be re-used for all iterations
+		// this jacobian entry could be re-used for all iterations
 
 		Vector3 vel1 = A->get_velocity_in_local_point(rel_pos1);
 		Vector3 vel2 = B->get_velocity_in_local_point(rel_pos2);
@@ -106,8 +106,8 @@ void PinJointSW::solve(real_t p_step) {
 														B->getLinearVelocity(),angvelB);
 	*/
 
-		//positional error (zeroth order error)
-		real_t depth = -(pivotAInW - pivotBInW).dot(normal); //this is the error projected on the normal
+		// positional error (zeroth order error)
+		real_t depth = -(pivotAInW - pivotBInW).dot(normal); // this is the error projected on the normal
 
 		real_t impulse = depth * m_tau / p_step * jacDiagABInv - m_damping * rel_vel * jacDiagABInv;
 

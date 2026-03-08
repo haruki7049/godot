@@ -138,7 +138,7 @@ void Area::_body_inout(int p_status, const RID &p_body, int p_instance, int p_bo
 	Map<ObjectID, BodyState>::Element *E = body_map.find(objid);
 
 	if (!body_in && !E) {
-		return; //likely removed from the tree
+		return; // likely removed from the tree
 	}
 
 	locked = true;
@@ -198,13 +198,13 @@ void Area::_clear_monitoring() {
 	{
 		Map<ObjectID, BodyState> bmcopy = body_map;
 		body_map.clear();
-		//disconnect all monitored stuff
+		// disconnect all monitored stuff
 
 		for (Map<ObjectID, BodyState>::Element *E = bmcopy.front(); E; E = E->next()) {
 			Object *obj = ObjectDB::get_instance(E->key());
 			Node *node = Object::cast_to<Node>(obj);
 
-			if (!node) { //node may have been deleted in previous frame or at other legiminate point
+			if (!node) { // node may have been deleted in previous frame or at other legiminate point
 				continue;
 			}
 
@@ -226,13 +226,13 @@ void Area::_clear_monitoring() {
 	{
 		Map<ObjectID, AreaState> bmcopy = area_map;
 		area_map.clear();
-		//disconnect all monitored stuff
+		// disconnect all monitored stuff
 
 		for (Map<ObjectID, AreaState>::Element *E = bmcopy.front(); E; E = E->next()) {
 			Object *obj = ObjectDB::get_instance(E->key());
 			Node *node = Object::cast_to<Node>(obj);
 
-			if (!node) { //node may have been deleted in previous frame or at other legiminate point
+			if (!node) { // node may have been deleted in previous frame or at other legiminate point
 				continue;
 			}
 
@@ -316,7 +316,7 @@ void Area::_area_inout(int p_status, const RID &p_area, int p_instance, int p_ar
 	Map<ObjectID, AreaState>::Element *E = area_map.find(objid);
 
 	if (!area_in && !E) {
-		return; //likely removed from the tree
+		return; // likely removed from the tree
 	}
 
 	locked = true;
@@ -382,7 +382,7 @@ Array Area::get_overlapping_bodies() const {
 	for (const Map<ObjectID, BodyState>::Element *E = body_map.front(); E; E = E->next()) {
 		Object *obj = ObjectDB::get_instance(E->key());
 		if (!obj) {
-			ret.resize(ret.size() - 1); //ops
+			ret.resize(ret.size() - 1); // ops
 		} else {
 			ret[idx++] = obj;
 		}
@@ -415,7 +415,7 @@ Array Area::get_overlapping_areas() const {
 	for (const Map<ObjectID, AreaState>::Element *E = area_map.front(); E; E = E->next()) {
 		Object *obj = ObjectDB::get_instance(E->key());
 		if (!obj) {
-			ret.resize(ret.size() - 1); //ops
+			ret.resize(ret.size() - 1); // ops
 		} else {
 			ret[idx++] = obj;
 		}

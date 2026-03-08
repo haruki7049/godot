@@ -152,7 +152,7 @@ Error DynamicFontAtSize::_load() {
 		ERR_FAIL_V_MSG(ERR_UNCONFIGURED, "DynamicFont uninitialized.");
 	}
 
-	//error = FT_New_Face( library, src_path.utf8().get_data(),0,&face );
+	// error = FT_New_Face( library, src_path.utf8().get_data(),0,&face );
 
 	if (error == FT_Err_Unknown_File_Format) {
 		FT_Done_FreeType(library);
@@ -213,7 +213,7 @@ const Pair<const DynamicFontAtSize::Character *, DynamicFontAtSize *> DynamicFon
 	ERR_FAIL_COND_V(!chr, (Pair<const Character *, DynamicFontAtSize *>(NULL, NULL)));
 
 	if (!chr->found) {
-		//not found, try in fallbacks
+		// not found, try in fallbacks
 		for (int i = 0; i < p_fallbacks.size(); i++) {
 			DynamicFontAtSize *fb = const_cast<DynamicFontAtSize *>(p_fallbacks[i].ptr());
 			if (!fb->valid) {
@@ -231,7 +231,7 @@ const Pair<const DynamicFontAtSize::Character *, DynamicFontAtSize *> DynamicFon
 			return Pair<const Character *, DynamicFontAtSize *>(fallback_chr, fb);
 		}
 
-		//not found, try 0xFFFD to display 'not found'.
+		// not found, try 0xFFFD to display 'not found'.
 		const_cast<DynamicFontAtSize *>(this)->_update_char(0xFFFD);
 		chr = char_map.getptr(0xFFFD);
 		ERR_FAIL_COND_V(!chr, (Pair<const Character *, DynamicFontAtSize *>(NULL, NULL)));
@@ -381,7 +381,7 @@ DynamicFontAtSize::TexturePosition DynamicFontAtSize::_find_texture_pos_for_glyp
 			continue;
 		}
 
-		if (mw > ct.texture_size || mh > ct.texture_size) { //too big for this texture
+		if (mw > ct.texture_size || mh > ct.texture_size) { // too big for this texture
 			continue;
 		}
 
@@ -405,7 +405,7 @@ DynamicFontAtSize::TexturePosition DynamicFontAtSize::_find_texture_pos_for_glyp
 		}
 
 		if (ret.y == 0x7FFFFFFF || ret.y + mh > ct.texture_size) {
-			continue; //fail, could not fit it here
+			continue; // fail, could not fit it here
 		}
 
 		ret.index = i;
@@ -413,16 +413,16 @@ DynamicFontAtSize::TexturePosition DynamicFontAtSize::_find_texture_pos_for_glyp
 	}
 
 	if (ret.index == -1) {
-		//could not find texture to fit, create one
+		// could not find texture to fit, create one
 		ret.x = 0;
 		ret.y = 0;
 
 		int texsize = MAX(id.size * oversampling * 8, 256);
 		if (mw > texsize) {
-			texsize = mw; //special case, adapt to it?
+			texsize = mw; // special case, adapt to it?
 		}
 		if (mh > texsize) {
-			texsize = mh; //special case, adapt to it?
+			texsize = mh; // special case, adapt to it?
 		}
 
 		texsize = next_power_of_2(texsize);
@@ -431,10 +431,10 @@ DynamicFontAtSize::TexturePosition DynamicFontAtSize::_find_texture_pos_for_glyp
 
 		CharTexture tex;
 		tex.texture_size = texsize;
-		tex.imgdata.resize(texsize * texsize * p_color_size); //grayscale alpha
+		tex.imgdata.resize(texsize * texsize * p_color_size); // grayscale alpha
 
 		{
-			//zero texture
+			// zero texture
 			PoolVector<uint8_t>::Write w = tex.imgdata.write();
 			ERR_FAIL_COND_V(texsize * texsize * p_color_size > tex.imgdata.size(), ret);
 
@@ -455,7 +455,7 @@ DynamicFontAtSize::TexturePosition DynamicFontAtSize::_find_texture_pos_for_glyp
 			}
 		}
 		tex.offsets.resize(texsize);
-		for (int i = 0; i < texsize; i++) { //zero offsets
+		for (int i = 0; i < texsize; i++) { // zero offsets
 			tex.offsets.write[i] = 0;
 		}
 
@@ -482,7 +482,7 @@ DynamicFontAtSize::Character DynamicFontAtSize::_bitmap_to_character(FT_Bitmap b
 	TexturePosition tex_pos = _find_texture_pos_for_glyph(color_size, require_format, mw, mh);
 	ERR_FAIL_COND_V(tex_pos.index < 0, Character::not_found());
 
-	//fit character in char texture
+	// fit character in char texture
 
 	CharTexture &tex = textures.write[tex_pos.index];
 
@@ -497,11 +497,11 @@ DynamicFontAtSize::Character DynamicFontAtSize::_bitmap_to_character(FT_Bitmap b
 					case FT_PIXEL_MODE_MONO: {
 						int byte = i * bitmap.pitch + (j >> 3);
 						int bit = 1 << (7 - (j % 8));
-						wr[ofs + 0] = 255; //grayscale as 1
+						wr[ofs + 0] = 255; // grayscale as 1
 						wr[ofs + 1] = (bitmap.buffer[byte] & bit) ? 255 : 0;
 					} break;
 					case FT_PIXEL_MODE_GRAY:
-						wr[ofs + 0] = 255; //grayscale as 1
+						wr[ofs + 0] = 255; // grayscale as 1
 						wr[ofs + 1] = bitmap.buffer[i * bitmap.pitch + j];
 						break;
 					case FT_PIXEL_MODE_BGRA: {
@@ -520,7 +520,7 @@ DynamicFontAtSize::Character DynamicFontAtSize::_bitmap_to_character(FT_Bitmap b
 		}
 	}
 
-	//blit to image and texture
+	// blit to image and texture
 	{
 		Ref<Image> img = memnew(Image(tex.texture_size, tex.texture_size, 0, require_format, tex.imgdata));
 
@@ -528,7 +528,7 @@ DynamicFontAtSize::Character DynamicFontAtSize::_bitmap_to_character(FT_Bitmap b
 			tex.texture.instance();
 			tex.texture->create_from_image(img, Texture::FLAG_VIDEO_SURFACE | texture_flags);
 		} else {
-			tex.texture->set_data(img); //update
+			tex.texture->set_data(img); // update
 		}
 	}
 
@@ -924,7 +924,7 @@ void DynamicFont::set_fallback(int p_idx, const Ref<DynamicFontData> &p_data) {
 void DynamicFont::add_fallback(const Ref<DynamicFontData> &p_data) {
 	ERR_FAIL_COND(p_data.is_null());
 	fallbacks.push_back(p_data);
-	fallback_data_at_size.push_back(fallbacks.write[fallbacks.size() - 1]->_get_dynamic_font_at_size(cache_id)); //const..
+	fallback_data_at_size.push_back(fallbacks.write[fallbacks.size() - 1]->_get_dynamic_font_at_size(cache_id)); // const..
 	if (outline_cache_id.outline_size > 0) {
 		fallback_outline_data_at_size.push_back(fallbacks.write[fallbacks.size() - 1]->_get_dynamic_font_at_size(outline_cache_id));
 	}

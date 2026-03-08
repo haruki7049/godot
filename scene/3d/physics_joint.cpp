@@ -548,7 +548,7 @@ SliderJoint::SliderJoint() {
 	params[PARAM_LINEAR_LIMIT_DAMPING] = 1.0;
 	params[PARAM_LINEAR_MOTION_SOFTNESS] = 1.0;
 	params[PARAM_LINEAR_MOTION_RESTITUTION] = 0.7;
-	params[PARAM_LINEAR_MOTION_DAMPING] = 0; //1.0;
+	params[PARAM_LINEAR_MOTION_DAMPING] = 0; // 1.0;
 	params[PARAM_LINEAR_ORTHOGONAL_SOFTNESS] = 1.0;
 	params[PARAM_LINEAR_ORTHOGONAL_RESTITUTION] = 0.7;
 	params[PARAM_LINEAR_ORTHOGONAL_DAMPING] = 1.0;
@@ -557,7 +557,7 @@ SliderJoint::SliderJoint() {
 	params[PARAM_ANGULAR_LIMIT_LOWER] = 0;
 	params[PARAM_ANGULAR_LIMIT_SOFTNESS] = 1.0;
 	params[PARAM_ANGULAR_LIMIT_RESTITUTION] = 0.7;
-	params[PARAM_ANGULAR_LIMIT_DAMPING] = 0; //1.0;
+	params[PARAM_ANGULAR_LIMIT_DAMPING] = 0; // 1.0;
 	params[PARAM_ANGULAR_MOTION_SOFTNESS] = 1.0;
 	params[PARAM_ANGULAR_MOTION_RESTITUTION] = 0.7;
 	params[PARAM_ANGULAR_MOTION_DAMPING] = 1.0;
@@ -625,8 +625,8 @@ float ConeTwistJoint::get_param(Param p_param) const {
 
 RID ConeTwistJoint::_configure_joint(PhysicsBody *body_a, PhysicsBody *body_b) {
 	Transform gt = get_global_transform();
-	//Vector3 cone_twistpos = gt.origin;
-	//Vector3 cone_twistdir = gt.basis.get_axis(2);
+	// Vector3 cone_twistpos = gt.origin;
+	// Vector3 cone_twistdir = gt.basis.get_axis(2);
 
 	Transform ainv = body_a->get_global_transform().affine_inverse();
 
@@ -946,8 +946,8 @@ bool Generic6DOFJoint::get_flag_z(Flag p_flag) const {
 
 RID Generic6DOFJoint::_configure_joint(PhysicsBody *body_a, PhysicsBody *body_b) {
 	Transform gt = get_global_transform();
-	//Vector3 cone_twistpos = gt.origin;
-	//Vector3 cone_twistdir = gt.basis.get_axis(2);
+	// Vector3 cone_twistpos = gt.origin;
+	// Vector3 cone_twistdir = gt.basis.get_axis(2);
 
 	Transform ainv = body_a->get_global_transform().affine_inverse();
 

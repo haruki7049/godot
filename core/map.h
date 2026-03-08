@@ -337,7 +337,7 @@ private:
 		new_node->left = _data._nil;
 		new_node->_key = p_key;
 		new_node->_value = p_value;
-		//new_node->data=_data;
+		// new_node->data=_data;
 
 		if (new_parent == _data._root || less(p_key, new_parent->_key)) {
 			new_parent->left = new_node;

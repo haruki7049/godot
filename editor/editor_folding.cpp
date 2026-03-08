@@ -90,7 +90,7 @@ void EditorFolding::load_resource_folding(RES p_resource, const String &p_path) 
 void EditorFolding::_fill_folds(const Node *p_root, const Node *p_node, Array &p_folds, Array &resource_folds, Array &nodes_folded, Set<RES> &resources) {
 	if (p_root != p_node) {
 		if (!p_node->get_owner()) {
-			return; //not owned, bye
+			return; // not owned, bye
 		}
 		if (p_node->get_owner() != p_root && !p_root->is_editable_instance(p_node)) {
 			return;
@@ -131,7 +131,7 @@ void EditorFolding::save_scene_folding(const Node *p_scene, const String &p_path
 	ERR_FAIL_NULL(p_scene);
 
 	FileAccessRef file_check = FileAccess::create(FileAccess::ACCESS_RESOURCES);
-	if (!file_check->file_exists(p_path)) { //This can happen when creating scene from FilesystemDock. It has path, but no file.
+	if (!file_check->file_exists(p_path)) { // This can happen when creating scene from FilesystemDock. It has path, but no file.
 		return;
 	}
 
@@ -239,16 +239,16 @@ void EditorFolding::_do_object_unfolds(Object *p_object, Set<RES> &resources) {
 			}
 		}
 
-		//can unfold
+		// can unfold
 		if (E->get().usage & PROPERTY_USAGE_EDITOR) {
-			if (group != "") { //group
+			if (group != "") { // group
 				if (group_base == String() || E->get().name.begins_with(group_base)) {
 					bool can_revert = EditorPropertyRevert::can_property_revert(p_object, E->get().name);
 					if (can_revert) {
 						unfold_group.insert(group);
 					}
 				}
-			} else { //path
+			} else { // path
 				int last = E->get().name.find_last("/");
 				if (last != -1) {
 					bool can_revert = EditorPropertyRevert::can_property_revert(p_object, E->get().name);
@@ -276,7 +276,7 @@ void EditorFolding::_do_object_unfolds(Object *p_object, Set<RES> &resources) {
 void EditorFolding::_do_node_unfolds(Node *p_root, Node *p_node, Set<RES> &resources) {
 	if (p_root != p_node) {
 		if (!p_node->get_owner()) {
-			return; //not owned, bye
+			return; // not owned, bye
 		}
 		if (p_node->get_owner() != p_root && !p_root->is_editable_instance(p_node)) {
 			return;

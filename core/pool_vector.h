@@ -39,7 +39,7 @@
 #include "core/ustring.h"
 
 struct MemoryPool {
-	//avoid accessing these directly, must be public for template access
+	// avoid accessing these directly, must be public for template access
 
 	static PoolAllocator *memory_pool;
 	static uint8_t *pool_memory;
@@ -88,10 +88,10 @@ class PoolVector {
 
 		// Refcount should not be zero, otherwise it's a misuse of COW
 		if (alloc->refcount.get() == 1) {
-			return; //nothing to do
+			return; // nothing to do
 		}
 
-		//must allocate something
+		// must allocate something
 
 		MemoryPool::alloc_mutex.lock();
 		if (MemoryPool::allocs_used == MemoryPool::alloc_count) {
@@ -101,13 +101,13 @@ class PoolVector {
 
 		MemoryPool::Alloc *old_alloc = alloc;
 
-		//take one from the free list
+		// take one from the free list
 		alloc = MemoryPool::free_list;
 		MemoryPool::free_list = alloc->free_list;
-		//increment the used counter
+		// increment the used counter
 		MemoryPool::allocs_used++;
 
-		//copy the alloc data
+		// copy the alloc data
 		alloc->size = old_alloc->size;
 		alloc->refcount.init();
 		alloc->pool_id = POOL_ALLOCATOR_INVALID_ID;
@@ -142,7 +142,7 @@ class PoolVector {
 		}
 
 		if (old_alloc->refcount.unref()) {
-			//this should never happen but..
+			// this should never happen but..
 
 #ifdef DEBUG_ENABLED
 			MemoryPool::alloc_mutex.lock();
@@ -162,9 +162,9 @@ class PoolVector {
 			}
 
 			if (MemoryPool::memory_pool) {
-				//resize memory pool
-				//if none, create
-				//if some resize
+				// resize memory pool
+				// if none, create
+				// if some resize
 			} else {
 				memfree(old_alloc->mem);
 				old_alloc->mem = nullptr;
@@ -205,7 +205,7 @@ class PoolVector {
 			return;
 		}
 
-		//must be disposed!
+		// must be disposed!
 
 		{
 			int cur_elements = alloc->size / sizeof(T);
@@ -228,9 +228,9 @@ class PoolVector {
 #endif
 
 		if (MemoryPool::memory_pool) {
-			//resize memory pool
-			//if none, create
-			//if some resize
+			// resize memory pool
+			// if none, create
+			// if some resize
 		} else {
 			memfree(alloc->mem);
 			alloc->mem = nullptr;
@@ -259,7 +259,7 @@ public:
 			if (alloc) {
 				if (alloc->lock.increment() == 1) {
 					if (MemoryPool::memory_pool) {
-						//lock it and get mem
+						// lock it and get mem
 					}
 				}
 
@@ -271,7 +271,7 @@ public:
 			if (alloc) {
 				if (alloc->lock.decrement() == 0) {
 					if (MemoryPool::memory_pool) {
-						//put mem back
+						// put mem back
 					}
 				}
 
@@ -345,7 +345,7 @@ public:
 	Write write() {
 		Write w;
 		if (alloc) {
-			_copy_on_write(); //make sure there is only one being accessed
+			_copy_on_write(); // make sure there is only one being accessed
 			w._ref(alloc);
 		}
 		return w;
@@ -502,36 +502,36 @@ Error PoolVector<T>::resize(int p_size) {
 
 	if (alloc == nullptr) {
 		if (p_size == 0) {
-			return OK; //nothing to do here
+			return OK; // nothing to do here
 		}
 
-		//must allocate something
+		// must allocate something
 		MemoryPool::alloc_mutex.lock();
 		if (MemoryPool::allocs_used == MemoryPool::alloc_count) {
 			MemoryPool::alloc_mutex.unlock();
 			ERR_FAIL_V_MSG(ERR_OUT_OF_MEMORY, "All memory pool allocations are in use.");
 		}
 
-		//take one from the free list
+		// take one from the free list
 		alloc = MemoryPool::free_list;
 		MemoryPool::free_list = alloc->free_list;
-		//increment the used counter
+		// increment the used counter
 		MemoryPool::allocs_used++;
 
-		//cleanup the alloc
+		// cleanup the alloc
 		alloc->size = 0;
 		alloc->refcount.init();
 		alloc->pool_id = POOL_ALLOCATOR_INVALID_ID;
 		MemoryPool::alloc_mutex.unlock();
 
 	} else {
-		ERR_FAIL_COND_V_MSG(alloc->lock.get() > 0, ERR_LOCKED, "Can't resize PoolVector if locked."); //can't resize if locked!
+		ERR_FAIL_COND_V_MSG(alloc->lock.get() > 0, ERR_LOCKED, "Can't resize PoolVector if locked."); // can't resize if locked!
 	}
 
 	size_t new_size = sizeof(T) * p_size;
 
 	if (alloc->size == new_size) {
-		return OK; //nothing to do
+		return OK; // nothing to do
 	}
 
 	if (p_size == 0) {
@@ -555,9 +555,9 @@ Error PoolVector<T>::resize(int p_size) {
 
 	if (p_size > cur_elements) {
 		if (MemoryPool::memory_pool) {
-			//resize memory pool
-			//if none, create
-			//if some resize
+			// resize memory pool
+			// if none, create
+			// if some resize
 		} else {
 			if (alloc->size == 0) {
 				alloc->mem = memalloc(new_size);
@@ -583,9 +583,9 @@ Error PoolVector<T>::resize(int p_size) {
 		}
 
 		if (MemoryPool::memory_pool) {
-			//resize memory pool
-			//if none, create
-			//if some resize
+			// resize memory pool
+			// if none, create
+			// if some resize
 		} else {
 			if (new_size == 0) {
 				memfree(alloc->mem);

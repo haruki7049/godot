@@ -111,7 +111,7 @@ class Body2DSW : public CollisionObject2DSW {
 		Vector2 collider_velocity_at_pos;
 	};
 
-	Vector<Contact> contacts; //no contacts by default
+	Vector<Contact> contacts; // no contacts by default
 	int contact_count;
 
 	struct ForceIntegrationCallback {
@@ -281,7 +281,7 @@ public:
 		if (mode > Physics2DServer::BODY_MODE_KINEMATIC) {
 			return new_transform.get_origin() - get_transform().get_origin();
 		} else if (mode == Physics2DServer::BODY_MODE_KINEMATIC) {
-			return get_transform().get_origin() - new_transform.get_origin(); //kinematic simulates forward
+			return get_transform().get_origin() - new_transform.get_origin(); // kinematic simulates forward
 		}
 		return Vector2();
 	}
@@ -295,7 +295,7 @@ public:
 	~Body2DSW();
 };
 
-//add contact inline
+// add contact inline
 
 void Body2DSW::add_contact(const Vector2 &p_local_pos, const Vector2 &p_local_normal, real_t p_depth, int p_local_shape, const Vector2 &p_collider_pos, int p_collider_shape, ObjectID p_collider_instance_id, const RID &p_collider, const Vector2 &p_collider_velocity_at_pos) {
 	int c_max = contacts.size();
@@ -324,7 +324,7 @@ void Body2DSW::add_contact(const Vector2 &p_local_pos, const Vector2 &p_local_no
 			idx = least_deep;
 		}
 		if (idx == -1) {
-			return; //none least deepe than this
+			return; // none least deepe than this
 		}
 	}
 

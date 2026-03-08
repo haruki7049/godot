@@ -21,9 +21,9 @@ in vec2 uv_interp;
 /* clang-format on */
 in vec2 pos_interp;
 
-uniform sampler2D source_diffuse; //texunit:0
-uniform sampler2D source_normal_roughness; //texunit:1
-uniform sampler2D source_depth; //texunit:2
+uniform sampler2D source_diffuse; // texunit:0
+uniform sampler2D source_normal_roughness; // texunit:1
+uniform sampler2D source_depth; // texunit:2
 
 uniform float camera_z_near;
 uniform float camera_z_far;
@@ -75,13 +75,13 @@ void main() {
 		frag_color = vec4(0.0);
 		return;
 	}
-	//ray_dir = normalize(view_dir - normal * dot(normal,view_dir) * 2.0);
+	// ray_dir = normalize(view_dir - normal * dot(normal,view_dir) * 2.0);
 
-	//ray_dir = normalize(vec3(1,1,-1));
+	// ray_dir = normalize(vec3(1,1,-1));
 
 	////////////////
 
-	//make ray length and clip it against the near plane (don't want to trace beyond visible)
+	// make ray length and clip it against the near plane (don't want to trace beyond visible)
 	float ray_len = (vertex.z + ray_dir.z * camera_z_far) > -camera_z_near ? (-camera_z_near - vertex.z) / ray_dir.z : camera_z_far;
 	vec3 ray_end = vertex + ray_dir * ray_len;
 
@@ -91,7 +91,7 @@ void main() {
 	vec2 vp_line_end = view_to_screen(ray_end, w_end);
 	vec2 vp_line_dir = vp_line_end - vp_line_begin;
 
-	//we need to interpolate w along the ray, to generate perspective correct reflections
+	// we need to interpolate w along the ray, to generate perspective correct reflections
 
 	w_begin = 1.0 / w_begin;
 	w_end = 1.0 / w_end;
@@ -115,13 +115,13 @@ void main() {
 	z_dir *= line_clip;
 	w_dir *= line_clip;
 
-	//clip z and w advance to line advance
-	vec2 line_advance = normalize(line_dir); //down to pixel
+	// clip z and w advance to line advance
+	vec2 line_advance = normalize(line_dir); // down to pixel
 	float step_size = length(line_advance) / length(line_dir);
 	float z_advance = z_dir * step_size; // adapt z advance to line advance
 	float w_advance = w_dir * step_size; // adapt w advance to line advance
 
-	//make line advance faster if direction is closer to pixel edges (this avoids sampling the same pixel twice)
+	// make line advance faster if direction is closer to pixel edges (this avoids sampling the same pixel twice)
 	float advance_angle_adj = 1.0 / max(abs(line_advance.x), abs(line_advance.y));
 	line_advance *= advance_angle_adj; // adapt z advance to line advance
 	z_advance *= advance_angle_adj;
@@ -144,7 +144,7 @@ void main() {
 		z += z_advance;
 		w += w_advance;
 
-		//convert to linear depth
+		// convert to linear depth
 
 		depth = texture(source_depth, pos * pixel_size).r * 2.0 - 1.0;
 #ifdef USE_ORTHOGONAL_PROJECTION
@@ -158,9 +158,9 @@ void main() {
 		z_to = z / w;
 
 		if (depth > z_to) {
-			//if depth was surpassed
+			// if depth was surpassed
 			if (depth <= max(z_to, z_from) + depth_tolerance) {
-				//check the depth tolerance
+				// check the depth tolerance
 				found = true;
 			}
 			break;
@@ -173,18 +173,18 @@ void main() {
 	if (found) {
 		float margin_blend = 1.0;
 
-		vec2 margin = vec2((viewport_size.x + viewport_size.y) * 0.5 * 0.05); //make a uniform margin
+		vec2 margin = vec2((viewport_size.x + viewport_size.y) * 0.5 * 0.05); // make a uniform margin
 		if (any(bvec4(lessThan(pos, -margin), greaterThan(pos, viewport_size + margin)))) {
-			//clip outside screen + margin
+			// clip outside screen + margin
 			frag_color = vec4(0.0);
 			return;
 		}
 
 		{
-			//blend fading out towards external margin
+			// blend fading out towards external margin
 			vec2 margin_grad = mix(pos - viewport_size, -pos, lessThan(pos, vec2(0.0)));
 			margin_blend = 1.0 - smoothstep(0.0, margin.x, max(margin_grad.x, margin_grad.y));
-			//margin_blend=1.0;
+			// margin_blend=1.0;
 		}
 
 		vec2 final_pos;
@@ -197,16 +197,16 @@ void main() {
 #ifdef REFLECT_ROUGHNESS
 
 		vec4 final_color;
-		//if roughness is enabled, do screen space cone tracing
+		// if roughness is enabled, do screen space cone tracing
 		if (roughness > 0.001) {
 			///////////////////////////////////////////////////////////////////////////////////////
-			//use a blurred version (in consecutive mipmaps) of the screen to simulate roughness
+			// use a blurred version (in consecutive mipmaps) of the screen to simulate roughness
 
 			float gloss = 1.0 - roughness;
 			float cone_angle = roughness * M_PI * 0.5;
 			vec2 cone_dir = final_pos - line_begin;
 			float cone_len = length(cone_dir);
-			cone_dir = normalize(cone_dir); //will be used normalized from now on
+			cone_dir = normalize(cone_dir); // will be used normalized from now on
 			float max_mipmap = filter_mipmap_levels - 1.0;
 			float gloss_mult = gloss;
 
@@ -214,16 +214,16 @@ void main() {
 			final_color = vec4(0.0);
 
 			for (int i = 0; i < 7; i++) {
-				float op_len = 2.0 * tan(cone_angle) * cone_len; //opposite side of iso triangle
+				float op_len = 2.0 * tan(cone_angle) * cone_len; // opposite side of iso triangle
 				float radius;
 				{
-					//fit to sphere inside cone (sphere ends at end of cone), something like this:
-					// ___
-					// \O/
-					//  V
+					// fit to sphere inside cone (sphere ends at end of cone), something like this:
+					//  ___
+					//  \O/
+					//   V
 					//
-					// as it avoids bleeding from beyond the reflection as much as possible. As a plus
-					// it also makes the rough reflection more elongated.
+					//  as it avoids bleeding from beyond the reflection as much as possible. As a plus
+					//  it also makes the rough reflection more elongated.
 					float a = op_len;
 					float h = cone_len;
 					float a2 = a * a;
@@ -231,20 +231,20 @@ void main() {
 					radius = (a * (sqrt(a2 + fh2) - a)) / (4.0f * h);
 				}
 
-				//find the place where screen must be sampled
+				// find the place where screen must be sampled
 				vec2 sample_pos = (line_begin + cone_dir * (cone_len - radius)) * pixel_size;
-				//radius is in pixels, so it's natural that log2(radius) maps to the right mipmap for the amount of pixels
+				// radius is in pixels, so it's natural that log2(radius) maps to the right mipmap for the amount of pixels
 				float mipmap = clamp(log2(radius), 0.0, max_mipmap);
 
-				//mipmap = max(mipmap-1.0,0.0);
-				//do sampling
+				// mipmap = max(mipmap-1.0,0.0);
+				// do sampling
 
 				vec4 sample_color;
 				{
 					sample_color = textureLod(source_diffuse, sample_pos, mipmap);
 				}
 
-				//multiply by gloss
+				// multiply by gloss
 				sample_color.rgb *= gloss_mult;
 				sample_color.a = gloss_mult;
 
@@ -264,7 +264,7 @@ void main() {
 					break;
 				}
 
-				cone_len -= radius * 2.0; //go to next (smaller) circle.
+				cone_len -= radius * 2.0; // go to next (smaller) circle.
 
 				gloss_mult *= gloss;
 			}

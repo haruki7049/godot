@@ -274,12 +274,12 @@ typedef godot_variant (*godot_gdnative_procedure_fn)(godot_array *);
 typedef godot_variant (*native_call_cb)(void *, godot_array *);
 void GDAPI godot_register_native_call_type(const char *p_call_type, native_call_cb p_callback);
 
-//using these will help Godot track how much memory is in use in debug mode
+// using these will help Godot track how much memory is in use in debug mode
 void GDAPI *godot_alloc(int p_bytes);
 void GDAPI *godot_realloc(void *p_ptr, int p_bytes);
 void GDAPI godot_free(void *p_ptr);
 
-//print using Godot's error handler list
+// print using Godot's error handler list
 void GDAPI godot_print_error(const char *p_description, const char *p_function, const char *p_file, int p_line);
 void GDAPI godot_print_warning(const char *p_description, const char *p_function, const char *p_file, int p_line);
 void GDAPI godot_print(const godot_string *p_message);
@@ -288,7 +288,7 @@ void GDAPI godot_print(const godot_string *p_message);
 
 bool GDAPI godot_is_instance_valid(const godot_object *p_object);
 
-//tags used for safe dynamic casting
+// tags used for safe dynamic casting
 void GDAPI *godot_get_class_tag(const godot_string_name *p_class);
 godot_object GDAPI *godot_object_cast_to(const godot_object *p_object, void *p_class_tag);
 

@@ -353,8 +353,8 @@ void CurveEditor::open_context_menu(Vector2 pos) {
 				_context_menu->add_check_item(TTR("Linear"), CONTEXT_LINEAR);
 
 				bool is_linear = _selected_tangent == TANGENT_LEFT ?
-										   _curve_ref->get_point_left_mode(_selected_point) == Curve::TANGENT_LINEAR :
-										   _curve_ref->get_point_right_mode(_selected_point) == Curve::TANGENT_LINEAR;
+										 _curve_ref->get_point_left_mode(_selected_point) == Curve::TANGENT_LINEAR :
+										 _curve_ref->get_point_right_mode(_selected_point) == Curve::TANGENT_LINEAR;
 
 				_context_menu->set_item_checked(_context_menu->get_item_index(CONTEXT_LINEAR), is_linear);
 
@@ -730,7 +730,7 @@ void CurveEditor::_draw() {
 		Vector2 pos = curve.get_point_position(i);
 		draw_rect(Rect2(get_view_pos(pos), Vector2(1, 1)).grow(Math::round(3 * EDSCALE)), i == _selected_point ? selected_point_color : point_color);
 		// TODO Circles are prettier. Needs a fix! Or a texture
-		//draw_circle(pos, 2, point_color);
+		// draw_circle(pos, 2, point_color);
 	}
 
 	// Hover

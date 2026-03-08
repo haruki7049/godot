@@ -53,7 +53,7 @@ void WorldEnvironment::set_environment(const Ref<Environment> &p_environment) {
 	if (is_inside_tree() && environment.is_valid() && get_viewport()->find_world()->get_environment() == environment) {
 		get_viewport()->find_world()->set_environment(Ref<Environment>());
 		remove_from_group("_world_environment_" + itos(get_viewport()->find_world()->get_scenario().get_id()));
-		//clean up
+		// clean up
 	}
 
 	environment = p_environment;
@@ -97,7 +97,7 @@ String WorldEnvironment::get_configuration_warning() const {
 	}
 
 	// Commenting this warning for now, I think it makes no sense. If anyone can figure out what its supposed to do, feedback welcome. Else it should be deprecated.
-	//if (environment.is_valid() && get_viewport() && !get_viewport()->get_camera() && environment->get_background() != Environment::BG_CANVAS) {
+	// if (environment.is_valid() && get_viewport() && !get_viewport()->get_camera() && environment->get_background() != Environment::BG_CANVAS) {
 	//	return TTR("This WorldEnvironment is ignored. Either add a Camera (for 3D scenes) or set this environment's Background Mode to Canvas (for 2D scenes).");
 	//}
 

@@ -88,9 +88,9 @@ public:
 
 	/* MULTITHREAD FUNCTIONS */
 
-	//some VMs need to be notified of thread creation/exiting to allocate a stack
-	// void thread_enter() {}
-	// void thread_exit() {}
+	// some VMs need to be notified of thread creation/exiting to allocate a stack
+	//  void thread_enter() {}
+	//  void thread_exit() {}
 
 	/* DEBUGGER FUNCTIONS */
 

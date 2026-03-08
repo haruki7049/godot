@@ -32,7 +32,7 @@
 #include "collision_solver_2d_sat.h"
 
 #define collision_solver sat_2d_calculate_penetration
-//#define collision_solver gjk_epa_calculate_penetration
+// #define collision_solver gjk_epa_calculate_penetration
 
 bool CollisionSolver2DSW::solve_static_line(const Shape2DSW *p_shape_A, const Transform2D &p_transform_A, const Shape2DSW *p_shape_B, const Transform2D &p_transform_B, CallbackResult p_result_callback, void *p_userdata, bool p_swap_result) {
 	const LineShape2DSW *line = static_cast<const LineShape2DSW *>(p_shape_A);
@@ -82,7 +82,7 @@ bool CollisionSolver2DSW::solve_raycast(const Shape2DSW *p_shape_A, const Vector
 	Vector2 from = p_transform_A.get_origin();
 	Vector2 to = from + p_transform_A[1] * ray->get_length();
 	if (p_motion_A != Vector2()) {
-		//not the best but should be enough
+		// not the best but should be enough
 		Vector2 normal = (to - from).normalized();
 		to += normal * MAX(0.0, normal.dot(p_motion_A));
 	}
@@ -171,7 +171,7 @@ bool CollisionSolver2DSW::solve_concave(const Shape2DSW *p_shape_A, const Transf
 	Transform2D rel_transform = p_transform_A;
 	rel_transform.elements[2] -= p_transform_B.get_origin();
 
-	//quickly compute a local Rect2
+	// quickly compute a local Rect2
 
 	Rect2 local_aabb;
 	for (int i = 0; i < 2; i++) {
@@ -222,7 +222,7 @@ bool CollisionSolver2DSW::solve(const Shape2DSW *p_shape_A, const Transform2D &p
 
 	} else if (type_A == Physics2DServer::SHAPE_RAY) {
 		if (type_B == Physics2DServer::SHAPE_RAY) {
-			return false; //no ray-ray
+			return false; // no ray-ray
 		}
 
 		if (swap) {

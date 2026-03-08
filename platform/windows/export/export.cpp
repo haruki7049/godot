@@ -206,12 +206,12 @@ Error EditorExportPlatformWindows::_code_sign(const Ref<EditorExportPreset> &p_p
 
 	args.push_back("sign");
 
-	//identity
+	// identity
 #ifdef WINDOWS_ENABLED
 	int id_type = p_preset->get("codesign/identity_type");
-	if (id_type == 0) { //auto select
+	if (id_type == 0) { // auto select
 		args.push_back("/a");
-	} else if (id_type == 1) { //pkcs12
+	} else if (id_type == 1) { // pkcs12
 		if (p_preset->get("codesign/identity") != "") {
 			args.push_back("/f");
 			args.push_back(p_preset->get("codesign/identity"));
@@ -219,7 +219,7 @@ Error EditorExportPlatformWindows::_code_sign(const Ref<EditorExportPreset> &p_p
 			EditorNode::add_io_error("codesign: no identity found");
 			return FAILED;
 		}
-	} else if (id_type == 2) { //Windows certificate store
+	} else if (id_type == 2) { // Windows certificate store
 		if (p_preset->get("codesign/identity") != "") {
 			args.push_back("/sha1");
 			args.push_back(p_preset->get("codesign/identity"));
@@ -241,7 +241,7 @@ Error EditorExportPlatformWindows::_code_sign(const Ref<EditorExportPreset> &p_p
 	}
 #endif
 
-	//password
+	// password
 	if (p_preset->get("codesign/password") != "") {
 #ifdef WINDOWS_ENABLED
 		args.push_back("/p");
@@ -251,7 +251,7 @@ Error EditorExportPlatformWindows::_code_sign(const Ref<EditorExportPreset> &p_p
 		args.push_back(p_preset->get("codesign/password"));
 	}
 
-	//timestamp
+	// timestamp
 	if (p_preset->get("codesign/timestamp")) {
 		if (p_preset->get("codesign/timestamp_server") != "") {
 #ifdef WINDOWS_ENABLED
@@ -273,7 +273,7 @@ Error EditorExportPlatformWindows::_code_sign(const Ref<EditorExportPreset> &p_p
 		}
 	}
 
-	//digest
+	// digest
 #ifdef WINDOWS_ENABLED
 	args.push_back("/fd");
 #else
@@ -285,7 +285,7 @@ Error EditorExportPlatformWindows::_code_sign(const Ref<EditorExportPreset> &p_p
 		args.push_back("sha256");
 	}
 
-	//description
+	// description
 	if (p_preset->get("codesign/description") != "") {
 #ifdef WINDOWS_ENABLED
 		args.push_back("/d");
@@ -295,7 +295,7 @@ Error EditorExportPlatformWindows::_code_sign(const Ref<EditorExportPreset> &p_p
 		args.push_back(p_preset->get("codesign/description"));
 	}
 
-	//user options
+	// user options
 	PoolStringArray user_args = p_preset->get("codesign/custom_options");
 	for (int i = 0; i < user_args.size(); i++) {
 		String user_arg = user_args[i].strip_edges();

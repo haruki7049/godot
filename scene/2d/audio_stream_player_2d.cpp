@@ -42,10 +42,10 @@ void AudioStreamPlayer2D::_mix_audio() {
 
 	if (setseek.get() >= 0.0) {
 		stream_playback->start(setseek.get());
-		setseek.set(-1.0); //reset seek
+		setseek.set(-1.0); // reset seek
 	}
 
-	//get data
+	// get data
 	AudioFrame *buffer = mix_buffer.ptrw();
 	int buffer_size = mix_buffer.size();
 
@@ -56,12 +56,12 @@ void AudioStreamPlayer2D::_mix_audio() {
 
 	stream_playback->mix(buffer, pitch_scale, buffer_size);
 
-	//write all outputs
+	// write all outputs
 	int oc = output_count.get();
 	for (int i = 0; i < oc; i++) {
 		Output current = outputs[i];
 
-		//see if current output exists, to keep volume ramp
+		// see if current output exists, to keep volume ramp
 		bool found = false;
 		for (int j = i; j < prev_output_count; j++) {
 			if (prev_outputs[j].viewport == current.viewport) {
@@ -74,15 +74,15 @@ void AudioStreamPlayer2D::_mix_audio() {
 		}
 
 		if (!found) {
-			//create new if was not used before
+			// create new if was not used before
 			if (prev_output_count < MAX_OUTPUTS) {
-				prev_outputs[prev_output_count] = prev_outputs[i]; //may be owned by another viewport
+				prev_outputs[prev_output_count] = prev_outputs[i]; // may be owned by another viewport
 				prev_output_count++;
 			}
 			prev_outputs[i] = current;
 		}
 
-		//mix!
+		// mix!
 		AudioFrame target_volume = stream_paused_fade_out ? AudioFrame(0.f, 0.f) : current.vol;
 		AudioFrame vol_prev = stream_paused_fade_in ? AudioFrame(0.f, 0.f) : prev_outputs[i].vol;
 		AudioFrame vol_inc = (target_volume - vol_prev) / float(buffer_size);
@@ -92,7 +92,7 @@ void AudioStreamPlayer2D::_mix_audio() {
 
 		if (cc == 1) {
 			if (!AudioServer::get_singleton()->thread_has_channel_mix_buffer(current.bus_index, 0)) {
-				continue; //may have been removed
+				continue; // may have been removed
 			}
 
 			AudioFrame *target = AudioServer::get_singleton()->thread_get_channel_mix_buffer(current.bus_index, 0);
@@ -108,7 +108,7 @@ void AudioStreamPlayer2D::_mix_audio() {
 
 			for (int k = 0; k < cc; k++) {
 				if (!AudioServer::get_singleton()->thread_has_channel_mix_buffer(current.bus_index, k)) {
-					valid = false; //may have been removed
+					valid = false; // may have been removed
 					break;
 				}
 
@@ -133,7 +133,7 @@ void AudioStreamPlayer2D::_mix_audio() {
 
 	prev_output_count = oc;
 
-	//stream is no longer active, disable this.
+	// stream is no longer active, disable this.
 	if (!stream_playback->is_playing()) {
 		active.clear();
 	}
@@ -167,7 +167,7 @@ void AudioStreamPlayer2D::_notification(int p_what) {
 	}
 
 	if (p_what == NOTIFICATION_INTERNAL_PHYSICS_PROCESS) {
-		//update anything related to position first, if possible of course
+		// update anything related to position first, if possible of course
 
 		if (!output_ready.is_set()) {
 			List<Viewport *> viewports;
@@ -180,7 +180,7 @@ void AudioStreamPlayer2D::_notification(int p_what) {
 
 			int bus_index = AudioServer::get_singleton()->thread_find_bus_index(bus);
 
-			//check if any area is diverting sound into a bus
+			// check if any area is diverting sound into a bus
 
 			Physics2DDirectSpaceState *space_state = Physics2DServer::get_singleton()->space_get_direct_state(world_2d->get_space());
 
@@ -207,23 +207,23 @@ void AudioStreamPlayer2D::_notification(int p_what) {
 			for (List<Viewport *>::Element *E = viewports.front(); E; E = E->next()) {
 				Viewport *vp = E->get();
 				if (vp->is_audio_listener_2d()) {
-					//compute matrix to convert to screen
+					// compute matrix to convert to screen
 					Transform2D to_screen = vp->get_global_canvas_transform() * vp->get_canvas_transform();
 					Vector2 screen_size = vp->get_visible_rect().size;
 
-					//screen in global is used for attenuation
+					// screen in global is used for attenuation
 					Vector2 screen_in_global = to_screen.affine_inverse().xform(screen_size * 0.5);
 
-					float dist = global_pos.distance_to(screen_in_global); //distance to screen center
+					float dist = global_pos.distance_to(screen_in_global); // distance to screen center
 
 					if (dist > max_distance) {
-						continue; //can't hear this sound in this viewport
+						continue; // can't hear this sound in this viewport
 					}
 
 					float multiplier = Math::pow(1.0f - dist / max_distance, attenuation);
-					multiplier *= Math::db2linear(volume_db); //also apply player volume!
+					multiplier *= Math::db2linear(volume_db); // also apply player volume!
 
-					//point in screen is used for panning
+					// point in screen is used for panning
 					Vector2 point_in_screen = to_screen.xform(global_pos);
 
 					float pan = CLAMP(point_in_screen.x / screen_size.width, 0.0, 1.0);
@@ -233,7 +233,7 @@ void AudioStreamPlayer2D::_notification(int p_what) {
 
 					outputs[new_output_count].vol = AudioFrame(l, r) * multiplier;
 					outputs[new_output_count].bus_index = bus_index;
-					outputs[new_output_count].viewport = vp; //keep pointer only for reference
+					outputs[new_output_count].viewport = vp; // keep pointer only for reference
 					new_output_count++;
 					if (new_output_count == MAX_OUTPUTS) {
 						break;
@@ -245,19 +245,19 @@ void AudioStreamPlayer2D::_notification(int p_what) {
 			output_ready.set();
 		}
 
-		//start playing if requested
+		// start playing if requested
 		if (setplay.get() >= 0.0) {
 			setseek.set(setplay.get());
 			active.set();
 			setplay.set(-1);
-			//do not update, this makes it easier to animate (will shut off otherwise)
+			// do not update, this makes it easier to animate (will shut off otherwise)
 			//_change_notify("playing"); //update property in editor
 		}
 
-		//stop playing if no longer active
+		// stop playing if no longer active
 		if (!active.is_set()) {
 			set_physics_process_internal(false);
-			//do not update, this makes it easier to animate (will shut off otherwise)
+			// do not update, this makes it easier to animate (will shut off otherwise)
 			//_change_notify("playing"); //update property in editor
 			emit_signal("finished");
 		}
@@ -355,7 +355,7 @@ float AudioStreamPlayer2D::get_playback_position() {
 }
 
 void AudioStreamPlayer2D::set_bus(const StringName &p_bus) {
-	//if audio is active, must lock this
+	// if audio is active, must lock this
 	AudioServer::get_singleton()->lock();
 	bus = p_bus;
 	AudioServer::get_singleton()->unlock();

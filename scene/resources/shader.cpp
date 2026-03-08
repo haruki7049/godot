@@ -71,13 +71,13 @@ void Shader::get_param_list(List<PropertyInfo> *p_params) const {
 
 	for (List<PropertyInfo>::Element *E = local.front(); E; E = E->next()) {
 		PropertyInfo pi = E->get();
-		if (default_textures.has(pi.name)) { //do not show default textures
+		if (default_textures.has(pi.name)) { // do not show default textures
 			continue;
 		}
 		pi.name = "shader_param/" + pi.name;
 		params_cache[pi.name] = E->get().name;
 		if (p_params) {
-			//small little hack
+			// small little hack
 			if (pi.type == Variant::_RID) {
 				pi.type = Variant::OBJECT;
 			}
@@ -160,7 +160,7 @@ void Shader::_bind_methods() {
 
 	ClassDB::bind_method(D_METHOD("has_param", "name"), &Shader::has_param);
 
-	//ClassDB::bind_method(D_METHOD("get_param_list"),&Shader::get_fragment_code);
+	// ClassDB::bind_method(D_METHOD("get_param_list"),&Shader::get_fragment_code);
 
 	ADD_PROPERTY(PropertyInfo(Variant::STRING, "code", PROPERTY_HINT_NONE, "", PROPERTY_USAGE_NOEDITOR), "set_code", "get_code");
 	ADD_PROPERTY(PropertyInfo(Variant::STRING, "custom_defines", PROPERTY_HINT_NONE, "", PROPERTY_USAGE_NOEDITOR), "set_custom_defines", "get_custom_defines");
@@ -252,5 +252,5 @@ void ResourceFormatSaverShader::get_recognized_extensions(const RES &p_resource,
 }
 
 bool ResourceFormatSaverShader::recognize(const RES &p_resource) const {
-	return p_resource->get_class_name() == "Shader"; //only shader, not inherited
+	return p_resource->get_class_name() == "Shader"; // only shader, not inherited
 }

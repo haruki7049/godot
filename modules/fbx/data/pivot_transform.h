@@ -102,7 +102,7 @@ struct PivotTransform : Reference, ModelAbstraction {
 
 	bool computed_global_xform = false;
 	Ref<PivotTransform> parent_transform = Ref<PivotTransform>();
-	//Transform chain[TransformationComp_MAXIMUM];
+	// Transform chain[TransformationComp_MAXIMUM];
 
 	// cached for later use
 	Transform GlobalTransform = Transform();

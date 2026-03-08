@@ -54,7 +54,7 @@ void PolygonPathFinder::setup(const Vector<Vector2> &p_points, const Vector<int>
 	points.clear();
 	edges.clear();
 
-	//insert points
+	// insert points
 
 	int point_count = p_points.size();
 	points.resize(point_count + 2);
@@ -77,7 +77,7 @@ void PolygonPathFinder::setup(const Vector<Vector2> &p_points, const Vector<int>
 	outside_point.x += 20.451 + Math::randf() * 10.2039;
 	outside_point.y += 21.193 + Math::randf() * 12.5412;
 
-	//insert edges (which are also connetions)
+	// insert edges (which are also connetions)
 
 	for (int i = 0; i < p_connections.size(); i += 2) {
 		Edge e(p_connections[i], p_connections[i + 1]);
@@ -88,18 +88,18 @@ void PolygonPathFinder::setup(const Vector<Vector2> &p_points, const Vector<int>
 		edges.insert(e);
 	}
 
-	//fill the remaining connections based on visibility
+	// fill the remaining connections based on visibility
 
 	for (int i = 0; i < point_count; i++) {
 		for (int j = i + 1; j < point_count; j++) {
 			if (edges.has(Edge(i, j))) {
-				continue; //if in edge ignore
+				continue; // if in edge ignore
 			}
 
 			Vector2 from = points[i].pos;
 			Vector2 to = points[j].pos;
 
-			if (!_is_point_inside(from * 0.5 + to * 0.5)) { //connection between points in inside space
+			if (!_is_point_inside(from * 0.5 + to * 0.5)) { // connection between points in inside space
 				continue;
 			}
 
@@ -184,7 +184,7 @@ Vector<Vector2> PolygonPathFinder::find_path(const Vector2 &p_from, const Vector
 		to = closest_point;
 	};
 
-	//test direct connection
+	// test direct connection
 	{
 		bool can_see_eachother = true;
 
@@ -213,7 +213,7 @@ Vector<Vector2> PolygonPathFinder::find_path(const Vector2 &p_from, const Vector
 		}
 	}
 
-	//add to graph
+	// add to graph
 
 	int aidx = points.size() - 2;
 	int bidx = points.size() - 1;
@@ -287,7 +287,7 @@ Vector<Vector2> PolygonPathFinder::find_path(const Vector2 &p_from, const Vector
 			points.write[bidx].connections.insert(i);
 		}
 	}
-	//solve graph
+	// solve graph
 
 	Set<int> open_list;
 
@@ -306,12 +306,12 @@ Vector<Vector2> PolygonPathFinder::find_path(const Vector2 &p_from, const Vector
 			printf("open list empty\n");
 			break;
 		}
-		//check open list
+		// check open list
 
 		int least_cost_point = -1;
 		float least_cost = 1e30;
 
-		//this could be faster (cache previous results)
+		// this could be faster (cache previous results)
 		for (Set<int>::Element *E = open_list.front(); E; E = E->next()) {
 			const Point &p = points[E->get()];
 			float cost = p.distance;
@@ -325,28 +325,28 @@ Vector<Vector2> PolygonPathFinder::find_path(const Vector2 &p_from, const Vector
 		}
 
 		const Point &np = points[least_cost_point];
-		//open the neighbours for search
+		// open the neighbours for search
 
 		for (Set<int>::Element *E = np.connections.front(); E; E = E->next()) {
 			Point &p = points.write[E->get()];
 			float distance = np.pos.distance_to(p.pos) + np.distance;
 
 			if (p.prev != -1) {
-				//oh this was visited already, can we win the cost?
+				// oh this was visited already, can we win the cost?
 
 				if (p.distance > distance) {
-					p.prev = least_cost_point; //reasign previous
+					p.prev = least_cost_point; // reasign previous
 					p.distance = distance;
 				}
 			} else {
-				//add to open neighbours
+				// add to open neighbours
 
 				p.prev = least_cost_point;
 				p.distance = distance;
 				open_list.insert(E->get());
 
 				if (E->get() == bidx) {
-					//oh my reached end! stop algorithm
+					// oh my reached end! stop algorithm
 					found_route = true;
 					break;
 				}

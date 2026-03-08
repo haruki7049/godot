@@ -85,7 +85,7 @@ static int _get_datatype_size(SL::DataType p_type) {
 		case SL::TYPE_VEC4:
 			return 16;
 		case SL::TYPE_MAT2:
-			return 32; //4 * 4 + 4 * 4
+			return 32; // 4 * 4 + 4 * 4
 		case SL::TYPE_MAT3:
 			return 48; // 4 * 4 + 4 * 4 + 4 * 4
 		case SL::TYPE_MAT4:
@@ -231,7 +231,7 @@ static String _opstr(SL::Operator p_op) {
 
 static String _mkid(const String &p_id) {
 	String id = "m_" + p_id.replace("__", "_dus_");
-	return id.replace("__", "_dus_"); //doubleunderscore is reserved in glsl
+	return id.replace("__", "_dus_"); // doubleunderscore is reserved in glsl
 }
 
 static String f2sp0(float p_float) {
@@ -345,7 +345,7 @@ void ShaderCompilerGLES3::_dump_function_deps(const SL::ShaderNode *p_node, cons
 
 	for (Set<StringName>::Element *E = p_node->functions[fidx].uses_function.front(); E; E = E->next()) {
 		if (added.has(E->get())) {
-			continue; //was added already
+			continue; // was added already
 		}
 
 		_dump_function_deps(p_node, E->get(), p_func_code, r_to_add, added);
@@ -517,7 +517,7 @@ String ShaderCompilerGLES3::_dump_node_code(const SL::Node *p_node, int p_level,
 			}
 
 			r_gen_code.uniform_total_size = offset;
-			if (r_gen_code.uniform_total_size % 16 != 0) { //UBO sizes must be multiples of 16
+			if (r_gen_code.uniform_total_size % 16 != 0) { // UBO sizes must be multiples of 16
 				r_gen_code.uniform_total_size += r_gen_code.uniform_total_size % 16;
 			}
 
@@ -584,7 +584,7 @@ String ShaderCompilerGLES3::_dump_node_code(const SL::Node *p_node, int p_level,
 
 			Map<StringName, String> function_code;
 
-			//code for functions
+			// code for functions
 			for (int i = 0; i < pnode->functions.size(); i++) {
 				SL::FunctionNode *fnode = pnode->functions[i].function;
 				function = fnode;
@@ -593,10 +593,10 @@ String ShaderCompilerGLES3::_dump_node_code(const SL::Node *p_node, int p_level,
 				function = nullptr;
 			}
 
-			//place functions in actual code
+			// place functions in actual code
 
 			Set<StringName> added_vtx;
-			Set<StringName> added_fragment; //share for light
+			Set<StringName> added_fragment; // share for light
 
 			for (int i = 0; i < pnode->functions.size(); i++) {
 				SL::FunctionNode *fnode = pnode->functions[i].function;
@@ -623,7 +623,7 @@ String ShaderCompilerGLES3::_dump_node_code(const SL::Node *p_node, int p_level,
 				function = nullptr;
 			}
 
-			//code+=dump_node_code(pnode->body,p_level);
+			// code+=dump_node_code(pnode->body,p_level);
 		} break;
 		case SL::Node::TYPE_STRUCT: {
 		} break;
@@ -632,7 +632,7 @@ String ShaderCompilerGLES3::_dump_node_code(const SL::Node *p_node, int p_level,
 		case SL::Node::TYPE_BLOCK: {
 			SL::BlockNode *bnode = (SL::BlockNode *)p_node;
 
-			//variables
+			// variables
 			if (!bnode->single_statement) {
 				code += _mktab(p_level - 1) + "{\n";
 			}
@@ -641,7 +641,7 @@ String ShaderCompilerGLES3::_dump_node_code(const SL::Node *p_node, int p_level,
 				String scode = _dump_node_code(bnode->statements[i], p_level, r_gen_code, p_actions, p_default_actions, p_assigning);
 
 				if (bnode->statements[i]->type == SL::Node::TYPE_CONTROL_FLOW || bnode->single_statement) {
-					code += scode; //use directly
+					code += scode; // use directly
 				} else {
 					code += _mktab(p_level) + scode + ";\n";
 				}
@@ -1090,12 +1090,12 @@ Error ShaderCompilerGLES3::compile(VS::ShaderMode p_mode, const String &p_code, 
 	function = nullptr;
 	_dump_node_code(shader, 1, r_gen_code, *p_actions, actions[p_mode], false);
 
-	if (r_gen_code.uniform_total_size) { //uniforms used?
+	if (r_gen_code.uniform_total_size) { // uniforms used?
 		int md = sizeof(float) * 4;
 		if (r_gen_code.uniform_total_size % md) {
 			r_gen_code.uniform_total_size += md - (r_gen_code.uniform_total_size % md);
 		}
-		r_gen_code.uniform_total_size += md; //pad just in case
+		r_gen_code.uniform_total_size += md; // pad just in case
 	}
 
 	return OK;
@@ -1172,7 +1172,7 @@ ShaderCompilerGLES3::ShaderCompilerGLES3() {
 	actions[VS::SHADER_SPATIAL].renames["POINT_SIZE"] = "point_size";
 	actions[VS::SHADER_SPATIAL].renames["INSTANCE_ID"] = "gl_InstanceID";
 
-	//builtins
+	// builtins
 
 	actions[VS::SHADER_SPATIAL].renames["TIME"] = "time";
 	actions[VS::SHADER_SPATIAL].renames["VIEWPORT_SIZE"] = "viewport_size";
@@ -1206,7 +1206,7 @@ ShaderCompilerGLES3::ShaderCompilerGLES3() {
 	actions[VS::SHADER_SPATIAL].renames["ALPHA_SCISSOR"] = "alpha_scissor";
 	actions[VS::SHADER_SPATIAL].renames["OUTPUT_IS_SRGB"] = "SHADER_IS_SRGB";
 
-	//for light
+	// for light
 	actions[VS::SHADER_SPATIAL].renames["VIEW"] = "view";
 	actions[VS::SHADER_SPATIAL].renames["LIGHT_COLOR"] = "light_color";
 	actions[VS::SHADER_SPATIAL].renames["LIGHT"] = "light";

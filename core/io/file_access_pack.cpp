@@ -63,11 +63,11 @@ void PackedData::add_path(const String &p_pkg_path, const String &p_path, uint64
 	}
 
 	if (!exists) {
-		//search for dir
+		// search for dir
 		String p = p_path.replace_first("res://", "");
 		PackedDir *cd = root;
 
-		if (p.find("/") != -1) { //in a subdir
+		if (p.find("/") != -1) { // in a subdir
 
 			Vector<String> ds = p.get_base_dir().split("/");
 
@@ -142,7 +142,7 @@ bool PackedSourcePCK::try_open_pack(const String &p_path, bool p_replace_files, 
 			ERR_FAIL_V_MSG(false, "Loading self-contained executable with offset not supported.");
 		}
 
-		//maybe at the end.... self contained exe
+		// maybe at the end.... self contained exe
 		f->seek_end();
 		f->seek(f->get_position() - 4);
 		magic = f->get_32();
@@ -181,7 +181,7 @@ bool PackedSourcePCK::try_open_pack(const String &p_path, bool p_replace_files, 
 	}
 
 	for (int i = 0; i < 16; i++) {
-		//reserved
+		// reserved
 		f->get_32();
 	}
 

@@ -214,8 +214,8 @@ void ShaderTextEditor::_validate_script() {
 	_check_shader_mode();
 
 	String code = get_text_edit()->get_text();
-	//List<StringName> params;
-	//shader->get_param_list(&params);
+	// List<StringName> params;
+	// shader->get_param_list(&params);
 
 	ShaderLanguage sl;
 
@@ -453,8 +453,8 @@ void ShaderEditor::edit(const Ref<Shader> &p_shader) {
 
 	shader_editor->set_edited_shader(p_shader);
 
-	//vertex_editor->set_edited_shader(shader,ShaderLanguage::SHADER_MATERIAL_VERTEX);
-	// see if already has it
+	// vertex_editor->set_edited_shader(shader,ShaderLanguage::SHADER_MATERIAL_VERTEX);
+	//  see if already has it
 }
 
 void ShaderEditor::save_external_data(const String &p_str) {
@@ -465,7 +465,7 @@ void ShaderEditor::save_external_data(const String &p_str) {
 
 	apply_shaders();
 	if (shader->get_path() != "" && shader->get_path().find("local://") == -1 && shader->get_path().find("::") == -1) {
-		//external shader, save it
+		// external shader, save it
 		ResourceSaver::save(shader->get_path(), shader);
 	}
 

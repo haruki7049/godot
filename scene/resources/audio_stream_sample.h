@@ -68,7 +68,7 @@ public:
 	virtual void stop();
 	virtual bool is_playing() const;
 
-	virtual int get_loop_count() const; //times it looped
+	virtual int get_loop_count() const; // times it looped
 
 	virtual float get_playback_position() const;
 	virtual void seek(float p_time);
@@ -100,7 +100,7 @@ private:
 	friend class AudioStreamPlaybackSample;
 
 	enum {
-		DATA_PAD = 16 //padding for interpolation
+		DATA_PAD = 16 // padding for interpolation
 	};
 
 	Format format;
@@ -134,7 +134,7 @@ public:
 	void set_stereo(bool p_enable);
 	bool is_stereo() const;
 
-	virtual float get_length() const; //if supported, otherwise return 0
+	virtual float get_length() const; // if supported, otherwise return 0
 
 	void set_data(const PoolVector<uint8_t> &p_data);
 	PoolVector<uint8_t> get_data() const;

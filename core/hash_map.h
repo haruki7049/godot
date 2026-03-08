@@ -53,7 +53,7 @@
  * @param RELATIONSHIP Relationship at which the hash table is resized. if amount of elements is RELATIONSHIP
  * times bigger than the hash table, table is resized to solve this condition. if RELATIONSHIP is zero, table is always MIN_HASH_TABLE_POWER.
  *
-*/
+ */
 
 template <class TKey, class TData, class Hasher = HashMapHasherDefault, class Comparator = HashMapComparatorDefault<TKey>, uint8_t MIN_HASH_TABLE_POWER = 3, uint8_t RELATIONSHIP = 8>
 class HashMap {
@@ -396,7 +396,7 @@ public:
 				if (p) {
 					p->next = e->next;
 				} else {
-					//begin of list
+					// begin of list
 					hash_table[index] = e->next;
 				}
 
@@ -418,11 +418,11 @@ public:
 		return false;
 	}
 
-	inline const TData &operator[](const TKey &p_key) const { //constref
+	inline const TData &operator[](const TKey &p_key) const { // constref
 
 		return get(p_key);
 	}
-	inline TData &operator[](const TKey &p_key) { //assignment
+	inline TData &operator[](const TKey &p_key) { // assignment
 
 		Element *e = nullptr;
 		if (!hash_table) {
@@ -454,8 +454,8 @@ public:
 	 *
 	 * 		print( *k );
 	 * 	}
-         *
-	*/
+	 *
+	 */
 	const TKey *next(const TKey *p_key) const {
 		if (unlikely(!hash_table)) {
 			return nullptr;

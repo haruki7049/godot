@@ -382,7 +382,7 @@ void GIProbe::bake(Node *p_from_node, bool p_create_visual_debug) {
 
 	baker.end_bake();
 
-	//create the data for visual server
+	// create the data for visual server
 
 	PoolVector<int> data = baker.create_gi_probe_data();
 

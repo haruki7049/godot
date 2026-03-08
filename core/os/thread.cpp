@@ -75,7 +75,7 @@ void Thread::callback(Thread *p_self, const Settings &p_settings, Callback p_cal
 	if (init_func) {
 		init_func();
 	}
-	ScriptServer::thread_enter(); //scripts may need to attach a stack
+	ScriptServer::thread_enter(); // scripts may need to attach a stack
 	p_callback(p_userdata);
 	ScriptServer::thread_exit();
 	if (term_func) {

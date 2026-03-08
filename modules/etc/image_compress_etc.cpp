@@ -94,7 +94,7 @@ static void _compress_etc(Image *p_img, float p_lossy_quality, bool force_etc1_f
 	Image::DetectChannels detected_channels = p_img->get_detected_channels();
 
 	if (p_source == Image::COMPRESS_SOURCE_LAYERED) {
-		//keep what comes in
+		// keep what comes in
 		switch (p_img->get_format()) {
 			case Image::FORMAT_L8: {
 				detected_channels = Image::DETECTED_L;
@@ -122,17 +122,17 @@ static void _compress_etc(Image *p_img, float p_lossy_quality, bool force_etc1_f
 	}
 
 	if (p_source == Image::COMPRESS_SOURCE_SRGB && (detected_channels == Image::DETECTED_R || detected_channels == Image::DETECTED_RG)) {
-		//R and RG do not support SRGB
+		// R and RG do not support SRGB
 		detected_channels = Image::DETECTED_RGB;
 	}
 
 	if (p_source == Image::COMPRESS_SOURCE_NORMAL) {
-		//use RG channels only for normal
+		// use RG channels only for normal
 		detected_channels = Image::DETECTED_RG;
 	}
 
 	if (img_format >= Image::FORMAT_DXT1) {
-		return; //do not compress, already compressed
+		return; // do not compress, already compressed
 	}
 
 	if (img_format > Image::FORMAT_RGBA8) {
@@ -163,7 +163,7 @@ static void _compress_etc(Image *p_img, float p_lossy_quality, bool force_etc1_f
 	Ref<Image> img = p_img->duplicate();
 
 	if (img->get_format() != Image::FORMAT_RGBA8) {
-		img->convert(Image::FORMAT_RGBA8); //still uses RGBA to convert
+		img->convert(Image::FORMAT_RGBA8); // still uses RGBA to convert
 	}
 
 	if (img->has_mipmaps()) {
@@ -200,7 +200,7 @@ static void _compress_etc(Image *p_img, float p_lossy_quality, bool force_etc1_f
 	int num_cpus = OS::get_singleton()->get_processor_count();
 	int encoding_time = 0;
 
-	float effort = 0.0; //default, reasonable time
+	float effort = 0.0; // default, reasonable time
 
 	if (p_lossy_quality > 0.95) {
 		effort = 80;

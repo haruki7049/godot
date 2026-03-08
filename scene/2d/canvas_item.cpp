@@ -68,13 +68,13 @@ void CanvasItemMaterial::_update_shader() {
 
 	MaterialKey mk = _compute_key();
 	if (mk.key == current_key.key) {
-		return; //no update required in the end
+		return; // no update required in the end
 	}
 
 	if (shader_map.has(current_key)) {
 		shader_map[current_key].users--;
 		if (shader_map[current_key].users == 0) {
-			//deallocate shader, as it's no longer in use
+			// deallocate shader, as it's no longer in use
 			VS::get_singleton()->free(shader_map[current_key].shader);
 			shader_map.erase(current_key);
 		}
@@ -88,7 +88,7 @@ void CanvasItemMaterial::_update_shader() {
 		return;
 	}
 
-	//must create a shader!
+	// must create a shader!
 
 	// Add a comment to describe the shader origin (useful when converting to ShaderMaterial).
 	String code = "// NOTE: Shader automatically converted from " VERSION_NAME " " VERSION_FULL_CONFIG "'s CanvasItemMaterial.\n\n";
@@ -327,7 +327,7 @@ CanvasItemMaterial::~CanvasItemMaterial() {
 	if (shader_map.has(current_key)) {
 		shader_map[current_key].users--;
 		if (shader_map[current_key].users == 0) {
-			//deallocate shader, as it's no longer in use
+			// deallocate shader, as it's no longer in use
 			VS::get_singleton()->free(shader_map[current_key].shader);
 			shader_map.erase(current_key);
 		}
@@ -371,13 +371,13 @@ bool CanvasItem::is_visible_in_tree() const {
 }
 
 void CanvasItem::_propagate_visibility_changed(bool p_visible) {
-	if (p_visible && first_draw) { //avoid propagating it twice
+	if (p_visible && first_draw) { // avoid propagating it twice
 		first_draw = false;
 	}
 	notification(NOTIFICATION_VISIBILITY_CHANGED);
 
 	if (p_visible) {
-		update(); //todo optimize
+		update(); // todo optimize
 	} else {
 		emit_signal(SceneStringNames::get_singleton()->hide);
 	}
@@ -386,7 +386,7 @@ void CanvasItem::_propagate_visibility_changed(bool p_visible) {
 	for (int i = 0; i < get_child_count(); i++) {
 		CanvasItem *c = Object::cast_to<CanvasItem>(get_child(i));
 
-		if (c && c->visible) { //should the toplevels stop propagation? i think so but..
+		if (c && c->visible) { // should the toplevels stop propagation? i think so but..
 			c->_propagate_visibility_changed(p_visible);
 		}
 	}
@@ -438,8 +438,8 @@ void CanvasItem::_update_callback() {
 	}
 
 	VisualServer::get_singleton()->canvas_item_clear(get_canvas_item());
-	//todo updating = true - only allow drawing here
-	if (is_visible_in_tree()) { //todo optimize this!!
+	// todo updating = true - only allow drawing here
+	if (is_visible_in_tree()) { // todo optimize this!!
 		if (first_draw) {
 			notification(NOTIFICATION_VISIBILITY_CHANGED);
 			first_draw = false;
@@ -454,7 +454,7 @@ void CanvasItem::_update_callback() {
 		current_item_drawn = nullptr;
 		drawing = false;
 	}
-	//todo updating = false
+	// todo updating = false
 	pending_update = false; // don't change to false until finished drawing (avoid recursive update)
 }
 
@@ -549,7 +549,7 @@ void CanvasItem::_enter_canvas() {
 }
 
 void CanvasItem::_exit_canvas() {
-	notification(NOTIFICATION_EXIT_CANVAS, true); //reverse the notification
+	notification(NOTIFICATION_EXIT_CANVAS, true); // reverse the notification
 	VisualServer::get_singleton()->canvas_item_set_parent(canvas_item, RID());
 	canvas_layer = nullptr;
 	group = "";
@@ -917,7 +917,7 @@ void CanvasItem::_notify_transform(CanvasItem *p_node) {
 	 */
 
 	if (/*p_node->xform_change.in_list() &&*/ p_node->global_invalid) {
-		return; //nothing to do
+		return; // nothing to do
 	}
 
 	p_node->global_invalid = true;
@@ -1015,7 +1015,7 @@ void CanvasItem::set_material(const Ref<Material> &p_material) {
 		rid = material->get_rid();
 	}
 	VS::get_singleton()->canvas_item_set_material(canvas_item, rid);
-	_change_notify(); //properties for material exposed
+	_change_notify(); // properties for material exposed
 }
 
 void CanvasItem::set_use_parent_material(bool p_use_parent_material) {
@@ -1117,7 +1117,7 @@ void CanvasItem::_bind_methods() {
 
 	ClassDB::bind_method(D_METHOD("_set_on_top", "on_top"), &CanvasItem::_set_on_top);
 	ClassDB::bind_method(D_METHOD("_is_on_top"), &CanvasItem::_is_on_top);
-	//ClassDB::bind_method(D_METHOD("get_transform"),&CanvasItem::get_transform);
+	// ClassDB::bind_method(D_METHOD("get_transform"),&CanvasItem::get_transform);
 
 	ClassDB::bind_method(D_METHOD("draw_line", "from", "to", "color", "width", "antialiased"), &CanvasItem::draw_line, DEFVAL(1.0), DEFVAL(false));
 	ClassDB::bind_method(D_METHOD("draw_polyline", "points", "color", "width", "antialiased"), &CanvasItem::draw_polyline, DEFVAL(1.0), DEFVAL(false));
@@ -1151,7 +1151,7 @@ void CanvasItem::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("get_global_mouse_position"), &CanvasItem::get_global_mouse_position);
 	ClassDB::bind_method(D_METHOD("get_canvas"), &CanvasItem::get_canvas);
 	ClassDB::bind_method(D_METHOD("get_world_2d"), &CanvasItem::get_world_2d);
-	//ClassDB::bind_method(D_METHOD("get_viewport"),&CanvasItem::get_viewport);
+	// ClassDB::bind_method(D_METHOD("get_viewport"),&CanvasItem::get_viewport);
 
 	ClassDB::bind_method(D_METHOD("set_material", "material"), &CanvasItem::set_material);
 	ClassDB::bind_method(D_METHOD("get_material"), &CanvasItem::get_material);
@@ -1177,15 +1177,15 @@ void CanvasItem::_bind_methods() {
 	ADD_PROPERTY(PropertyInfo(Variant::COLOR, "modulate"), "set_modulate", "get_modulate");
 	ADD_PROPERTY(PropertyInfo(Variant::COLOR, "self_modulate"), "set_self_modulate", "get_self_modulate");
 	ADD_PROPERTY(PropertyInfo(Variant::BOOL, "show_behind_parent"), "set_draw_behind_parent", "is_draw_behind_parent_enabled");
-	ADD_PROPERTY(PropertyInfo(Variant::BOOL, "show_on_top", PROPERTY_HINT_NONE, "", 0), "_set_on_top", "_is_on_top"); //compatibility
+	ADD_PROPERTY(PropertyInfo(Variant::BOOL, "show_on_top", PROPERTY_HINT_NONE, "", 0), "_set_on_top", "_is_on_top"); // compatibility
 	ADD_PROPERTY(PropertyInfo(Variant::INT, "light_mask", PROPERTY_HINT_LAYERS_2D_RENDER), "set_light_mask", "get_light_mask");
 
 	ADD_GROUP("Material", "");
 	ADD_PROPERTY(PropertyInfo(Variant::OBJECT, "material", PROPERTY_HINT_RESOURCE_TYPE, "ShaderMaterial,CanvasItemMaterial"), "set_material", "get_material");
 	ADD_PROPERTY(PropertyInfo(Variant::BOOL, "use_parent_material"), "set_use_parent_material", "get_use_parent_material");
-	//exporting these things doesn't really make much sense i think
-	// ADD_PROPERTY(PropertyInfo(Variant::BOOL, "toplevel", PROPERTY_HINT_NONE, "", PROPERTY_USAGE_NOEDITOR), "set_as_toplevel", "is_set_as_toplevel");
-	// ADD_PROPERTY(PropertyInfo(Variant::BOOL,"transform/notify"),"set_transform_notify","is_transform_notify_enabled");
+	// exporting these things doesn't really make much sense i think
+	//  ADD_PROPERTY(PropertyInfo(Variant::BOOL, "toplevel", PROPERTY_HINT_NONE, "", PROPERTY_USAGE_NOEDITOR), "set_as_toplevel", "is_set_as_toplevel");
+	//  ADD_PROPERTY(PropertyInfo(Variant::BOOL,"transform/notify"),"set_transform_notify","is_transform_notify_enabled");
 
 	ADD_SIGNAL(MethodInfo("draw"));
 	ADD_SIGNAL(MethodInfo("visibility_changed"));
@@ -1250,7 +1250,7 @@ void CanvasItem::set_notify_transform(bool p_enable) {
 	notify_transform = p_enable;
 
 	if (notify_transform && is_inside_tree()) {
-		//this ensures that invalid globals get resolved, so notifications can be received
+		// this ensures that invalid globals get resolved, so notifications can be received
 		get_global_transform();
 	}
 }
@@ -1279,7 +1279,7 @@ CanvasItem::CanvasItem() :
 	drawing = false;
 	behind = false;
 	block_transform_notify = false;
-	//viewport=NULL;
+	// viewport=NULL;
 	canvas_layer = nullptr;
 	use_parent_material = false;
 	global_invalid = true;

@@ -68,7 +68,7 @@ bool ParticlesEditorBase::_generate(PoolVector<Vector3> &points, PoolVector<Vect
 
 			// ok FINALLY get face
 			Face3 face = geometry[index];
-			//now compute some position inside the face...
+			// now compute some position inside the face...
 
 			Vector3 pos = face.get_random_point_inside();
 
@@ -113,7 +113,7 @@ bool ParticlesEditorBase::_generate(PoolVector<Vector3> &points, PoolVector<Vect
 
 				Vector3 ofsv = ofs + aabb.size * dir;
 
-				//space it a little
+				// space it a little
 				ofs -= dir;
 				ofsv += dir;
 
@@ -137,7 +137,7 @@ bool ParticlesEditorBase::_generate(PoolVector<Vector3> &points, PoolVector<Vect
 				}
 
 				if (max < min) {
-					continue; //lost attempt
+					continue; // lost attempt
 				}
 
 				float val = min + (max - min) * Math::randf();

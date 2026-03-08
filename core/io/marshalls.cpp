@@ -330,7 +330,7 @@ Error decode_variant(Variant &r_variant, const uint8_t *p_buffer, int p_len, int
 			int32_t strlen = decode_uint32(buf);
 
 			if (strlen & 0x80000000) {
-				//new format
+				// new format
 				ERR_FAIL_COND_V(len < 12, ERR_INVALID_DATA);
 				Vector<StringName> names;
 				Vector<StringName> subnames;
@@ -369,7 +369,7 @@ Error decode_variant(Variant &r_variant, const uint8_t *p_buffer, int p_len, int
 				r_variant = NodePath(names, subnames, flags & 1);
 
 			} else {
-				//old format, just a string
+				// old format, just a string
 
 				ERR_FAIL_V(ERR_INVALID_DATA);
 			}
@@ -380,7 +380,7 @@ Error decode_variant(Variant &r_variant, const uint8_t *p_buffer, int p_len, int
 		} break;
 		case Variant::OBJECT: {
 			if (type & ENCODE_FLAG_OBJECT_AS_ID) {
-				//this _is_ allowed
+				// this _is_ allowed
 				ERR_FAIL_COND_V(len < 8, ERR_INVALID_DATA);
 				ObjectID val = decode_uint64(buf);
 				if (r_len) {
@@ -568,7 +568,7 @@ Error decode_variant(Variant &r_variant, const uint8_t *p_buffer, int p_len, int
 			PoolVector<int> data;
 
 			if (count) {
-				//const int*rbuf=(const int*)buf;
+				// const int*rbuf=(const int*)buf;
 				data.resize(count);
 				PoolVector<int>::Write w = data.write();
 				for (int32_t i = 0; i < count; i++) {
@@ -592,7 +592,7 @@ Error decode_variant(Variant &r_variant, const uint8_t *p_buffer, int p_len, int
 			PoolVector<float> data;
 
 			if (count) {
-				//const float*rbuf=(const float*)buf;
+				// const float*rbuf=(const float*)buf;
 				data.resize(count);
 				PoolVector<float>::Write w = data.write();
 				for (int32_t i = 0; i < count; i++) {
@@ -617,7 +617,7 @@ Error decode_variant(Variant &r_variant, const uint8_t *p_buffer, int p_len, int
 			if (r_len) {
 				(*r_len) += 4;
 			}
-			//printf("string count: %i\n",count);
+			// printf("string count: %i\n",count);
 
 			for (int32_t i = 0; i < count; i++) {
 				String str;
@@ -756,7 +756,7 @@ static void _encode_string(const String &p_string, uint8_t *&buf, int &r_len) {
 
 	r_len += 4 + utf8.length();
 	while (r_len % 4) {
-		r_len++; //pad
+		r_len++; // pad
 		if (buf) {
 			*(buf++) = 0;
 		}
@@ -782,7 +782,7 @@ Error encode_variant(const Variant &p_variant, uint8_t *r_buffer, int &r_len, bo
 			double d = p_variant;
 			float f = d;
 			if (double(f) != d) {
-				flags |= ENCODE_FLAG_64; //always encode real as double
+				flags |= ENCODE_FLAG_64; // always encode real as double
 			}
 		} break;
 		case Variant::OBJECT: {
@@ -812,7 +812,7 @@ Error encode_variant(const Variant &p_variant, uint8_t *r_buffer, int &r_len, bo
 
 	switch (p_variant.get_type()) {
 		case Variant::NIL: {
-			//nothing to do
+			// nothing to do
 		} break;
 		case Variant::BOOL: {
 			if (buf) {
@@ -824,7 +824,7 @@ Error encode_variant(const Variant &p_variant, uint8_t *r_buffer, int &r_len, bo
 		} break;
 		case Variant::INT: {
 			if (flags & ENCODE_FLAG_64) {
-				//64 bits
+				// 64 bits
 				if (buf) {
 					encode_uint64(p_variant.operator int64_t(), buf);
 				}
@@ -858,7 +858,7 @@ Error encode_variant(const Variant &p_variant, uint8_t *r_buffer, int &r_len, bo
 		case Variant::NODE_PATH: {
 			NodePath np = p_variant;
 			if (buf) {
-				encode_uint32(uint32_t(np.get_name_count()) | 0x80000000, buf); //for compatibility with the old format
+				encode_uint32(uint32_t(np.get_name_count()) | 0x80000000, buf); // for compatibility with the old format
 				encode_uint32(np.get_subname_count(), buf + 4);
 				uint32_t np_flags = 0;
 				if (np.is_absolute()) {
@@ -1246,7 +1246,7 @@ Error encode_variant(const Variant &p_variant, uint8_t *r_buffer, int &r_len, bo
 
 				r_len += 4 + utf8.length() + 1;
 				while (r_len % 4) {
-					r_len++; //pad
+					r_len++; // pad
 					if (buf) {
 						*(buf++) = 0;
 					}

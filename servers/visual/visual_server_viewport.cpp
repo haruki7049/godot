@@ -80,7 +80,7 @@ void VisualServerViewport::_draw_3d(Viewport *p_viewport, ARVRInterface::Eyes p_
 void VisualServerViewport::_draw_viewport(Viewport *p_viewport, ARVRInterface::Eyes p_eye) {
 	/* Camera should always be BEFORE any other 3D */
 
-	bool scenario_draw_canvas_bg = false; //draw canvas, or some layer of it, as BG for 3D instead of in front
+	bool scenario_draw_canvas_bg = false; // draw canvas, or some layer of it, as BG for 3D instead of in front
 	int scenario_canvas_max_layer = 0;
 
 	if (!p_viewport->hide_canvas && !p_viewport->disable_environment && VSG::scene->scenario_owner.owns(p_viewport->scenario)) {
@@ -124,12 +124,12 @@ void VisualServerViewport::_draw_viewport(Viewport *p_viewport, ARVRInterface::E
 
 			Transform2D xf = _canvas_get_transform(p_viewport, canvas, &E->get(), clip_rect.size);
 
-			//find lights in canvas
+			// find lights in canvas
 
 			for (Set<RasterizerCanvas::Light *>::Element *F = canvas->lights.front(); F; F = F->next()) {
 				RasterizerCanvas::Light *cl = F->get();
 				if (cl->enabled && cl->texture.is_valid()) {
-					//not super efficient..
+					// not super efficient..
 					Size2 tsize = VSG::storage->texture_size_with_proxy(cl->texture);
 					// Skip using lights with texture of 0 size
 					if (!tsize.x || !tsize.y) {
@@ -176,11 +176,11 @@ void VisualServerViewport::_draw_viewport(Viewport *p_viewport, ARVRInterface::E
 		}
 
 		if (lights_with_shadow) {
-			//update shadows if any
+			// update shadows if any
 
 			RasterizerCanvas::LightOccluderInstance *occluders = nullptr;
 
-			//make list of occluders
+			// make list of occluders
 			for (Map<RID, Viewport::CanvasData>::Element *E = p_viewport->canvas_map.front(); E; E = E->next()) {
 				VisualServerCanvas::Canvas *canvas = static_cast<VisualServerCanvas::Canvas *>(E->get().canvas);
 				Transform2D xf = _canvas_get_transform(p_viewport, canvas, &E->get(), clip_rect.size);
@@ -196,14 +196,14 @@ void VisualServerViewport::_draw_viewport(Viewport *p_viewport, ARVRInterface::E
 					}
 				}
 			}
-			//update the light shadowmaps with them
+			// update the light shadowmaps with them
 			RasterizerCanvas::Light *light = lights_with_shadow;
 			while (light) {
 				VSG::canvas_render->canvas_light_shadow_buffer_update(light->shadow_buffer, light->xform_cache.affine_inverse(), light->item_shadow_mask, light->radius_cache / 1000.0, light->radius_cache * 1.1, occluders, &light->shadow_matrix_cache);
 				light = light->shadows_next_ptr;
 			}
 
-			//VSG::canvas_render->reset_canvas();
+			// VSG::canvas_render->reset_canvas();
 		}
 
 		VSG::rasterizer->restore_render_target(!scenario_draw_canvas_bg && can_draw_3d);
@@ -256,7 +256,7 @@ void VisualServerViewport::_draw_viewport(Viewport *p_viewport, ARVRInterface::E
 			}
 		}
 
-		//VSG::canvas_render->canvas_debug_viewport_shadows(lights_with_shadow);
+		// VSG::canvas_render->canvas_debug_viewport_shadows(lights_with_shadow);
 	}
 }
 
@@ -275,10 +275,10 @@ void VisualServerViewport::draw_viewports() {
 		clear_color = GLOBAL_GET("rendering/environment/default_clear_color");
 	}
 
-	//sort viewports
+	// sort viewports
 	active_viewports.sort_custom<ViewportSort>();
 
-	//draw viewports
+	// draw viewports
 	for (int i = 0; i < active_viewports.size(); i++) {
 		Viewport *vp = active_viewports[i];
 
@@ -350,7 +350,7 @@ void VisualServerViewport::draw_viewports() {
 			vp->render_info[VS::VIEWPORT_RENDER_INFO_2D_DRAW_CALLS_IN_FRAME] = VSG::storage->get_captured_render_info(VS::INFO_2D_DRAW_CALLS_IN_FRAME);
 
 			if (vp->viewport_to_screen_rect != Rect2() && (!vp->viewport_render_direct_to_screen || !VSG::rasterizer->is_low_end())) {
-				//copy to screen if set as such
+				// copy to screen if set as such
 				VSG::rasterizer->set_current_render_target(RID());
 				VSG::rasterizer->blit_render_target_to_screen(vp->render_target, vp->viewport_to_screen_rect, vp->viewport_to_screen);
 			}
@@ -518,8 +518,8 @@ void VisualServerViewport::viewport_set_disable_3d(RID p_viewport, bool p_disabl
 	ERR_FAIL_COND(!viewport);
 
 	viewport->disable_3d = p_disable;
-	//VSG::storage->render_target_set_flag(viewport->render_target, RasterizerStorage::RENDER_TARGET_NO_3D, p_disable);
-	//this should be just for disabling rendering of 3D, to actually disable it, set usage
+	// VSG::storage->render_target_set_flag(viewport->render_target, RasterizerStorage::RENDER_TARGET_NO_3D, p_disable);
+	// this should be just for disabling rendering of 3D, to actually disable it, set usage
 }
 
 void VisualServerViewport::viewport_set_keep_3d_linear(RID p_viewport, bool p_keep_3d_linear) {
@@ -686,7 +686,7 @@ int VisualServerViewport::viewport_get_render_info(RID p_viewport, VS::ViewportR
 
 	Viewport *viewport = viewport_owner.getornull(p_viewport);
 	if (!viewport) {
-		return 0; //there should be a lock here..
+		return 0; // there should be a lock here..
 	}
 
 	return viewport->render_info[p_info];

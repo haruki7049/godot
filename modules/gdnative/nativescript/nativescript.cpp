@@ -529,7 +529,7 @@ Variant NativeScript::_new(const Variant **p_args, int p_argcount, Variant::Call
 
 	if (!instance) {
 		if (ref.is_null()) {
-			memdelete(owner); //no owner, sorry
+			memdelete(owner); // no owner, sorry
 		}
 		return Variant();
 	}

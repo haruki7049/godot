@@ -336,7 +336,7 @@ class VisualShaderNodePortPreview : public Control {
 	VisualShader::Type type;
 	int node;
 	int port;
-	void _shader_changed(); //must regen
+	void _shader_changed(); // must regen
 protected:
 	void _notification(int p_what);
 	static void _bind_methods();

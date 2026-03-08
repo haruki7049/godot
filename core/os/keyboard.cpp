@@ -324,16 +324,16 @@ bool keycode_has_unicode(uint32_t p_keycode) {
 		case KEY_DOWN:
 		case KEY_PAGEUP:
 		case KEY_PAGEDOWN:
-		//case KEY_SHIFT:
+		// case KEY_SHIFT:
 		case KEY_SHIFT_L:
-  	case KEY_SHIFT_R:
-		//case KEY_CONTROL:
+		case KEY_SHIFT_R:
+		// case KEY_CONTROL:
 		case KEY_CONTROL_L:
-  	case KEY_CONTROL_R:
-		//case KEY_META:
+		case KEY_CONTROL_R:
+		// case KEY_META:
 		case KEY_META_L:
 		case KEY_META_R:
-		//case KEY_ALT:
+		// case KEY_ALT:
 		case KEY_ALT_L:
 		case KEY_ALT_R:
 		case KEY_CAPSLOCK:
@@ -412,22 +412,22 @@ bool keycode_has_unicode(uint32_t p_keycode) {
 String keycode_get_string(uint32_t p_code) {
 	String codestr;
 	if (p_code & KEY_MASK_SHIFT) {
-		//codestr += find_keycode_name(KEY_SHIFT);
+		// codestr += find_keycode_name(KEY_SHIFT);
 		codestr += find_keycode_name(KEY_SHIFT_L);
 		codestr += "+";
 	}
 	if (p_code & KEY_MASK_ALT) {
-		//codestr += find_keycode_name(KEY_ALT);
+		// codestr += find_keycode_name(KEY_ALT);
 		codestr += find_keycode_name(KEY_ALT_L);
 		codestr += "+";
 	}
 	if (p_code & KEY_MASK_CTRL) {
-		//codestr += find_keycode_name(KEY_CONTROL);
+		// codestr += find_keycode_name(KEY_CONTROL);
 		codestr += find_keycode_name(KEY_CONTROL_L);
 		codestr += "+";
 	}
 	if (p_code & KEY_MASK_META) {
-		//codestr += find_keycode_name(KEY_META);
+		// codestr += find_keycode_name(KEY_META);
 		codestr += find_keycode_name(KEY_META_L);
 		codestr += "+";
 	}

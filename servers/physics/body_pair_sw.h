@@ -69,7 +69,7 @@ class BodyPairSW : public ConstraintSW {
 		Vector3 rA, rB; // Offset in world orientation with respect to center of mass
 	};
 
-	Vector3 offset_B; //use local A coordinates to avoid numerical issues on collision detection
+	Vector3 offset_B; // use local A coordinates to avoid numerical issues on collision detection
 
 	Vector3 sep_axis;
 	Contact contacts[MAX_CONTACTS];

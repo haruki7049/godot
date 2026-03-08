@@ -35,7 +35,7 @@
 
 void AudioStreamPlaybackSample::start(float p_from_pos) {
 	if (base->format == AudioStreamSample::FORMAT_IMA_ADPCM) {
-		//no seeking in IMA_ADPCM
+		// no seeking in IMA_ADPCM
 		for (int i = 0; i < 2; i++) {
 			ima_adpcm[i].step_index = 0;
 			ima_adpcm[i].predictor = 0;
@@ -72,7 +72,7 @@ float AudioStreamPlaybackSample::get_playback_position() const {
 }
 void AudioStreamPlaybackSample::seek(float p_time) {
 	if (base->format == AudioStreamSample::FORMAT_IMA_ADPCM) {
-		return; //no seeking in ima-adpcm
+		return; // no seeking in ima-adpcm
 	}
 
 	float max = base->get_length();
@@ -164,7 +164,7 @@ void AudioStreamPlaybackSample::do_resample(const Depth *p_src, AudioFrame *p_ds
 						ima_adpcm[i].loop_predictor = ima_adpcm[i].predictor;
 					}
 
-					//printf("%i - %i - pred %i\n",int(ima_adpcm[i].last_nibble),int(nibble),int(ima_adpcm[i].predictor));
+					// printf("%i - %i - pred %i\n",int(ima_adpcm[i].last_nibble),int(nibble),int(ima_adpcm[i].predictor));
 				}
 			}
 
@@ -209,7 +209,7 @@ void AudioStreamPlaybackSample::do_resample(const Depth *p_src, AudioFrame *p_ds
 		}
 
 		if (!is_stereo) {
-			final_r = final; //copy to right channel if stereo
+			final_r = final; // copy to right channel if stereo
 		}
 
 		p_dst->l = final / 32767.0;
@@ -268,7 +268,7 @@ void AudioStreamPlaybackSample::mix(AudioFrame *p_buffer, float p_rate_scale, in
 	int32_t increment = int32_t(MAX(fincrement * MIX_FRAC_LEN, 1));
 	increment *= sign;
 
-	//looping
+	// looping
 
 	AudioStreamSample::LoopMode loop_format = base->loop_mode;
 	AudioStreamSample::Format format = base->format;
@@ -394,7 +394,7 @@ void AudioStreamPlaybackSample::mix(AudioFrame *p_buffer, float p_rate_scale, in
 	}
 
 	if (todo) {
-		//bit was missing from mix
+		// bit was missing from mix
 		int todo_ofs = p_frames - todo;
 		for (int i = todo_ofs; i < p_frames; i++) {
 			p_buffer[i] = AudioFrame(0, 0);
@@ -486,7 +486,7 @@ void AudioStreamSample::set_data(const PoolVector<uint8_t> &p_data) {
 	if (datalen) {
 		PoolVector<uint8_t>::Read r = p_data.read();
 		int alloc_len = datalen + DATA_PAD * 2;
-		data = AudioServer::get_singleton()->audio_data_alloc(alloc_len); //alloc with some padding for interpolation
+		data = AudioServer::get_singleton()->audio_data_alloc(alloc_len); // alloc with some padding for interpolation
 		memset(data, 0, alloc_len);
 		uint8_t *dataptr = (uint8_t *)data;
 		memcpy(dataptr + DATA_PAD, r.ptr(), datalen);
@@ -516,7 +516,7 @@ Error AudioStreamSample::save_to_wav(const String &p_path) {
 		return ERR_UNAVAILABLE;
 	}
 
-	int sub_chunk_2_size = data_bytes; //Subchunk2Size = Size of data in bytes
+	int sub_chunk_2_size = data_bytes; // Subchunk2Size = Size of data in bytes
 
 	// Format code
 	// 1:PCM format (for 8 or 16 bit)
@@ -545,24 +545,24 @@ Error AudioStreamSample::save_to_wav(const String &p_path) {
 		file_path += ".wav";
 	}
 
-	FileAccessRef file = FileAccess::open(file_path, FileAccess::WRITE); //Overrides existing file if present
+	FileAccessRef file = FileAccess::open(file_path, FileAccess::WRITE); // Overrides existing file if present
 
 	ERR_FAIL_COND_V(!file, ERR_FILE_CANT_WRITE);
 
 	// Create WAV Header
-	file->store_string("RIFF"); //ChunkID
-	file->store_32(sub_chunk_2_size + 36); //ChunkSize = 36 + SubChunk2Size (size of entire file minus the 8 bits for this and previous header)
-	file->store_string("WAVE"); //Format
-	file->store_string("fmt "); //Subchunk1ID
-	file->store_32(16); //Subchunk1Size = 16
-	file->store_16(format_code); //AudioFormat
-	file->store_16(n_channels); //Number of Channels
-	file->store_32(sample_rate); //SampleRate
-	file->store_32(sample_rate * n_channels * byte_pr_sample); //ByteRate
-	file->store_16(n_channels * byte_pr_sample); //BlockAlign = NumChannels * BytePrSample
-	file->store_16(byte_pr_sample * 8); //BitsPerSample
-	file->store_string("data"); //Subchunk2ID
-	file->store_32(sub_chunk_2_size); //Subchunk2Size
+	file->store_string("RIFF"); // ChunkID
+	file->store_32(sub_chunk_2_size + 36); // ChunkSize = 36 + SubChunk2Size (size of entire file minus the 8 bits for this and previous header)
+	file->store_string("WAVE"); // Format
+	file->store_string("fmt "); // Subchunk1ID
+	file->store_32(16); // Subchunk1Size = 16
+	file->store_16(format_code); // AudioFormat
+	file->store_16(n_channels); // Number of Channels
+	file->store_32(sample_rate); // SampleRate
+	file->store_32(sample_rate * n_channels * byte_pr_sample); // ByteRate
+	file->store_16(n_channels * byte_pr_sample); // BlockAlign = NumChannels * BytePrSample
+	file->store_16(byte_pr_sample * 8); // BitsPerSample
+	file->store_string("data"); // Subchunk2ID
+	file->store_32(sub_chunk_2_size); // Subchunk2Size
 
 	// Add data
 	PoolVector<uint8_t> data = get_data();
@@ -581,7 +581,7 @@ Error AudioStreamSample::save_to_wav(const String &p_path) {
 			}
 			break;
 		case AudioStreamSample::FORMAT_IMA_ADPCM:
-			//Unimplemented
+			// Unimplemented
 			break;
 	}
 

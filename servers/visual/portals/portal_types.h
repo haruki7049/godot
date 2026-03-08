@@ -163,7 +163,7 @@ public:
 		real_t r_min, r_max;
 		p_aabb.project_range_in_plane(_plane, r_min, r_max);
 
-		const real_t epsilon = _margin; //10.0;
+		const real_t epsilon = _margin; // 10.0;
 
 		if (p_room_from == _linkedroom_ID[0]) {
 			if (r_max > epsilon) {

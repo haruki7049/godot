@@ -176,7 +176,7 @@ void VisualServerCanvas::_render_canvas_item(Item *p_canvas_item, const Transfor
 	}
 
 	if ((!ci->commands.empty() && p_clip_rect.intersects(global_rect, true)) || ci->vp_render || ci->copy_back_buffer) {
-		//something to draw?
+		// something to draw?
 		ci->final_transform = xform;
 		ci->final_modulate = Color(modulate.r * ci->self_modulate.r, modulate.g * ci->self_modulate.g, modulate.b * ci->self_modulate.b, modulate.a * ci->self_modulate.a);
 		ci->global_rect_cache = global_rect;
@@ -275,7 +275,7 @@ void VisualServerCanvas::render_canvas(Canvas *p_canvas, const Transform2D &p_tr
 			const Canvas::ChildItem &ci2 = p_canvas->child_items[i];
 			_render_canvas_item_tree(ci2.item, p_transform, p_clip_rect, p_canvas->modulate, p_lights);
 
-			//mirroring (useful for scrolling backgrounds)
+			// mirroring (useful for scrolling backgrounds)
 			if (ci2.mirror.x != 0) {
 				Transform2D xform2 = p_transform * Transform2D(0, Vector2(ci2.mirror.x, 0));
 				_render_canvas_item_tree(ci2.item, xform2, p_clip_rect, p_canvas->modulate, p_lights);
@@ -483,7 +483,7 @@ void VisualServerCanvas::canvas_item_add_polyline(RID p_item, const Vector<Point
 			pline->line_colors.resize(1);
 		}
 	} else {
-		//make a trianglestrip for drawing the line...
+		// make a trianglestrip for drawing the line...
 		Vector2 prev_t;
 		pline->triangles.resize(p_points.size() * 2);
 		if (p_antialiased) {
@@ -553,7 +553,7 @@ void VisualServerCanvas::canvas_item_add_multiline(RID p_item, const Vector<Poin
 	Item::CommandPolyLine *pline = memnew(Item::CommandPolyLine);
 	ERR_FAIL_COND(!pline);
 
-	pline->antialiased = false; //todo
+	pline->antialiased = false; // todo
 	pline->multiline = true;
 
 	pline->lines = p_points;
@@ -820,7 +820,7 @@ void VisualServerCanvas::canvas_item_add_particles(RID p_item, RID p_particles, 
 	part->texture = p_texture;
 	part->normal_map = p_normal;
 
-	//take the chance and request processing for them, at least once until they become visible again
+	// take the chance and request processing for them, at least once until they become visible again
 	VSG::storage->particles_request_process(p_particles);
 
 	canvas_item->rect_dirty = true;

@@ -168,7 +168,7 @@ void DocData::remove_from(const DocData &p_data) {
 static void return_doc_from_retinfo(DocData::MethodDoc &p_method, const PropertyInfo &p_retinfo) {
 	if (p_retinfo.type == Variant::INT && p_retinfo.usage & PROPERTY_USAGE_CLASS_IS_ENUM) {
 		p_method.return_enum = p_retinfo.class_name;
-		if (p_method.return_enum.begins_with("_")) { //proxy class
+		if (p_method.return_enum.begins_with("_")) { // proxy class
 			p_method.return_enum = p_method.return_enum.substr(1, p_method.return_enum.length());
 		}
 		p_method.return_type = "int";
@@ -190,7 +190,7 @@ static void argument_doc_from_arginfo(DocData::ArgumentDoc &p_argument, const Pr
 
 	if (p_arginfo.type == Variant::INT && p_arginfo.usage & PROPERTY_USAGE_CLASS_IS_ENUM) {
 		p_argument.enumeration = p_arginfo.class_name;
-		if (p_argument.enumeration.begins_with("_")) { //proxy class
+		if (p_argument.enumeration.begins_with("_")) { // proxy class
 			p_argument.enumeration = p_argument.enumeration.substr(1, p_argument.enumeration.length());
 		}
 		p_argument.type = "int";
@@ -249,7 +249,7 @@ void DocData::generate(bool p_basic_types) {
 		}
 
 		String cname = name;
-		if (cname.begins_with("_")) { //proxy class
+		if (cname.begins_with("_")) { // proxy class
 			cname = cname.substr(1, name.length());
 		}
 
@@ -261,7 +261,7 @@ void DocData::generate(bool p_basic_types) {
 		List<PropertyInfo> properties;
 		List<PropertyInfo> own_properties;
 		if (name == "ProjectSettings") {
-			//special case for project settings, so settings can be documented
+			// special case for project settings, so settings can be documented
 			ProjectSettings::get_singleton()->get_property_list(&properties);
 			own_properties = properties;
 		} else {
@@ -369,7 +369,7 @@ void DocData::generate(bool p_basic_types) {
 
 		for (List<MethodInfo>::Element *E = method_list.front(); E; E = E->next()) {
 			if (E->get().name == "" || (E->get().name[0] == '_' && !(E->get().flags & METHOD_FLAG_VIRTUAL))) {
-				continue; //hidden, don't count
+				continue; // hidden, don't count
 			}
 
 			if (skip_setter_getter_methods && setters_getters.has(E->get().name)) {
@@ -602,7 +602,7 @@ void DocData::generate(bool p_basic_types) {
 		}
 	}
 
-	//built in constants and functions
+	// built in constants and functions
 
 	{
 		String cname = "@GlobalScope";
@@ -621,7 +621,7 @@ void DocData::generate(bool p_basic_types) {
 		List<Engine::Singleton> singletons;
 		Engine::get_singleton()->get_singletons(&singletons);
 
-		//servers (this is kind of hackish)
+		// servers (this is kind of hackish)
 		for (List<Engine::Singleton>::Element *E = singletons.front(); E; E = E->next()) {
 			PropertyDoc pd;
 			Engine::Singleton &s = E->get();
@@ -830,7 +830,7 @@ Error DocData::_load(Ref<XMLParser> parser) {
 		}
 
 		if (parser->get_node_type() != XMLParser::NODE_ELEMENT) {
-			continue; //no idea what this may be, but skipping anyway
+			continue; // no idea what this may be, but skipping anyway
 		}
 
 		ERR_FAIL_COND_V(parser->get_node_name() != "class", ERR_FILE_CORRUPT);

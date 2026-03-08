@@ -89,7 +89,7 @@ private:
 
 	Button *makedir;
 	Access access;
-	//Button *action;
+	// Button *action;
 	VBoxContainer *vbox;
 	Mode mode;
 	bool can_create_dir;
@@ -188,7 +188,7 @@ private:
 	virtual void _post_popup();
 
 	void _save_to_recent();
-	//callback function is callback(String p_path,Ref<Texture> preview,Variant udata) preview null if could not load
+	// callback function is callback(String p_path,Ref<Texture> preview,Variant udata) preview null if could not load
 
 	void _thumbnail_result(const String &p_path, const Ref<Texture> &p_preview, const Ref<Texture> &p_small_preview, const Variant &p_udata);
 	void _thumbnail_done(const String &p_path, const Ref<Texture> &p_preview, const Ref<Texture> &p_small_preview, const Variant &p_udata);
@@ -201,7 +201,7 @@ private:
 protected:
 	void _notification(int p_what);
 	static void _bind_methods();
-	//bind helpers
+	// bind helpers
 public:
 	void clear_filters();
 	void add_filter(const String &p_filter);

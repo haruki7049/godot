@@ -81,7 +81,7 @@ class Ref {
 		}
 	}
 
-	//virtual Reference * get_reference() const { return reference; }
+	// virtual Reference * get_reference() const { return reference; }
 public:
 	_FORCE_INLINE_ bool operator==(const T *p_ptr) const {
 		return reference == p_ptr;
@@ -250,9 +250,9 @@ public:
 	inline bool is_null() const { return reference == nullptr; }
 
 	void unref() {
-		//TODO this should be moved to mutexes, since this engine does not really
-		// do a lot of referencing on references and stuff
-		// mutexes will avoid more crashes?
+		// TODO this should be moved to mutexes, since this engine does not really
+		//  do a lot of referencing on references and stuff
+		//  mutexes will avoid more crashes?
 
 		if (reference && reference->unreference()) {
 			memdelete(reference);
@@ -311,7 +311,7 @@ struct PtrToArg<const Ref<T> &> {
 	}
 };
 
-//this is for RefPtr
+// this is for RefPtr
 
 template <>
 struct PtrToArg<RefPtr> {

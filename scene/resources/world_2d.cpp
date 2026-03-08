@@ -214,7 +214,7 @@ struct SpatialIndexer2D {
 			uint64_t visible_cells = (uint64_t)(end.x - begin.x) * (uint64_t)(end.y - begin.y);
 
 			if (visible_cells > 10000) {
-				//well you zoomed out a lot, it's your problem. To avoid freezing in the for loops below, we'll manually check cell by cell
+				// well you zoomed out a lot, it's your problem. To avoid freezing in the for loops below, we'll manually check cell by cell
 
 				for (Map<CellKey, CellData>::Element *F = cells.front(); F; F = F->next()) {
 					const CellKey &ck = F->key();
@@ -226,7 +226,7 @@ struct SpatialIndexer2D {
 						continue;
 					}
 
-					//notifiers in cell
+					// notifiers in cell
 					for (Map<VisibilityNotifier2D *, CellRef>::Element *G = F->get().notifiers.front(); G; G = G->next()) {
 						Map<VisibilityNotifier2D *, uint64_t>::Element *H = E->get().notifiers.find(G->key());
 						if (!H) {
@@ -239,7 +239,7 @@ struct SpatialIndexer2D {
 				}
 
 			} else {
-				//check cells in grid fashion
+				// check cells in grid fashion
 				for (int i = begin.x; i <= end.x; i++) {
 					for (int j = begin.y; j <= end.y; j++) {
 						CellKey ck;
@@ -251,7 +251,7 @@ struct SpatialIndexer2D {
 							continue;
 						}
 
-						//notifiers in cell
+						// notifiers in cell
 						for (Map<VisibilityNotifier2D *, CellRef>::Element *G = F->get().notifiers.front(); G; G = G->next()) {
 							Map<VisibilityNotifier2D *, uint64_t>::Element *H = E->get().notifiers.find(G->key());
 							if (!H) {
@@ -351,7 +351,7 @@ World2D::World2D() {
 	canvas = VisualServer::get_singleton()->canvas_create();
 	space = Physics2DServer::get_singleton()->space_create();
 
-	//set space2D to be more friendly with pixels than meters, by adjusting some constants
+	// set space2D to be more friendly with pixels than meters, by adjusting some constants
 	Physics2DServer::get_singleton()->space_set_active(space, true);
 	Physics2DServer::get_singleton()->area_set_param(space, Physics2DServer::AREA_PARAM_GRAVITY, GLOBAL_DEF("physics/2d/default_gravity", 98));
 	Physics2DServer::get_singleton()->area_set_param(space, Physics2DServer::AREA_PARAM_GRAVITY_VECTOR, GLOBAL_DEF("physics/2d/default_gravity_vector", Vector2(0, 1)));

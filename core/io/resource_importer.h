@@ -48,7 +48,7 @@ class ResourceFormatImporter : public ResourceFormatLoader {
 
 	static ResourceFormatImporter *singleton;
 
-	//need them to stay in order to compute the settings hash
+	// need them to stay in order to compute the settings hash
 	struct SortImporterByName {
 		bool operator()(const Ref<ResourceImporter> &p_a, const Ref<ResourceImporter> &p_b) const;
 	};

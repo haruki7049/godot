@@ -73,12 +73,12 @@ private:
 	Mesh::PrimitiveType primitive;
 	int format;
 	Ref<Material> material;
-	//arrays
+	// arrays
 	List<Vertex> vertex_array;
 	List<int> index_array;
 	Map<int, bool> smooth_groups;
 
-	//memory
+	// memory
 	Color last_color;
 	Vector3 last_normal;
 	Vector2 last_uv;
@@ -90,7 +90,7 @@ private:
 	void _create_list_from_arrays(Array arr, List<Vertex> *r_vertex, List<int> *r_index, int &lformat);
 	void _create_list(const Ref<Mesh> &p_existing, int p_surface, List<Vertex> *r_vertex, List<int> *r_index, int &lformat);
 
-	//mikktspace callbacks
+	// mikktspace callbacks
 	static int mikktGetNumFaces(const SMikkTSpaceContext *pContext);
 	static int mikktGetNumVerticesOfFace(const SMikkTSpaceContext *pContext, const int iFace);
 	static void mikktGetPosition(const SMikkTSpaceContext *pContext, float fvPosOut[], const int iFace, const int iVert);

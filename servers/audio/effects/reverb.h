@@ -60,8 +60,8 @@ private:
 		int size;
 		float *buffer;
 		float feedback;
-		float damp; //lowpass
-		float damp_h; //history
+		float damp; // lowpass
+		float damp_h; // history
 		int pos;
 		int extra_spread_frames;
 

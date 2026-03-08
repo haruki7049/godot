@@ -81,7 +81,7 @@ CameraEditor::CameraEditor() {
 
 void CameraEditorPlugin::edit(Object *p_object) {
 	SpatialEditor::get_singleton()->set_can_preview(Object::cast_to<Camera>(p_object));
-	//camera_editor->edit(Object::cast_to<Node>(p_object));
+	// camera_editor->edit(Object::cast_to<Node>(p_object));
 }
 
 bool CameraEditorPlugin::handles(Object *p_object) const {
@@ -90,7 +90,7 @@ bool CameraEditorPlugin::handles(Object *p_object) const {
 
 void CameraEditorPlugin::make_visible(bool p_visible) {
 	if (p_visible) {
-		//SpatialEditor::get_singleton()->set_can_preview(Object::cast_to<Camera>(p_object));
+		// SpatialEditor::get_singleton()->set_can_preview(Object::cast_to<Camera>(p_object));
 	} else {
 		SpatialEditor::get_singleton()->set_can_preview(nullptr);
 	}

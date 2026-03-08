@@ -145,7 +145,7 @@ public:
 
 	virtual bool can_instance() const;
 
-	virtual Ref<Script> get_base_script() const; //for script inheritance
+	virtual Ref<Script> get_base_script() const; // for script inheritance
 
 	virtual StringName get_instance_base_type() const; // this may not work in all scripts, will return empty if so
 	virtual ScriptInstance *instance_create(Object *p_this);
@@ -170,7 +170,7 @@ public:
 
 	virtual bool get_property_default_value(const StringName &p_property, Variant &r_value) const;
 
-	virtual void update_exports(); //editor tool
+	virtual void update_exports(); // editor tool
 	virtual void get_script_method_list(List<MethodInfo> *p_list) const;
 	virtual void get_script_property_list(List<PropertyInfo> *p_list) const;
 

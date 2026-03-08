@@ -150,7 +150,7 @@ void PropertySelector::_update_search() {
 		for (List<PropertyInfo>::Element *E = props.front(); E; E = E->next()) {
 			if (E->get().usage == PROPERTY_USAGE_CATEGORY) {
 				if (category && category->get_children() == nullptr) {
-					memdelete(category); //old category was unused
+					memdelete(category); // old category was unused
 				}
 				category = search_options->create_item(root);
 				category->set_text(0, E->get().name);
@@ -192,7 +192,7 @@ void PropertySelector::_update_search() {
 		}
 
 		if (category && category->get_children() == nullptr) {
-			memdelete(category); //old category was unused
+			memdelete(category); // old category was unused
 		}
 	} else {
 		List<MethodInfo> methods;
@@ -225,7 +225,7 @@ void PropertySelector::_update_search() {
 		for (List<MethodInfo>::Element *E = methods.front(); E; E = E->next()) {
 			if (E->get().name.begins_with("*")) {
 				if (category && category->get_children() == nullptr) {
-					memdelete(category); //old category was unused
+					memdelete(category); // old category was unused
 				}
 				category = search_options->create_item(root);
 				category->set_text(0, E->get().name.replace_first("*", ""));
@@ -316,7 +316,7 @@ void PropertySelector::_update_search() {
 		}
 
 		if (category && category->get_children() == nullptr) {
-			memdelete(category); //old category was unused
+			memdelete(category); // old category was unused
 		}
 	}
 
@@ -558,7 +558,7 @@ void PropertySelector::_bind_methods() {
 PropertySelector::PropertySelector() {
 	VBoxContainer *vbc = memnew(VBoxContainer);
 	add_child(vbc);
-	//set_child_rect(vbc);
+	// set_child_rect(vbc);
 	search_box = memnew(LineEdit);
 	vbc->add_margin_child(TTR("Search:"), search_box);
 	search_box->connect("text_changed", this, "_text_changed");

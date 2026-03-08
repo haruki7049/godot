@@ -166,7 +166,7 @@ static String _parser_expr(const GDScriptParser::Node *p_expr) {
 				case GDScriptParser::OperatorNode::OP_INDEX: {
 					ERR_FAIL_COND_V(c_node->arguments.size() != 2, "");
 
-					//index with []
+					// index with []
 					txt = _parser_expr(c_node->arguments[0]) + "[" + _parser_expr(c_node->arguments[1]) + "]";
 
 				} break;
@@ -286,7 +286,7 @@ static String _parser_expr(const GDScriptParser::Node *p_expr) {
 
 		} break;
 		case GDScriptParser::Node::TYPE_NEWLINE: {
-			//skippie
+			// skippie
 		} break;
 		default: {
 			ERR_FAIL_V_MSG("", "Parser bug at " + itos(p_expr->line) + ", invalid expression type: " + itos(p_expr->type));
@@ -367,7 +367,7 @@ static void _parser_show_block(const GDScriptParser::BlockNode *p_block, int p_i
 				_print_indent(p_indent, "var " + String(lv_node->name));
 			} break;
 			default: {
-				//expression i guess
+				// expression i guess
 				_print_indent(p_indent, _parser_expr(statement));
 			}
 		}
@@ -401,7 +401,7 @@ static void _parser_show_function(const GDScriptParser::FunctionNode *p_func, in
 
 	txt += ")";
 
-	//todo constructor check!
+	// todo constructor check!
 
 	txt += ":";
 

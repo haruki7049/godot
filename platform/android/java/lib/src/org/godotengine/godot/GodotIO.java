@@ -114,7 +114,7 @@ public class GodotIO {
 			return false;
 		}
 		AssetDir ad = dirs.get(id);
-		//System.out.printf("go next: %d,%d\n",ad.current,ad.files.length);
+		// System.out.printf("go next: %d,%d\n",ad.current,ad.files.length);
 		int idx = ad.current;
 		if (idx > 0)
 			idx--;
@@ -141,7 +141,7 @@ public class GodotIO {
 		}
 
 		AssetDir ad = dirs.get(id);
-		//System.out.printf("go next: %d,%d\n",ad.current,ad.files.length);
+		// System.out.printf("go next: %d,%d\n",ad.current,ad.files.length);
 
 		if (ad.current >= ad.files.length) {
 			ad.current++;
@@ -183,7 +183,7 @@ public class GodotIO {
 			String path = p_uri;
 			String type = "";
 			if (path.startsWith("/")) {
-				//absolute path to filesystem, prepend file://
+				// absolute path to filesystem, prepend file://
 				path = "file://" + path;
 				if (p_uri.endsWith(".png") || p_uri.endsWith(".jpg") || p_uri.endsWith(".gif") || p_uri.endsWith(".webp")) {
 					type = "image/*";
@@ -252,8 +252,8 @@ public class GodotIO {
 		if (edit != null)
 			edit.showKeyboard(p_existing_text, p_multiline, p_max_input_length, p_cursor_start, p_cursor_end);
 
-		//InputMethodManager inputMgr = (InputMethodManager)activity.getSystemService(Context.INPUT_METHOD_SERVICE);
-		//inputMgr.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+		// InputMethodManager inputMgr = (InputMethodManager)activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+		// inputMgr.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
 	}
 
 	public void hideKeyboard() {

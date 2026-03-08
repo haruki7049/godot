@@ -137,20 +137,20 @@ static void _generate_contacts_edge_edge(const Vector3 *p_points_A, int p_point_
 
 	if (Math::is_zero_approx(rel_A.dot(c))) {
 		// should handle somehow..
-		//ERR_PRINT("TODO FIX");
-		//return;
+		// ERR_PRINT("TODO FIX");
+		// return;
 
-		Vector3 axis = rel_A.normalized(); //make an axis
+		Vector3 axis = rel_A.normalized(); // make an axis
 		Vector3 base_A = p_points_A[0] - axis * axis.dot(p_points_A[0]);
 		Vector3 base_B = p_points_B[0] - axis * axis.dot(p_points_B[0]);
 
-		//sort all 4 points in axis
+		// sort all 4 points in axis
 		real_t dvec[4] = { axis.dot(p_points_A[0]), axis.dot(p_points_A[1]), axis.dot(p_points_B[0]), axis.dot(p_points_B[1]) };
 
 		SortArray<real_t> sa;
 		sa.sort(dvec, 4);
 
-		//use the middle ones as contacts
+		// use the middle ones as contacts
 		p_callback->call(base_A + axis * dvec[1], base_B + axis * dvec[1]);
 		p_callback->call(base_A + axis * dvec[2], base_B + axis * dvec[2]);
 
@@ -319,7 +319,7 @@ static void _generate_contacts_face_face(const Vector3 *p_points_A, int p_point_
 			}
 
 			// check for different sides and non coplanar
-			//if ( (dist0*dist1) < -CMP_EPSILON && !(edge && j)) {
+			// if ( (dist0*dist1) < -CMP_EPSILON && !(edge && j)) {
 			if ((dist0 * dist1) < 0 && !(edge && j)) {
 				// calculate intersection
 				Vector3 rel = edge1_A - edge0_A;
@@ -338,7 +338,7 @@ static void _generate_contacts_face_face(const Vector3 *p_points_A, int p_point_
 	}
 
 	// generate contacts
-	//Plane plane_A(p_points_A[0],p_points_A[1],p_points_A[2]);
+	// Plane plane_A(p_points_A[0],p_points_A[1],p_points_A[2]);
 
 	for (int i = 0; i < clipbuf_len; i++) {
 		real_t d = plane_B.distance_to(clipbuf_src[i]);
@@ -580,7 +580,7 @@ static void _generate_contacts_from_supports(const Vector3 *p_points_A, int p_po
 	int version_B;
 
 	if (p_feature_type_A > p_feature_type_B) {
-		//swap
+		// swap
 		p_callback->swap = !p_callback->swap;
 		p_callback->normal = -p_callback->normal;
 
@@ -659,7 +659,7 @@ public:
 			return false; // doesn't contain 0
 		}
 
-		//use the smallest depth
+		// use the smallest depth
 
 		if (min_B < 0.0) { // could be +0.0, we don't want it to become -0.0
 			min_B = -min_B;
@@ -698,7 +698,7 @@ public:
 		}
 
 		if (!callback->callback) {
-			//just was checking intersection?
+			// just was checking intersection?
 			callback->collided = true;
 			if (callback->prev_axis) {
 				*callback->prev_axis = best_axis;
@@ -843,7 +843,7 @@ static void _collision_sphere_capsule(const ShapeSW *p_a, const Transform &p_tra
 		return;
 	}
 
-	//capsule sphere 1, sphere
+	// capsule sphere 1, sphere
 
 	Vector3 capsule_axis = p_transform_b.basis.get_axis(2) * (capsule_B->get_height() * 0.5);
 
@@ -853,7 +853,7 @@ static void _collision_sphere_capsule(const ShapeSW *p_a, const Transform &p_tra
 		return;
 	}
 
-	//capsule sphere 2, sphere
+	// capsule sphere 2, sphere
 
 	Vector3 capsule_ball_2 = p_transform_b.origin - capsule_axis;
 
@@ -861,7 +861,7 @@ static void _collision_sphere_capsule(const ShapeSW *p_a, const Transform &p_tra
 		return;
 	}
 
-	//capsule edge, sphere
+	// capsule edge, sphere
 
 	Vector3 b2a = p_transform_a.origin - p_transform_b.origin;
 
@@ -1081,7 +1081,7 @@ static void _collision_box_box(const ShapeSW *p_a, const Transform &p_transform_
 	}
 
 	if (withMargin) {
-		//add endpoint test between closest vertices and edges
+		// add endpoint test between closest vertices and edges
 
 		// calculate closest point to sphere
 
@@ -1109,17 +1109,17 @@ static void _collision_box_box(const ShapeSW *p_a, const Transform &p_transform_
 			return;
 		}
 
-		//now try edges, which become cylinders!
+		// now try edges, which become cylinders!
 
 		for (int i = 0; i < 3; i++) {
-			//a ->b
+			// a ->b
 			Vector3 axis_a = p_transform_a.basis.get_axis(i);
 
 			if (!separator.test_axis(axis_ab.cross(axis_a).cross(axis_a).normalized())) {
 				return;
 			}
 
-			//b ->a
+			// b ->a
 			Vector3 axis_b = p_transform_b.basis.get_axis(i);
 
 			if (!separator.test_axis(axis_ab.cross(axis_b).cross(axis_b).normalized())) {
@@ -1183,7 +1183,7 @@ static void _collision_box_capsule(const ShapeSW *p_a, const Transform &p_transf
 					point += p_transform_a.basis.get_axis(l) * he[l];
 				}
 
-				//Vector3 axis = (point - cyl_axis * cyl_axis.dot(point)).normalized();
+				// Vector3 axis = (point - cyl_axis * cyl_axis.dot(point)).normalized();
 				Vector3 axis = Plane(cyl_axis, 0).project(point).normalized();
 
 				if (!separator.test_axis(axis)) {
@@ -1419,10 +1419,10 @@ static void _collision_box_convex_polygon(const ShapeSW *p_a, const Transform &p
 				return;
 			}
 
-			//now try edges, which become cylinders!
+			// now try edges, which become cylinders!
 
 			for (int i = 0; i < 3; i++) {
-				//a ->b
+				// a ->b
 				Vector3 axis_a = p_transform_a.basis.get_axis(i);
 
 				if (!separator.test_axis(axis_ab.cross(axis_a).cross(axis_a).normalized())) {
@@ -1431,7 +1431,7 @@ static void _collision_box_convex_polygon(const ShapeSW *p_a, const Transform &p
 			}
 		}
 
-		//convex edges and box points
+		// convex edges and box points
 		for (int i = 0; i < 2; i++) {
 			for (int j = 0; j < 2; j++) {
 				for (int k = 0; k < 2; k++) {
@@ -1520,10 +1520,10 @@ static void _collision_box_face(const ShapeSW *p_a, const Transform &p_transform
 				return;
 			}
 
-			//now try edges, which become cylinders!
+			// now try edges, which become cylinders!
 
 			for (int i = 0; i < 3; i++) {
-				//a ->b
+				// a ->b
 				Vector3 axis_a = p_transform_a.basis.get_axis(i);
 
 				if (!separator.test_axis(axis_ab.cross(axis_a).cross(axis_a).normalized())) {
@@ -1532,7 +1532,7 @@ static void _collision_box_face(const ShapeSW *p_a, const Transform &p_transform
 			}
 		}
 
-		//convex edges and box points, there has to be a way to speed up this (get closest point?)
+		// convex edges and box points, there has to be a way to speed up this (get closest point?)
 		for (int i = 0; i < 2; i++) {
 			for (int j = 0; j < 2; j++) {
 				for (int k = 0; k < 2; k++) {
@@ -1584,7 +1584,7 @@ static void _collision_capsule_capsule(const ShapeSW *p_a, const Transform &p_tr
 	Vector3 capsule_B_ball_1 = p_transform_b.origin + capsule_B_axis;
 	Vector3 capsule_B_ball_2 = p_transform_b.origin - capsule_B_axis;
 
-	//balls-balls
+	// balls-balls
 
 	if (!separator.test_axis((capsule_A_ball_1 - capsule_B_ball_1).normalized())) {
 		return;
@@ -2045,7 +2045,7 @@ static void _collision_convex_polygon_convex_polygon(const ShapeSW *p_a, const T
 	}
 
 	if (withMargin) {
-		//vertex-vertex
+		// vertex-vertex
 		for (int i = 0; i < vertex_count_A; i++) {
 			Vector3 va = p_transform_a.xform(vertices_A[i]);
 
@@ -2055,7 +2055,7 @@ static void _collision_convex_polygon_convex_polygon(const ShapeSW *p_a, const T
 				}
 			}
 		}
-		//edge-vertex (shell)
+		// edge-vertex (shell)
 
 		for (int i = 0; i < edge_count_A; i++) {
 			Vector3 e1 = p_transform_a.basis.xform(vertices_A[edges_A[i].a]);
@@ -2117,7 +2117,7 @@ static void _collision_convex_polygon_face(const ShapeSW *p_a, const Transform &
 
 	// faces of A
 	for (int i = 0; i < face_count; i++) {
-		//Vector3 axis = p_transform_a.xform( faces[i].plane ).normal;
+		// Vector3 axis = p_transform_a.xform( faces[i].plane ).normal;
 		Vector3 axis = p_transform_a.basis.xform(faces[i].plane.normal).normalized();
 
 		if (!separator.test_axis(axis)) {
@@ -2141,7 +2141,7 @@ static void _collision_convex_polygon_face(const ShapeSW *p_a, const Transform &
 	}
 
 	if (withMargin) {
-		//vertex-vertex
+		// vertex-vertex
 		for (int i = 0; i < vertex_count; i++) {
 			Vector3 va = p_transform_a.xform(vertices[i]);
 
@@ -2151,7 +2151,7 @@ static void _collision_convex_polygon_face(const ShapeSW *p_a, const Transform &
 				}
 			}
 		}
-		//edge-vertex (shell)
+		// edge-vertex (shell)
 
 		for (int i = 0; i < edge_count; i++) {
 			Vector3 e1 = p_transform_a.basis.xform(vertices[edges[i].a]);

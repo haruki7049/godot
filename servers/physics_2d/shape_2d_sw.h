@@ -106,26 +106,26 @@ public:
 
 		if (r_amount == 1) {
 			if (Math::abs(p_normal.dot(p_cast.normalized())) < (1.0 - _SEGMENT_IS_VALID_SUPPORT_THRESHOLD)) {
-				//make line because they are parallel
+				// make line because they are parallel
 				r_amount = 2;
 				r_supports[1] = r_supports[0] + p_cast;
 			} else if (p_cast.dot(p_normal) > 0) {
-				//normal points towards cast, add cast
+				// normal points towards cast, add cast
 				r_supports[0] += p_cast;
 			}
 
 		} else {
 			if (Math::abs(p_normal.dot(p_cast.normalized())) < (1.0 - _SEGMENT_IS_VALID_SUPPORT_THRESHOLD)) {
-				//optimize line and make it larger because they are parallel
+				// optimize line and make it larger because they are parallel
 				if ((r_supports[1] - r_supports[0]).dot(p_cast) > 0) {
-					//larger towards 1
+					// larger towards 1
 					r_supports[1] += p_cast;
 				} else {
-					//larger towards 0
+					// larger towards 0
 					r_supports[0] += p_cast;
 				}
 			} else if (p_cast.dot(p_normal) > 0) {
-				//normal points towards cast, add cast
+				// normal points towards cast, add cast
 				r_supports[0] += p_cast;
 				r_supports[1] += p_cast;
 			}
@@ -136,7 +136,7 @@ public:
 	virtual ~Shape2DSW();
 };
 
-//let the optimizer do the magic
+// let the optimizer do the magic
 #define DEFAULT_PROJECT_RANGE_CAST                                                                                                                               \
 	virtual void project_range_castv(const Vector2 &p_cast, const Vector2 &p_normal, const Transform2D &p_transform, real_t &r_min, real_t &r_max) const {       \
 		project_range_cast(p_cast, p_normal, p_transform, r_min, r_max);                                                                                         \
@@ -173,7 +173,7 @@ public:
 	virtual Variant get_data() const;
 
 	_FORCE_INLINE_ void project_range(const Vector2 &p_normal, const Transform2D &p_transform, real_t &r_min, real_t &r_max) const {
-		//real large
+		// real large
 		r_min = -1e10;
 		r_max = 1e10;
 	}
@@ -183,7 +183,7 @@ public:
 	}
 
 	_FORCE_INLINE_ void project_range_cast(const Vector2 &p_cast, const Vector2 &p_normal, const Transform2D &p_transform, real_t &r_min, real_t &r_max) const {
-		//real large
+		// real large
 		r_min = -1e10;
 		r_max = 1e10;
 	}
@@ -210,7 +210,7 @@ public:
 	virtual Variant get_data() const;
 
 	_FORCE_INLINE_ void project_range(const Vector2 &p_normal, const Transform2D &p_transform, real_t &r_min, real_t &r_max) const {
-		//real large
+		// real large
 		r_max = p_normal.dot(p_transform.get_origin());
 		r_min = p_normal.dot(p_transform.xform(Vector2(0, length)));
 		if (r_max < r_min) {
@@ -250,7 +250,7 @@ public:
 	virtual Variant get_data() const;
 
 	_FORCE_INLINE_ void project_range(const Vector2 &p_normal, const Transform2D &p_transform, real_t &r_min, real_t &r_max) const {
-		//real large
+		// real large
 		r_max = p_normal.dot(p_transform.xform(a));
 		r_min = p_normal.dot(p_transform.xform(b));
 		if (r_max < r_min) {
@@ -287,7 +287,7 @@ public:
 	virtual Variant get_data() const;
 
 	_FORCE_INLINE_ void project_range(const Vector2 &p_normal, const Transform2D &p_transform, real_t &r_min, real_t &r_max) const {
-		//real large
+		// real large
 		real_t d = p_normal.dot(p_transform.get_origin());
 
 		// figure out scale at point
@@ -408,7 +408,7 @@ public:
 			SWAP(r_max, r_min);
 		}
 
-		//ERR_FAIL_COND( r_max < r_min );
+		// ERR_FAIL_COND( r_max < r_min );
 	}
 
 	DEFAULT_PROJECT_RANGE_CAST
@@ -417,7 +417,7 @@ public:
 class ConvexPolygonShape2DSW : public Shape2DSW {
 	struct Point {
 		Vector2 pos;
-		Vector2 normal; //normal to next segment
+		Vector2 normal; // normal to next segment
 	};
 
 	Point *points;

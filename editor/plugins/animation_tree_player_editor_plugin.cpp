@@ -54,7 +54,7 @@ void AnimationTreePlayerEditor::edit(AnimationTreePlayer *p_anim_tree) {
 				last_id=E->get()+1;
 		}*/
 		play_button->set_pressed(p_anim_tree->is_active());
-		//read the orders
+		// read the orders
 	}
 }
 
@@ -497,7 +497,7 @@ void AnimationTreePlayerEditor::_draw_node(const StringName &p_node) {
 	float icon_h_ofs = Math::floor((font->get_height() - slot_icon->get_height()) / 2.0) + 1;
 
 	if (type != AnimationTreePlayer::NODE_OUTPUT) {
-		slot_icon->draw(ci, ofs + Point2(w, icon_h_ofs)); //output
+		slot_icon->draw(ci, ofs + Point2(w, icon_h_ofs)); // output
 	}
 
 	if (inputs) {
@@ -736,7 +736,7 @@ void AnimationTreePlayerEditor::_gui_input(Ref<InputEvent> p_event) {
 						edited_node = click_node;
 						renaming_edit = false;
 						_popup_edit_dialog();
-						//open editor
+						// open editor
 						//_node_edit_property(click_node);
 					} break;
 					default: {
@@ -873,7 +873,7 @@ void AnimationTreePlayerEditor::_notification(int p_what) {
 		} break;
 		case NOTIFICATION_DRAW: {
 			_update_scrollbars();
-			//VisualServer::get_singleton()->canvas_item_add_rect(get_canvas_item(),Rect2(Point2(),get_size()),Color(0,0,0,1));
+			// VisualServer::get_singleton()->canvas_item_add_rect(get_canvas_item(),Rect2(Point2(),get_size()),Color(0,0,0,1));
 			get_stylebox("bg", "Tree")->draw(get_canvas_item(), Rect2(Point2(), get_size()));
 
 			for (List<StringName>::Element *E = order.front(); E; E = E->next()) {
@@ -1071,7 +1071,7 @@ void AnimationTreePlayerEditor::_file_dialog_selected(String p_path) {
 
 				RES anim = ResourceLoader::load(files[i]);
 				anim_tree->animation_node_set_animation(node, anim);
-				//anim_tree->node_set_name(node, files[i].get_file());
+				// anim_tree->node_set_name(node, files[i].get_file());
 			};
 		} break;
 
@@ -1082,7 +1082,7 @@ void AnimationTreePlayerEditor::_file_dialog_selected(String p_path) {
 
 void AnimationTreePlayerEditor::_add_menu_item(int p_item) {
 	if (p_item == MENU_GRAPH_CLEAR) {
-		//clear
+		// clear
 	} else if (p_item == MENU_IMPORT_ANIMATIONS) {
 		file_op = MENU_IMPORT_ANIMATIONS;
 		file_dialog->set_mode(EditorFileDialog::MODE_OPEN_FILE);
@@ -1199,7 +1199,7 @@ void AnimationTreePlayerEditor::_bind_methods() {
 	ClassDB::bind_method("_add_menu_item", &AnimationTreePlayerEditor::_add_menu_item);
 	ClassDB::bind_method("_node_menu_item", &AnimationTreePlayerEditor::_node_menu_item);
 	ClassDB::bind_method("_gui_input", &AnimationTreePlayerEditor::_gui_input);
-	//ClassDB::bind_method( "_node_param_changed", &AnimationTreeEditor::_node_param_changed );
+	// ClassDB::bind_method( "_node_param_changed", &AnimationTreeEditor::_node_param_changed );
 	ClassDB::bind_method("_scroll_moved", &AnimationTreePlayerEditor::_scroll_moved);
 	ClassDB::bind_method("_edit_dialog_changeds", &AnimationTreePlayerEditor::_edit_dialog_changeds);
 	ClassDB::bind_method("_edit_dialog_changede", &AnimationTreePlayerEditor::_edit_dialog_changede);
@@ -1222,7 +1222,7 @@ AnimationTreePlayerEditor::AnimationTreePlayerEditor() {
 	List<PropertyInfo> defaults;
 
 	add_menu = memnew(MenuButton);
-	//add_menu->set_
+	// add_menu->set_
 	add_menu->set_position(Point2(0, 0));
 	add_menu->set_size(Point2(25, 15));
 	add_child(add_menu);
@@ -1281,8 +1281,8 @@ AnimationTreePlayerEditor::AnimationTreePlayerEditor() {
 	updating_edit = false;
 
 	edit_dialog = memnew(PopupPanel);
-	//edit_dialog->get_ok()->hide();
-	//edit_dialog->get_cancel()->hide();
+	// edit_dialog->get_ok()->hide();
+	// edit_dialog->get_cancel()->hide();
 	add_child(edit_dialog);
 
 	edit_option = memnew(OptionButton);
@@ -1339,7 +1339,7 @@ AnimationTreePlayerEditor::AnimationTreePlayerEditor() {
 
 	filter = memnew(Tree);
 	filter_dialog->add_child(filter);
-	//filter_dialog->set_child_rect(filter);
+	// filter_dialog->set_child_rect(filter);
 	filter->connect("item_edited", this, "_filter_edited");
 
 	filter_button = memnew(Button);
@@ -1363,8 +1363,8 @@ bool AnimationTreePlayerEditorPlugin::handles(Object *p_object) const {
 
 void AnimationTreePlayerEditorPlugin::make_visible(bool p_visible) {
 	if (p_visible) {
-		//editor->hide_animation_player_editors();
-		//editor->animation_panel_make_visible(true);
+		// editor->hide_animation_player_editors();
+		// editor->animation_panel_make_visible(true);
 		button->show();
 		editor->make_bottom_panel_item_visible(anim_tree_editor);
 		anim_tree_editor->set_physics_process(true);

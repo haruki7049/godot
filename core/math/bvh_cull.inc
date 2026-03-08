@@ -459,7 +459,7 @@ bool _cull_convex_iterative(uint32_t p_node_id, CullParams &r_params, bool p_ful
 				uint32_t num_planes = tnode.aabb.find_cutting_planes(r_params.hull, plane_ids);
 				BVH_ASSERT(num_planes <= max_planes);
 
-//#define BVH_CONVEX_CULL_OPTIMIZED_RIGOR_CHECK
+// #define BVH_CONVEX_CULL_OPTIMIZED_RIGOR_CHECK
 #ifdef BVH_CONVEX_CULL_OPTIMIZED_RIGOR_CHECK
 				// rigorous check
 				uint32_t results[MAX_ITEMS];
@@ -468,7 +468,7 @@ bool _cull_convex_iterative(uint32_t p_node_id, CullParams &r_params, bool p_ful
 
 				// test children individually
 				for (int n = 0; n < leaf.num_items; n++) {
-					//const Item &item = leaf.get_item(n);
+					// const Item &item = leaf.get_item(n);
 					const BVHABB_CLASS &aabb = leaf.get_aabb(n);
 
 					if (aabb.intersects_convex_optimized(r_params.hull, plane_ids, num_planes)) {

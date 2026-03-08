@@ -165,7 +165,7 @@ MAKE_TYPE_INFO(IP_Address, Variant::STRING)
 class BSP_Tree;
 MAKE_TYPE_INFO(BSP_Tree, Variant::DICTIONARY)
 
-//for RefPtr
+// for RefPtr
 template <>
 struct GetTypeInfo<RefPtr> {
 	static const Variant::Type VARIANT_TYPE = Variant::OBJECT;
@@ -183,7 +183,7 @@ struct GetTypeInfo<const RefPtr &> {
 	}
 };
 
-//for variant
+// for variant
 template <>
 struct GetTypeInfo<Variant> {
 	static const Variant::Type VARIANT_TYPE = Variant::NIL;

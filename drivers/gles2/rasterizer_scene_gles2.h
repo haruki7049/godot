@@ -580,12 +580,12 @@ public:
 			RasterizerStorageGLES2::Material *material;
 			RasterizerStorageGLES2::GeometryOwner *owner;
 
-			bool use_accum; //is this an add pass for multipass
+			bool use_accum; // is this an add pass for multipass
 			bool *use_accum_ptr;
 			bool front_facing;
 
 			union {
-				//TODO: should be endian swapped on big endian
+				// TODO: should be endian swapped on big endian
 				struct {
 					int32_t depth_layer : 16;
 					int32_t priority : 16;
@@ -596,7 +596,7 @@ public:
 
 			union {
 				struct {
-					//from least significant to most significant in sort, TODO: should be endian swapped on big endian
+					// from least significant to most significant in sort, TODO: should be endian swapped on big endian
 
 					uint64_t geometry_index : 14;
 					uint64_t instancing : 1;
@@ -607,7 +607,7 @@ public:
 					uint64_t light_type2 : 1; // if 1==0 : nolight/directional, else omni/spot
 					uint64_t refprobe_1_index : 8;
 					uint64_t refprobe_0_index : 8;
-					uint64_t light_type1 : 1; //no light, directional is 0, omni spot is 1
+					uint64_t light_type1 : 1; // no light, directional is 0, omni spot is 1
 					uint64_t light_mode : 2; // LightMode enum
 				};
 
@@ -654,7 +654,7 @@ public:
 			}
 		};
 
-		void sort_by_depth(bool p_alpha) { //used for shadows
+		void sort_by_depth(bool p_alpha) { // used for shadows
 
 			SortArray<Element *, SortByDepth> sorter;
 			if (p_alpha) {
@@ -674,7 +674,7 @@ public:
 			}
 		};
 
-		void sort_by_reverse_depth_and_priority(bool p_alpha) { //used for alpha
+		void sort_by_reverse_depth_and_priority(bool p_alpha) { // used for alpha
 
 			SortArray<Element *, SortByReverseDepthAndPriority> sorter;
 			if (p_alpha) {

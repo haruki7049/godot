@@ -124,7 +124,7 @@ private:
 
 	struct Input {
 		StringName node;
-		//Input() { node=-1;  }
+		// Input() { node=-1;  }
 	};
 
 	struct NodeBase {
@@ -416,10 +416,10 @@ public:
 	void transition_node_set_current(const StringName &p_node, int p_current);
 	int transition_node_get_current(const StringName &p_node) const;
 
-	void node_set_position(const StringName &p_node, const Vector2 &p_pos); //for display
+	void node_set_position(const StringName &p_node, const Vector2 &p_pos); // for display
 
 	/* GETS */
-	Point2 node_get_position(const StringName &p_node) const; //for display
+	Point2 node_get_position(const StringName &p_node) const; // for display
 
 	NodeType node_get_type(const StringName &p_node) const;
 

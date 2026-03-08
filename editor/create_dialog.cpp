@@ -374,7 +374,7 @@ void CreateDialog::_update_search() {
 		}
 
 		if (EditorNode::get_editor_data().get_custom_types().has(type) && ClassDB::is_parent_class(type, base_type)) {
-			//there are custom types based on this... cool.
+			// there are custom types based on this... cool.
 
 			const Vector<EditorData::CustomType> &ct = EditorNode::get_editor_data().get_custom_types()[type];
 			for (int i = 0; i < ct.size(); i++) {
@@ -442,7 +442,7 @@ void CreateDialog::_confirmed() {
 			}
 
 			if (count > 32) {
-				//limit it to 32 entries..
+				// limit it to 32 entries..
 				break;
 			}
 			t = t->get_next();
@@ -709,7 +709,7 @@ void CreateDialog::drop_data_fw(const Point2 &p_point, const Variant &p_data, Co
 	}
 
 	if (drop_idx == from_idx) {
-		ds = -1; //cause it will be gone
+		ds = -1; // cause it will be gone
 	} else if (drop_idx > from_idx) {
 		drop_idx--;
 	}

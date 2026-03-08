@@ -62,7 +62,7 @@ class PhysicsServerSW : public PhysicsServer {
 	mutable RID_Owner<BodySW> body_owner;
 	mutable RID_Owner<JointSW> joint_owner;
 
-	//void _clear_query(QuerySW *p_query);
+	// void _clear_query(QuerySW *p_query);
 	friend class CollisionObjectSW;
 	SelfList<CollisionObjectSW>::List pending_shape_update_list;
 	void _update_shapes();
@@ -327,17 +327,17 @@ public:
 	virtual void hinge_joint_set_flag(RID p_joint, HingeJointFlag p_flag, bool p_value);
 	virtual bool hinge_joint_get_flag(RID p_joint, HingeJointFlag p_flag) const;
 
-	virtual RID joint_create_slider(RID p_body_A, const Transform &p_local_frame_A, RID p_body_B, const Transform &p_local_frame_B); //reference frame is A
+	virtual RID joint_create_slider(RID p_body_A, const Transform &p_local_frame_A, RID p_body_B, const Transform &p_local_frame_B); // reference frame is A
 
 	virtual void slider_joint_set_param(RID p_joint, SliderJointParam p_param, real_t p_value);
 	virtual real_t slider_joint_get_param(RID p_joint, SliderJointParam p_param) const;
 
-	virtual RID joint_create_cone_twist(RID p_body_A, const Transform &p_local_frame_A, RID p_body_B, const Transform &p_local_frame_B); //reference frame is A
+	virtual RID joint_create_cone_twist(RID p_body_A, const Transform &p_local_frame_A, RID p_body_B, const Transform &p_local_frame_B); // reference frame is A
 
 	virtual void cone_twist_joint_set_param(RID p_joint, ConeTwistJointParam p_param, real_t p_value);
 	virtual real_t cone_twist_joint_get_param(RID p_joint, ConeTwistJointParam p_param) const;
 
-	virtual RID joint_create_generic_6dof(RID p_body_A, const Transform &p_local_frame_A, RID p_body_B, const Transform &p_local_frame_B); //reference frame is A
+	virtual RID joint_create_generic_6dof(RID p_body_A, const Transform &p_local_frame_A, RID p_body_B, const Transform &p_local_frame_B); // reference frame is A
 
 	virtual void generic_6dof_joint_set_param(RID p_joint, Vector3::Axis, G6DOFJointAxisParam p_param, real_t p_value);
 	virtual real_t generic_6dof_joint_get_param(RID p_joint, Vector3::Axis, G6DOFJointAxisParam p_param);

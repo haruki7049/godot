@@ -81,7 +81,7 @@ public:
 class PacketPeerStream : public PacketPeer {
 	GDCLASS(PacketPeerStream, PacketPeer);
 
-	//the way the buffers work sucks, will change later
+	// the way the buffers work sucks, will change later
 
 	mutable Ref<StreamPeer> peer;
 	mutable RingBuffer<uint8_t> ring_buffer;

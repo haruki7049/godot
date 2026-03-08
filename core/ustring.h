@@ -137,7 +137,7 @@ class String {
 public:
 	enum {
 
-		npos = -1 ///<for "some" compatibility with std::string (npos is a huge value in std::string)
+		npos = -1 ///< for "some" compatibility with std::string (npos is a huge value in std::string)
 	};
 
 	_FORCE_INLINE_ CharType *ptrw() { return _cowdata.ptrw(); }
@@ -164,7 +164,7 @@ public:
 	bool operator==(const String &p_str) const;
 	bool operator!=(const String &p_str) const;
 	String operator+(const String &p_str) const;
-	//String operator+(CharType p_char) const;
+	// String operator+(CharType p_char) const;
 
 	String &operator+=(const String &);
 	String &operator+=(CharType p_char);
@@ -296,7 +296,7 @@ public:
 
 	CharString ascii(bool p_allow_extended = false) const;
 	CharString utf8() const;
-	bool parse_utf8(const char *p_utf8, int p_len = -1); //return true on error
+	bool parse_utf8(const char *p_utf8, int p_len = -1); // return true on error
 	static String utf8(const char *p_utf8, int p_len = -1);
 
 	static uint32_t hash(const CharType *p_cstr, int p_len); /* hash the string */
@@ -378,7 +378,7 @@ String operator+(CharType p_chr, const String &p_str);
 String itos(int64_t p_val);
 String uitos(uint64_t p_val);
 String rtos(double p_val);
-String rtoss(double p_val); //scientific version
+String rtoss(double p_val); // scientific version
 
 struct NoCaseComparator {
 	bool operator()(const String &p_a, const String &p_b) const {
@@ -414,14 +414,14 @@ _FORCE_INLINE_ bool is_str_less(const L *l_ptr, const R *r_ptr) {
 
 /* end of namespace */
 
-//tool translate
+// tool translate
 #ifdef TOOLS_ENABLED
 
-//gets parsed
+// gets parsed
 String TTR(const String &);
-//use for C strings
+// use for C strings
 #define TTRC(m_value) (m_value)
-//use to avoid parsing (for use later with C strings)
+// use to avoid parsing (for use later with C strings)
 #define TTRGET(m_value) TTR(m_value)
 
 #else
@@ -432,7 +432,7 @@ String TTR(const String &);
 
 #endif
 
-//tool or regular translate
+// tool or regular translate
 String RTR(const String &);
 
 bool is_symbol(CharType c);

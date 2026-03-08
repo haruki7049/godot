@@ -120,23 +120,23 @@ Error ImageLoaderTinyEXR::load_image(Ref<Image> p_image, FileAccess *f, bool p_f
 
 	int channel_size = use_float16 ? 2 : 4;
 	if (idxA != -1) {
-		imgdata.resize(exr_image.width * exr_image.height * 4 * channel_size); //RGBA
+		imgdata.resize(exr_image.width * exr_image.height * 4 * channel_size); // RGBA
 		format = use_float16 ? Image::FORMAT_RGBAH : Image::FORMAT_RGBAF;
 		output_channels = 4;
 	} else if (idxB != -1) {
 		ERR_FAIL_COND_V(idxG == -1, ERR_FILE_CORRUPT);
 		ERR_FAIL_COND_V(idxR == -1, ERR_FILE_CORRUPT);
-		imgdata.resize(exr_image.width * exr_image.height * 3 * channel_size); //RGB
+		imgdata.resize(exr_image.width * exr_image.height * 3 * channel_size); // RGB
 		format = use_float16 ? Image::FORMAT_RGBH : Image::FORMAT_RGBF;
 		output_channels = 3;
 	} else if (idxG != -1) {
 		ERR_FAIL_COND_V(idxR == -1, ERR_FILE_CORRUPT);
-		imgdata.resize(exr_image.width * exr_image.height * 2 * channel_size); //RG
+		imgdata.resize(exr_image.width * exr_image.height * 2 * channel_size); // RG
 		format = use_float16 ? Image::FORMAT_RGH : Image::FORMAT_RGF;
 		output_channels = 2;
 	} else {
 		ERR_FAIL_COND_V(idxR == -1, ERR_FILE_CORRUPT);
-		imgdata.resize(exr_image.width * exr_image.height * 1 * channel_size); //R
+		imgdata.resize(exr_image.width * exr_image.height * 1 * channel_size); // R
 		format = use_float16 ? Image::FORMAT_RH : Image::FORMAT_RF;
 		output_channels = 1;
 	}
@@ -168,7 +168,7 @@ Error ImageLoaderTinyEXR::load_image(Ref<Image> p_image, FileAccess *f, bool p_f
 		exr_tiles = exr_image.tiles;
 	}
 
-	//print_line("reading format: " + Image::get_format_name(format));
+	// print_line("reading format: " + Image::get_format_name(format));
 	{
 		PoolVector<uint8_t>::Write imgdata_write = imgdata.write();
 		uint8_t *wd = imgdata_write.ptr();

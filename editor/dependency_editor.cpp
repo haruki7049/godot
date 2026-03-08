@@ -80,7 +80,7 @@ void DependencyEditor::_fix_and_find(EditorFileSystemDirectory *efsd, Map<String
 				continue;
 			}
 
-			//must match the best, using subdirs
+			// must match the best, using subdirs
 			String existing = E->get().replace_first("res://", "");
 			String current = path.replace_first("res://", "");
 			String lost = E->key().replace_first("res://", "");
@@ -105,9 +105,9 @@ void DependencyEditor::_fix_and_find(EditorFileSystemDirectory *efsd, Map<String
 			}
 
 			if (current_score > existing_score) {
-				//if it was the same, could track distance to new path but..
+				// if it was the same, could track distance to new path but..
 
-				E->get() = path; //replace by more accurate
+				E->get() = path; // replace by more accurate
 			}
 		}
 	}
@@ -361,8 +361,8 @@ void DependencyRemoveDialog::_find_files_in_removed_folder(EditorFileSystemDirec
 	}
 	for (int i = 0; i < efsd->get_file_count(); i++) {
 		String file = efsd->get_file_path(i);
-		ERR_FAIL_COND(all_remove_files.has(file)); //We are deleting a directory which is contained in a directory we are deleting...
-		all_remove_files[file] = p_folder; //Point the file to the ancestor directory we are deleting so we know what to parent it under in the tree.
+		ERR_FAIL_COND(all_remove_files.has(file)); // We are deleting a directory which is contained in a directory we are deleting...
+		all_remove_files[file] = p_folder; // Point the file to the ancestor directory we are deleting so we know what to parent it under in the tree.
 	}
 }
 
@@ -378,7 +378,7 @@ void DependencyRemoveDialog::_find_all_removed_dependencies(EditorFileSystemDire
 	for (int i = 0; i < efsd->get_file_count(); i++) {
 		const String path = efsd->get_file_path(i);
 
-		//It doesn't matter if a file we are about to delete will have some of its dependencies removed too
+		// It doesn't matter if a file we are about to delete will have some of its dependencies removed too
 		if (all_remove_files.has(path)) {
 			continue;
 		}
@@ -405,10 +405,10 @@ void DependencyRemoveDialog::_build_removed_dependency_tree(const Vector<Removed
 	for (int i = 0; i < p_removed.size(); i++) {
 		RemovedDependency rd = p_removed[i];
 
-		//Ensure that the dependency is already in the tree
+		// Ensure that the dependency is already in the tree
 		if (!tree_items.has(rd.dependency)) {
 			if (rd.dependency_folder.length() > 0) {
-				//Ensure the ancestor folder is already in the tree
+				// Ensure the ancestor folder is already in the tree
 				if (!tree_items.has(rd.dependency_folder)) {
 					TreeItem *folder_item = owners->create_item(owners->get_root());
 					folder_item->set_text(0, rd.dependency_folder);
@@ -427,7 +427,7 @@ void DependencyRemoveDialog::_build_removed_dependency_tree(const Vector<Removed
 			}
 		}
 
-		//List this file under this dependency
+		// List this file under this dependency
 		Ref<Texture> icon = EditorNode::get_singleton()->get_class_icon(rd.file_type);
 		TreeItem *file_item = owners->create_item(tree_items[rd.dependency]);
 		file_item->set_text(0, rd.file);

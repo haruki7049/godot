@@ -1368,7 +1368,7 @@ EditorPropertyVector2::EditorPropertyVector2() {
 	}
 
 	if (!horizontal) {
-		set_label_reference(spin[0]); //show text and buttons around this
+		set_label_reference(spin[0]); // show text and buttons around this
 	}
 	setting = false;
 }
@@ -1450,7 +1450,7 @@ EditorPropertyRect2::EditorPropertyRect2() {
 	}
 
 	if (!horizontal) {
-		set_label_reference(spin[0]); //show text and buttons around this
+		set_label_reference(spin[0]); // show text and buttons around this
 	}
 	setting = false;
 }
@@ -1530,7 +1530,7 @@ EditorPropertyVector3::EditorPropertyVector3() {
 	}
 
 	if (!horizontal) {
-		set_label_reference(spin[0]); //show text and buttons around this
+		set_label_reference(spin[0]); // show text and buttons around this
 	}
 	setting = false;
 }
@@ -1611,7 +1611,7 @@ EditorPropertyPlane::EditorPropertyPlane() {
 	}
 
 	if (!horizontal) {
-		set_label_reference(spin[0]); //show text and buttons around this
+		set_label_reference(spin[0]); // show text and buttons around this
 	}
 	setting = false;
 }
@@ -1693,7 +1693,7 @@ EditorPropertyQuat::EditorPropertyQuat() {
 	}
 
 	if (!horizontal) {
-		set_label_reference(spin[0]); //show text and buttons around this
+		set_label_reference(spin[0]); // show text and buttons around this
 	}
 	setting = false;
 }
@@ -2096,7 +2096,7 @@ void EditorPropertyNodePath::_node_selected(const NodePath &p_path) {
 		base_node = Object::cast_to<Node>(get_edited_object());
 
 		if (!base_node) {
-			//try a base node within history
+			// try a base node within history
 			if (EditorNode::get_singleton()->get_editor_history()->get_path_size() > 0) {
 				Object *base = ObjectDB::get_instance(EditorNode::get_singleton()->get_editor_history()->get_path_object(0));
 				if (base) {
@@ -2214,7 +2214,7 @@ EditorPropertyNodePath::EditorPropertyNodePath() {
 	hbc->add_child(clear);
 	use_path_from_scene_root = false;
 
-	scene_tree = nullptr; //do not allocate unnecessarily
+	scene_tree = nullptr; // do not allocate unnecessarily
 }
 
 ///////////////////// RID /////////////////////////
@@ -2552,11 +2552,11 @@ EditorPropertyResource::EditorPropertyResource() {
 ////////////// DEFAULT PLUGIN //////////////////////
 
 bool EditorInspectorDefaultPlugin::can_handle(Object *p_object) {
-	return true; //can handle everything
+	return true; // can handle everything
 }
 
 void EditorInspectorDefaultPlugin::parse_begin(Object *p_object) {
-	//do none
+	// do none
 }
 
 bool EditorInspectorDefaultPlugin::parse_property(Object *p_object, Variant::Type p_type, const String &p_path, PropertyHint p_hint, const String &p_hint_text, int p_usage) {
@@ -2601,7 +2601,7 @@ bool EditorInspectorDefaultPlugin::parse_property(Object *p_object, Variant::Typ
 						lt = EditorPropertyLayers::LAYER_PHYSICS_3D;
 						break;
 					default: {
-					} //compiler could be smarter here and realize this can't happen
+					} // compiler could be smarter here and realize this can't happen
 				}
 				EditorPropertyLayers *editor = memnew(EditorPropertyLayers);
 				editor->setup(lt);
@@ -2617,7 +2617,7 @@ bool EditorInspectorDefaultPlugin::parse_property(Object *p_object, Variant::Typ
 				bool greater = true, lesser = true;
 
 				if (p_hint == PROPERTY_HINT_RANGE && p_hint_text.get_slice_count(",") >= 2) {
-					greater = false; //if using ranged, assume false by default
+					greater = false; // if using ranged, assume false by default
 					lesser = false;
 					min = p_hint_text.get_slice(",", 0).to_int();
 					max = p_hint_text.get_slice(",", 1).to_int();
@@ -2669,7 +2669,7 @@ bool EditorInspectorDefaultPlugin::parse_property(Object *p_object, Variant::Typ
 				bool greater = true, lesser = true;
 
 				if ((p_hint == PROPERTY_HINT_RANGE || p_hint == PROPERTY_HINT_EXP_RANGE) && p_hint_text.get_slice_count(",") >= 2) {
-					greater = false; //if using ranged, assume false by default
+					greater = false; // if using ranged, assume false by default
 					lesser = false;
 					min = p_hint_text.get_slice(",", 0).to_double();
 					max = p_hint_text.get_slice(",", 1).to_double();
@@ -2939,7 +2939,7 @@ bool EditorInspectorDefaultPlugin::parse_property(Object *p_object, Variant::Typ
 			}
 			if (p_hint == PROPERTY_HINT_NODE_PATH_VALID_TYPES && p_hint_text != String()) {
 				Vector<String> types = p_hint_text.split(",", false);
-				Vector<StringName> sn = Variant(types); //convert via variant
+				Vector<StringName> sn = Variant(types); // convert via variant
 				editor->setup(NodePath(), sn, (p_usage & PROPERTY_USAGE_NODE_PATH_FROM_SCENE_ROOT));
 			}
 			add_property_editor(p_path, editor);
@@ -3017,9 +3017,9 @@ bool EditorInspectorDefaultPlugin::parse_property(Object *p_object, Variant::Typ
 		}
 	}
 
-	return false; //can be overridden, although it will most likely be last anyway
+	return false; // can be overridden, although it will most likely be last anyway
 }
 
 void EditorInspectorDefaultPlugin::parse_end() {
-	//do none
+	// do none
 }

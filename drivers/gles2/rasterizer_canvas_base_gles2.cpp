@@ -141,7 +141,7 @@ void RasterizerCanvasBaseGLES2::canvas_end() {
 	}
 
 	if (storage->frame.current_rt && storage->frame.current_rt->flags[RasterizerStorage::RENDER_TARGET_DIRECT_TO_SCREEN]) {
-		//reset viewport to full window size
+		// reset viewport to full window size
 		int viewport_width = OS::get_singleton()->get_window_size().width;
 		int viewport_height = OS::get_singleton()->get_window_size().height;
 		glViewport(0, 0, viewport_width, viewport_height);
@@ -222,7 +222,7 @@ RasterizerStorageGLES2::Texture *RasterizerCanvasBaseGLES2::_bind_canvas_texture
 	}
 
 	if (p_normal_map == state.current_normal) {
-		//do none
+		// do none
 		state.canvas_shader.set_uniform(CanvasShaderGLES2::USE_DEFAULT_NORMAL, state.current_normal.is_valid());
 
 	} else if (p_normal_map.is_valid()) {
@@ -235,7 +235,7 @@ RasterizerStorageGLES2::Texture *RasterizerCanvasBaseGLES2::_bind_canvas_texture
 			state.canvas_shader.set_uniform(CanvasShaderGLES2::USE_DEFAULT_NORMAL, false);
 
 		} else {
-			if (normal_map->redraw_if_visible) { //check before proxy, because this is usually used with proxies
+			if (normal_map->redraw_if_visible) { // check before proxy, because this is usually used with proxies
 				VisualServerRaster::redraw_request();
 			}
 
@@ -481,7 +481,7 @@ void RasterizerCanvasBaseGLES2::_draw_polygon(const int *p_indices, int p_index_
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, data.polygon_index_buffer);
 
-	if (storage->config.support_32_bits_indices) { //should check for
+	if (storage->config.support_32_bits_indices) { // should check for
 #ifdef DEBUG_ENABLED
 		ERR_FAIL_COND((sizeof(int) * p_index_count) > data.polygon_index_buffer_size);
 #endif
@@ -594,7 +594,7 @@ void RasterizerCanvasBaseGLES2::_draw_generic_indices(GLuint p_primitive, const 
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, data.polygon_index_buffer);
 
-	if (storage->config.support_32_bits_indices) { //should check for
+	if (storage->config.support_32_bits_indices) { // should check for
 #ifdef DEBUG_ENABLED
 		ERR_FAIL_COND((sizeof(int) * p_index_count) > data.polygon_index_buffer_size);
 #endif
@@ -636,7 +636,7 @@ void RasterizerCanvasBaseGLES2::_draw_gui_primitive(int p_points, const Vector2 
 		stride += 2;
 	}
 
-	if (p_light_angles) { //light_angles
+	if (p_light_angles) { // light_angles
 		light_angle_offset = stride;
 		stride += 1;
 	}
@@ -753,7 +753,7 @@ void RasterizerCanvasBaseGLES2::_copy_screen(const Rect2 &p_rect) {
 	storage->shaders.copy.set_conditional(CopyShaderGLES2::USE_COPY_SECTION, false);
 	storage->shaders.copy.set_conditional(CopyShaderGLES2::USE_NO_ALPHA, false);
 
-	glBindFramebuffer(GL_FRAMEBUFFER, storage->frame.current_rt->fbo); //back to front
+	glBindFramebuffer(GL_FRAMEBUFFER, storage->frame.current_rt->fbo); // back to front
 	glEnable(GL_BLEND);
 }
 
@@ -782,7 +782,7 @@ void RasterizerCanvasBaseGLES2::canvas_light_shadow_buffer_update(RID p_buffer, 
 	VS::CanvasOccluderPolygonCullMode cull = VS::CANVAS_OCCLUDER_POLYGON_CULL_DISABLED;
 
 	for (int i = 0; i < 4; i++) {
-		//make sure it remains orthogonal, makes easy to read angle later
+		// make sure it remains orthogonal, makes easy to read angle later
 
 		Transform light;
 		light.origin[0] = p_light_xform[2][0];
@@ -792,9 +792,9 @@ void RasterizerCanvasBaseGLES2::canvas_light_shadow_buffer_update(RID p_buffer, 
 		light.basis[1][0] = p_light_xform[0][1];
 		light.basis[1][1] = p_light_xform[1][1];
 
-		//light.basis.scale(Vector3(to_light.elements[0].length(),to_light.elements[1].length(),1));
+		// light.basis.scale(Vector3(to_light.elements[0].length(),to_light.elements[1].length(),1));
 
-		//p_near=1;
+		// p_near=1;
 		CameraMatrix projection;
 		{
 			real_t fov = 90;
@@ -840,8 +840,8 @@ void RasterizerCanvasBaseGLES2::canvas_light_shadow_buffer_update(RID p_buffer, 
 					(p_light_xform.basis_determinant() * instance->xform_cache.basis_determinant()) < 0) {
 				transformed_cull_cache =
 						transformed_cull_cache == VS::CANVAS_OCCLUDER_POLYGON_CULL_CLOCKWISE ?
-								  VS::CANVAS_OCCLUDER_POLYGON_CULL_COUNTER_CLOCKWISE :
-								  VS::CANVAS_OCCLUDER_POLYGON_CULL_CLOCKWISE;
+								VS::CANVAS_OCCLUDER_POLYGON_CULL_COUNTER_CLOCKWISE :
+								VS::CANVAS_OCCLUDER_POLYGON_CULL_CLOCKWISE;
 			}
 
 			if (cull != transformed_cull_cache) {

@@ -41,7 +41,7 @@ void Camera2D::_update_scroll() {
 	}
 
 	if (Engine::get_singleton()->is_editor_hint()) {
-		update(); //will just be drawn
+		update(); // will just be drawn
 		return;
 	}
 

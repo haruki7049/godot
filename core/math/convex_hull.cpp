@@ -66,12 +66,12 @@ subject to the following restrictions:
 
 #include <string.h>
 
-//#define DEBUG_CONVEX_HULL
-//#define SHOW_ITERATIONS
+// #define DEBUG_CONVEX_HULL
+// #define SHOW_ITERATIONS
 
 // -- GODOT start --
 // Assembly optimizations are not used at the moment.
-//#define USE_X86_64_ASM
+// #define USE_X86_64_ASM
 // -- GODOT end --
 
 #ifdef DEBUG_ENABLED
@@ -200,7 +200,7 @@ public:
 		static Int128 mul(uint64_t a, uint64_t b);
 
 		Int128 operator-() const {
-			return Int128((uint64_t) - (int64_t)low, ~high + (low == 0));
+			return Int128((uint64_t)-(int64_t)low, ~high + (low == 0));
 		}
 
 		Int128 operator+(const Int128 &b) const {
@@ -265,7 +265,7 @@ public:
 
 		int32_t get_sign() const {
 			return ((int64_t)high < 0) ? -1 : (high || low) ? 1 :
-																0;
+															  0;
 		}
 
 		bool operator<(const Int128 &b) const {
@@ -759,9 +759,9 @@ int32_t ConvexHullInternal::Rational64::compare(const Rational64 &b) const {
 			: "a"(denominator), [bn] "g"(b.numerator), [tn] "g"(numerator), [bd] "g"(b.denominator)
 			: "%rdx", "cc");
 	return result ? result ^ sign // if sign is +1, only bit 0 of result is inverted, which does not change the sign of result (and cannot result in zero)
-					// if sign is -1, all bits of result are inverted, which changes the sign of result (and again cannot result in zero)
+								  // if sign is -1, all bits of result are inverted, which changes the sign of result (and again cannot result in zero)
 					:
-					  0;
+					0;
 
 #else
 
@@ -795,7 +795,7 @@ int32_t ConvexHullInternal::Rational128::compare(int64_t b) const {
 	if (is_int_64) {
 		int64_t a = sign * (int64_t)numerator.low;
 		return (a > b) ? 1 : (a < b) ? -1 :
-										 0;
+									   0;
 	}
 	if (b > 0) {
 		if (sign <= 0) {
@@ -1448,7 +1448,7 @@ void ConvexHullInternal::merge(IntermediateHull &p_h0, IntermediateHull &p_h1) {
 			return;
 		} else {
 			int32_t cmp = !min0 ? 1 : !min1 ? -1 :
-												min_cot0.compare(min_cot1);
+											  min_cot0.compare(min_cot1);
 #ifdef DEBUG_CONVEX_HULL
 			printf("    -> Result %d\n", cmp);
 #endif

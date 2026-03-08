@@ -71,8 +71,8 @@ public:
 		SIZE_FILL = 1,
 		SIZE_EXPAND = 2,
 		SIZE_EXPAND_FILL = SIZE_EXPAND | SIZE_FILL,
-		SIZE_SHRINK_CENTER = 4, //ignored by expand or fill
-		SIZE_SHRINK_END = 8, //ignored by expand or fill
+		SIZE_SHRINK_CENTER = 4, // ignored by expand or fill
+		SIZE_SHRINK_END = 8, // ignored by expand or fill
 
 	};
 
@@ -178,13 +178,13 @@ private:
 		Control *parent;
 		ObjectID drag_owner;
 		bool modal_exclusive;
-		uint64_t modal_frame; //frame used to put something as modal
+		uint64_t modal_frame; // frame used to put something as modal
 		Ref<Theme> theme;
 		Control *theme_owner;
 		String tooltip;
 		CursorShape default_cursor;
 
-		List<Control *>::Element *MI; //modal item
+		List<Control *>::Element *MI; // modal item
 		List<Control *>::Element *SI;
 		List<Control *>::Element *RI;
 
@@ -247,7 +247,7 @@ protected:
 	virtual void add_child_notify(Node *p_child);
 	virtual void remove_child_notify(Node *p_child);
 
-	//virtual void _window_gui_input(InputEvent p_event);
+	// virtual void _window_gui_input(InputEvent p_event);
 
 	bool _set(const StringName &p_name, const Variant &p_value);
 	bool _get(const StringName &p_name, Variant &r_ret) const;
@@ -257,7 +257,7 @@ protected:
 
 	static void _bind_methods();
 
-	//bind helpers
+	// bind helpers
 
 public:
 	enum {
@@ -319,7 +319,7 @@ public:
 	Size2 get_custom_minimum_size() const;
 
 	bool is_window_modal_on_top() const;
-	uint64_t get_modal_frame() const; //frame in which this was made modal
+	uint64_t get_modal_frame() const; // frame in which this was made modal
 
 	Control *get_parent_control() const;
 

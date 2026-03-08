@@ -95,7 +95,7 @@ bool Rect2::intersects_segment(const Point2 &p_from, const Point2 &p_to, Point2 
 }
 
 bool Rect2::intersects_transformed(const Transform2D &p_xform, const Rect2 &p_rect) const {
-	//SAT intersection between local and transformed rect2
+	// SAT intersection between local and transformed rect2
 
 	Vector2 xf_points[4] = {
 		p_xform.xform(p_rect.position),
@@ -106,7 +106,7 @@ bool Rect2::intersects_transformed(const Transform2D &p_xform, const Rect2 &p_re
 
 	real_t low_limit;
 
-	//base rect2 first (faster)
+	// base rect2 first (faster)
 
 	if (xf_points[0].y > position.y) {
 		goto next1;

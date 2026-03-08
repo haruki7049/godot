@@ -86,9 +86,9 @@ public:
 				// t = Dot((P1 + D1*s) - P2,D2) / Dot(D2,D2) = (b*s + f) / e
 				t = (b * s + f) / e;
 
-				//If t in [0,1] done. Else clamp t, recompute s for the new value
-				// of t using s = Dot((P2 + D2*t) - P1,D1) / Dot(D1,D1)= (t*b - c) / a
-				// and clamp s to [0, 1].
+				// If t in [0,1] done. Else clamp t, recompute s for the new value
+				//  of t using s = Dot((P2 + D2*t) - P1,D1) / Dot(D1,D1)= (t*b - c) / a
+				//  and clamp s to [0, 1].
 				if (t < 0.0) {
 					t = 0.0;
 					s = CLAMP(-c / a, 0.0, 1.0);
@@ -662,7 +662,7 @@ public:
 		if (Geometry::point_in_projected_triangle(contact, p_triangle[0], p_triangle[1], p_triangle[2])) {
 			r_triangle_contact = contact;
 			r_sphere_contact = p_sphere_pos - p_normal * p_sphere_radius;
-			//printf("solved inside triangle\n");
+			// printf("solved inside triangle\n");
 			return true;
 		}
 
@@ -905,7 +905,7 @@ public:
 	static Vector<int> triangulate_polygon(const Vector<Vector2> &p_polygon) {
 		Vector<int> triangles;
 		if (!Triangulate::triangulate(p_polygon, triangles)) {
-			return Vector<int>(); //fail
+			return Vector<int>(); // fail
 		}
 		return triangles;
 	}
