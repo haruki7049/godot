@@ -187,7 +187,6 @@
 
             # C / C++
             programs.clang-format.enable = true;
-            programs.clang-tidy.enable = true;
 
             # GitHub Actions
             programs.actionlint.enable = true;
