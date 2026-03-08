@@ -22,6 +22,7 @@ jobs:
             cache-name: linux-editor
             target: release_debug
             tools: true
+            test: true
             bin: "./bin/godot.x11.opt.tools.64"
             build-mono: false
             artifact: true
@@ -30,6 +31,7 @@ jobs:
             cache-name: linux-template
             target: release
             tools: false
+            test: true
             build-mono: false
             artifact: true
 
@@ -60,7 +62,7 @@ jobs:
       - name: Compilation
         uses: ./.github/actions/godot-build
         with:
-          sconsflags: ${{ env.SCONSFLAGS }} ${{ matrix.sconsflags }}
+          sconsflags: ${{ env.SCONSFLAGS }}
           platform: linuxbsd
           target: ${{ matrix.target }}
           tools: ${{ matrix.tools }}
@@ -76,7 +78,7 @@ jobs:
         uses: ./.github/actions/godot-build
         if: ${{ matrix.build-mono }}
         with:
-          sconsflags: ${{ env.SCONSFLAGS }} ${{ matrix.sconsflags }} mono_glue=yes
+          sconsflags: ${{ env.SCONSFLAGS }} mono_glue=yes
           platform: linuxbsd
           target: ${{ matrix.target }}
           tools: ${{ matrix.tools }}
