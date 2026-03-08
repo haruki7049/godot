@@ -1,7 +1,7 @@
 import os
 import sys
 import platform
-from distutils.version import LooseVersion
+from setuptools._distutils.version import LooseVersion
 
 
 def is_active():
